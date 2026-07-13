@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scenario.schema.json",
+  "title": "Scenario",
+  "type": "object",
+  "required": [
+    "id",
+    "workflow_ids",
+    "category",
+    "role_ids",
+    "trigger",
+    "goal",
+    "context",
+    "normal_path",
+    "decision_points",
+    "records_read",
+    "records_created",
+    "completion_condition"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^SCN-[0-9]{3}-[0-9]{2}$"
+    },
+    "workflow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "category": {
+      "enum": [
+        "routine",
+        "urgent",
+        "blocked",
+        "incomplete_information",
+        "correction",
+        "cross_organization",
+        "offline_delayed",
+        "supervisory_review",
+        "audit_historical"
+      ]
+    },
+    "role_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trigger": {
+      "type": "string"
+    },
+    "goal": {
+      "type": "string"
+    },
+    "context": {
+      "type": "string"
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "available_information": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "missing_information": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "normal_path": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "branches": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "records_read": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "records_created": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "communications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "device_context": {
+      "type": "string"
+    },
+    "connectivity": {
+      "type": "string"
+    },
+    "compliance_implications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "completion_condition": {
+      "type": "string"
+    },
+    "synthetic_fixture_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

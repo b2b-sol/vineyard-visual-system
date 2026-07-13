@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "artifact.schema.json",
+  "title": "Artifact Metadata",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "title",
+    "artifact_type",
+    "version",
+    "status",
+    "source_workflows",
+    "source_scenarios",
+    "primary_purpose",
+    "canonical_source"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string",
+      "pattern": "^VIS-[0-9]{3}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "artifact_type": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "review",
+        "revision",
+        "approved",
+        "superseded"
+      ]
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "reviewed_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_workflows": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_scenarios": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_decisions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "primary_purpose": {
+      "type": "string"
+    },
+    "primary_audience": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "platform": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "normal_states": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exception_states": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "canonical_source": {
+      "type": "string"
+    },
+    "review_exports": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "implementation_reference": {
+      "type": "string"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "known_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

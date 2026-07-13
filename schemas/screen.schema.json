@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "screen.schema.json",
+  "title": "Screen",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "platform",
+    "workflow_ids",
+    "scenario_ids",
+    "purpose",
+    "primary_decision",
+    "data_shown",
+    "actions",
+    "states",
+    "component_ids"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^SCR-[0-9]{3}$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "platform": {
+      "enum": [
+        "mobile",
+        "desktop",
+        "tablet",
+        "responsive",
+        "print"
+      ]
+    },
+    "workflow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "scenario_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "primary_decision": {
+      "type": "string"
+    },
+    "data_shown": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "entry_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exit_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "states": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "permission_behavior": {
+      "type": "string"
+    },
+    "offline_behavior": {
+      "type": "string"
+    },
+    "validation_behavior": {
+      "type": "string"
+    },
+    "component_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "route": {
+      "type": "string"
+    },
+    "figma_frame_name": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

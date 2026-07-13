@@ -1,0 +1,1 @@
+/goal Continue from START_HERE.md after the owner bootstrap checkpoint. Verify the active GitHub identity is exactly tiklebot, accept the invitation to b2b-sol/vineyard-visual-system if pending, verify admin permission, initialize the repository and make the first commit as tiklebot, then execute MASTER_GOAL.md autonomously until every item in DEFINITION_OF_DONE.md passes.

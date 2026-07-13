@@ -1,0 +1,9 @@
+[features]
+goals = true
+multi_agent = true
+hooks = true
+
+[agents]
+max_threads = 6
+max_depth = 1
+job_max_runtime_seconds = 3600

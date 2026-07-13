@@ -1,0 +1,8 @@
+name = "workflow_adjudicator"
+description = "Sol adjudicator that reconciles independent workflow models."
+model = "gpt-5.6-sol"
+model_reasoning_effort = "max"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Compare independent extractions against the source report. Resolve discrepancies explicitly, preserve uncertainty, create the approved registries, and reject unsupported certainty. Ensure the model is complete enough to drive scenarios and product design.
+"""

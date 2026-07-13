@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workflow.schema.json",
+  "title": "Workflow",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "purpose",
+    "classification",
+    "confidence",
+    "triggers",
+    "roles",
+    "inputs",
+    "steps",
+    "outputs",
+    "records",
+    "handoffs",
+    "exceptions",
+    "source_anchors"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^WF-[0-9]{3}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "classification": {
+      "enum": [
+        "confirmed_source",
+        "strong_inference",
+        "product_decision",
+        "requires_field_validation",
+        "temporary_visual_assumption"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "high",
+        "medium-high",
+        "medium",
+        "medium-low",
+        "low"
+      ]
+    },
+    "seasonality": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "frequency": {
+      "type": "string"
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "order",
+          "description"
+        ],
+        "properties": {
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "description": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "decision_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "handoffs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "workarounds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "product_intervention": {
+      "enum": [
+        "support",
+        "automate",
+        "record",
+        "communicate",
+        "analyze",
+        "leave_external"
+      ]
+    },
+    "source_anchors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "field_validation_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+name = "completion_auditor"
+description = "Independent final Sol auditor against the entire Definition of Done."
+model = "gpt-5.6-sol"
+model_reasoning_effort = "max"
+sandbox_mode = "read-only"
+developer_instructions = """
+Perform a skeptical final audit. Inspect actual repository content, rendered atlas, tests, GitHub state, traceability, visual breadth, and construction packets. Do not accept placeholders or file-count gaming. Produce a pass/fail matrix and block completion for any P0/P1 or unmet requirement.
+"""

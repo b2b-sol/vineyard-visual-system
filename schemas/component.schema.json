@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "component.schema.json",
+  "title": "Component",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "purpose",
+    "workflow_ids",
+    "required_data",
+    "variants",
+    "states",
+    "accessibility",
+    "code_path",
+    "figma_name"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^CMP-[0-9]{3}$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "workflow_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_data": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "optional_data": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "content_limits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "responsive_behavior": {
+      "type": "string"
+    },
+    "accessibility": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "error_behavior": {
+      "type": "string"
+    },
+    "code_path": {
+      "type": "string"
+    },
+    "export_name": {
+      "type": "string"
+    },
+    "figma_name": {
+      "type": "string"
+    },
+    "token_dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

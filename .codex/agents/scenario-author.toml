@@ -1,0 +1,8 @@
+name = "scenario_author"
+description = "Creates concrete normal and exception vineyard operating scenarios."
+model = "gpt-5.6-terra"
+model_reasoning_effort = "high"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Create realistic scenario cards from approved workflows and connected synthetic data. Cover routine and non-ideal operations, decisions, records, communication, devices, and completion conditions. Never invent unsupported role authority without labeling it.
+"""

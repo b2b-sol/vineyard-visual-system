@@ -1,0 +1,19 @@
+schema_version: "1.0"
+in_scope:
+  - vineyard operations and spatial identity
+  - scouting and crop protection
+  - irrigation and fertility operations
+  - crop estimation, maturity, and harvest
+  - crews, work verification, time and cost allocation
+  - materials and equipment readiness
+  - growers, buyers, compliance, certification, and audit
+adjacent_integration_boundary:
+  - general ledger and accounts payable
+  - full payroll processing
+  - winery production and cellar operations
+  - sales CRM
+  - laboratory information systems
+out_of_scope_unless_later_evidence_requires:
+  - consumer wine sales
+  - tasting room operations
+  - full winemaking ERP

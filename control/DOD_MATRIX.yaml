@@ -1,0 +1,69 @@
+schema_version: '1.0'
+status: in_progress
+criteria:
+  - id: G0
+    title: Authentication safety
+    status: passed
+    verification: exact bot login, admin permission, and public visibility
+    evidence:
+      - control/PROJECT_STATE.yaml
+  - id: G1
+    title: Control integrity
+    status: in_progress
+    verification: task DAG, state, manifest, findings, and trace registries validate
+    evidence: []
+  - id: G2
+    title: Deterministic factory
+    status: pending
+    verification: clean install and one aggregate verify command reproduce build and walking slice
+    evidence: []
+  - id: G3
+    title: Evidence and workflow fidelity
+    status: pending
+    verification: all evidence resolves; ten families and required operational visuals are approved
+    evidence: []
+  - id: G4
+    title: Scenario and data integrity
+    status: pending
+    verification: coverage floor, seeded full season, exception histories, references, chronology, units, and statuses pass
+    evidence: []
+  - id: G5
+    title: Product traceability
+    status: pending
+    verification: requirements, screens, actions, decisions, permissions, transitions, audit events, and offline behavior resolve
+    evidence: []
+  - id: G6
+    title: Interaction coverage
+    status: pending
+    verification: every family includes entry, normal, exception, recovery, and completion paths across applicable platforms
+    evidence: []
+  - id: G7
+    title: Visual system
+    status: pending
+    verification: three directions scored; selected thesis, tokens, components, and vineyard distinctiveness pass
+    evidence: []
+  - id: G8
+    title: Production waves
+    status: pending
+    verification: all five waves pass rendered mobile/desktop, state, prototype, packet, accessibility, critic, and trace checks
+    evidence: []
+  - id: G9
+    title: Construction and Figma readiness
+    status: pending
+    verification: packet and mapping schemas pass and no canonical artifact is flattened-only
+    evidence: []
+  - id: G10
+    title: Integrated validation
+    status: pending
+    verification: type, lint, schema, unit, build, browser, responsive, accessibility, link, trace, freshness, hygiene, and repository audits pass
+    evidence: []
+  - id: G11
+    title: Completion audit
+    status: pending
+    verification: exact release commit has full DoD evidence and no unresolved P0/P1 or internal blocker
+    evidence: []
+  - id: G12
+    title: Public release
+    status: pending
+    verification: Pages and required routes work; tag matches audited commit; inventory and report are current
+    evidence: []

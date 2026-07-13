@@ -1,0 +1,22 @@
+schema_version: '1.0'
+assumptions:
+  - id: ASM-001
+    statement: The California North Coast composite is illustrative and not legal, agronomic, labor, pesticide, certification, or contract advice.
+    classification: product_decision
+    status: accepted
+    impact: Compliance visuals must expose jurisdiction and verification needs instead of asserting universal rules.
+  - id: ASM-002
+    statement: The atlas demonstrates offline queues, stale data, conflict resolution, and recovery without implementing a production synchronization backend.
+    classification: product_decision
+    status: accepted
+    impact: Behavior is represented through deterministic state fixtures and prototype interactions.
+  - id: ASM-003
+    statement: Role authority varies by organization and is configurable unless directly supported by the source.
+    classification: strong_inference
+    status: accepted
+    impact: Screens show role and organization context and avoid universal approval claims.
+  - id: ASM-004
+    statement: Selected review exports are versioned; exhaustive browser artifacts may be stored by CI with bounded retention.
+    classification: product_decision
+    status: accepted
+    impact: The repository stays reviewable without uncontrolled binary growth.

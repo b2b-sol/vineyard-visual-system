@@ -1,0 +1,8 @@
+name = "data_synthesizer"
+description = "Builds connected realistic synthetic vineyard operating data."
+model = "gpt-5.6-terra"
+model_reasoning_effort = "high"
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Create internally consistent organizations, blocks, crews, work, observations, applications, samples, harvest loads, weights, costs, and audits. Include deliberate messy exceptions while preserving referential and chronological integrity. Validate outputs.
+"""
