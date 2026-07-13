@@ -30,13 +30,21 @@ criteria:
       - review-exports/factory/planning-dispatch-mobile.png
   - id: G3
     title: Evidence and workflow fidelity
-    status: in_progress
+    status: passed
     verification: all evidence resolves; ten families and required operational visuals are approved
     evidence:
       - source/evidence.json
       - source/bibliography.json
       - workflow-model/candidates/extraction-a.json
       - workflow-model/candidates/extraction-b.json
+      - workflow-model/workflows.json
+      - workflow-model/roles.json
+      - workflow-model/records.json
+      - workflow-model/decisions.json
+      - workflow-model/exceptions.json
+      - workflow-model/overlays.json
+      - workflow-model/visuals/manifest.json
+      - validation/WORKFLOW_REVIEW.md
   - id: G4
     title: Scenario and data integrity
     status: pending

@@ -56,20 +56,31 @@
     },
     {
       "id": "G3",
-      "status": "in_progress",
+      "status": "passed",
       "checks": [
         "Normalized report anchors",
         "Unique public bibliography URLs",
         "Ten-family evidence coverage",
-        "Independent workflow extraction"
+        "Independent workflow extraction and adjudication",
+        "Reachable canonical state graphs and reciprocal ontology relationships",
+        "Complete deterministic workflow visuals",
+        "Independent no-P0/P1/P2 workflow review"
       ],
       "evidence": [
         "source/evidence.json",
         "source/bibliography.json",
         "workflow-model/candidates/extraction-a.json",
-        "workflow-model/candidates/extraction-b.json"
+        "workflow-model/candidates/extraction-b.json",
+        "workflow-model/workflows.json",
+        "workflow-model/roles.json",
+        "workflow-model/records.json",
+        "workflow-model/decisions.json",
+        "workflow-model/exceptions.json",
+        "workflow-model/overlays.json",
+        "workflow-model/visuals/manifest.json",
+        "validation/WORKFLOW_REVIEW.md"
       ],
-      "commit_sha": null
+      "commit_sha": "1bb54af303aab53542f5ccf0796ddd63fa54b843"
     }
   ]
 }
