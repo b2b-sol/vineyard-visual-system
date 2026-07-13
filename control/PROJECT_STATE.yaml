@@ -1,6 +1,6 @@
 packet_version: 1.0.0
-updated_at: "2026-07-13T15:30:56-07:00"
-state: factory_merge_ready_workflow_adjudication
+updated_at: "2026-07-13T15:48:00-07:00"
+state: factory_merged_pages_recovery
 repository: b2b-sol/vineyard-visual-system
 visibility: public
 execution_identity: tiklebot
@@ -17,7 +17,7 @@ packet_review_complete: true
 execution_strategy: vertical_workflow_waves
 repository_initialized: true
 initial_commit: 6518668b2e898d488134bc77881fd75263d44490
-active_branch: codex/factory-foundation
+active_branch: codex/main-provenance
 factory_operational: true
 definition_of_done_passed: false
 pages_url: null
