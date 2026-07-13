@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -338,6 +339,31 @@ function manifestFromNodes(nodes) {
 
 function deepEqual(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
+}
+
+function gitSucceeds(args) {
+  try {
+    execFileSync("git", args, { cwd: ROOT, stdio: "pipe" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function assertCommitProvenance(commit, artifactPaths, label) {
+  assert(
+    gitSucceeds(["cat-file", "-e", `${commit}^{commit}`]),
+    `${label}: commit ${commit} does not resolve`,
+  );
+  assert(
+    gitSucceeds(["merge-base", "--is-ancestor", commit, "HEAD"]),
+    `${label}: commit ${commit} is not reachable from HEAD`,
+  );
+  for (const artifactPath of artifactPaths)
+    assert(
+      gitSucceeds(["cat-file", "-e", `${commit}:${artifactPath}`]),
+      `${label}: ${artifactPath} did not exist at commit ${commit}`,
+    );
 }
 
 function assertReferenceList(values, index, label) {
@@ -948,6 +974,10 @@ async function validateControl() {
   const registry = await readYaml("control/TASK_REGISTRY.yaml");
   const project = await readYaml("control/PROJECT_STATE.yaml");
   const taskIndex = byId(registry.tasks, "task");
+  const gitMetadataAvailable = gitSucceeds([
+    "rev-parse",
+    "--is-inside-work-tree",
+  ]);
 
   for (const task of registry.tasks) {
     for (const dependencyId of task.depends_on) {
@@ -1017,6 +1047,8 @@ async function validateControl() {
         Boolean(task.commit),
         `${task.id}: bot-owned complete task has no evidence commit`,
       );
+    if (gitMetadataAvailable && task.commit)
+      assertCommitProvenance(task.commit, task.artifacts, task.id);
   }
 
   if (project.next_task === null) {
@@ -1125,6 +1157,8 @@ async function validateControl() {
         Boolean(gate.commit_sha),
         `${gate.id}: passed result has no commit SHA`,
       );
+      if (gitMetadataAvailable)
+        assertCommitProvenance(gate.commit_sha, gate.evidence, gate.id);
     }
     for (const evidencePath of gate.evidence)
       await access(absolute(evidencePath));
@@ -1161,7 +1195,10 @@ async function validateControl() {
     );
   }
 
-  return `validated ${registry.tasks.length}-task acyclic registry, resumable pointers, all G0-G12 criteria, findings, and commit-backed gate evidence`;
+  const provenance = gitMetadataAvailable
+    ? "Git-reachable evidence-at-commit provenance"
+    : "schema-level commit provenance without Git metadata";
+  return `validated ${registry.tasks.length}-task acyclic registry, resumable pointers, all G0-G12 criteria, findings, and ${provenance}`;
 }
 
 async function main() {
