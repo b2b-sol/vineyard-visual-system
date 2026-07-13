@@ -1,0 +1,61 @@
+{
+  "name": "vineyard-visual-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A code-first vineyard operations visual system and workflow atlas.",
+  "engines": {
+    "node": ">=24.15.0 <25",
+    "npm": ">=11.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "format": "prettier --write \"{atlas,scripts}/**/*.{ts,tsx,js,mjs,cjs,json,css,scss,md,yml,yaml}\" \"*.{html,json,js,mjs,ts}\" \".github/workflows/*.{yml,yaml}\"",
+    "format:check": "prettier --check \"{atlas,scripts}/**/*.{ts,tsx,js,mjs,cjs,json,css,scss,md,yml,yaml}\" \"*.{html,json,js,mjs,ts}\" \".github/workflows/*.{yml,yaml}\"",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit --project tsconfig.json",
+    "validate": "npm run validate:all",
+    "validate:schema": "node scripts/validation/validate.mjs --scope schema",
+    "validate:trace": "node scripts/validation/validate.mjs --scope trace",
+    "validate:data": "node scripts/validation/validate.mjs --scope data",
+    "validate:all": "node scripts/validation/validate.mjs --scope all",
+    "test": "npm run test:unit",
+    "test:unit": "vitest run --passWithNoTests",
+    "test:unit:watch": "vitest",
+    "test:browser": "playwright test --pass-with-no-tests",
+    "test:browser:update": "playwright test --update-snapshots",
+    "audit:repository": "node scripts/repository-audit.mjs",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:all && npm run test:unit && npm run build && npm run audit:repository"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "react-router-dom": "7.18.1",
+    "yaml": "2.9.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.61.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@types/node": "24.13.3",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.3",
+    "eslint": "10.7.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.3",
+    "globals": "17.7.0",
+    "jsdom": "29.1.1",
+    "prettier": "3.9.5",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.64.0",
+    "vite": "8.1.4",
+    "vitest": "4.1.10"
+  }
+}
