@@ -111,7 +111,7 @@ tasks:
     owner: implementation_worker
     branch: codex/factory-foundation
     started_at: "2026-07-13T14:27:00-07:00"
-    commit: 07ab25fd1cb66045c019df550828f1df8a6c7810
+    commit: 922e71509767b550287d51061770e7156cfd3924
     completed_at: "2026-07-13T14:42:00-07:00"
   - id: FACT-002
     title: Build registries, semantic validators, and one walking slice
@@ -129,7 +129,7 @@ tasks:
     owner: implementation_worker
     branch: codex/factory-foundation
     started_at: "2026-07-13T14:29:00-07:00"
-    commit: 7ec001c84192ee99298c22c3afa42d6cedc14d22
+    commit: 922e71509767b550287d51061770e7156cfd3924
     completed_at: "2026-07-13T14:52:58-07:00"
   - id: FACT-003
     title: Establish CI and Pages scaffold
@@ -152,7 +152,7 @@ tasks:
     checks: [GitHub Actions, Pages smoke test]
     gate_ids: [G2, G12]
     owner: parent_agent
-    branch: codex/factory-foundation
+    branch: codex/main-provenance
     started_at: "2026-07-13T14:52:58-07:00"
   - id: GOV-001
     title: Configure main ruleset and prove the merge workflow
@@ -184,7 +184,7 @@ tasks:
     owner: workflow_extractor
     branch: codex/factory-foundation
     started_at: "2026-07-13T15:17:00-07:00"
-    commit: 7ec001c84192ee99298c22c3afa42d6cedc14d22
+    commit: 922e71509767b550287d51061770e7156cfd3924
     completed_at: "2026-07-13T15:30:56-07:00"
   - id: WF-001
     title: Run two independent workflow extractions
@@ -206,7 +206,7 @@ tasks:
     owner: workflow_extractor
     branch: codex/factory-foundation
     started_at: "2026-07-13T15:17:00-07:00"
-    commit: 7ec001c84192ee99298c22c3afa42d6cedc14d22
+    commit: 922e71509767b550287d51061770e7156cfd3924
     completed_at: "2026-07-13T15:26:00-07:00"
   - id: WF-002
     title: Adjudicate the workflow ontology and operational visuals

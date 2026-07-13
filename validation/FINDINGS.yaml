@@ -1,5 +1,5 @@
 schema_version: "1.0"
-updated_at: "2026-07-13T15:44:00-07:00"
+updated_at: "2026-07-13T15:48:00-07:00"
 findings:
   - id: FIND-001
     severity: P1
@@ -157,3 +157,15 @@ findings:
     description: The quality and Pages workflows used shallow checkouts, so legitimate historical evidence commits could not resolve under GitHub Actions.
     artifact_refs: [.github/workflows/ci.yml, .github/workflows/pages.yml]
     resolution: Every workflow that runs full provenance validation now checks out complete Git history before evaluating evidence commits.
+  - id: FIND-017
+    severity: P1
+    status: resolved
+    title: Squash merge invalidated branch-local evidence SHAs
+    description: Main-branch validation correctly rejected task and gate commits that existed only on the squashed PR branch and were not part of main history.
+    artifact_refs:
+      [
+        control/TASK_REGISTRY.yaml,
+        validation/gate-results.json,
+        scripts/validation/validate.mjs,
+      ]
+    resolution: All factory artifacts now cite the immutable main squash commit that introduced them; future evidence records cite target-branch commits after merge reconciliation.
