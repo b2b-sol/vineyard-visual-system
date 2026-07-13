@@ -41,3 +41,13 @@ Use `DEC-###` identifiers. Record date, context, decision, alternatives, rationa
 - Rationale: Completion quality and usefulness matter more than mechanical volume.
 - Affected artifacts: DoD matrix, audit scripts, completion report.
 - Reversibility: Low; this strengthens rather than changes the product objective.
+
+## DEC-005 — Protected squash delivery with target-branch provenance
+
+- Date: 2026-07-13
+- Context: Strict evidence validation exposed that branch-local commits disappear from the target history after a squash merge.
+- Decision: Main is protected by PR-only squash delivery, exact quality/audit/browser checks, linear history, deletion and force-push blocks, resolved review threads, and an all-green merge queue. Evidence commits are reconciled to the immutable target-branch squash commit after integration.
+- Alternatives: Preserve every feature commit with merge commits; weaken provenance reachability; avoid squash delivery.
+- Rationale: This retains clean public history and mechanically provable evidence without treating unreachable feature-branch SHAs as durable provenance.
+- Affected artifacts: repository ruleset 18897256, `control/TASK_REGISTRY.yaml`, `validation/gate-results.json`, and `scripts/validation/validate.mjs`.
+- Reversibility: Medium; the merge method can change if target-branch provenance rules change with it.

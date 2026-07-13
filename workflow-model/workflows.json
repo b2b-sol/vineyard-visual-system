@@ -1,0 +1,2284 @@
+{
+  "schema_version": "1.0",
+  "source_document": "source/Vineyard-Workflow-Discovery-report.md",
+  "adjudication": "workflow-model/adjudication.md",
+  "workflows": [
+    {
+      "id": "WF-001",
+      "name": "Seasonal planning, dispatch, execution, and verification",
+      "purpose": "Convert annual objectives, seasonal signals, and field exceptions into accountable block-level work with defensible closure and actual-use records.",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "seasonality": [
+        "year_round",
+        "dormancy",
+        "budbreak",
+        "rapid_shoot_growth",
+        "preharvest",
+        "postharvest"
+      ],
+      "frequency": "Daily during active operations and replanned whenever conditions change",
+      "triggers": [
+        "Seasonal stage change",
+        "Field observation requires action",
+        "Budgeted recurring work reaches its window",
+        "Weather, winery, certification, or equipment constraint changes"
+      ],
+      "roles": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FIELD-CREW",
+        "ROLE-CONTRACTOR",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "inputs": [
+        "Stable block identity and map",
+        "Growth stage and current block condition",
+        "Annual plan, budget, and work history",
+        "Labor, contractor, equipment, and material availability",
+        "Weather and applicable restrictions"
+      ],
+      "preconditions": [
+        "The operational block is unambiguously identified",
+        "Safety, compliance, and timing constraints are current",
+        "Accountable work ownership and completion evidence are defined"
+      ],
+      "states": [
+        "observed",
+        "planned",
+        "approved",
+        "assigned",
+        "acknowledged",
+        "in_progress",
+        "blocked",
+        "partially_completed",
+        "completed",
+        "verified",
+        "correction_required",
+        "corrected",
+        "cancelled",
+        "superseded"
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "observation",
+          "description": "A seasonal, field, weather, winery, certification, or equipment signal is recorded against a stable block identity.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": null,
+          "state_to": "observed"
+        },
+        {
+          "order": 2,
+          "stage": "recommendation",
+          "description": "The accountable specialist defines whether work is needed, its scope, timing, method, and operational constraints.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": "observed",
+          "state_to": "planned",
+          "decision_ids": ["DEC-001"]
+        },
+        {
+          "order": 3,
+          "stage": "approval",
+          "description": "The manager approves, revises, escalates, or declines the proposed work according to cost, safety, compliance, and delegated authority.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "planned",
+          "state_to": "approved",
+          "decision_ids": ["DEC-002"]
+        },
+        {
+          "order": 4,
+          "stage": "assignment",
+          "description": "The manager or coordinator assigns the block, priority, crew, equipment, materials, timing, and evidence required for closure.",
+          "owner": "ROLE-OPERATIONS-COORDINATOR",
+          "state_from": "approved",
+          "state_to": "assigned"
+        },
+        {
+          "order": 5,
+          "stage": "assignment",
+          "description": "The foreman acknowledges the current assignment and confirms that field instructions and constraints are understood.",
+          "owner": "ROLE-FOREMAN",
+          "state_from": "assigned",
+          "state_to": "acknowledged"
+        },
+        {
+          "order": 6,
+          "stage": "execution",
+          "description": "The crew executes the work while preserving progress, actual resource use, and exception context at block or row scope.",
+          "owner": "ROLE-FOREMAN",
+          "state_from": "acknowledged",
+          "state_to": "in_progress"
+        },
+        {
+          "order": 7,
+          "stage": "completion",
+          "description": "The foreman reports actual scope, labor, equipment, materials, completion status, and any unresolved exception without flattening partial work.",
+          "owner": "ROLE-FOREMAN",
+          "state_from": "in_progress",
+          "state_to": "completed",
+          "decision_ids": ["DEC-003"]
+        },
+        {
+          "order": 8,
+          "stage": "verification",
+          "description": "The manager verifies field scope and actuals before closure data flows to progress, payroll, compliance, and cost records.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "completed",
+          "state_to": "verified"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-001",
+          "question": "Does the signal require action now, later, or no action?",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "outcomes": [
+            "Plan work now",
+            "Defer with review condition",
+            "Record no action and rationale"
+          ]
+        },
+        {
+          "id": "DEC-002",
+          "question": "Does the work need explicit approval before assignment?",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "outcomes": [
+            "Approve and dispatch",
+            "Escalate for approval",
+            "Reject or revise the plan"
+          ]
+        },
+        {
+          "id": "DEC-003",
+          "question": "What closure state accurately represents the field result?",
+          "owner": "ROLE-FOREMAN",
+          "outcomes": ["Complete", "Partially complete", "Blocked", "Deferred"]
+        }
+      ],
+      "outputs": [
+        "Accountable block work record",
+        "Verified completion or attributed non-completion",
+        "Actual labor, equipment, material, and acreage quantities",
+        "Follow-up or correction requirement"
+      ],
+      "records": [
+        "Seasonal plan",
+        "Field signal",
+        "Work assignment",
+        "Activity log",
+        "Status history",
+        "Actual-use record",
+        "Verification record"
+      ],
+      "handoffs": [
+        "Viticulturist or field observer to vineyard manager",
+        "Vineyard manager or coordinator to foreman or contractor",
+        "Foreman to field crew",
+        "Field completion and exceptions back to management",
+        "Verified actuals to payroll, costing, compliance, and progress reporting"
+      ],
+      "approvals": [
+        "Routine work may use delegated approval",
+        "Pesticide, major purchase, contractor, certification-sensitive, and harvest work uses stronger approval"
+      ],
+      "exceptions": [
+        "Priority or weather changes after dispatch",
+        "Wrong or ambiguous block identity",
+        "Labor, equipment, material, or contractor unavailable",
+        "Work partially completed",
+        "Completion quantities missing or disputed"
+      ],
+      "workarounds": [
+        "Verbal or phone redispatch followed by later record entry",
+        "Split affected rows or acreage while preserving one accountable history",
+        "Manual reconciliation of field notes with office records"
+      ],
+      "risks": [
+        "False done or whole-block completion",
+        "Duplicate or omitted work",
+        "Actual costs and compliance records disconnected from execution",
+        "Unattributed correction after the fact"
+      ],
+      "product_intervention": "record",
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**",
+        "**Typical sequence.** Inspect or receive a field signal; decide whether action is required",
+        "Managers need “done/not done/why not” visibility across estates and crews."
+      ],
+      "field_validation_questions": [
+        "Which routine work can foremen self-authorize and which decisions require manager approval?",
+        "How are partial completion and actual quantities reported today across estate and contractor crews?",
+        "When work changes mid-day, which record is treated as authoritative?"
+      ]
+    },
+    {
+      "id": "WF-002",
+      "name": "Scouting, recommendation, crop protection, and application records",
+      "purpose": "Turn monitored pest or disease evidence into a safe, timely, compliant intervention and a defensible application and efficacy history.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "seasonality": [
+        "delayed_dormancy",
+        "budbreak",
+        "rapid_shoot_growth",
+        "bloom",
+        "fruit_set",
+        "preharvest",
+        "postharvest"
+      ],
+      "frequency": "Scheduled monitoring and event-driven treatment throughout susceptible periods",
+      "triggers": [
+        "Scheduled monitoring",
+        "Trap result or mapped hotspot",
+        "Weather-based disease risk",
+        "Observed symptoms",
+        "Certification or buyer review"
+      ],
+      "roles": [
+        "ROLE-SCOUT",
+        "ROLE-VITICULTURIST",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-FOREMAN",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-REGULATOR"
+      ],
+      "inputs": [
+        "Stable block and mapped observation identity",
+        "Monitoring record, trap result, symptom, and weather risk",
+        "Treatment threshold and target pest or disease",
+        "Current label, regulation, buyer, certification, REI, and PHI rules",
+        "Product inventory, calibration, applicator qualification, PPE, and forecast"
+      ],
+      "preconditions": [
+        "Block and treatment area are accurate",
+        "The product and use are allowed",
+        "Weather, exclusion zone, PPE, REI, and PHI prechecks pass",
+        "A qualified handler and calibrated method are available"
+      ],
+      "states": [
+        "monitoring_due",
+        "observation_recorded",
+        "pressure_assessed",
+        "treatment_recommended",
+        "approved",
+        "scheduled",
+        "cancelled",
+        "applied",
+        "posted",
+        "reported",
+        "follow_up_due",
+        "effective",
+        "ineffective",
+        "corrected"
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "observation",
+          "description": "The scout monitors the identified block and records pressure, symptoms, trap counts, mapped areas, and conditions.",
+          "owner": "ROLE-SCOUT",
+          "state_from": null,
+          "state_to": "observation_recorded"
+        },
+        {
+          "order": 2,
+          "stage": "recommendation",
+          "description": "The viticulturist compares the observation with risk and threshold evidence and selects action or continued monitoring.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": "observation_recorded",
+          "state_to": "treatment_recommended",
+          "decision_ids": ["DEC-011"]
+        },
+        {
+          "order": 3,
+          "stage": "approval",
+          "description": "The crop-protection lead verifies material, method, calibration, wind, sensitive areas, worker protections, REI, PHI, and buyer rules.",
+          "owner": "ROLE-CROP-PROTECTION-LEAD",
+          "state_from": "treatment_recommended",
+          "state_to": "approved",
+          "decision_ids": ["DEC-012", "DEC-013"]
+        },
+        {
+          "order": 4,
+          "stage": "assignment",
+          "description": "The approved application is scheduled with an identified handler, equipment, treatment area, product, rate, and posting requirements.",
+          "owner": "ROLE-CROP-PROTECTION-LEAD",
+          "state_from": "approved",
+          "state_to": "scheduled"
+        },
+        {
+          "order": 5,
+          "stage": "execution",
+          "description": "The qualified handler performs the application within approved conditions and records actual date, location, product, rate, method, and operator.",
+          "owner": "ROLE-PESTICIDE-HANDLER",
+          "state_from": "scheduled",
+          "state_to": "applied"
+        },
+        {
+          "order": 6,
+          "stage": "completion",
+          "description": "Required application information, worker protections, and restricted-entry notice are posted or made accessible.",
+          "owner": "ROLE-FOREMAN",
+          "state_from": "applied",
+          "state_to": "posted"
+        },
+        {
+          "order": 7,
+          "stage": "reconciliation",
+          "description": "The compliance coordinator updates spray diary, buyer or certification formats, and jurisdictional reports from the field application record.",
+          "owner": "ROLE-COMPLIANCE-COORDINATOR",
+          "state_from": "posted",
+          "state_to": "reported"
+        },
+        {
+          "order": 8,
+          "stage": "verification",
+          "description": "The viticulturist performs and records follow-up monitoring to assess efficacy and determine further action.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": "reported",
+          "state_to": "effective",
+          "decision_ids": ["DEC-014"]
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-011",
+          "question": "Has treatment pressure or risk reached the action threshold?",
+          "owner": "ROLE-VITICULTURIST",
+          "outcomes": [
+            "Recommend treatment",
+            "Continue monitoring",
+            "Use a non-chemical intervention"
+          ]
+        },
+        {
+          "id": "DEC-012",
+          "question": "Is the selected product and method allowed for this block and target?",
+          "owner": "ROLE-CROP-PROTECTION-LEAD",
+          "outcomes": [
+            "Allowed as proposed",
+            "Select an allowed alternative",
+            "Do not apply"
+          ]
+        },
+        {
+          "id": "DEC-013",
+          "question": "Do weather, worker, calibration, REI, PHI, and sensitive-area prechecks permit execution?",
+          "owner": "ROLE-CROP-PROTECTION-LEAD",
+          "outcomes": [
+            "Release application",
+            "Reschedule",
+            "Split or revise treatment area",
+            "Cancel"
+          ]
+        },
+        {
+          "id": "DEC-014",
+          "question": "Did follow-up monitoring show acceptable efficacy?",
+          "owner": "ROLE-VITICULTURIST",
+          "outcomes": [
+            "Close as effective",
+            "Recommend follow-up action",
+            "Correct the underlying application record"
+          ]
+        }
+      ],
+      "outputs": [
+        "Attributed monitoring and recommendation history",
+        "Approved or cancelled application plan",
+        "Complete application and restriction record",
+        "Regulatory, buyer, and certification diary entries",
+        "Efficacy assessment"
+      ],
+      "records": [
+        "Scouting record",
+        "Treatment recommendation",
+        "Product and label check",
+        "Calibration record",
+        "Application record",
+        "REI and PHI record",
+        "Worker posting",
+        "Spray diary",
+        "Pesticide-use report",
+        "Efficacy follow-up"
+      ],
+      "handoffs": [
+        "Scout to viticulturist",
+        "Viticulturist to crop-protection lead or manager",
+        "Approved plan to pesticide handler and foreman",
+        "Application facts to workers and compliance coordinator",
+        "Diary or report to buyer, certifier, or regulator",
+        "Follow-up result back to viticulturist and manager"
+      ],
+      "approvals": [
+        "Crop-protection authorization after legal, safety, agronomic, and commercial prechecks",
+        "Organization-specific manager approval for treatment or material commitment"
+      ],
+      "exceptions": [
+        "Wind or rain outside allowable conditions",
+        "Product unavailable or not certified",
+        "Worker presence in exclusion area",
+        "REI or PHI conflict",
+        "Incorrect or late diary entry",
+        "Application ineffective"
+      ],
+      "workarounds": [
+        "Reschedule application",
+        "Split treatment area",
+        "Select an allowed alternative product or method",
+        "Make attributed manual diary corrections",
+        "Maintain separate buyer-specific diaries where common formats do not exist"
+      ],
+      "risks": [
+        "Worker exposure",
+        "Residue or crop-acceptance failure",
+        "Lost certification or failed audit",
+        "Regulatory noncompliance",
+        "Inability to defend what occurred"
+      ],
+      "product_intervention": "record",
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
+        "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
+        "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
+      ],
+      "field_validation_questions": [
+        "Who has final treatment authority in each operating organization?",
+        "Which buyer, certification, and jurisdictional diaries must be generated from one application?",
+        "How are cancellations, split blocks, and late corrections currently preserved?",
+        "Which efficacy thresholds are used by pest, disease, block, and growth stage?"
+      ]
+    },
+    {
+      "id": "WF-003",
+      "name": "Irrigation scheduling, fertility adjustment, and delivery verification",
+      "purpose": "Translate plant, soil, weather, and nutrient signals into block water or fertility action with verified delivery and resource-use history.",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "seasonality": [
+        "budbreak",
+        "rapid_shoot_growth",
+        "bloom",
+        "fruit_set",
+        "veraison",
+        "preharvest",
+        "postharvest"
+      ],
+      "frequency": "Recurring irrigation cycles with event-driven adjustment for stress, heat, malfunction, and tissue results",
+      "triggers": [
+        "Routine irrigation review",
+        "Soil-moisture or vine-stress reading",
+        "Weather or heat event",
+        "Growth-stage change",
+        "Tissue or petiole result",
+        "Delivery malfunction or unevenness"
+      ],
+      "roles": [
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-IRRIGATOR",
+        "ROLE-LAB",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "inputs": [
+        "Stable block and irrigation-zone identity",
+        "Soil moisture, evapotranspiration, weather, and plant-status observations",
+        "Growth stage, target vigor or style, and block history",
+        "Tissue or petiole analysis and prior nutrient inputs",
+        "System readiness, water availability, and applicable resource plan"
+      ],
+      "preconditions": [
+        "Block and irrigation zone relationships are current",
+        "Sensor, observation, and laboratory timing are known",
+        "Delivery system and input inventory are available for the proposed action"
+      ],
+      "states": [
+        "condition_observed",
+        "adjustment_recommended",
+        "approved",
+        "assigned",
+        "delivering",
+        "delivery_interrupted",
+        "delivered",
+        "partially_delivered",
+        "verified",
+        "correction_required",
+        "corrected",
+        "superseded"
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "observation",
+          "description": "Current block, plant, soil, system, weather, and recent-delivery conditions are recorded against the stable block identity.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": null,
+          "state_to": "condition_observed"
+        },
+        {
+          "order": 2,
+          "stage": "recommendation",
+          "description": "The viticulturist recommends an irrigation or fertility adjustment with timing, quantity, method, and review conditions.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": "condition_observed",
+          "state_to": "adjustment_recommended",
+          "decision_ids": ["DEC-021"]
+        },
+        {
+          "order": 3,
+          "stage": "approval",
+          "description": "The manager approves the agronomic adjustment within current resource, certification, and operating constraints.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "adjustment_recommended",
+          "state_to": "approved",
+          "decision_ids": ["DEC-022"]
+        },
+        {
+          "order": 4,
+          "stage": "assignment",
+          "description": "The irrigation lead assigns executable valve, set, duration, fertigation, and completion instructions to the responsible irrigator.",
+          "owner": "ROLE-IRRIGATION-LEAD",
+          "state_from": "approved",
+          "state_to": "assigned"
+        },
+        {
+          "order": 5,
+          "stage": "execution",
+          "description": "The irrigator begins delivery and records observed system behavior, changes, interruptions, and actual timing.",
+          "owner": "ROLE-IRRIGATOR",
+          "state_from": "assigned",
+          "state_to": "delivering"
+        },
+        {
+          "order": 6,
+          "stage": "completion",
+          "description": "The irrigator records actual delivery, affected area, and any partial or uneven result rather than only planned duration.",
+          "owner": "ROLE-IRRIGATOR",
+          "state_from": "delivering",
+          "state_to": "delivered",
+          "decision_ids": ["DEC-023"]
+        },
+        {
+          "order": 7,
+          "stage": "verification",
+          "description": "The irrigation lead verifies delivery evidence and routes water, nutrient, malfunction, and sustainability totals to their consumers.",
+          "owner": "ROLE-IRRIGATION-LEAD",
+          "state_from": "delivered",
+          "state_to": "verified"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-021",
+          "question": "What water action is warranted by current block and weather evidence?",
+          "owner": "ROLE-VITICULTURIST",
+          "outcomes": ["Increase", "Reduce", "Continue", "Defer"]
+        },
+        {
+          "id": "DEC-022",
+          "question": "Do tissue results and recent inputs warrant a fertility adjustment?",
+          "owner": "ROLE-VITICULTURIST",
+          "outcomes": [
+            "Adjust nutrient input",
+            "Continue current program",
+            "Resample or investigate"
+          ]
+        },
+        {
+          "id": "DEC-023",
+          "question": "Was the planned delivery achieved evenly and completely?",
+          "owner": "ROLE-IRRIGATOR",
+          "outcomes": [
+            "Delivered as planned",
+            "Partially delivered",
+            "Malfunctioned or uneven",
+            "Not delivered"
+          ]
+        }
+      ],
+      "outputs": [
+        "Block water or fertility recommendation",
+        "Assigned irrigation or fertigation action",
+        "Actual delivery and exception record",
+        "Verified water and nutrient-use totals"
+      ],
+      "records": [
+        "Block condition note",
+        "Soil-moisture or ET record",
+        "Plant-status observation",
+        "Tissue or petiole result",
+        "Irrigation schedule",
+        "Irrigation log",
+        "Fertility input record",
+        "Malfunction record",
+        "Resource-use total"
+      ],
+      "handoffs": [
+        "Sensor, field, or lab result to viticulturist",
+        "Viticulturist recommendation to irrigation lead and manager",
+        "Irrigation lead to irrigator",
+        "Delivery result and malfunction back to irrigation lead",
+        "Verified totals to sustainability and management reporting"
+      ],
+      "approvals": [
+        "Vineyard manager or delegated viticulturist approval for material or plan changes where required"
+      ],
+      "exceptions": [
+        "System malfunction",
+        "Uneven or partial delivery",
+        "Water or input unavailable",
+        "Heat changes timing",
+        "Lab result arrives after action window",
+        "Block reality conflicts with office assumptions"
+      ],
+      "workarounds": [
+        "Manual irrigator update",
+        "Split or repeat a set",
+        "Field inspection before accepting sensor evidence",
+        "Later reconciliation of estimated and actual delivery"
+      ],
+      "risks": [
+        "Unverified water delivery",
+        "Over- or under-irrigation",
+        "Nutrient action disconnected from evidence",
+        "Resource totals unsuitable for certification",
+        "Weak linkage to later yield or quality"
+      ],
+      "product_intervention": "analyze",
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update",
+        "**Pain points.** Limited visibility into actual delivery",
+        "water-use totals and nitrogen-use totals for certification or management reporting"
+      ],
+      "field_validation_questions": [
+        "What measurements and thresholds actually cause irrigation changes by region and growth stage?",
+        "How is actual delivery verified when telemetry is absent or unreliable?",
+        "Who may change fertility inputs and what approval or compliance checks apply?",
+        "How are irrigation zones mapped when they do not align with operational blocks?"
+      ]
+    },
+    {
+      "id": "WF-004",
+      "name": "Crop estimation and forecast revision",
+      "purpose": "Produce a traceable block-level crop forecast, revise it as evidence changes, and communicate the operational and commercial consequences.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "seasonality": [
+        "fruit_set",
+        "lag_phase",
+        "veraison",
+        "preharvest",
+        "harvest",
+        "postharvest"
+      ],
+      "frequency": "Repeated estimates from crop set through harvest, followed by actual-yield reconciliation",
+      "triggers": [
+        "Lag phase or veraison estimate window",
+        "Winery or buyer forecast request",
+        "Visible block variation or crop-thinning question",
+        "New sample or maturity evidence",
+        "Harvest actuals become available"
+      ],
+      "roles": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-WINEMAKER",
+        "ROLE-FINANCE"
+      ],
+      "inputs": [
+        "Stable block identity and productive vine count",
+        "Representative vine and cluster sample",
+        "Bunches per vine and cluster weight",
+        "Historical block estimates and harvest weights",
+        "Current condition, style, contract, and winery-capacity context"
+      ],
+      "preconditions": [
+        "Sampling method and date are recorded",
+        "Block acreage and vine population are current",
+        "Historical estimates and actuals resolve to the same stable block"
+      ],
+      "states": [
+        "estimate_due",
+        "sampled",
+        "calculated",
+        "reviewed",
+        "published",
+        "revision_due",
+        "revised",
+        "superseded",
+        "actualized",
+        "reconciled"
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "observation",
+          "description": "The viticulturist samples representative vines and clusters using a recorded method and block context.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": null,
+          "state_to": "sampled"
+        },
+        {
+          "order": 2,
+          "stage": "recommendation",
+          "description": "The viticulturist calculates a block forecast and interprets variation against historical and current-season evidence.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": "sampled",
+          "state_to": "calculated",
+          "decision_ids": ["DEC-031"]
+        },
+        {
+          "order": 3,
+          "stage": "approval",
+          "description": "The manager reviews the estimate, sampling confidence, crop-load implications, and downstream planning consequences.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "calculated",
+          "state_to": "reviewed",
+          "decision_ids": ["DEC-032"]
+        },
+        {
+          "order": 4,
+          "stage": "completion",
+          "description": "The approved forecast is published to winery, grower, labor, transport, container, budget, and contract planning consumers.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": "reviewed",
+          "state_to": "published"
+        },
+        {
+          "order": 5,
+          "stage": "observation",
+          "description": "The final harvest actual is linked to the published forecast without replacing the estimate or its assumptions.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": "published",
+          "state_to": "actualized"
+        },
+        {
+          "order": 6,
+          "stage": "reconciliation",
+          "description": "The manager reconciles forecast versions with the harvest actual and records error, learning, and downstream planning consequences.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "actualized",
+          "state_to": "reconciled"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-031",
+          "question": "Is the sample representative enough to publish a block estimate?",
+          "owner": "ROLE-VITICULTURIST",
+          "outcomes": [
+            "Calculate and review",
+            "Resample",
+            "Publish with explicit low confidence"
+          ]
+        },
+        {
+          "id": "DEC-032",
+          "question": "Does the estimate require crop-load action or a planning change?",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "outcomes": [
+            "Keep crop and update plans",
+            "Recommend crop adjustment",
+            "Investigate variation before action"
+          ]
+        },
+        {
+          "id": "DEC-033",
+          "question": "Does new evidence materially change the current forecast?",
+          "owner": "ROLE-VITICULTURIST",
+          "outcomes": [
+            "Publish a superseding revision",
+            "Retain current forecast",
+            "Flag an unresolved range"
+          ]
+        }
+      ],
+      "outputs": [
+        "Dated block crop estimate with method and confidence",
+        "Superseding forecast revision",
+        "Winery, labor, logistics, contract, and budget planning update",
+        "Forecast-to-actual reconciliation"
+      ],
+      "records": [
+        "Sampling plan",
+        "Vine and cluster sample",
+        "Block crop estimate",
+        "Forecast revision history",
+        "Crop-load recommendation",
+        "Communication record",
+        "Harvest actual",
+        "Forecast error record"
+      ],
+      "handoffs": [
+        "Field sample to viticulturist",
+        "Forecast to manager and grower-relations",
+        "Approved estimate to grower, winery, labor, logistics, and finance",
+        "Harvest actuals back to viticulture and management planning"
+      ],
+      "approvals": [
+        "Manager approval of the operational forecast",
+        "Shared grower-winery acknowledgment where contracts or planning require it"
+      ],
+      "exceptions": [
+        "Unrepresentative sample",
+        "Block identity or vine count mismatch",
+        "Visible within-block variation",
+        "Rapid weather or crop-condition change",
+        "Winery and grower estimates disagree",
+        "Actual harvest diverges materially"
+      ],
+      "workarounds": [
+        "Communicate a range instead of false precision",
+        "Resample affected subareas",
+        "Manually reconcile aliases and historical weights",
+        "Revise spreadsheets, email, or phone forecasts separately"
+      ],
+      "risks": [
+        "Stale or overwritten forecast",
+        "Labor, bin, truck, tank, or revenue plan based on wrong tonnage",
+        "Crop-load action without representative evidence",
+        "No learning from estimate error"
+      ],
+      "product_intervention": "analyze",
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "**Typical sequence.** Count and sample representative vines; update forecast",
+        "Accuracy improves only if historical and current-season records stay connected at block level."
+      ],
+      "field_validation_questions": [
+        "Which sampling formulas, timing rules, and confidence conventions are used by operation and variety?",
+        "Who approves and receives each estimate revision?",
+        "What magnitude of change triggers operational replanning or contractual notice?",
+        "How are estimate errors reviewed after harvest?"
+      ]
+    },
+    {
+      "id": "WF-005",
+      "name": "Maturity sampling, winery communication, and pick decision",
+      "purpose": "Connect representative field sampling, laboratory and sensory evidence, winery capacity, and operating constraints to an attributable pick decision.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "seasonality": ["veraison", "preharvest", "harvest"],
+      "frequency": "Weekly after veraison, increasing to daily or near-daily as harvest approaches",
+      "triggers": [
+        "Preharvest sampling cadence",
+        "Winery or buyer request",
+        "Forecast or condition change",
+        "Weather, rot, smoke, or capacity risk",
+        "Prior result reaches decision threshold"
+      ],
+      "roles": [
+        "ROLE-VITICULTURIST",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-LAB",
+        "ROLE-WINEMAKER",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "inputs": [
+        "Stable block and sample identity",
+        "Representative berry or cluster sample",
+        "Brix, pH, TA, flavor, fruit condition, and trend",
+        "Weather and hazard outlook",
+        "Labor, container, trucking, tank, delivery-slot, contract, and quality constraints"
+      ],
+      "preconditions": [
+        "Sampling method, location, collector, and time are attributable",
+        "Laboratory results resolve to the field sample and block",
+        "Pick authority and decision participants are known for estate and contract fruit"
+      ],
+      "states": [
+        "sampling_due",
+        "sample_collected",
+        "lab_pending",
+        "result_available",
+        "readiness_assessed",
+        "more_sampling_required",
+        "pick_proposed",
+        "negotiating",
+        "authorized",
+        "deferred",
+        "superseded",
+        "scheduled"
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "observation",
+          "description": "The assigned sampler collects a representative, identified berry or cluster sample and records field flavor and condition observations.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": null,
+          "state_to": "sample_collected"
+        },
+        {
+          "order": 2,
+          "stage": "completion",
+          "description": "The laboratory processes the linked sample and returns Brix, pH, TA, and other agreed results.",
+          "owner": "ROLE-LAB",
+          "state_from": "sample_collected",
+          "state_to": "result_available"
+        },
+        {
+          "order": 3,
+          "stage": "recommendation",
+          "description": "The viticulturist interprets the trend with sensory condition, weather, crop state, and forecast evidence.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": "result_available",
+          "state_to": "readiness_assessed",
+          "decision_ids": ["DEC-041", "DEC-042"]
+        },
+        {
+          "order": 4,
+          "stage": "recommendation",
+          "description": "Grower-relations communicates a pick proposal or continued-sampling recommendation with current evidence and constraints.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": "readiness_assessed",
+          "state_to": "pick_proposed"
+        },
+        {
+          "order": 5,
+          "stage": "approval",
+          "description": "The authorized winery and vineyard participants negotiate or confirm pick timing, quality target, and delivery conditions.",
+          "owner": "ROLE-WINEMAKER",
+          "state_from": "pick_proposed",
+          "state_to": "authorized",
+          "decision_ids": ["DEC-043", "DEC-044"]
+        },
+        {
+          "order": 6,
+          "stage": "assignment",
+          "description": "The authorized pick becomes a dated labor, container, truck, and winery-slot commitment.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "authorized",
+          "state_to": "scheduled"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-041",
+          "question": "Is the sample and result representative and current enough for a readiness decision?",
+          "owner": "ROLE-VITICULTURIST",
+          "outcomes": [
+            "Assess readiness",
+            "Resample",
+            "Use with explicit qualification"
+          ]
+        },
+        {
+          "id": "DEC-042",
+          "question": "Does maturity, flavor, condition, and trend support proposing a pick?",
+          "owner": "ROLE-VITICULTURIST",
+          "outcomes": [
+            "Propose pick",
+            "Continue sampling",
+            "Escalate urgent condition risk"
+          ]
+        },
+        {
+          "id": "DEC-043",
+          "question": "Who holds final pick authority for this fruit and contract?",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "outcomes": [
+            "Winery authorizes",
+            "Grower or vineyard authorizes",
+            "Mutual agreement required"
+          ]
+        },
+        {
+          "id": "DEC-044",
+          "question": "Can the proposed date satisfy quality, weather, labor, tank, and delivery constraints?",
+          "owner": "ROLE-WINEMAKER",
+          "outcomes": [
+            "Authorize proposed date",
+            "Authorize alternate date",
+            "Defer and resample",
+            "Escalate conflict"
+          ]
+        }
+      ],
+      "outputs": [
+        "Traceable maturity trend",
+        "Readiness assessment",
+        "Communicated pick proposal",
+        "Authorized or deferred pick decision",
+        "Harvest schedule commitment"
+      ],
+      "records": [
+        "Sampling plan",
+        "Sample chain of identity",
+        "Field condition assessment",
+        "Laboratory result",
+        "Maturity trend",
+        "Pick proposal",
+        "Decision communication",
+        "Pick authorization",
+        "Supersession history"
+      ],
+      "handoffs": [
+        "Field sampler to laboratory",
+        "Laboratory to viticulturist, grower-relations, grower, and winemaker",
+        "Viticulturist recommendation to decision participants",
+        "Authorized pick to vineyard manager, harvest crew, trucking, and winery intake"
+      ],
+      "approvals": [
+        "Final pick authority follows the estate, buyer, or contract arrangement",
+        "Shared grower-winery agreement is common even where one party holds final authority"
+      ],
+      "exceptions": [
+        "Late or stale sample",
+        "Nonrepresentative sample",
+        "Field and winery measurements disagree",
+        "Rapid rot, weather, heat, or smoke change",
+        "Labor, tank, or delivery slot unavailable",
+        "Winery changes timing or target"
+      ],
+      "workarounds": [
+        "Increase sample frequency",
+        "Repeat or parallel sampling",
+        "Negotiate an alternate date or delivery condition",
+        "Use phone or email to resolve timing and record the decision later"
+      ],
+      "risks": [
+        "Pick decision based on stale or mismatched evidence",
+        "Unclear authority",
+        "Lost decision rationale",
+        "Fruit quality loss while participants reconcile conflicting data",
+        "Downstream schedule commitments made before authorization"
+      ],
+      "product_intervention": "communicate",
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
+        "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
+      ],
+      "field_validation_questions": [
+        "Who holds final pick authority for every estate, grower, buyer, and contract pattern?",
+        "What constitutes an acceptable sample and how long is a result current?",
+        "How are conflicting field and winery measurements adjudicated?",
+        "Which verbal or phone decisions are later reconstructed, by whom, and from what evidence?"
+      ]
+    },
+    {
+      "id": "WF-006",
+      "name": "Harvest planning, execution, loads, intake, quality, and reconciliation",
+      "purpose": "Move authorized fruit from the correct block to the correct intake slot and turn each physical load into accepted, adjusted, or rejected commercial truth.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "seasonality": ["preharvest", "harvest", "postharvest"],
+      "frequency": "Per authorized pick, crew shift, and delivered load during harvest",
+      "triggers": [
+        "Final pick authorization",
+        "Winery delivery-slot confirmation or change",
+        "Harvest plan exception",
+        "Load arrives at intake",
+        "Weigh or quality record requires reconciliation"
+      ],
+      "roles": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-WINEMAKER",
+        "ROLE-FINANCE"
+      ],
+      "inputs": [
+        "Authorized pick and block identity",
+        "Crew, machine or hand method, containers, and harvest conditions",
+        "Truck and delivery slot",
+        "Sample identity, quality tolerances, contract, and buyer instructions",
+        "Weigh bill requirements and settlement terms"
+      ],
+      "preconditions": [
+        "Pick authorization and delivery slot are current",
+        "Block, grower, variety, sample, load, and destination identities are linked",
+        "Crew, containers, transport, and intake capacity are confirmed"
+      ],
+      "states": [
+        "authorized",
+        "staged",
+        "harvesting",
+        "load_created",
+        "in_transit",
+        "arrived",
+        "weighed",
+        "quality_pending",
+        "accepted",
+        "downgraded",
+        "rejected",
+        "entered",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "assignment",
+          "description": "The manager converts final pick authorization into an accountable crew, container, equipment, transport, block, timing, and delivery-slot plan.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "authorized",
+          "state_to": "staged",
+          "decision_ids": ["DEC-051"]
+        },
+        {
+          "order": 2,
+          "stage": "execution",
+          "description": "The harvest crew executes the authorized block and conditions while preserving container and source-block identity.",
+          "owner": "ROLE-HARVEST-CREW-LEADER",
+          "state_from": "staged",
+          "state_to": "load_created"
+        },
+        {
+          "order": 3,
+          "stage": "execution",
+          "description": "Transportation carries the identified load and its documentation to the assigned winery intake within the agreed window.",
+          "owner": "ROLE-TRANSPORTATION",
+          "state_from": "load_created",
+          "state_to": "arrived"
+        },
+        {
+          "order": 4,
+          "stage": "observation",
+          "description": "Winery intake verifies load and block identity, records weight, and preserves the intake sample and condition evidence.",
+          "owner": "ROLE-WINERY-INTAKE",
+          "state_from": "arrived",
+          "state_to": "weighed",
+          "decision_ids": ["DEC-052"]
+        },
+        {
+          "order": 5,
+          "stage": "approval",
+          "description": "The authorized winery role records acceptance, downgrade, or rejection against agreed tolerances without changing the observed intake evidence.",
+          "owner": "ROLE-WINEMAKER",
+          "state_from": "weighed",
+          "state_to": "accepted",
+          "decision_ids": ["DEC-053"]
+        },
+        {
+          "order": 6,
+          "stage": "completion",
+          "description": "Winery intake enters the accepted delivery with load, weight, quality, grower, vineyard, block, and timing identifiers.",
+          "owner": "ROLE-WINERY-INTAKE",
+          "state_from": "accepted",
+          "state_to": "entered"
+        },
+        {
+          "order": 7,
+          "stage": "reconciliation",
+          "description": "Grower-relations compares the vineyard, transport, intake, buyer-system, quality, and contract records and opens a dispute or correction when they differ.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": "entered",
+          "state_to": "reconciled"
+        },
+        {
+          "order": 8,
+          "stage": "reconciliation",
+          "description": "Finance uses the accepted and reconciled record set to produce settlement inputs while preserving later adjustment authority and history.",
+          "owner": "ROLE-FINANCE",
+          "state_from": "reconciled",
+          "state_to": "settled",
+          "decision_ids": ["DEC-055"]
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-051",
+          "question": "Which harvest method and conditions satisfy quality, timing, labor, and cost constraints?",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "outcomes": [
+            "Hand harvest",
+            "Machine harvest",
+            "Revise timing or conditions"
+          ]
+        },
+        {
+          "id": "DEC-052",
+          "question": "Does the arriving load identity and intake evidence match the authorized fruit?",
+          "owner": "ROLE-WINERY-INTAKE",
+          "outcomes": [
+            "Proceed with assessment",
+            "Hold for identity resolution",
+            "Reject wrong or unverifiable load"
+          ]
+        },
+        {
+          "id": "DEC-053",
+          "question": "Does the load meet agreed quality and delivery tolerances?",
+          "owner": "ROLE-WINEMAKER",
+          "outcomes": ["Accept", "Downgrade or adjust", "Reject"]
+        },
+        {
+          "id": "DEC-054",
+          "question": "Is a weigh, identity, grade, or delivery entry disputed or incorrect?",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "outcomes": [
+            "Accept original",
+            "Issue attributed correction",
+            "Escalate commercial dispute"
+          ]
+        },
+        {
+          "id": "DEC-055",
+          "question": "Do accepted records and contract terms support settlement?",
+          "owner": "ROLE-FINANCE",
+          "outcomes": [
+            "Settle",
+            "Hold pending missing evidence",
+            "Apply agreed adjustment"
+          ]
+        }
+      ],
+      "outputs": [
+        "Harvested block and load history",
+        "Weigh ticket and quality disposition",
+        "Accepted, downgraded, or rejected load record",
+        "Corrected delivery entry",
+        "Harvest summary, crop accounting, and settlement input"
+      ],
+      "records": [
+        "Pick authorization",
+        "Harvest plan",
+        "Crew and container assignment",
+        "Load identity",
+        "Transport record",
+        "Weigh bill",
+        "Intake sample and quality result",
+        "Disposition notice",
+        "Delivery entry",
+        "Correction history",
+        "Contract adjustment",
+        "Settlement record"
+      ],
+      "handoffs": [
+        "Pick authority to vineyard manager",
+        "Manager to harvest crew and transportation",
+        "Vineyard load to winery intake",
+        "Intake disposition to grower, grower-relations, manager, and winemaker",
+        "Weigh documentation to crop accounting and finance",
+        "Dispute evidence between grower and winery"
+      ],
+      "approvals": [
+        "Final pick authorization",
+        "Winery acceptance, downgrade, or rejection",
+        "Commercial correction or settlement adjustment"
+      ],
+      "exceptions": [
+        "Winery delay or changed tank capacity",
+        "Missed truck slot",
+        "Hot fruit or excessive material other than grapes",
+        "Wrong block or load identity",
+        "Rejected or downgraded load",
+        "Late processor entry",
+        "Weigh or payment dispute"
+      ],
+      "workarounds": [
+        "Temporary alternate delivery",
+        "Emergency sorting",
+        "Repricing or downgrade negotiation",
+        "Manual correction of weigh entries",
+        "Seek another buyer when notice and contract allow"
+      ],
+      "risks": [
+        "Fruit deterioration during delay",
+        "Wrong fruit attributed to a contract",
+        "Lost or inconsistent weigh evidence",
+        "Late rejection leaves no alternative",
+        "Incorrect settlement",
+        "Original disputed record overwritten"
+      ],
+      "product_intervention": "record",
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
+        "the grower indicates grower number, variety, vineyard and block on the weigh bill",
+        "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
+      ],
+      "field_validation_questions": [
+        "Which identifier is physically attached to each container or load and when can it change?",
+        "What evidence and authority govern acceptance, downgrade, and rejection?",
+        "How are urgent delivery-slot changes communicated and acknowledged?",
+        "Who can correct a weigh or grade record and how does that correction affect settlement?"
+      ]
+    },
+    {
+      "id": "WF-007",
+      "name": "Crew scheduling, attendance, time, payroll, and cost allocation",
+      "purpose": "Connect planned block work and safety obligations to attributable crew attendance, verified task progress, lawful pay inputs, and enterprise cost allocation.",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "seasonality": [
+        "year_round",
+        "dormancy",
+        "rapid_shoot_growth",
+        "harvest"
+      ],
+      "frequency": "Per shift and work assignment, with payroll-period and management reconciliation",
+      "triggers": [
+        "Approved block work requires labor",
+        "Crew shift begins or changes",
+        "Attendance, break, piece-rate, or completion exception",
+        "Payroll cutoff",
+        "Cost or budget review"
+      ],
+      "roles": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-FIELD-CREW",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE"
+      ],
+      "inputs": [
+        "Approved work assignments and stable block identity",
+        "Crew roster, qualifications, language, and contractor relationship",
+        "Shift, attendance, breaks, and applicable pay rules",
+        "Task progress, acreage, units, or piece-rate quantities",
+        "Cost center, labor class, and budget context"
+      ],
+      "preconditions": [
+        "Workers and crews are attributable without exposing unnecessary personal data",
+        "Work assignments identify block, activity, and accountable foreman",
+        "Current pay, break, safety, and contractor rules are available"
+      ],
+      "states": [
+        "labor_demanded",
+        "crew_scheduled",
+        "briefed",
+        "checked_in",
+        "working",
+        "paused",
+        "reassigned",
+        "checked_out",
+        "time_submitted",
+        "exception_flagged",
+        "supervisor_verified",
+        "payroll_accepted",
+        "corrected",
+        "cost_allocated"
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "assignment",
+          "description": "The coordinator schedules a qualified crew or contractor against block work, timing, safety, and labor demand.",
+          "owner": "ROLE-OPERATIONS-COORDINATOR",
+          "state_from": null,
+          "state_to": "crew_scheduled",
+          "decision_ids": ["DEC-061"]
+        },
+        {
+          "order": 2,
+          "stage": "approval",
+          "description": "The foreman confirms the roster, qualification, instructions, and safety briefing before work begins.",
+          "owner": "ROLE-FOREMAN",
+          "state_from": "crew_scheduled",
+          "state_to": "briefed"
+        },
+        {
+          "order": 3,
+          "stage": "execution",
+          "description": "The foreman records attendance, task changes, breaks, quantities, and attributable work as the crew executes.",
+          "owner": "ROLE-FOREMAN",
+          "state_from": "briefed",
+          "state_to": "working",
+          "decision_ids": ["DEC-062"]
+        },
+        {
+          "order": 4,
+          "stage": "completion",
+          "description": "The foreman submits time, piece-rate units, task quantities, block allocation, and unresolved exceptions.",
+          "owner": "ROLE-FOREMAN",
+          "state_from": "working",
+          "state_to": "time_submitted"
+        },
+        {
+          "order": 5,
+          "stage": "verification",
+          "description": "The manager verifies that time, units, task progress, and assignment history form a credible submission.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "time_submitted",
+          "state_to": "supervisor_verified",
+          "decision_ids": ["DEC-063"]
+        },
+        {
+          "order": 6,
+          "stage": "reconciliation",
+          "description": "Payroll accepts the verified labor record or opens an attributable correction instead of overwriting the submitted values.",
+          "owner": "ROLE-PAYROLL",
+          "state_from": "supervisor_verified",
+          "state_to": "payroll_accepted",
+          "decision_ids": ["DEC-064"]
+        },
+        {
+          "order": 7,
+          "stage": "reconciliation",
+          "description": "Finance allocates accepted labor and activity quantities to block, task, payroll, and management cost records.",
+          "owner": "ROLE-FINANCE",
+          "state_from": "payroll_accepted",
+          "state_to": "cost_allocated"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-061",
+          "question": "Is the proposed crew qualified and available for this work and hazard profile?",
+          "owner": "ROLE-OPERATIONS-COORDINATOR",
+          "outcomes": [
+            "Schedule crew",
+            "Change crew or contractor",
+            "Delay work"
+          ]
+        },
+        {
+          "id": "DEC-062",
+          "question": "Does a field change require pause, reassignment, or schedule revision?",
+          "owner": "ROLE-FOREMAN",
+          "outcomes": ["Continue", "Pause", "Reassign", "Stop and escalate"]
+        },
+        {
+          "id": "DEC-063",
+          "question": "Do time, units, and task progress form a credible, non-conflicting submission?",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "outcomes": [
+            "Verify",
+            "Return for clarification",
+            "Flag payroll or work-record conflict"
+          ]
+        },
+        {
+          "id": "DEC-064",
+          "question": "Does a disputed labor record require an authorized correction?",
+          "owner": "ROLE-PAYROLL",
+          "outcomes": [
+            "Accept submitted record",
+            "Issue correction",
+            "Escalate for missing evidence"
+          ]
+        }
+      ],
+      "outputs": [
+        "Qualified crew schedule and briefing evidence",
+        "Attendance, break, time, and unit record",
+        "Verified task-to-labor allocation",
+        "Accepted or corrected payroll input",
+        "Block and activity labor-cost allocation"
+      ],
+      "records": [
+        "Crew roster",
+        "Qualification and training evidence",
+        "Work assignment",
+        "Safety briefing",
+        "Attendance record",
+        "Break record",
+        "Time and piece-rate record",
+        "Task quantity",
+        "Supervisor verification",
+        "Payroll exception",
+        "Correction history",
+        "Cost allocation"
+      ],
+      "handoffs": [
+        "Manager work demand to operations coordinator",
+        "Coordinator to foreman and labor contractor",
+        "Foreman instructions to crew",
+        "Field time and progress to manager",
+        "Verified labor facts to payroll",
+        "Accepted payroll facts to finance and management reporting"
+      ],
+      "approvals": [
+        "Supervisor verification of work allocation",
+        "Payroll authorization of corrections",
+        "Contractor labor acceptance under applicable agreement"
+      ],
+      "exceptions": [
+        "Worker absent or crew short",
+        "Language or training mismatch",
+        "Heat or safety pause",
+        "Mid-shift reassignment",
+        "Missing break, time, unit, or block allocation",
+        "Payroll and work record conflict",
+        "Late contractor record"
+      ],
+      "workarounds": [
+        "Paper roster or foreman notebook",
+        "Verbal reassignment followed by later re-keying",
+        "Manual spreadsheet allocation and payroll correction"
+      ],
+      "risks": [
+        "Unlawful or inaccurate pay",
+        "Worker safety communication failure",
+        "Field progress used as a false proxy for time",
+        "Labor cost charged to wrong block or task",
+        "Personal data over-collected",
+        "Corrections lack attribution"
+      ],
+      "product_intervention": "record",
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere.",
+        "cost studies assume tracking of labor, custom work, materials, and equipment activity",
+        "The largest unknowns are behavioral rather than structural."
+      ],
+      "field_validation_questions": [
+        "How do crew, employee, contractor, time, piece-rate, and block allocation records relate in each jurisdiction?",
+        "Which field progress claims may supervisors verify without changing worker-reported time?",
+        "How are heat, rest, meal, language, and training obligations recorded in practice?",
+        "How often and why are payroll or costing records corrected after submission?"
+      ]
+    },
+    {
+      "id": "WF-008",
+      "name": "Materials, purchasing, equipment readiness, and repair",
+      "purpose": "Ensure approved field work has compliant materials and serviceable equipment in the required place and window while retaining purchase, use, failure, and repair accountability.",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "seasonality": [
+        "year_round",
+        "dormancy",
+        "budbreak",
+        "rapid_shoot_growth",
+        "preharvest",
+        "harvest"
+      ],
+      "frequency": "Continuous readiness review with per-purchase, staging, failure, and repair events",
+      "triggers": [
+        "Approved work creates material or equipment demand",
+        "Seasonal readiness window",
+        "Inventory or PPE below requirement",
+        "Equipment inspection or failure",
+        "Contractor or custom operator needed",
+        "Urgent work window changes"
+      ],
+      "roles": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PURCHASING",
+        "ROLE-FOREMAN",
+        "ROLE-MECHANIC",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-FINANCE"
+      ],
+      "inputs": [
+        "Approved work plan and timing window",
+        "Material, PPE, equipment, calibration, and container requirements",
+        "Inventory, maintenance, and availability status",
+        "Approved vendor, product, budget, and certification constraints",
+        "Failure report, affected work, and repair evidence"
+      ],
+      "preconditions": [
+        "Demand is tied to accountable work and timing",
+        "Restricted or certification-sensitive purchases are checked before commitment",
+        "Equipment identity and service status are known"
+      ],
+      "states": [
+        "demand_identified",
+        "availability_checked",
+        "purchase_requested",
+        "approved",
+        "ordered",
+        "received",
+        "staged",
+        "ready",
+        "in_use",
+        "failure_reported",
+        "repair_open",
+        "repaired",
+        "verified_ready",
+        "unavailable",
+        "substitution_pending",
+        "cost_reconciled",
+        "corrected",
+        "superseded"
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "observation",
+          "description": "A material, PPE, equipment, calibration, service, or contractor need is recorded against the affected work and timing window.",
+          "owner": "ROLE-OPERATIONS-COORDINATOR",
+          "state_from": null,
+          "state_to": "demand_identified"
+        },
+        {
+          "order": 2,
+          "stage": "recommendation",
+          "description": "The coordinator checks inventory, readiness, compliance, vendor, rental, repair, and substitution options.",
+          "owner": "ROLE-OPERATIONS-COORDINATOR",
+          "state_from": "demand_identified",
+          "state_to": "availability_checked",
+          "decision_ids": ["DEC-071", "DEC-072"]
+        },
+        {
+          "order": 3,
+          "stage": "approval",
+          "description": "The manager approves, revises, escalates, or defers the resource commitment within budget and priority limits.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "availability_checked",
+          "state_to": "approved",
+          "decision_ids": ["DEC-073"]
+        },
+        {
+          "order": 4,
+          "stage": "assignment",
+          "description": "Purchasing places the approved order or service commitment with required product, lot, delivery, and constraint details.",
+          "owner": "ROLE-PURCHASING",
+          "state_from": "approved",
+          "state_to": "ordered"
+        },
+        {
+          "order": 5,
+          "stage": "completion",
+          "description": "Purchasing records receipt, lot or asset identity, quantity, condition, cost reference, and any discrepancy.",
+          "owner": "ROLE-PURCHASING",
+          "state_from": "ordered",
+          "state_to": "received"
+        },
+        {
+          "order": 6,
+          "stage": "assignment",
+          "description": "The coordinator stages the received resource for the specific work while preserving custody, calibration, and readiness context.",
+          "owner": "ROLE-OPERATIONS-COORDINATOR",
+          "state_from": "received",
+          "state_to": "staged"
+        },
+        {
+          "order": 7,
+          "stage": "verification",
+          "description": "The foreman verifies that the staged resource is safe, compliant, calibrated where applicable, and ready for release.",
+          "owner": "ROLE-FOREMAN",
+          "state_from": "staged",
+          "state_to": "ready"
+        },
+        {
+          "order": 8,
+          "stage": "reconciliation",
+          "description": "Finance reconciles the receipt, parts, service, labor, and resource use with purchasing and work-cost records.",
+          "owner": "ROLE-FINANCE",
+          "state_from": "ready",
+          "state_to": "cost_reconciled"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-071",
+          "question": "Are required materials, PPE, equipment, and service capacity available in time?",
+          "owner": "ROLE-OPERATIONS-COORDINATOR",
+          "outcomes": [
+            "Stage available resources",
+            "Purchase or rent",
+            "Book contractor",
+            "Replan work"
+          ]
+        },
+        {
+          "id": "DEC-072",
+          "question": "Does the proposed material or vendor satisfy regulatory, buyer, and certification constraints?",
+          "owner": "ROLE-COMPLIANCE-COORDINATOR",
+          "outcomes": [
+            "Allowed",
+            "Select approved alternative",
+            "Reject purchase"
+          ]
+        },
+        {
+          "id": "DEC-073",
+          "question": "Is the resource commitment approved within budget and operational priority?",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "outcomes": ["Approve", "Revise", "Escalate", "Defer"]
+        },
+        {
+          "id": "DEC-074",
+          "question": "Can safe partial work remain complete while failed equipment is isolated?",
+          "owner": "ROLE-FOREMAN",
+          "outcomes": [
+            "Preserve partial completion",
+            "Stop and void affected work",
+            "Transfer to alternate equipment"
+          ]
+        }
+      ],
+      "outputs": [
+        "Readiness plan",
+        "Approved purchase, rental, or contractor commitment",
+        "Received and staged material or equipment",
+        "Attributed failure and repair history",
+        "Verified return to service",
+        "Purchase and repair cost actuals"
+      ],
+      "records": [
+        "Resource demand",
+        "Inventory record",
+        "Equipment readiness and calibration record",
+        "Purchase request",
+        "Approval",
+        "Purchase order",
+        "Receipt and lot record",
+        "Staging record",
+        "Failure report",
+        "Repair order",
+        "Parts and labor actuals",
+        "Return-to-service verification"
+      ],
+      "handoffs": [
+        "Approved work to operations coordinator",
+        "Coordinator to purchasing, vendor, contractor, or mechanic",
+        "Received resources to foreman and crew",
+        "Operator failure report to foreman, manager, and mechanic",
+        "Repair evidence back to work release",
+        "Purchase and repair actuals to finance"
+      ],
+      "approvals": [
+        "Budget and priority approval for purchases, rentals, and contractors",
+        "Compliance approval for restricted or certification-sensitive products",
+        "Qualified return-to-service release"
+      ],
+      "exceptions": [
+        "Material or PPE out of stock",
+        "Unapproved substitution",
+        "Late vendor or contractor",
+        "Equipment failure during a narrow work window",
+        "Repair part unavailable",
+        "Receipt quantity or lot mismatch",
+        "Budget conflict"
+      ],
+      "workarounds": [
+        "Borrow, rent, or book a custom operator",
+        "Use an approved alternative",
+        "Split or reschedule work",
+        "Manual purchase request and emergency phone coordination"
+      ],
+      "risks": [
+        "Missed agronomic or harvest window",
+        "Unsafe or uncertified resource used",
+        "Duplicate emergency purchase",
+        "Failed asset returned without evidence",
+        "Purchase, use, and cost records disconnected"
+      ],
+      "product_intervention": "communicate",
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available",
+        "manage or request PPE and materials, get equipment repaired",
+        "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
+      ],
+      "field_validation_questions": [
+        "Which resource checks are actually performed before daily dispatch and seasonal peaks?",
+        "Who may authorize emergency purchases, rentals, substitutions, and contractors?",
+        "What repair evidence is sufficient to release equipment back to work?",
+        "How are inventory lots, field use, invoices, and certification records reconciled?"
+      ]
+    },
+    {
+      "id": "WF-009",
+      "name": "Grower onboarding, contract-fruit coordination, and relationship history",
+      "purpose": "Establish shared identity, terms, quality expectations, reporting, and decision channels so contract fruit can move through the season and harvest without losing cross-organization accountability.",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "seasonality": [
+        "preseason",
+        "year_round",
+        "crop_estimation",
+        "preharvest",
+        "harvest",
+        "postharvest"
+      ],
+      "frequency": "Onboarding and annual renewal with recurring visits, reports, decisions, delivery, dispute, and settlement events",
+      "triggers": [
+        "New grower, vineyard, block, or contract",
+        "Annual relationship or map review",
+        "Crop estimate, spray, maturity, or quality update due",
+        "Winery request or specification change",
+        "Harvest or commercial dispute"
+      ],
+      "roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-FINANCE",
+        "ROLE-TRANSPORTATION"
+      ],
+      "inputs": [
+        "Grower and organization identity",
+        "Vineyard, block, row, variety, acreage, and alias history",
+        "Contract tonnage, pricing, quality, pick authority, delivery, adjustment, and payment terms",
+        "Spray history, certifications, buyer specifications, and reporting cadence",
+        "Crop estimates, maturity samples, visits, delivery records, and prior disputes"
+      ],
+      "preconditions": [
+        "The grower and winery agree which stable block each alias denotes",
+        "Required history and compliance evidence is available or explicitly missing",
+        "Decision, notice, dispute, and delivery contacts and authority are known"
+      ],
+      "states": [
+        "identity_matching",
+        "due_diligence",
+        "terms_negotiating",
+        "active",
+        "report_due",
+        "aligned",
+        "at_risk",
+        "disputed",
+        "corrective_action",
+        "fulfilled",
+        "settled",
+        "renewal_due",
+        "historical",
+        "ended",
+        "superseded"
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "observation",
+          "description": "Grower, organization, vineyard, block, contract, spray, certification, and quality information is assembled without assuming identifiers already agree.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": null,
+          "state_to": "identity_matching",
+          "decision_ids": ["DEC-081"]
+        },
+        {
+          "order": 2,
+          "stage": "verification",
+          "description": "Grower-relations and compliance verify stable identity mappings, required history, contacts, and onboarding evidence.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": "identity_matching",
+          "state_to": "due_diligence",
+          "decision_ids": ["DEC-082"]
+        },
+        {
+          "order": 3,
+          "stage": "approval",
+          "description": "The accountable parties record accepted authority, quality, notice, delivery, adjustment, dispute, and payment terms.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": "due_diligence",
+          "state_to": "active",
+          "decision_ids": ["DEC-083"]
+        },
+        {
+          "order": 4,
+          "stage": "execution",
+          "description": "Grower and winery participants exchange visits, guidance, crop and maturity reports, restrictions, schedules, and acknowledgements against the active relationship.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": "active",
+          "state_to": "aligned",
+          "decision_ids": ["DEC-084"]
+        },
+        {
+          "order": 5,
+          "stage": "completion",
+          "description": "The relationship owner confirms that seasonal reporting, delivery, quality, and agreed obligations are fulfilled or explicitly excepted.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": "aligned",
+          "state_to": "fulfilled"
+        },
+        {
+          "order": 6,
+          "stage": "reconciliation",
+          "description": "Finance and grower-relations reconcile delivery, commercial adjustment, dispute, and settlement history across both organizations.",
+          "owner": "ROLE-FINANCE",
+          "state_from": "fulfilled",
+          "state_to": "settled"
+        },
+        {
+          "order": 7,
+          "stage": "supersession",
+          "description": "The completed relationship version becomes historical while renewal, amendment, suspension, or ending creates a separately attributable successor state.",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "state_from": "settled",
+          "state_to": "historical"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-081",
+          "question": "Do grower, winery, compliance, and accounting identifiers resolve to the same operational block?",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "outcomes": [
+            "Confirm stable identity and aliases",
+            "Resolve ambiguity",
+            "Create explicit identity gap"
+          ]
+        },
+        {
+          "id": "DEC-082",
+          "question": "Is required block, spray, certification, and quality history sufficient for onboarding?",
+          "owner": "ROLE-COMPLIANCE-COORDINATOR",
+          "outcomes": [
+            "Proceed",
+            "Proceed conditionally",
+            "Request correction or missing evidence",
+            "Decline"
+          ]
+        },
+        {
+          "id": "DEC-083",
+          "question": "Are authority, quality, notice, delivery, adjustment, dispute, and payment terms mutually understood?",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "outcomes": [
+            "Activate relationship",
+            "Continue negotiation",
+            "Escalate unresolved term",
+            "Decline"
+          ]
+        },
+        {
+          "id": "DEC-084",
+          "question": "Does an operating issue require guidance, corrective action, commercial adjustment, or dispute escalation?",
+          "owner": "ROLE-GROWER-RELATIONS",
+          "outcomes": [
+            "Provide guidance",
+            "Open corrective action",
+            "Negotiate adjustment",
+            "Escalate dispute"
+          ]
+        }
+      ],
+      "outputs": [
+        "Stable grower-vineyard-block relationship and alias history",
+        "Active contract and operating responsibility model",
+        "Seasonal communication and visit history",
+        "Corrective-action or dispute record",
+        "Contract-to-delivery-to-settlement history"
+      ],
+      "records": [
+        "Grower profile",
+        "Organization and contact record",
+        "Vineyard and block map",
+        "Alias history",
+        "Contract",
+        "Quality specification",
+        "Spray and certification history",
+        "Visit record",
+        "Crop and maturity report",
+        "Notice and acknowledgment",
+        "Corrective action",
+        "Dispute",
+        "Delivery and settlement history"
+      ],
+      "handoffs": [
+        "Grower to grower-relations and compliance",
+        "Grower-relations to viticulture, winemaking, intake, transportation, and finance",
+        "Winery specifications and timing back to grower",
+        "Delivery and quality disposition to contract administration and settlement"
+      ],
+      "approvals": [
+        "Authorized contract activation or renewal",
+        "Shared acknowledgment of pick authority and operating terms",
+        "Commercial adjustment or dispute resolution"
+      ],
+      "exceptions": [
+        "Conflicting block aliases",
+        "Missing or unacceptable spray or certification history",
+        "Quality specification or timing changed",
+        "Grower and winery measurements disagree",
+        "Notice arrives too late for corrective action",
+        "Delivery, downgrade, rejection, or payment dispute"
+      ],
+      "workarounds": [
+        "Manual map books and alias matching",
+        "Phone, email, and vineyard-visit coordination",
+        "Conditional onboarding pending evidence",
+        "Commercial negotiation or alternative buyer arrangement"
+      ],
+      "risks": [
+        "Wrong block tied to sample, delivery, or contract",
+        "Unclear pick authority",
+        "Important notice not acknowledged",
+        "Relationship knowledge held by one person",
+        "Commercial history fragmented across organizations"
+      ],
+      "product_intervention": "communicate",
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit.",
+        "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
+        "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
+      ],
+      "field_validation_questions": [
+        "Which onboarding evidence is mandatory before a contract or delivery can proceed?",
+        "How are block aliases proposed, disputed, and governed across grower and winery systems?",
+        "Which communications require acknowledgment or formal notice?",
+        "Where does relationship history live when grower-relations staff change?"
+      ]
+    },
+    {
+      "id": "WF-010",
+      "name": "Certification, audit preparation, corrective action, and evidence",
+      "purpose": "Turn ordinary field and office activity into complete certification evidence, submit it for review, resolve findings, and preserve an auditable annual history.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "seasonality": [
+        "year_round",
+        "annual_planning",
+        "application_season",
+        "postharvest",
+        "audit_window"
+      ],
+      "frequency": "Continuous evidence capture with annual submissions, periodic audits, and finding-driven corrective action",
+      "triggers": [
+        "Certification enrollment or annual renewal",
+        "Operational activity creates required evidence",
+        "Questionnaire, plan, diary, or submission becomes due",
+        "Audit scheduled",
+        "Noncompliance or missing evidence identified"
+      ],
+      "roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-CERTIFIER",
+        "ROLE-AUDITOR",
+        "ROLE-REGULATOR",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "inputs": [
+        "Applicable certification standards, regulation, and buyer requirements",
+        "Stable site, vineyard, field, block, buffer, and alias identity",
+        "Management plans, questionnaires, training, biosecurity, and worker records",
+        "Spray, water, nitrogen, material, equipment-cleaning, transport, and buffer-crop records",
+        "Prior audit findings and corrective actions"
+      ],
+      "preconditions": [
+        "Applicable programs, sites, blocks, and responsibility boundaries are known",
+        "Operational records retain required detail and attribution",
+        "Evidence from contractors and outside growers can be obtained and linked"
+      ],
+      "states": [
+        "requirements_mapped",
+        "evidence_collecting",
+        "gap_identified",
+        "package_prepared",
+        "submitted",
+        "under_review",
+        "compliant",
+        "noncompliant",
+        "certification_withheld",
+        "corrective_action_open",
+        "remediation_in_progress",
+        "evidence_resubmitted",
+        "certified",
+        "superseded",
+        "archived"
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "recommendation",
+          "description": "The compliance coordinator maps the active standard and vintage to each site, block, activity, contractor, and buyer relationship.",
+          "owner": "ROLE-COMPLIANCE-COORDINATOR",
+          "state_from": null,
+          "state_to": "requirements_mapped",
+          "decision_ids": ["DEC-091"]
+        },
+        {
+          "order": 2,
+          "stage": "assignment",
+          "description": "Evidence owners are assigned to collect ordinary operational records, plans, training, separation, cleaning, transport, input, and annual measurement evidence.",
+          "owner": "ROLE-COMPLIANCE-COORDINATOR",
+          "state_from": "requirements_mapped",
+          "state_to": "evidence_collecting"
+        },
+        {
+          "order": 3,
+          "stage": "verification",
+          "description": "The coordinator checks completeness, attribution, applicability, and internal consistency before preparing the package.",
+          "owner": "ROLE-COMPLIANCE-COORDINATOR",
+          "state_from": "evidence_collecting",
+          "state_to": "package_prepared",
+          "decision_ids": ["DEC-092"]
+        },
+        {
+          "order": 4,
+          "stage": "approval",
+          "description": "The vineyard manager attests to the prepared package and authorizes submission without replacing independent audit authority.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "package_prepared",
+          "state_to": "submitted"
+        },
+        {
+          "order": 5,
+          "stage": "verification",
+          "description": "The auditor reviews submitted and observed evidence against the identified standard and records compliant, evidence-needed, or noncompliant findings.",
+          "owner": "ROLE-AUDITOR",
+          "state_from": "submitted",
+          "state_to": "under_review",
+          "decision_ids": ["DEC-093"]
+        },
+        {
+          "order": 6,
+          "stage": "verification",
+          "description": "The certifier records the certification decision or keeps certification withheld when findings remain unresolved.",
+          "owner": "ROLE-CERTIFIER",
+          "state_from": "under_review",
+          "state_to": "certified",
+          "decision_ids": ["DEC-094"]
+        },
+        {
+          "order": 7,
+          "stage": "supersession",
+          "description": "The completed certification cycle remains immutable and is archived when a new standard vintage or annual cycle becomes current.",
+          "owner": "ROLE-COMPLIANCE-COORDINATOR",
+          "state_from": "certified",
+          "state_to": "archived"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-091",
+          "question": "Which requirements and overlays apply to each site, block, crop, contractor, and buyer relationship?",
+          "owner": "ROLE-COMPLIANCE-COORDINATOR",
+          "outcomes": [
+            "Requirement applies",
+            "Requirement does not apply with rationale",
+            "Applicability needs authoritative clarification"
+          ]
+        },
+        {
+          "id": "DEC-092",
+          "question": "Is the evidence package complete, attributable, and defensible for submission?",
+          "owner": "ROLE-COMPLIANCE-COORDINATOR",
+          "outcomes": [
+            "Ready to submit",
+            "Gap requires correction",
+            "Missing outside-party evidence",
+            "Escalate unverifiable claim"
+          ]
+        },
+        {
+          "id": "DEC-093",
+          "question": "Does submitted and observed evidence satisfy the applicable standard?",
+          "owner": "ROLE-AUDITOR",
+          "outcomes": [
+            "Compliant",
+            "More evidence required",
+            "Noncompliant",
+            "Certification withheld"
+          ]
+        },
+        {
+          "id": "DEC-094",
+          "question": "Does corrective evidence resolve the finding?",
+          "owner": "ROLE-CERTIFIER",
+          "outcomes": [
+            "Verify and certify",
+            "Keep corrective action open",
+            "Withhold certification",
+            "Require further review"
+          ]
+        }
+      ],
+      "outputs": [
+        "Requirement-to-operation evidence map",
+        "Annual questionnaire, plan, diary, and audit package",
+        "Attributed evidence gap and finding inventory",
+        "Corrective-action plan and verification",
+        "Certification decision and historical archive"
+      ],
+      "records": [
+        "Certification scope",
+        "Requirement map",
+        "Site management plan",
+        "Annual questionnaire",
+        "Spray diary",
+        "Biosecurity register",
+        "Water and nitrogen totals",
+        "Training record",
+        "Organic field history and buffer map",
+        "Equipment-cleaning log",
+        "Clean-transport affidavit",
+        "Buffer-crop disposition",
+        "Biodynamic preparation record",
+        "Audit evidence",
+        "Finding",
+        "Corrective action",
+        "Certification decision"
+      ],
+      "handoffs": [
+        "Certification requirements to manager, field, office, contractor, and grower roles",
+        "Operational records to compliance coordinator",
+        "Prepared package to manager and certifier",
+        "Audit finding to accountable operational owner",
+        "Corrective evidence back to certifier",
+        "Certification status to winery customers and management"
+      ],
+      "approvals": [
+        "Manager attestation or submission authorization where required",
+        "Independent certifier or auditor decision",
+        "Verified closure of corrective actions"
+      ],
+      "exceptions": [
+        "Missing, late, contradictory, or buyer-specific record",
+        "Contractor or grower evidence unavailable",
+        "Unapproved input or contaminated buffer",
+        "Equipment or transport cleaning evidence missing",
+        "Noncompliance discovered during audit",
+        "Certification withheld until corrective action"
+      ],
+      "workarounds": [
+        "Late manual assembly from scattered records",
+        "Separate buyer or program diaries",
+        "Request affidavits or contractor evidence after work",
+        "Open corrective action and resubmit evidence"
+      ],
+      "risks": [
+        "Certification loss or withheld status",
+        "Buyer rejection",
+        "Inability to prove ordinary work met the standard",
+        "Operator remains responsible for contractor contamination",
+        "Annual package masks unresolved operational gaps",
+        "Prior findings overwritten"
+      ],
+      "product_intervention": "record",
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists.",
+        "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
+        "where noncompliance appears, certification is withheld until corrective actions are completed."
+      ],
+      "field_validation_questions": [
+        "Which programs, buyers, sites, and blocks are in scope and how does that scope change annually?",
+        "Which evidence can be generated from operations and which must remain an external authoritative submission?",
+        "Who owns each corrective action and who may verify closure?",
+        "How are contractor, grower, cleaning, buffer, and preparation records collected and audited?"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 packet_version: 1.0.0
-updated_at: "2026-07-13T15:48:00-07:00"
-state: factory_merged_pages_recovery
+updated_at: "2026-07-13T15:50:00-07:00"
+state: governance_merge_queue_smoke_and_workflow_ontology
 repository: b2b-sol/vineyard-visual-system
 visibility: public
 execution_identity: tiklebot
@@ -8,17 +8,17 @@ active_github_login: tiklebot
 repository_permission: admin
 bot_auth_verified_at: "2026-07-13T14:13:23.8525025-07:00"
 preferred_parent_model: gpt-5.6-sol
-current_phase: factory
-next_task: FACT-003 establish CI and Pages scaffold
-last_completed_task: WF-001
+current_phase: governance
+next_task: GOV-001 prove protected merge queue workflow
+last_completed_task: FACT-003
 owner_bootstrap_complete: true
 bot_auth_verified: true
 packet_review_complete: true
 execution_strategy: vertical_workflow_waves
 repository_initialized: true
 initial_commit: 6518668b2e898d488134bc77881fd75263d44490
-active_branch: codex/main-provenance
+active_branch: codex/workflow-ontology
 factory_operational: true
 definition_of_done_passed: false
-pages_url: null
+pages_url: https://b2b-sol.github.io/vineyard-visual-system/
 release_tag: null
