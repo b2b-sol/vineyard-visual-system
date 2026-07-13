@@ -1,0 +1,324 @@
+{
+  "schema_version": "1.0",
+  "generated_on": "2026-07-13",
+  "entries": [
+    {
+      "id": "BIB-001",
+      "title": "Year-Round IPM Program for Wine and Raisin Grapes",
+      "publisher": "University of California Statewide IPM Program",
+      "url": "https://ipm.ucanr.edu/pmg/c302/m302yi01.html",
+      "accessed_on": "2026-07-13",
+      "category": "university_extension",
+      "authority": "primary",
+      "coverage": [
+        "seasonality",
+        "monitoring",
+        "crop_protection",
+        "application_records"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-002",
+      "title": "Agricultural Worker Protection Standard",
+      "publisher": "United States Environmental Protection Agency",
+      "url": "https://www.epa.gov/pesticide-worker-safety/agricultural-worker-protection-standard-wps",
+      "accessed_on": "2026-07-13",
+      "category": "regulator",
+      "authority": "primary",
+      "coverage": [
+        "worker_safety",
+        "restricted_entry",
+        "hazard_information",
+        "application_records"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-003",
+      "title": "Common Data Specifications for Spray Diaries and Vineyard Blocks",
+      "publisher": "Wine Australia",
+      "url": "https://www.wineaustralia.com/research_and_innovation/projects/common-data-specifications-for-spray-diaries-and-vineyard-blocks",
+      "accessed_on": "2026-07-13",
+      "category": "interoperability_research",
+      "authority": "official_industry",
+      "coverage": [
+        "stable_block_identity",
+        "spray_diary",
+        "interoperability",
+        "history"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-004",
+      "title": "Understanding Vine Balance",
+      "publisher": "Oregon State University Extension Service",
+      "url": "https://extension.oregonstate.edu/sites/extd8/files/documents/em9068.pdf",
+      "accessed_on": "2026-07-13",
+      "category": "university_extension",
+      "authority": "primary",
+      "coverage": [
+        "vine_balance",
+        "recordkeeping",
+        "yield",
+        "irrigation",
+        "cost"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-005",
+      "title": "Monitoring Vineyard Nutrition",
+      "publisher": "Oregon State University Extension Service",
+      "url": "https://extension.oregonstate.edu/crop-production/wine-grapes/monitoring-vineyard-nutrition",
+      "accessed_on": "2026-07-13",
+      "category": "university_extension",
+      "authority": "primary",
+      "coverage": [
+        "fertility",
+        "tissue_sampling",
+        "irrigation",
+        "block_history"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-006",
+      "title": "Crop Estimation",
+      "publisher": "British Columbia Wine Grape Council Best Practices Guide",
+      "url": "https://bpg.bcwgc.org/vineyard-maintenance/crop-estimation/",
+      "accessed_on": "2026-07-13",
+      "category": "industry_protocol",
+      "authority": "official_industry",
+      "coverage": [
+        "crop_estimation",
+        "forecast_revision",
+        "vineyard_planning",
+        "winery_capacity"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-007",
+      "title": "Fruit Sampling and Maturity",
+      "publisher": "British Columbia Wine Grape Council Best Practices Guide",
+      "url": "https://bpg.bcwgc.org/harvest-quality/fruit-sampling-and-maturity/",
+      "accessed_on": "2026-07-13",
+      "category": "industry_protocol",
+      "authority": "official_industry",
+      "coverage": [
+        "maturity_sampling",
+        "sample_identity",
+        "history",
+        "pick_decision"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-008",
+      "title": "Harvesting",
+      "publisher": "British Columbia Wine Grape Council Best Practices Guide",
+      "url": "https://bpg.bcwgc.org/harvest-quality/harvesting/",
+      "accessed_on": "2026-07-13",
+      "category": "industry_protocol",
+      "authority": "official_industry",
+      "coverage": [
+        "harvest_scheduling",
+        "crew",
+        "containers",
+        "delivery",
+        "fruit_condition"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-009",
+      "title": "2024 Pre-Harvest Package",
+      "publisher": "Grape Growers of Ontario",
+      "url": "https://grapegrowersofontario.com/media/bh1hwqnr/2024-pre-harvest-package-final.pdf",
+      "accessed_on": "2026-07-13",
+      "category": "industry_protocol",
+      "authority": "official_industry",
+      "coverage": [
+        "weigh_bill",
+        "load_identity",
+        "quality",
+        "rejection",
+        "settlement"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-010",
+      "title": "Ontario Regulation 405/00 General under the Vintners Quality Alliance Act",
+      "publisher": "Government of Ontario",
+      "url": "https://www.ontario.ca/laws/regulation/000405",
+      "accessed_on": "2026-07-13",
+      "category": "regulator",
+      "authority": "primary",
+      "coverage": ["weigh_ticket", "grape_purchase", "quality_result", "audit"],
+      "status": "active"
+    },
+    {
+      "id": "BIB-011",
+      "title": "Spray Diary",
+      "publisher": "Australian Wine Research Institute",
+      "url": "https://www.awri.com.au/industry_support/viticulture/agrochemicals/spray_diary/",
+      "accessed_on": "2026-07-13",
+      "category": "industry_protocol",
+      "authority": "official_industry",
+      "coverage": [
+        "spray_diary",
+        "buyer_requirements",
+        "duplicate_entry",
+        "terminology"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-012",
+      "title": "Organic Recordkeeping Guides, Templates and Other Resources",
+      "publisher": "USDA Agricultural Marketing Service",
+      "url": "https://www.ams.usda.gov/services/organic-certification/organic-records",
+      "accessed_on": "2026-07-13",
+      "category": "regulator",
+      "authority": "primary",
+      "coverage": [
+        "organic",
+        "recordkeeping",
+        "equipment_cleaning",
+        "audit_evidence"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-013",
+      "title": "Commingling and Contamination Prevention in Organic Production and Handling",
+      "publisher": "USDA Agricultural Marketing Service",
+      "url": "https://www.ams.usda.gov/rules-regulations/organic/handbook/5025",
+      "accessed_on": "2026-07-13",
+      "category": "regulator",
+      "authority": "primary",
+      "coverage": [
+        "organic",
+        "buffers",
+        "cleanout",
+        "transport",
+        "corrective_action"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-014",
+      "title": "International Demeter Biodynamic Standard",
+      "publisher": "Biodynamic Federation Demeter International",
+      "url": "https://demeter.net/certification/standard/",
+      "accessed_on": "2026-07-13",
+      "category": "certification_standard",
+      "authority": "primary",
+      "coverage": [
+        "biodynamic",
+        "preparations",
+        "annual_inspection",
+        "certification"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-015",
+      "title": "LODI RULES Grower Resources and Certification Standards",
+      "publisher": "Lodi Winegrape Commission",
+      "url": "https://lodigrowers.com/standards/",
+      "accessed_on": "2026-07-13",
+      "category": "certification_standard",
+      "authority": "primary",
+      "coverage": [
+        "certification",
+        "self_assessment",
+        "audit",
+        "pesticide_risk",
+        "management_plans"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-016",
+      "title": "Sustainable Winegrowing New Zealand Certification",
+      "publisher": "New Zealand Winegrowers",
+      "url": "https://www.nzwine.com/en/sustainability/swnz/",
+      "accessed_on": "2026-07-13",
+      "category": "certification_standard",
+      "authority": "primary",
+      "coverage": [
+        "certification",
+        "spray_diary",
+        "annual_submission",
+        "audit",
+        "corrective_action"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-017",
+      "title": "SIP Certified Standards Preview",
+      "publisher": "SIP Certified",
+      "url": "https://app.sipcertified.org/standards/all/2026/preview",
+      "accessed_on": "2026-07-13",
+      "category": "certification_standard",
+      "authority": "primary",
+      "coverage": [
+        "certification",
+        "documentation",
+        "audit",
+        "fruit_quality",
+        "corrective_action"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-018",
+      "title": "Outdoor Heat Illness Prevention",
+      "publisher": "California Division of Occupational Safety and Health",
+      "url": "https://www.dir.ca.gov/dosh/heat-illness/outdoor.html",
+      "accessed_on": "2026-07-13",
+      "category": "regulator",
+      "authority": "primary",
+      "coverage": ["heat", "worker_safety", "water", "shade", "planning"],
+      "status": "active"
+    },
+    {
+      "id": "BIB-019",
+      "title": "Vineyard Frost Protection",
+      "publisher": "University of Georgia Cooperative Extension",
+      "url": "https://extension.uga.edu/publications/detail.html?number=B1490",
+      "accessed_on": "2026-07-13",
+      "category": "university_extension",
+      "authority": "primary",
+      "coverage": [
+        "frost",
+        "weather",
+        "equipment_readiness",
+        "emergency_response"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "BIB-020",
+      "title": "How to Assess Whether Grapes and Wines Are Affected by Wildfire Smoke",
+      "publisher": "Oregon State University Extension Service",
+      "url": "https://extension.oregonstate.edu/catalog/em-9594-how-assess-whether-grapes-wines-are-affected-wildfire-smoke",
+      "accessed_on": "2026-07-13",
+      "category": "university_extension",
+      "authority": "primary",
+      "coverage": [
+        "smoke",
+        "sampling",
+        "laboratory",
+        "contract",
+        "harvest_decision"
+      ],
+      "status": "active"
+    }
+  ]
+}

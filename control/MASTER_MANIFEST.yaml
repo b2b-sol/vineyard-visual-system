@@ -1,2 +1,46 @@
-schema_version: '1.0'
-artifacts: []
+schema_version: "1.0"
+generated_from: control/trace-nodes.json
+artifact_count: 7
+artifacts:
+  - id: EVD-001
+    type: evidence
+    title: Seasonal work planning and work-order dispatch source card
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: "heading:Detailed workflow cards and handoff maps"
+    status: approved
+  - id: WF-001
+    type: workflow
+    title: Seasonal work planning, dispatch, and verified closure
+    path: workflow-model/walking-slice.json
+    locator: json_id:WF-001
+    status: review
+  - id: SCN-001-01
+    type: scenario
+    title: Recover a partially completed mowing order after equipment failure
+    path: scenarios/walking-slice.json
+    locator: json_id:SCN-001-01
+    status: review
+  - id: FIX-001
+    type: fixture
+    title: Carneros Ridge blocked mowing recovery
+    path: data/walking-slice.json
+    locator: json_id:FIX-001
+    status: approved
+  - id: SCR-001
+    type: screen
+    title: Morning dispatch board
+    path: screens/walking-slice.json
+    locator: json_id:SCR-001
+    status: review
+  - id: CMP-001
+    type: component
+    title: WorkOrderQueue
+    path: design-system/walking-slice-components.json
+    locator: json_id:CMP-001
+    status: review
+  - id: PKT-001
+    type: construction_packet
+    title: Morning dispatch and blocked-work recovery
+    path: construction-packets/walking-slice.json
+    locator: json_id:PKT-001
+    status: review

@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "evaluated_at": "2026-07-13T15:44:00-07:00",
+  "gates": [
+    {
+      "id": "G0",
+      "status": "passed",
+      "checks": [
+        "Exact tiklebot login",
+        "Repository admin permission",
+        "Public repository visibility"
+      ],
+      "evidence": ["OWNER_BOOTSTRAP_COMPLETE.md", "control/PROJECT_STATE.yaml"],
+      "commit_sha": "6518668b2e898d488134bc77881fd75263d44490"
+    },
+    {
+      "id": "G1",
+      "status": "passed",
+      "checks": [
+        "Task dependency graph",
+        "Project next-task pointer",
+        "Trace graph references and orphans",
+        "Generated manifest parity"
+      ],
+      "evidence": [
+        "control/TASK_REGISTRY.yaml",
+        "control/PROJECT_STATE.yaml",
+        "control/trace-nodes.json",
+        "control/trace-edges.json",
+        "control/MASTER_MANIFEST.yaml"
+      ],
+      "commit_sha": "c26bfc5408b790ca1dbc590280775bf3fee333ba"
+    },
+    {
+      "id": "G2",
+      "status": "passed",
+      "checks": [
+        "Schema compilation and sample validation",
+        "Fixture referential integrity and chronology",
+        "Evidence-to-packet semantic chain",
+        "Rendered screen route",
+        "Desktop and mobile Playwright flows",
+        "No serious or critical axe violations"
+      ],
+      "evidence": [
+        "scripts/validation/validate.mjs",
+        "workflow-model/walking-slice.json",
+        "data/walking-slice.json",
+        "screens/walking-slice.json",
+        "atlas/tests/factory.e2e.spec.ts",
+        "validation/FACTORY_REVIEW.md",
+        "review-exports/factory/planning-dispatch-desktop.png",
+        "review-exports/factory/planning-dispatch-mobile.png"
+      ],
+      "commit_sha": "c26bfc5408b790ca1dbc590280775bf3fee333ba"
+    },
+    {
+      "id": "G3",
+      "status": "in_progress",
+      "checks": [
+        "Normalized report anchors",
+        "Unique public bibliography URLs",
+        "Ten-family evidence coverage",
+        "Independent workflow extraction"
+      ],
+      "evidence": [
+        "source/evidence.json",
+        "source/bibliography.json",
+        "workflow-model/candidates/extraction-a.json",
+        "workflow-model/candidates/extraction-b.json"
+      ],
+      "commit_sha": null
+    }
+  ]
+}

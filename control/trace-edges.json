@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "edges": [
+    {
+      "id": "EDGE-001",
+      "from": "EVD-001",
+      "to": "WF-001",
+      "relationship": "supports",
+      "rationale": "The source card establishes the planning, assignment, execution, exception, and closure loop."
+    },
+    {
+      "id": "EDGE-002",
+      "from": "WF-001",
+      "to": "SCN-001-01",
+      "relationship": "realized_by",
+      "rationale": "The scenario exercises assignment, blocked partial execution, recovery, completion, and verification."
+    },
+    {
+      "id": "EDGE-003",
+      "from": "SCN-001-01",
+      "to": "FIX-001",
+      "relationship": "instantiated_by",
+      "rationale": "The deterministic fixture provides the people, block, observation, work order, and complete event history."
+    },
+    {
+      "id": "EDGE-004",
+      "from": "FIX-001",
+      "to": "SCR-001",
+      "relationship": "rendered_by",
+      "rationale": "The screen renders the fixture's stable identity, blocker, partial acreage, repair, and verification evidence."
+    },
+    {
+      "id": "EDGE-005",
+      "from": "SCR-001",
+      "to": "CMP-001",
+      "relationship": "composed_with",
+      "rationale": "The registered screen uses the reusable work-order queue as its primary operational composition."
+    },
+    {
+      "id": "EDGE-006",
+      "from": "CMP-001",
+      "to": "PKT-001",
+      "relationship": "specified_by",
+      "rationale": "The packet fixes component semantics, permissions, data, interaction, copy, tests, and Figma mapping."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "screens": [
+    {
+      "id": "SCR-001",
+      "name": "Morning dispatch board",
+      "platform": "responsive",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": ["SCN-001-01"],
+      "fixture_ids": ["FIX-001"],
+      "purpose": "Help a supervisor turn seasonal intent and live field signals into executable work while distinguishing blocked, partial, offline, corrected, completed, and verified records without flattening history.",
+      "primary_decision": "Which work proceeds today, which plan inputs require intervention, and which blocked or completed records need resolution?",
+      "data_shown": [
+        "Stable block identity and aliases",
+        "Planned and actual acreage",
+        "Current status",
+        "Attributed status history",
+        "Blocker and repair evidence",
+        "Assignees and timing"
+      ],
+      "actions": [
+        {
+          "id": "ACT-001",
+          "label": "Record partial completion",
+          "kind": "advance",
+          "transition": { "from": "blocked", "to": "partially_completed" }
+        },
+        {
+          "id": "ACT-002",
+          "label": "Release remaining rows",
+          "kind": "resolve",
+          "transition": {
+            "from": "partially_completed",
+            "to": "ready_to_resume"
+          }
+        },
+        {
+          "id": "ACT-003",
+          "label": "Verify completed work",
+          "kind": "advance",
+          "transition": { "from": "completed", "to": "verified" }
+        },
+        {
+          "id": "ACT-004",
+          "label": "Inspect status history",
+          "kind": "inspect"
+        }
+      ],
+      "entry_points": [
+        "Daily plan",
+        "Blocked-work alert",
+        "Block activity history"
+      ],
+      "exit_points": [
+        "Field assignment",
+        "Maintenance evidence",
+        "Verified activity record"
+      ],
+      "states": [
+        {
+          "id": "assigned",
+          "kind": "normal",
+          "description": "Work is owned and waiting for field execution."
+        },
+        {
+          "id": "blocked",
+          "kind": "blocked",
+          "description": "Execution stopped with reason, affected scope, and accountable reporter."
+        },
+        {
+          "id": "partially_completed",
+          "kind": "partial",
+          "description": "Safe completed acreage is retained while remaining rows stay open."
+        },
+        {
+          "id": "ready_to_resume",
+          "kind": "corrected",
+          "description": "Repair evidence releases only the remaining scope."
+        },
+        {
+          "id": "completed",
+          "kind": "completion",
+          "description": "Execution is finished and awaits accountable verification."
+        },
+        {
+          "id": "verified",
+          "kind": "completion",
+          "description": "A supervisor confirmed final acreage and preserved exception history."
+        },
+        {
+          "id": "historical",
+          "kind": "historical",
+          "description": "Past transitions remain attributable and immutable."
+        }
+      ],
+      "permission_behavior": "Foremen report blockers and partials; vineyard managers release corrected work and verify closure.",
+      "offline_behavior": "Field transitions queue with local timestamps and require conflict review when the server state advanced first.",
+      "validation_behavior": "Verification is rejected when completed acreage exceeds block acreage or blocker resolution evidence is absent.",
+      "component_ids": ["CMP-001"],
+      "route": "/screens/SCR-001",
+      "figma_frame_name": "SCR-001 · Morning dispatch board · Responsive"
+    }
+  ]
+}

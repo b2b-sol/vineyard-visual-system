@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/findings.schema.json",
+  "title": "Independent validation findings registry",
+  "type": "object",
+  "required": ["schema_version", "updated_at", "findings"],
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "severity",
+          "status",
+          "title",
+          "description",
+          "artifact_refs"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^FIND-[0-9]{3}$" },
+          "severity": { "enum": ["P0", "P1", "P2", "P3"] },
+          "status": { "enum": ["open", "resolved", "waived"] },
+          "title": { "type": "string", "minLength": 5 },
+          "description": { "type": "string", "minLength": 10 },
+          "artifact_refs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 3 }
+          },
+          "resolution": { "type": "string", "minLength": 10 },
+          "waiver_rationale": { "type": "string", "minLength": 20 }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "status": { "const": "resolved" } } },
+            "then": {
+              "required": ["resolution"],
+              "properties": {
+                "resolution": { "type": "string", "minLength": 10 }
+              }
+            }
+          },
+          {
+            "if": { "properties": { "status": { "const": "waived" } } },
+            "then": {
+              "required": ["waiver_rationale"],
+              "properties": {
+                "waiver_rationale": { "type": "string", "minLength": 20 }
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

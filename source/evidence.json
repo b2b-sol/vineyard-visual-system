@@ -1,0 +1,318 @@
+{
+  "schema_version": "1.0",
+  "source_document": {
+    "id": "SRC-001",
+    "title": "Vineyard Workflow Discovery for a Vineyard Information System",
+    "path": "source/Vineyard-Workflow-Discovery-report.md",
+    "role": "foundational_operational_source"
+  },
+  "claims": [
+    {
+      "id": "EVD-001",
+      "title": "Seasonal planning, dispatch, execution, and verified closure",
+      "claim": "Vineyard managers translate seasonal and event-driven priorities into block-level assignments, supervise execution and exceptions, and need attributable completion evidence rather than a flattened done flag.",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Detailed workflow cards and handoff maps",
+        "anchor_text": "Workflow card: seasonal work planning and work-order dispatch"
+      },
+      "source_citation_handles": [
+        "turn6view0",
+        "turn6view1",
+        "turn25view1",
+        "turn37view0"
+      ],
+      "public_source_ids": ["BIB-001", "BIB-004", "BIB-019"],
+      "workflow_ids": ["WF-001"],
+      "limitations": "Public sources establish responsibilities and records more strongly than the exact local dispatch choreography.",
+      "field_validation_questions": [
+        "Which role may release blocked work and who verifies closure in each operating organization?"
+      ]
+    },
+    {
+      "id": "EVD-002",
+      "title": "Scouting, recommendation, crop protection, and defensible application record",
+      "claim": "Monitoring and observed pressure lead through treatment selection, safety and restriction checks, execution, application recording, and efficacy follow-up with block and operator attribution.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Detailed workflow cards and handoff maps",
+        "anchor_text": "Workflow card: scouting to spray execution and compliance record"
+      },
+      "source_citation_handles": [
+        "turn38view0",
+        "turn28view0",
+        "turn28view1",
+        "turn32view0"
+      ],
+      "public_source_ids": ["BIB-001", "BIB-002", "BIB-011", "BIB-016"],
+      "workflow_ids": ["WF-002"],
+      "limitations": "Treatment thresholds, approval authority, products, and legal reporting requirements vary by jurisdiction and buyer.",
+      "field_validation_questions": [
+        "Where are scouting observations first captured and which approval or buyer checks delay execution most often?"
+      ]
+    },
+    {
+      "id": "EVD-003",
+      "title": "Irrigation scheduling, fertility adjustment, and delivery verification",
+      "claim": "Water and nutrient decisions combine site conditions, plant observations, weather, tissue results, prior inputs, and block history, then require executable instructions and evidence of actual delivery or malfunction.",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Detailed workflow cards and handoff maps",
+        "anchor_text": "Workflow card: irrigation scheduling and fertility adjustment"
+      },
+      "source_citation_handles": [
+        "turn35search11",
+        "turn18view2",
+        "turn35search1",
+        "turn15view0"
+      ],
+      "public_source_ids": ["BIB-004", "BIB-005", "BIB-016"],
+      "workflow_ids": ["WF-003"],
+      "limitations": "Agronomic evidence is strong, while the exact manager-to-irrigator handoff and sensor availability are organization-specific.",
+      "field_validation_questions": [
+        "How is actual irrigation delivery verified when the office plan differs from valve, pump, or field conditions?"
+      ]
+    },
+    {
+      "id": "EVD-004",
+      "title": "Crop estimation and forecast revision",
+      "claim": "Representative vine and cluster sampling produces a revisable block forecast that informs crop adjustment, winery capacity, labor, container planning, and budget expectations through harvest.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Detailed workflow cards and handoff maps",
+        "anchor_text": "Workflow card: crop estimation and maturity tracking to harvest-date decision"
+      },
+      "source_citation_handles": ["turn27view2", "turn27view3", "turn33view4"],
+      "public_source_ids": ["BIB-004", "BIB-006"],
+      "workflow_ids": ["WF-004"],
+      "limitations": "Sampling methods, forecast tolerances, and revision cadence vary by block, variety, contract, and organization.",
+      "field_validation_questions": [
+        "Which revisions trigger downstream labor, tank, contract, or financial replanning and who is notified?"
+      ]
+    },
+    {
+      "id": "EVD-005",
+      "title": "Maturity sampling, winery communication, and pick decision",
+      "claim": "Block-specific representative samples, laboratory values, sensory and condition observations, weather, capacity, and contract authority converge into an attributable pick-date decision with increasing sampling cadence near harvest.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Detailed workflow cards and handoff maps",
+        "anchor_text": "Workflow card: crop estimation and maturity tracking to harvest-date decision"
+      },
+      "source_citation_handles": [
+        "turn27view0",
+        "turn27view4",
+        "turn8view1",
+        "turn37view1"
+      ],
+      "public_source_ids": ["BIB-007", "BIB-020"],
+      "workflow_ids": ["WF-005"],
+      "limitations": "Final pick authority and acceptable quality thresholds are contract- and winery-specific.",
+      "field_validation_questions": [
+        "How are conflicting field and winery samples reconciled and where is final pick authority recorded?"
+      ]
+    },
+    {
+      "id": "EVD-006",
+      "title": "Harvest, load identity, intake quality, and reconciliation",
+      "claim": "A final pick authorization becomes coordinated crews, containers, transport, block-identified loads, intake weights and quality results, acceptance or rejection decisions, corrected tickets, and settlement inputs.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Detailed workflow cards and handoff maps",
+        "anchor_text": "Workflow card: harvest execution to weigh-ticket and payment reconciliation"
+      },
+      "source_citation_handles": [
+        "turn27view1",
+        "turn33view2",
+        "turn33view3",
+        "turn8view2"
+      ],
+      "public_source_ids": ["BIB-008", "BIB-009", "BIB-010"],
+      "workflow_ids": ["WF-006"],
+      "limitations": "Commercial tolerances, rejection remedies, pricing, and settlement rules differ by contract and jurisdiction.",
+      "field_validation_questions": [
+        "Which identifiers and signatures survive from pick authorization through corrected weigh ticket and final settlement?"
+      ]
+    },
+    {
+      "id": "EVD-007",
+      "title": "Crew scheduling, attendance, time, payroll, and cost allocation",
+      "claim": "Field work planning depends on labor availability and accountable crew supervision, while completed activity quantities and time must later support payroll, costing, budgets, and management reporting.",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Vineyard operating model",
+        "anchor_text": "Parallel to all of this, office functions handle payroll, purchasing, invoice matching, certifications, insurance, and management reporting."
+      },
+      "source_citation_handles": [
+        "turn6view0",
+        "turn25view1",
+        "turn29view2",
+        "turn37view0"
+      ],
+      "public_source_ids": ["BIB-004", "BIB-018"],
+      "workflow_ids": ["WF-007"],
+      "limitations": "Public evidence supports the responsibility chain but not the frequency or exact mechanics of attendance and payroll correction.",
+      "field_validation_questions": [
+        "How often are time, activity, block allocation, or pay details corrected after field submission and by whom?"
+      ]
+    },
+    {
+      "id": "EVD-008",
+      "title": "Materials, purchasing, equipment readiness, and repair",
+      "claim": "Seasonal and urgent work is executable only when materials, compliant products, calibrated equipment, maintenance status, labor, and timing are coordinated, with exceptions preserved when readiness fails.",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Vineyard operating model",
+        "anchor_text": "Keep work, materials, equipment, and paperwork synchronized."
+      },
+      "source_citation_handles": [
+        "turn37view0",
+        "turn25view1",
+        "turn28view0",
+        "turn34view1"
+      ],
+      "public_source_ids": ["BIB-001", "BIB-002", "BIB-019"],
+      "workflow_ids": ["WF-008"],
+      "limitations": "Inventory policy, purchasing authority, service intervals, and repair evidence vary widely by operator.",
+      "field_validation_questions": [
+        "Which readiness checks cause the most late replanning and how are temporary repairs or substitutions approved?"
+      ]
+    },
+    {
+      "id": "EVD-009",
+      "title": "Grower onboarding and contract-fruit coordination",
+      "claim": "Contract fruit adds a cross-organization relationship loop linking identities, maps, contracts, quality expectations, spray history, crop estimates, maturity results, harvest schedules, delivery outcomes, and disputes.",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Vineyard operating model",
+        "anchor_text": "Contract fruit adds a relationship-management loop"
+      },
+      "source_citation_handles": [
+        "turn37view1",
+        "turn8view0",
+        "turn8view1",
+        "turn8view2"
+      ],
+      "public_source_ids": ["BIB-003", "BIB-007", "BIB-009", "BIB-011"],
+      "workflow_ids": ["WF-009"],
+      "limitations": "Contract language, final authority, communication norms, and grower data maturity vary materially.",
+      "field_validation_questions": [
+        "What must be complete before a grower or block is harvest-ready, and how are conflicting records resolved across organizations?"
+      ]
+    },
+    {
+      "id": "EVD-010",
+      "title": "Certification, annual evidence, audit, and corrective action",
+      "claim": "Certification turns ordinary field records into annual submissions, self-assessments, block-level proof, independent audit material, findings, timed corrective actions, and renewal decisions.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "anchor_text": "Certified-organic workflows do not merely change field practices"
+      },
+      "source_citation_handles": [
+        "turn12view0",
+        "turn13view4",
+        "turn15view0",
+        "turn31view4"
+      ],
+      "public_source_ids": [
+        "BIB-012",
+        "BIB-013",
+        "BIB-014",
+        "BIB-015",
+        "BIB-016",
+        "BIB-017"
+      ],
+      "workflow_ids": ["WF-010"],
+      "limitations": "Program rules and evidence cadence differ; the atlas must label the active standard and vintage rather than universalize controls.",
+      "field_validation_questions": [
+        "Which evidence gaps most often become corrective actions, and which source record is least trusted during audit preparation?"
+      ]
+    },
+    {
+      "id": "EVD-011",
+      "title": "Stable block identity across organizations and history",
+      "claim": "Row and block identity is a foundational interoperability concern because operational units are renamed, split, combined, and represented differently across vineyard, grower, winery, compliance, and accounting systems.",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Executive workflow summary",
+        "anchor_text": "the same block is named differently across grower, vineyard, winery, compliance, and accounting systems"
+      },
+      "source_citation_handles": ["turn31view0", "turn31view1"],
+      "public_source_ids": ["BIB-003", "BIB-009"],
+      "workflow_ids": [
+        "WF-001",
+        "WF-002",
+        "WF-003",
+        "WF-004",
+        "WF-005",
+        "WF-006",
+        "WF-007",
+        "WF-008",
+        "WF-009",
+        "WF-010"
+      ],
+      "overlay_ids": ["OVL-001"],
+      "limitations": "A universal industry identifier is not assumed; the product preserves stable internal identity plus source-system aliases and effective dates.",
+      "field_validation_questions": [
+        "Which split, merge, rename, and alias events must remain effective-dated to reconcile historical records correctly?"
+      ]
+    },
+    {
+      "id": "EVD-012",
+      "title": "Seasonal hazards, urgent replanning, and immutable exception history",
+      "claim": "Frost, heat, smoke, weather, worker restrictions, equipment failure, winery delay, quality rejection, and missing records can override the seasonal plan and require urgent decisions, escalation, recovery, and preserved corrections.",
+      "classification": "confirmed_source",
+      "confidence": "medium-high",
+      "source_anchor": {
+        "path": "source/Vineyard-Workflow-Discovery-report.md",
+        "section_heading": "Annual workflow calendar",
+        "anchor_text": "Event-driven exceptions can override the calendar."
+      },
+      "source_citation_handles": [
+        "turn34view0",
+        "turn34view1",
+        "turn34view3",
+        "turn29view3"
+      ],
+      "public_source_ids": ["BIB-002", "BIB-018", "BIB-019", "BIB-020"],
+      "workflow_ids": [
+        "WF-001",
+        "WF-002",
+        "WF-003",
+        "WF-005",
+        "WF-006",
+        "WF-007",
+        "WF-008",
+        "WF-009"
+      ],
+      "overlay_ids": ["OVL-002", "OVL-006", "OVL-007"],
+      "limitations": "Trigger thresholds and response authority are regional and organizational, and smoke evidence may remain inherently uncertain.",
+      "field_validation_questions": [
+        "Which exceptions require immediate stop, approval, external communication, or supersession rather than ordinary rescheduling?"
+      ]
+    }
+  ]
+}

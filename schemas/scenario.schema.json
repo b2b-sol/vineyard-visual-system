@@ -1,10 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "scenario.schema.json",
-  "title": "Scenario",
+  "$id": "https://vineyard-visual-system.dev/schemas/scenario.schema.json",
+  "title": "Operational scenario",
   "type": "object",
   "required": [
     "id",
+    "title",
     "workflow_ids",
     "category",
     "role_ids",
@@ -15,19 +16,18 @@
     "decision_points",
     "records_read",
     "records_created",
-    "completion_condition"
+    "completion_condition",
+    "synthetic_fixture_refs",
+    "expected_transitions"
   ],
   "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^SCN-[0-9]{3}-[0-9]{2}$"
-    },
+    "id": { "type": "string", "pattern": "^SCN-[0-9]{3}-[0-9]{2}$" },
+    "title": { "type": "string", "minLength": 6 },
     "workflow_ids": {
       "type": "array",
       "minItems": 1,
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^WF-[0-9]{3}$" }
     },
     "category": {
       "enum": [
@@ -44,95 +44,108 @@
     },
     "role_ids": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" }
     },
-    "trigger": {
-      "type": "string"
-    },
-    "goal": {
-      "type": "string"
-    },
-    "context": {
-      "type": "string"
-    },
+    "trigger": { "type": "string", "minLength": 10 },
+    "goal": { "type": "string", "minLength": 10 },
+    "context": { "type": "string", "minLength": 20 },
     "preconditions": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "available_information": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "missing_information": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "normal_path": {
       "type": "array",
       "minItems": 2,
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string", "minLength": 8 }
+    },
+    "exception_path": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 8 }
+    },
+    "recovery_path": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 8 }
     },
     "decision_points": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^DEC-[0-9]{3}$" }
     },
     "branches": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string", "minLength": 8 }
     },
     "records_read": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "records_created": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "communications": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string", "minLength": 5 }
     },
-    "device_context": {
-      "type": "string"
-    },
-    "connectivity": {
-      "type": "string"
-    },
+    "device_context": { "type": "string", "minLength": 3 },
+    "connectivity": { "type": "string", "minLength": 3 },
     "compliance_implications": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string", "minLength": 5 }
     },
-    "completion_condition": {
-      "type": "string"
-    },
+    "completion_condition": { "type": "string", "minLength": 10 },
     "synthetic_fixture_refs": {
       "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^FIX-[0-9]{3}$" }
+    },
+    "expected_transitions": {
+      "type": "array",
+      "minItems": 2,
       "items": {
-        "type": "string"
+        "type": "object",
+        "required": ["from", "to", "reason"],
+        "properties": {
+          "from": { "type": ["string", "null"] },
+          "to": { "type": "string", "minLength": 2 },
+          "reason": { "type": "string", "minLength": 5 }
+        },
+        "additionalProperties": false
       }
     }
   },
+  "allOf": [
+    {
+      "if": { "properties": { "category": { "not": { "const": "routine" } } } },
+      "then": {
+        "required": ["exception_path", "recovery_path"],
+        "properties": {
+          "exception_path": { "type": "array", "minItems": 1 },
+          "recovery_path": { "type": "array", "minItems": 1 }
+        }
+      }
+    }
+  ],
   "additionalProperties": false
 }

@@ -1,0 +1,146 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "color": {
+    "$type": "color",
+    "ink": {
+      "950": { "$value": "#142019" },
+      "800": { "$value": "#26382b" },
+      "650": { "$value": "#415346" },
+      "500": { "$value": "#526258" },
+      "300": { "$value": "#5d6c62" }
+    },
+    "paper": {
+      "0": { "$value": "#ffffff" },
+      "50": { "$value": "#fbfaf5" },
+      "100": { "$value": "#f4f1e7" },
+      "200": { "$value": "#e9e3d2" },
+      "300": { "$value": "#d8cfb9" }
+    },
+    "vine": {
+      "900": { "$value": "#1f3025" },
+      "700": { "$value": "#36513d" },
+      "500": { "$value": "#5f7c5b" },
+      "300": { "$value": "#a8bda3" },
+      "100": { "$value": "#e1e9dc" }
+    },
+    "harvest": {
+      "700": { "$value": "#7b3c34" },
+      "500": { "$value": "#aa5b46" },
+      "100": { "$value": "#f5dfd4" }
+    },
+    "sun": {
+      "700": { "$value": "#805816" },
+      "500": { "$value": "#d39b2f" },
+      "100": { "$value": "#faedc7" }
+    },
+    "sky": {
+      "700": { "$value": "#28636a" },
+      "500": { "$value": "#4d8b8d" },
+      "100": { "$value": "#dceeed" }
+    },
+    "semantic": {
+      "success": { "$value": "{color.vine.700}" },
+      "warning": { "$value": "{color.sun.700}" },
+      "danger": { "$value": "{color.harvest.700}" },
+      "info": { "$value": "{color.sky.700}" },
+      "neutral": { "$value": "{color.ink.650}" }
+    }
+  },
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "display": {
+        "$value": [
+          "Iowan Old Style",
+          "Palatino Linotype",
+          "Book Antiqua",
+          "Georgia",
+          "serif"
+        ]
+      },
+      "body": { "$value": ["Inter", "Aptos", "Segoe UI", "sans-serif"] },
+      "mono": {
+        "$value": ["SFMono-Regular", "Consolas", "Liberation Mono", "monospace"]
+      }
+    },
+    "size": {
+      "$type": "dimension",
+      "100": { "$value": "0.75rem" },
+      "200": { "$value": "0.8125rem" },
+      "300": { "$value": "0.875rem" },
+      "400": { "$value": "1rem" },
+      "500": { "$value": "1.125rem" },
+      "600": { "$value": "1.375rem" },
+      "700": { "$value": "1.75rem" },
+      "800": { "$value": "2.25rem" },
+      "900": { "$value": "3rem" }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": { "$value": 400 },
+      "medium": { "$value": 520 },
+      "semibold": { "$value": 640 },
+      "bold": { "$value": 740 }
+    }
+  },
+  "space": {
+    "$type": "dimension",
+    "0": { "$value": "0" },
+    "1": { "$value": "0.25rem" },
+    "2": { "$value": "0.5rem" },
+    "3": { "$value": "0.75rem" },
+    "4": { "$value": "1rem" },
+    "5": { "$value": "1.25rem" },
+    "6": { "$value": "1.5rem" },
+    "8": { "$value": "2rem" },
+    "10": { "$value": "2.5rem" },
+    "12": { "$value": "3rem" },
+    "16": { "$value": "4rem" }
+  },
+  "radius": {
+    "$type": "dimension",
+    "sm": { "$value": "0.375rem" },
+    "md": { "$value": "0.625rem" },
+    "lg": { "$value": "0.875rem" },
+    "xl": { "$value": "1.25rem" },
+    "round": { "$value": "999px" }
+  },
+  "shadow": {
+    "$type": "shadow",
+    "raised": {
+      "$value": {
+        "color": "#14201914",
+        "offsetX": "0px",
+        "offsetY": "8px",
+        "blur": "24px",
+        "spread": "0px"
+      }
+    },
+    "focus": {
+      "$value": {
+        "color": "#28636a66",
+        "offsetX": "0px",
+        "offsetY": "0px",
+        "blur": "0px",
+        "spread": "3px"
+      }
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "touchTarget": { "$value": "2.75rem" },
+    "sidebar": { "$value": "17rem" },
+    "contentMax": { "$value": "100rem" }
+  },
+  "motion": {
+    "duration": {
+      "$type": "duration",
+      "quick": { "$value": "120ms" },
+      "standard": { "$value": "220ms" }
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "productive": { "$value": [0.2, 0, 0, 1] }
+    }
+  }
+}

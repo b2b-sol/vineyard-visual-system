@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/project-state.schema.json",
+  "title": "Resumable project state",
+  "type": "object",
+  "required": [
+    "packet_version",
+    "updated_at",
+    "state",
+    "repository",
+    "visibility",
+    "execution_identity",
+    "bot_auth_verified",
+    "current_phase",
+    "next_task",
+    "last_completed_task",
+    "active_branch",
+    "definition_of_done_passed"
+  ],
+  "properties": {
+    "packet_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"
+    },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "state": { "type": "string", "minLength": 3 },
+    "repository": { "const": "b2b-sol/vineyard-visual-system" },
+    "visibility": { "const": "public" },
+    "execution_identity": { "const": "tiklebot" },
+    "active_github_login": { "const": "tiklebot" },
+    "repository_permission": { "const": "admin" },
+    "bot_auth_verified": { "const": true },
+    "current_phase": { "type": "string", "minLength": 3 },
+    "next_task": { "type": ["string", "null"] },
+    "last_completed_task": { "type": ["string", "null"] },
+    "active_branch": { "type": ["string", "null"] },
+    "definition_of_done_passed": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

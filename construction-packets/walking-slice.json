@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0",
+  "packets": [
+    {
+      "id": "PKT-001",
+      "title": "Morning dispatch and blocked-work recovery",
+      "purpose": "Specify a buildable supervisory dispatch surface that prioritizes current work and recovers partially completed vineyard work without erasing its operational or audit history.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": ["SCN-001-01"],
+      "fixture_ids": ["FIX-001"],
+      "screen_ids": ["SCR-001"],
+      "component_ids": ["CMP-001"],
+      "roles": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN",
+        "ROLE-EQUIPMENT-OPERATOR"
+      ],
+      "preconditions": [
+        "The work order resolves to one stable block identity",
+        "Every state change has an actor and timestamp",
+        "Target and actual acreage use the same unit"
+      ],
+      "state_contract": {
+        "initial": "assigned",
+        "exception": "blocked",
+        "recovery": "ready_to_resume",
+        "terminal": "verified",
+        "history_policy": "Append transitions; never rewrite blocked, partial, or correction events after later completion."
+      },
+      "permission_contract": [
+        {
+          "role_id": "ROLE-FOREMAN",
+          "may": ["Report a blocker", "Record safe partial acreage"],
+          "may_not": ["Verify final closure", "Erase a blocker event"]
+        },
+        {
+          "role_id": "ROLE-VINEYARD-MANAGER",
+          "may": ["Release corrected work", "Verify final closure"],
+          "may_not": ["Backdate another person's field report"]
+        },
+        {
+          "role_id": "ROLE-EQUIPMENT-OPERATOR",
+          "may": ["Start assigned work", "Report completed acreage"],
+          "may_not": ["Release equipment-blocked rows"]
+        }
+      ],
+      "data_contract": {
+        "required_entities": [
+          "organization",
+          "person",
+          "block",
+          "observation",
+          "work_order",
+          "status_event",
+          "blocker"
+        ],
+        "stable_identifiers": [
+          "organization.id",
+          "person.id",
+          "block.id",
+          "block.stable_identity",
+          "observation.id",
+          "work_order.id",
+          "status_event.id"
+        ],
+        "audit_fields": [
+          "status_event.at",
+          "status_event.actor_person_id",
+          "status_event.from",
+          "status_event.to",
+          "status_event.reason"
+        ]
+      },
+      "interaction_contract": [
+        {
+          "action_id": "ACT-001",
+          "precondition": "Current state is blocked and reported acreage is valid",
+          "result": "State becomes partially_completed",
+          "audit_event": "Append partial completion with actor, time, acreage, and reason"
+        },
+        {
+          "action_id": "ACT-002",
+          "precondition": "Repair evidence exists and current state is partially_completed",
+          "result": "State becomes ready_to_resume",
+          "audit_event": "Append release event without changing the blocker record"
+        },
+        {
+          "action_id": "ACT-003",
+          "precondition": "Current state is completed and actual acres equal target acres",
+          "result": "State becomes verified",
+          "audit_event": "Append supervisor verification with actor and time"
+        },
+        {
+          "action_id": "ACT-004",
+          "precondition": "User can view the work order",
+          "result": "Immutable ordered history is visible",
+          "audit_event": "No workflow state mutation"
+        }
+      ],
+      "copy_contract": {
+        "status_labels": {
+          "blocked": "Blocked — field stop recorded",
+          "partially_completed": "Partial — remaining rows open",
+          "ready_to_resume": "Ready — repair confirmed",
+          "verified": "Verified — acreage reconciled"
+        },
+        "error_messages": [
+          "Repair evidence is required before releasing the remaining rows.",
+          "Completed acreage cannot exceed the block acreage.",
+          "The work order changed elsewhere; review the newer status before retrying."
+        ]
+      },
+      "dependencies": [
+        "FIX-001 deterministic fixture",
+        "CMP-001 WorkOrderQueue",
+        "Stable block identity service contract"
+      ],
+      "acceptance_criteria": [
+        "The screen exposes blocked reason, affected rows, reporter, and time without opening a secondary record.",
+        "Partial acreage survives resume and final completion as an immutable historical event.",
+        "Only a vineyard manager can transition completed work to verified.",
+        "The rendered slice resolves WF-001, SCN-001-01, FIX-001, SCR-001, CMP-001, and PKT-001.",
+        "Status meaning remains understandable without color and at a 375 CSS-pixel viewport."
+      ],
+      "test_cases": [
+        {
+          "id": "TEST-001",
+          "category": "normal",
+          "assertion": "Assigned work advances to in progress with an attributable event."
+        },
+        {
+          "id": "TEST-002",
+          "category": "exception",
+          "assertion": "A blocker preserves 11.2 completed acres and rows 28–34 as open."
+        },
+        {
+          "id": "TEST-003",
+          "category": "recovery",
+          "assertion": "Repair evidence releases only the remaining rows and retains prior history."
+        },
+        {
+          "id": "TEST-004",
+          "category": "permission",
+          "assertion": "A foreman cannot perform the manager-only verification transition."
+        },
+        {
+          "id": "TEST-005",
+          "category": "accessibility",
+          "assertion": "Every operational state has a visible text label and non-color cue."
+        },
+        {
+          "id": "TEST-006",
+          "category": "data",
+          "assertion": "Final actual acreage equals the 18.6-acre target and never exceeds block acreage."
+        }
+      ],
+      "figma_mapping": {
+        "frame_name": "SCR-001 · Morning dispatch board · Responsive",
+        "component_names": ["Operations/Work Order Queue"],
+        "stable_node_key": "figma-ready:SCR-001:CMP-001"
+      }
+    }
+  ]
+}

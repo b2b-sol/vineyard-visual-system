@@ -2,18 +2,18 @@
 
 ## Canonical workflow families
 
-| ID | Family |
-|---|---|
-| WF-001 | Seasonal planning, dispatch, execution, and verification |
-| WF-002 | Scouting, recommendation, crop protection, and application records |
-| WF-003 | Irrigation scheduling, fertility adjustment, and delivery verification |
-| WF-004 | Crop estimation and forecast revision |
-| WF-005 | Maturity sampling, winery communication, and pick decision |
-| WF-006 | Harvest planning, execution, loads, intake, quality, and reconciliation |
-| WF-007 | Crew scheduling, attendance, time, payroll, and cost allocation |
-| WF-008 | Materials, purchasing, equipment readiness, and repair |
+| ID     | Family                                                                   |
+| ------ | ------------------------------------------------------------------------ |
+| WF-001 | Seasonal planning, dispatch, execution, and verification                 |
+| WF-002 | Scouting, recommendation, crop protection, and application records       |
+| WF-003 | Irrigation scheduling, fertility adjustment, and delivery verification   |
+| WF-004 | Crop estimation and forecast revision                                    |
+| WF-005 | Maturity sampling, winery communication, and pick decision               |
+| WF-006 | Harvest planning, execution, loads, intake, quality, and reconciliation  |
+| WF-007 | Crew scheduling, attendance, time, payroll, and cost allocation          |
+| WF-008 | Materials, purchasing, equipment readiness, and repair                   |
 | WF-009 | Grower onboarding, contract-fruit coordination, and relationship history |
-| WF-010 | Certification, audit preparation, corrective action, and evidence |
+| WF-010 | Certification, audit preparation, corrective action, and evidence        |
 
 Cross-cutting overlays: stable block identity; exceptions/escalation; permissions/approval; notification; offline/synchronization/conflict; seasonal hazards; correction/supersession/history.
 

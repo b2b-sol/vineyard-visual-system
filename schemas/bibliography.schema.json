@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/bibliography.schema.json",
+  "title": "Public evidence bibliography entry",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "publisher",
+    "url",
+    "accessed_on",
+    "category",
+    "authority",
+    "coverage",
+    "status"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^BIB-[0-9]{3}$" },
+    "title": { "type": "string", "minLength": 8 },
+    "publisher": { "type": "string", "minLength": 3 },
+    "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "accessed_on": { "type": "string", "format": "date" },
+    "category": {
+      "enum": [
+        "university_extension",
+        "regulator",
+        "certification_standard",
+        "industry_protocol",
+        "interoperability_research"
+      ]
+    },
+    "authority": { "enum": ["primary", "official_industry"] },
+    "coverage": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+    },
+    "status": { "enum": ["active", "archived", "superseded"] },
+    "notes": { "type": "string", "minLength": 8 }
+  },
+  "additionalProperties": false
+}

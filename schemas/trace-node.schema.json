@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/trace-node.schema.json",
+  "title": "Trace graph node",
+  "type": "object",
+  "required": ["id", "type", "title", "path", "locator", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(EVD|WF|SCN|FIX|SCR|CMP|PKT)-[A-Z0-9-]+$"
+    },
+    "type": {
+      "enum": [
+        "evidence",
+        "workflow",
+        "scenario",
+        "fixture",
+        "screen",
+        "component",
+        "construction_packet"
+      ]
+    },
+    "title": { "type": "string", "minLength": 3 },
+    "path": { "type": "string", "pattern": "^[^\\\\]+$" },
+    "locator": {
+      "type": "object",
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": { "enum": ["heading", "json_id"] },
+        "value": { "type": "string", "minLength": 3 }
+      },
+      "additionalProperties": false
+    },
+    "classification": {
+      "enum": [
+        "confirmed_source",
+        "strong_inference",
+        "product_decision",
+        "synthetic_fixture",
+        "implementation_contract"
+      ]
+    },
+    "status": { "enum": ["draft", "review", "approved", "superseded"] }
+  },
+  "additionalProperties": false
+}
