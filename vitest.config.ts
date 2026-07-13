@@ -10,7 +10,6 @@ export default defineConfig({
       "atlas/src/**/*.test.{ts,tsx}",
       "atlas/tests/unit/**/*.test.{ts,tsx}",
     ],
-    passWithNoTests: true,
     restoreMocks: true,
   },
 });

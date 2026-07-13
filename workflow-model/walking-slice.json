@@ -10,11 +10,39 @@
       "evidence_ids": ["EVD-001"],
       "seasonality": ["budbreak", "rapid_shoot_growth", "preharvest"],
       "frequency": "Daily during active field operations",
-      "triggers": ["Field observation requires action", "Seasonal plan reaches its execution window", "A blocked work order becomes safe to resume"],
-      "roles": ["ROLE-VITICULTURIST", "ROLE-VINEYARD-MANAGER", "ROLE-FOREMAN", "ROLE-EQUIPMENT-OPERATOR"],
-      "inputs": ["Stable block identity", "Field observation", "Labor and equipment availability", "Current restrictions and work history"],
-      "preconditions": ["The operational block resolves to one stable identity", "The observation is timestamped and attributable", "The assigned crew can see safety and completion requirements"],
-      "states": ["observed", "planned", "assigned", "in_progress", "blocked", "partially_completed", "ready_to_resume", "completed", "verified"],
+      "triggers": [
+        "Field observation requires action",
+        "Seasonal plan reaches its execution window",
+        "A blocked work order becomes safe to resume"
+      ],
+      "roles": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN",
+        "ROLE-EQUIPMENT-OPERATOR"
+      ],
+      "inputs": [
+        "Stable block identity",
+        "Field observation",
+        "Labor and equipment availability",
+        "Current restrictions and work history"
+      ],
+      "preconditions": [
+        "The operational block resolves to one stable identity",
+        "The observation is timestamped and attributable",
+        "The assigned crew can see safety and completion requirements"
+      ],
+      "states": [
+        "observed",
+        "planned",
+        "assigned",
+        "in_progress",
+        "blocked",
+        "partially_completed",
+        "ready_to_resume",
+        "completed",
+        "verified"
+      ],
       "steps": [
         {
           "order": 1,
@@ -96,25 +124,61 @@
           "id": "DEC-001",
           "question": "Can safe completed acreage be retained while the affected rows remain blocked?",
           "owner": "ROLE-FOREMAN",
-          "outcomes": ["Record safe partial completion and isolate affected rows", "Void progress and reschedule the whole block"]
+          "outcomes": [
+            "Record safe partial completion and isolate affected rows",
+            "Void progress and reschedule the whole block"
+          ]
         },
         {
           "id": "DEC-002",
           "question": "Is the repair evidence sufficient to release the remaining rows?",
           "owner": "ROLE-VINEYARD-MANAGER",
-          "outcomes": ["Resume the remaining rows", "Keep blocked and escalate maintenance"]
+          "outcomes": [
+            "Resume the remaining rows",
+            "Keep blocked and escalate maintenance"
+          ]
         }
       ],
-      "outputs": ["Verified block work record", "Attributed exception history", "Actual acreage for cost and progress reporting"],
-      "records": ["Field observation", "Work order", "Status history", "Equipment blocker", "Verification record"],
-      "handoffs": ["Viticulturist to vineyard manager", "Vineyard manager to foreman", "Foreman to equipment operator", "Field completion back to vineyard manager"],
+      "outputs": [
+        "Verified block work record",
+        "Attributed exception history",
+        "Actual acreage for cost and progress reporting"
+      ],
+      "records": [
+        "Field observation",
+        "Work order",
+        "Status history",
+        "Equipment blocker",
+        "Verification record"
+      ],
+      "handoffs": [
+        "Viticulturist to vineyard manager",
+        "Vineyard manager to foreman",
+        "Foreman to equipment operator",
+        "Field completion back to vineyard manager"
+      ],
       "approvals": ["Vineyard manager releases work after repair evidence"],
-      "exceptions": ["Equipment failure after partial execution", "Incomplete acreage report", "Unsafe attempt to resume without repair evidence"],
-      "workarounds": ["Split the safe completed acreage from affected rows without losing one work-order history"],
-      "risks": ["False whole-block completion", "Duplicate work after rescheduling", "Unattributed status correction"],
+      "exceptions": [
+        "Equipment failure after partial execution",
+        "Incomplete acreage report",
+        "Unsafe attempt to resume without repair evidence"
+      ],
+      "workarounds": [
+        "Split the safe completed acreage from affected rows without losing one work-order history"
+      ],
+      "risks": [
+        "False whole-block completion",
+        "Duplicate work after rescheduling",
+        "Unattributed status correction"
+      ],
       "product_intervention": "record",
-      "source_anchors": ["Workflow card: seasonal work planning and work-order dispatch", "Managers need done/not done/why not visibility across estates and crews"],
-      "field_validation_questions": ["Which role may release a blocked work order after equipment repair in each operating organization?"]
+      "source_anchors": [
+        "Workflow card: seasonal work planning and work-order dispatch",
+        "Managers need done/not done/why not visibility across estates and crews"
+      ],
+      "field_validation_questions": [
+        "Which role may release a blocked work order after equipment repair in each operating organization?"
+      ]
     }
   ]
 }

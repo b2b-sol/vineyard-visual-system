@@ -1,3 +1,140 @@
-schema_version: '1.0'
-updated_at: '2026-07-13T15:00:00-07:00'
-findings: []
+schema_version: "1.0"
+updated_at: "2026-07-13T15:23:00-07:00"
+findings:
+  - id: FIND-001
+    severity: P1
+    status: resolved
+    title: Gate and completion claims were self-asserted
+    description: The validator did not read the DoD matrix or require evidence and commit provenance for passed gates.
+    artifact_refs:
+      [
+        control/DOD_MATRIX.yaml,
+        validation/gate-results.json,
+        scripts/validation/validate.mjs,
+      ]
+    resolution: Added a strict DoD schema, exact G0-G12 parity, non-empty evidence checks, commit SHAs, and whole-project completion invariants.
+  - id: FIND-002
+    severity: P1
+    status: resolved
+    title: Trace validation inspected only the first registry record
+    description: Later records could have invalid references or remain semantically untraced while validation stayed green.
+    artifact_refs:
+      [
+        scripts/validation/validate.mjs,
+        control/trace-nodes.json,
+        control/trace-edges.json,
+      ]
+    resolution: Validation now indexes every record, enforces unique IDs and canonical paths, resolves all references, and requires semantic edges and complete chains.
+  - id: FIND-003
+    severity: P1
+    status: resolved
+    title: Walking-slice state and source locators disagreed
+    description: Scenario and fixture history skipped observed, the screen omitted completed, and a bold paragraph was accepted as a heading.
+    artifact_refs:
+      [
+        scenarios/walking-slice.json,
+        data/walking-slice.json,
+        screens/walking-slice.json,
+        control/trace-nodes.json,
+      ]
+    resolution: Aligned all nine workflow transitions, registered completed, pointed to a real source heading, and made heading resolution structural.
+  - id: FIND-004
+    severity: P1
+    status: resolved
+    title: Fixture contract required one resolved blocker path
+    description: Every work order was forced to include a resolved blocker and verified actuals, excluding normal and open states.
+    artifact_refs:
+      [
+        schemas/fixture.schema.json,
+        scripts/validation/validate.mjs,
+        atlas/tests/unit/canonical-model.test.ts,
+      ]
+    resolution: Generalized blockers and actuals with state-conditional requirements and added unit coverage for open and invalid verified records.
+  - id: FIND-005
+    severity: P1
+    status: resolved
+    title: Repository secret audit had major blind spots
+    description: The audit skipped unlisted file types and recognized too few common credential formats.
+    artifact_refs:
+      [scripts/repository-audit.mjs, .github/workflows/repository-audit.yml]
+    resolution: Every repository blob is scanned locally and a pinned TruffleHog 3.95.9 history scan now runs in the required audit job.
+  - id: FIND-006
+    severity: P2
+    status: resolved
+    title: Manual Pages deployment could bypass verification
+    description: A manually dispatched non-main ref could deploy after a build without the aggregate quality checks.
+    artifact_refs: [.github/workflows/pages.yml]
+    resolution: The Pages build is guarded to main and now runs the complete verify command before artifact upload.
+  - id: FIND-007
+    severity: P2
+    status: resolved
+    title: Empty unit suite passed required CI
+    description: Vitest was configured to pass when no test files existed.
+    artifact_refs:
+      [package.json, vitest.config.ts, atlas/tests/unit/canonical-model.test.ts]
+    resolution: Removed every no-tests bypass and added canonical transition, history, accessibility-contract, and schema-generalization tests.
+  - id: FIND-008
+    severity: P3
+    status: resolved
+    title: Repository audit required Git metadata
+    description: Verification could not run from a public GitHub source archive without a .git directory.
+    artifact_refs: [scripts/repository-audit.mjs]
+    resolution: Added deterministic recursive source enumeration when Git metadata is absent while excluding generated directories.
+  - id: FIND-009
+    severity: P0
+    status: resolved
+    title: Registered screen did not realize FIX-001
+    description: The page showed unrelated Mesa Alta data instead of the trace-claimed Carneros Ridge blocked mowing fixture.
+    artifact_refs:
+      [
+        data/walking-slice.json,
+        atlas/src/data/planningDispatch.ts,
+        atlas/src/pages/PlanningDispatchPage.tsx,
+      ]
+    resolution: SCR-001 now imports FIX-001 through a typed adapter and renders its stable block, work order, acreage, blocker, actors, and nine-event history.
+  - id: FIND-010
+    severity: P1
+    status: resolved
+    title: Consequential workflow actions were inert
+    description: Partial completion, repair release, verification, and immutable history inspection were specified but not usable.
+    artifact_refs:
+      [
+        construction-packets/walking-slice.json,
+        atlas/src/pages/PlanningDispatchPage.tsx,
+      ]
+    resolution: ACT-001 through ACT-004 now replay validated, attributed, timestamped, append-only events with permission-specific actors and history inspection.
+  - id: FIND-011
+    severity: P1
+    status: resolved
+    title: Mobile field behavior was only a static preview
+    description: Field progress and problem reporting lacked offline queue, conflict, permissions, and accountable audit behavior.
+    artifact_refs:
+      [atlas/src/pages/PlanningDispatchPage.tsx, screens/walking-slice.json]
+    resolution: Mobile defaults to an actionable field mode with acreage validation, local queue state, conflict detection, newer-server authority, and no-overwrite resolution.
+  - id: FIND-012
+    severity: P1
+    status: resolved
+    title: Browser checks did not prove fixture realization
+    description: Tests asserted generic labels but not fixture identity, transitions, permissions, history, or action outcomes.
+    artifact_refs:
+      [atlas/tests/factory.e2e.spec.ts, validation/gate-results.json]
+    resolution: Playwright now proves FIX-001 identity, all recovery transitions, final verification, actor history, mobile offline queueing, and conflict resolution on desktop and Pixel 7.
+  - id: FIND-013
+    severity: P2
+    status: resolved
+    title: Queue filter and selection could diverge
+    description: Filtering could leave the detail panel focused on an order that no longer appeared in the queue.
+    artifact_refs:
+      [
+        atlas/src/pages/PlanningDispatchPage.tsx,
+        atlas/src/components/WorkOrderQueue.tsx,
+      ]
+    resolution: Filter changes select a visible row, derive review counts from filtered data, and announce the resulting selection.
+  - id: FIND-014
+    severity: P2
+    status: resolved
+    title: Field readability and selection announcements need proof
+    description: Tiny mobile metadata and unannounced selection changes weakened task-level accessibility beyond axe smoke coverage.
+    artifact_refs:
+      [atlas/src/styles.css, atlas/src/pages/PlanningDispatchPage.tsx]
+    resolution: Increased field text sizing and contrast, added live selection announcements and focus movement, and rechecked both viewports with zero serious or critical axe findings.

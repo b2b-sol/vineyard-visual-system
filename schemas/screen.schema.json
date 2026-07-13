@@ -21,7 +21,9 @@
   "properties": {
     "id": { "type": "string", "pattern": "^SCR-[0-9]{3}$" },
     "name": { "type": "string", "minLength": 3 },
-    "platform": { "enum": ["mobile", "desktop", "tablet", "responsive", "print"] },
+    "platform": {
+      "enum": ["mobile", "desktop", "tablet", "responsive", "print"]
+    },
     "workflow_ids": {
       "type": "array",
       "minItems": 1,
@@ -57,7 +59,9 @@
         "properties": {
           "id": { "type": "string", "pattern": "^ACT-[0-9]{3}$" },
           "label": { "type": "string", "minLength": 3 },
-          "kind": { "enum": ["inspect", "advance", "resolve", "correct", "supersede"] },
+          "kind": {
+            "enum": ["inspect", "advance", "resolve", "correct", "supersede"]
+          },
           "transition": {
             "type": "object",
             "required": ["from", "to"],
@@ -70,7 +74,9 @@
         },
         "allOf": [
           {
-            "if": { "properties": { "kind": { "not": { "const": "inspect" } } } },
+            "if": {
+              "properties": { "kind": { "not": { "const": "inspect" } } }
+            },
             "then": {
               "required": ["transition"],
               "properties": { "transition": { "type": "object" } }
@@ -80,8 +86,14 @@
         "additionalProperties": false
       }
     },
-    "entry_points": { "type": "array", "items": { "type": "string", "minLength": 3 } },
-    "exit_points": { "type": "array", "items": { "type": "string", "minLength": 3 } },
+    "entry_points": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "exit_points": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 3 }
+    },
     "states": {
       "type": "array",
       "minItems": 2,
@@ -90,7 +102,20 @@
         "required": ["id", "kind", "description"],
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
-          "kind": { "enum": ["normal", "urgent", "blocked", "partial", "corrected", "historical", "offline", "stale", "conflict", "completion"] },
+          "kind": {
+            "enum": [
+              "normal",
+              "urgent",
+              "blocked",
+              "partial",
+              "corrected",
+              "historical",
+              "offline",
+              "stale",
+              "conflict",
+              "completion"
+            ]
+          },
           "description": { "type": "string", "minLength": 8 }
         },
         "additionalProperties": false

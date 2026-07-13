@@ -64,8 +64,14 @@
       "uniqueItems": true,
       "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
     },
-    "actions": { "type": "array", "items": { "type": "string", "minLength": 3 } },
-    "content_limits": { "type": "array", "items": { "type": "string", "minLength": 3 } },
+    "actions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "content_limits": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 3 }
+    },
     "responsive_behavior": { "type": "string", "minLength": 8 },
     "accessibility": {
       "type": "array",
@@ -89,10 +95,17 @@
       },
       "additionalProperties": false
     },
-    "code_path": { "type": "string", "pattern": "^[^\\\\]+\\.(tsx|ts|jsx|js)$" },
+    "code_path": {
+      "type": "string",
+      "pattern": "^[^\\\\]+\\.(tsx|ts|jsx|js)$"
+    },
     "export_name": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9]*$" },
     "figma_name": { "type": "string", "minLength": 3 },
-    "token_dependencies": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 3 } }
+    "token_dependencies": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    }
   },
   "additionalProperties": false
 }

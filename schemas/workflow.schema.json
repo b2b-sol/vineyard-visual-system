@@ -36,7 +36,9 @@
         "temporary_visual_assumption"
       ]
     },
-    "confidence": { "enum": ["high", "medium-high", "medium", "medium-low", "low"] },
+    "confidence": {
+      "enum": ["high", "medium-high", "medium", "medium-low", "low"]
+    },
     "evidence_ids": {
       "type": "array",
       "minItems": 1,
@@ -83,7 +85,14 @@
       "minItems": 2,
       "items": {
         "type": "object",
-        "required": ["order", "stage", "description", "owner", "state_from", "state_to"],
+        "required": [
+          "order",
+          "stage",
+          "description",
+          "owner",
+          "state_from",
+          "state_to"
+        ],
         "properties": {
           "order": { "type": "integer", "minimum": 1 },
           "stage": {
@@ -173,7 +182,14 @@
       "items": { "type": "string", "minLength": 3 }
     },
     "product_intervention": {
-      "enum": ["support", "automate", "record", "communicate", "analyze", "leave_external"]
+      "enum": [
+        "support",
+        "automate",
+        "record",
+        "communicate",
+        "analyze",
+        "leave_external"
+      ]
     },
     "source_anchors": {
       "type": "array",

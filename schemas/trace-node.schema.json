@@ -5,8 +5,21 @@
   "type": "object",
   "required": ["id", "type", "title", "path", "locator", "status"],
   "properties": {
-    "id": { "type": "string", "pattern": "^(EVD|WF|SCN|FIX|SCR|CMP|PKT)-[A-Z0-9-]+$" },
-    "type": { "enum": ["evidence", "workflow", "scenario", "fixture", "screen", "component", "construction_packet"] },
+    "id": {
+      "type": "string",
+      "pattern": "^(EVD|WF|SCN|FIX|SCR|CMP|PKT)-[A-Z0-9-]+$"
+    },
+    "type": {
+      "enum": [
+        "evidence",
+        "workflow",
+        "scenario",
+        "fixture",
+        "screen",
+        "component",
+        "construction_packet"
+      ]
+    },
     "title": { "type": "string", "minLength": 3 },
     "path": { "type": "string", "pattern": "^[^\\\\]+$" },
     "locator": {
@@ -18,7 +31,15 @@
       },
       "additionalProperties": false
     },
-    "classification": { "enum": ["confirmed_source", "strong_inference", "product_decision", "synthetic_fixture", "implementation_contract"] },
+    "classification": {
+      "enum": [
+        "confirmed_source",
+        "strong_inference",
+        "product_decision",
+        "synthetic_fixture",
+        "implementation_contract"
+      ]
+    },
     "status": { "enum": ["draft", "review", "approved", "superseded"] }
   },
   "additionalProperties": false

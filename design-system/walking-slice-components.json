@@ -8,24 +8,69 @@
       "workflow_ids": ["WF-001"],
       "scenario_ids": ["SCN-001-01"],
       "screen_ids": ["SCR-001"],
-      "required_data": ["work_order.id", "work_order.block_id", "work_order.current_status", "work_order.target_acres", "work_order.status_history", "work_order.assignees"],
-      "optional_data": ["work_order.blocker", "work_order.actuals", "block.aliases"],
+      "required_data": [
+        "work_order.id",
+        "work_order.block_id",
+        "work_order.current_status",
+        "work_order.target_acres",
+        "work_order.status_history",
+        "work_order.assignees"
+      ],
+      "optional_data": [
+        "work_order.blocker",
+        "work_order.actuals",
+        "block.aliases"
+      ],
       "variants": ["supervisory_dense", "field_compact"],
-      "states": ["assigned", "in_progress", "blocked", "partially_completed", "ready_to_resume", "completed", "verified"],
-      "actions": ["Open work order", "Inspect blocker", "Inspect immutable status history"],
-      "content_limits": ["Show the block name before internal work-order ID", "Do not truncate blocker reason below two visible lines", "Display acreage with one decimal place"],
+      "states": [
+        "assigned",
+        "in_progress",
+        "blocked",
+        "partially_completed",
+        "ready_to_resume",
+        "completed",
+        "verified"
+      ],
+      "actions": [
+        "Open work order",
+        "Inspect blocker",
+        "Inspect immutable status history"
+      ],
+      "content_limits": [
+        "Show the block name before internal work-order ID",
+        "Do not truncate blocker reason below two visible lines",
+        "Display acreage with one decimal place"
+      ],
       "responsive_behavior": "Desktop uses aligned operational columns; narrow screens stack block, state, timing, and accountable owner without hiding the blocker.",
-      "accessibility": ["Status is expressed by text and icon in addition to color", "Queue rows remain keyboard reachable", "Current state is announced before supporting metadata", "Touch targets are at least 44 by 44 CSS pixels"],
+      "accessibility": [
+        "Status is expressed by text and icon in addition to color",
+        "Queue rows remain keyboard reachable",
+        "Current state is announced before supporting metadata",
+        "Touch targets are at least 44 by 44 CSS pixels"
+      ],
       "error_behavior": "An unresolved reference displays an explicit data-integrity state and disables consequential actions.",
       "semantic_contract": {
-        "ordered_stages": ["assigned", "in_progress", "blocked", "partially_completed", "ready_to_resume", "completed", "verified"],
+        "ordered_stages": [
+          "assigned",
+          "in_progress",
+          "blocked",
+          "partially_completed",
+          "ready_to_resume",
+          "completed",
+          "verified"
+        ],
         "non_color_cues": true,
         "history_is_immutable": true
       },
       "code_path": "atlas/src/components/WorkOrderQueue.tsx",
       "export_name": "WorkOrderQueue",
       "figma_name": "Operations/Work Order Queue",
-      "token_dependencies": ["color.status", "space.density", "type.operational", "size.touchTarget"]
+      "token_dependencies": [
+        "color.status",
+        "space.density",
+        "type.operational",
+        "size.touchTarget"
+      ]
     }
   ]
 }

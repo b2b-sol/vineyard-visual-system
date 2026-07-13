@@ -6,35 +6,115 @@
       "title": "Recover a partially completed mowing order after equipment failure",
       "workflow_ids": ["WF-001"],
       "category": "blocked",
-      "role_ids": ["ROLE-VITICULTURIST", "ROLE-VINEYARD-MANAGER", "ROLE-FOREMAN", "ROLE-EQUIPMENT-OPERATOR"],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN",
+        "ROLE-EQUIPMENT-OPERATOR"
+      ],
       "trigger": "A hydraulic-pressure alarm stops undervine mowing after 11.2 of 18.6 acres are complete.",
       "goal": "Retain trustworthy partial progress, isolate the blocked rows, resume safely, and verify the full block without erasing history.",
       "context": "Carneros Ridge Block 07 has a mapped weed escape before an irrigation set. The field team is connected, but the manager supervises several simultaneous crews from desktop dispatch.",
-      "preconditions": ["The observation and work order share BLK-007", "The operator and foreman are assigned", "Target acreage is 18.6 acres"],
-      "available_information": ["Completed west-pass acreage", "Hydraulic alarm report", "Affected row range", "Maintenance repair confirmation"],
-      "missing_information": ["Exact repair completion time is unknown at the moment the blocker is first reported"],
-      "normal_path": ["Manager assigns the planned mowing order", "Operator starts the west-to-east pass", "Operator reports actual acreage", "Manager verifies completed coverage"],
-      "exception_path": ["Foreman stops work after the hydraulic alarm", "Foreman records 11.2 completed acres and rows 28–34 as blocked", "Manager keeps the work order open rather than marking the block complete"],
-      "recovery_path": ["Maintenance replaces the leaking hose and pressure-tests the mower", "Manager releases only the remaining rows", "Operator completes 7.4 acres", "Manager verifies 18.6 total acres and immutable exception history"],
+      "preconditions": [
+        "The observation and work order share BLK-007",
+        "The operator and foreman are assigned",
+        "Target acreage is 18.6 acres"
+      ],
+      "available_information": [
+        "Completed west-pass acreage",
+        "Hydraulic alarm report",
+        "Affected row range",
+        "Maintenance repair confirmation"
+      ],
+      "missing_information": [
+        "Exact repair completion time is unknown at the moment the blocker is first reported"
+      ],
+      "normal_path": [
+        "Manager assigns the planned mowing order",
+        "Operator starts the west-to-east pass",
+        "Operator reports actual acreage",
+        "Manager verifies completed coverage"
+      ],
+      "exception_path": [
+        "Foreman stops work after the hydraulic alarm",
+        "Foreman records 11.2 completed acres and rows 28–34 as blocked",
+        "Manager keeps the work order open rather than marking the block complete"
+      ],
+      "recovery_path": [
+        "Maintenance replaces the leaking hose and pressure-tests the mower",
+        "Manager releases only the remaining rows",
+        "Operator completes 7.4 acres",
+        "Manager verifies 18.6 total acres and immutable exception history"
+      ],
       "decision_points": ["DEC-001", "DEC-002"],
-      "branches": ["If repair evidence is absent, remain blocked", "If actual acreage exceeds block acreage, reject verification and require correction"],
+      "branches": [
+        "If repair evidence is absent, remain blocked",
+        "If actual acreage exceeds block acreage, reject verification and require correction"
+      ],
       "records_read": ["OBS-001", "WO-001", "BLK-007", "status history"],
-      "records_created": ["blocked event", "partial completion event", "repair release event", "verification event"],
-      "communications": ["Foreman reports the blocker to the vineyard manager", "Manager releases remaining rows to the foreman and operator"],
+      "records_created": [
+        "blocked event",
+        "partial completion event",
+        "repair release event",
+        "verification event"
+      ],
+      "communications": [
+        "Foreman reports the blocker to the vineyard manager",
+        "Manager releases remaining rows to the foreman and operator"
+      ],
       "device_context": "Field report on mobile; cross-crew recovery and verification on responsive desktop",
       "connectivity": "Connected, with every transition attributable and timestamped",
-      "compliance_implications": ["Actual equipment and labor time must remain distinguishable from planned time"],
+      "compliance_implications": [
+        "Actual equipment and labor time must remain distinguishable from planned time"
+      ],
       "completion_condition": "WO-001 is verified at 18.6 completed acres, and its blocked and partial history remains inspectable.",
       "synthetic_fixture_refs": ["FIX-001"],
       "expected_transitions": [
-        { "from": null, "to": "planned", "reason": "Observation accepted into the work plan" },
-        { "from": "planned", "to": "assigned", "reason": "Manager dispatches accountable assignees" },
-        { "from": "assigned", "to": "in_progress", "reason": "Operator begins the block pass" },
-        { "from": "in_progress", "to": "blocked", "reason": "Hydraulic alarm requires a safe stop" },
-        { "from": "blocked", "to": "partially_completed", "reason": "Safe completed acreage is retained" },
-        { "from": "partially_completed", "to": "ready_to_resume", "reason": "Repair evidence releases remaining rows" },
-        { "from": "ready_to_resume", "to": "completed", "reason": "Operator finishes remaining acreage" },
-        { "from": "completed", "to": "verified", "reason": "Manager verifies totals and coverage" }
+        {
+          "from": null,
+          "to": "observed",
+          "reason": "Viticulturist records an attributable field observation"
+        },
+        {
+          "from": "observed",
+          "to": "planned",
+          "reason": "Observation accepted into the work plan"
+        },
+        {
+          "from": "planned",
+          "to": "assigned",
+          "reason": "Manager dispatches accountable assignees"
+        },
+        {
+          "from": "assigned",
+          "to": "in_progress",
+          "reason": "Operator begins the block pass"
+        },
+        {
+          "from": "in_progress",
+          "to": "blocked",
+          "reason": "Hydraulic alarm requires a safe stop"
+        },
+        {
+          "from": "blocked",
+          "to": "partially_completed",
+          "reason": "Safe completed acreage is retained"
+        },
+        {
+          "from": "partially_completed",
+          "to": "ready_to_resume",
+          "reason": "Repair evidence releases remaining rows"
+        },
+        {
+          "from": "ready_to_resume",
+          "to": "completed",
+          "reason": "Operator finishes remaining acreage"
+        },
+        {
+          "from": "completed",
+          "to": "verified",
+          "reason": "Manager verifies totals and coverage"
+        }
       ]
     }
   ]

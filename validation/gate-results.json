@@ -1,7 +1,18 @@
 {
   "schema_version": "1.0",
-  "evaluated_at": "2026-07-13T15:00:00-07:00",
+  "evaluated_at": "2026-07-13T15:23:00-07:00",
   "gates": [
+    {
+      "id": "G0",
+      "status": "passed",
+      "checks": [
+        "Exact tiklebot login",
+        "Repository admin permission",
+        "Public repository visibility"
+      ],
+      "evidence": ["OWNER_BOOTSTRAP_COMPLETE.md", "control/PROJECT_STATE.yaml"],
+      "commit_sha": "6518668b2e898d488134bc77881fd75263d44490"
+    },
     {
       "id": "G1",
       "status": "passed",
@@ -17,7 +28,8 @@
         "control/trace-nodes.json",
         "control/trace-edges.json",
         "control/MASTER_MANIFEST.yaml"
-      ]
+      ],
+      "commit_sha": "a6e09a5a768eda9388493f7d31934d9c10e88ad7"
     },
     {
       "id": "G2",
@@ -36,9 +48,28 @@
         "data/walking-slice.json",
         "screens/walking-slice.json",
         "atlas/tests/factory.e2e.spec.ts",
+        "validation/FACTORY_REVIEW.md",
         "review-exports/factory/planning-dispatch-desktop.png",
         "review-exports/factory/planning-dispatch-mobile.png"
-      ]
+      ],
+      "commit_sha": "a6e09a5a768eda9388493f7d31934d9c10e88ad7"
+    },
+    {
+      "id": "G3",
+      "status": "in_progress",
+      "checks": [
+        "Normalized report anchors",
+        "Unique public bibliography URLs",
+        "Ten-family evidence coverage",
+        "Independent workflow extraction"
+      ],
+      "evidence": [
+        "source/evidence.json",
+        "source/bibliography.json",
+        "workflow-model/candidates/extraction-a.json",
+        "workflow-model/candidates/extraction-b.json"
+      ],
+      "commit_sha": null
     }
   ]
 }

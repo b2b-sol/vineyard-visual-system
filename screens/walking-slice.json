@@ -78,6 +78,11 @@
           "description": "Repair evidence releases only the remaining scope."
         },
         {
+          "id": "completed",
+          "kind": "completion",
+          "description": "Execution is finished and awaits accountable verification."
+        },
+        {
           "id": "verified",
           "kind": "completion",
           "description": "A supervisor confirmed final acreage and preserved exception history."

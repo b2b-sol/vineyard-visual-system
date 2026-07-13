@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: "1.0"
 assumptions:
   - id: ASM-001
     statement: The California North Coast composite is illustrative and not legal, agronomic, labor, pesticide, certification, or contract advice.

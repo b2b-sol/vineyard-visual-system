@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: "1.0"
 generated_from: control/trace-nodes.json
 artifact_count: 7
 artifacts:
@@ -6,7 +6,7 @@ artifacts:
     type: evidence
     title: Seasonal work planning and work-order dispatch source card
     path: source/Vineyard-Workflow-Discovery-report.md
-    locator: 'heading:Workflow card: seasonal work planning and work-order dispatch'
+    locator: "heading:Detailed workflow cards and handoff maps"
     status: approved
   - id: WF-001
     type: workflow

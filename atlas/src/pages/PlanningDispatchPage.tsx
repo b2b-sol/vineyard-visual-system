@@ -1,19 +1,29 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { FieldCrewMode } from "../components/FieldCrewMode";
 import { Icon } from "../components/Icon";
+import { RecoveryActionPanel } from "../components/RecoveryActionPanel";
 import { StatusSignal } from "../components/StatusSignal";
 import { WorkOrderQueue } from "../components/WorkOrderQueue";
 import {
   blockIdentity,
+  canonicalWorkOrder,
   dayMetrics,
   statusDefinitions,
   traceChain,
   workflowSteps,
   workOrders,
+  type RecoveryState,
+  type WorkOrder,
   type WorkStatus,
 } from "../data/planningDispatch";
+import {
+  type RecoveryReplay,
+  useRecoveryReplay,
+} from "../hooks/useRecoveryReplay";
 
 type FilterKey = "all" | "attention" | "active" | "closed";
+type SurfaceMode = "supervisor" | "field";
 
 const filterLabels: Record<FilterKey, string> = {
   all: "All work",
@@ -25,7 +35,15 @@ const filterLabels: Record<FilterKey, string> = {
 const filterStatuses: Record<Exclude<FilterKey, "all">, WorkStatus[]> = {
   attention: ["blocked", "offline", "stale", "partial"],
   active: ["ready", "assigned", "in-progress"],
-  closed: ["verified", "corrected", "historical"],
+  closed: ["completed", "verified", "corrected", "historical"],
+};
+
+const recoveryQueueStatus: Record<RecoveryState, WorkStatus> = {
+  blocked: "blocked",
+  partially_completed: "partial",
+  ready_to_resume: "ready",
+  completed: "completed",
+  verified: "verified",
 };
 
 function MetricCard({ metric }: { metric: (typeof dayMetrics)[number] }) {
@@ -88,10 +106,25 @@ function BlockIdentityCard() {
   );
 }
 
-function EvidencePanel({ selectedId }: { selectedId: string }) {
-  const selected =
-    workOrders.find((order) => order.id === selectedId) ?? workOrders[0];
-  const isDefault = selected.id === workOrders[0].id;
+function EvidencePanel({
+  selectedId,
+  orders,
+  replay,
+  onOpenFieldMode,
+}: {
+  selectedId: string;
+  orders: WorkOrder[];
+  replay: RecoveryReplay;
+  onOpenFieldMode: () => void;
+}) {
+  const selected = orders.find((order) => order.id === selectedId) ?? orders[0];
+  const isCanonical = selected.fixtureId === "FIX-001";
+  const canonicalCompleted = ["completed", "verified"].includes(replay.state)
+    ? canonicalWorkOrder.target_acres
+    : 11.2;
+  const progress = Math.round(
+    (canonicalCompleted / canonicalWorkOrder.target_acres) * 100,
+  );
 
   return (
     <aside aria-label="Selected work order details" className="detail-stack">
@@ -139,35 +172,56 @@ function EvidencePanel({ selectedId }: { selectedId: string }) {
           </div>
         )}
 
-        {isDefault ? (
+        {isCanonical && selected.status === "partial" && (
+          <div className="decision-banner decision-warning" role="status">
+            <Icon name="info" />
+            <span>
+              <strong>Safe work retained; remaining rows stay open</strong>
+              11.2 of 18.6 acres are recorded without closing rows 28–34.
+            </span>
+          </div>
+        )}
+
+        {isCanonical && selected.status === "ready" && (
+          <div className="decision-banner decision-info" role="status">
+            <Icon name="check" />
+            <span>
+              <strong>Repair confirmed; remaining rows released</strong>
+              The original hydraulic blocker remains visible in immutable
+              history.
+            </span>
+          </div>
+        )}
+
+        {isCanonical ? (
           <>
             <WorkflowProgress />
             <div className="progress-proof">
               <div>
                 <span>Reported coverage</span>
                 <strong>
-                  14.8 <small>/ 22.4 ac</small>
+                  {canonicalCompleted} <small>/ 18.6 ac</small>
                 </strong>
                 <div className="progress-track">
-                  <span style={{ width: "66%" }} />
+                  <span style={{ width: `${progress}%` }} />
                 </div>
               </div>
               <dl>
                 <div>
                   <dt>Started</dt>
-                  <dd>06:21</dd>
+                  <dd>7:22 AM</dd>
                 </div>
                 <div>
-                  <dt>Rows</dt>
-                  <dd>1–42 of 64</dd>
+                  <dt>Open scope</dt>
+                  <dd>Rows 28–34</dd>
                 </div>
                 <div>
-                  <dt>Labor</dt>
-                  <dd>61.4 hr</dd>
+                  <dt>Reporter</dt>
+                  <dd>Mateo Ruiz</dd>
                 </div>
                 <div>
-                  <dt>Next check</dt>
-                  <dd>11:15</dd>
+                  <dt>Audit state</dt>
+                  <dd>{replay.history.length} events</dd>
                 </div>
               </dl>
             </div>
@@ -199,15 +253,30 @@ function EvidencePanel({ selectedId }: { selectedId: string }) {
         )}
 
         <div className="selected-actions">
-          <button className="button button-primary" type="button">
-            Open work record
-          </button>
-          <button className="button button-secondary" type="button">
-            View crew brief
-          </button>
+          {isCanonical ? (
+            <>
+              <a
+                className="button button-primary"
+                href="#recovery-actions-title"
+              >
+                Resolve work record
+              </a>
+              <button
+                className="button button-secondary"
+                onClick={onOpenFieldMode}
+                type="button"
+              >
+                Open field mode
+              </button>
+            </>
+          ) : (
+            <a className="button button-secondary" href="#state-coverage-title">
+              Review state semantics
+            </a>
+          )}
         </div>
       </article>
-      {isDefault && <BlockIdentityCard />}
+      {isCanonical && <BlockIdentityCard />}
     </aside>
   );
 }
@@ -297,49 +366,47 @@ function MobileCrewBrief() {
         </div>
         <div className="phone-frame" aria-label="Mobile crew brief preview">
           <div className="phone-status">
-            <span>6:22</span>
+            <span>9:16</span>
             <span>Field mode · Offline ready</span>
           </div>
           <header>
-            <span className="mono">WO-260618-04</span>
-            <StatusSignal compact status="in-progress" />
-            <h3>Lift and tuck · pass 2</h3>
-            <p>South Loam 22 · Cabernet Franc</p>
+            <span className="mono">FIX-001 · WO-001</span>
+            <StatusSignal compact status="blocked" />
+            <h3>Mechanical undervine mowing</h3>
+            <p>Carneros Ridge Block 07 · Pinot Noir</p>
           </header>
           <div className="phone-context">
             <span>
               <Icon name="block" />
-              <strong>Rows 1–64</strong>
-              <small>West → east</small>
+              <strong>Rows 28–34</strong>
+              <small>Remain open</small>
             </span>
             <span>
               <Icon name="clock" />
-              <strong>By 13:30</strong>
-              <small>Check at 11:15</small>
+              <strong>Before 18:00</strong>
+              <small>Irrigation set</small>
             </span>
           </div>
           <div className="phone-alert">
             <Icon name="info" />
             <span>
-              <strong>Keep flags visible</strong>Replacement vines in rows 16,
-              29, 41.
+              <strong>Hydraulic stop recorded</strong>Leaking mower supply hose;
+              west-pass acreage remains valid.
             </span>
           </div>
           <div className="phone-progress">
             <span>Reported</span>
             <strong>
-              14.8 <small>/ 22.4 ac</small>
+              11.2 <small>/ 18.6 ac</small>
             </strong>
             <div>
               <span />
             </div>
           </div>
-          <button className="button button-primary" type="button">
-            Report progress
-          </button>
-          <button className="button button-secondary" type="button">
-            Flag a problem
-          </button>
+          <span className="button button-primary">
+            Queue partial completion
+          </span>
+          <span className="button button-secondary">Inspect local history</span>
         </div>
       </div>
     </section>
@@ -351,17 +418,87 @@ export function PlanningDispatchPage({
 }: {
   screenMode?: boolean;
 }) {
+  const replay = useRecoveryReplay();
   const [selectedId, setSelectedId] = useState(workOrders[0].id);
   const [filter, setFilter] = useState<FilterKey>("all");
+  const [surfaceMode, setSurfaceMode] = useState<SurfaceMode>(() =>
+    screenMode && window.matchMedia("(max-width: 720px)").matches
+      ? "field"
+      : "supervisor",
+  );
+  const [selectionAnnouncement, setSelectionAnnouncement] = useState(
+    `${workOrders[0].id} selected from FIX-001.`,
+  );
+  const currentOrders = useMemo(
+    () =>
+      workOrders.map((order) =>
+        order.fixtureId === "FIX-001"
+          ? {
+              ...order,
+              status: recoveryQueueStatus[replay.state],
+              completedAcres: ["completed", "verified"].includes(replay.state)
+                ? canonicalWorkOrder.target_acres
+                : 11.2,
+              update:
+                replay.state === "verified"
+                  ? "Verified by Elena Ortiz · 3:10 PM"
+                  : replay.state === "completed"
+                    ? "Full acreage reported · 2:36 PM"
+                    : replay.state === "ready_to_resume"
+                      ? "Repair confirmed · 11:45 AM"
+                      : replay.state === "partially_completed"
+                        ? "11.2 acres retained · 9:16 AM"
+                        : order.update,
+            }
+          : order,
+      ),
+    [replay.state],
+  );
   const filteredOrders = useMemo(
     () =>
       filter === "all"
-        ? workOrders
-        : workOrders.filter((order) =>
+        ? currentOrders
+        : currentOrders.filter((order) =>
             filterStatuses[filter].includes(order.status),
           ),
-    [filter],
+    [currentOrders, filter],
   );
+  const attentionOrders = currentOrders.filter((order) =>
+    filterStatuses.attention.includes(order.status),
+  );
+
+  const selectOrder = (id: string) => {
+    const order = currentOrders.find((item) => item.id === id);
+    setSelectedId(id);
+    setSelectionAnnouncement(
+      order
+        ? `${order.id}, ${order.title}, selected. Status ${order.status}.`
+        : `${id} selected.`,
+    );
+  };
+
+  const applyFilter = (nextFilter: FilterKey) => {
+    const nextOrders =
+      nextFilter === "all"
+        ? currentOrders
+        : currentOrders.filter((order) =>
+            filterStatuses[nextFilter].includes(order.status),
+          );
+    setFilter(nextFilter);
+    if (!nextOrders.some((order) => order.id === selectedId)) {
+      const nextSelection = nextOrders[0]?.id ?? "";
+      setSelectedId(nextSelection);
+      setSelectionAnnouncement(
+        nextSelection
+          ? `${filterLabels[nextFilter]} filter applied. ${nextSelection} selected because the prior record is outside this filter.`
+          : `${filterLabels[nextFilter]} filter applied. No work orders match.`,
+      );
+    } else {
+      setSelectionAnnouncement(
+        `${filterLabels[nextFilter]} filter applied. ${nextOrders.length} work orders shown.`,
+      );
+    }
+  };
 
   return (
     <div className="workflow-page page-frame">
@@ -388,6 +525,8 @@ export function PlanningDispatchPage({
             <p className="lede">
               Convert seasonal intent and current field signals into executable
               block work—then preserve what happened, what did not, and why.
+              This route is driven by FIX-001, not presentation-only sample
+              copy.
             </p>
           </div>
           <div className="confidence-card">
@@ -395,25 +534,25 @@ export function PlanningDispatchPage({
               <Icon name="spark" />
             </span>
             <small>Source confidence</small>
-            <strong>Medium–high</strong>
-            <p>Supported composite workflow</p>
+            <strong>Canonical fixture</strong>
+            <p>FIX-001 · seed 20260713</p>
           </div>
         </div>
         <div className="context-strip">
           <span>
             <Icon name="calendar" />
-            <strong>Fruit set</strong>
-            <small>Jun 18 · day shift</small>
+            <strong>May 14 · day shift</strong>
+            <small>Before 18:00 irrigation set</small>
           </span>
           <span>
             <Icon name="block" />
-            <strong>Mesa Alta</strong>
-            <small>Rancho Arroyo + Juniper Draw</small>
+            <strong>Carneros Ridge</strong>
+            <small>BLK-007 · Pinot Noir</small>
           </span>
           <span>
             <Icon name="crew" />
             <strong>Vineyard manager</strong>
-            <small>Foremen · crews · office</small>
+            <small>Elena Ortiz · Mateo Ruiz · Luis Mendoza</small>
           </span>
           <span>
             <Icon name="route" />
@@ -423,86 +562,138 @@ export function PlanningDispatchPage({
         </div>
       </header>
 
+      <div className="surface-mode-bar">
+        <div>
+          <p className="kicker">Responsive operating surface</p>
+          <strong>
+            {surfaceMode === "supervisor"
+              ? "Supervisor dispatch mode"
+              : "Field crew mode"}
+          </strong>
+          <small>
+            {surfaceMode === "supervisor"
+              ? "Cross-crew decisions, recovery, verification, and audit"
+              : "Large field controls with offline-safe proof capture"}
+          </small>
+        </div>
+        <div
+          aria-label="Choose operating mode"
+          className="mode-switch"
+          role="group"
+        >
+          <button
+            aria-pressed={surfaceMode === "supervisor"}
+            onClick={() => setSurfaceMode("supervisor")}
+            type="button"
+          >
+            <Icon name="layers" /> Supervisor
+          </button>
+          <button
+            aria-pressed={surfaceMode === "field"}
+            onClick={() => setSurfaceMode("field")}
+            type="button"
+          >
+            <Icon name="crew" /> Field crew
+          </button>
+        </div>
+      </div>
+
       <section aria-label="Day overview" className="metric-grid">
         {dayMetrics.map((metric) => (
           <MetricCard key={metric.label} metric={metric} />
         ))}
       </section>
 
-      <section
-        aria-labelledby="decision-queue-title"
-        className="attention-band"
-      >
-        <div className="attention-title">
-          <span>
-            <Icon name="warning" />
-          </span>
-          <div>
-            <p className="kicker">Decisions before dispatch</p>
-            <h2 id="decision-queue-title">Two items can change today’s plan</h2>
-          </div>
-        </div>
-        <div className="attention-items">
-          <button
-            onClick={() => {
-              setFilter("attention");
-              setSelectedId("WO-260618-07");
-            }}
-            type="button"
+      {surfaceMode === "supervisor" ? (
+        <>
+          <section
+            aria-labelledby="decision-queue-title"
+            className="attention-band"
           >
-            <StatusSignal compact status="blocked" />
-            <span>
-              <strong>North Bench access restriction</strong>
-              <small>Re-scope west rows or hold until 14:00</small>
-            </span>
-            <Icon name="chevron" />
-          </button>
-          <button onClick={() => setFilter("attention")} type="button">
-            <StatusSignal compact status="stale" />
-            <span>
-              <strong>Tomorrow’s labor roster</strong>
-              <small>Last confirmed 11 hr ago · 18-person gap</small>
-            </span>
-            <Icon name="chevron" />
-          </button>
-        </div>
-      </section>
+            <div className="attention-title">
+              <span>
+                <Icon name="warning" />
+              </span>
+              <div>
+                <p className="kicker">Decisions before dispatch</p>
+                <h2 id="decision-queue-title">
+                  {attentionOrders.length} items can change today’s plan
+                </h2>
+              </div>
+            </div>
+            <div className="attention-items">
+              {attentionOrders.map((order) => (
+                <button
+                  key={order.id}
+                  onClick={() => {
+                    setFilter("attention");
+                    selectOrder(order.id);
+                  }}
+                  type="button"
+                >
+                  <StatusSignal compact status={order.status} />
+                  <span>
+                    <strong>{order.title}</strong>
+                    <small>
+                      {order.block} · {order.detail}
+                    </small>
+                  </span>
+                  <Icon name="chevron" />
+                </button>
+              ))}
+            </div>
+          </section>
 
-      <div className="queue-toolbar">
-        <div
-          aria-label="Filter work orders"
-          className="segmented-control"
-          role="group"
-        >
-          {(Object.keys(filterLabels) as FilterKey[]).map((key) => (
-            <button
-              aria-pressed={filter === key}
-              key={key}
-              onClick={() => setFilter(key)}
-              type="button"
+          <div className="queue-toolbar">
+            <div
+              aria-label="Filter work orders"
+              className="segmented-control"
+              role="group"
             >
-              {filterLabels[key]}
-            </button>
-          ))}
-        </div>
-        <div className="sync-note">
-          <Icon name="offline" />
-          <span>Field sync</span>
-          <strong>3 queued</strong>
-        </div>
-      </div>
+              {(Object.keys(filterLabels) as FilterKey[]).map((key) => (
+                <button
+                  aria-pressed={filter === key}
+                  key={key}
+                  onClick={() => applyFilter(key)}
+                  type="button"
+                >
+                  {filterLabels[key]}
+                </button>
+              ))}
+            </div>
+            <div className="sync-note">
+              <Icon name="offline" />
+              <span>Field sync</span>
+              <strong>1 fixture queue available</strong>
+            </div>
+          </div>
 
-      <div className="workspace-grid">
-        <WorkOrderQueue
-          orders={filteredOrders}
-          onSelect={setSelectedId}
-          selectedId={selectedId}
-        />
-        <EvidencePanel selectedId={selectedId} />
-      </div>
+          <div className="workspace-grid">
+            <WorkOrderQueue
+              orders={filteredOrders}
+              onSelect={selectOrder}
+              selectedId={selectedId}
+            />
+            <EvidencePanel
+              onOpenFieldMode={() => setSurfaceMode("field")}
+              orders={currentOrders}
+              replay={replay}
+              selectedId={selectedId}
+            />
+          </div>
+
+          <RecoveryActionPanel replay={replay} />
+        </>
+      ) : (
+        <FieldCrewMode />
+      )}
+
+      <p aria-live="polite" className="sr-only">
+        {selectionAnnouncement} {replay.announcement}
+      </p>
 
       <StateCoverage />
-      <MobileCrewBrief />
+      {surfaceMode === "supervisor" && <MobileCrewBrief />}
 
       <section
         aria-labelledby="workflow-contract-title"

@@ -1,4 +1,4 @@
-schema_version: '2.0'
+schema_version: "2.0"
 tasks:
   - id: AUTH-001
     title: Verify organization-owner GitHub authentication
@@ -10,18 +10,19 @@ tasks:
     checks: [bootstrap/00-verify-owner-auth.ps1]
     gate_ids: [G0]
     owner: owner_account
-    completed_at: '2026-07-13T13:51:27-07:00'
+    completed_at: "2026-07-13T13:51:27-07:00"
   - id: AUTH-002
     title: Create public repository and grant tiklebot admin
     phase: authentication
     status: complete
     depends_on: [AUTH-001]
     artifacts: [OWNER_BOOTSTRAP_COMPLETE.md]
-    acceptance_criteria: [Repository is public and empty, tiklebot has admin permission]
+    acceptance_criteria:
+      [Repository is public and empty, tiklebot has admin permission]
     checks: [GitHub repository API verification]
     gate_ids: [G0]
     owner: owner_account
-    completed_at: '2026-07-13T13:51:27-07:00'
+    completed_at: "2026-07-13T13:51:27-07:00"
   - id: AUTH-003
     title: Stop at the owner bootstrap checkpoint
     phase: authentication
@@ -32,107 +33,172 @@ tasks:
     checks: [OWNER_BOOTSTRAP_COMPLETE.md]
     gate_ids: [G0]
     owner: owner_account
-    completed_at: '2026-07-13T13:51:27-07:00'
+    completed_at: "2026-07-13T13:51:27-07:00"
   - id: AUTH-004
     title: Verify bot authentication and repository authority
     phase: authentication
     status: complete
     depends_on: [AUTH-003]
     artifacts: [control/PROJECT_STATE.yaml]
-    acceptance_criteria: [Active login is exactly tiklebot, permission is admin, visibility is public]
+    acceptance_criteria:
+      [
+        Active login is exactly tiklebot,
+        permission is admin,
+        visibility is public,
+      ]
     checks: [bootstrap/02-verify-and-accept-bot.ps1]
     gate_ids: [G0]
     owner: tiklebot
-    completed_at: '2026-07-13T14:13:23-07:00'
+    commit: 6518668b2e898d488134bc77881fd75263d44490
+    completed_at: "2026-07-13T14:13:23-07:00"
   - id: GOV-PLAN-001
     title: Review and strengthen the packet execution system
     phase: governance
     status: complete
     depends_on: [AUTH-004]
-    artifacts: [PACKET_REVIEW.md, control/EXECUTION_PLAN.md, control/DOD_MATRIX.yaml, control/DECISION_LOG.md]
-    acceptance_criteria: [Independent reviews integrated, five production waves and durable gates defined, project assumptions made explicit]
+    artifacts:
+      [
+        PACKET_REVIEW.md,
+        control/EXECUTION_PLAN.md,
+        control/DOD_MATRIX.yaml,
+        control/DECISION_LOG.md,
+      ]
+    acceptance_criteria:
+      [
+        Independent reviews integrated,
+        five production waves and durable gates defined,
+        project assumptions made explicit,
+      ]
     checks: [control-file review]
     gate_ids: [G1]
     owner: parent_agent
-    completed_at: '2026-07-13T14:22:00-07:00'
+    commit: 6518668b2e898d488134bc77881fd75263d44490
+    completed_at: "2026-07-13T14:22:00-07:00"
   - id: INIT-001
     title: Import the reviewed packet as the first bot-owned commit
     phase: initialization
     status: complete
     depends_on: [GOV-PLAN-001]
     artifacts: [AGENTS.md, source, control, schemas, templates, prompts, .codex]
-    acceptance_criteria: [Repository-local bot identity is configured, main is pushed by tiklebot, no private paths or secrets are committed]
+    acceptance_criteria:
+      [
+        Repository-local bot identity is configured,
+        main is pushed by tiklebot,
+        no private paths or secrets are committed,
+      ]
     checks: [git author verification, repository hygiene scan]
     gate_ids: [G0, G1]
     owner: tiklebot
     commit: 6518668b2e898d488134bc77881fd75263d44490
-    completed_at: '2026-07-13T14:26:00-07:00'
+    completed_at: "2026-07-13T14:26:00-07:00"
   - id: FACT-001
     title: Create the deterministic TypeScript and browser toolchain
     phase: factory
     status: complete
     depends_on: [INIT-001]
     artifacts: [package.json, package-lock.json, tsconfig.json, atlas, scripts]
-    acceptance_criteria: [Clean install, lint, typecheck, unit tests, build, and aggregate verify command pass]
+    acceptance_criteria:
+      [
+        Clean install,
+        lint,
+        typecheck,
+        unit tests,
+        build,
+        and aggregate verify command pass,
+      ]
     checks: [npm ci, npm run verify]
     gate_ids: [G2]
     owner: implementation_worker
     branch: codex/factory-foundation
-    started_at: '2026-07-13T14:27:00-07:00'
+    started_at: "2026-07-13T14:27:00-07:00"
     commit: 07ab25fd1cb66045c019df550828f1df8a6c7810
-    completed_at: '2026-07-13T14:42:00-07:00'
+    completed_at: "2026-07-13T14:42:00-07:00"
   - id: FACT-002
     title: Build registries, semantic validators, and one walking slice
     phase: factory
     status: complete
     depends_on: [FACT-001]
-    artifacts: [schemas, control/trace-nodes.json, control/trace-edges.json, validation]
-    acceptance_criteria: [One evidence-to-workflow-to-scenario-to-fixture-to-screen-to-component-to-packet chain validates and renders]
+    artifacts:
+      [schemas, control/trace-nodes.json, control/trace-edges.json, validation]
+    acceptance_criteria:
+      [
+        One evidence-to-workflow-to-scenario-to-fixture-to-screen-to-component-to-packet chain validates and renders,
+      ]
     checks: [npm run validate, npm run test]
     gate_ids: [G1, G2]
     owner: implementation_worker
     branch: codex/factory-foundation
-    started_at: '2026-07-13T14:29:00-07:00'
-    completed_at: '2026-07-13T14:52:58-07:00'
+    started_at: "2026-07-13T14:29:00-07:00"
+    commit: a6e09a5a768eda9388493f7d31934d9c10e88ad7
+    completed_at: "2026-07-13T14:52:58-07:00"
   - id: FACT-003
     title: Establish CI and Pages scaffold
     phase: factory
     status: in_progress
     depends_on: [FACT-002]
-    artifacts: [.github/workflows/ci.yml, .github/workflows/visual-validation.yml, .github/workflows/repository-audit.yml, .github/workflows/pages.yml]
-    acceptance_criteria: [Three stable checks run on pull requests, merge groups, and main; Pages-safe build deploys]
+    artifacts:
+      [
+        .github/workflows/ci.yml,
+        .github/workflows/visual-validation.yml,
+        .github/workflows/repository-audit.yml,
+        .github/workflows/pages.yml,
+      ]
+    acceptance_criteria:
+      [
+        Three stable checks run on pull requests,
+        merge groups,
+        and main; Pages-safe build deploys,
+      ]
     checks: [GitHub Actions, Pages smoke test]
     gate_ids: [G2, G12]
     owner: parent_agent
     branch: codex/factory-foundation
-    started_at: '2026-07-13T14:52:58-07:00'
+    started_at: "2026-07-13T14:52:58-07:00"
   - id: GOV-001
     title: Configure main ruleset and prove the merge workflow
     phase: governance
     status: planned
     depends_on: [FACT-003]
     artifacts: [validation/governance-audit.md]
-    acceptance_criteria: [PRs and three checks are required, merge queue or documented equivalent works, force push and deletion are blocked]
+    acceptance_criteria:
+      [
+        PRs and three checks are required,
+        merge queue or documented equivalent works,
+        force push and deletion are blocked,
+      ]
     checks: [GitHub ruleset API, governance smoke PR]
     gate_ids: [G1, G12]
     owner: parent_agent
   - id: SRC-001
     title: Normalize source evidence and public bibliography
     phase: workflow_model
-    status: planned
+    status: in_progress
     depends_on: [FACT-002]
     artifacts: [source/evidence.json, source/bibliography.json]
-    acceptance_criteria: [Every workflow claim has a resolvable evidence or decision anchor and public citations are durable]
+    acceptance_criteria:
+      [
+        Every workflow claim has a resolvable evidence or decision anchor and public citations are durable,
+      ]
     checks: [npm run validate:evidence]
     gate_ids: [G3]
     owner: workflow_extractor
+    branch: codex/factory-foundation
+    started_at: "2026-07-13T15:17:00-07:00"
   - id: WF-001
     title: Run two independent workflow extractions
     phase: workflow_model
     status: planned
     depends_on: [SRC-001]
     artifacts: [workflow-model/candidates]
-    acceptance_criteria: [Two independently produced structured candidates cover roles, records, decisions, handoffs, exceptions, and uncertainty]
+    acceptance_criteria:
+      [
+        Two independently produced structured candidates cover roles,
+        records,
+        decisions,
+        handoffs,
+        exceptions,
+        and uncertainty,
+      ]
     checks: [schema and evidence validation]
     gate_ids: [G3]
     owner: workflow_extractor
@@ -141,8 +207,23 @@ tasks:
     phase: workflow_model
     status: planned
     depends_on: [WF-001]
-    artifacts: [workflow-model/workflows.json, workflow-model/roles.json, workflow-model/records.json, workflow-model/decisions.json, workflow-model/exceptions.json]
-    acceptance_criteria: [All ten families, overlays, swimlanes, state machines, decisions, and exceptions are approved with evidence classifications]
+    artifacts:
+      [
+        workflow-model/workflows.json,
+        workflow-model/roles.json,
+        workflow-model/records.json,
+        workflow-model/decisions.json,
+        workflow-model/exceptions.json,
+      ]
+    acceptance_criteria:
+      [
+        All ten families,
+        overlays,
+        swimlanes,
+        state machines,
+        decisions,
+        and exceptions are approved with evidence classifications,
+      ]
     checks: [npm run validate:workflow, workflow critic score]
     gate_ids: [G3]
     owner: workflow_adjudicator
@@ -151,8 +232,20 @@ tasks:
     phase: synthetic_data
     status: planned
     depends_on: [WF-002]
-    artifacts: [data/operation.json, data/events.json, data/exceptions.json, scripts/generate-data.ts]
-    acceptance_criteria: [One coherent estate and contract-fruit season with at least 15 exception histories passes referential, chronology, unit, and status invariants]
+    artifacts:
+      [
+        data/operation.json,
+        data/events.json,
+        data/exceptions.json,
+        scripts/generate-data.ts,
+      ]
+    acceptance_criteria:
+      [
+        One coherent estate and contract-fruit season with at least 15 exception histories passes referential,
+        chronology,
+        unit,
+        and status invariants,
+      ]
     checks: [npm run generate:data, npm run validate:data]
     gate_ids: [G4]
     owner: data_synthesizer
@@ -162,7 +255,17 @@ tasks:
     status: planned
     depends_on: [WF-002, DATA-001]
     artifacts: [scenarios/scenarios.json, product-structure]
-    acceptance_criteria: [At least 70 substantive scenarios, IA, permissions, notifications, sync model, requirements, screen registry, and state matrix trace to fixtures and workflows]
+    acceptance_criteria:
+      [
+        At least 70 substantive scenarios,
+        IA,
+        permissions,
+        notifications,
+        sync model,
+        requirements,
+        screen registry,
+        and state matrix trace to fixtures and workflows,
+      ]
     checks: [npm run validate:product, coverage audit]
     gate_ids: [G4, G5, G6]
     owner: ux_architect
@@ -171,8 +274,16 @@ tasks:
     phase: visual_language
     status: planned
     depends_on: [PROD-001]
-    artifacts: [design-system/visual-directions, design-system/tokens, validation/visual-direction-review.md]
-    acceptance_criteria: [Three lighthouse directions are rendered and scored; the selected thesis meets accessibility and distinctiveness criteria]
+    artifacts:
+      [
+        design-system/visual-directions,
+        design-system/tokens,
+        validation/visual-direction-review.md,
+      ]
+    acceptance_criteria:
+      [
+        Three lighthouse directions are rendered and scored; the selected thesis meets accessibility and distinctiveness criteria,
+      ]
     checks: [token validation, design critic rubric]
     gate_ids: [G7]
     owner: visual_designer
@@ -182,7 +293,10 @@ tasks:
     status: planned
     depends_on: [VIS-FND-001]
     artifacts: [atlas, screens, prototypes, design-system, construction-packets]
-    acceptance_criteria: [Wave loop and rendered acceptance checks pass with normal and non-ideal states]
+    acceptance_criteria:
+      [
+        Wave loop and rendered acceptance checks pass with normal and non-ideal states,
+      ]
     checks: [npm run verify, browser and trace review]
     gate_ids: [G8]
     owner: parent_agent
@@ -192,7 +306,14 @@ tasks:
     status: planned
     depends_on: [WAVE-001]
     artifacts: [atlas, screens, prototypes, design-system, construction-packets]
-    acceptance_criteria: [Wave loop and rendered acceptance checks pass with restrictions, approvals, offline, blocked, and correction states]
+    acceptance_criteria:
+      [
+        Wave loop and rendered acceptance checks pass with restrictions,
+        approvals,
+        offline,
+        blocked,
+        and correction states,
+      ]
     checks: [npm run verify, browser and trace review]
     gate_ids: [G8]
     owner: parent_agent
@@ -202,7 +323,13 @@ tasks:
     status: planned
     depends_on: [WAVE-002]
     artifacts: [atlas, screens, prototypes, design-system, construction-packets]
-    acceptance_criteria: [Forecast revisions, sampling trends, cross-organization communication, and pick decisions pass rendered review]
+    acceptance_criteria:
+      [
+        Forecast revisions,
+        sampling trends,
+        cross-organization communication,
+        and pick decisions pass rendered review,
+      ]
     checks: [npm run verify, browser and trace review]
     gate_ids: [G8]
     owner: parent_agent
@@ -212,7 +339,14 @@ tasks:
     status: planned
     depends_on: [WAVE-003]
     artifacts: [atlas, screens, prototypes, design-system, construction-packets]
-    acceptance_criteria: [Load identity, schedule change, rejection, weigh-ticket correction, and settlement histories pass rendered review]
+    acceptance_criteria:
+      [
+        Load identity,
+        schedule change,
+        rejection,
+        weigh-ticket correction,
+        and settlement histories pass rendered review,
+      ]
     checks: [npm run verify, browser and trace review]
     gate_ids: [G8]
     owner: parent_agent
@@ -222,7 +356,15 @@ tasks:
     status: planned
     depends_on: [WAVE-004]
     artifacts: [atlas, screens, prototypes, design-system, construction-packets]
-    acceptance_criteria: [Readiness, grower onboarding, evidence gaps, corrective actions, hazards, and cross-cutting exceptions pass rendered review]
+    acceptance_criteria:
+      [
+        Readiness,
+        grower onboarding,
+        evidence gaps,
+        corrective actions,
+        hazards,
+        and cross-cutting exceptions pass rendered review,
+      ]
     checks: [npm run verify, browser and trace review]
     gate_ids: [G8]
     owner: parent_agent
@@ -231,8 +373,12 @@ tasks:
     phase: integration
     status: planned
     depends_on: [WAVE-005]
-    artifacts: [design-system, prototypes, construction-packets, figma, review-exports]
-    acceptance_criteria: [Coverage floors and quality rubrics pass; all references and maps resolve; no canonical artifact is flattened-only]
+    artifacts:
+      [design-system, prototypes, construction-packets, figma, review-exports]
+    acceptance_criteria:
+      [
+        Coverage floors and quality rubrics pass; all references and maps resolve; no canonical artifact is flattened-only,
+      ]
     checks: [npm run audit:coverage, npm run validate:figma]
     gate_ids: [G7, G9]
     owner: parent_agent
@@ -242,7 +388,10 @@ tasks:
     status: planned
     depends_on: [FINAL-001]
     artifacts: [validation/FINDINGS.yaml, validation/gate-results.json]
-    acceptance_criteria: [All automated checks and specialist reviews pass with no unresolved P0/P1]
+    acceptance_criteria:
+      [
+        All automated checks and specialist reviews pass with no unresolved P0/P1,
+      ]
     checks: [npm run verify]
     gate_ids: [G10]
     owner: parent_agent
@@ -252,7 +401,8 @@ tasks:
     status: planned
     depends_on: [VAL-001]
     artifacts: [validation/COMPLETION_REPORT.md]
-    acceptance_criteria: [Read-only completion auditor signs off on the exact release commit]
+    acceptance_criteria:
+      [Read-only completion auditor signs off on the exact release commit]
     checks: [completion audit matrix]
     gate_ids: [G11]
     owner: completion_auditor
@@ -261,8 +411,14 @@ tasks:
     phase: release
     status: planned
     depends_on: [VAL-002]
-    artifacts: [README.md, validation/COMPLETION_REPORT.md, control/MASTER_MANIFEST.yaml]
-    acceptance_criteria: [Pages and required routes work, tag matches audited commit, final inventory and release notes are current]
+    artifacts:
+      [README.md, validation/COMPLETION_REPORT.md, control/MASTER_MANIFEST.yaml]
+    acceptance_criteria:
+      [
+        Pages and required routes work,
+        tag matches audited commit,
+        final inventory and release notes are current,
+      ]
     checks: [public Pages smoke, GitHub release verification]
     gate_ids: [G12]
     owner: tiklebot

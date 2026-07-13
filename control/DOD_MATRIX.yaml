@@ -1,4 +1,4 @@
-schema_version: '1.0'
+schema_version: "1.0"
 status: in_progress
 criteria:
   - id: G0
@@ -11,7 +11,12 @@ criteria:
     title: Control integrity
     status: passed
     verification: task DAG, state, manifest, findings, and trace registries validate
-    evidence: []
+    evidence:
+      - control/TASK_REGISTRY.yaml
+      - control/PROJECT_STATE.yaml
+      - control/trace-nodes.json
+      - control/trace-edges.json
+      - control/MASTER_MANIFEST.yaml
   - id: G2
     title: Deterministic factory
     status: passed
@@ -20,13 +25,18 @@ criteria:
       - package.json
       - scripts/validation/validate.mjs
       - atlas/tests/factory.e2e.spec.ts
+      - validation/FACTORY_REVIEW.md
       - review-exports/factory/planning-dispatch-desktop.png
       - review-exports/factory/planning-dispatch-mobile.png
   - id: G3
     title: Evidence and workflow fidelity
-    status: pending
+    status: in_progress
     verification: all evidence resolves; ten families and required operational visuals are approved
-    evidence: []
+    evidence:
+      - source/evidence.json
+      - source/bibliography.json
+      - workflow-model/candidates/extraction-a.json
+      - workflow-model/candidates/extraction-b.json
   - id: G4
     title: Scenario and data integrity
     status: pending
