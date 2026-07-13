@@ -129,7 +129,7 @@ tasks:
     owner: implementation_worker
     branch: codex/factory-foundation
     started_at: "2026-07-13T14:29:00-07:00"
-    commit: a6e09a5a768eda9388493f7d31934d9c10e88ad7
+    commit: 7ec001c84192ee99298c22c3afa42d6cedc14d22
     completed_at: "2026-07-13T14:52:58-07:00"
   - id: FACT-003
     title: Establish CI and Pages scaffold
@@ -172,7 +172,7 @@ tasks:
   - id: SRC-001
     title: Normalize source evidence and public bibliography
     phase: workflow_model
-    status: in_progress
+    status: complete
     depends_on: [FACT-002]
     artifacts: [source/evidence.json, source/bibliography.json]
     acceptance_criteria:
@@ -184,10 +184,12 @@ tasks:
     owner: workflow_extractor
     branch: codex/factory-foundation
     started_at: "2026-07-13T15:17:00-07:00"
+    commit: 7ec001c84192ee99298c22c3afa42d6cedc14d22
+    completed_at: "2026-07-13T15:30:56-07:00"
   - id: WF-001
     title: Run two independent workflow extractions
     phase: workflow_model
-    status: planned
+    status: complete
     depends_on: [SRC-001]
     artifacts: [workflow-model/candidates]
     acceptance_criteria:
@@ -202,10 +204,14 @@ tasks:
     checks: [schema and evidence validation]
     gate_ids: [G3]
     owner: workflow_extractor
+    branch: codex/factory-foundation
+    started_at: "2026-07-13T15:17:00-07:00"
+    commit: 7ec001c84192ee99298c22c3afa42d6cedc14d22
+    completed_at: "2026-07-13T15:26:00-07:00"
   - id: WF-002
     title: Adjudicate the workflow ontology and operational visuals
     phase: workflow_model
-    status: planned
+    status: in_progress
     depends_on: [WF-001]
     artifacts:
       [
@@ -227,6 +233,8 @@ tasks:
     checks: [npm run validate:workflow, workflow critic score]
     gate_ids: [G3]
     owner: workflow_adjudicator
+    branch: codex/factory-foundation
+    started_at: "2026-07-13T15:30:00-07:00"
   - id: DATA-001
     title: Create seeded operation contracts and full-season data
     phase: synthetic_data

@@ -29,7 +29,7 @@
         "control/trace-edges.json",
         "control/MASTER_MANIFEST.yaml"
       ],
-      "commit_sha": "a6e09a5a768eda9388493f7d31934d9c10e88ad7"
+      "commit_sha": "7ec001c84192ee99298c22c3afa42d6cedc14d22"
     },
     {
       "id": "G2",
@@ -52,7 +52,7 @@
         "review-exports/factory/planning-dispatch-desktop.png",
         "review-exports/factory/planning-dispatch-mobile.png"
       ],
-      "commit_sha": "a6e09a5a768eda9388493f7d31934d9c10e88ad7"
+      "commit_sha": "7ec001c84192ee99298c22c3afa42d6cedc14d22"
     },
     {
       "id": "G3",
