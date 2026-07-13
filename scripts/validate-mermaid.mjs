@@ -64,6 +64,12 @@ try {
       renderedMarkdownPath,
       "--artefacts",
       artefactDirectory,
+      ...(process.env.CI
+        ? [
+            "--puppeteerConfigFile",
+            path.join(ROOT, "scripts", "mermaid-puppeteer.ci.json"),
+          ]
+        : []),
       "--quiet",
     ],
     { cwd: ROOT, encoding: "utf8" },
