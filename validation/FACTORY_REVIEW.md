@@ -24,6 +24,7 @@ The critical issue was a formally connected but materially false trace claim: SC
 - Repository hygiene scans every blob locally and uses a pinned TruffleHog history scan in CI.
 - Pages manual dispatch is main-only and runs the aggregate verification gate.
 - Repository audit passes both a Git clone and a GitHub-style source tree without `.git` metadata.
+- Quality and Pages validation receive complete history so historical evidence is provable in GitHub Actions.
 
 ## Evidence
 

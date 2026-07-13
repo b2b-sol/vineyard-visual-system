@@ -1,5 +1,5 @@
 schema_version: "1.0"
-updated_at: "2026-07-13T15:40:00-07:00"
+updated_at: "2026-07-13T15:44:00-07:00"
 findings:
   - id: FIND-001
     severity: P1
@@ -150,3 +150,10 @@ findings:
         validation/gate-results.json,
       ]
     resolution: Git-backed validation now requires every cited commit to resolve, be an ancestor of HEAD, and contain every claimed artifact; source archives without Git metadata retain explicit schema-level validation.
+  - id: FIND-016
+    severity: P2
+    status: resolved
+    title: Provenance validation lacked CI history
+    description: The quality and Pages workflows used shallow checkouts, so legitimate historical evidence commits could not resolve under GitHub Actions.
+    artifact_refs: [.github/workflows/ci.yml, .github/workflows/pages.yml]
+    resolution: Every workflow that runs full provenance validation now checks out complete Git history before evaluating evidence commits.

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "evaluated_at": "2026-07-13T15:40:00-07:00",
+  "evaluated_at": "2026-07-13T15:44:00-07:00",
   "gates": [
     {
       "id": "G0",
@@ -29,7 +29,7 @@
         "control/trace-edges.json",
         "control/MASTER_MANIFEST.yaml"
       ],
-      "commit_sha": "ed91f11ae9b24432c791f6d47b0b1df6a1789b59"
+      "commit_sha": "c26bfc5408b790ca1dbc590280775bf3fee333ba"
     },
     {
       "id": "G2",
@@ -52,7 +52,7 @@
         "review-exports/factory/planning-dispatch-desktop.png",
         "review-exports/factory/planning-dispatch-mobile.png"
       ],
-      "commit_sha": "ed91f11ae9b24432c791f6d47b0b1df6a1789b59"
+      "commit_sha": "c26bfc5408b790ca1dbc590280775bf3fee333ba"
     },
     {
       "id": "G3",
