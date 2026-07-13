@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "workflows": [
+    {
+      "id": "WF-001",
+      "name": "Seasonal work planning, dispatch, and verified closure",
+      "purpose": "Convert a field observation into assigned block work while preserving blocked, partial, resumed, completed, and verified states.",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-001"],
+      "seasonality": ["budbreak", "rapid_shoot_growth", "preharvest"],
+      "frequency": "Daily during active field operations",
+      "triggers": ["Field observation requires action", "Seasonal plan reaches its execution window", "A blocked work order becomes safe to resume"],
+      "roles": ["ROLE-VITICULTURIST", "ROLE-VINEYARD-MANAGER", "ROLE-FOREMAN", "ROLE-EQUIPMENT-OPERATOR"],
+      "inputs": ["Stable block identity", "Field observation", "Labor and equipment availability", "Current restrictions and work history"],
+      "preconditions": ["The operational block resolves to one stable identity", "The observation is timestamped and attributable", "The assigned crew can see safety and completion requirements"],
+      "states": ["observed", "planned", "assigned", "in_progress", "blocked", "partially_completed", "ready_to_resume", "completed", "verified"],
+      "steps": [
+        {
+          "order": 1,
+          "stage": "observation",
+          "description": "The viticulturist records a weed escape against the stable block identity.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": null,
+          "state_to": "observed"
+        },
+        {
+          "order": 2,
+          "stage": "recommendation",
+          "description": "The viticulturist recommends mechanical undervine mowing before the next irrigation set.",
+          "owner": "ROLE-VITICULTURIST",
+          "state_from": "observed",
+          "state_to": "planned"
+        },
+        {
+          "order": 3,
+          "stage": "assignment",
+          "description": "The vineyard manager sets priority, acreage, timing, and accountable field assignees.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "planned",
+          "state_to": "assigned"
+        },
+        {
+          "order": 4,
+          "stage": "execution",
+          "description": "The equipment operator begins the west-to-east mowing pass and reports progress through the foreman.",
+          "owner": "ROLE-EQUIPMENT-OPERATOR",
+          "state_from": "assigned",
+          "state_to": "in_progress"
+        },
+        {
+          "order": 5,
+          "stage": "correction",
+          "description": "The foreman stops work after a hydraulic-pressure alarm and records the affected rows and safe partial acreage.",
+          "owner": "ROLE-FOREMAN",
+          "state_from": "in_progress",
+          "state_to": "blocked",
+          "decision_ids": ["DEC-001"]
+        },
+        {
+          "order": 6,
+          "stage": "completion",
+          "description": "The foreman closes the safe west pass as partial rather than misreporting the entire block as complete.",
+          "owner": "ROLE-FOREMAN",
+          "state_from": "blocked",
+          "state_to": "partially_completed"
+        },
+        {
+          "order": 7,
+          "stage": "correction",
+          "description": "The manager confirms repair evidence and releases the remaining rows for the same accountable work order.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "partially_completed",
+          "state_to": "ready_to_resume",
+          "decision_ids": ["DEC-002"]
+        },
+        {
+          "order": 8,
+          "stage": "execution",
+          "description": "The operator completes the remaining rows and records final treated acreage.",
+          "owner": "ROLE-EQUIPMENT-OPERATOR",
+          "state_from": "ready_to_resume",
+          "state_to": "completed"
+        },
+        {
+          "order": 9,
+          "stage": "verification",
+          "description": "The manager compares the completed acreage and row coverage with the plan before verifying closure.",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "state_from": "completed",
+          "state_to": "verified"
+        }
+      ],
+      "decisions": [
+        {
+          "id": "DEC-001",
+          "question": "Can safe completed acreage be retained while the affected rows remain blocked?",
+          "owner": "ROLE-FOREMAN",
+          "outcomes": ["Record safe partial completion and isolate affected rows", "Void progress and reschedule the whole block"]
+        },
+        {
+          "id": "DEC-002",
+          "question": "Is the repair evidence sufficient to release the remaining rows?",
+          "owner": "ROLE-VINEYARD-MANAGER",
+          "outcomes": ["Resume the remaining rows", "Keep blocked and escalate maintenance"]
+        }
+      ],
+      "outputs": ["Verified block work record", "Attributed exception history", "Actual acreage for cost and progress reporting"],
+      "records": ["Field observation", "Work order", "Status history", "Equipment blocker", "Verification record"],
+      "handoffs": ["Viticulturist to vineyard manager", "Vineyard manager to foreman", "Foreman to equipment operator", "Field completion back to vineyard manager"],
+      "approvals": ["Vineyard manager releases work after repair evidence"],
+      "exceptions": ["Equipment failure after partial execution", "Incomplete acreage report", "Unsafe attempt to resume without repair evidence"],
+      "workarounds": ["Split the safe completed acreage from affected rows without losing one work-order history"],
+      "risks": ["False whole-block completion", "Duplicate work after rescheduling", "Unattributed status correction"],
+      "product_intervention": "record",
+      "source_anchors": ["Workflow card: seasonal work planning and work-order dispatch", "Managers need done/not done/why not visibility across estates and crews"],
+      "field_validation_questions": ["Which role may release a blocked work order after equipment repair in each operating organization?"]
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/fixture.schema.json",
+  "title": "Connected synthetic vineyard fixture",
+  "type": "object",
+  "required": ["id", "title", "seed", "scenario_ids", "organizations", "people", "blocks", "observations", "work_orders"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^FIX-[0-9]{3}$" },
+    "title": { "type": "string", "minLength": 6 },
+    "seed": { "type": "integer", "minimum": 1 },
+    "scenario_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^SCN-[0-9]{3}-[0-9]{2}$" }
+    },
+    "organizations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^ORG-[0-9]{3}$" },
+          "name": { "type": "string", "minLength": 3 },
+          "type": { "enum": ["estate", "grower", "winery", "contractor", "labor_provider", "laboratory", "certifier"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "people": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "organization_id", "role_id"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^PER-[0-9]{3}$" },
+          "name": { "type": "string", "minLength": 3 },
+          "organization_id": { "type": "string", "pattern": "^ORG-[0-9]{3}$" },
+          "role_id": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "blocks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "stable_identity", "organization_id", "name", "aliases", "acres", "variety", "planted_year"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^BLK-[0-9]{3}$" },
+          "stable_identity": { "type": "string", "pattern": "^urn:vineyard:block:[a-z0-9-]+$" },
+          "organization_id": { "type": "string", "pattern": "^ORG-[0-9]{3}$" },
+          "name": { "type": "string", "minLength": 3 },
+          "aliases": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["system", "value"],
+              "properties": {
+                "system": { "type": "string", "minLength": 2 },
+                "value": { "type": "string", "minLength": 2 }
+              },
+              "additionalProperties": false
+            }
+          },
+          "acres": { "type": "number", "exclusiveMinimum": 0 },
+          "variety": { "type": "string", "minLength": 3 },
+          "planted_year": { "type": "integer", "minimum": 1900, "maximum": 2100 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "block_id", "observed_at", "observer_person_id", "type", "summary", "recommended_action"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^OBS-[0-9]{3}$" },
+          "block_id": { "type": "string", "pattern": "^BLK-[0-9]{3}$" },
+          "observed_at": { "type": "string", "format": "date-time" },
+          "observer_person_id": { "type": "string", "pattern": "^PER-[0-9]{3}$" },
+          "type": { "enum": ["scouting", "weather", "equipment", "quality", "completion", "safety"] },
+          "summary": { "type": "string", "minLength": 10 },
+          "recommended_action": { "type": "string", "minLength": 10 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "work_orders": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "workflow_id",
+          "scenario_id",
+          "block_id",
+          "source_observation_id",
+          "title",
+          "scheduled_start",
+          "assignee_person_ids",
+          "target_acres",
+          "current_status",
+          "status_history",
+          "blocker",
+          "actuals"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^WO-[0-9]{3}$" },
+          "workflow_id": { "type": "string", "pattern": "^WF-[0-9]{3}$" },
+          "scenario_id": { "type": "string", "pattern": "^SCN-[0-9]{3}-[0-9]{2}$" },
+          "block_id": { "type": "string", "pattern": "^BLK-[0-9]{3}$" },
+          "source_observation_id": { "type": "string", "pattern": "^OBS-[0-9]{3}$" },
+          "title": { "type": "string", "minLength": 6 },
+          "scheduled_start": { "type": "string", "format": "date-time" },
+          "assignee_person_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^PER-[0-9]{3}$" }
+          },
+          "target_acres": { "type": "number", "exclusiveMinimum": 0 },
+          "current_status": { "$ref": "#/$defs/workOrderStatus" },
+          "status_history": {
+            "type": "array",
+            "minItems": 4,
+            "items": {
+              "type": "object",
+              "required": ["id", "at", "from", "to", "actor_person_id", "reason"],
+              "properties": {
+                "id": { "type": "string", "pattern": "^EVT-[0-9]{3}$" },
+                "at": { "type": "string", "format": "date-time" },
+                "from": { "anyOf": [{ "$ref": "#/$defs/workOrderStatus" }, { "type": "null" }] },
+                "to": { "$ref": "#/$defs/workOrderStatus" },
+                "actor_person_id": { "type": "string", "pattern": "^PER-[0-9]{3}$" },
+                "reason": { "type": "string", "minLength": 8 },
+                "reported_acres": { "type": "number", "minimum": 0 }
+              },
+              "additionalProperties": false
+            }
+          },
+          "blocker": {
+            "type": "object",
+            "required": ["type", "reason", "affected_rows", "recorded_at", "resolved_at", "resolution"],
+            "properties": {
+              "type": { "enum": ["equipment", "weather", "safety", "material", "labor", "restriction", "data_conflict"] },
+              "reason": { "type": "string", "minLength": 8 },
+              "affected_rows": { "type": "string", "minLength": 1 },
+              "recorded_at": { "type": "string", "format": "date-time" },
+              "resolved_at": { "type": "string", "format": "date-time" },
+              "resolution": { "type": "string", "minLength": 8 }
+            },
+            "additionalProperties": false
+          },
+          "actuals": {
+            "type": "object",
+            "required": ["completed_acres", "verified_by_person_id", "verified_at"],
+            "properties": {
+              "completed_acres": { "type": "number", "minimum": 0 },
+              "verified_by_person_id": { "type": "string", "pattern": "^PER-[0-9]{3}$" },
+              "verified_at": { "type": "string", "format": "date-time" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "workOrderStatus": {
+      "enum": ["planned", "assigned", "in_progress", "blocked", "partially_completed", "ready_to_resume", "completed", "verified", "corrected", "superseded"]
+    }
+  },
+  "additionalProperties": false
+}

@@ -22,7 +22,6 @@ export default defineConfig({
     baseURL: "http://127.0.0.1:4173/vineyard-visual-system/",
     colorScheme: "light",
     locale: "en-US",
-    reducedMotion: "reduce",
     screenshot: "only-on-failure",
     timezoneId: "America/Los_Angeles",
     trace: "retain-on-failure",

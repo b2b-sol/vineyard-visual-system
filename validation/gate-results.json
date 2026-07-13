@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "evaluated_at": "2026-07-13T15:00:00-07:00",
+  "gates": [
+    {
+      "id": "G1",
+      "status": "passed",
+      "checks": [
+        "Task dependency graph",
+        "Project next-task pointer",
+        "Trace graph references and orphans",
+        "Generated manifest parity"
+      ],
+      "evidence": [
+        "control/TASK_REGISTRY.yaml",
+        "control/PROJECT_STATE.yaml",
+        "control/trace-nodes.json",
+        "control/trace-edges.json",
+        "control/MASTER_MANIFEST.yaml"
+      ]
+    },
+    {
+      "id": "G2",
+      "status": "passed",
+      "checks": [
+        "Schema compilation and sample validation",
+        "Fixture referential integrity and chronology",
+        "Evidence-to-packet semantic chain",
+        "Rendered screen route",
+        "Desktop and mobile Playwright flows",
+        "No serious or critical axe violations"
+      ],
+      "evidence": [
+        "scripts/validation/validate.mjs",
+        "workflow-model/walking-slice.json",
+        "data/walking-slice.json",
+        "screens/walking-slice.json",
+        "atlas/tests/factory.e2e.spec.ts",
+        "review-exports/factory/planning-dispatch-desktop.png",
+        "review-exports/factory/planning-dispatch-mobile.png"
+      ]
+    }
+  ]
+}

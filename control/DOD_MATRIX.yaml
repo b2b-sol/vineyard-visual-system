@@ -9,14 +9,19 @@ criteria:
       - control/PROJECT_STATE.yaml
   - id: G1
     title: Control integrity
-    status: in_progress
+    status: passed
     verification: task DAG, state, manifest, findings, and trace registries validate
     evidence: []
   - id: G2
     title: Deterministic factory
-    status: pending
+    status: passed
     verification: clean install and one aggregate verify command reproduce build and walking slice
-    evidence: []
+    evidence:
+      - package.json
+      - scripts/validation/validate.mjs
+      - atlas/tests/factory.e2e.spec.ts
+      - review-exports/factory/planning-dispatch-desktop.png
+      - review-exports/factory/planning-dispatch-mobile.png
   - id: G3
     title: Evidence and workflow fidelity
     status: pending

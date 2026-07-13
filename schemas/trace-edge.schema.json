@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/trace-edge.schema.json",
+  "title": "Typed trace graph edge",
+  "type": "object",
+  "required": ["id", "from", "to", "relationship", "rationale"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^EDGE-[0-9]{3}$" },
+    "from": { "type": "string", "pattern": "^(EVD|WF|SCN|FIX|SCR|CMP|PKT)-[A-Z0-9-]+$" },
+    "to": { "type": "string", "pattern": "^(EVD|WF|SCN|FIX|SCR|CMP|PKT)-[A-Z0-9-]+$" },
+    "relationship": { "enum": ["supports", "realized_by", "instantiated_by", "rendered_by", "composed_with", "specified_by"] },
+    "rationale": { "type": "string", "minLength": 10 }
+  },
+  "additionalProperties": false
+}

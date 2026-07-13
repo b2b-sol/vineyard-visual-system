@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "workflow.schema.json",
-  "title": "Workflow",
+  "$id": "https://vineyard-visual-system.dev/schemas/workflow.schema.json",
+  "title": "Evidence-backed vineyard workflow",
   "type": "object",
   "required": [
     "id",
@@ -9,28 +9,24 @@
     "purpose",
     "classification",
     "confidence",
+    "evidence_ids",
     "triggers",
     "roles",
     "inputs",
+    "states",
     "steps",
+    "decisions",
     "outputs",
     "records",
     "handoffs",
     "exceptions",
+    "product_intervention",
     "source_anchors"
   ],
   "properties": {
-    "id": {
-      "type": "string",
-      "pattern": "^WF-[0-9]{3}$"
-    },
-    "name": {
-      "type": "string",
-      "minLength": 3
-    },
-    "purpose": {
-      "type": "string"
-    },
+    "id": { "type": "string", "pattern": "^WF-[0-9]{3}$" },
+    "name": { "type": "string", "minLength": 3 },
+    "purpose": { "type": "string", "minLength": 20 },
     "classification": {
       "enum": [
         "confirmed_source",
@@ -40,141 +36,155 @@
         "temporary_visual_assumption"
       ]
     },
-    "confidence": {
-      "enum": [
-        "high",
-        "medium-high",
-        "medium",
-        "medium-low",
-        "low"
-      ]
+    "confidence": { "enum": ["high", "medium-high", "medium", "medium-low", "low"] },
+    "evidence_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^EVD-[0-9]{3}$" }
     },
     "seasonality": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 2 }
     },
-    "frequency": {
-      "type": "string"
-    },
+    "frequency": { "type": "string", "minLength": 3 },
     "triggers": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "roles": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" }
     },
     "inputs": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 2 }
     },
     "preconditions": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "states": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
     },
     "steps": {
       "type": "array",
       "minItems": 2,
       "items": {
         "type": "object",
-        "required": [
-          "order",
-          "description"
-        ],
+        "required": ["order", "stage", "description", "owner", "state_from", "state_to"],
         "properties": {
-          "order": {
-            "type": "integer",
-            "minimum": 1
+          "order": { "type": "integer", "minimum": 1 },
+          "stage": {
+            "enum": [
+              "observation",
+              "recommendation",
+              "approval",
+              "assignment",
+              "execution",
+              "completion",
+              "verification",
+              "reconciliation",
+              "correction",
+              "supersession"
+            ]
           },
-          "description": {
-            "type": "string"
-          },
-          "owner": {
-            "type": "string"
-          },
+          "description": { "type": "string", "minLength": 10 },
+          "owner": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" },
+          "state_from": { "type": ["string", "null"] },
+          "state_to": { "type": "string", "minLength": 2 },
           "decision_ids": {
             "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^DEC-[0-9]{3}$" }
           }
-        }
+        },
+        "additionalProperties": false
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "question", "owner", "outcomes"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^DEC-[0-9]{3}$" },
+          "question": { "type": "string", "minLength": 10 },
+          "owner": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" },
+          "outcomes": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 2 }
+          }
+        },
+        "additionalProperties": false
       }
     },
     "outputs": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 2 }
     },
     "records": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 2 }
     },
     "handoffs": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "approvals": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "exceptions": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "workarounds": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "risks": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
     },
     "product_intervention": {
-      "enum": [
-        "support",
-        "automate",
-        "record",
-        "communicate",
-        "analyze",
-        "leave_external"
-      ]
+      "enum": ["support", "automate", "record", "communicate", "analyze", "leave_external"]
     },
     "source_anchors": {
       "type": "array",
       "minItems": 1,
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 8 }
     },
     "field_validation_questions": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 8 }
     }
   },
   "additionalProperties": false
