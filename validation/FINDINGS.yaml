@@ -1,5 +1,5 @@
 schema_version: "1.0"
-updated_at: "2026-07-13T15:23:00-07:00"
+updated_at: "2026-07-13T15:40:00-07:00"
 findings:
   - id: FIND-001
     severity: P1
@@ -138,3 +138,15 @@ findings:
     artifact_refs:
       [atlas/src/styles.css, atlas/src/pages/PlanningDispatchPage.tsx]
     resolution: Increased field text sizing and contrast, added live selection announcements and focus movement, and rechecked both viewports with zero serious or critical axe findings.
+  - id: FIND-015
+    severity: P2
+    status: resolved
+    title: Commit provenance accepted fabricated SHAs
+    description: Evidence records required a non-empty commit string but did not prove that it resolved, was reachable from HEAD, or contained the claimed artifacts.
+    artifact_refs:
+      [
+        scripts/validation/validate.mjs,
+        control/TASK_REGISTRY.yaml,
+        validation/gate-results.json,
+      ]
+    resolution: Git-backed validation now requires every cited commit to resolve, be an ancestor of HEAD, and contain every claimed artifact; source archives without Git metadata retain explicit schema-level validation.

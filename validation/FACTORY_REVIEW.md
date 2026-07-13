@@ -17,7 +17,7 @@ The critical issue was a formally connected but materially false trace claim: SC
 - Every canonical registry record, reference, semantic edge, source locator, and evidence-to-packet chain is validated; first-record-only validation was removed.
 - The scenario, fixture, screen, and workflow use the same nine-event state chain from observation through verification.
 - Fixture contracts support normal/open work and state-conditional blockers and actuals instead of requiring one resolved equipment exception.
-- G0-G12 claims require a validated DoD matrix, non-empty evidence, and commit provenance; project completion requires every gate.
+- G0-G12 claims require a validated DoD matrix, non-empty evidence, and Git-reachable evidence-at-commit provenance; project completion requires every gate.
 - SCR-001 realizes ACT-001 through ACT-004 as attributed, timestamped, append-only actions.
 - Mobile field mode validates acreage, queues offline evidence, detects newer-server conflicts, and resolves without overwriting history.
 - Unit and browser suites cannot pass empty; model tests cover valid open work and invalid verified work.
