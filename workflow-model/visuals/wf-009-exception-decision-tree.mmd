@@ -1,0 +1,114 @@
+%% visual_id: VIS-WF-009-EXCEPTION-TREE
+%% title: WF-009 exception and decision tree
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-009; workflow-model/exceptions.json#EXC-051,EXC-052,EXC-053,EXC-054,EXC-055,EXC-056; workflow-model/decisions.json#DEC-081,DEC-082,DEC-083,DEC-084; workflow-model/records.json#REC-076,REC-077,REC-078,REC-079,REC-080,REC-081,REC-082,REC-083,REC-084,REC-085,REC-086,REC-087,REC-088
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart TD
+  ROOT["WF-009 · Grower onboarding, contract-fruit coordination, and relationship history"]
+  TRIGGER["EXC-051 · Conflicting block aliases · The grower onboarding, contract-fruit coordination, and relationship history work…"]
+  SCOPE{"Are affected scope, safe partial results, and authority explicit?"}
+  HOLD["Block and escalate · ROLE-GROWER-RELATIONS · Grower Relations"]
+  RETAIN["Retain unaffected and safely completed scope with attribution"]
+  ROOT --> TRIGGER
+  TRIGGER --> SCOPE
+  SCOPE -->|No| HOLD
+  SCOPE -->|Yes| RETAIN
+  RECOVERY_1["1 · Record and contain conflicting block aliases at the affected scope."]
+  RECOVERY_2["2 · Use DEC-081 authority to move from identity_matching to disputed; do not overwrite predecessor evidence."]
+  RECOVERY_3["3 · Notify only the roles and downstream records affected by the decision."]
+  HOLD --> RECOVERY_1
+  RETAIN --> RECOVERY_1
+  RECOVERY_1 --> RECOVERY_2
+  RECOVERY_2 --> RECOVERY_3
+  DECISION_1{"DEC-081 · Do grower, winery, compliance, and accounting identifiers resolve to the same operational block?"}
+  RECOVERY_3 -. accountable decision .-> DECISION_1
+  D1_OUTCOME_1["Confirm stable identity and aliases"]
+  DECISION_1 -->|Outcome 1| D1_OUTCOME_1
+  D1_OUTCOME_2["Resolve ambiguity"]
+  DECISION_1 -->|Outcome 2| D1_OUTCOME_2
+  D1_OUTCOME_3["Create explicit identity gap"]
+  DECISION_1 -->|Outcome 3| D1_OUTCOME_3
+  DECISION_2{"DEC-082 · Is required block, spray, certification, and quality history sufficient for onboarding?"}
+  ROOT -. registered authority .-> DECISION_2
+  D2_OUTCOME_1["Proceed"]
+  DECISION_2 -->|Outcome 1| D2_OUTCOME_1
+  D2_OUTCOME_2["Proceed conditionally"]
+  DECISION_2 -->|Outcome 2| D2_OUTCOME_2
+  D2_OUTCOME_3["Request correction or missing evidence"]
+  DECISION_2 -->|Outcome 3| D2_OUTCOME_3
+  D2_OUTCOME_4["Decline"]
+  DECISION_2 -->|Outcome 4| D2_OUTCOME_4
+  DECISION_3{"DEC-083 · Are authority, quality, notice, delivery, adjustment, dispute, and payment terms mutually understood?"}
+  ROOT -. registered authority .-> DECISION_3
+  D3_OUTCOME_1["Activate relationship"]
+  DECISION_3 -->|Outcome 1| D3_OUTCOME_1
+  D3_OUTCOME_2["Continue negotiation"]
+  DECISION_3 -->|Outcome 2| D3_OUTCOME_2
+  D3_OUTCOME_3["Escalate unresolved term"]
+  DECISION_3 -->|Outcome 3| D3_OUTCOME_3
+  D3_OUTCOME_4["Decline"]
+  DECISION_3 -->|Outcome 4| D3_OUTCOME_4
+  DECISION_4{"DEC-084 · Does an operating issue require guidance, corrective action, commercial adjustment, or dispute escalation?"}
+  ROOT -. registered authority .-> DECISION_4
+  D4_OUTCOME_1["Provide guidance"]
+  DECISION_4 -->|Outcome 1| D4_OUTCOME_1
+  D4_OUTCOME_2["Open corrective action"]
+  DECISION_4 -->|Outcome 2| D4_OUTCOME_2
+  D4_OUTCOME_3["Negotiate adjustment"]
+  DECISION_4 -->|Outcome 3| D4_OUTCOME_3
+  D4_OUTCOME_4["Escalate dispute"]
+  DECISION_4 -->|Outcome 4| D4_OUTCOME_4
+  EVIDENCE["Closure evidence · attributed EXC-051 observation and affected scope · identity_matching to disputed transition with de…"]
+  RECONCILED{"Are recovery, disposition, and downstream records reconciled?"}
+  CORRECT["Correction required · preserve prior state and reason"]
+  CLOSE["Recover as Disputed"]
+  D1_OUTCOME_1 --> EVIDENCE
+  D1_OUTCOME_2 --> EVIDENCE
+  D1_OUTCOME_3 --> EVIDENCE
+  D2_OUTCOME_1 --> EVIDENCE
+  D2_OUTCOME_2 --> EVIDENCE
+  D2_OUTCOME_3 --> EVIDENCE
+  D2_OUTCOME_4 --> EVIDENCE
+  D3_OUTCOME_1 --> EVIDENCE
+  D3_OUTCOME_2 --> EVIDENCE
+  D3_OUTCOME_3 --> EVIDENCE
+  D3_OUTCOME_4 --> EVIDENCE
+  D4_OUTCOME_1 --> EVIDENCE
+  D4_OUTCOME_2 --> EVIDENCE
+  D4_OUTCOME_3 --> EVIDENCE
+  D4_OUTCOME_4 --> EVIDENCE
+  EVIDENCE --> RECONCILED
+  RECONCILED -->|No| CORRECT
+  CORRECT --> EVIDENCE
+  RECONCILED -->|Yes| CLOSE
+  EXCEPTION_2["EXC-052 · Missing or unacceptable spray or certification history · The grower onboarding, contract-fruit coordination,…"]
+  EXCEPTION_2_RECOVERY["Due Diligence to At Risk · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_2
+  EXCEPTION_2 --> EXCEPTION_2_RECOVERY
+  EXCEPTION_2_RECOVERY --> EVIDENCE
+  EXCEPTION_2 -. accountable decision .-> DECISION_2
+  EXCEPTION_3["EXC-053 · Quality specification or timing changed · The grower onboarding, contract-fruit coordination, and relationshi…"]
+  EXCEPTION_3_RECOVERY["Active to At Risk · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_3
+  EXCEPTION_3 --> EXCEPTION_3_RECOVERY
+  EXCEPTION_3_RECOVERY --> EVIDENCE
+  EXCEPTION_3 -. accountable decision .-> DECISION_3
+  EXCEPTION_3 -. accountable decision .-> DECISION_4
+  EXCEPTION_4["EXC-054 · Grower and winery measurements disagree · The grower onboarding, contract-fruit coordination, and relationshi…"]
+  EXCEPTION_4_RECOVERY["Report Due to Disputed · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_4
+  EXCEPTION_4 --> EXCEPTION_4_RECOVERY
+  EXCEPTION_4_RECOVERY --> EVIDENCE
+  EXCEPTION_4 -. accountable decision .-> DECISION_4
+  EXCEPTION_5["EXC-055 · Notice arrives too late for corrective action · The grower onboarding, contract-fruit coordination, and relat…"]
+  EXCEPTION_5_RECOVERY["At Risk to Disputed · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_5
+  EXCEPTION_5 --> EXCEPTION_5_RECOVERY
+  EXCEPTION_5_RECOVERY --> EVIDENCE
+  EXCEPTION_5 -. accountable decision .-> DECISION_4
+  EXCEPTION_6["EXC-056 · Delivery, downgrade, rejection, or payment dispute · The grower onboarding, contract-fruit coordination, and…"]
+  EXCEPTION_6_RECOVERY["Fulfilled to Disputed · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_6
+  EXCEPTION_6 --> EXCEPTION_6_RECOVERY
+  EXCEPTION_6_RECOVERY --> EVIDENCE
+  EXCEPTION_6 -. accountable decision .-> DECISION_4

@@ -23,11 +23,12 @@
       ],
       "variants": ["supervisory_dense", "field_compact"],
       "states": [
+        "approved",
         "assigned",
+        "acknowledged",
         "in_progress",
         "blocked",
         "partially_completed",
-        "ready_to_resume",
         "completed",
         "verified"
       ],
@@ -51,11 +52,12 @@
       "error_behavior": "An unresolved reference displays an explicit data-integrity state and disables consequential actions.",
       "semantic_contract": {
         "ordered_stages": [
+          "approved",
           "assigned",
+          "acknowledged",
           "in_progress",
-          "blocked",
           "partially_completed",
-          "ready_to_resume",
+          "blocked",
           "completed",
           "verified"
         ],

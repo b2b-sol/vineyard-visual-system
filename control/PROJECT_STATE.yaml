@@ -1,6 +1,6 @@
 packet_version: 1.0.0
-updated_at: "2026-07-13T15:50:00-07:00"
-state: governance_merge_queue_smoke_and_workflow_ontology
+updated_at: "2026-07-13T16:48:00-07:00"
+state: workflow_ontology_approved_awaiting_protected_delivery
 repository: b2b-sol/vineyard-visual-system
 visibility: public
 execution_identity: tiklebot
@@ -22,3 +22,13 @@ factory_operational: true
 definition_of_done_passed: false
 pages_url: https://b2b-sol.github.io/vineyard-visual-system/
 release_tag: null
+workflow_ontology_review: approved
+workflow_ontology_metrics:
+  workflows: 10
+  transitions: 235
+  roles: 30
+  records: 103
+  decisions: 40
+  exceptions: 62
+  overlays: 9
+  editable_visuals: 36

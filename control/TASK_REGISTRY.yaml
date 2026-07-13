@@ -224,6 +224,12 @@ tasks:
         workflow-model/records.json,
         workflow-model/decisions.json,
         workflow-model/exceptions.json,
+        workflow-model/overlays.json,
+        workflow-model/adjudication.md,
+        workflow-model/visuals,
+        validation/WORKFLOW_REVIEW.md,
+        scripts/refine-workflow-ontology.mjs,
+        scripts/generate-workflow-visuals.mjs,
       ]
     acceptance_criteria:
       [

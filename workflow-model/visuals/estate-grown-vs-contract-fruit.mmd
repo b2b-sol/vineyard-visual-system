@@ -1,0 +1,32 @@
+%% visual_id: VIS-ESTATE-CONTRACT-COMPARISON
+%% title: Estate-grown versus contract-fruit comparison
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/overlays.json#OVL-008; workflow-model/roles.json#ROLE-COMPLIANCE-COORDINATOR,ROLE-CONTRACT-GROWER,ROLE-FINANCE,ROLE-GROWER-RELATIONS,ROLE-TRANSPORTATION,ROLE-WINEMAKER,ROLE-WINERY-INTAKE; workflow-model/workflows.json#WF-004,WF-005,WF-006,WF-009,WF-010
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart TB
+  BOUNDARY["OVL-008 · Estate-grown and contract-fruit organizational boundary · Estate fruit may route authority inward, while cont…"]
+  subgraph ESTATE["Estate-grown route"]
+    direction TB
+    ESTATE_AUTHORITY["Authority routes inward · Compliance Coordinator · Finance"]
+    ESTATE_HANDOFF["Block work, verification, and correction remain attributable inside the operating organization"]
+    ESTATE_AUTHORITY --> ESTATE_HANDOFF
+  end
+  subgraph CONTRACT["Contract-fruit route"]
+    direction TB
+    CONTRACT_AUTHORITY["Both organizations remain explicit · Grower Relations · Contract Grower · Winemaker · Winery Intake · Transportation"]
+    CONTRACT_HANDOFF["Requirements, decision rights, messages, evidence, delivery, and settlement cross the boundary"]
+    CONTRACT_AUTHORITY --> CONTRACT_HANDOFF
+  end
+  SHARED_IDENTITY["Shared invariant · stable block identity, aliases, effective dates, and accountable contacts"]
+  WORKFLOWS["Boundary-sensitive workflows · WF-004 · WF-005 · WF-006 · WF-009 · WF-010"]
+  RECORDS["Required records · REC-027 · REC-029 · REC-035 · REC-039 · REC-041 · REC-045 · REC-047 · REC-049 · REC-053 · REC-076 ·…"]
+  EXCEPTION{"Boundary exception · Authority is ambiguous / Grower and winery records disagree / A changed requirement reaches only o…"}
+  RECOVERY["Recovery · Escalate to named contract owners · Preserve both organizations' evidence · Issue an amendment or dispute re…"]
+  BOUNDARY --> ESTATE_AUTHORITY
+  BOUNDARY --> CONTRACT_AUTHORITY
+  ESTATE_HANDOFF --> SHARED_IDENTITY
+  CONTRACT_HANDOFF --> SHARED_IDENTITY
+  SHARED_IDENTITY --> WORKFLOWS --> RECORDS --> EXCEPTION
+  EXCEPTION -->|Raised| RECOVERY
+  EXCEPTION -->|None| RECORDS
+  RECOVERY --> RECORDS

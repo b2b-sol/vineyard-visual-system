@@ -43,7 +43,10 @@
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "type": "string", "pattern": "^EVD-[0-9]{3}$" }
+      "items": {
+        "type": "string",
+        "pattern": "^EVD-(00[1-9]|01[0-2])$"
+      }
     },
     "seasonality": {
       "type": "array",
@@ -79,6 +82,116 @@
       "minItems": 3,
       "uniqueItems": true,
       "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+    },
+    "terminal_states": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+    },
+    "transitions": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "from",
+          "to",
+          "kind",
+          "owner",
+          "trigger",
+          "description",
+          "record_reads",
+          "record_writes",
+          "decision_ids",
+          "exception_ids",
+          "evidence_ids",
+          "classification",
+          "confidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$"
+          },
+          "from": {
+            "type": ["string", "null"],
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "to": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "kind": {
+            "enum": [
+              "observation",
+              "recommendation",
+              "approval",
+              "assignment",
+              "execution",
+              "completion",
+              "verification",
+              "reconciliation",
+              "correction",
+              "supersession",
+              "exception",
+              "recovery",
+              "cancellation",
+              "communication"
+            ]
+          },
+          "owner": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" },
+          "trigger": { "type": "string", "minLength": 8 },
+          "description": { "type": "string", "minLength": 10 },
+          "record_reads": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^REC-[0-9]{3}$" }
+          },
+          "record_writes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^REC-[0-9]{3}$" }
+          },
+          "decision_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^DEC-[0-9]{3}$" }
+          },
+          "exception_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^EXC-[0-9]{3}$" }
+          },
+          "evidence_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^EVD-(00[1-9]|01[0-2])$"
+            }
+          },
+          "classification": {
+            "enum": [
+              "confirmed_source",
+              "strong_inference",
+              "product_decision",
+              "requires_field_validation",
+              "temporary_visual_assumption"
+            ]
+          },
+          "confidence": {
+            "enum": ["high", "medium-high", "medium", "medium-low", "low"]
+          },
+          "decision_outcome": {
+            "type": "string",
+            "minLength": 2
+          }
+        },
+        "additionalProperties": false
+      }
     },
     "steps": {
       "type": "array",

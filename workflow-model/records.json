@@ -10,13 +10,11 @@
       "workflow_ids": ["WF-001"],
       "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
       "responsible_roles": [
+        "ROLE-OWNER-GENERAL-MANAGER",
         "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
         "ROLE-VITICULTURIST",
-        "ROLE-FOREMAN",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FIELD-CREW",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-OPERATIONS-COORDINATOR"
       ],
       "lifecycle": [
         "draft",
@@ -37,20 +35,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Field signal",
-        "Work assignment",
-        "Activity log",
-        "Status history",
-        "Actual-use record",
-        "Verification record"
-      ],
+      "related_records": ["REC-002", "REC-003", "REC-005"],
       "source_anchors": [
         "## Detailed workflow cards and handoff maps",
         "**Workflow card: seasonal work planning and work-order dispatch**"
       ],
-      "decision_ids": ["DEC-001", "DEC-002", "DEC-003"],
-      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
+      "decision_ids": ["DEC-001", "DEC-002"],
+      "exception_ids": ["EXC-001", "EXC-002", "EXC-003"]
     },
     {
       "id": "REC-002",
@@ -61,13 +52,9 @@
       "workflow_ids": ["WF-001"],
       "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-VITICULTURIST",
         "ROLE-FOREMAN",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FIELD-CREW",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-FIELD-CREW"
       ],
       "lifecycle": [
         "pending",
@@ -86,20 +73,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Seasonal plan",
-        "Work assignment",
-        "Activity log",
-        "Status history",
-        "Actual-use record",
-        "Verification record"
-      ],
+      "related_records": ["REC-001", "REC-003", "REC-004", "REC-005"],
       "source_anchors": [
         "## Detailed workflow cards and handoff maps",
         "**Workflow card: seasonal work planning and work-order dispatch**"
       ],
-      "decision_ids": ["DEC-001", "DEC-002", "DEC-003"],
-      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
+      "decision_ids": ["DEC-001"],
+      "exception_ids": ["EXC-001", "EXC-002", "EXC-003"]
     },
     {
       "id": "REC-003",
@@ -110,14 +90,10 @@
       "workflow_ids": ["WF-001", "WF-007"],
       "evidence_ids": ["EVD-001", "EVD-011", "EVD-012", "EVD-007"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-FOREMAN",
         "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FIELD-CREW",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-HARVEST-CREW-LEADER"
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-FOREMAN"
       ],
       "lifecycle": [
         "planned",
@@ -139,28 +115,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Seasonal plan",
-        "Field signal",
-        "Activity log",
-        "Status history",
-        "Actual-use record",
-        "Verification record",
-        "Crew roster",
-        "Qualification and training evidence"
+        "REC-055",
+        "REC-056",
+        "REC-001",
+        "REC-054",
+        "REC-057",
+        "REC-002"
       ],
       "source_anchors": [
         "## Detailed workflow cards and handoff maps",
         "**Workflow card: seasonal work planning and work-order dispatch**"
       ],
-      "decision_ids": [
-        "DEC-001",
-        "DEC-002",
-        "DEC-003",
-        "DEC-061",
-        "DEC-062",
-        "DEC-063",
-        "DEC-064"
-      ],
+      "decision_ids": ["DEC-001", "DEC-002", "DEC-003", "DEC-061", "DEC-062"],
       "exception_ids": [
         "EXC-001",
         "EXC-002",
@@ -170,10 +136,7 @@
         "EXC-037",
         "EXC-038",
         "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
+        "EXC-040"
       ]
     },
     {
@@ -184,18 +147,9 @@
       "purpose": "Preserve activity log as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-001"],
       "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-FOREMAN",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FIELD-CREW",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
-      ],
+      "responsible_roles": ["ROLE-FOREMAN", "ROLE-FIELD-CREW"],
       "lifecycle": [
-        "planned",
-        "assigned",
+        "open",
         "in_progress",
         "partially_completed",
         "completed",
@@ -213,19 +167,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Seasonal plan",
-        "Field signal",
-        "Work assignment",
-        "Status history",
-        "Actual-use record",
-        "Verification record"
+        "REC-005",
+        "REC-006",
+        "REC-003",
+        "REC-007",
+        "REC-002"
       ],
       "source_anchors": [
         "## Detailed workflow cards and handoff maps",
         "**Workflow card: seasonal work planning and work-order dispatch**"
       ],
-      "decision_ids": ["DEC-001", "DEC-002", "DEC-003"],
-      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
+      "decision_ids": ["DEC-003"],
+      "exception_ids": ["EXC-004", "EXC-005"]
     },
     {
       "id": "REC-005",
@@ -236,13 +189,10 @@
       "workflow_ids": ["WF-001"],
       "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
         "ROLE-FOREMAN",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FIELD-CREW",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR"
       ],
       "lifecycle": [
         "pending",
@@ -262,12 +212,12 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Seasonal plan",
-        "Field signal",
-        "Work assignment",
-        "Activity log",
-        "Actual-use record",
-        "Verification record"
+        "REC-004",
+        "REC-006",
+        "REC-007",
+        "REC-003",
+        "REC-001",
+        "REC-002"
       ],
       "source_anchors": [
         "## Detailed workflow cards and handoff maps",
@@ -285,12 +235,8 @@
       "workflow_ids": ["WF-001"],
       "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
         "ROLE-FOREMAN",
         "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FIELD-CREW",
-        "ROLE-CONTRACTOR",
         "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
@@ -311,20 +257,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Seasonal plan",
-        "Field signal",
-        "Work assignment",
-        "Activity log",
-        "Status history",
-        "Verification record"
-      ],
+      "related_records": ["REC-005", "REC-007", "REC-004", "REC-003"],
       "source_anchors": [
         "## Detailed workflow cards and handoff maps",
         "**Workflow card: seasonal work planning and work-order dispatch**"
       ],
-      "decision_ids": ["DEC-001", "DEC-002", "DEC-003"],
-      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
+      "decision_ids": ["DEC-003"],
+      "exception_ids": ["EXC-004", "EXC-005"]
     },
     {
       "id": "REC-007",
@@ -336,11 +275,129 @@
       "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-FOREMAN",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FIELD-CREW",
-        "ROLE-CONTRACTOR",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-006", "REC-005", "REC-004"],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**"
+      ],
+      "decision_ids": ["DEC-003"],
+      "exception_ids": ["EXC-004", "EXC-005"]
+    },
+    {
+      "id": "REC-008",
+      "name": "Scouting record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve scouting record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-SCOUT", "ROLE-VITICULTURIST"],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-009",
+        "REC-012",
+        "REC-017",
+        "REC-015",
+        "REC-016",
+        "REC-010"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-011"],
+      "exception_ids": ["EXC-011"]
+    },
+    {
+      "id": "REC-009",
+      "name": "Treatment recommendation",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve treatment recommendation as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-CROP-PROTECTION-LEAD"],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-010",
+        "REC-008",
+        "REC-013",
+        "REC-011",
+        "REC-012",
+        "REC-014"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-011", "DEC-012", "DEC-014"],
+      "exception_ids": ["EXC-007", "EXC-009", "EXC-011"]
+    },
+    {
+      "id": "REC-010",
+      "name": "Product and label check",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve product and label check as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-CROP-PROTECTION-LEAD",
         "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
@@ -362,200 +419,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Seasonal plan",
-        "Field signal",
-        "Work assignment",
-        "Activity log",
-        "Status history",
-        "Actual-use record"
-      ],
-      "source_anchors": [
-        "## Detailed workflow cards and handoff maps",
-        "**Workflow card: seasonal work planning and work-order dispatch**"
-      ],
-      "decision_ids": ["DEC-001", "DEC-002", "DEC-003"],
-      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
-    },
-    {
-      "id": "REC-008",
-      "name": "Scouting record",
-      "classification": "confirmed_source",
-      "confidence": "high",
-      "purpose": "Preserve scouting record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
-      "workflow_ids": ["WF-002"],
-      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-SCOUT",
-        "ROLE-VITICULTURIST",
-        "ROLE-CROP-PROTECTION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-FOREMAN",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-REGULATOR"
-      ],
-      "lifecycle": [
-        "draft",
-        "recorded",
-        "active",
-        "verified",
-        "corrected",
-        "superseded",
-        "archived"
-      ],
-      "required_provenance": [
-        "stable record identifier",
-        "author or source organization",
-        "observed or effective time",
-        "captured time",
-        "source version",
-        "stable block or explicit non-block scope"
-      ],
-      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Treatment recommendation",
-        "Product and label check",
-        "Calibration record",
-        "Application record",
-        "REI and PHI record",
-        "Worker posting",
-        "Spray diary",
-        "Pesticide-use report"
+        "REC-009",
+        "REC-011",
+        "REC-013",
+        "REC-012",
+        "REC-014",
+        "REC-016"
       ],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
       ],
-      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014"],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
-    },
-    {
-      "id": "REC-009",
-      "name": "Treatment recommendation",
-      "classification": "confirmed_source",
-      "confidence": "high",
-      "purpose": "Preserve treatment recommendation as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
-      "workflow_ids": ["WF-002"],
-      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-SCOUT",
-        "ROLE-VITICULTURIST",
-        "ROLE-CROP-PROTECTION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-FOREMAN",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-REGULATOR"
-      ],
-      "lifecycle": [
-        "draft",
-        "reviewed",
-        "approved",
-        "active",
-        "revised",
-        "superseded",
-        "archived",
-        "corrected"
-      ],
-      "required_provenance": [
-        "stable record identifier",
-        "author or source organization",
-        "observed or effective time",
-        "captured time",
-        "source version",
-        "stable block or explicit non-block scope"
-      ],
-      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Scouting record",
-        "Product and label check",
-        "Calibration record",
-        "Application record",
-        "REI and PHI record",
-        "Worker posting",
-        "Spray diary",
-        "Pesticide-use report"
-      ],
-      "source_anchors": [
-        "**Workflow card: scouting to spray execution and compliance record**",
-        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
-      ],
-      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014"],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
-    },
-    {
-      "id": "REC-010",
-      "name": "Product and label check",
-      "classification": "confirmed_source",
-      "confidence": "high",
-      "purpose": "Preserve product and label check as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
-      "workflow_ids": ["WF-002"],
-      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-SCOUT",
-        "ROLE-VITICULTURIST",
-        "ROLE-CROP-PROTECTION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-FOREMAN",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-REGULATOR"
-      ],
-      "lifecycle": [
-        "draft",
-        "recorded",
-        "active",
-        "verified",
-        "corrected",
-        "superseded",
-        "archived"
-      ],
-      "required_provenance": [
-        "stable record identifier",
-        "author or source organization",
-        "observed or effective time",
-        "captured time",
-        "source version",
-        "stable block or explicit non-block scope"
-      ],
-      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Scouting record",
-        "Treatment recommendation",
-        "Calibration record",
-        "Application record",
-        "REI and PHI record",
-        "Worker posting",
-        "Spray diary",
-        "Pesticide-use report"
-      ],
-      "source_anchors": [
-        "**Workflow card: scouting to spray execution and compliance record**",
-        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
-      ],
-      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014"],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
+      "decision_ids": ["DEC-012", "DEC-013"],
+      "exception_ids": ["EXC-006", "EXC-007", "EXC-009"]
     },
     {
       "id": "REC-011",
@@ -566,14 +442,8 @@
       "workflow_ids": ["WF-002"],
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-SCOUT",
-        "ROLE-VITICULTURIST",
         "ROLE-CROP-PROTECTION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-FOREMAN",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-REGULATOR"
+        "ROLE-PESTICIDE-HANDLER"
       ],
       "lifecycle": [
         "draft",
@@ -594,28 +464,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Scouting record",
-        "Treatment recommendation",
-        "Product and label check",
-        "Application record",
-        "REI and PHI record",
-        "Worker posting",
-        "Spray diary",
-        "Pesticide-use report"
+        "REC-012",
+        "REC-010",
+        "REC-009",
+        "REC-013",
+        "REC-014",
+        "REC-016"
       ],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
       ],
-      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014"],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
+      "decision_ids": ["DEC-013"],
+      "exception_ids": ["EXC-006", "EXC-009"]
     },
     {
       "id": "REC-012",
@@ -626,21 +487,15 @@
       "workflow_ids": ["WF-002"],
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-SCOUT",
-        "ROLE-VITICULTURIST",
-        "ROLE-CROP-PROTECTION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-PESTICIDE-HANDLER",
-        "ROLE-FOREMAN",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-REGULATOR"
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
-        "planned",
-        "assigned",
+        "scheduled",
         "in_progress",
-        "partially_completed",
         "completed",
+        "reported",
         "verified",
         "corrected",
         "superseded"
@@ -655,20 +510,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Scouting record",
-        "Treatment recommendation",
-        "Product and label check",
-        "Calibration record",
-        "REI and PHI record",
-        "Worker posting",
-        "Spray diary",
-        "Pesticide-use report"
+        "REC-013",
+        "REC-011",
+        "REC-010",
+        "REC-014",
+        "REC-008",
+        "REC-009"
       ],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
       ],
-      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014"],
+      "decision_ids": ["DEC-012", "DEC-013", "DEC-014", "DEC-015"],
       "exception_ids": [
         "EXC-006",
         "EXC-007",
@@ -687,14 +540,8 @@
       "workflow_ids": ["WF-002"],
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-SCOUT",
-        "ROLE-VITICULTURIST",
         "ROLE-CROP-PROTECTION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-FOREMAN",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-REGULATOR"
+        "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
         "draft",
@@ -715,28 +562,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Scouting record",
-        "Treatment recommendation",
-        "Product and label check",
-        "Calibration record",
-        "Application record",
-        "Worker posting",
-        "Spray diary",
-        "Pesticide-use report"
+        "REC-012",
+        "REC-014",
+        "REC-009",
+        "REC-010",
+        "REC-011",
+        "REC-016"
       ],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
       ],
-      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014"],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
+      "decision_ids": ["DEC-012", "DEC-013", "DEC-015"],
+      "exception_ids": ["EXC-007", "EXC-008", "EXC-009", "EXC-010"]
     },
     {
       "id": "REC-014",
@@ -746,16 +584,7 @@
       "purpose": "Preserve worker posting as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-002"],
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-SCOUT",
-        "ROLE-VITICULTURIST",
-        "ROLE-CROP-PROTECTION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-FOREMAN",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-REGULATOR"
-      ],
+      "responsible_roles": ["ROLE-FOREMAN", "ROLE-COMPLIANCE-COORDINATOR"],
       "lifecycle": [
         "proposed",
         "communicated",
@@ -775,28 +604,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Scouting record",
-        "Treatment recommendation",
-        "Product and label check",
-        "Calibration record",
-        "Application record",
-        "REI and PHI record",
-        "Spray diary",
-        "Pesticide-use report"
+        "REC-013",
+        "REC-015",
+        "REC-012",
+        "REC-016",
+        "REC-009",
+        "REC-010"
       ],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
       ],
-      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014"],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
+      "decision_ids": ["DEC-013", "DEC-015"],
+      "exception_ids": ["EXC-008", "EXC-009", "EXC-010"]
     },
     {
       "id": "REC-015",
@@ -807,14 +627,9 @@
       "workflow_ids": ["WF-002", "WF-010"],
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012", "EVD-010"],
       "responsible_roles": [
-        "ROLE-SCOUT",
-        "ROLE-VITICULTURIST",
-        "ROLE-CROP-PROTECTION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-FOREMAN",
         "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-REGULATOR"
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "draft",
@@ -836,43 +651,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Scouting record",
-        "Treatment recommendation",
-        "Product and label check",
-        "Calibration record",
-        "Application record",
-        "REI and PHI record",
-        "Worker posting",
-        "Pesticide-use report"
+        "REC-093",
+        "REC-016",
+        "REC-092",
+        "REC-096",
+        "REC-091",
+        "REC-094"
       ],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
       ],
-      "decision_ids": [
-        "DEC-011",
-        "DEC-012",
-        "DEC-013",
-        "DEC-014",
-        "DEC-091",
-        "DEC-092",
-        "DEC-093",
-        "DEC-094"
-      ],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011",
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-015"],
+      "exception_ids": ["EXC-010"]
     },
     {
       "id": "REC-016",
@@ -882,16 +673,7 @@
       "purpose": "Preserve pesticide-use report as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-002"],
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-SCOUT",
-        "ROLE-VITICULTURIST",
-        "ROLE-CROP-PROTECTION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-FOREMAN",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-REGULATOR"
-      ],
+      "responsible_roles": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-REGULATOR"],
       "lifecycle": [
         "draft",
         "complete",
@@ -912,28 +694,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Scouting record",
-        "Treatment recommendation",
-        "Product and label check",
-        "Calibration record",
-        "Application record",
-        "REI and PHI record",
-        "Worker posting",
-        "Spray diary"
+        "REC-015",
+        "REC-017",
+        "REC-014",
+        "REC-012",
+        "REC-008",
+        "REC-009"
       ],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
       ],
-      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014"],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
+      "decision_ids": ["DEC-015"],
+      "exception_ids": ["EXC-010"]
     },
     {
       "id": "REC-017",
@@ -943,16 +716,7 @@
       "purpose": "Preserve efficacy follow-up as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-002"],
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-SCOUT",
-        "ROLE-VITICULTURIST",
-        "ROLE-CROP-PROTECTION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-FOREMAN",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-REGULATOR"
-      ],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-SCOUT"],
       "lifecycle": [
         "pending",
         "recorded",
@@ -970,29 +734,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Scouting record",
-        "Treatment recommendation",
-        "Product and label check",
-        "Calibration record",
-        "Application record",
-        "REI and PHI record",
-        "Worker posting",
-        "Spray diary"
-      ],
+      "related_records": ["REC-016", "REC-015", "REC-008", "REC-012"],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
       ],
-      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014"],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
+      "decision_ids": ["DEC-011", "DEC-014"],
+      "exception_ids": ["EXC-011"]
     },
     {
       "id": "REC-018",
@@ -1005,10 +753,7 @@
       "responsible_roles": [
         "ROLE-VITICULTURIST",
         "ROLE-IRRIGATION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-IRRIGATOR",
-        "ROLE-LAB",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-IRRIGATOR"
       ],
       "lifecycle": [
         "pending",
@@ -1027,29 +772,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Soil-moisture or ET record",
-        "Plant-status observation",
-        "Tissue or petiole result",
-        "Irrigation schedule",
-        "Irrigation log",
-        "Fertility input record",
-        "Malfunction record",
-        "Resource-use total"
-      ],
+      "related_records": ["REC-019", "REC-022", "REC-020", "REC-024"],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
       ],
-      "decision_ids": ["DEC-021", "DEC-022", "DEC-023"],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "decision_ids": ["DEC-021", "DEC-022", "DEC-024"],
+      "exception_ids": ["EXC-012", "EXC-014", "EXC-015", "EXC-016", "EXC-017"]
     },
     {
       "id": "REC-019",
@@ -1059,14 +788,7 @@
       "purpose": "Preserve soil-moisture or et record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-003"],
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-IRRIGATOR",
-        "ROLE-LAB",
-        "ROLE-COMPLIANCE-COORDINATOR"
-      ],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-IRRIGATION-LEAD"],
       "lifecycle": [
         "pending",
         "recorded",
@@ -1084,29 +806,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Block condition note",
-        "Plant-status observation",
-        "Tissue or petiole result",
-        "Irrigation schedule",
-        "Irrigation log",
-        "Fertility input record",
-        "Malfunction record",
-        "Resource-use total"
-      ],
+      "related_records": ["REC-018", "REC-020", "REC-022", "REC-021"],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
       ],
-      "decision_ids": ["DEC-021", "DEC-022", "DEC-023"],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "decision_ids": ["DEC-021", "DEC-024"],
+      "exception_ids": ["EXC-012", "EXC-014", "EXC-015", "EXC-016"]
     },
     {
       "id": "REC-020",
@@ -1116,23 +822,14 @@
       "purpose": "Preserve plant-status observation as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-003"],
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-IRRIGATOR",
-        "ROLE-LAB",
-        "ROLE-COMPLIANCE-COORDINATOR"
-      ],
+      "responsible_roles": ["ROLE-VITICULTURIST"],
       "lifecycle": [
-        "draft",
-        "reviewed",
-        "approved",
-        "active",
-        "revised",
-        "superseded",
-        "archived",
-        "corrected"
+        "observed",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
       ],
       "required_provenance": [
         "stable record identifier",
@@ -1144,28 +841,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Block condition note",
-        "Soil-moisture or ET record",
-        "Tissue or petiole result",
-        "Irrigation schedule",
-        "Irrigation log",
-        "Fertility input record",
-        "Malfunction record",
-        "Resource-use total"
+        "REC-019",
+        "REC-021",
+        "REC-018",
+        "REC-022",
+        "REC-024"
       ],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
       ],
-      "decision_ids": ["DEC-021", "DEC-022", "DEC-023"],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "decision_ids": ["DEC-021"],
+      "exception_ids": ["EXC-012", "EXC-014", "EXC-015", "EXC-017"]
     },
     {
       "id": "REC-021",
@@ -1175,14 +862,7 @@
       "purpose": "Preserve tissue or petiole result as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-003"],
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-IRRIGATOR",
-        "ROLE-LAB",
-        "ROLE-COMPLIANCE-COORDINATOR"
-      ],
+      "responsible_roles": ["ROLE-LAB", "ROLE-VITICULTURIST"],
       "lifecycle": [
         "pending",
         "recorded",
@@ -1201,28 +881,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Block condition note",
-        "Soil-moisture or ET record",
-        "Plant-status observation",
-        "Irrigation schedule",
-        "Irrigation log",
-        "Fertility input record",
-        "Malfunction record",
-        "Resource-use total"
+        "REC-020",
+        "REC-022",
+        "REC-024",
+        "REC-019",
+        "REC-023"
       ],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
       ],
-      "decision_ids": ["DEC-021", "DEC-022", "DEC-023"],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "decision_ids": ["DEC-022", "DEC-024"],
+      "exception_ids": ["EXC-014", "EXC-015", "EXC-016"]
     },
     {
       "id": "REC-022",
@@ -1233,12 +903,9 @@
       "workflow_ids": ["WF-003"],
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VITICULTURIST",
         "ROLE-IRRIGATION-LEAD",
         "ROLE-VINEYARD-MANAGER",
-        "ROLE-IRRIGATOR",
-        "ROLE-LAB",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "draft",
@@ -1260,20 +927,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Block condition note",
-        "Soil-moisture or ET record",
-        "Plant-status observation",
-        "Tissue or petiole result",
-        "Irrigation log",
-        "Fertility input record",
-        "Malfunction record",
-        "Resource-use total"
+        "REC-024",
+        "REC-018",
+        "REC-021",
+        "REC-023",
+        "REC-020",
+        "REC-019"
       ],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
       ],
-      "decision_ids": ["DEC-021", "DEC-022", "DEC-023"],
+      "decision_ids": ["DEC-021", "DEC-022", "DEC-023", "DEC-024"],
       "exception_ids": [
         "EXC-012",
         "EXC-013",
@@ -1291,14 +956,7 @@
       "purpose": "Preserve irrigation log as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-003"],
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-IRRIGATOR",
-        "ROLE-LAB",
-        "ROLE-COMPLIANCE-COORDINATOR"
-      ],
+      "responsible_roles": ["ROLE-IRRIGATOR", "ROLE-IRRIGATION-LEAD"],
       "lifecycle": [
         "planned",
         "assigned",
@@ -1319,28 +977,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Block condition note",
-        "Soil-moisture or ET record",
-        "Plant-status observation",
-        "Tissue or petiole result",
-        "Irrigation schedule",
-        "Fertility input record",
-        "Malfunction record",
-        "Resource-use total"
+        "REC-024",
+        "REC-025",
+        "REC-022",
+        "REC-026",
+        "REC-021"
       ],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
       ],
-      "decision_ids": ["DEC-021", "DEC-022", "DEC-023"],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "decision_ids": ["DEC-021", "DEC-023"],
+      "exception_ids": ["EXC-012", "EXC-013", "EXC-014", "EXC-015", "EXC-017"]
     },
     {
       "id": "REC-024",
@@ -1352,10 +1000,7 @@
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-VITICULTURIST",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-IRRIGATOR",
-        "ROLE-LAB",
         "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
@@ -1377,28 +1022,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Block condition note",
-        "Soil-moisture or ET record",
-        "Plant-status observation",
-        "Tissue or petiole result",
-        "Irrigation schedule",
-        "Irrigation log",
-        "Malfunction record",
-        "Resource-use total"
+        "REC-023",
+        "REC-025",
+        "REC-022",
+        "REC-026",
+        "REC-020",
+        "REC-021"
       ],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
       ],
-      "decision_ids": ["DEC-021", "DEC-022", "DEC-023"],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "decision_ids": ["DEC-022", "DEC-024"],
+      "exception_ids": ["EXC-014", "EXC-015", "EXC-016"]
     },
     {
       "id": "REC-025",
@@ -1409,12 +1045,9 @@
       "workflow_ids": ["WF-003"],
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-IRRIGATOR",
-        "ROLE-LAB",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-MECHANIC"
       ],
       "lifecycle": [
         "pending",
@@ -1433,29 +1066,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Block condition note",
-        "Soil-moisture or ET record",
-        "Plant-status observation",
-        "Tissue or petiole result",
-        "Irrigation schedule",
-        "Irrigation log",
-        "Fertility input record",
-        "Resource-use total"
-      ],
+      "related_records": ["REC-026", "REC-024", "REC-023"],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
       ],
-      "decision_ids": ["DEC-021", "DEC-022", "DEC-023"],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "decision_ids": ["DEC-023"],
+      "exception_ids": ["EXC-012", "EXC-013", "EXC-017"]
     },
     {
       "id": "REC-026",
@@ -1466,11 +1083,7 @@
       "workflow_ids": ["WF-003"],
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VITICULTURIST",
         "ROLE-IRRIGATION-LEAD",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-IRRIGATOR",
-        "ROLE-LAB",
         "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
@@ -1491,29 +1104,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Block condition note",
-        "Soil-moisture or ET record",
-        "Plant-status observation",
-        "Tissue or petiole result",
-        "Irrigation schedule",
-        "Irrigation log",
-        "Fertility input record",
-        "Malfunction record"
-      ],
+      "related_records": ["REC-025", "REC-024", "REC-023", "REC-022"],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
       ],
-      "decision_ids": ["DEC-021", "DEC-022", "DEC-023"],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "decision_ids": ["DEC-023"],
+      "exception_ids": ["EXC-012", "EXC-013", "EXC-017"]
     },
     {
       "id": "REC-027",
@@ -1523,15 +1120,7 @@
       "purpose": "Preserve sampling plan as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-004", "WF-005"],
       "evidence_ids": ["EVD-004", "EVD-011", "EVD-005", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE",
-        "ROLE-LAB"
-      ],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
       "lifecycle": [
         "draft",
         "reviewed",
@@ -1552,41 +1141,25 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Vine and cluster sample",
-        "Block crop estimate",
-        "Forecast revision history",
-        "Crop-load recommendation",
-        "Communication record",
-        "Harvest actual",
-        "Forecast error record",
-        "Sample chain of identity"
+        "REC-028",
+        "REC-035",
+        "REC-029",
+        "REC-036",
+        "REC-037",
+        "REC-038"
       ],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": [
-        "DEC-031",
-        "DEC-032",
-        "DEC-033",
-        "DEC-041",
-        "DEC-042",
-        "DEC-043",
-        "DEC-044"
-      ],
+      "decision_ids": ["DEC-031", "DEC-041"],
       "exception_ids": [
         "EXC-018",
         "EXC-019",
         "EXC-020",
-        "EXC-021",
-        "EXC-022",
-        "EXC-023",
         "EXC-024",
         "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
+        "EXC-026"
       ]
     },
     {
@@ -1597,14 +1170,7 @@
       "purpose": "Preserve vine and cluster sample as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-004"],
       "evidence_ids": ["EVD-004", "EVD-011"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-VITICULTURIST"],
       "lifecycle": [
         "pending",
         "recorded",
@@ -1622,20 +1188,12 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Sampling plan",
-        "Block crop estimate",
-        "Forecast revision history",
-        "Crop-load recommendation",
-        "Communication record",
-        "Harvest actual",
-        "Forecast error record"
-      ],
+      "related_records": ["REC-029", "REC-027", "REC-030", "REC-031"],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-031", "DEC-032", "DEC-033"],
+      "decision_ids": ["DEC-031", "DEC-033"],
       "exception_ids": [
         "EXC-018",
         "EXC-019",
@@ -1656,10 +1214,7 @@
       "responsible_roles": [
         "ROLE-VITICULTURIST",
         "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
+        "ROLE-GROWER-RELATIONS"
       ],
       "lifecycle": [
         "draft",
@@ -1681,13 +1236,12 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Vine and cluster sample",
-        "Forecast revision history",
-        "Crop-load recommendation",
-        "Communication record",
-        "Harvest actual",
-        "Forecast error record"
+        "REC-028",
+        "REC-030",
+        "REC-027",
+        "REC-031",
+        "REC-032",
+        "REC-033"
       ],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
@@ -1711,14 +1265,7 @@
       "purpose": "Preserve forecast revision history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-004"],
       "evidence_ids": ["EVD-004", "EVD-011"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
       "lifecycle": [
         "draft",
         "reviewed",
@@ -1739,27 +1286,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Vine and cluster sample",
-        "Block crop estimate",
-        "Crop-load recommendation",
-        "Communication record",
-        "Harvest actual",
-        "Forecast error record"
+        "REC-029",
+        "REC-032",
+        "REC-031",
+        "REC-033",
+        "REC-034",
+        "REC-028"
       ],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-031", "DEC-032", "DEC-033"],
-      "exception_ids": [
-        "EXC-018",
-        "EXC-019",
-        "EXC-020",
-        "EXC-021",
-        "EXC-022",
-        "EXC-023"
-      ]
+      "decision_ids": ["DEC-032", "DEC-033"],
+      "exception_ids": ["EXC-020", "EXC-021", "EXC-022", "EXC-023"]
     },
     {
       "id": "REC-031",
@@ -1769,14 +1308,7 @@
       "purpose": "Preserve crop-load recommendation as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-004"],
       "evidence_ids": ["EVD-004", "EVD-011"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-VINEYARD-MANAGER"],
       "lifecycle": [
         "draft",
         "reviewed",
@@ -1797,27 +1329,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Vine and cluster sample",
-        "Block crop estimate",
-        "Forecast revision history",
-        "Communication record",
-        "Harvest actual",
-        "Forecast error record"
+        "REC-029",
+        "REC-030",
+        "REC-032",
+        "REC-027",
+        "REC-028",
+        "REC-033"
       ],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-031", "DEC-032", "DEC-033"],
-      "exception_ids": [
-        "EXC-018",
-        "EXC-019",
-        "EXC-020",
-        "EXC-021",
-        "EXC-022",
-        "EXC-023"
-      ]
+      "decision_ids": ["DEC-032"],
+      "exception_ids": ["EXC-020", "EXC-022"]
     },
     {
       "id": "REC-032",
@@ -1827,14 +1351,7 @@
       "purpose": "Preserve communication record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-004"],
       "evidence_ids": ["EVD-004", "EVD-011"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
       "lifecycle": [
         "proposed",
         "communicated",
@@ -1854,27 +1371,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Vine and cluster sample",
-        "Block crop estimate",
-        "Forecast revision history",
-        "Crop-load recommendation",
-        "Harvest actual",
-        "Forecast error record"
+        "REC-033",
+        "REC-030",
+        "REC-031",
+        "REC-029",
+        "REC-034"
       ],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-031", "DEC-032", "DEC-033"],
-      "exception_ids": [
-        "EXC-018",
-        "EXC-019",
-        "EXC-020",
-        "EXC-021",
-        "EXC-022",
-        "EXC-023"
-      ]
+      "decision_ids": ["DEC-032", "DEC-033"],
+      "exception_ids": ["EXC-020", "EXC-021", "EXC-022", "EXC-023"]
     },
     {
       "id": "REC-033",
@@ -1885,11 +1393,8 @@
       "workflow_ids": ["WF-004"],
       "evidence_ids": ["EVD-004", "EVD-011"],
       "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE",
         "ROLE-FINANCE"
       ],
       "lifecycle": [
@@ -1911,27 +1416,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Vine and cluster sample",
-        "Block crop estimate",
-        "Forecast revision history",
-        "Crop-load recommendation",
-        "Communication record",
-        "Forecast error record"
+        "REC-034",
+        "REC-032",
+        "REC-029",
+        "REC-030",
+        "REC-031"
       ],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-031", "DEC-032", "DEC-033"],
-      "exception_ids": [
-        "EXC-018",
-        "EXC-019",
-        "EXC-020",
-        "EXC-021",
-        "EXC-022",
-        "EXC-023"
-      ]
+      "decision_ids": ["DEC-033"],
+      "exception_ids": ["EXC-021", "EXC-022", "EXC-023"]
     },
     {
       "id": "REC-034",
@@ -1941,14 +1437,7 @@
       "purpose": "Preserve forecast error record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-004"],
       "evidence_ids": ["EVD-004", "EVD-011"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-VINEYARD-MANAGER", "ROLE-VITICULTURIST"],
       "lifecycle": [
         "draft",
         "reviewed",
@@ -1968,28 +1457,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Sampling plan",
-        "Vine and cluster sample",
-        "Block crop estimate",
-        "Forecast revision history",
-        "Crop-load recommendation",
-        "Communication record",
-        "Harvest actual"
-      ],
+      "related_records": ["REC-033", "REC-032", "REC-029", "REC-030"],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-031", "DEC-032", "DEC-033"],
-      "exception_ids": [
-        "EXC-018",
-        "EXC-019",
-        "EXC-020",
-        "EXC-021",
-        "EXC-022",
-        "EXC-023"
-      ]
+      "decision_ids": ["DEC-033"],
+      "exception_ids": ["EXC-021", "EXC-022", "EXC-023"]
     },
     {
       "id": "REC-035",
@@ -2000,12 +1474,9 @@
       "workflow_ids": ["WF-005"],
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VITICULTURIST",
         "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
         "ROLE-LAB",
-        "ROLE-WINEMAKER",
-        "ROLE-VINEYARD-MANAGER"
+        "ROLE-VITICULTURIST"
       ],
       "lifecycle": [
         "proposed",
@@ -2026,28 +1497,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Field condition assessment",
-        "Laboratory result",
-        "Maturity trend",
-        "Pick proposal",
-        "Decision communication",
-        "Pick authorization",
-        "Supersession history"
+        "REC-027",
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "REC-039",
+        "REC-080"
       ],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "decision_ids": ["DEC-041"],
+      "exception_ids": ["EXC-024", "EXC-025", "EXC-026"]
     },
     {
       "id": "REC-036",
@@ -2057,14 +1519,7 @@
       "purpose": "Preserve field condition assessment as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-005"],
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-LAB",
-        "ROLE-WINEMAKER",
-        "ROLE-VINEYARD-MANAGER"
-      ],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VITICULTURIST"],
       "lifecycle": [
         "pending",
         "recorded",
@@ -2083,28 +1538,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Sample chain of identity",
-        "Laboratory result",
-        "Maturity trend",
-        "Pick proposal",
-        "Decision communication",
-        "Pick authorization",
-        "Supersession history"
+        "REC-037",
+        "REC-035",
+        "REC-038",
+        "REC-027",
+        "REC-039",
+        "REC-084"
       ],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "decision_ids": ["DEC-041", "DEC-042"],
+      "exception_ids": ["EXC-024", "EXC-025", "EXC-026", "EXC-027"]
     },
     {
       "id": "REC-037",
@@ -2114,14 +1560,7 @@
       "purpose": "Preserve laboratory result as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-005"],
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-LAB",
-        "ROLE-WINEMAKER",
-        "ROLE-VINEYARD-MANAGER"
-      ],
+      "responsible_roles": ["ROLE-LAB", "ROLE-VITICULTURIST"],
       "lifecycle": [
         "pending",
         "recorded",
@@ -2140,28 +1579,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Sample chain of identity",
-        "Field condition assessment",
-        "Maturity trend",
-        "Pick proposal",
-        "Decision communication",
-        "Pick authorization",
-        "Supersession history"
+        "REC-036",
+        "REC-038",
+        "REC-035",
+        "REC-039",
+        "REC-027",
+        "REC-084"
       ],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "decision_ids": ["DEC-041", "DEC-042"],
+      "exception_ids": ["EXC-024", "EXC-025", "EXC-026", "EXC-027"]
     },
     {
       "id": "REC-038",
@@ -2171,14 +1601,7 @@
       "purpose": "Preserve maturity trend as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-005"],
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-LAB",
-        "ROLE-WINEMAKER",
-        "ROLE-VINEYARD-MANAGER"
-      ],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
       "lifecycle": [
         "pending",
         "recorded",
@@ -2197,28 +1620,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Sample chain of identity",
-        "Field condition assessment",
-        "Laboratory result",
-        "Pick proposal",
-        "Decision communication",
-        "Pick authorization",
-        "Supersession history"
+        "REC-037",
+        "REC-039",
+        "REC-036",
+        "REC-035",
+        "REC-027",
+        "REC-084"
       ],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "decision_ids": ["DEC-041", "DEC-042"],
+      "exception_ids": ["EXC-024", "EXC-025", "EXC-026", "EXC-027"]
     },
     {
       "id": "REC-039",
@@ -2228,14 +1642,7 @@
       "purpose": "Preserve pick proposal as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-005"],
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-LAB",
-        "ROLE-WINEMAKER",
-        "ROLE-VINEYARD-MANAGER"
-      ],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VITICULTURIST"],
       "lifecycle": [
         "draft",
         "reviewed",
@@ -2256,28 +1663,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Sample chain of identity",
-        "Field condition assessment",
-        "Laboratory result",
-        "Maturity trend",
-        "Decision communication",
-        "Pick authorization",
-        "Supersession history"
+        "REC-040",
+        "REC-041",
+        "REC-038",
+        "REC-080",
+        "REC-037",
+        "REC-042"
       ],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "decision_ids": ["DEC-042", "DEC-043", "DEC-044"],
+      "exception_ids": ["EXC-026", "EXC-027", "EXC-028", "EXC-029"]
     },
     {
       "id": "REC-040",
@@ -2288,10 +1686,7 @@
       "workflow_ids": ["WF-005"],
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VITICULTURIST",
         "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-LAB",
         "ROLE-WINEMAKER",
         "ROLE-VINEYARD-MANAGER"
       ],
@@ -2314,28 +1709,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Sample chain of identity",
-        "Field condition assessment",
-        "Laboratory result",
-        "Maturity trend",
-        "Pick proposal",
-        "Pick authorization",
-        "Supersession history"
+        "REC-039",
+        "REC-041",
+        "REC-080",
+        "REC-042",
+        "REC-038"
       ],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "decision_ids": ["DEC-043", "DEC-044"],
+      "exception_ids": ["EXC-026", "EXC-027", "EXC-028", "EXC-029"]
     },
     {
       "id": "REC-041",
@@ -2346,14 +1731,9 @@
       "workflow_ids": ["WF-005", "WF-006"],
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012", "EVD-006"],
       "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-LAB",
         "ROLE-WINEMAKER",
         "ROLE-VINEYARD-MANAGER",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION"
+        "ROLE-GROWER-RELATIONS"
       ],
       "lifecycle": [
         "proposed",
@@ -2374,44 +1754,26 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Sample chain of identity",
-        "Field condition assessment",
-        "Laboratory result",
-        "Maturity trend",
-        "Pick proposal",
-        "Decision communication",
-        "Supersession history"
+        "REC-040",
+        "REC-039",
+        "REC-042",
+        "REC-043",
+        "REC-080",
+        "REC-044"
       ],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": [
-        "DEC-041",
-        "DEC-042",
-        "DEC-043",
-        "DEC-044",
-        "DEC-051",
-        "DEC-052",
-        "DEC-053",
-        "DEC-054",
-        "DEC-055"
-      ],
+      "decision_ids": ["DEC-043", "DEC-044", "DEC-051", "DEC-052"],
       "exception_ids": [
-        "EXC-024",
-        "EXC-025",
         "EXC-026",
         "EXC-027",
         "EXC-028",
         "EXC-029",
         "EXC-030",
         "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
+        "EXC-033"
       ]
     },
     {
@@ -2422,14 +1784,7 @@
       "purpose": "Preserve supersession history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-005"],
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VITICULTURIST",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-LAB",
-        "ROLE-WINEMAKER",
-        "ROLE-VINEYARD-MANAGER"
-      ],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
       "lifecycle": [
         "draft",
         "recorded",
@@ -2449,28 +1804,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Sampling plan",
-        "Sample chain of identity",
-        "Field condition assessment",
-        "Laboratory result",
-        "Maturity trend",
-        "Pick proposal",
-        "Decision communication",
-        "Pick authorization"
+        "REC-041",
+        "REC-040",
+        "REC-039",
+        "REC-080",
+        "REC-036",
+        "REC-038"
       ],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
       ],
-      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "decision_ids": ["DEC-044"],
+      "exception_ids": ["EXC-027", "EXC-028", "EXC-029"]
     },
     {
       "id": "REC-043",
@@ -2482,13 +1828,9 @@
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
         "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
+        "ROLE-HARVEST-CREW-LEADER"
       ],
       "lifecycle": [
         "draft",
@@ -2509,30 +1851,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Pick authorization",
-        "Crew and container assignment",
-        "Load identity",
-        "Transport record",
-        "Weigh bill",
-        "Intake sample and quality result",
-        "Disposition notice",
-        "Delivery entry"
-      ],
+      "related_records": ["REC-044", "REC-041", "REC-046", "REC-045"],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "decision_ids": ["DEC-051"],
+      "exception_ids": ["EXC-030", "EXC-031"]
     },
     {
       "id": "REC-044",
@@ -2544,13 +1869,9 @@
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
         "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
+        "ROLE-OPERATIONS-COORDINATOR"
       ],
       "lifecycle": [
         "draft",
@@ -2570,30 +1891,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Pick authorization",
-        "Harvest plan",
-        "Load identity",
-        "Transport record",
-        "Weigh bill",
-        "Intake sample and quality result",
-        "Disposition notice",
-        "Delivery entry"
-      ],
+      "related_records": ["REC-043", "REC-046", "REC-041", "REC-045"],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "decision_ids": ["DEC-051"],
+      "exception_ids": ["EXC-030", "EXC-031"]
     },
     {
       "id": "REC-045",
@@ -2604,14 +1908,9 @@
       "workflow_ids": ["WF-006"],
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
         "ROLE-HARVEST-CREW-LEADER",
         "ROLE-TRANSPORTATION",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
+        "ROLE-WINERY-INTAKE"
       ],
       "lifecycle": [
         "proposed",
@@ -2632,29 +1931,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
-        "Transport record",
-        "Weigh bill",
-        "Intake sample and quality result",
-        "Disposition notice",
-        "Delivery entry"
+        "REC-046",
+        "REC-047",
+        "REC-044",
+        "REC-048",
+        "REC-043",
+        "REC-050"
       ],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "decision_ids": ["DEC-052", "DEC-053", "DEC-054"],
+      "exception_ids": ["EXC-032", "EXC-033", "EXC-034", "EXC-035", "EXC-036"]
     },
     {
       "id": "REC-046",
@@ -2664,16 +1953,7 @@
       "purpose": "Preserve transport record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-006"],
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-TRANSPORTATION", "ROLE-HARVEST-CREW-LEADER"],
       "lifecycle": [
         "planned",
         "assigned",
@@ -2694,29 +1974,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
-        "Load identity",
-        "Weigh bill",
-        "Intake sample and quality result",
-        "Disposition notice",
-        "Delivery entry"
+        "REC-045",
+        "REC-047",
+        "REC-044",
+        "REC-043",
+        "REC-048",
+        "REC-041"
       ],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "decision_ids": ["DEC-052"],
+      "exception_ids": ["EXC-033"]
     },
     {
       "id": "REC-047",
@@ -2727,14 +1997,9 @@
       "workflow_ids": ["WF-006"],
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION",
         "ROLE-WINERY-INTAKE",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
+        "ROLE-TRANSPORTATION",
+        "ROLE-GROWER-RELATIONS"
       ],
       "lifecycle": [
         "initiated",
@@ -2755,29 +2020,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
-        "Load identity",
-        "Transport record",
-        "Intake sample and quality result",
-        "Disposition notice",
-        "Delivery entry"
+        "REC-046",
+        "REC-050",
+        "REC-048",
+        "REC-052",
+        "REC-080",
+        "REC-045"
       ],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "decision_ids": ["DEC-052", "DEC-053", "DEC-054"],
+      "exception_ids": ["EXC-032", "EXC-033", "EXC-034", "EXC-035", "EXC-036"]
     },
     {
       "id": "REC-048",
@@ -2787,16 +2042,7 @@
       "purpose": "Preserve intake sample and quality result as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-006"],
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-WINERY-INTAKE", "ROLE-WINEMAKER", "ROLE-LAB"],
       "lifecycle": [
         "pending",
         "recorded",
@@ -2815,29 +2061,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
-        "Load identity",
-        "Transport record",
-        "Weigh bill",
-        "Disposition notice",
-        "Delivery entry"
+        "REC-049",
+        "REC-047",
+        "REC-046",
+        "REC-080",
+        "REC-081",
+        "REC-045"
       ],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "decision_ids": ["DEC-053"],
+      "exception_ids": ["EXC-032", "EXC-034"]
     },
     {
       "id": "REC-049",
@@ -2848,14 +2084,9 @@
       "workflow_ids": ["WF-006"],
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION",
-        "ROLE-WINERY-INTAKE",
         "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
+        "ROLE-WINERY-INTAKE",
+        "ROLE-GROWER-RELATIONS"
       ],
       "lifecycle": [
         "proposed",
@@ -2876,29 +2107,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
-        "Load identity",
-        "Transport record",
-        "Weigh bill",
-        "Intake sample and quality result",
-        "Delivery entry"
+        "REC-048",
+        "REC-050",
+        "REC-080",
+        "REC-047",
+        "REC-051",
+        "REC-052"
       ],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "decision_ids": ["DEC-053", "DEC-054", "DEC-055"],
+      "exception_ids": ["EXC-032", "EXC-033", "EXC-034", "EXC-035", "EXC-036"]
     },
     {
       "id": "REC-050",
@@ -2908,16 +2129,7 @@
       "purpose": "Preserve delivery entry as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-006"],
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-WINERY-INTAKE", "ROLE-GROWER-RELATIONS"],
       "lifecycle": [
         "initiated",
         "recorded",
@@ -2937,29 +2149,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
-        "Load identity",
-        "Transport record",
-        "Weigh bill",
-        "Intake sample and quality result",
-        "Disposition notice"
+        "REC-051",
+        "REC-047",
+        "REC-052",
+        "REC-049",
+        "REC-080",
+        "REC-053"
       ],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "decision_ids": ["DEC-052", "DEC-054", "DEC-055"],
+      "exception_ids": ["EXC-033", "EXC-035", "EXC-036"]
     },
     {
       "id": "REC-051",
@@ -2970,13 +2172,9 @@
       "workflow_ids": ["WF-006", "WF-007"],
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012", "EVD-007"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION",
         "ROLE-WINERY-INTAKE",
-        "ROLE-WINEMAKER",
+        "ROLE-PAYROLL",
         "ROLE-FINANCE"
       ],
       "lifecycle": [
@@ -2998,42 +2196,22 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
-        "Load identity",
-        "Transport record",
-        "Weigh bill",
-        "Intake sample and quality result",
-        "Disposition notice"
+        "REC-062",
+        "REC-050",
+        "REC-063",
+        "REC-052",
+        "REC-059",
+        "REC-047"
       ],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": [
-        "DEC-051",
-        "DEC-052",
-        "DEC-053",
-        "DEC-054",
-        "DEC-055",
-        "DEC-061",
-        "DEC-062",
-        "DEC-063",
-        "DEC-064"
-      ],
+      "decision_ids": ["DEC-054", "DEC-064"],
       "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
         "EXC-033",
-        "EXC-034",
         "EXC-035",
         "EXC-036",
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
         "EXC-041",
         "EXC-042",
         "EXC-043"
@@ -3048,14 +2226,9 @@
       "workflow_ids": ["WF-006"],
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
+        "ROLE-FINANCE",
+        "ROLE-WINEMAKER"
       ],
       "lifecycle": [
         "initiated",
@@ -3076,29 +2249,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
-        "Load identity",
-        "Transport record",
-        "Weigh bill",
-        "Intake sample and quality result",
-        "Disposition notice"
+        "REC-051",
+        "REC-053",
+        "REC-050",
+        "REC-080",
+        "REC-047",
+        "REC-049"
       ],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "decision_ids": ["DEC-055"],
+      "exception_ids": ["EXC-036"]
     },
     {
       "id": "REC-053",
@@ -3109,14 +2272,9 @@
       "workflow_ids": ["WF-006"],
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FINANCE",
         "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-TRANSPORTATION",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-WINEMAKER",
-        "ROLE-FINANCE"
+        "ROLE-OWNER-GENERAL-MANAGER"
       ],
       "lifecycle": [
         "initiated",
@@ -3137,29 +2295,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
-        "Load identity",
-        "Transport record",
-        "Weigh bill",
-        "Intake sample and quality result",
-        "Disposition notice"
+        "REC-052",
+        "REC-047",
+        "REC-050",
+        "REC-051",
+        "REC-080"
       ],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
       ],
-      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "decision_ids": ["DEC-055"],
+      "exception_ids": ["EXC-036"]
     },
     {
       "id": "REC-054",
@@ -3170,14 +2317,10 @@
       "workflow_ids": ["WF-007"],
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-OPERATIONS-COORDINATOR",
         "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
         "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE"
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "draft",
@@ -3198,29 +2341,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Qualification and training evidence",
-        "Work assignment",
-        "Safety briefing",
-        "Attendance record",
-        "Break record",
-        "Time and piece-rate record",
-        "Task quantity",
-        "Supervisor verification"
+        "REC-055",
+        "REC-003",
+        "REC-057",
+        "REC-056",
+        "REC-059",
+        "REC-060"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
       ],
-      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "decision_ids": ["DEC-061"],
+      "exception_ids": ["EXC-037", "EXC-038"]
     },
     {
       "id": "REC-055",
@@ -3231,24 +2364,18 @@
       "workflow_ids": ["WF-007"],
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
         "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE"
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-LABOR-CONTRACTOR"
       ],
       "lifecycle": [
-        "planned",
-        "assigned",
-        "in_progress",
-        "partially_completed",
+        "required",
+        "scheduled",
         "completed",
         "verified",
-        "corrected",
-        "superseded"
+        "expired",
+        "renewed",
+        "corrected"
       ],
       "required_provenance": [
         "stable record identifier",
@@ -3259,30 +2386,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Crew roster",
-        "Work assignment",
-        "Safety briefing",
-        "Attendance record",
-        "Break record",
-        "Time and piece-rate record",
-        "Task quantity",
-        "Supervisor verification"
-      ],
+      "related_records": ["REC-054", "REC-003", "REC-056"],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
       ],
-      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "decision_ids": ["DEC-061"],
+      "exception_ids": ["EXC-037", "EXC-038"]
     },
     {
       "id": "REC-056",
@@ -3292,23 +2402,12 @@
       "purpose": "Preserve safety briefing as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-007"],
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-FOREMAN"],
       "lifecycle": [
-        "planned",
-        "assigned",
-        "in_progress",
-        "partially_completed",
+        "required",
+        "delivered",
+        "acknowledged",
         "completed",
-        "verified",
         "corrected",
         "superseded"
       ],
@@ -3322,29 +2421,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Crew roster",
-        "Qualification and training evidence",
-        "Work assignment",
-        "Attendance record",
-        "Break record",
-        "Time and piece-rate record",
-        "Task quantity",
-        "Supervisor verification"
+        "REC-003",
+        "REC-057",
+        "REC-058",
+        "REC-055",
+        "REC-054"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
       ],
-      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "decision_ids": ["DEC-062"],
+      "exception_ids": ["EXC-038", "EXC-039", "EXC-040"]
     },
     {
       "id": "REC-057",
@@ -3354,16 +2442,7 @@
       "purpose": "Preserve attendance record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-007"],
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-FOREMAN", "ROLE-PAYROLL"],
       "lifecycle": [
         "planned",
         "assigned",
@@ -3384,29 +2463,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Crew roster",
-        "Qualification and training evidence",
-        "Work assignment",
-        "Safety briefing",
-        "Break record",
-        "Time and piece-rate record",
-        "Task quantity",
-        "Supervisor verification"
+        "REC-058",
+        "REC-059",
+        "REC-056",
+        "REC-003",
+        "REC-060",
+        "REC-051"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
       ],
-      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "decision_ids": ["DEC-062", "DEC-063"],
+      "exception_ids": ["EXC-039", "EXC-040", "EXC-041", "EXC-042", "EXC-043"]
     },
     {
       "id": "REC-058",
@@ -3416,16 +2485,7 @@
       "purpose": "Preserve break record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-007"],
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-FOREMAN", "ROLE-PAYROLL"],
       "lifecycle": [
         "planned",
         "assigned",
@@ -3446,29 +2506,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Crew roster",
-        "Qualification and training evidence",
-        "Work assignment",
-        "Safety briefing",
-        "Attendance record",
-        "Time and piece-rate record",
-        "Task quantity",
-        "Supervisor verification"
+        "REC-057",
+        "REC-059",
+        "REC-056",
+        "REC-060",
+        "REC-051",
+        "REC-061"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
       ],
-      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "decision_ids": ["DEC-062", "DEC-063"],
+      "exception_ids": ["EXC-039", "EXC-040", "EXC-041", "EXC-042"]
     },
     {
       "id": "REC-059",
@@ -3479,14 +2529,9 @@
       "workflow_ids": ["WF-007"],
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
         "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
         "ROLE-PAYROLL",
-        "ROLE-FINANCE"
+        "ROLE-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "planned",
@@ -3508,29 +2553,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Crew roster",
-        "Qualification and training evidence",
-        "Work assignment",
-        "Safety briefing",
-        "Attendance record",
-        "Break record",
-        "Task quantity",
-        "Supervisor verification"
+        "REC-058",
+        "REC-060",
+        "REC-057",
+        "REC-061",
+        "REC-051",
+        "REC-062"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
       ],
-      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "decision_ids": ["DEC-063", "DEC-064"],
+      "exception_ids": ["EXC-041", "EXC-042", "EXC-043"]
     },
     {
       "id": "REC-060",
@@ -3540,16 +2575,7 @@
       "purpose": "Preserve task quantity as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-007"],
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-FOREMAN", "ROLE-VINEYARD-MANAGER"],
       "lifecycle": [
         "planned",
         "assigned",
@@ -3570,29 +2596,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Crew roster",
-        "Qualification and training evidence",
-        "Work assignment",
-        "Safety briefing",
-        "Attendance record",
-        "Break record",
-        "Time and piece-rate record",
-        "Supervisor verification"
+        "REC-059",
+        "REC-061",
+        "REC-058",
+        "REC-057",
+        "REC-062",
+        "REC-051"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
       ],
-      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "decision_ids": ["DEC-063"],
+      "exception_ids": ["EXC-041", "EXC-042"]
     },
     {
       "id": "REC-061",
@@ -3604,13 +2620,7 @@
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE"
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "draft",
@@ -3631,29 +2641,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Crew roster",
-        "Qualification and training evidence",
-        "Work assignment",
-        "Safety briefing",
-        "Attendance record",
-        "Break record",
-        "Time and piece-rate record",
-        "Task quantity"
+        "REC-060",
+        "REC-062",
+        "REC-059",
+        "REC-051",
+        "REC-057",
+        "REC-058"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
       ],
-      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "decision_ids": ["DEC-063"],
+      "exception_ids": ["EXC-041", "EXC-042", "EXC-043"]
     },
     {
       "id": "REC-062",
@@ -3664,14 +2664,9 @@
       "workflow_ids": ["WF-007"],
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
         "ROLE-PAYROLL",
-        "ROLE-FINANCE"
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-LABOR-CONTRACTOR"
       ],
       "lifecycle": [
         "initiated",
@@ -3692,29 +2687,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Crew roster",
-        "Qualification and training evidence",
-        "Work assignment",
-        "Safety briefing",
-        "Attendance record",
-        "Break record",
-        "Time and piece-rate record",
-        "Task quantity"
+        "REC-051",
+        "REC-061",
+        "REC-063",
+        "REC-059",
+        "REC-060",
+        "REC-057"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
       ],
-      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "decision_ids": ["DEC-063", "DEC-064"],
+      "exception_ids": ["EXC-041", "EXC-042", "EXC-043"]
     },
     {
       "id": "REC-063",
@@ -3724,16 +2709,7 @@
       "purpose": "Preserve cost allocation as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-007"],
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-FINANCE", "ROLE-PAYROLL"],
       "lifecycle": [
         "initiated",
         "recorded",
@@ -3753,29 +2729,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Crew roster",
-        "Qualification and training evidence",
-        "Work assignment",
-        "Safety briefing",
-        "Attendance record",
-        "Break record",
-        "Time and piece-rate record",
-        "Task quantity"
+        "REC-051",
+        "REC-062",
+        "REC-059",
+        "REC-057",
+        "REC-058",
+        "REC-060"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
       ],
-      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "decision_ids": ["DEC-064"],
+      "exception_ids": ["EXC-041", "EXC-042"]
     },
     {
       "id": "REC-064",
@@ -3788,12 +2754,7 @@
       "responsible_roles": [
         "ROLE-OPERATIONS-COORDINATOR",
         "ROLE-VINEYARD-MANAGER",
-        "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
-        "ROLE-MECHANIC",
-        "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "draft",
@@ -3814,29 +2775,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Inventory record",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record",
-        "Failure report"
+        "REC-065",
+        "REC-067",
+        "REC-069",
+        "REC-071",
+        "REC-066",
+        "REC-068"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-071", "DEC-073"],
+      "exception_ids": ["EXC-044", "EXC-046", "EXC-048", "EXC-050"]
     },
     {
       "id": "REC-065",
@@ -3848,12 +2799,7 @@
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
-        "ROLE-MECHANIC",
-        "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
         "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
@@ -3875,29 +2821,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Resource demand",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record",
-        "Failure report"
+        "REC-067",
+        "REC-064",
+        "REC-066",
+        "REC-071",
+        "REC-070",
+        "REC-068"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-071", "DEC-072"],
+      "exception_ids": ["EXC-044", "EXC-045", "EXC-046", "EXC-048", "EXC-049"]
     },
     {
       "id": "REC-066",
@@ -3908,14 +2844,9 @@
       "workflow_ids": ["WF-008"],
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
         "ROLE-MECHANIC",
         "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-FOREMAN"
       ],
       "lifecycle": [
         "draft",
@@ -3936,29 +2867,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Resource demand",
-        "Inventory record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record",
-        "Failure report"
+        "REC-065",
+        "REC-067",
+        "REC-072",
+        "REC-073",
+        "REC-075",
+        "REC-064"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-071", "DEC-074"],
+      "exception_ids": ["EXC-044", "EXC-046", "EXC-047", "EXC-048"]
     },
     {
       "id": "REC-067",
@@ -3970,13 +2891,8 @@
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
-        "ROLE-MECHANIC",
-        "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "initiated",
@@ -3997,25 +2913,22 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Resource demand",
-        "Inventory record",
-        "Equipment readiness and calibration record",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record",
-        "Failure report"
+        "REC-068",
+        "REC-065",
+        "REC-064",
+        "REC-071",
+        "REC-066",
+        "REC-069"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
+      "decision_ids": ["DEC-071", "DEC-072", "DEC-073"],
       "exception_ids": [
         "EXC-044",
         "EXC-045",
         "EXC-046",
-        "EXC-047",
         "EXC-048",
         "EXC-049",
         "EXC-050"
@@ -4030,14 +2943,9 @@
       "workflow_ids": ["WF-008"],
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-OPERATIONS-COORDINATOR",
         "ROLE-VINEYARD-MANAGER",
-        "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
-        "ROLE-MECHANIC",
-        "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "proposed",
@@ -4058,29 +2966,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Resource demand",
-        "Inventory record",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record",
-        "Failure report"
+        "REC-067",
+        "REC-069",
+        "REC-064",
+        "REC-070",
+        "REC-065",
+        "REC-066"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-072", "DEC-073"],
+      "exception_ids": ["EXC-045", "EXC-046", "EXC-049", "EXC-050"]
     },
     {
       "id": "REC-069",
@@ -4090,16 +2988,7 @@
       "purpose": "Preserve purchase order as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-008"],
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
-        "ROLE-MECHANIC",
-        "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
-      ],
+      "responsible_roles": ["ROLE-PURCHASING", "ROLE-FINANCE"],
       "lifecycle": [
         "initiated",
         "recorded",
@@ -4119,29 +3008,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Resource demand",
-        "Inventory record",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Receipt and lot record",
-        "Staging record",
-        "Failure report"
+        "REC-068",
+        "REC-067",
+        "REC-070",
+        "REC-064",
+        "REC-071",
+        "REC-074"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-072", "DEC-073"],
+      "exception_ids": ["EXC-045", "EXC-046", "EXC-049", "EXC-050"]
     },
     {
       "id": "REC-070",
@@ -4151,16 +3030,7 @@
       "purpose": "Preserve receipt and lot record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-008"],
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
-        "ROLE-MECHANIC",
-        "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
-      ],
+      "responsible_roles": ["ROLE-PURCHASING", "ROLE-OPERATIONS-COORDINATOR"],
       "lifecycle": [
         "initiated",
         "recorded",
@@ -4180,29 +3050,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Resource demand",
-        "Inventory record",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Staging record",
-        "Failure report"
+        "REC-071",
+        "REC-069",
+        "REC-065",
+        "REC-067",
+        "REC-068",
+        "REC-064"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-072"],
+      "exception_ids": ["EXC-045", "EXC-049"]
     },
     {
       "id": "REC-071",
@@ -4214,13 +3074,8 @@
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PURCHASING",
         "ROLE-FOREMAN",
-        "ROLE-MECHANIC",
-        "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "draft",
@@ -4241,29 +3096,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Resource demand",
-        "Inventory record",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Failure report"
+        "REC-070",
+        "REC-067",
+        "REC-065",
+        "REC-064",
+        "REC-072",
+        "REC-069"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-071"],
+      "exception_ids": ["EXC-044", "EXC-046", "EXC-048"]
     },
     {
       "id": "REC-072",
@@ -4274,14 +3119,9 @@
       "workflow_ids": ["WF-008"],
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
-        "ROLE-MECHANIC",
         "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-MECHANIC",
+        "ROLE-FOREMAN"
       ],
       "lifecycle": [
         "pending",
@@ -4301,29 +3141,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Resource demand",
-        "Inventory record",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record"
+        "REC-073",
+        "REC-074",
+        "REC-066",
+        "REC-075",
+        "REC-071",
+        "REC-070"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-074"],
+      "exception_ids": ["EXC-047", "EXC-048"]
     },
     {
       "id": "REC-073",
@@ -4333,16 +3163,7 @@
       "purpose": "Preserve repair order as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-008"],
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
-        "ROLE-MECHANIC",
-        "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
-      ],
+      "responsible_roles": ["ROLE-MECHANIC", "ROLE-OPERATIONS-COORDINATOR"],
       "lifecycle": [
         "draft",
         "recorded",
@@ -4362,29 +3183,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Resource demand",
-        "Inventory record",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record"
+        "REC-072",
+        "REC-074",
+        "REC-075",
+        "REC-066",
+        "REC-071"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-074"],
+      "exception_ids": ["EXC-047", "EXC-048"]
     },
     {
       "id": "REC-074",
@@ -4394,16 +3204,7 @@
       "purpose": "Preserve parts and labor actuals as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-008"],
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
-        "ROLE-MECHANIC",
-        "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
-      ],
+      "responsible_roles": ["ROLE-MECHANIC", "ROLE-FINANCE", "ROLE-PURCHASING"],
       "lifecycle": [
         "initiated",
         "recorded",
@@ -4423,29 +3224,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Resource demand",
-        "Inventory record",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record"
+        "REC-073",
+        "REC-075",
+        "REC-072",
+        "REC-066",
+        "REC-064",
+        "REC-067"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-074"],
+      "exception_ids": ["EXC-047", "EXC-048"]
     },
     {
       "id": "REC-075",
@@ -4456,14 +3247,9 @@
       "workflow_ids": ["WF-008"],
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
       "responsible_roles": [
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PURCHASING",
-        "ROLE-FOREMAN",
         "ROLE-MECHANIC",
-        "ROLE-EQUIPMENT-OPERATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-COMPLIANCE-COORDINATOR"
+        "ROLE-FOREMAN",
+        "ROLE-EQUIPMENT-OPERATOR"
       ],
       "lifecycle": [
         "draft",
@@ -4483,30 +3269,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Resource demand",
-        "Inventory record",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record"
-      ],
+      "related_records": ["REC-074", "REC-073", "REC-066", "REC-072"],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available"
       ],
-      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "decision_ids": ["DEC-074"],
+      "exception_ids": ["EXC-047", "EXC-048"]
     },
     {
       "id": "REC-076",
@@ -4516,16 +3285,7 @@
       "purpose": "Preserve grower profile as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-009"],
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-CONTRACT-GROWER"],
       "lifecycle": [
         "proposed",
         "mapped",
@@ -4545,28 +3305,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record",
-        "Crop and maturity report"
+        "REC-077",
+        "REC-078",
+        "REC-079",
+        "REC-081",
+        "REC-082",
+        "REC-083"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-081", "DEC-082"],
+      "exception_ids": ["EXC-051", "EXC-052"]
     },
     {
       "id": "REC-077",
@@ -4576,16 +3327,7 @@
       "purpose": "Preserve organization and contact record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-009"],
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-CONTRACT-GROWER"],
       "lifecycle": [
         "proposed",
         "mapped",
@@ -4605,28 +3347,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record",
-        "Crop and maturity report"
+        "REC-076",
+        "REC-078",
+        "REC-079",
+        "REC-080",
+        "REC-081",
+        "REC-085"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-081", "DEC-083"],
+      "exception_ids": ["EXC-051", "EXC-053"]
     },
     {
       "id": "REC-078",
@@ -4639,12 +3372,7 @@
       "responsible_roles": [
         "ROLE-GROWER-RELATIONS",
         "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
+        "ROLE-VITICULTURIST"
       ],
       "lifecycle": [
         "proposed",
@@ -4664,29 +3392,13 @@
         "stable block or explicit non-block scope"
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
-      "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record",
-        "Crop and maturity report"
-      ],
+      "related_records": ["REC-077", "REC-079", "REC-076", "REC-080"],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-081", "DEC-082"],
+      "exception_ids": ["EXC-051", "EXC-052"]
     },
     {
       "id": "REC-079",
@@ -4696,16 +3408,7 @@
       "purpose": "Preserve alias history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-009"],
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
       "lifecycle": [
         "proposed",
         "mapped",
@@ -4725,28 +3428,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record",
-        "Crop and maturity report"
+        "REC-078",
+        "REC-077",
+        "REC-080",
+        "REC-076",
+        "REC-081"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-081"],
+      "exception_ids": ["EXC-051"]
     },
     {
       "id": "REC-080",
@@ -4754,17 +3447,21 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "purpose": "Preserve contract as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
-      "workflow_ids": ["WF-009"],
-      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "workflow_ids": ["WF-005", "WF-006", "WF-009", "WF-010"],
+      "evidence_ids": [
+        "EVD-009",
+        "EVD-011",
+        "EVD-012",
+        "EVD-005",
+        "EVD-006",
+        "EVD-010"
+      ],
       "responsible_roles": [
         "ROLE-GROWER-RELATIONS",
         "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-FINANCE",
+        "ROLE-WINEMAKER"
       ],
       "lifecycle": [
         "draft",
@@ -4785,27 +3482,42 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record",
-        "Crop and maturity report"
+        "REC-081",
+        "REC-039",
+        "REC-041",
+        "REC-047",
+        "REC-049",
+        "REC-082"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
+      "decision_ids": [
+        "DEC-043",
+        "DEC-044",
+        "DEC-051",
+        "DEC-053",
+        "DEC-055",
+        "DEC-082",
+        "DEC-083",
+        "DEC-091"
+      ],
       "exception_ids": [
-        "EXC-051",
+        "EXC-026",
+        "EXC-027",
+        "EXC-028",
+        "EXC-029",
+        "EXC-030",
+        "EXC-031",
+        "EXC-032",
+        "EXC-034",
+        "EXC-036",
         "EXC-052",
         "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
+        "EXC-057",
+        "EXC-058",
+        "EXC-059"
       ]
     },
     {
@@ -4818,13 +3530,8 @@
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
         "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
+        "ROLE-CONTRACT-GROWER"
       ],
       "lifecycle": [
         "draft",
@@ -4846,28 +3553,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Spray and certification history",
-        "Visit record",
-        "Crop and maturity report"
+        "REC-080",
+        "REC-083",
+        "REC-082",
+        "REC-085",
+        "REC-084",
+        "REC-086"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-082", "DEC-083"],
+      "exception_ids": ["EXC-052", "EXC-053"]
     },
     {
       "id": "REC-082",
@@ -4880,12 +3578,7 @@
       "responsible_roles": [
         "ROLE-GROWER-RELATIONS",
         "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
+        "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
         "draft",
@@ -4907,28 +3600,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Visit record",
-        "Crop and maturity report"
+        "REC-081",
+        "REC-083",
+        "REC-080",
+        "REC-076",
+        "REC-015",
+        "REC-089"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-082", "DEC-091"],
+      "exception_ids": ["EXC-052", "EXC-057", "EXC-058", "EXC-059"]
     },
     {
       "id": "REC-083",
@@ -4938,16 +3622,7 @@
       "purpose": "Preserve visit record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-009"],
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VITICULTURIST"],
       "lifecycle": [
         "draft",
         "recorded",
@@ -4967,28 +3642,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Crop and maturity report"
+        "REC-084",
+        "REC-081",
+        "REC-082",
+        "REC-085",
+        "REC-080",
+        "REC-087"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-084"],
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
     },
     {
       "id": "REC-084",
@@ -5000,13 +3666,8 @@
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
         "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
+        "ROLE-CONTRACT-GROWER"
       ],
       "lifecycle": [
         "pending",
@@ -5026,28 +3687,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record"
+        "REC-083",
+        "REC-085",
+        "REC-081",
+        "REC-086",
+        "REC-080",
+        "REC-087"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-084"],
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
     },
     {
       "id": "REC-085",
@@ -5060,12 +3712,7 @@
       "responsible_roles": [
         "ROLE-GROWER-RELATIONS",
         "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
+        "ROLE-WINEMAKER"
       ],
       "lifecycle": [
         "proposed",
@@ -5086,28 +3733,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record"
+        "REC-084",
+        "REC-086",
+        "REC-080",
+        "REC-081",
+        "REC-083",
+        "REC-087"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-083", "DEC-084"],
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
     },
     {
       "id": "REC-086",
@@ -5118,23 +3756,18 @@
       "workflow_ids": ["WF-009", "WF-010"],
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012", "EVD-010"],
       "responsible_roles": [
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
         "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-VINEYARD-MANAGER"
       ],
       "lifecycle": [
-        "draft",
-        "recorded",
-        "active",
+        "open",
+        "assigned",
+        "remediation_in_progress",
+        "evidence_submitted",
         "verified",
-        "corrected",
-        "superseded",
-        "archived"
+        "closed",
+        "superseded"
       ],
       "required_provenance": [
         "stable record identifier",
@@ -5146,40 +3779,23 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record"
+        "REC-102",
+        "REC-103",
+        "REC-085",
+        "REC-087",
+        "REC-101",
+        "REC-081"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": [
-        "DEC-081",
-        "DEC-082",
-        "DEC-083",
-        "DEC-084",
-        "DEC-091",
-        "DEC-092",
-        "DEC-093",
-        "DEC-094"
-      ],
+      "decision_ids": ["DEC-084", "DEC-094"],
       "exception_ids": [
-        "EXC-051",
-        "EXC-052",
         "EXC-053",
         "EXC-054",
         "EXC-055",
         "EXC-056",
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
         "EXC-061",
         "EXC-062"
       ]
@@ -5194,13 +3810,8 @@
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
       "responsible_roles": [
         "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
+        "ROLE-FINANCE",
+        "ROLE-CONTRACT-GROWER"
       ],
       "lifecycle": [
         "draft",
@@ -5221,28 +3832,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record"
+        "REC-086",
+        "REC-088",
+        "REC-085",
+        "REC-080",
+        "REC-081",
+        "REC-083"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-084"],
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
     },
     {
       "id": "REC-088",
@@ -5252,16 +3854,7 @@
       "purpose": "Preserve delivery and settlement history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-009"],
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
-      "responsible_roles": [
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-VITICULTURIST",
-        "ROLE-WINEMAKER",
-        "ROLE-WINERY-INTAKE",
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE"
-      ],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-FINANCE"],
       "lifecycle": [
         "initiated",
         "recorded",
@@ -5281,28 +3874,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record"
+        "REC-087",
+        "REC-086",
+        "REC-080",
+        "REC-081",
+        "REC-083",
+        "REC-084"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit."
       ],
-      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "decision_ids": ["DEC-084"],
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
     },
     {
       "id": "REC-089",
@@ -5314,13 +3898,8 @@
       "evidence_ids": ["EVD-010", "EVD-011"],
       "responsible_roles": [
         "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
+        "ROLE-CERTIFIER",
+        "ROLE-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "draft",
@@ -5342,28 +3921,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record",
-        "Organic field history and buffer map"
+        "REC-090",
+        "REC-091",
+        "REC-095",
+        "REC-015",
+        "REC-093",
+        "REC-094"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-091"],
+      "exception_ids": ["EXC-057", "EXC-059"]
     },
     {
       "id": "REC-090",
@@ -5373,16 +3943,7 @@
       "purpose": "Preserve requirement map as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-010"],
       "evidence_ids": ["EVD-010", "EVD-011"],
-      "responsible_roles": [
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
-      ],
+      "responsible_roles": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-CERTIFIER"],
       "lifecycle": [
         "proposed",
         "mapped",
@@ -5402,28 +3963,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record",
-        "Organic field history and buffer map"
+        "REC-091",
+        "REC-089",
+        "REC-015",
+        "REC-093",
+        "REC-094",
+        "REC-095"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-091", "DEC-092"],
+      "exception_ids": ["EXC-057", "EXC-059", "EXC-060"]
     },
     {
       "id": "REC-091",
@@ -5435,13 +3987,7 @@
       "evidence_ids": ["EVD-010", "EVD-011"],
       "responsible_roles": [
         "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
+        "ROLE-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "draft",
@@ -5463,28 +4009,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record",
-        "Organic field history and buffer map"
+        "REC-090",
+        "REC-092",
+        "REC-015",
+        "REC-093",
+        "REC-096",
+        "REC-100"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
     },
     {
       "id": "REC-092",
@@ -5496,13 +4033,7 @@
       "evidence_ids": ["EVD-010", "EVD-011"],
       "responsible_roles": [
         "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
+        "ROLE-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "draft",
@@ -5524,28 +4055,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record",
-        "Organic field history and buffer map"
+        "REC-015",
+        "REC-091",
+        "REC-090",
+        "REC-093",
+        "REC-095",
+        "REC-101"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
     },
     {
       "id": "REC-093",
@@ -5555,16 +4077,7 @@
       "purpose": "Preserve biosecurity register as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-010"],
       "evidence_ids": ["EVD-010", "EVD-011"],
-      "responsible_roles": [
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
-      ],
+      "responsible_roles": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-FOREMAN"],
       "lifecycle": [
         "draft",
         "complete",
@@ -5585,28 +4098,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Water and nitrogen totals",
-        "Training record",
-        "Organic field history and buffer map"
+        "REC-015",
+        "REC-094",
+        "REC-095",
+        "REC-091",
+        "REC-096",
+        "REC-100"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
     },
     {
       "id": "REC-094",
@@ -5618,13 +4122,7 @@
       "evidence_ids": ["EVD-010", "EVD-011"],
       "responsible_roles": [
         "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
+        "ROLE-IRRIGATION-LEAD"
       ],
       "lifecycle": [
         "draft",
@@ -5645,28 +4143,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Training record",
-        "Organic field history and buffer map"
+        "REC-093",
+        "REC-095",
+        "REC-015",
+        "REC-096",
+        "REC-090",
+        "REC-091"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
     },
     {
       "id": "REC-095",
@@ -5676,25 +4165,15 @@
       "purpose": "Preserve training record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-010"],
       "evidence_ids": ["EVD-010", "EVD-011"],
-      "responsible_roles": [
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
-      ],
+      "responsible_roles": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-FOREMAN"],
       "lifecycle": [
-        "planned",
-        "assigned",
-        "in_progress",
-        "partially_completed",
+        "required",
+        "scheduled",
         "completed",
         "verified",
-        "corrected",
-        "superseded"
+        "expired",
+        "renewed",
+        "corrected"
       ],
       "required_provenance": [
         "stable record identifier",
@@ -5706,28 +4185,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Organic field history and buffer map"
+        "REC-094",
+        "REC-096",
+        "REC-093",
+        "REC-097",
+        "REC-015",
+        "REC-090"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057", "EXC-058"]
     },
     {
       "id": "REC-096",
@@ -5740,12 +4210,7 @@
       "responsible_roles": [
         "ROLE-COMPLIANCE-COORDINATOR",
         "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
+        "ROLE-GROWER-RELATIONS"
       ],
       "lifecycle": [
         "proposed",
@@ -5766,28 +4231,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record"
+        "REC-095",
+        "REC-097",
+        "REC-015",
+        "REC-099",
+        "REC-094",
+        "REC-091"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
     },
     {
       "id": "REC-097",
@@ -5798,20 +4254,13 @@
       "workflow_ids": ["WF-010"],
       "evidence_ids": ["EVD-010", "EVD-011"],
       "responsible_roles": [
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
         "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
+        "ROLE-FOREMAN",
+        "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
-        "planned",
-        "assigned",
-        "in_progress",
-        "partially_completed",
+        "required",
+        "scheduled",
         "completed",
         "verified",
         "corrected",
@@ -5827,28 +4276,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record"
+        "REC-096",
+        "REC-098",
+        "REC-099",
+        "REC-095",
+        "REC-091",
+        "REC-093"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057", "EXC-060"]
     },
     {
       "id": "REC-098",
@@ -5859,23 +4299,17 @@
       "workflow_ids": ["WF-010"],
       "evidence_ids": ["EVD-010", "EVD-011"],
       "responsible_roles": [
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
         "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
+        "ROLE-TRANSPORTATION",
+        "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
-        "planned",
-        "assigned",
-        "in_progress",
-        "partially_completed",
-        "completed",
+        "requested",
+        "drafted",
+        "signed",
+        "submitted",
         "verified",
-        "corrected",
+        "rejected",
         "superseded"
       ],
       "required_provenance": [
@@ -5888,28 +4322,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record"
+        "REC-097",
+        "REC-099",
+        "REC-096",
+        "REC-100",
+        "REC-095",
+        "REC-015"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057", "EXC-058", "EXC-060"]
     },
     {
       "id": "REC-099",
@@ -5921,13 +4346,7 @@
       "evidence_ids": ["EVD-010", "EVD-011"],
       "responsible_roles": [
         "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
+        "ROLE-VINEYARD-MANAGER"
       ],
       "lifecycle": [
         "draft",
@@ -5949,28 +4368,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record"
+        "REC-100",
+        "REC-098",
+        "REC-096",
+        "REC-097",
+        "REC-015",
+        "REC-101"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
     },
     {
       "id": "REC-100",
@@ -5982,13 +4392,8 @@
       "evidence_ids": ["EVD-010", "EVD-011"],
       "responsible_roles": [
         "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
+        "ROLE-VITICULTURIST",
+        "ROLE-PESTICIDE-HANDLER"
       ],
       "lifecycle": [
         "planned",
@@ -6010,28 +4415,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record"
+        "REC-099",
+        "REC-101",
+        "REC-091",
+        "REC-093",
+        "REC-096",
+        "REC-098"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
     },
     {
       "id": "REC-101",
@@ -6041,16 +4437,7 @@
       "purpose": "Preserve audit evidence as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-010"],
       "evidence_ids": ["EVD-010", "EVD-011"],
-      "responsible_roles": [
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
-      ],
+      "responsible_roles": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-AUDITOR"],
       "lifecycle": [
         "draft",
         "complete",
@@ -6071,20 +4458,18 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record"
+        "REC-102",
+        "REC-100",
+        "REC-086",
+        "REC-103",
+        "REC-099",
+        "REC-015"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
+      "decision_ids": ["DEC-092", "DEC-093", "DEC-094"],
       "exception_ids": [
         "EXC-057",
         "EXC-058",
@@ -6103,21 +4488,17 @@
       "workflow_ids": ["WF-010"],
       "evidence_ids": ["EVD-010", "EVD-011"],
       "responsible_roles": [
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR"
       ],
       "lifecycle": [
-        "pending",
-        "recorded",
-        "validated",
-        "disputed",
-        "corrected",
+        "open",
+        "acknowledged",
+        "corrective_action_assigned",
+        "evidence_submitted",
+        "verified",
+        "closed",
         "superseded"
       ],
       "required_provenance": [
@@ -6130,28 +4511,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record"
+        "REC-101",
+        "REC-086",
+        "REC-103",
+        "REC-015",
+        "REC-096",
+        "REC-099"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-093", "DEC-094"],
+      "exception_ids": ["EXC-059", "EXC-061", "EXC-062"]
     },
     {
       "id": "REC-103",
@@ -6161,16 +4533,7 @@
       "purpose": "Preserve certification decision as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
       "workflow_ids": ["WF-010"],
       "evidence_ids": ["EVD-010", "EVD-011"],
-      "responsible_roles": [
-        "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
-        "ROLE-PESTICIDE-HANDLER",
-        "ROLE-IRRIGATION-LEAD",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER"
-      ],
+      "responsible_roles": ["ROLE-CERTIFIER", "ROLE-COMPLIANCE-COORDINATOR"],
       "lifecycle": [
         "proposed",
         "communicated",
@@ -6190,28 +4553,19 @@
       ],
       "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
       "related_records": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record"
+        "REC-086",
+        "REC-102",
+        "REC-101",
+        "REC-015",
+        "REC-096",
+        "REC-099"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
       ],
-      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "decision_ids": ["DEC-093", "DEC-094"],
+      "exception_ids": ["EXC-059", "EXC-061", "EXC-062"]
     }
   ]
 }

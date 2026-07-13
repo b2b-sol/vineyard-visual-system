@@ -1,0 +1,69 @@
+%% visual_id: VIS-WF-010-SWIMLANE
+%% title: WF-010 role swimlane
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-010; workflow-model/roles.json#ROLE-AUDITOR,ROLE-CERTIFIER,ROLE-COMPLIANCE-COORDINATOR,ROLE-CONTRACTOR,ROLE-FOREMAN,ROLE-GROWER-RELATIONS,ROLE-IRRIGATION-LEAD,ROLE-OPERATIONS-COORDINATOR,ROLE-OWNER-GENERAL-MANAGER,ROLE-PESTICIDE-HANDLER,ROLE-REGULATOR,ROLE-VINEYARD-MANAGER
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  START["WF-010 · Trigger"]
+  END["WF-010 · Output and accountable closure"]
+  subgraph LANE_ROLE_COMPLIANCE_COORDINATOR["ROLE-COMPLIANCE-COORDINATOR · Compliance Coordinator"]
+    direction TB
+    STEP_01["01 · Recommendation · The compliance coordinator maps the active standard and vintage to each site, block, activity, co…"]
+    STEP_02["02 · Assignment · Evidence owners are assigned to collect ordinary operational records, plans, training, separation, cl…"]
+    STEP_03["03 · Verification · The coordinator checks completeness, attribution, applicability, and internal consistency before pr…"]
+    STEP_08["08 · Supersession · The completed certification cycle remains immutable and is archived when a new standard vintage or…"]
+  end
+  subgraph LANE_ROLE_VINEYARD_MANAGER["ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+    direction TB
+    STEP_04["04 · Approval · The vineyard manager attests to the prepared package and authorizes submission without replacing indepe…"]
+  end
+  subgraph LANE_ROLE_FOREMAN["ROLE-FOREMAN · Foreman"]
+    direction TB
+    PARTICIPANT_ROLE_FOREMAN["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_PESTICIDE_HANDLER["ROLE-PESTICIDE-HANDLER · Pesticide Handler"]
+    direction TB
+    PARTICIPANT_ROLE_PESTICIDE_HANDLER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_IRRIGATION_LEAD["ROLE-IRRIGATION-LEAD · Irrigation Lead"]
+    direction TB
+    PARTICIPANT_ROLE_IRRIGATION_LEAD["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_OPERATIONS_COORDINATOR["ROLE-OPERATIONS-COORDINATOR · Operations Coordinator"]
+    direction TB
+    PARTICIPANT_ROLE_OPERATIONS_COORDINATOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_CONTRACTOR["ROLE-CONTRACTOR · Contractor"]
+    direction TB
+    PARTICIPANT_ROLE_CONTRACTOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_CERTIFIER["ROLE-CERTIFIER · Certifier"]
+    direction TB
+    STEP_07["07 · Approval · The certifier issues the certification decision for the compliant review without implying corrective ac…"]
+  end
+  subgraph LANE_ROLE_AUDITOR["ROLE-AUDITOR · Auditor"]
+    direction TB
+    STEP_05["05 · Verification · The auditor reviews submitted and observed evidence against the identified standard and records com…"]
+    STEP_06["06 · Verification · The auditor records a compliant result when ordinary submitted and observed evidence satisfies the…"]
+  end
+  subgraph LANE_ROLE_REGULATOR["ROLE-REGULATOR · Regulator"]
+    direction TB
+    PARTICIPANT_ROLE_REGULATOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_GROWER_RELATIONS["ROLE-GROWER-RELATIONS · Grower Relations"]
+    direction TB
+    PARTICIPANT_ROLE_GROWER_RELATIONS["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_OWNER_GENERAL_MANAGER["ROLE-OWNER-GENERAL-MANAGER · Owner or General Manager"]
+    direction TB
+    PARTICIPANT_ROLE_OWNER_GENERAL_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  START -->|requirements_mapped| STEP_01
+  STEP_01 -->|evidence_collecting| STEP_02
+  STEP_02 -->|package_prepared| STEP_03
+  STEP_03 -->|submitted| STEP_04
+  STEP_04 -->|under_review| STEP_05
+  STEP_05 -->|compliant| STEP_06
+  STEP_06 -->|certified| STEP_07
+  STEP_07 -->|archived| STEP_08
+  STEP_08 -->|archived| END

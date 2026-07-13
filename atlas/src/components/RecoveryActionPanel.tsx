@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   canonicalWorkOrder,
   formatFixtureTime,
+  partialEvent,
   personName,
   personRole,
   recoveryEvents,
@@ -15,22 +16,25 @@ import { StatusSignal } from "./StatusSignal";
 
 const statusSignal: Record<RecoveryState, WorkStatus> = {
   blocked: "blocked",
-  partially_completed: "partial",
-  ready_to_resume: "ready",
+  assigned: "assigned",
+  acknowledged: "acknowledged",
+  in_progress: "in-progress",
   completed: "completed",
   verified: "verified",
 };
 
 const stateLabels: Record<RecoveryState, string> = {
-  blocked: "Blocked — field stop recorded",
-  partially_completed: "Partial — remaining rows open",
-  ready_to_resume: "Ready — repair confirmed",
+  blocked: "Blocked — equipment unavailable",
+  assigned: "Assigned — repair confirmed",
+  acknowledged: "Acknowledged — instructions confirmed",
+  in_progress: "In progress — remaining rows underway",
   completed: "Completed — awaiting verification",
   verified: "Verified — acreage reconciled",
 };
 
 type ActionCardProps = {
   actionId: string;
+  sequence: number;
   label: string;
   description: string;
   event: FixtureStatusEvent;
@@ -41,6 +45,7 @@ type ActionCardProps = {
 
 function ActionCard({
   actionId,
+  sequence,
   label,
   description,
   event,
@@ -54,7 +59,7 @@ function ActionCard({
       data-action-id={actionId}
     >
       <div className="action-sequence">
-        {complete ? <Icon name="check" /> : actionId.replace("ACT-", "")}
+        {complete ? <Icon name="check" /> : sequence}
       </div>
       <div>
         <span className="action-id mono">{actionId}</span>
@@ -118,8 +123,9 @@ function AuditHistory({ history }: { history: FixtureStatusEvent[] }) {
 export function RecoveryActionPanel({ replay }: { replay: RecoveryReplay }) {
   const [historyOpen, setHistoryOpen] = useState(false);
   const historyHeading = useRef<HTMLHeadingElement>(null);
-  const partial = recoveryEvents.partial!;
-  const release = recoveryEvents.release!;
+  const redispatch = recoveryEvents.redispatch!;
+  const acknowledgement = recoveryEvents.acknowledgement!;
+  const restart = recoveryEvents.restart!;
   const completion = recoveryEvents.completion!;
   const verification = recoveryEvents.verification!;
 
@@ -132,8 +138,9 @@ export function RecoveryActionPanel({ replay }: { replay: RecoveryReplay }) {
   const indexOf = (state: RecoveryState) =>
     [
       "blocked",
-      "partially_completed",
-      "ready_to_resume",
+      "assigned",
+      "acknowledged",
+      "in_progress",
       "completed",
       "verified",
     ].indexOf(state);
@@ -170,58 +177,60 @@ export function RecoveryActionPanel({ replay }: { replay: RecoveryReplay }) {
           </strong>
           <p>{canonicalWorkOrder.blocker.reason}</p>
           <small>
-            Reported by{" "}
-            {personName(
-              replay.history.find((event) => event.to === "blocked")!
-                .actor_person_id,
-            )}{" "}
-            · {formatFixtureTime(canonicalWorkOrder.blocker.recorded_at)}
+            Partial reported by {personName(partialEvent!.actor_person_id)} ·{" "}
+            {formatFixtureTime(partialEvent!.at)} · blocker recorded{" "}
+            {formatFixtureTime(canonicalWorkOrder.blocker.recorded_at)}
           </small>
         </div>
       </div>
 
       <div className="recovery-actions-list">
         <ActionCard
-          actionId="ACT-001"
+          actionId="ACT-002"
           complete={indexOf(replay.state) > indexOf("blocked")}
-          description="Retain the safe west-pass acreage and leave rows 28–34 open."
+          description="Use the hose replacement and pressure-test evidence to redispatch only rows 28–34."
           enabled={replay.state === "blocked"}
-          event={partial}
-          label="Record partial completion"
-          onApply={() => replay.applyEvent(partial, "Partial completion")}
+          event={redispatch}
+          label="Release repaired work"
+          onApply={() =>
+            replay.applyEvent(redispatch, "Repaired work released")
+          }
+          sequence={1}
         />
         <ActionCard
-          actionId="ACT-002"
-          complete={indexOf(replay.state) > indexOf("partially_completed")}
-          description="Use the hose replacement and pressure-test evidence to release only the remaining rows."
-          enabled={replay.state === "partially_completed"}
-          event={release}
-          label="Release remaining rows"
-          onApply={() => replay.applyEvent(release, "Remaining rows released")}
+          actionId="ACT-005"
+          complete={indexOf(replay.state) > indexOf("assigned")}
+          description="Confirm that the repaired mower, remaining rows, timing, and field constraints are understood."
+          enabled={replay.state === "assigned"}
+          event={acknowledgement}
+          label="Acknowledge remaining scope"
+          onApply={() =>
+            replay.applyEvent(acknowledgement, "Remaining scope acknowledged")
+          }
+          sequence={2}
         />
-
-        {replay.state === "ready_to_resume" && (
-          <div className="operator-completion-callout">
-            <Icon name="crew" />
-            <div>
-              <strong>Field completion is ready to apply</strong>
-              <p>
-                Luis Mendoza reported rows 28–34 complete at 2:36 PM, bringing
-                the order to 18.6 acres.
-              </p>
-            </div>
-            <button
-              className="button button-secondary"
-              data-event-id="EVT-007"
-              onClick={() =>
-                replay.applyEvent(completion, "Resumed field completion")
-              }
-              type="button"
-            >
-              Apply operator report
-            </button>
-          </div>
-        )}
+        <ActionCard
+          actionId="ACT-006"
+          complete={indexOf(replay.state) > indexOf("acknowledged")}
+          description="Start the acknowledged remaining-scope assignment while retaining the original partial and blocker events."
+          enabled={replay.state === "acknowledged"}
+          event={restart}
+          label="Resume remaining rows"
+          onApply={() => replay.applyEvent(restart, "Remaining rows resumed")}
+          sequence={3}
+        />
+        <ActionCard
+          actionId="ACT-007"
+          complete={indexOf(replay.state) > indexOf("in_progress")}
+          description="Report rows 28–34 complete and bring the attributed actual to 18.6 acres."
+          enabled={replay.state === "in_progress"}
+          event={completion}
+          label="Complete remaining rows"
+          onApply={() =>
+            replay.applyEvent(completion, "Remaining rows completed")
+          }
+          sequence={4}
+        />
 
         <ActionCard
           actionId="ACT-003"
@@ -233,6 +242,7 @@ export function RecoveryActionPanel({ replay }: { replay: RecoveryReplay }) {
           onApply={() =>
             replay.applyEvent(verification, "Completed work verified")
           }
+          sequence={5}
         />
       </div>
 

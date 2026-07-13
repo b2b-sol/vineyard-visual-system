@@ -36,7 +36,13 @@
           "id": "PER-004",
           "name": "Luis Mendoza",
           "organization_id": "ORG-001",
-          "role_id": "ROLE-EQUIPMENT-OPERATOR"
+          "role_id": "ROLE-FIELD-CREW"
+        },
+        {
+          "id": "PER-005",
+          "name": "Sofia Alvarez",
+          "organization_id": "ORG-001",
+          "role_id": "ROLE-OPERATIONS-COORDINATOR"
         }
       ],
       "blocks": [
@@ -92,62 +98,103 @@
               "at": "2026-05-14T06:50:00-07:00",
               "from": "observed",
               "to": "planned",
-              "actor_person_id": "PER-001",
-              "reason": "Scouting recommendation accepted into the daily plan."
+              "actor_person_id": "PER-002",
+              "reason": "Viticulturist scoped the mowing method, rows, timing, and irrigation constraint."
             },
             {
               "id": "EVT-002",
-              "at": "2026-05-14T07:00:00-07:00",
+              "at": "2026-05-14T06:55:00-07:00",
               "from": "planned",
-              "to": "assigned",
+              "to": "approved",
               "actor_person_id": "PER-001",
-              "reason": "Foreman and equipment operator dispatched for the 07:15 start."
+              "reason": "Manager approved the routine mechanical work before assignment."
             },
             {
               "id": "EVT-003",
-              "at": "2026-05-14T07:22:00-07:00",
-              "from": "assigned",
-              "to": "in_progress",
-              "actor_person_id": "PER-004",
-              "reason": "Operator began the west-to-east pass."
+              "at": "2026-05-14T07:00:00-07:00",
+              "from": "approved",
+              "to": "assigned",
+              "actor_person_id": "PER-005",
+              "reason": "Coordinator assigned the block, rows, crew, mower, timing, and closure evidence."
             },
             {
               "id": "EVT-004",
-              "at": "2026-05-14T09:08:00-07:00",
-              "from": "in_progress",
-              "to": "blocked",
+              "at": "2026-05-14T07:05:00-07:00",
+              "from": "assigned",
+              "to": "acknowledged",
               "actor_person_id": "PER-003",
-              "reason": "Hydraulic-pressure alarm; work stopped before rows 28–34.",
-              "reported_acres": 11.2
+              "reason": "Foreman acknowledged the assignment and confirmed the field constraints."
             },
             {
               "id": "EVT-005",
-              "at": "2026-05-14T09:16:00-07:00",
-              "from": "blocked",
-              "to": "partially_completed",
+              "at": "2026-05-14T07:22:00-07:00",
+              "from": "acknowledged",
+              "to": "in_progress",
               "actor_person_id": "PER-003",
-              "reason": "West-pass acreage retained as safely completed.",
-              "reported_acres": 11.2
+              "reason": "Foreman started the crew on the west-to-east mowing pass."
             },
             {
               "id": "EVT-006",
-              "at": "2026-05-14T11:45:00-07:00",
-              "from": "partially_completed",
-              "to": "ready_to_resume",
-              "actor_person_id": "PER-001",
-              "reason": "Replacement hose installed and mower pressure-tested."
+              "at": "2026-05-14T09:08:00-07:00",
+              "from": "in_progress",
+              "to": "partially_completed",
+              "actor_person_id": "PER-003",
+              "reason": "Foreman retained the safe west-pass acreage when the hydraulic alarm stopped work.",
+              "reported_acres": 11.2
             },
             {
               "id": "EVT-007",
-              "at": "2026-05-14T14:36:00-07:00",
-              "from": "ready_to_resume",
-              "to": "completed",
-              "actor_person_id": "PER-004",
-              "reason": "Rows 28–34 finished after repair.",
-              "reported_acres": 18.6
+              "at": "2026-05-14T09:16:00-07:00",
+              "from": "partially_completed",
+              "to": "assigned",
+              "actor_person_id": "PER-005",
+              "reason": "Coordinator created a remaining-scope assignment for rows 28–34 without erasing partial work.",
+              "reported_acres": 11.2
             },
             {
               "id": "EVT-008",
+              "at": "2026-05-14T09:25:00-07:00",
+              "from": "assigned",
+              "to": "blocked",
+              "actor_person_id": "PER-001",
+              "reason": "Manager held the remaining-scope assignment because the mower was unavailable after the alarm.",
+              "reported_acres": 11.2
+            },
+            {
+              "id": "EVT-009",
+              "at": "2026-05-14T11:45:00-07:00",
+              "from": "blocked",
+              "to": "assigned",
+              "actor_person_id": "PER-005",
+              "reason": "Coordinator redispatched the remaining rows after hose replacement and pressure-test evidence."
+            },
+            {
+              "id": "EVT-010",
+              "at": "2026-05-14T11:48:00-07:00",
+              "from": "assigned",
+              "to": "acknowledged",
+              "actor_person_id": "PER-003",
+              "reason": "Foreman acknowledged the repaired mower and remaining-scope instructions."
+            },
+            {
+              "id": "EVT-011",
+              "at": "2026-05-14T11:52:00-07:00",
+              "from": "acknowledged",
+              "to": "in_progress",
+              "actor_person_id": "PER-003",
+              "reason": "Foreman resumed the crew on rows 28–34 after the repair release."
+            },
+            {
+              "id": "EVT-012",
+              "at": "2026-05-14T14:36:00-07:00",
+              "from": "in_progress",
+              "to": "completed",
+              "actor_person_id": "PER-003",
+              "reason": "Foreman reported final scope and actual acreage after rows 28–34 were finished.",
+              "reported_acres": 18.6
+            },
+            {
+              "id": "EVT-013",
               "at": "2026-05-14T15:10:00-07:00",
               "from": "completed",
               "to": "verified",
@@ -160,7 +207,7 @@
             "type": "equipment",
             "reason": "Hydraulic-pressure alarm from a leaking mower supply hose.",
             "affected_rows": "28–34",
-            "recorded_at": "2026-05-14T09:08:00-07:00",
+            "recorded_at": "2026-05-14T09:25:00-07:00",
             "resolved_at": "2026-05-14T11:41:00-07:00",
             "resolution": "Maintenance replaced the hose and recorded a successful pressure test."
           },

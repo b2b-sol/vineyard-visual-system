@@ -314,14 +314,17 @@
       "enum": [
         "observed",
         "planned",
+        "approved",
         "assigned",
+        "acknowledged",
         "in_progress",
         "blocked",
         "partially_completed",
-        "ready_to_resume",
         "completed",
         "verified",
+        "correction_required",
         "corrected",
+        "cancelled",
         "superseded"
       ]
     }

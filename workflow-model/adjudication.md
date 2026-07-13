@@ -60,4 +60,18 @@ Candidate A incorrectly assigned every workflow to `EVD-001`. Candidate B used t
 
 ## Validation performed
 
-The adjudication check validates all ten workflow objects against `schemas/workflow.schema.json`; enforces unique workflow, role, record, decision, exception, and overlay IDs; verifies every workflow role, decision, record, evidence claim, step owner, transition state, and overlay workflow reference; requires contiguous ordered primary paths; confirms every source anchor is present in the full source report; and confirms all ten primary evidence claims map back to their declared workflow in `source/evidence.json`.
+The adjudication check validates all ten workflow objects against the canonical ontology schemas; enforces unique workflow, role, record, decision, exception, overlay, and transition IDs; verifies every role, decision, record, evidence claim, step owner, transition state, and overlay reference; requires contiguous ordered primary paths; proves every state is reachable from entry and can reach a terminal disposition; checks reciprocal relationship integrity and rejects whole-family Cartesian relationships; confirms every source anchor is present in the full source report; and confirms all twelve evidence claims map back to their declared workflow and overlay scope in `source/evidence.json`.
+
+## Post-adjudication critic revision
+
+An independent critic initially requested changes after finding disconnected states, mechanical whole-workflow relationships, incorrect decision placement, an evidence-scope contradiction, incomplete role layers, generic record lifecycles, and missing operational visuals. The integrator revised the canonical model rather than waiving those findings:
+
+- 235 typed transitions now cover normal, decision, exception, recovery, cancellation, correction, supersession, partial, delayed, disputed, and certification-withheld branches.
+- WF-002 separates recommendation, approval, application-time preflight, reporting completeness, efficacy follow-up, correction, and re-recommendation.
+- WF-003 assigns irrigation and fertility approval to `DEC-024`; WF-007 treats crew briefing as assignment readiness; WF-010 supports direct certification and routes `DEC-094` only through corrective recovery.
+- Role, record, decision, and exception relationships now derive from operational reads, writes, authority, interruption, and recovery rather than workflow-wide cross products.
+- The role registry includes ownership governance, operational middle, field execution, office support, and outside-party layers.
+- OVL-006 no longer claims WF-004 support from EVD-012.
+- Thirty-six editable Mermaid sources cover ten swimlanes, ten state machines, ten decision/exception trees, and six required operating views; hashes and full rendering are deterministic.
+
+The detailed review history and resolved findings are recorded in `validation/WORKFLOW_REVIEW.md` and `validation/FINDINGS.yaml`.

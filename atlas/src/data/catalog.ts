@@ -100,7 +100,10 @@ export const sections: AtlasSection[] = [
     count: "1 live · 9 registered",
     readiness: "live",
     items: [
-      { label: "Seasonal planning + dispatch", meta: "Live walking slice" },
+      {
+        label: "Seasonal planning, dispatch, execution + verification",
+        meta: "Live walking slice",
+      },
       { label: "Scouting → application", meta: "Registered family" },
       { label: "Harvest → reconciliation", meta: "Registered family" },
     ],

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/canonical-workflow.schema.json",
+  "title": "Canonical vineyard workflow with explicit state graph",
+  "allOf": [
+    {
+      "$ref": "https://vineyard-visual-system.dev/schemas/workflow.schema.json"
+    },
+    {
+      "type": "object",
+      "required": ["terminal_states", "transitions"]
+    }
+  ]
+}

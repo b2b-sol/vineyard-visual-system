@@ -7,19 +7,21 @@ import componentDocument from "../../../design-system/walking-slice-components.j
 import scenarioDocument from "../../../scenarios/walking-slice.json";
 import fixtureSchema from "../../../schemas/fixture.schema.json";
 import screenDocument from "../../../screens/walking-slice.json";
-import workflowDocument from "../../../workflow-model/walking-slice.json";
+import workflowDocument from "../../../workflow-model/workflows.json";
 
 const transition = (from: string | null, to: string) =>
   `${from ?? "null"}->${to}`;
 
 describe("canonical walking-slice model", () => {
-  it("realizes the workflow and scenario transition contract exactly", () => {
-    const workflow = workflowDocument.workflows[0];
+  it("realizes a connected path through the canonical workflow graph", () => {
+    const workflow = workflowDocument.workflows.find(
+      (candidate) => candidate.id === "WF-001",
+    )!;
     const scenario = scenarioDocument.scenarios[0];
     const workOrder = fixtureDocument.fixtures[0].work_orders[0];
 
-    const workflowTransitions = workflow.steps.map((step) =>
-      transition(step.state_from, step.state_to),
+    const workflowTransitions = new Set(
+      workflow.transitions.map((step) => transition(step.from, step.to)),
     );
     const scenarioTransitions = scenario.expected_transitions.map((event) =>
       transition(event.from, event.to),
@@ -28,9 +30,55 @@ describe("canonical walking-slice model", () => {
       transition(event.from, event.to),
     );
 
-    expect(scenarioTransitions).toEqual(workflowTransitions);
     expect(fixtureTransitions).toEqual(scenarioTransitions);
+    expect(
+      fixtureTransitions.filter((edge) => !workflowTransitions.has(edge)),
+    ).toEqual([]);
     expect(workOrder.current_status).toBe("verified");
+  });
+
+  it("attributes every fixture event to an allowed canonical transition owner", () => {
+    const workflow = workflowDocument.workflows.find(
+      (candidate) => candidate.id === "WF-001",
+    )!;
+    const fixture = fixtureDocument.fixtures[0];
+    const workOrder = fixture.work_orders[0];
+    const rolesByPerson = new Map(
+      fixture.people.map((person) => [person.id, person.role_id]),
+    );
+
+    for (const event of workOrder.status_history) {
+      const candidates = workflow.transitions.filter(
+        (candidate) =>
+          transition(candidate.from, candidate.to) ===
+          transition(event.from, event.to),
+      );
+      expect(
+        candidates.some(
+          (candidate) =>
+            candidate.owner === rolesByPerson.get(event.actor_person_id),
+        ),
+        `${event.id} must use a canonical transition owner`,
+      ).toBe(true);
+    }
+  });
+
+  it("keeps consequential screen actions on canonical workflow edges", () => {
+    const workflow = workflowDocument.workflows.find(
+      (candidate) => candidate.id === "WF-001",
+    )!;
+    const workflowTransitions = new Set(
+      workflow.transitions.map((step) => transition(step.from, step.to)),
+    );
+    const screenTransitions = screenDocument.screens[0].actions
+      .filter((action) => "transition" in action)
+      .map((action) =>
+        transition(action.transition!.from, action.transition!.to),
+      );
+
+    expect(
+      screenTransitions.filter((edge) => !workflowTransitions.has(edge)),
+    ).toEqual([]);
   });
 
   it("preserves blocked, partial, recovered, completed, and verified history", () => {
@@ -41,7 +89,9 @@ describe("canonical walking-slice model", () => {
       expect.arrayContaining([
         "blocked",
         "partially_completed",
-        "ready_to_resume",
+        "assigned",
+        "acknowledged",
+        "in_progress",
         "completed",
         "verified",
       ]),
@@ -57,6 +107,9 @@ describe("canonical walking-slice model", () => {
     expect(screen.actions.map((action) => action.id)).toEqual([
       "ACT-001",
       "ACT-002",
+      "ACT-005",
+      "ACT-006",
+      "ACT-007",
       "ACT-003",
       "ACT-004",
     ]);

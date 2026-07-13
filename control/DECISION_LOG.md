@@ -51,3 +51,13 @@ Use `DEC-###` identifiers. Record date, context, decision, alternatives, rationa
 - Rationale: This retains clean public history and mechanically provable evidence without treating unreachable feature-branch SHAs as durable provenance.
 - Affected artifacts: repository ruleset 18897256, `control/TASK_REGISTRY.yaml`, `validation/gate-results.json`, and `scripts/validation/validate.mjs`.
 - Reversibility: Medium; the merge method can change if target-branch provenance rules change with it.
+
+## DEC-006 — Canonical ontology as the executable product contract
+
+- Date: 2026-07-13
+- Context: The factory walking slice and the initial visual generator retained simplified or representative behavior after the richer ontology was adjudicated.
+- Decision: `workflow-model/workflows.json` and its reciprocal registries are the executable workflow contract. Scenarios, fixtures, screen actions, tests, and visual packages validate against its explicit transitions and owners. Workflow-phase trace coverage is stage-aware, but G5 cannot pass until every evidence node has a complete evidence-to-packet chain.
+- Alternatives: Preserve a separate simplified workflow contract for the atlas; allow representative-only decision and exception trees; delay trace normalization until final integration.
+- Rationale: One operational truth prevents approval, acknowledgement, recovery, provenance, and authority semantics from drifting between source, model, data, screens, tests, and handoff artifacts.
+- Affected artifacts: canonical workflow registries, generated visuals, trace registries, WF-001 walking slice, validators, and future scenario/data generation.
+- Reversibility: Low; downstream production waves will rely on these stable identifiers and transition semantics.

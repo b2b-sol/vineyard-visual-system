@@ -1,0 +1,47 @@
+%% visual_id: VIS-WF-003-SWIMLANE
+%% title: WF-003 role swimlane
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-003; workflow-model/roles.json#ROLE-ASSISTANT-VINEYARD-MANAGER,ROLE-COMPLIANCE-COORDINATOR,ROLE-IRRIGATION-LEAD,ROLE-IRRIGATOR,ROLE-LAB,ROLE-VINEYARD-MANAGER,ROLE-VITICULTURIST
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  START["WF-003 · Trigger"]
+  END["WF-003 · Output and accountable closure"]
+  subgraph LANE_ROLE_VITICULTURIST["ROLE-VITICULTURIST · Viticulturist"]
+    direction TB
+    STEP_01["01 · Observation · Current block, plant, soil, system, weather, and recent-delivery conditions are recorded against the…"]
+    STEP_02["02 · Recommendation · The viticulturist recommends an irrigation or fertility adjustment with timing, quantity, method,…"]
+  end
+  subgraph LANE_ROLE_IRRIGATION_LEAD["ROLE-IRRIGATION-LEAD · Irrigation Lead"]
+    direction TB
+    STEP_04["04 · Assignment · The irrigation lead assigns executable valve, set, duration, fertigation, and completion instructions…"]
+    STEP_07["07 · Verification · The irrigation lead verifies delivery evidence and routes water, nutrient, malfunction, and sustain…"]
+  end
+  subgraph LANE_ROLE_VINEYARD_MANAGER["ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+    direction TB
+    STEP_03["03 · Approval · The manager approves the agronomic adjustment within current resource, certification, and operating con…"]
+  end
+  subgraph LANE_ROLE_IRRIGATOR["ROLE-IRRIGATOR · Irrigator"]
+    direction TB
+    STEP_05["05 · Execution · The irrigator begins delivery and records observed system behavior, changes, interruptions, and actual…"]
+    STEP_06["06 · Completion · The irrigator records actual delivery, affected area, and any partial or uneven result rather than on…"]
+  end
+  subgraph LANE_ROLE_LAB["ROLE-LAB · Lab"]
+    direction TB
+    PARTICIPANT_ROLE_LAB["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_COMPLIANCE_COORDINATOR["ROLE-COMPLIANCE-COORDINATOR · Compliance Coordinator"]
+    direction TB
+    PARTICIPANT_ROLE_COMPLIANCE_COORDINATOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_ASSISTANT_VINEYARD_MANAGER["ROLE-ASSISTANT-VINEYARD-MANAGER · Assistant Vineyard Manager"]
+    direction TB
+    PARTICIPANT_ROLE_ASSISTANT_VINEYARD_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  START -->|condition_observed| STEP_01
+  STEP_01 -->|adjustment_recommended| STEP_02
+  STEP_02 -->|approved| STEP_03
+  STEP_03 -->|assigned| STEP_04
+  STEP_04 -->|delivering| STEP_05
+  STEP_05 -->|delivered| STEP_06
+  STEP_06 -->|verified| STEP_07
+  STEP_07 -->|verified| END

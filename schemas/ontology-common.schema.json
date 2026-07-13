@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json",
+  "title": "Shared canonical ontology definitions",
+  "$defs": {
+    "classification": {
+      "enum": [
+        "confirmed_source",
+        "strong_inference",
+        "product_decision",
+        "requires_field_validation",
+        "temporary_visual_assumption"
+      ]
+    },
+    "confidence": {
+      "enum": ["high", "medium-high", "medium", "medium-low", "low"]
+    },
+    "workflowId": {
+      "type": "string",
+      "pattern": "^WF-(00[1-9]|010)$"
+    },
+    "evidenceId": {
+      "type": "string",
+      "pattern": "^EVD-(00[1-9]|01[0-2])$"
+    },
+    "roleId": {
+      "type": "string",
+      "pattern": "^ROLE-[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*$"
+    },
+    "recordId": {
+      "type": "string",
+      "pattern": "^REC-[0-9]{3}$"
+    },
+    "decisionId": {
+      "type": "string",
+      "pattern": "^DEC-[0-9]{3}$"
+    },
+    "exceptionId": {
+      "type": "string",
+      "pattern": "^EXC-[0-9]{3}$"
+    },
+    "overlayId": {
+      "type": "string",
+      "pattern": "^OVL-00[1-9]$"
+    },
+    "state": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "lifecycleState": {
+      "enum": [
+        "accepted",
+        "acknowledged",
+        "active",
+        "approved",
+        "archived",
+        "assigned",
+        "closed",
+        "communicated",
+        "complete",
+        "completed",
+        "corrected",
+        "corrective_action_assigned",
+        "delivered",
+        "disputed",
+        "draft",
+        "drafted",
+        "evidence_submitted",
+        "expired",
+        "finding_open",
+        "historical",
+        "in_progress",
+        "initiated",
+        "mapped",
+        "matched",
+        "observed",
+        "open",
+        "partially_completed",
+        "pending",
+        "planned",
+        "proposed",
+        "reconciled",
+        "recorded",
+        "rejected",
+        "remediation_in_progress",
+        "renewed",
+        "reported",
+        "requested",
+        "required",
+        "reviewed",
+        "revised",
+        "scheduled",
+        "settled",
+        "signed",
+        "submitted",
+        "superseded",
+        "under_review",
+        "validated",
+        "verified"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10
+    },
+    "sourceAnchor": {
+      "type": "string",
+      "minLength": 8
+    }
+  }
+}

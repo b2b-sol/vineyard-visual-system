@@ -1,0 +1,54 @@
+%% visual_id: VIS-WF-007-SWIMLANE
+%% title: WF-007 role swimlane
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-007; workflow-model/roles.json#ROLE-ASSISTANT-VINEYARD-MANAGER,ROLE-FIELD-CREW,ROLE-FINANCE,ROLE-FOREMAN,ROLE-HARVEST-CREW-LEADER,ROLE-LABOR-CONTRACTOR,ROLE-OPERATIONS-COORDINATOR,ROLE-PAYROLL,ROLE-VINEYARD-MANAGER
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  START["WF-007 · Trigger"]
+  END["WF-007 · Output and accountable closure"]
+  subgraph LANE_ROLE_VINEYARD_MANAGER["ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+    direction TB
+    STEP_05["05 · Verification · The manager verifies that time, units, task progress, and assignment history form a credible submis…"]
+  end
+  subgraph LANE_ROLE_OPERATIONS_COORDINATOR["ROLE-OPERATIONS-COORDINATOR · Operations Coordinator"]
+    direction TB
+    STEP_01["01 · Assignment · The coordinator schedules a qualified crew or contractor against block work, timing, safety, and labo…"]
+  end
+  subgraph LANE_ROLE_FOREMAN["ROLE-FOREMAN · Foreman"]
+    direction TB
+    STEP_02["02 · Assignment · The foreman confirms the roster, qualification, instructions, and safety briefing before work begins."]
+    STEP_03["03 · Execution · The foreman records attendance, task changes, breaks, quantities, and attributable work as the crew ex…"]
+    STEP_04["04 · Completion · The foreman submits time, piece-rate units, task quantities, block allocation, and unresolved excepti…"]
+  end
+  subgraph LANE_ROLE_FIELD_CREW["ROLE-FIELD-CREW · Field Crew"]
+    direction TB
+    PARTICIPANT_ROLE_FIELD_CREW["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_HARVEST_CREW_LEADER["ROLE-HARVEST-CREW-LEADER · Harvest Crew Leader"]
+    direction TB
+    PARTICIPANT_ROLE_HARVEST_CREW_LEADER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_LABOR_CONTRACTOR["ROLE-LABOR-CONTRACTOR · Labor Contractor"]
+    direction TB
+    PARTICIPANT_ROLE_LABOR_CONTRACTOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_PAYROLL["ROLE-PAYROLL · Payroll"]
+    direction TB
+    STEP_06["06 · Reconciliation · Payroll accepts the verified labor record or opens an attributable correction instead of overwrit…"]
+  end
+  subgraph LANE_ROLE_FINANCE["ROLE-FINANCE · Finance"]
+    direction TB
+    STEP_07["07 · Reconciliation · Finance allocates accepted labor and activity quantities to block, task, payroll, and management…"]
+  end
+  subgraph LANE_ROLE_ASSISTANT_VINEYARD_MANAGER["ROLE-ASSISTANT-VINEYARD-MANAGER · Assistant Vineyard Manager"]
+    direction TB
+    PARTICIPANT_ROLE_ASSISTANT_VINEYARD_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  START -->|crew_scheduled| STEP_01
+  STEP_01 -->|briefed| STEP_02
+  STEP_02 -->|working| STEP_03
+  STEP_03 -->|time_submitted| STEP_04
+  STEP_04 -->|supervisor_verified| STEP_05
+  STEP_05 -->|payroll_accepted| STEP_06
+  STEP_06 -->|cost_allocated| STEP_07
+  STEP_07 -->|cost_allocated| END

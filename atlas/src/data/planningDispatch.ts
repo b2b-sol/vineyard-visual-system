@@ -3,6 +3,7 @@ import fixtureSource from "../../../data/walking-slice.json";
 export type WorkStatus =
   | "ready"
   | "assigned"
+  | "acknowledged"
   | "in-progress"
   | "completed"
   | "partial"
@@ -15,8 +16,9 @@ export type WorkStatus =
 
 export type RecoveryState =
   | "blocked"
-  | "partially_completed"
-  | "ready_to_resume"
+  | "assigned"
+  | "acknowledged"
+  | "in_progress"
   | "completed"
   | "verified";
 
@@ -144,7 +146,8 @@ const roleLabels: Record<string, string> = {
   "ROLE-VINEYARD-MANAGER": "Vineyard manager",
   "ROLE-VITICULTURIST": "Viticulturist",
   "ROLE-FOREMAN": "Foreman",
-  "ROLE-EQUIPMENT-OPERATOR": "Equipment operator",
+  "ROLE-OPERATIONS-COORDINATOR": "Operations coordinator",
+  "ROLE-FIELD-CREW": "Field crew",
 };
 
 export function personName(personId: string) {
@@ -171,29 +174,42 @@ export const blockedEvent = canonicalHistory.find(
   (event) => event.to === "blocked",
 );
 
-if (!blockedEvent) {
-  throw new Error("FIX-001 must include its blocked transition.");
-}
+export const partialEvent = canonicalHistory.find(
+  (event) => event.to === "partially_completed",
+);
 
-export const recoveryEvents = {
-  partial: canonicalHistory.find((event) => event.to === "partially_completed"),
-  release: canonicalHistory.find((event) => event.to === "ready_to_resume"),
-  completion: canonicalHistory.find((event) => event.to === "completed"),
-  verification: canonicalHistory.find((event) => event.to === "verified"),
-};
-
-if (
-  !recoveryEvents.partial ||
-  !recoveryEvents.release ||
-  !recoveryEvents.completion ||
-  !recoveryEvents.verification
-) {
-  throw new Error("FIX-001 must include its complete recovery event chain.");
+if (!blockedEvent || !partialEvent) {
+  throw new Error("FIX-001 must include partial and blocked transitions.");
 }
 
 const blockedEventIndex = canonicalHistory.findIndex(
   (event) => event.id === blockedEvent.id,
 );
+const postBlockHistory = canonicalHistory.slice(blockedEventIndex + 1);
+
+export const recoveryEvents = {
+  redispatch: postBlockHistory.find(
+    (event) => event.from === "blocked" && event.to === "assigned",
+  ),
+  acknowledgement: postBlockHistory.find(
+    (event) => event.from === "assigned" && event.to === "acknowledged",
+  ),
+  restart: postBlockHistory.find(
+    (event) => event.from === "acknowledged" && event.to === "in_progress",
+  ),
+  completion: postBlockHistory.find((event) => event.to === "completed"),
+  verification: postBlockHistory.find((event) => event.to === "verified"),
+};
+
+if (
+  !recoveryEvents.redispatch ||
+  !recoveryEvents.acknowledgement ||
+  !recoveryEvents.restart ||
+  !recoveryEvents.completion ||
+  !recoveryEvents.verification
+) {
+  throw new Error("FIX-001 must include its complete recovery event chain.");
+}
 
 export const replayStartingHistory = canonicalHistory.slice(
   0,
@@ -333,11 +349,14 @@ export const statusDefinitions: Array<{
 ];
 
 export const workflowSteps = [
-  { label: "Plan", meta: "Elena · 6:50 AM", state: "complete" },
-  { label: "Assign", meta: "Crew · 7:00 AM", state: "complete" },
+  { label: "Plan", meta: "Priya · 6:50 AM", state: "complete" },
+  { label: "Approve", meta: "Elena · 6:55 AM", state: "complete" },
+  { label: "Assign", meta: "Sofia · 7:00 AM", state: "complete" },
+  { label: "Acknowledge", meta: "Mateo · 7:05 AM", state: "complete" },
   { label: "Execute", meta: "Started · 7:22 AM", state: "complete" },
-  { label: "Stop", meta: "Alarm · 9:08 AM", state: "current" },
-  { label: "Recover", meta: "11.2 ac retained", state: "upcoming" },
+  { label: "Partial", meta: "11.2 ac · 9:08 AM", state: "complete" },
+  { label: "Block", meta: "Mower held · 9:25 AM", state: "current" },
+  { label: "Redispatch", meta: "After repair proof", state: "upcoming" },
   { label: "Verify", meta: "Manager closure", state: "upcoming" },
 ];
 

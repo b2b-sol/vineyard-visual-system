@@ -1,0 +1,123 @@
+%% visual_id: VIS-WF-006-EXCEPTION-TREE
+%% title: WF-006 exception and decision tree
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-006; workflow-model/exceptions.json#EXC-030,EXC-031,EXC-032,EXC-033,EXC-034,EXC-035,EXC-036; workflow-model/decisions.json#DEC-051,DEC-052,DEC-053,DEC-054,DEC-055; workflow-model/records.json#REC-041,REC-043,REC-044,REC-045,REC-046,REC-047,REC-048,REC-049,REC-050,REC-051,REC-052,REC-053,REC-080
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart TD
+  ROOT["WF-006 · Harvest planning, execution, loads, intake, quality, and reconciliation"]
+  TRIGGER["EXC-030 · Winery delay or changed tank capacity · The harvest planning, execution, loads, intake, quality, and reconcil…"]
+  SCOPE{"Are affected scope, safe partial results, and authority explicit?"}
+  HOLD["Block and escalate · ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+  RETAIN["Retain unaffected and safely completed scope with attribution"]
+  ROOT --> TRIGGER
+  TRIGGER --> SCOPE
+  SCOPE -->|No| HOLD
+  SCOPE -->|Yes| RETAIN
+  RECOVERY_1["1 · Record and contain winery delay or changed tank capacity at the affected scope."]
+  RECOVERY_2["2 · Use DEC-051 authority to move from harvesting to delayed; do not overwrite predecessor evidence."]
+  RECOVERY_3["3 · Notify only the roles and downstream records affected by the decision."]
+  HOLD --> RECOVERY_1
+  RETAIN --> RECOVERY_1
+  RECOVERY_1 --> RECOVERY_2
+  RECOVERY_2 --> RECOVERY_3
+  DECISION_1{"DEC-051 · Which harvest method and conditions satisfy quality, timing, labor, and cost constraints?"}
+  RECOVERY_3 -. accountable decision .-> DECISION_1
+  D1_OUTCOME_1["Hand harvest"]
+  DECISION_1 -->|Outcome 1| D1_OUTCOME_1
+  D1_OUTCOME_2["Machine harvest"]
+  DECISION_1 -->|Outcome 2| D1_OUTCOME_2
+  D1_OUTCOME_3["Revise timing or conditions"]
+  DECISION_1 -->|Outcome 3| D1_OUTCOME_3
+  DECISION_2{"DEC-052 · Does the arriving load identity and intake evidence match the authorized fruit?"}
+  ROOT -. registered authority .-> DECISION_2
+  D2_OUTCOME_1["Proceed with assessment"]
+  DECISION_2 -->|Outcome 1| D2_OUTCOME_1
+  D2_OUTCOME_2["Hold for identity resolution"]
+  DECISION_2 -->|Outcome 2| D2_OUTCOME_2
+  D2_OUTCOME_3["Reject wrong or unverifiable load"]
+  DECISION_2 -->|Outcome 3| D2_OUTCOME_3
+  DECISION_3{"DEC-053 · Does the load meet agreed quality and delivery tolerances?"}
+  ROOT -. registered authority .-> DECISION_3
+  D3_OUTCOME_1["Accept"]
+  DECISION_3 -->|Outcome 1| D3_OUTCOME_1
+  D3_OUTCOME_2["Downgrade or adjust"]
+  DECISION_3 -->|Outcome 2| D3_OUTCOME_2
+  D3_OUTCOME_3["Reject"]
+  DECISION_3 -->|Outcome 3| D3_OUTCOME_3
+  DECISION_4{"DEC-054 · Is a weigh, identity, grade, or delivery entry disputed or incorrect?"}
+  ROOT -. registered authority .-> DECISION_4
+  D4_OUTCOME_1["Accept original"]
+  DECISION_4 -->|Outcome 1| D4_OUTCOME_1
+  D4_OUTCOME_2["Issue attributed correction"]
+  DECISION_4 -->|Outcome 2| D4_OUTCOME_2
+  D4_OUTCOME_3["Escalate commercial dispute"]
+  DECISION_4 -->|Outcome 3| D4_OUTCOME_3
+  DECISION_5{"DEC-055 · Do accepted records and contract terms support settlement?"}
+  ROOT -. registered authority .-> DECISION_5
+  D5_OUTCOME_1["Settle"]
+  DECISION_5 -->|Outcome 1| D5_OUTCOME_1
+  D5_OUTCOME_2["Hold pending missing evidence"]
+  DECISION_5 -->|Outcome 2| D5_OUTCOME_2
+  D5_OUTCOME_3["Apply agreed adjustment"]
+  DECISION_5 -->|Outcome 3| D5_OUTCOME_3
+  EVIDENCE["Closure evidence · attributed EXC-030 observation and affected scope · harvesting to delayed transition with decision a…"]
+  RECONCILED{"Are recovery, disposition, and downstream records reconciled?"}
+  CORRECT["Correction required · preserve prior state and reason"]
+  CLOSE["Recover as Delayed"]
+  D1_OUTCOME_1 --> EVIDENCE
+  D1_OUTCOME_2 --> EVIDENCE
+  D1_OUTCOME_3 --> EVIDENCE
+  D2_OUTCOME_1 --> EVIDENCE
+  D2_OUTCOME_2 --> EVIDENCE
+  D2_OUTCOME_3 --> EVIDENCE
+  D3_OUTCOME_1 --> EVIDENCE
+  D3_OUTCOME_2 --> EVIDENCE
+  D3_OUTCOME_3 --> EVIDENCE
+  D4_OUTCOME_1 --> EVIDENCE
+  D4_OUTCOME_2 --> EVIDENCE
+  D4_OUTCOME_3 --> EVIDENCE
+  D5_OUTCOME_1 --> EVIDENCE
+  D5_OUTCOME_2 --> EVIDENCE
+  D5_OUTCOME_3 --> EVIDENCE
+  EVIDENCE --> RECONCILED
+  RECONCILED -->|No| CORRECT
+  CORRECT --> EVIDENCE
+  RECONCILED -->|Yes| CLOSE
+  EXCEPTION_2["EXC-031 · Missed truck slot · The harvest planning, execution, loads, intake, quality, and reconciliation workflow enco…"]
+  EXCEPTION_2_RECOVERY["In Transit to Delayed · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_2
+  EXCEPTION_2 --> EXCEPTION_2_RECOVERY
+  EXCEPTION_2_RECOVERY --> EVIDENCE
+  EXCEPTION_2 -. accountable decision .-> DECISION_1
+  EXCEPTION_3["EXC-032 · Hot fruit or excessive material other than grapes · The harvest planning, execution, loads, intake, quality,…"]
+  EXCEPTION_3_RECOVERY["Quality Pending to Downgraded · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_3
+  EXCEPTION_3 --> EXCEPTION_3_RECOVERY
+  EXCEPTION_3_RECOVERY --> EVIDENCE
+  EXCEPTION_3 -. accountable decision .-> DECISION_3
+  EXCEPTION_4["EXC-033 · Wrong block or load identity · The harvest planning, execution, loads, intake, quality, and reconciliation wo…"]
+  EXCEPTION_4_RECOVERY["Arrived to Disputed · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_4
+  EXCEPTION_4 --> EXCEPTION_4_RECOVERY
+  EXCEPTION_4_RECOVERY --> EVIDENCE
+  EXCEPTION_4 -. accountable decision .-> DECISION_2
+  EXCEPTION_4 -. accountable decision .-> DECISION_4
+  EXCEPTION_5["EXC-034 · Rejected or downgraded load · The harvest planning, execution, loads, intake, quality, and reconciliation wor…"]
+  EXCEPTION_5_RECOVERY["Quality Pending to Rejected · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_5
+  EXCEPTION_5 --> EXCEPTION_5_RECOVERY
+  EXCEPTION_5_RECOVERY --> EVIDENCE
+  EXCEPTION_5 -. accountable decision .-> DECISION_3
+  EXCEPTION_6["EXC-035 · Late processor entry · The harvest planning, execution, loads, intake, quality, and reconciliation workflow e…"]
+  EXCEPTION_6_RECOVERY["Entered to Correction Required · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_6
+  EXCEPTION_6 --> EXCEPTION_6_RECOVERY
+  EXCEPTION_6_RECOVERY --> EVIDENCE
+  EXCEPTION_6 -. accountable decision .-> DECISION_4
+  EXCEPTION_7["EXC-036 · Weigh or payment dispute · The harvest planning, execution, loads, intake, quality, and reconciliation workfl…"]
+  EXCEPTION_7_RECOVERY["Weighed to Disputed · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_7
+  EXCEPTION_7 --> EXCEPTION_7_RECOVERY
+  EXCEPTION_7_RECOVERY --> EVIDENCE
+  EXCEPTION_7 -. accountable decision .-> DECISION_4
+  EXCEPTION_7 -. accountable decision .-> DECISION_5

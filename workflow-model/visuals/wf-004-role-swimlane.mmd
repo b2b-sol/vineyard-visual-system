@@ -1,0 +1,50 @@
+%% visual_id: VIS-WF-004-SWIMLANE
+%% title: WF-004 role swimlane
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-004; workflow-model/roles.json#ROLE-ASSISTANT-VINEYARD-MANAGER,ROLE-CONTRACT-GROWER,ROLE-FINANCE,ROLE-GROWER-RELATIONS,ROLE-OWNER-GENERAL-MANAGER,ROLE-VINEYARD-MANAGER,ROLE-VITICULTURIST,ROLE-WINEMAKER
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  START["WF-004 · Trigger"]
+  END["WF-004 · Output and accountable closure"]
+  subgraph LANE_ROLE_VITICULTURIST["ROLE-VITICULTURIST · Viticulturist"]
+    direction TB
+    STEP_01["01 · Observation · The viticulturist samples representative vines and clusters using a recorded method and block contex…"]
+    STEP_02["02 · Recommendation · The viticulturist calculates a block forecast and interprets variation against historical and cur…"]
+  end
+  subgraph LANE_ROLE_VINEYARD_MANAGER["ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+    direction TB
+    STEP_03["03 · Approval · The manager reviews the estimate, sampling confidence, crop-load implications, and downstream planning…"]
+    STEP_06["06 · Reconciliation · The manager reconciles forecast versions with the harvest actual and records error, learning, and…"]
+  end
+  subgraph LANE_ROLE_GROWER_RELATIONS["ROLE-GROWER-RELATIONS · Grower Relations"]
+    direction TB
+    STEP_04["04 · Completion · The approved forecast is published to winery, grower, labor, transport, container, budget, and contra…"]
+    STEP_05["05 · Observation · The final harvest actual is linked to the published forecast without replacing the estimate or its a…"]
+  end
+  subgraph LANE_ROLE_CONTRACT_GROWER["ROLE-CONTRACT-GROWER · Contract Grower"]
+    direction TB
+    PARTICIPANT_ROLE_CONTRACT_GROWER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_WINEMAKER["ROLE-WINEMAKER · Winemaker"]
+    direction TB
+    PARTICIPANT_ROLE_WINEMAKER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_FINANCE["ROLE-FINANCE · Finance"]
+    direction TB
+    PARTICIPANT_ROLE_FINANCE["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_OWNER_GENERAL_MANAGER["ROLE-OWNER-GENERAL-MANAGER · Owner or General Manager"]
+    direction TB
+    PARTICIPANT_ROLE_OWNER_GENERAL_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_ASSISTANT_VINEYARD_MANAGER["ROLE-ASSISTANT-VINEYARD-MANAGER · Assistant Vineyard Manager"]
+    direction TB
+    PARTICIPANT_ROLE_ASSISTANT_VINEYARD_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  START -->|sampled| STEP_01
+  STEP_01 -->|calculated| STEP_02
+  STEP_02 -->|reviewed| STEP_03
+  STEP_03 -->|published| STEP_04
+  STEP_04 -->|actualized| STEP_05
+  STEP_05 -->|reconciled| STEP_06
+  STEP_06 -->|reconciled| END

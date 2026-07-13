@@ -1346,6 +1346,7 @@ h3 {
 }
 .status-ready,
 .status-assigned,
+.status-acknowledged,
 .status-in-progress,
 .status-completed,
 .status-verified {

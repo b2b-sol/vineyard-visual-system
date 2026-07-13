@@ -1,0 +1,96 @@
+%% visual_id: VIS-HANDOFF-INFORMATION
+%% title: Handoff and information map
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-001,WF-002,WF-003,WF-004,WF-005,WF-006,WF-007,WF-008,WF-009,WF-010
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart TB
+  subgraph MAP_WF_001["WF-001 · Seasonal planning, dispatch, execution, and verification"]
+    direction LR
+    WF_001_INPUTS["Inputs · Stable block identity and map · Growth stage and current block condition · Annual plan, budget, and work histo…"]
+    WF_001_WORK["Accountable workflow · WF-001"]
+    WF_001_HANDOFFS["Handoffs · Viticulturist or field observer to vineyard manager · Vineyard manager or coordinator to foreman or contract…"]
+    WF_001_RECORDS["Records · Seasonal plan · Field signal · Work assignment · Activity log"]
+    WF_001_OUTPUTS["Outputs · Accountable block work record · Verified completion or attributed non-completion · Actual labor, equipment, m…"]
+    WF_001_INPUTS --> WF_001_WORK --> WF_001_HANDOFFS --> WF_001_RECORDS --> WF_001_OUTPUTS
+  end
+  subgraph MAP_WF_002["WF-002 · Scouting, recommendation, crop protection, and application records"]
+    direction LR
+    WF_002_INPUTS["Inputs · Stable block and mapped observation identity · Monitoring record, trap result, symptom, and weather risk · Tre…"]
+    WF_002_WORK["Accountable workflow · WF-002"]
+    WF_002_HANDOFFS["Handoffs · Scout to viticulturist · Viticulturist to crop-protection lead or manager · Approved plan to pesticide handl…"]
+    WF_002_RECORDS["Records · Scouting record · Treatment recommendation · Product and label check · Calibration record"]
+    WF_002_OUTPUTS["Outputs · Attributed monitoring and recommendation history · Approved or cancelled application plan · Complete applicat…"]
+    WF_002_INPUTS --> WF_002_WORK --> WF_002_HANDOFFS --> WF_002_RECORDS --> WF_002_OUTPUTS
+  end
+  subgraph MAP_WF_003["WF-003 · Irrigation scheduling, fertility adjustment, and delivery verification"]
+    direction LR
+    WF_003_INPUTS["Inputs · Stable block and irrigation-zone identity · Soil moisture, evapotranspiration, weather, and plant-status obser…"]
+    WF_003_WORK["Accountable workflow · WF-003"]
+    WF_003_HANDOFFS["Handoffs · Sensor, field, or lab result to viticulturist · Viticulturist recommendation to irrigation lead and manager…"]
+    WF_003_RECORDS["Records · Block condition note · Soil-moisture or ET record · Plant-status observation · Tissue or petiole result"]
+    WF_003_OUTPUTS["Outputs · Block water or fertility recommendation · Assigned irrigation or fertigation action · Actual delivery and exc…"]
+    WF_003_INPUTS --> WF_003_WORK --> WF_003_HANDOFFS --> WF_003_RECORDS --> WF_003_OUTPUTS
+  end
+  subgraph MAP_WF_004["WF-004 · Crop estimation and forecast revision"]
+    direction LR
+    WF_004_INPUTS["Inputs · Stable block identity and productive vine count · Representative vine and cluster sample · Bunches per vine an…"]
+    WF_004_WORK["Accountable workflow · WF-004"]
+    WF_004_HANDOFFS["Handoffs · Field sample to viticulturist · Forecast to manager and grower-relations · Approved estimate to grower, wine…"]
+    WF_004_RECORDS["Records · Sampling plan · Vine and cluster sample · Block crop estimate · Forecast revision history"]
+    WF_004_OUTPUTS["Outputs · Dated block crop estimate with method and confidence · Superseding forecast revision · Winery, labor, logisti…"]
+    WF_004_INPUTS --> WF_004_WORK --> WF_004_HANDOFFS --> WF_004_RECORDS --> WF_004_OUTPUTS
+  end
+  subgraph MAP_WF_005["WF-005 · Maturity sampling, winery communication, and pick decision"]
+    direction LR
+    WF_005_INPUTS["Inputs · Stable block and sample identity · Representative berry or cluster sample · Brix, pH, TA, flavor, fruit condit…"]
+    WF_005_WORK["Accountable workflow · WF-005"]
+    WF_005_HANDOFFS["Handoffs · Field sampler to laboratory · Laboratory to viticulturist, grower-relations, grower, and winemaker · Viticul…"]
+    WF_005_RECORDS["Records · Sampling plan · Sample chain of identity · Field condition assessment · Laboratory result"]
+    WF_005_OUTPUTS["Outputs · Traceable maturity trend · Readiness assessment · Communicated pick proposal"]
+    WF_005_INPUTS --> WF_005_WORK --> WF_005_HANDOFFS --> WF_005_RECORDS --> WF_005_OUTPUTS
+  end
+  subgraph MAP_WF_006["WF-006 · Harvest planning, execution, loads, intake, quality, and reconciliation"]
+    direction LR
+    WF_006_INPUTS["Inputs · Authorized pick and block identity · Crew, machine or hand method, containers, and harvest conditions · Truck…"]
+    WF_006_WORK["Accountable workflow · WF-006"]
+    WF_006_HANDOFFS["Handoffs · Pick authority to vineyard manager · Manager to harvest crew and transportation · Vineyard load to winery in…"]
+    WF_006_RECORDS["Records · Pick authorization · Harvest plan · Crew and container assignment · Load identity"]
+    WF_006_OUTPUTS["Outputs · Harvested block and load history · Weigh ticket and quality disposition · Accepted, downgraded, or rejected l…"]
+    WF_006_INPUTS --> WF_006_WORK --> WF_006_HANDOFFS --> WF_006_RECORDS --> WF_006_OUTPUTS
+  end
+  subgraph MAP_WF_007["WF-007 · Crew scheduling, attendance, time, payroll, and cost allocation"]
+    direction LR
+    WF_007_INPUTS["Inputs · Approved work assignments and stable block identity · Crew roster, qualifications, language, and contractor re…"]
+    WF_007_WORK["Accountable workflow · WF-007"]
+    WF_007_HANDOFFS["Handoffs · Manager work demand to operations coordinator · Coordinator to foreman and labor contractor · Foreman instru…"]
+    WF_007_RECORDS["Records · Crew roster · Qualification and training evidence · Work assignment · Safety briefing"]
+    WF_007_OUTPUTS["Outputs · Qualified crew schedule and briefing evidence · Attendance, break, time, and unit record · Verified task-to-l…"]
+    WF_007_INPUTS --> WF_007_WORK --> WF_007_HANDOFFS --> WF_007_RECORDS --> WF_007_OUTPUTS
+  end
+  subgraph MAP_WF_008["WF-008 · Materials, purchasing, equipment readiness, and repair"]
+    direction LR
+    WF_008_INPUTS["Inputs · Approved work plan and timing window · Material, PPE, equipment, calibration, and container requirements · Inv…"]
+    WF_008_WORK["Accountable workflow · WF-008"]
+    WF_008_HANDOFFS["Handoffs · Approved work to operations coordinator · Coordinator to purchasing, vendor, contractor, or mechanic · Recei…"]
+    WF_008_RECORDS["Records · Resource demand · Inventory record · Equipment readiness and calibration record · Purchase request"]
+    WF_008_OUTPUTS["Outputs · Readiness plan · Approved purchase, rental, or contractor commitment · Received and staged material or equipm…"]
+    WF_008_INPUTS --> WF_008_WORK --> WF_008_HANDOFFS --> WF_008_RECORDS --> WF_008_OUTPUTS
+  end
+  subgraph MAP_WF_009["WF-009 · Grower onboarding, contract-fruit coordination, and relationship history"]
+    direction LR
+    WF_009_INPUTS["Inputs · Grower and organization identity · Vineyard, block, row, variety, acreage, and alias history · Contract tonnag…"]
+    WF_009_WORK["Accountable workflow · WF-009"]
+    WF_009_HANDOFFS["Handoffs · Grower to grower-relations and compliance · Grower-relations to viticulture, winemaking, intake, transportat…"]
+    WF_009_RECORDS["Records · Grower profile · Organization and contact record · Vineyard and block map · Alias history"]
+    WF_009_OUTPUTS["Outputs · Stable grower-vineyard-block relationship and alias history · Active contract and operating responsibility mo…"]
+    WF_009_INPUTS --> WF_009_WORK --> WF_009_HANDOFFS --> WF_009_RECORDS --> WF_009_OUTPUTS
+  end
+  subgraph MAP_WF_010["WF-010 · Certification, audit preparation, corrective action, and evidence"]
+    direction LR
+    WF_010_INPUTS["Inputs · Applicable certification standards, regulation, and buyer requirements · Stable site, vineyard, field, block,…"]
+    WF_010_WORK["Accountable workflow · WF-010"]
+    WF_010_HANDOFFS["Handoffs · Certification requirements to manager, field, office, contractor, and grower roles · Operational records to…"]
+    WF_010_RECORDS["Records · Certification scope · Requirement map · Site management plan · Annual questionnaire"]
+    WF_010_OUTPUTS["Outputs · Requirement-to-operation evidence map · Annual questionnaire, plan, diary, and audit package · Attributed evi…"]
+    WF_010_INPUTS --> WF_010_WORK --> WF_010_HANDOFFS --> WF_010_RECORDS --> WF_010_OUTPUTS
+  end

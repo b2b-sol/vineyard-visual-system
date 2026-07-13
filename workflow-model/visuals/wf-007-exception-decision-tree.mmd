@@ -1,0 +1,116 @@
+%% visual_id: VIS-WF-007-EXCEPTION-TREE
+%% title: WF-007 exception and decision tree
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-007; workflow-model/exceptions.json#EXC-037,EXC-038,EXC-039,EXC-040,EXC-041,EXC-042,EXC-043; workflow-model/decisions.json#DEC-061,DEC-062,DEC-063,DEC-064; workflow-model/records.json#REC-003,REC-051,REC-054,REC-055,REC-056,REC-057,REC-058,REC-059,REC-060,REC-061,REC-062,REC-063
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart TD
+  ROOT["WF-007 · Crew scheduling, attendance, time, payroll, and cost allocation"]
+  TRIGGER["EXC-037 · Worker absent or crew short · The crew scheduling, attendance, time, payroll, and cost allocation workflow en…"]
+  SCOPE{"Are affected scope, safe partial results, and authority explicit?"}
+  HOLD["Block and escalate · ROLE-OPERATIONS-COORDINATOR · Operations Coordinator"]
+  RETAIN["Retain unaffected and safely completed scope with attribution"]
+  ROOT --> TRIGGER
+  TRIGGER --> SCOPE
+  SCOPE -->|No| HOLD
+  SCOPE -->|Yes| RETAIN
+  RECOVERY_1["1 · Record and contain worker absent or crew short at the affected scope."]
+  RECOVERY_2["2 · Use DEC-061 authority to move from crew_scheduled to exception_flagged; do not overwrite predecessor evidence."]
+  RECOVERY_3["3 · Notify only the roles and downstream records affected by the decision."]
+  HOLD --> RECOVERY_1
+  RETAIN --> RECOVERY_1
+  RECOVERY_1 --> RECOVERY_2
+  RECOVERY_2 --> RECOVERY_3
+  DECISION_1{"DEC-061 · Is the proposed crew qualified and available for this work and hazard profile?"}
+  RECOVERY_3 -. accountable decision .-> DECISION_1
+  D1_OUTCOME_1["Schedule crew"]
+  DECISION_1 -->|Outcome 1| D1_OUTCOME_1
+  D1_OUTCOME_2["Change crew or contractor"]
+  DECISION_1 -->|Outcome 2| D1_OUTCOME_2
+  D1_OUTCOME_3["Delay work"]
+  DECISION_1 -->|Outcome 3| D1_OUTCOME_3
+  DECISION_2{"DEC-062 · Does a field change require pause, reassignment, or schedule revision?"}
+  ROOT -. registered authority .-> DECISION_2
+  D2_OUTCOME_1["Continue"]
+  DECISION_2 -->|Outcome 1| D2_OUTCOME_1
+  D2_OUTCOME_2["Pause"]
+  DECISION_2 -->|Outcome 2| D2_OUTCOME_2
+  D2_OUTCOME_3["Reassign"]
+  DECISION_2 -->|Outcome 3| D2_OUTCOME_3
+  D2_OUTCOME_4["Stop and escalate"]
+  DECISION_2 -->|Outcome 4| D2_OUTCOME_4
+  DECISION_3{"DEC-063 · Do time, units, and task progress form a credible, non-conflicting submission?"}
+  ROOT -. registered authority .-> DECISION_3
+  D3_OUTCOME_1["Verify"]
+  DECISION_3 -->|Outcome 1| D3_OUTCOME_1
+  D3_OUTCOME_2["Return for clarification"]
+  DECISION_3 -->|Outcome 2| D3_OUTCOME_2
+  D3_OUTCOME_3["Flag payroll or work-record conflict"]
+  DECISION_3 -->|Outcome 3| D3_OUTCOME_3
+  DECISION_4{"DEC-064 · Does a disputed labor record require an authorized correction?"}
+  ROOT -. registered authority .-> DECISION_4
+  D4_OUTCOME_1["Accept submitted record"]
+  DECISION_4 -->|Outcome 1| D4_OUTCOME_1
+  D4_OUTCOME_2["Issue correction"]
+  DECISION_4 -->|Outcome 2| D4_OUTCOME_2
+  D4_OUTCOME_3["Escalate for missing evidence"]
+  DECISION_4 -->|Outcome 3| D4_OUTCOME_3
+  EVIDENCE["Closure evidence · attributed EXC-037 observation and affected scope · crew_scheduled to exception_flagged transition w…"]
+  RECONCILED{"Are recovery, disposition, and downstream records reconciled?"}
+  CORRECT["Correction required · preserve prior state and reason"]
+  CLOSE["Recover as Exception Flagged"]
+  D1_OUTCOME_1 --> EVIDENCE
+  D1_OUTCOME_2 --> EVIDENCE
+  D1_OUTCOME_3 --> EVIDENCE
+  D2_OUTCOME_1 --> EVIDENCE
+  D2_OUTCOME_2 --> EVIDENCE
+  D2_OUTCOME_3 --> EVIDENCE
+  D2_OUTCOME_4 --> EVIDENCE
+  D3_OUTCOME_1 --> EVIDENCE
+  D3_OUTCOME_2 --> EVIDENCE
+  D3_OUTCOME_3 --> EVIDENCE
+  D4_OUTCOME_1 --> EVIDENCE
+  D4_OUTCOME_2 --> EVIDENCE
+  D4_OUTCOME_3 --> EVIDENCE
+  EVIDENCE --> RECONCILED
+  RECONCILED -->|No| CORRECT
+  CORRECT --> EVIDENCE
+  RECONCILED -->|Yes| CLOSE
+  EXCEPTION_2["EXC-038 · Language or training mismatch · The crew scheduling, attendance, time, payroll, and cost allocation workflow…"]
+  EXCEPTION_2_RECOVERY["Briefed to Exception Flagged · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_2
+  EXCEPTION_2 --> EXCEPTION_2_RECOVERY
+  EXCEPTION_2_RECOVERY --> EVIDENCE
+  EXCEPTION_2 -. accountable decision .-> DECISION_1
+  EXCEPTION_3["EXC-039 · Heat or safety pause · The crew scheduling, attendance, time, payroll, and cost allocation workflow encounter…"]
+  EXCEPTION_3_RECOVERY["Working to Paused · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_3
+  EXCEPTION_3 --> EXCEPTION_3_RECOVERY
+  EXCEPTION_3_RECOVERY --> EVIDENCE
+  EXCEPTION_3 -. accountable decision .-> DECISION_2
+  EXCEPTION_4["EXC-040 · Mid-shift reassignment · The crew scheduling, attendance, time, payroll, and cost allocation workflow encount…"]
+  EXCEPTION_4_RECOVERY["Working to Reassigned · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_4
+  EXCEPTION_4 --> EXCEPTION_4_RECOVERY
+  EXCEPTION_4_RECOVERY --> EVIDENCE
+  EXCEPTION_4 -. accountable decision .-> DECISION_2
+  EXCEPTION_5["EXC-041 · Missing break, time, unit, or block allocation · The crew scheduling, attendance, time, payroll, and cost all…"]
+  EXCEPTION_5_RECOVERY["Time Submitted to Exception Flagged · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_5
+  EXCEPTION_5 --> EXCEPTION_5_RECOVERY
+  EXCEPTION_5_RECOVERY --> EVIDENCE
+  EXCEPTION_5 -. accountable decision .-> DECISION_3
+  EXCEPTION_5 -. accountable decision .-> DECISION_4
+  EXCEPTION_6["EXC-042 · Payroll and work record conflict · The crew scheduling, attendance, time, payroll, and cost allocation workfl…"]
+  EXCEPTION_6_RECOVERY["Supervisor Verified to Exception Flagged · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_6
+  EXCEPTION_6 --> EXCEPTION_6_RECOVERY
+  EXCEPTION_6_RECOVERY --> EVIDENCE
+  EXCEPTION_6 -. accountable decision .-> DECISION_3
+  EXCEPTION_6 -. accountable decision .-> DECISION_4
+  EXCEPTION_7["EXC-043 · Late contractor record · The crew scheduling, attendance, time, payroll, and cost allocation workflow encount…"]
+  EXCEPTION_7_RECOVERY["Time Submitted to Exception Flagged · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_7
+  EXCEPTION_7 --> EXCEPTION_7_RECOVERY
+  EXCEPTION_7_RECOVERY --> EVIDENCE
+  EXCEPTION_7 -. accountable decision .-> DECISION_3
+  EXCEPTION_7 -. accountable decision .-> DECISION_4

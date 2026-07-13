@@ -1,19 +1,141 @@
 schema_version: "1.0"
 generated_from: control/trace-nodes.json
-artifact_count: 7
+artifact_count: 27
 artifacts:
   - id: EVD-001
     type: evidence
-    title: Seasonal work planning and work-order dispatch source card
+    title: Seasonal planning, dispatch, execution, and verified closure
     path: source/Vineyard-Workflow-Discovery-report.md
-    locator: "heading:Detailed workflow cards and handoff maps"
+    locator: heading:Detailed workflow cards and handoff maps
+    status: approved
+  - id: EVD-002
+    type: evidence
+    title: Scouting, recommendation, crop protection, and defensible application
+      record
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Detailed workflow cards and handoff maps
+    status: approved
+  - id: EVD-003
+    type: evidence
+    title: Irrigation scheduling, fertility adjustment, and delivery verification
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Detailed workflow cards and handoff maps
+    status: approved
+  - id: EVD-004
+    type: evidence
+    title: Crop estimation and forecast revision
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Detailed workflow cards and handoff maps
+    status: approved
+  - id: EVD-005
+    type: evidence
+    title: Maturity sampling, winery communication, and pick decision
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Detailed workflow cards and handoff maps
+    status: approved
+  - id: EVD-006
+    type: evidence
+    title: Harvest, load identity, intake quality, and reconciliation
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Detailed workflow cards and handoff maps
+    status: approved
+  - id: EVD-007
+    type: evidence
+    title: Crew scheduling, attendance, time, payroll, and cost allocation
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Vineyard operating model
+    status: approved
+  - id: EVD-008
+    type: evidence
+    title: Materials, purchasing, equipment readiness, and repair
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Vineyard operating model
+    status: approved
+  - id: EVD-009
+    type: evidence
+    title: Grower onboarding and contract-fruit coordination
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Vineyard operating model
+    status: approved
+  - id: EVD-010
+    type: evidence
+    title: Certification, annual evidence, audit, and corrective action
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Certification overlays, exception inventory, digital
+      opportunity map, field research guide, and sources
+    status: approved
+  - id: EVD-011
+    type: evidence
+    title: Stable block identity across organizations and history
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Executive workflow summary
+    status: approved
+  - id: EVD-012
+    type: evidence
+    title: Seasonal hazards, urgent replanning, and immutable exception history
+    path: source/Vineyard-Workflow-Discovery-report.md
+    locator: heading:Annual workflow calendar
     status: approved
   - id: WF-001
     type: workflow
-    title: Seasonal work planning, dispatch, and verified closure
-    path: workflow-model/walking-slice.json
+    title: Seasonal planning, dispatch, execution, and verification
+    path: workflow-model/workflows.json
     locator: json_id:WF-001
-    status: review
+    status: approved
+  - id: WF-002
+    type: workflow
+    title: Scouting, recommendation, crop protection, and application records
+    path: workflow-model/workflows.json
+    locator: json_id:WF-002
+    status: approved
+  - id: WF-003
+    type: workflow
+    title: Irrigation scheduling, fertility adjustment, and delivery verification
+    path: workflow-model/workflows.json
+    locator: json_id:WF-003
+    status: approved
+  - id: WF-004
+    type: workflow
+    title: Crop estimation and forecast revision
+    path: workflow-model/workflows.json
+    locator: json_id:WF-004
+    status: approved
+  - id: WF-005
+    type: workflow
+    title: Maturity sampling, winery communication, and pick decision
+    path: workflow-model/workflows.json
+    locator: json_id:WF-005
+    status: approved
+  - id: WF-006
+    type: workflow
+    title: Harvest planning, execution, loads, intake, quality, and reconciliation
+    path: workflow-model/workflows.json
+    locator: json_id:WF-006
+    status: approved
+  - id: WF-007
+    type: workflow
+    title: Crew scheduling, attendance, time, payroll, and cost allocation
+    path: workflow-model/workflows.json
+    locator: json_id:WF-007
+    status: approved
+  - id: WF-008
+    type: workflow
+    title: Materials, purchasing, equipment readiness, and repair
+    path: workflow-model/workflows.json
+    locator: json_id:WF-008
+    status: approved
+  - id: WF-009
+    type: workflow
+    title: Grower onboarding, contract-fruit coordination, and relationship history
+    path: workflow-model/workflows.json
+    locator: json_id:WF-009
+    status: approved
+  - id: WF-010
+    type: workflow
+    title: Certification, audit preparation, corrective action, and evidence
+    path: workflow-model/workflows.json
+    locator: json_id:WF-010
+    status: approved
   - id: SCN-001-01
     type: scenario
     title: Recover a partially completed mowing order after equipment failure

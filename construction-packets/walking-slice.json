@@ -3,45 +3,82 @@
   "packets": [
     {
       "id": "PKT-001",
-      "title": "Morning dispatch and blocked-work recovery",
-      "purpose": "Specify a buildable supervisory dispatch surface that prioritizes current work and recovers partially completed vineyard work without erasing its operational or audit history.",
+      "title": "Morning dispatch and blocked-work redispatch",
+      "purpose": "Specify a buildable supervisory dispatch surface that recovers partially completed vineyard work through canonical assignment, acknowledgement, execution, completion, and verification states without erasing operational history.",
       "workflow_ids": ["WF-001"],
       "scenario_ids": ["SCN-001-01"],
       "fixture_ids": ["FIX-001"],
       "screen_ids": ["SCR-001"],
       "component_ids": ["CMP-001"],
       "roles": [
+        "ROLE-VITICULTURIST",
         "ROLE-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR",
         "ROLE-FOREMAN",
-        "ROLE-EQUIPMENT-OPERATOR"
+        "ROLE-FIELD-CREW"
       ],
       "preconditions": [
         "The work order resolves to one stable block identity",
+        "The plan is approved before assignment",
+        "The foreman acknowledges current instructions before execution",
         "Every state change has an actor and timestamp",
         "Target and actual acreage use the same unit"
       ],
       "state_contract": {
-        "initial": "assigned",
+        "initial": "observed",
         "exception": "blocked",
-        "recovery": "ready_to_resume",
+        "recovery": "assigned",
         "terminal": "verified",
-        "history_policy": "Append transitions; never rewrite blocked, partial, or correction events after later completion."
+        "history_policy": "Append transitions; never rewrite partial, blocked, redispatch, acknowledgement, correction, or prior completion events after later verification."
       },
       "permission_contract": [
         {
-          "role_id": "ROLE-FOREMAN",
-          "may": ["Report a blocker", "Record safe partial acreage"],
-          "may_not": ["Verify final closure", "Erase a blocker event"]
+          "role_id": "ROLE-VITICULTURIST",
+          "may": ["Record a field signal", "Scope recommended work"],
+          "may_not": ["Approve work", "Verify final closure"]
         },
         {
           "role_id": "ROLE-VINEYARD-MANAGER",
-          "may": ["Release corrected work", "Verify final closure"],
-          "may_not": ["Backdate another person's field report"]
+          "may": [
+            "Approve planned work",
+            "Contain an equipment-unavailable assignment",
+            "Verify final closure"
+          ],
+          "may_not": [
+            "Backdate another person's field report",
+            "Erase a partial or blocker event"
+          ]
         },
         {
-          "role_id": "ROLE-EQUIPMENT-OPERATOR",
-          "may": ["Start assigned work", "Report completed acreage"],
-          "may_not": ["Release equipment-blocked rows"]
+          "role_id": "ROLE-OPERATIONS-COORDINATOR",
+          "may": [
+            "Assign approved work",
+            "Create a remaining-scope assignment",
+            "Redispatch repaired work"
+          ],
+          "may_not": ["Verify final closure", "Rewrite completed acreage"]
+        },
+        {
+          "role_id": "ROLE-FOREMAN",
+          "may": [
+            "Acknowledge an assignment",
+            "Start acknowledged work",
+            "Record safe partial acreage",
+            "Report completed actuals"
+          ],
+          "may_not": [
+            "Verify final closure",
+            "Execute before acknowledgement",
+            "Erase a blocker event"
+          ]
+        },
+        {
+          "role_id": "ROLE-FIELD-CREW",
+          "may": [
+            "Perform the acknowledged field scope",
+            "Provide field evidence to the foreman"
+          ],
+          "may_not": ["Redispatch blocked work", "Verify final closure"]
         }
       ],
       "data_contract": {
@@ -74,15 +111,33 @@
       "interaction_contract": [
         {
           "action_id": "ACT-001",
-          "precondition": "Current state is blocked and reported acreage is valid",
+          "precondition": "Current state is in_progress and reported acreage is valid",
           "result": "State becomes partially_completed",
-          "audit_event": "Append partial completion with actor, time, acreage, and reason"
+          "audit_event": "Append partial completion with actor, local time, acreage, and reason"
         },
         {
           "action_id": "ACT-002",
-          "precondition": "Repair evidence exists and current state is partially_completed",
-          "result": "State becomes ready_to_resume",
-          "audit_event": "Append release event without changing the blocker record"
+          "precondition": "Repair evidence exists and current state is blocked",
+          "result": "State becomes assigned for the remaining scope",
+          "audit_event": "Append coordinator redispatch without changing the blocker or partial record"
+        },
+        {
+          "action_id": "ACT-005",
+          "precondition": "Current state is assigned and field instructions are current",
+          "result": "State becomes acknowledged",
+          "audit_event": "Append foreman acknowledgement with actor and time"
+        },
+        {
+          "action_id": "ACT-006",
+          "precondition": "Current state is acknowledged and the repaired equipment is available",
+          "result": "State becomes in_progress",
+          "audit_event": "Append resumed execution with actor, time, and remaining row scope"
+        },
+        {
+          "action_id": "ACT-007",
+          "precondition": "Current state is in_progress and final actual acreage is valid",
+          "result": "State becomes completed",
+          "audit_event": "Append final scope and actual-use report without rewriting the earlier partial"
         },
         {
           "action_id": "ACT-003",
@@ -99,25 +154,32 @@
       ],
       "copy_contract": {
         "status_labels": {
-          "blocked": "Blocked — field stop recorded",
+          "blocked": "Blocked — equipment unavailable",
           "partially_completed": "Partial — remaining rows open",
-          "ready_to_resume": "Ready — repair confirmed",
+          "assigned": "Assigned — repair confirmed",
+          "acknowledged": "Acknowledged — instructions confirmed",
+          "in_progress": "In progress — remaining rows underway",
+          "completed": "Completed — awaiting verification",
           "verified": "Verified — acreage reconciled"
         },
         "error_messages": [
-          "Repair evidence is required before releasing the remaining rows.",
+          "Repair evidence is required before redispatching the remaining rows.",
+          "The current assignment must be acknowledged before work resumes.",
           "Completed acreage cannot exceed the block acreage.",
           "The work order changed elsewhere; review the newer status before retrying."
         ]
       },
       "dependencies": [
+        "WF-001 canonical transition graph",
         "FIX-001 deterministic fixture",
         "CMP-001 WorkOrderQueue",
         "Stable block identity service contract"
       ],
       "acceptance_criteria": [
-        "The screen exposes blocked reason, affected rows, reporter, and time without opening a secondary record.",
-        "Partial acreage survives resume and final completion as an immutable historical event.",
+        "Every FIX-001 status edge resolves to a transition in canonical WF-001.",
+        "The screen exposes partial acreage, blocked reason, affected rows, reporter, and time without opening a secondary record.",
+        "Recovery follows blocked to assigned to acknowledged to in_progress before completion.",
+        "Partial acreage survives redispatch and final completion as an immutable historical event.",
         "Only a vineyard manager can transition completed work to verified.",
         "The rendered slice resolves WF-001, SCN-001-01, FIX-001, SCR-001, CMP-001, and PKT-001.",
         "Status meaning remains understandable without color and at a 375 CSS-pixel viewport."
@@ -126,17 +188,17 @@
         {
           "id": "TEST-001",
           "category": "normal",
-          "assertion": "Assigned work advances to in progress with an attributable event."
+          "assertion": "Approved work is assigned, acknowledged, and started through canonical transitions."
         },
         {
           "id": "TEST-002",
           "category": "exception",
-          "assertion": "A blocker preserves 11.2 completed acres and rows 28–34 as open."
+          "assertion": "A partial event preserves 11.2 completed acres before the remaining-scope assignment is blocked."
         },
         {
           "id": "TEST-003",
           "category": "recovery",
-          "assertion": "Repair evidence releases only the remaining rows and retains prior history."
+          "assertion": "Repair evidence redispatches only the remaining rows through assignment and acknowledgement while retaining prior history."
         },
         {
           "id": "TEST-004",
@@ -152,6 +214,11 @@
           "id": "TEST-006",
           "category": "data",
           "assertion": "Final actual acreage equals the 18.6-acre target and never exceeds block acreage."
+        },
+        {
+          "id": "TEST-007",
+          "category": "data",
+          "assertion": "An offline partial event remains an immutable note when a newer assigned server state wins conflict resolution."
         }
       ],
       "figma_mapping": {

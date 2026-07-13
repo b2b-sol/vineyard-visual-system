@@ -1,0 +1,64 @@
+%% visual_id: VIS-WF-008-SWIMLANE
+%% title: WF-008 role swimlane
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-008; workflow-model/roles.json#ROLE-ASSISTANT-VINEYARD-MANAGER,ROLE-COMPLIANCE-COORDINATOR,ROLE-CONTRACTOR,ROLE-EQUIPMENT-OPERATOR,ROLE-FINANCE,ROLE-FOREMAN,ROLE-MECHANIC,ROLE-OPERATIONS-COORDINATOR,ROLE-OWNER-GENERAL-MANAGER,ROLE-PURCHASING,ROLE-VINEYARD-MANAGER
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  START["WF-008 · Trigger"]
+  END["WF-008 · Output and accountable closure"]
+  subgraph LANE_ROLE_OPERATIONS_COORDINATOR["ROLE-OPERATIONS-COORDINATOR · Operations Coordinator"]
+    direction TB
+    STEP_01["01 · Observation · A material, PPE, equipment, calibration, service, or contractor need is recorded against the affecte…"]
+    STEP_02["02 · Recommendation · The coordinator checks inventory, readiness, compliance, vendor, rental, repair, and substitution…"]
+    STEP_06["06 · Assignment · The coordinator stages the received resource for the specific work while preserving custody, calibrat…"]
+  end
+  subgraph LANE_ROLE_VINEYARD_MANAGER["ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+    direction TB
+    STEP_03["03 · Approval · The manager approves, revises, escalates, or defers the resource commitment within budget and priority…"]
+  end
+  subgraph LANE_ROLE_PURCHASING["ROLE-PURCHASING · Purchasing"]
+    direction TB
+    STEP_04["04 · Assignment · Purchasing places the approved order or service commitment with required product, lot, delivery, and…"]
+    STEP_05["05 · Completion · Purchasing records receipt, lot or asset identity, quantity, condition, cost reference, and any discr…"]
+  end
+  subgraph LANE_ROLE_FOREMAN["ROLE-FOREMAN · Foreman"]
+    direction TB
+    STEP_07["07 · Verification · The foreman verifies that the staged resource is safe, compliant, calibrated where applicable, and…"]
+  end
+  subgraph LANE_ROLE_MECHANIC["ROLE-MECHANIC · Mechanic"]
+    direction TB
+    PARTICIPANT_ROLE_MECHANIC["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_EQUIPMENT_OPERATOR["ROLE-EQUIPMENT-OPERATOR · Equipment Operator"]
+    direction TB
+    PARTICIPANT_ROLE_EQUIPMENT_OPERATOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_CONTRACTOR["ROLE-CONTRACTOR · Contractor"]
+    direction TB
+    PARTICIPANT_ROLE_CONTRACTOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_COMPLIANCE_COORDINATOR["ROLE-COMPLIANCE-COORDINATOR · Compliance Coordinator"]
+    direction TB
+    PARTICIPANT_ROLE_COMPLIANCE_COORDINATOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_FINANCE["ROLE-FINANCE · Finance"]
+    direction TB
+    STEP_08["08 · Reconciliation · Finance reconciles the receipt, parts, service, labor, and resource use with purchasing and work-…"]
+  end
+  subgraph LANE_ROLE_OWNER_GENERAL_MANAGER["ROLE-OWNER-GENERAL-MANAGER · Owner or General Manager"]
+    direction TB
+    PARTICIPANT_ROLE_OWNER_GENERAL_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_ASSISTANT_VINEYARD_MANAGER["ROLE-ASSISTANT-VINEYARD-MANAGER · Assistant Vineyard Manager"]
+    direction TB
+    PARTICIPANT_ROLE_ASSISTANT_VINEYARD_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  START -->|demand_identified| STEP_01
+  STEP_01 -->|availability_checked| STEP_02
+  STEP_02 -->|approved| STEP_03
+  STEP_03 -->|ordered| STEP_04
+  STEP_04 -->|received| STEP_05
+  STEP_05 -->|staged| STEP_06
+  STEP_06 -->|ready| STEP_07
+  STEP_07 -->|cost_reconciled| STEP_08
+  STEP_08 -->|cost_reconciled| END

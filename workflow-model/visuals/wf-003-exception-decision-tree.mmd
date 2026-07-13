@@ -1,0 +1,119 @@
+%% visual_id: VIS-WF-003-EXCEPTION-TREE
+%% title: WF-003 exception and decision tree
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-003; workflow-model/exceptions.json#EXC-012,EXC-013,EXC-014,EXC-015,EXC-016,EXC-017; workflow-model/decisions.json#DEC-021,DEC-022,DEC-023,DEC-024; workflow-model/records.json#REC-018,REC-019,REC-020,REC-021,REC-022,REC-023,REC-024,REC-025,REC-026
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart TD
+  ROOT["WF-003 · Irrigation scheduling, fertility adjustment, and delivery verification"]
+  TRIGGER["EXC-012 · System malfunction · The irrigation scheduling, fertility adjustment, and delivery verification workflow enco…"]
+  SCOPE{"Are affected scope, safe partial results, and authority explicit?"}
+  HOLD["Block and escalate · ROLE-VITICULTURIST · Viticulturist"]
+  RETAIN["Retain unaffected and safely completed scope with attribution"]
+  ROOT --> TRIGGER
+  TRIGGER --> SCOPE
+  SCOPE -->|No| HOLD
+  SCOPE -->|Yes| RETAIN
+  RECOVERY_1["1 · Record and contain system malfunction at the affected scope."]
+  RECOVERY_2["2 · Use DEC-021 and DEC-023 authority to move from delivering to delivery_interrupted; do not overwrite predecessor evi…"]
+  RECOVERY_3["3 · Notify only the roles and downstream records affected by the decision."]
+  HOLD --> RECOVERY_1
+  RETAIN --> RECOVERY_1
+  RECOVERY_1 --> RECOVERY_2
+  RECOVERY_2 --> RECOVERY_3
+  DECISION_1{"DEC-021 · What water action is warranted by current block and weather evidence?"}
+  RECOVERY_3 -. accountable decision .-> DECISION_1
+  D1_OUTCOME_1["Increase"]
+  DECISION_1 -->|Outcome 1| D1_OUTCOME_1
+  D1_OUTCOME_2["Reduce"]
+  DECISION_1 -->|Outcome 2| D1_OUTCOME_2
+  D1_OUTCOME_3["Continue"]
+  DECISION_1 -->|Outcome 3| D1_OUTCOME_3
+  D1_OUTCOME_4["Defer"]
+  DECISION_1 -->|Outcome 4| D1_OUTCOME_4
+  DECISION_2{"DEC-022 · Do tissue results and recent inputs warrant a fertility adjustment?"}
+  ROOT -. registered authority .-> DECISION_2
+  D2_OUTCOME_1["Adjust nutrient input"]
+  DECISION_2 -->|Outcome 1| D2_OUTCOME_1
+  D2_OUTCOME_2["Continue current program"]
+  DECISION_2 -->|Outcome 2| D2_OUTCOME_2
+  D2_OUTCOME_3["Resample or investigate"]
+  DECISION_2 -->|Outcome 3| D2_OUTCOME_3
+  DECISION_3{"DEC-023 · Was the planned delivery achieved evenly and completely?"}
+  RECOVERY_3 -. accountable decision .-> DECISION_3
+  D3_OUTCOME_1["Delivered as planned"]
+  DECISION_3 -->|Outcome 1| D3_OUTCOME_1
+  D3_OUTCOME_2["Partially delivered"]
+  DECISION_3 -->|Outcome 2| D3_OUTCOME_2
+  D3_OUTCOME_3["Malfunctioned or uneven"]
+  DECISION_3 -->|Outcome 3| D3_OUTCOME_3
+  D3_OUTCOME_4["Not delivered"]
+  DECISION_3 -->|Outcome 4| D3_OUTCOME_4
+  DECISION_4{"DEC-024 · Is the recommended irrigation or fertility action approved within current resource, certification, and operat…"}
+  ROOT -. registered authority .-> DECISION_4
+  D4_OUTCOME_1["Approve and assign"]
+  DECISION_4 -->|Outcome 1| D4_OUTCOME_1
+  D4_OUTCOME_2["Revise scope or timing"]
+  DECISION_4 -->|Outcome 2| D4_OUTCOME_2
+  D4_OUTCOME_3["Defer with review condition"]
+  DECISION_4 -->|Outcome 3| D4_OUTCOME_3
+  D4_OUTCOME_4["Escalate authority or constraint"]
+  DECISION_4 -->|Outcome 4| D4_OUTCOME_4
+  EVIDENCE["Closure evidence · attributed EXC-012 observation and affected scope · delivering to delivery_interrupted transition wi…"]
+  RECONCILED{"Are recovery, disposition, and downstream records reconciled?"}
+  CORRECT["Correction required · preserve prior state and reason"]
+  CLOSE["Recover as Delivery Interrupted"]
+  D1_OUTCOME_1 --> EVIDENCE
+  D1_OUTCOME_2 --> EVIDENCE
+  D1_OUTCOME_3 --> EVIDENCE
+  D1_OUTCOME_4 --> EVIDENCE
+  D2_OUTCOME_1 --> EVIDENCE
+  D2_OUTCOME_2 --> EVIDENCE
+  D2_OUTCOME_3 --> EVIDENCE
+  D3_OUTCOME_1 --> EVIDENCE
+  D3_OUTCOME_2 --> EVIDENCE
+  D3_OUTCOME_3 --> EVIDENCE
+  D3_OUTCOME_4 --> EVIDENCE
+  D4_OUTCOME_1 --> EVIDENCE
+  D4_OUTCOME_2 --> EVIDENCE
+  D4_OUTCOME_3 --> EVIDENCE
+  D4_OUTCOME_4 --> EVIDENCE
+  EVIDENCE --> RECONCILED
+  RECONCILED -->|No| CORRECT
+  CORRECT --> EVIDENCE
+  RECONCILED -->|Yes| CLOSE
+  EXCEPTION_2["EXC-013 · Uneven or partial delivery · The irrigation scheduling, fertility adjustment, and delivery verification workf…"]
+  EXCEPTION_2_RECOVERY["Delivering to Partially Delivered · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_2
+  EXCEPTION_2 --> EXCEPTION_2_RECOVERY
+  EXCEPTION_2_RECOVERY --> EVIDENCE
+  EXCEPTION_2 -. accountable decision .-> DECISION_3
+  EXCEPTION_3["EXC-014 · Water or input unavailable · The irrigation scheduling, fertility adjustment, and delivery verification workf…"]
+  EXCEPTION_3_RECOVERY["Assigned to Delivery Interrupted · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_3
+  EXCEPTION_3 --> EXCEPTION_3_RECOVERY
+  EXCEPTION_3_RECOVERY --> EVIDENCE
+  EXCEPTION_3 -. accountable decision .-> DECISION_1
+  EXCEPTION_3 -. accountable decision .-> DECISION_2
+  EXCEPTION_3 -. accountable decision .-> DECISION_4
+  EXCEPTION_4["EXC-015 · Heat changes timing · The irrigation scheduling, fertility adjustment, and delivery verification workflow enc…"]
+  EXCEPTION_4_RECOVERY["Assigned to Superseded · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_4
+  EXCEPTION_4 --> EXCEPTION_4_RECOVERY
+  EXCEPTION_4_RECOVERY --> EVIDENCE
+  EXCEPTION_4 -. accountable decision .-> DECISION_1
+  EXCEPTION_4 -. accountable decision .-> DECISION_4
+  EXCEPTION_5["EXC-016 · Lab result arrives after action window · The irrigation scheduling, fertility adjustment, and delivery verifi…"]
+  EXCEPTION_5_RECOVERY["Adjustment Recommended to Superseded · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_5
+  EXCEPTION_5 --> EXCEPTION_5_RECOVERY
+  EXCEPTION_5_RECOVERY --> EVIDENCE
+  EXCEPTION_5 -. accountable decision .-> DECISION_2
+  EXCEPTION_5 -. accountable decision .-> DECISION_4
+  EXCEPTION_6["EXC-017 · Block reality conflicts with office assumptions · The irrigation scheduling, fertility adjustment, and delive…"]
+  EXCEPTION_6_RECOVERY["Delivered to Correction Required · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_6
+  EXCEPTION_6 --> EXCEPTION_6_RECOVERY
+  EXCEPTION_6_RECOVERY --> EVIDENCE
+  EXCEPTION_6 -. accountable decision .-> DECISION_1
+  EXCEPTION_6 -. accountable decision .-> DECISION_2
+  EXCEPTION_6 -. accountable decision .-> DECISION_3

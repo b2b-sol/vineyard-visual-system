@@ -14,46 +14,29 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
-      "transition_context": ["observed -> planned"],
-      "required_inputs": [
-        "Stable block identity and map",
-        "Growth stage and current block condition",
-        "Annual plan, budget, and work history",
-        "Labor, contractor, equipment, and material availability",
-        "Weather and applicable restrictions"
+      "transition_context": [
+        "observed -> planned",
+        "approved -> superseded",
+        "assigned -> blocked",
+        "in_progress -> blocked"
       ],
-      "records_consulted": [
+      "required_inputs": [
         "Seasonal plan",
         "Field signal",
-        "Work assignment",
-        "Activity log",
         "Status history",
-        "Actual-use record",
-        "Verification record"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Accountable block work record",
-        "Verified completion or attributed non-completion",
-        "Actual labor, equipment, material, and acreage quantities",
-        "Follow-up or correction requirement"
-      ],
+      "records_consulted": ["Seasonal plan", "Field signal", "Status history"],
+      "records_produced": ["Work assignment", "Status history"],
       "source_anchors": [
         "## Detailed workflow cards and handoff maps",
         "**Workflow card: seasonal work planning and work-order dispatch**",
         "**Typical sequence.** Inspect or receive a field signal; decide whether action is required",
         "Managers need “done/not done/why not” visibility across estates and crews."
       ],
-      "role_ids": ["ROLE-VINEYARD-MANAGER"],
-      "record_ids": [
-        "REC-001",
-        "REC-002",
-        "REC-003",
-        "REC-004",
-        "REC-005",
-        "REC-006",
-        "REC-007"
-      ],
-      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-VITICULTURIST"],
+      "record_ids": ["REC-001", "REC-002", "REC-005", "REC-003"],
+      "exception_ids": ["EXC-001", "EXC-002", "EXC-003"]
     },
     {
       "id": "DEC-002",
@@ -68,46 +51,28 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
-      "transition_context": ["planned -> approved"],
+      "transition_context": [
+        "planned -> approved",
+        "planned -> cancelled",
+        "in_progress -> blocked",
+        "assigned -> blocked"
+      ],
       "required_inputs": [
-        "Stable block identity and map",
-        "Growth stage and current block condition",
-        "Annual plan, budget, and work history",
-        "Labor, contractor, equipment, and material availability",
-        "Weather and applicable restrictions"
-      ],
-      "records_consulted": [
         "Seasonal plan",
-        "Field signal",
         "Work assignment",
-        "Activity log",
-        "Status history",
-        "Actual-use record",
-        "Verification record"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Accountable block work record",
-        "Verified completion or attributed non-completion",
-        "Actual labor, equipment, material, and acreage quantities",
-        "Follow-up or correction requirement"
-      ],
+      "records_consulted": ["Seasonal plan", "Work assignment"],
+      "records_produced": ["Work assignment", "Status history"],
       "source_anchors": [
         "## Detailed workflow cards and handoff maps",
         "**Workflow card: seasonal work planning and work-order dispatch**",
         "**Typical sequence.** Inspect or receive a field signal; decide whether action is required",
         "Managers need “done/not done/why not” visibility across estates and crews."
       ],
-      "role_ids": ["ROLE-VINEYARD-MANAGER"],
-      "record_ids": [
-        "REC-001",
-        "REC-002",
-        "REC-003",
-        "REC-004",
-        "REC-005",
-        "REC-006",
-        "REC-007"
-      ],
-      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-OPERATIONS-COORDINATOR"],
+      "record_ids": ["REC-001", "REC-003", "REC-005"],
+      "exception_ids": ["EXC-002", "EXC-003"]
     },
     {
       "id": "DEC-003",
@@ -118,28 +83,29 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
-      "transition_context": ["in_progress -> completed"],
-      "required_inputs": [
-        "Stable block identity and map",
-        "Growth stage and current block condition",
-        "Annual plan, budget, and work history",
-        "Labor, contractor, equipment, and material availability",
-        "Weather and applicable restrictions"
+      "transition_context": [
+        "in_progress -> completed",
+        "partially_completed -> completed",
+        "correction_required -> corrected",
+        "corrected -> verified",
+        "in_progress -> partially_completed",
+        "completed -> correction_required"
       ],
-      "records_consulted": [
-        "Seasonal plan",
-        "Field signal",
+      "required_inputs": [
         "Work assignment",
         "Activity log",
+        "Actual-use record",
+        "Current state, effective time, accountable authority, and source version"
+      ],
+      "records_consulted": [
+        "Work assignment",
+        "Activity log",
+        "Actual-use record"
+      ],
+      "records_produced": [
         "Status history",
         "Actual-use record",
         "Verification record"
-      ],
-      "records_produced": [
-        "Accountable block work record",
-        "Verified completion or attributed non-completion",
-        "Actual labor, equipment, material, and acreage quantities",
-        "Follow-up or correction requirement"
       ],
       "source_anchors": [
         "## Detailed workflow cards and handoff maps",
@@ -147,17 +113,9 @@
         "**Typical sequence.** Inspect or receive a field signal; decide whether action is required",
         "Managers need “done/not done/why not” visibility across estates and crews."
       ],
-      "role_ids": ["ROLE-FOREMAN"],
-      "record_ids": [
-        "REC-001",
-        "REC-002",
-        "REC-003",
-        "REC-004",
-        "REC-005",
-        "REC-006",
-        "REC-007"
-      ],
-      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
+      "role_ids": ["ROLE-FOREMAN", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-003", "REC-004", "REC-006", "REC-005", "REC-007"],
+      "exception_ids": ["EXC-004", "EXC-005"]
     },
     {
       "id": "DEC-011",
@@ -172,60 +130,33 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
-      "transition_context": ["observation_recorded -> treatment_recommended"],
+      "transition_context": [
+        "observation_recorded -> treatment_recommended",
+        "observation_recorded -> pressure_assessed",
+        "pressure_assessed -> treatment_recommended",
+        "pressure_assessed -> cancelled",
+        "follow_up_due -> ineffective"
+      ],
       "required_inputs": [
-        "Stable block and mapped observation identity",
-        "Monitoring record, trap result, symptom, and weather risk",
-        "Treatment threshold and target pest or disease",
-        "Current label, regulation, buyer, certification, REI, and PHI rules",
-        "Product inventory, calibration, applicator qualification, PPE, and forecast"
-      ],
-      "records_consulted": [
         "Scouting record",
-        "Treatment recommendation",
-        "Product and label check",
-        "Calibration record",
-        "Application record",
-        "REI and PHI record",
-        "Worker posting",
-        "Spray diary",
-        "Pesticide-use report",
-        "Efficacy follow-up"
+        "Efficacy follow-up",
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Attributed monitoring and recommendation history",
-        "Approved or cancelled application plan",
-        "Complete application and restriction record",
-        "Regulatory, buyer, and certification diary entries",
-        "Efficacy assessment"
-      ],
+      "records_consulted": ["Scouting record", "Efficacy follow-up"],
+      "records_produced": ["Treatment recommendation"],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
         "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
         "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
       ],
-      "role_ids": ["ROLE-VITICULTURIST"],
-      "record_ids": [
-        "REC-008",
-        "REC-009",
-        "REC-010",
-        "REC-011",
-        "REC-012",
-        "REC-013",
-        "REC-014",
-        "REC-015",
-        "REC-016",
-        "REC-017"
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-SCOUT",
+        "ROLE-CROP-PROTECTION-LEAD"
       ],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
+      "record_ids": ["REC-008", "REC-017", "REC-009"],
+      "exception_ids": ["EXC-011"]
     },
     {
       "id": "DEC-012",
@@ -240,60 +171,35 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
-      "transition_context": ["treatment_recommended -> approved"],
-      "required_inputs": [
-        "Stable block and mapped observation identity",
-        "Monitoring record, trap result, symptom, and weather risk",
-        "Treatment threshold and target pest or disease",
-        "Current label, regulation, buyer, certification, REI, and PHI rules",
-        "Product inventory, calibration, applicator qualification, PPE, and forecast"
+      "transition_context": [
+        "treatment_recommended -> approved",
+        "approved -> preflight_check",
+        "pressure_assessed -> treatment_recommended",
+        "treatment_recommended -> cancelled",
+        "approved -> cancelled",
+        "preflight_check -> cancelled"
       ],
-      "records_consulted": [
-        "Scouting record",
+      "required_inputs": [
         "Treatment recommendation",
         "Product and label check",
-        "Calibration record",
-        "Application record",
         "REI and PHI record",
-        "Worker posting",
-        "Spray diary",
-        "Pesticide-use report",
-        "Efficacy follow-up"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Attributed monitoring and recommendation history",
-        "Approved or cancelled application plan",
-        "Complete application and restriction record",
-        "Regulatory, buyer, and certification diary entries",
-        "Efficacy assessment"
+      "records_consulted": [
+        "Treatment recommendation",
+        "Product and label check",
+        "REI and PHI record"
       ],
+      "records_produced": ["Product and label check", "Application record"],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
         "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
         "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
       ],
-      "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
-      "record_ids": [
-        "REC-008",
-        "REC-009",
-        "REC-010",
-        "REC-011",
-        "REC-012",
-        "REC-013",
-        "REC-014",
-        "REC-015",
-        "REC-016",
-        "REC-017"
-      ],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
+      "role_ids": ["ROLE-CROP-PROTECTION-LEAD", "ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": ["REC-009", "REC-010", "REC-013", "REC-012"],
+      "exception_ids": ["EXC-007", "EXC-009"]
     },
     {
       "id": "DEC-013",
@@ -309,60 +215,35 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
-      "transition_context": ["treatment_recommended -> approved"],
-      "required_inputs": [
-        "Stable block and mapped observation identity",
-        "Monitoring record, trap result, symptom, and weather risk",
-        "Treatment threshold and target pest or disease",
-        "Current label, regulation, buyer, certification, REI, and PHI rules",
-        "Product inventory, calibration, applicator qualification, PPE, and forecast"
+      "transition_context": [
+        "treatment_recommended -> approved",
+        "preflight_check -> scheduled",
+        "scheduled -> preflight_check",
+        "preflight_check -> cancelled"
       ],
-      "records_consulted": [
-        "Scouting record",
-        "Treatment recommendation",
+      "required_inputs": [
         "Product and label check",
         "Calibration record",
-        "Application record",
         "REI and PHI record",
         "Worker posting",
-        "Spray diary",
-        "Pesticide-use report",
-        "Efficacy follow-up"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Attributed monitoring and recommendation history",
-        "Approved or cancelled application plan",
-        "Complete application and restriction record",
-        "Regulatory, buyer, and certification diary entries",
-        "Efficacy assessment"
+      "records_consulted": [
+        "Product and label check",
+        "Calibration record",
+        "REI and PHI record",
+        "Worker posting"
       ],
+      "records_produced": ["Application record", "Worker posting"],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
         "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
         "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
       ],
-      "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
-      "record_ids": [
-        "REC-008",
-        "REC-009",
-        "REC-010",
-        "REC-011",
-        "REC-012",
-        "REC-013",
-        "REC-014",
-        "REC-015",
-        "REC-016",
-        "REC-017"
-      ],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
+      "role_ids": ["ROLE-CROP-PROTECTION-LEAD", "ROLE-PESTICIDE-HANDLER"],
+      "record_ids": ["REC-010", "REC-011", "REC-013", "REC-014", "REC-012"],
+      "exception_ids": ["EXC-006", "EXC-008", "EXC-009"]
     },
     {
       "id": "DEC-014",
@@ -377,60 +258,74 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
-      "transition_context": ["reported -> effective"],
+      "transition_context": [
+        "reported -> effective",
+        "follow_up_due -> effective",
+        "ineffective -> treatment_recommended",
+        "follow_up_due -> ineffective"
+      ],
       "required_inputs": [
-        "Stable block and mapped observation identity",
-        "Monitoring record, trap result, symptom, and weather risk",
-        "Treatment threshold and target pest or disease",
-        "Current label, regulation, buyer, certification, REI, and PHI rules",
-        "Product inventory, calibration, applicator qualification, PPE, and forecast"
-      ],
-      "records_consulted": [
-        "Scouting record",
-        "Treatment recommendation",
-        "Product and label check",
-        "Calibration record",
         "Application record",
-        "REI and PHI record",
-        "Worker posting",
-        "Spray diary",
-        "Pesticide-use report",
-        "Efficacy follow-up"
+        "Efficacy follow-up",
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Attributed monitoring and recommendation history",
-        "Approved or cancelled application plan",
-        "Complete application and restriction record",
-        "Regulatory, buyer, and certification diary entries",
-        "Efficacy assessment"
-      ],
+      "records_consulted": ["Application record", "Efficacy follow-up"],
+      "records_produced": ["Efficacy follow-up", "Treatment recommendation"],
       "source_anchors": [
         "**Workflow card: scouting to spray execution and compliance record**",
         "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
         "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
         "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
       ],
-      "role_ids": ["ROLE-VITICULTURIST"],
-      "record_ids": [
-        "REC-008",
-        "REC-009",
-        "REC-010",
-        "REC-011",
-        "REC-012",
-        "REC-013",
-        "REC-014",
-        "REC-015",
-        "REC-016",
-        "REC-017"
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-SCOUT",
+        "ROLE-CROP-PROTECTION-LEAD"
       ],
-      "exception_ids": [
-        "EXC-006",
-        "EXC-007",
-        "EXC-008",
-        "EXC-009",
-        "EXC-010",
-        "EXC-011"
-      ]
+      "record_ids": ["REC-012", "REC-017", "REC-009"],
+      "exception_ids": ["EXC-011"]
+    },
+    {
+      "id": "DEC-015",
+      "question": "Is the application, restriction, posting, diary, and use-report record complete and attributable for reporting?",
+      "owner": "ROLE-COMPLIANCE-COORDINATOR",
+      "outcomes": [
+        "Accept and report",
+        "Return for correction",
+        "Hold reporting for missing evidence",
+        "Escalate a compliance conflict"
+      ],
+      "workflow_id": "WF-002",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "transition_context": [
+        "posted -> reported",
+        "corrected -> reported",
+        "reported -> corrected"
+      ],
+      "required_inputs": [
+        "Application record",
+        "REI and PHI record",
+        "Worker posting",
+        "Spray diary",
+        "Current state, effective time, accountable authority, and source version"
+      ],
+      "records_consulted": [
+        "Application record",
+        "REI and PHI record",
+        "Worker posting",
+        "Spray diary"
+      ],
+      "records_produced": ["Spray diary", "Pesticide-use report"],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "update spray diary and any jurisdictional report",
+        "Application date, location, product, rate, active ingredients, operator, method, target pest or disease, and timing relative to restrictions."
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-CROP-PROTECTION-LEAD"],
+      "record_ids": ["REC-012", "REC-013", "REC-014", "REC-015", "REC-016"],
+      "exception_ids": ["EXC-010"]
     },
     {
       "id": "DEC-021",
@@ -441,57 +336,38 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
-      "transition_context": ["condition_observed -> adjustment_recommended"],
+      "transition_context": [
+        "condition_observed -> adjustment_recommended",
+        "delivering -> delivery_interrupted",
+        "assigned -> delivery_interrupted",
+        "assigned -> superseded",
+        "delivered -> correction_required"
+      ],
       "required_inputs": [
-        "Stable block and irrigation-zone identity",
-        "Soil moisture, evapotranspiration, weather, and plant-status observations",
-        "Growth stage, target vigor or style, and block history",
-        "Tissue or petiole analysis and prior nutrient inputs",
-        "System readiness, water availability, and applicable resource plan"
+        "Block condition note",
+        "Soil-moisture or ET record",
+        "Plant-status observation",
+        "Irrigation schedule",
+        "Irrigation log",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
         "Block condition note",
         "Soil-moisture or ET record",
         "Plant-status observation",
-        "Tissue or petiole result",
         "Irrigation schedule",
-        "Irrigation log",
-        "Fertility input record",
-        "Malfunction record",
-        "Resource-use total"
+        "Irrigation log"
       ],
-      "records_produced": [
-        "Block water or fertility recommendation",
-        "Assigned irrigation or fertigation action",
-        "Actual delivery and exception record",
-        "Verified water and nutrient-use totals"
-      ],
+      "records_produced": ["Irrigation schedule"],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update",
         "**Pain points.** Limited visibility into actual delivery",
         "water-use totals and nitrogen-use totals for certification or management reporting"
       ],
-      "role_ids": ["ROLE-VITICULTURIST"],
-      "record_ids": [
-        "REC-018",
-        "REC-019",
-        "REC-020",
-        "REC-021",
-        "REC-022",
-        "REC-023",
-        "REC-024",
-        "REC-025",
-        "REC-026"
-      ],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-IRRIGATION-LEAD"],
+      "record_ids": ["REC-018", "REC-019", "REC-020", "REC-022", "REC-023"],
+      "exception_ids": ["EXC-012", "EXC-014", "EXC-015", "EXC-017"]
     },
     {
       "id": "DEC-022",
@@ -506,31 +382,23 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
-      "transition_context": ["adjustment_recommended -> approved"],
+      "transition_context": [
+        "assigned -> delivery_interrupted",
+        "adjustment_recommended -> superseded",
+        "delivered -> correction_required"
+      ],
       "required_inputs": [
-        "Stable block and irrigation-zone identity",
-        "Soil moisture, evapotranspiration, weather, and plant-status observations",
-        "Growth stage, target vigor or style, and block history",
-        "Tissue or petiole analysis and prior nutrient inputs",
-        "System readiness, water availability, and applicable resource plan"
+        "Block condition note",
+        "Tissue or petiole result",
+        "Fertility input record",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
         "Block condition note",
-        "Soil-moisture or ET record",
-        "Plant-status observation",
         "Tissue or petiole result",
-        "Irrigation schedule",
-        "Irrigation log",
-        "Fertility input record",
-        "Malfunction record",
-        "Resource-use total"
+        "Fertility input record"
       ],
-      "records_produced": [
-        "Block water or fertility recommendation",
-        "Assigned irrigation or fertigation action",
-        "Actual delivery and exception record",
-        "Verified water and nutrient-use totals"
-      ],
+      "records_produced": ["Fertility input record", "Irrigation schedule"],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
         "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update",
@@ -538,25 +406,8 @@
         "water-use totals and nitrogen-use totals for certification or management reporting"
       ],
       "role_ids": ["ROLE-VITICULTURIST"],
-      "record_ids": [
-        "REC-018",
-        "REC-019",
-        "REC-020",
-        "REC-021",
-        "REC-022",
-        "REC-023",
-        "REC-024",
-        "REC-025",
-        "REC-026"
-      ],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "record_ids": ["REC-018", "REC-021", "REC-024", "REC-022"],
+      "exception_ids": ["EXC-014", "EXC-016", "EXC-017"]
     },
     {
       "id": "DEC-023",
@@ -572,30 +423,31 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
-      "transition_context": ["delivering -> delivered"],
-      "required_inputs": [
-        "Stable block and irrigation-zone identity",
-        "Soil moisture, evapotranspiration, weather, and plant-status observations",
-        "Growth stage, target vigor or style, and block history",
-        "Tissue or petiole analysis and prior nutrient inputs",
-        "System readiness, water availability, and applicable resource plan"
+      "transition_context": [
+        "delivering -> delivered",
+        "partially_delivered -> verified",
+        "correction_required -> corrected",
+        "delivering -> delivery_interrupted",
+        "delivering -> partially_delivered",
+        "delivered -> correction_required"
       ],
-      "records_consulted": [
-        "Block condition note",
-        "Soil-moisture or ET record",
-        "Plant-status observation",
-        "Tissue or petiole result",
+      "required_inputs": [
         "Irrigation schedule",
         "Irrigation log",
-        "Fertility input record",
+        "Malfunction record",
+        "Resource-use total",
+        "Current state, effective time, accountable authority, and source version"
+      ],
+      "records_consulted": [
+        "Irrigation schedule",
+        "Irrigation log",
         "Malfunction record",
         "Resource-use total"
       ],
       "records_produced": [
-        "Block water or fertility recommendation",
-        "Assigned irrigation or fertigation action",
-        "Actual delivery and exception record",
-        "Verified water and nutrient-use totals"
+        "Irrigation log",
+        "Malfunction record",
+        "Resource-use total"
       ],
       "source_anchors": [
         "**Workflow card: irrigation scheduling and fertility adjustment**",
@@ -603,26 +455,54 @@
         "**Pain points.** Limited visibility into actual delivery",
         "water-use totals and nitrogen-use totals for certification or management reporting"
       ],
-      "role_ids": ["ROLE-IRRIGATOR"],
-      "record_ids": [
-        "REC-018",
-        "REC-019",
-        "REC-020",
-        "REC-021",
-        "REC-022",
-        "REC-023",
-        "REC-024",
-        "REC-025",
-        "REC-026"
+      "role_ids": ["ROLE-IRRIGATOR", "ROLE-IRRIGATION-LEAD"],
+      "record_ids": ["REC-022", "REC-023", "REC-025", "REC-026"],
+      "exception_ids": ["EXC-012", "EXC-013", "EXC-017"]
+    },
+    {
+      "id": "DEC-024",
+      "question": "Is the recommended irrigation or fertility action approved within current resource, certification, and operating constraints?",
+      "owner": "ROLE-VINEYARD-MANAGER",
+      "outcomes": [
+        "Approve and assign",
+        "Revise scope or timing",
+        "Defer with review condition",
+        "Escalate authority or constraint"
       ],
-      "exception_ids": [
-        "EXC-012",
-        "EXC-013",
-        "EXC-014",
-        "EXC-015",
-        "EXC-016",
-        "EXC-017"
-      ]
+      "workflow_id": "WF-003",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-003", "EVD-011"],
+      "transition_context": [
+        "adjustment_recommended -> approved",
+        "assigned -> delivery_interrupted",
+        "assigned -> superseded",
+        "adjustment_recommended -> superseded"
+      ],
+      "required_inputs": [
+        "Block condition note",
+        "Soil-moisture or ET record",
+        "Tissue or petiole result",
+        "Irrigation schedule",
+        "Fertility input record",
+        "Current state, effective time, accountable authority, and source version"
+      ],
+      "records_consulted": [
+        "Block condition note",
+        "Soil-moisture or ET record",
+        "Tissue or petiole result",
+        "Irrigation schedule",
+        "Fertility input record"
+      ],
+      "records_produced": ["Irrigation schedule", "Fertility input record"],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update",
+        "water-use totals and nitrogen-use totals for certification or management reporting"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-VITICULTURIST"],
+      "record_ids": ["REC-018", "REC-019", "REC-021", "REC-022", "REC-024"],
+      "exception_ids": ["EXC-014", "EXC-015", "EXC-016"]
     },
     {
       "id": "DEC-031",
@@ -637,55 +517,32 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-004", "EVD-011"],
-      "transition_context": ["sampled -> calculated"],
+      "transition_context": [
+        "sampled -> calculated",
+        "reviewed -> revision_due",
+        "calculated -> revision_due"
+      ],
       "required_inputs": [
-        "Stable block identity and productive vine count",
-        "Representative vine and cluster sample",
-        "Bunches per vine and cluster weight",
-        "Historical block estimates and harvest weights",
-        "Current condition, style, contract, and winery-capacity context"
+        "Sampling plan",
+        "Vine and cluster sample",
+        "Block crop estimate",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
         "Sampling plan",
         "Vine and cluster sample",
-        "Block crop estimate",
-        "Forecast revision history",
-        "Crop-load recommendation",
-        "Communication record",
-        "Harvest actual",
-        "Forecast error record"
+        "Block crop estimate"
       ],
-      "records_produced": [
-        "Dated block crop estimate with method and confidence",
-        "Superseding forecast revision",
-        "Winery, labor, logistics, contract, and budget planning update",
-        "Forecast-to-actual reconciliation"
-      ],
+      "records_produced": ["Block crop estimate"],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
         "**Typical sequence.** Count and sample representative vines; update forecast",
         "Accuracy improves only if historical and current-season records stay connected at block level."
       ],
-      "role_ids": ["ROLE-VITICULTURIST"],
-      "record_ids": [
-        "REC-027",
-        "REC-028",
-        "REC-029",
-        "REC-030",
-        "REC-031",
-        "REC-032",
-        "REC-033",
-        "REC-034"
-      ],
-      "exception_ids": [
-        "EXC-018",
-        "EXC-019",
-        "EXC-020",
-        "EXC-021",
-        "EXC-022",
-        "EXC-023"
-      ]
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-027", "REC-028", "REC-029"],
+      "exception_ids": ["EXC-018", "EXC-019", "EXC-020"]
     },
     {
       "id": "DEC-032",
@@ -700,55 +557,31 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-004", "EVD-011"],
-      "transition_context": ["calculated -> reviewed"],
-      "required_inputs": [
-        "Stable block identity and productive vine count",
-        "Representative vine and cluster sample",
-        "Bunches per vine and cluster weight",
-        "Historical block estimates and harvest weights",
-        "Current condition, style, contract, and winery-capacity context"
+      "transition_context": [
+        "calculated -> reviewed",
+        "reviewed -> revision_due"
       ],
-      "records_consulted": [
-        "Sampling plan",
-        "Vine and cluster sample",
+      "required_inputs": [
         "Block crop estimate",
         "Forecast revision history",
         "Crop-load recommendation",
-        "Communication record",
-        "Harvest actual",
-        "Forecast error record"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Dated block crop estimate with method and confidence",
-        "Superseding forecast revision",
-        "Winery, labor, logistics, contract, and budget planning update",
-        "Forecast-to-actual reconciliation"
+      "records_consulted": [
+        "Block crop estimate",
+        "Forecast revision history",
+        "Crop-load recommendation"
       ],
+      "records_produced": ["Crop-load recommendation", "Communication record"],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
         "**Typical sequence.** Count and sample representative vines; update forecast",
         "Accuracy improves only if historical and current-season records stay connected at block level."
       ],
-      "role_ids": ["ROLE-VINEYARD-MANAGER"],
-      "record_ids": [
-        "REC-027",
-        "REC-028",
-        "REC-029",
-        "REC-030",
-        "REC-031",
-        "REC-032",
-        "REC-033",
-        "REC-034"
-      ],
-      "exception_ids": [
-        "EXC-018",
-        "EXC-019",
-        "EXC-020",
-        "EXC-021",
-        "EXC-022",
-        "EXC-023"
-      ]
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-VITICULTURIST"],
+      "record_ids": ["REC-029", "REC-030", "REC-031", "REC-032"],
+      "exception_ids": ["EXC-020", "EXC-022"]
     },
     {
       "id": "DEC-033",
@@ -764,30 +597,31 @@
       "confidence": "high",
       "evidence_ids": ["EVD-004", "EVD-011"],
       "transition_context": [
-        "Exception or recovery branch; see exception registry."
+        "published -> revision_due",
+        "revision_due -> sampled",
+        "calculated -> revised",
+        "revised -> published",
+        "published -> superseded",
+        "reviewed -> revision_due",
+        "actualized -> revision_due"
       ],
       "required_inputs": [
-        "Stable block identity and productive vine count",
-        "Representative vine and cluster sample",
-        "Bunches per vine and cluster weight",
-        "Historical block estimates and harvest weights",
-        "Current condition, style, contract, and winery-capacity context"
-      ],
-      "records_consulted": [
-        "Sampling plan",
         "Vine and cluster sample",
         "Block crop estimate",
         "Forecast revision history",
-        "Crop-load recommendation",
-        "Communication record",
         "Harvest actual",
-        "Forecast error record"
+        "Current state, effective time, accountable authority, and source version"
+      ],
+      "records_consulted": [
+        "Vine and cluster sample",
+        "Block crop estimate",
+        "Forecast revision history",
+        "Harvest actual"
       ],
       "records_produced": [
-        "Dated block crop estimate with method and confidence",
-        "Superseding forecast revision",
-        "Winery, labor, logistics, contract, and budget planning update",
-        "Forecast-to-actual reconciliation"
+        "Forecast revision history",
+        "Communication record",
+        "Forecast error record"
       ],
       "source_anchors": [
         "| 3 | Crop estimation and forecast revision |",
@@ -795,25 +629,16 @@
         "**Typical sequence.** Count and sample representative vines; update forecast",
         "Accuracy improves only if historical and current-season records stay connected at block level."
       ],
-      "role_ids": ["ROLE-VITICULTURIST"],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
       "record_ids": [
-        "REC-027",
         "REC-028",
         "REC-029",
         "REC-030",
-        "REC-031",
-        "REC-032",
         "REC-033",
+        "REC-032",
         "REC-034"
       ],
-      "exception_ids": [
-        "EXC-018",
-        "EXC-019",
-        "EXC-020",
-        "EXC-021",
-        "EXC-022",
-        "EXC-023"
-      ]
+      "exception_ids": ["EXC-021", "EXC-022", "EXC-023"]
     },
     {
       "id": "DEC-041",
@@ -828,58 +653,38 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
-      "transition_context": ["result_available -> readiness_assessed"],
+      "transition_context": [
+        "result_available -> readiness_assessed",
+        "readiness_assessed -> more_sampling_required",
+        "lab_pending -> more_sampling_required",
+        "result_available -> more_sampling_required",
+        "result_available -> negotiating"
+      ],
       "required_inputs": [
-        "Stable block and sample identity",
-        "Representative berry or cluster sample",
-        "Brix, pH, TA, flavor, fruit condition, and trend",
-        "Weather and hazard outlook",
-        "Labor, container, trucking, tank, delivery-slot, contract, and quality constraints"
+        "Sampling plan",
+        "Sample chain of identity",
+        "Field condition assessment",
+        "Laboratory result",
+        "Maturity trend",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
         "Sampling plan",
         "Sample chain of identity",
         "Field condition assessment",
         "Laboratory result",
-        "Maturity trend",
-        "Pick proposal",
-        "Decision communication",
-        "Pick authorization",
-        "Supersession history"
+        "Maturity trend"
       ],
-      "records_produced": [
-        "Traceable maturity trend",
-        "Readiness assessment",
-        "Communicated pick proposal",
-        "Authorized or deferred pick decision",
-        "Harvest schedule commitment"
-      ],
+      "records_produced": ["Maturity trend"],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
         "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
         "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
       ],
-      "role_ids": ["ROLE-VITICULTURIST"],
-      "record_ids": [
-        "REC-027",
-        "REC-035",
-        "REC-036",
-        "REC-037",
-        "REC-038",
-        "REC-039",
-        "REC-040",
-        "REC-041",
-        "REC-042"
-      ],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-LAB"],
+      "record_ids": ["REC-027", "REC-035", "REC-036", "REC-037", "REC-038"],
+      "exception_ids": ["EXC-024", "EXC-025", "EXC-026"]
     },
     {
       "id": "DEC-042",
@@ -894,58 +699,32 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
-      "transition_context": ["result_available -> readiness_assessed"],
-      "required_inputs": [
-        "Stable block and sample identity",
-        "Representative berry or cluster sample",
-        "Brix, pH, TA, flavor, fruit condition, and trend",
-        "Weather and hazard outlook",
-        "Labor, container, trucking, tank, delivery-slot, contract, and quality constraints"
+      "transition_context": [
+        "result_available -> readiness_assessed",
+        "readiness_assessed -> more_sampling_required",
+        "readiness_assessed -> superseded"
       ],
-      "records_consulted": [
-        "Sampling plan",
-        "Sample chain of identity",
+      "required_inputs": [
         "Field condition assessment",
         "Laboratory result",
         "Maturity trend",
-        "Pick proposal",
-        "Decision communication",
-        "Pick authorization",
-        "Supersession history"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Traceable maturity trend",
-        "Readiness assessment",
-        "Communicated pick proposal",
-        "Authorized or deferred pick decision",
-        "Harvest schedule commitment"
+      "records_consulted": [
+        "Field condition assessment",
+        "Laboratory result",
+        "Maturity trend"
       ],
+      "records_produced": ["Pick proposal"],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
         "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
         "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
       ],
-      "role_ids": ["ROLE-VITICULTURIST"],
-      "record_ids": [
-        "REC-027",
-        "REC-035",
-        "REC-036",
-        "REC-037",
-        "REC-038",
-        "REC-039",
-        "REC-040",
-        "REC-041",
-        "REC-042"
-      ],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-WINEMAKER"],
+      "record_ids": ["REC-036", "REC-037", "REC-038", "REC-039"],
+      "exception_ids": ["EXC-027"]
     },
     {
       "id": "DEC-043",
@@ -960,58 +739,39 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
-      "transition_context": ["pick_proposed -> authorized"],
-      "required_inputs": [
-        "Stable block and sample identity",
-        "Representative berry or cluster sample",
-        "Brix, pH, TA, flavor, fruit condition, and trend",
-        "Weather and hazard outlook",
-        "Labor, container, trucking, tank, delivery-slot, contract, and quality constraints"
+      "transition_context": [
+        "pick_proposed -> authorized",
+        "pick_proposed -> negotiating",
+        "negotiating -> authorized",
+        "negotiating -> deferred",
+        "result_available -> negotiating",
+        "authorized -> superseded"
       ],
-      "records_consulted": [
-        "Sampling plan",
-        "Sample chain of identity",
-        "Field condition assessment",
-        "Laboratory result",
-        "Maturity trend",
+      "required_inputs": [
         "Pick proposal",
         "Decision communication",
-        "Pick authorization",
-        "Supersession history"
+        "Contract",
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Traceable maturity trend",
-        "Readiness assessment",
-        "Communicated pick proposal",
-        "Authorized or deferred pick decision",
-        "Harvest schedule commitment"
+      "records_consulted": [
+        "Pick proposal",
+        "Decision communication",
+        "Contract"
       ],
+      "records_produced": ["Decision communication", "Pick authorization"],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
         "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
         "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
         "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
       ],
-      "role_ids": ["ROLE-GROWER-RELATIONS"],
-      "record_ids": [
-        "REC-027",
-        "REC-035",
-        "REC-036",
-        "REC-037",
-        "REC-038",
-        "REC-039",
-        "REC-040",
-        "REC-041",
-        "REC-042"
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-WINEMAKER"
       ],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "record_ids": ["REC-039", "REC-040", "REC-080", "REC-041"],
+      "exception_ids": ["EXC-026", "EXC-029"]
     },
     {
       "id": "DEC-044",
@@ -1027,31 +787,26 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
-      "transition_context": ["pick_proposed -> authorized"],
-      "required_inputs": [
-        "Stable block and sample identity",
-        "Representative berry or cluster sample",
-        "Brix, pH, TA, flavor, fruit condition, and trend",
-        "Weather and hazard outlook",
-        "Labor, container, trucking, tank, delivery-slot, contract, and quality constraints"
+      "transition_context": [
+        "pick_proposed -> authorized",
+        "pick_proposed -> negotiating",
+        "negotiating -> authorized",
+        "negotiating -> deferred",
+        "readiness_assessed -> superseded",
+        "pick_proposed -> deferred",
+        "authorized -> superseded"
       ],
-      "records_consulted": [
-        "Sampling plan",
-        "Sample chain of identity",
-        "Field condition assessment",
-        "Laboratory result",
-        "Maturity trend",
+      "required_inputs": [
         "Pick proposal",
+        "Pick authorization",
+        "Contract",
+        "Current state, effective time, accountable authority, and source version"
+      ],
+      "records_consulted": ["Pick proposal", "Pick authorization", "Contract"],
+      "records_produced": [
         "Decision communication",
         "Pick authorization",
         "Supersession history"
-      ],
-      "records_produced": [
-        "Traceable maturity trend",
-        "Readiness assessment",
-        "Communicated pick proposal",
-        "Authorized or deferred pick decision",
-        "Harvest schedule commitment"
       ],
       "source_anchors": [
         "| 6 | Maturity sampling and winery communication |",
@@ -1059,26 +814,9 @@
         "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
         "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
       ],
-      "role_ids": ["ROLE-WINEMAKER"],
-      "record_ids": [
-        "REC-027",
-        "REC-035",
-        "REC-036",
-        "REC-037",
-        "REC-038",
-        "REC-039",
-        "REC-040",
-        "REC-041",
-        "REC-042"
-      ],
-      "exception_ids": [
-        "EXC-024",
-        "EXC-025",
-        "EXC-026",
-        "EXC-027",
-        "EXC-028",
-        "EXC-029"
-      ]
+      "role_ids": ["ROLE-WINEMAKER", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-039", "REC-041", "REC-080", "REC-040", "REC-042"],
+      "exception_ids": ["EXC-027", "EXC-028", "EXC-029"]
     },
     {
       "id": "DEC-051",
@@ -1093,65 +831,35 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
-      "transition_context": ["authorized -> staged"],
+      "transition_context": [
+        "authorized -> staged",
+        "entry -> authorized",
+        "harvesting -> delayed",
+        "in_transit -> delayed"
+      ],
       "required_inputs": [
-        "Authorized pick and block identity",
-        "Crew, machine or hand method, containers, and harvest conditions",
-        "Truck and delivery slot",
-        "Sample identity, quality tolerances, contract, and buyer instructions",
-        "Weigh bill requirements and settlement terms"
+        "Pick authorization",
+        "Harvest plan",
+        "Crew and container assignment",
+        "Contract",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
         "Pick authorization",
         "Harvest plan",
         "Crew and container assignment",
-        "Load identity",
-        "Transport record",
-        "Weigh bill",
-        "Intake sample and quality result",
-        "Disposition notice",
-        "Delivery entry",
-        "Correction history",
-        "Contract adjustment",
-        "Settlement record"
+        "Contract"
       ],
-      "records_produced": [
-        "Harvested block and load history",
-        "Weigh ticket and quality disposition",
-        "Accepted, downgraded, or rejected load record",
-        "Corrected delivery entry",
-        "Harvest summary, crop accounting, and settlement input"
-      ],
+      "records_produced": ["Harvest plan", "Crew and container assignment"],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
         "the grower indicates grower number, variety, vineyard and block on the weigh bill",
         "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
       ],
-      "role_ids": ["ROLE-VINEYARD-MANAGER"],
-      "record_ids": [
-        "REC-041",
-        "REC-043",
-        "REC-044",
-        "REC-045",
-        "REC-046",
-        "REC-047",
-        "REC-048",
-        "REC-049",
-        "REC-050",
-        "REC-051",
-        "REC-052",
-        "REC-053"
-      ],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-HARVEST-CREW-LEADER"],
+      "record_ids": ["REC-041", "REC-043", "REC-044", "REC-080"],
+      "exception_ids": ["EXC-030", "EXC-031"]
     },
     {
       "id": "DEC-052",
@@ -1166,65 +874,34 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
-      "transition_context": ["arrived -> weighed"],
-      "required_inputs": [
-        "Authorized pick and block identity",
-        "Crew, machine or hand method, containers, and harvest conditions",
-        "Truck and delivery slot",
-        "Sample identity, quality tolerances, contract, and buyer instructions",
-        "Weigh bill requirements and settlement terms"
+      "transition_context": [
+        "arrived -> weighed",
+        "quality_pending -> accepted",
+        "arrived -> disputed"
       ],
-      "records_consulted": [
+      "required_inputs": [
         "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
         "Load identity",
         "Transport record",
         "Weigh bill",
-        "Intake sample and quality result",
-        "Disposition notice",
-        "Delivery entry",
-        "Correction history",
-        "Contract adjustment",
-        "Settlement record"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Harvested block and load history",
-        "Weigh ticket and quality disposition",
-        "Accepted, downgraded, or rejected load record",
-        "Corrected delivery entry",
-        "Harvest summary, crop accounting, and settlement input"
+      "records_consulted": [
+        "Pick authorization",
+        "Load identity",
+        "Transport record",
+        "Weigh bill"
       ],
+      "records_produced": ["Load identity", "Delivery entry"],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
         "the grower indicates grower number, variety, vineyard and block on the weigh bill",
         "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
       ],
-      "role_ids": ["ROLE-WINERY-INTAKE"],
-      "record_ids": [
-        "REC-041",
-        "REC-043",
-        "REC-044",
-        "REC-045",
-        "REC-046",
-        "REC-047",
-        "REC-048",
-        "REC-049",
-        "REC-050",
-        "REC-051",
-        "REC-052",
-        "REC-053"
-      ],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "role_ids": ["ROLE-WINERY-INTAKE", "ROLE-TRANSPORTATION"],
+      "record_ids": ["REC-041", "REC-045", "REC-046", "REC-047", "REC-050"],
+      "exception_ids": ["EXC-033"]
     },
     {
       "id": "DEC-053",
@@ -1235,65 +912,35 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
-      "transition_context": ["weighed -> accepted"],
-      "required_inputs": [
-        "Authorized pick and block identity",
-        "Crew, machine or hand method, containers, and harvest conditions",
-        "Truck and delivery slot",
-        "Sample identity, quality tolerances, contract, and buyer instructions",
-        "Weigh bill requirements and settlement terms"
+      "transition_context": [
+        "weighed -> accepted",
+        "quality_pending -> accepted",
+        "quality_pending -> downgraded",
+        "quality_pending -> rejected"
       ],
-      "records_consulted": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
+      "required_inputs": [
         "Load identity",
-        "Transport record",
         "Weigh bill",
         "Intake sample and quality result",
-        "Disposition notice",
-        "Delivery entry",
-        "Correction history",
-        "Contract adjustment",
-        "Settlement record"
+        "Contract",
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Harvested block and load history",
-        "Weigh ticket and quality disposition",
-        "Accepted, downgraded, or rejected load record",
-        "Corrected delivery entry",
-        "Harvest summary, crop accounting, and settlement input"
+      "records_consulted": [
+        "Load identity",
+        "Weigh bill",
+        "Intake sample and quality result",
+        "Contract"
       ],
+      "records_produced": ["Disposition notice"],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
         "the grower indicates grower number, variety, vineyard and block on the weigh bill",
         "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
       ],
-      "role_ids": ["ROLE-WINEMAKER"],
-      "record_ids": [
-        "REC-041",
-        "REC-043",
-        "REC-044",
-        "REC-045",
-        "REC-046",
-        "REC-047",
-        "REC-048",
-        "REC-049",
-        "REC-050",
-        "REC-051",
-        "REC-052",
-        "REC-053"
-      ],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "role_ids": ["ROLE-WINEMAKER", "ROLE-WINERY-INTAKE"],
+      "record_ids": ["REC-045", "REC-047", "REC-048", "REC-080", "REC-049"],
+      "exception_ids": ["EXC-032", "EXC-034"]
     },
     {
       "id": "DEC-054",
@@ -1309,66 +956,39 @@
       "confidence": "high",
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
       "transition_context": [
-        "Exception or recovery branch; see exception registry."
+        "disputed -> correction_required",
+        "correction_required -> corrected",
+        "corrected -> reconciled",
+        "entered -> disputed",
+        "arrived -> disputed",
+        "entered -> correction_required",
+        "weighed -> disputed"
       ],
       "required_inputs": [
-        "Authorized pick and block identity",
-        "Crew, machine or hand method, containers, and harvest conditions",
-        "Truck and delivery slot",
-        "Sample identity, quality tolerances, contract, and buyer instructions",
-        "Weigh bill requirements and settlement terms"
-      ],
-      "records_consulted": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
         "Load identity",
-        "Transport record",
         "Weigh bill",
-        "Intake sample and quality result",
         "Disposition notice",
         "Delivery entry",
         "Correction history",
-        "Contract adjustment",
-        "Settlement record"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Harvested block and load history",
-        "Weigh ticket and quality disposition",
-        "Accepted, downgraded, or rejected load record",
-        "Corrected delivery entry",
-        "Harvest summary, crop accounting, and settlement input"
+      "records_consulted": [
+        "Load identity",
+        "Weigh bill",
+        "Disposition notice",
+        "Delivery entry",
+        "Correction history"
       ],
+      "records_produced": ["Correction history", "Delivery entry"],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
         "the grower indicates grower number, variety, vineyard and block on the weigh bill",
         "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
       ],
-      "role_ids": ["ROLE-GROWER-RELATIONS"],
-      "record_ids": [
-        "REC-041",
-        "REC-043",
-        "REC-044",
-        "REC-045",
-        "REC-046",
-        "REC-047",
-        "REC-048",
-        "REC-049",
-        "REC-050",
-        "REC-051",
-        "REC-052",
-        "REC-053"
-      ],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-WINERY-INTAKE"],
+      "record_ids": ["REC-045", "REC-047", "REC-049", "REC-050", "REC-051"],
+      "exception_ids": ["EXC-033", "EXC-035", "EXC-036"]
     },
     {
       "id": "DEC-055",
@@ -1383,65 +1003,36 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
-      "transition_context": ["reconciled -> settled"],
-      "required_inputs": [
-        "Authorized pick and block identity",
-        "Crew, machine or hand method, containers, and harvest conditions",
-        "Truck and delivery slot",
-        "Sample identity, quality tolerances, contract, and buyer instructions",
-        "Weigh bill requirements and settlement terms"
+      "transition_context": [
+        "reconciled -> settled",
+        "corrected -> reconciled",
+        "weighed -> disputed"
       ],
-      "records_consulted": [
-        "Pick authorization",
-        "Harvest plan",
-        "Crew and container assignment",
-        "Load identity",
-        "Transport record",
-        "Weigh bill",
-        "Intake sample and quality result",
+      "required_inputs": [
         "Disposition notice",
         "Delivery entry",
-        "Correction history",
         "Contract adjustment",
-        "Settlement record"
+        "Settlement record",
+        "Contract",
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Harvested block and load history",
-        "Weigh ticket and quality disposition",
-        "Accepted, downgraded, or rejected load record",
-        "Corrected delivery entry",
-        "Harvest summary, crop accounting, and settlement input"
+      "records_consulted": [
+        "Disposition notice",
+        "Delivery entry",
+        "Contract adjustment",
+        "Settlement record",
+        "Contract"
       ],
+      "records_produced": ["Contract adjustment", "Settlement record"],
       "source_anchors": [
         "| 1 | Harvest decision, execution, delivery, and reconciliation |",
         "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
         "the grower indicates grower number, variety, vineyard and block on the weigh bill",
         "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
       ],
-      "role_ids": ["ROLE-FINANCE"],
-      "record_ids": [
-        "REC-041",
-        "REC-043",
-        "REC-044",
-        "REC-045",
-        "REC-046",
-        "REC-047",
-        "REC-048",
-        "REC-049",
-        "REC-050",
-        "REC-051",
-        "REC-052",
-        "REC-053"
-      ],
-      "exception_ids": [
-        "EXC-030",
-        "EXC-031",
-        "EXC-032",
-        "EXC-033",
-        "EXC-034",
-        "EXC-035",
-        "EXC-036"
-      ]
+      "role_ids": ["ROLE-FINANCE", "ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-049", "REC-050", "REC-052", "REC-053", "REC-080"],
+      "exception_ids": ["EXC-036"]
     },
     {
       "id": "DEC-061",
@@ -1452,65 +1043,33 @@
       "classification": "strong_inference",
       "confidence": "medium",
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
-      "transition_context": ["∅ -> crew_scheduled"],
-      "required_inputs": [
-        "Approved work assignments and stable block identity",
-        "Crew roster, qualifications, language, and contractor relationship",
-        "Shift, attendance, breaks, and applicable pay rules",
-        "Task progress, acreage, units, or piece-rate quantities",
-        "Cost center, labor class, and budget context"
+      "transition_context": [
+        "entry -> crew_scheduled",
+        "labor_demanded -> crew_scheduled",
+        "crew_scheduled -> exception_flagged",
+        "briefed -> exception_flagged"
       ],
-      "records_consulted": [
+      "required_inputs": [
+        "Work assignment",
         "Crew roster",
         "Qualification and training evidence",
+        "Current state, effective time, accountable authority, and source version"
+      ],
+      "records_consulted": [
         "Work assignment",
-        "Safety briefing",
-        "Attendance record",
-        "Break record",
-        "Time and piece-rate record",
-        "Task quantity",
-        "Supervisor verification",
-        "Payroll exception",
-        "Correction history",
-        "Cost allocation"
+        "Crew roster",
+        "Qualification and training evidence"
       ],
-      "records_produced": [
-        "Qualified crew schedule and briefing evidence",
-        "Attendance, break, time, and unit record",
-        "Verified task-to-labor allocation",
-        "Accepted or corrected payroll input",
-        "Block and activity labor-cost allocation"
-      ],
+      "records_produced": ["Crew roster"],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere.",
         "cost studies assume tracking of labor, custom work, materials, and equipment activity",
         "The largest unknowns are behavioral rather than structural."
       ],
-      "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
-      "record_ids": [
-        "REC-054",
-        "REC-055",
-        "REC-003",
-        "REC-056",
-        "REC-057",
-        "REC-058",
-        "REC-059",
-        "REC-060",
-        "REC-061",
-        "REC-062",
-        "REC-051",
-        "REC-063"
-      ],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR", "ROLE-FOREMAN"],
+      "record_ids": ["REC-003", "REC-054", "REC-055"],
+      "exception_ids": ["EXC-037", "EXC-038"]
     },
     {
       "id": "DEC-062",
@@ -1521,34 +1080,28 @@
       "classification": "strong_inference",
       "confidence": "medium",
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
-      "transition_context": ["briefed -> working"],
-      "required_inputs": [
-        "Approved work assignments and stable block identity",
-        "Crew roster, qualifications, language, and contractor relationship",
-        "Shift, attendance, breaks, and applicable pay rules",
-        "Task progress, acreage, units, or piece-rate quantities",
-        "Cost center, labor class, and budget context"
+      "transition_context": [
+        "briefed -> working",
+        "paused -> briefed",
+        "reassigned -> briefed",
+        "working -> paused",
+        "working -> reassigned"
       ],
-      "records_consulted": [
-        "Crew roster",
-        "Qualification and training evidence",
+      "required_inputs": [
         "Work assignment",
         "Safety briefing",
         "Attendance record",
-        "Break record",
-        "Time and piece-rate record",
-        "Task quantity",
-        "Supervisor verification",
-        "Payroll exception",
-        "Correction history",
-        "Cost allocation"
+        "Current state, effective time, accountable authority, and source version"
+      ],
+      "records_consulted": [
+        "Work assignment",
+        "Safety briefing",
+        "Attendance record"
       ],
       "records_produced": [
-        "Qualified crew schedule and briefing evidence",
-        "Attendance, break, time, and unit record",
-        "Verified task-to-labor allocation",
-        "Accepted or corrected payroll input",
-        "Block and activity labor-cost allocation"
+        "Work assignment",
+        "Attendance record",
+        "Break record"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
@@ -1556,30 +1109,9 @@
         "cost studies assume tracking of labor, custom work, materials, and equipment activity",
         "The largest unknowns are behavioral rather than structural."
       ],
-      "role_ids": ["ROLE-FOREMAN"],
-      "record_ids": [
-        "REC-054",
-        "REC-055",
-        "REC-003",
-        "REC-056",
-        "REC-057",
-        "REC-058",
-        "REC-059",
-        "REC-060",
-        "REC-061",
-        "REC-062",
-        "REC-051",
-        "REC-063"
-      ],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "role_ids": ["ROLE-FOREMAN", "ROLE-OPERATIONS-COORDINATOR"],
+      "record_ids": ["REC-003", "REC-056", "REC-057", "REC-058"],
+      "exception_ids": ["EXC-039", "EXC-040"]
     },
     {
       "id": "DEC-063",
@@ -1594,65 +1126,42 @@
       "classification": "strong_inference",
       "confidence": "medium",
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
-      "transition_context": ["time_submitted -> supervisor_verified"],
-      "required_inputs": [
-        "Approved work assignments and stable block identity",
-        "Crew roster, qualifications, language, and contractor relationship",
-        "Shift, attendance, breaks, and applicable pay rules",
-        "Task progress, acreage, units, or piece-rate quantities",
-        "Cost center, labor class, and budget context"
+      "transition_context": [
+        "time_submitted -> supervisor_verified",
+        "corrected -> supervisor_verified",
+        "time_submitted -> exception_flagged",
+        "supervisor_verified -> exception_flagged"
       ],
-      "records_consulted": [
-        "Crew roster",
-        "Qualification and training evidence",
-        "Work assignment",
-        "Safety briefing",
+      "required_inputs": [
         "Attendance record",
         "Break record",
         "Time and piece-rate record",
         "Task quantity",
-        "Supervisor verification",
-        "Payroll exception",
-        "Correction history",
-        "Cost allocation"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Qualified crew schedule and briefing evidence",
-        "Attendance, break, time, and unit record",
-        "Verified task-to-labor allocation",
-        "Accepted or corrected payroll input",
-        "Block and activity labor-cost allocation"
+      "records_consulted": [
+        "Attendance record",
+        "Break record",
+        "Time and piece-rate record",
+        "Task quantity"
       ],
+      "records_produced": ["Supervisor verification", "Payroll exception"],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
         "Operations coordination is often hidden inside other titles, but its work is visible everywhere.",
         "cost studies assume tracking of labor, custom work, materials, and equipment activity",
         "The largest unknowns are behavioral rather than structural."
       ],
-      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-FOREMAN"],
       "record_ids": [
-        "REC-054",
-        "REC-055",
-        "REC-003",
-        "REC-056",
         "REC-057",
         "REC-058",
         "REC-059",
         "REC-060",
         "REC-061",
-        "REC-062",
-        "REC-051",
-        "REC-063"
+        "REC-062"
       ],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "exception_ids": ["EXC-041", "EXC-042", "EXC-043"]
     },
     {
       "id": "DEC-064",
@@ -1667,34 +1176,30 @@
       "classification": "strong_inference",
       "confidence": "medium",
       "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
-      "transition_context": ["supervisor_verified -> payroll_accepted"],
+      "transition_context": [
+        "supervisor_verified -> payroll_accepted",
+        "exception_flagged -> corrected",
+        "time_submitted -> exception_flagged",
+        "supervisor_verified -> exception_flagged"
+      ],
       "required_inputs": [
-        "Approved work assignments and stable block identity",
-        "Crew roster, qualifications, language, and contractor relationship",
-        "Shift, attendance, breaks, and applicable pay rules",
-        "Task progress, acreage, units, or piece-rate quantities",
-        "Cost center, labor class, and budget context"
+        "Correction history",
+        "Time and piece-rate record",
+        "Payroll exception",
+        "Cost allocation",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
-        "Crew roster",
-        "Qualification and training evidence",
-        "Work assignment",
-        "Safety briefing",
-        "Attendance record",
-        "Break record",
-        "Time and piece-rate record",
-        "Task quantity",
-        "Supervisor verification",
-        "Payroll exception",
         "Correction history",
+        "Time and piece-rate record",
+        "Payroll exception",
         "Cost allocation"
       ],
       "records_produced": [
-        "Qualified crew schedule and briefing evidence",
-        "Attendance, break, time, and unit record",
-        "Verified task-to-labor allocation",
-        "Accepted or corrected payroll input",
-        "Block and activity labor-cost allocation"
+        "Correction history",
+        "Time and piece-rate record",
+        "Payroll exception",
+        "Cost allocation"
       ],
       "source_anchors": [
         "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
@@ -1702,30 +1207,9 @@
         "cost studies assume tracking of labor, custom work, materials, and equipment activity",
         "The largest unknowns are behavioral rather than structural."
       ],
-      "role_ids": ["ROLE-PAYROLL"],
-      "record_ids": [
-        "REC-054",
-        "REC-055",
-        "REC-003",
-        "REC-056",
-        "REC-057",
-        "REC-058",
-        "REC-059",
-        "REC-060",
-        "REC-061",
-        "REC-062",
-        "REC-051",
-        "REC-063"
-      ],
-      "exception_ids": [
-        "EXC-037",
-        "EXC-038",
-        "EXC-039",
-        "EXC-040",
-        "EXC-041",
-        "EXC-042",
-        "EXC-043"
-      ]
+      "role_ids": ["ROLE-PAYROLL", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-051", "REC-059", "REC-062", "REC-063"],
+      "exception_ids": ["EXC-041", "EXC-042", "EXC-043"]
     },
     {
       "id": "DEC-071",
@@ -1741,66 +1225,34 @@
       "classification": "strong_inference",
       "confidence": "medium",
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
-      "transition_context": ["demand_identified -> availability_checked"],
+      "transition_context": [
+        "demand_identified -> availability_checked",
+        "availability_checked -> purchase_requested",
+        "availability_checked -> unavailable",
+        "ordered -> unavailable",
+        "repair_open -> unavailable"
+      ],
       "required_inputs": [
-        "Approved work plan and timing window",
-        "Material, PPE, equipment, calibration, and container requirements",
-        "Inventory, maintenance, and availability status",
-        "Approved vendor, product, budget, and certification constraints",
-        "Failure report, affected work, and repair evidence"
+        "Resource demand",
+        "Inventory record",
+        "Equipment readiness and calibration record",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
         "Resource demand",
         "Inventory record",
-        "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record",
-        "Failure report",
-        "Repair order",
-        "Parts and labor actuals",
-        "Return-to-service verification"
+        "Equipment readiness and calibration record"
       ],
-      "records_produced": [
-        "Readiness plan",
-        "Approved purchase, rental, or contractor commitment",
-        "Received and staged material or equipment",
-        "Attributed failure and repair history",
-        "Verified return to service",
-        "Purchase and repair cost actuals"
-      ],
+      "records_produced": ["Purchase request", "Staging record"],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available",
         "manage or request PPE and materials, get equipment repaired",
         "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
       ],
-      "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
-      "record_ids": [
-        "REC-064",
-        "REC-065",
-        "REC-066",
-        "REC-067",
-        "REC-068",
-        "REC-069",
-        "REC-070",
-        "REC-071",
-        "REC-072",
-        "REC-073",
-        "REC-074",
-        "REC-075"
-      ],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR", "ROLE-PURCHASING"],
+      "record_ids": ["REC-064", "REC-065", "REC-066", "REC-067", "REC-071"],
+      "exception_ids": ["EXC-044", "EXC-046", "EXC-048"]
     },
     {
       "id": "DEC-072",
@@ -1811,66 +1263,34 @@
       "classification": "strong_inference",
       "confidence": "medium",
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
-      "transition_context": ["demand_identified -> availability_checked"],
+      "transition_context": [
+        "demand_identified -> availability_checked",
+        "purchase_requested -> approved",
+        "substitution_pending -> purchase_requested",
+        "substitution_pending -> superseded",
+        "received -> corrected"
+      ],
       "required_inputs": [
-        "Approved work plan and timing window",
-        "Material, PPE, equipment, calibration, and container requirements",
-        "Inventory, maintenance, and availability status",
-        "Approved vendor, product, budget, and certification constraints",
-        "Failure report, affected work, and repair evidence"
+        "Inventory record",
+        "Purchase request",
+        "Receipt and lot record",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
-        "Resource demand",
         "Inventory record",
-        "Equipment readiness and calibration record",
         "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record",
-        "Failure report",
-        "Repair order",
-        "Parts and labor actuals",
-        "Return-to-service verification"
+        "Receipt and lot record"
       ],
-      "records_produced": [
-        "Readiness plan",
-        "Approved purchase, rental, or contractor commitment",
-        "Received and staged material or equipment",
-        "Attributed failure and repair history",
-        "Verified return to service",
-        "Purchase and repair cost actuals"
-      ],
+      "records_produced": ["Approval", "Purchase order"],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available",
         "manage or request PPE and materials, get equipment repaired",
         "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
       ],
-      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
-      "record_ids": [
-        "REC-064",
-        "REC-065",
-        "REC-066",
-        "REC-067",
-        "REC-068",
-        "REC-069",
-        "REC-070",
-        "REC-071",
-        "REC-072",
-        "REC-073",
-        "REC-074",
-        "REC-075"
-      ],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-PURCHASING"],
+      "record_ids": ["REC-065", "REC-067", "REC-070", "REC-068", "REC-069"],
+      "exception_ids": ["EXC-045", "EXC-049"]
     },
     {
       "id": "DEC-073",
@@ -1881,66 +1301,30 @@
       "classification": "strong_inference",
       "confidence": "medium",
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
-      "transition_context": ["availability_checked -> approved"],
-      "required_inputs": [
-        "Approved work plan and timing window",
-        "Material, PPE, equipment, calibration, and container requirements",
-        "Inventory, maintenance, and availability status",
-        "Approved vendor, product, budget, and certification constraints",
-        "Failure report, affected work, and repair evidence"
+      "transition_context": [
+        "availability_checked -> approved",
+        "purchase_requested -> approved",
+        "substitution_pending -> purchase_requested",
+        "ordered -> unavailable",
+        "purchase_requested -> superseded"
       ],
-      "records_consulted": [
+      "required_inputs": [
         "Resource demand",
-        "Inventory record",
-        "Equipment readiness and calibration record",
         "Purchase request",
         "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record",
-        "Failure report",
-        "Repair order",
-        "Parts and labor actuals",
-        "Return-to-service verification"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Readiness plan",
-        "Approved purchase, rental, or contractor commitment",
-        "Received and staged material or equipment",
-        "Attributed failure and repair history",
-        "Verified return to service",
-        "Purchase and repair cost actuals"
-      ],
+      "records_consulted": ["Resource demand", "Purchase request", "Approval"],
+      "records_produced": ["Approval", "Purchase order"],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
         "Someone has to book custom operators, ensure bins are available",
         "manage or request PPE and materials, get equipment repaired",
         "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
       ],
-      "role_ids": ["ROLE-VINEYARD-MANAGER"],
-      "record_ids": [
-        "REC-064",
-        "REC-065",
-        "REC-066",
-        "REC-067",
-        "REC-068",
-        "REC-069",
-        "REC-070",
-        "REC-071",
-        "REC-072",
-        "REC-073",
-        "REC-074",
-        "REC-075"
-      ],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-PURCHASING"],
+      "record_ids": ["REC-064", "REC-067", "REC-068", "REC-069"],
+      "exception_ids": ["EXC-046", "EXC-050"]
     },
     {
       "id": "DEC-074",
@@ -1956,36 +1340,29 @@
       "confidence": "medium",
       "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
       "transition_context": [
-        "Exception or recovery branch; see exception registry."
+        "in_use -> failure_reported",
+        "repaired -> verified_ready",
+        "repair_open -> unavailable"
       ],
       "required_inputs": [
-        "Approved work plan and timing window",
-        "Material, PPE, equipment, calibration, and container requirements",
-        "Inventory, maintenance, and availability status",
-        "Approved vendor, product, budget, and certification constraints",
-        "Failure report, affected work, and repair evidence"
+        "Equipment readiness and calibration record",
+        "Failure report",
+        "Repair order",
+        "Parts and labor actuals",
+        "Return-to-service verification",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
-        "Resource demand",
-        "Inventory record",
         "Equipment readiness and calibration record",
-        "Purchase request",
-        "Approval",
-        "Purchase order",
-        "Receipt and lot record",
-        "Staging record",
         "Failure report",
         "Repair order",
         "Parts and labor actuals",
         "Return-to-service verification"
       ],
       "records_produced": [
-        "Readiness plan",
-        "Approved purchase, rental, or contractor commitment",
-        "Received and staged material or equipment",
-        "Attributed failure and repair history",
-        "Verified return to service",
-        "Purchase and repair cost actuals"
+        "Failure report",
+        "Repair order",
+        "Return-to-service verification"
       ],
       "source_anchors": [
         "| 7 | Purchasing, materials staging, and equipment readiness |",
@@ -1993,30 +1370,9 @@
         "manage or request PPE and materials, get equipment repaired",
         "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
       ],
-      "role_ids": ["ROLE-FOREMAN"],
-      "record_ids": [
-        "REC-064",
-        "REC-065",
-        "REC-066",
-        "REC-067",
-        "REC-068",
-        "REC-069",
-        "REC-070",
-        "REC-071",
-        "REC-072",
-        "REC-073",
-        "REC-074",
-        "REC-075"
-      ],
-      "exception_ids": [
-        "EXC-044",
-        "EXC-045",
-        "EXC-046",
-        "EXC-047",
-        "EXC-048",
-        "EXC-049",
-        "EXC-050"
-      ]
+      "role_ids": ["ROLE-FOREMAN", "ROLE-MECHANIC", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-066", "REC-072", "REC-073", "REC-074", "REC-075"],
+      "exception_ids": ["EXC-047", "EXC-048"]
     },
     {
       "id": "DEC-081",
@@ -2031,66 +1387,35 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
-      "transition_context": ["∅ -> identity_matching"],
+      "transition_context": [
+        "entry -> identity_matching",
+        "terms_negotiating -> active",
+        "active -> superseded",
+        "identity_matching -> disputed"
+      ],
       "required_inputs": [
-        "Grower and organization identity",
-        "Vineyard, block, row, variety, acreage, and alias history",
-        "Contract tonnage, pricing, quality, pick authority, delivery, adjustment, and payment terms",
-        "Spray history, certifications, buyer specifications, and reporting cadence",
-        "Crop estimates, maturity samples, visits, delivery records, and prior disputes"
+        "Grower profile",
+        "Organization and contact record",
+        "Vineyard and block map",
+        "Alias history",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
         "Grower profile",
         "Organization and contact record",
         "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
-        "Visit record",
-        "Crop and maturity report",
-        "Notice and acknowledgment",
-        "Corrective action",
-        "Dispute",
-        "Delivery and settlement history"
+        "Alias history"
       ],
-      "records_produced": [
-        "Stable grower-vineyard-block relationship and alias history",
-        "Active contract and operating responsibility model",
-        "Seasonal communication and visit history",
-        "Corrective-action or dispute record",
-        "Contract-to-delivery-to-settlement history"
-      ],
+      "records_produced": ["Alias history"],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit.",
         "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
         "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
       ],
-      "role_ids": ["ROLE-GROWER-RELATIONS"],
-      "record_ids": [
-        "REC-076",
-        "REC-077",
-        "REC-078",
-        "REC-079",
-        "REC-080",
-        "REC-081",
-        "REC-082",
-        "REC-083",
-        "REC-084",
-        "REC-085",
-        "REC-086",
-        "REC-087",
-        "REC-088"
-      ],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-CONTRACT-GROWER"],
+      "record_ids": ["REC-076", "REC-077", "REC-078", "REC-079"],
+      "exception_ids": ["EXC-051"]
     },
     {
       "id": "DEC-082",
@@ -2106,66 +1431,38 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
-      "transition_context": ["identity_matching -> due_diligence"],
-      "required_inputs": [
-        "Grower and organization identity",
-        "Vineyard, block, row, variety, acreage, and alias history",
-        "Contract tonnage, pricing, quality, pick authority, delivery, adjustment, and payment terms",
-        "Spray history, certifications, buyer specifications, and reporting cadence",
-        "Crop estimates, maturity samples, visits, delivery records, and prior disputes"
+      "transition_context": [
+        "identity_matching -> due_diligence",
+        "due_diligence -> terms_negotiating",
+        "terms_negotiating -> active",
+        "terms_negotiating -> ended",
+        "due_diligence -> at_risk"
       ],
-      "records_consulted": [
+      "required_inputs": [
         "Grower profile",
-        "Organization and contact record",
         "Vineyard and block map",
-        "Alias history",
         "Contract",
         "Quality specification",
         "Spray and certification history",
-        "Visit record",
-        "Crop and maturity report",
-        "Notice and acknowledgment",
-        "Corrective action",
-        "Dispute",
-        "Delivery and settlement history"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Stable grower-vineyard-block relationship and alias history",
-        "Active contract and operating responsibility model",
-        "Seasonal communication and visit history",
-        "Corrective-action or dispute record",
-        "Contract-to-delivery-to-settlement history"
+      "records_consulted": [
+        "Grower profile",
+        "Vineyard and block map",
+        "Contract",
+        "Quality specification",
+        "Spray and certification history"
       ],
+      "records_produced": ["Grower profile", "Contract"],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit.",
         "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
         "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
       ],
-      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
-      "record_ids": [
-        "REC-076",
-        "REC-077",
-        "REC-078",
-        "REC-079",
-        "REC-080",
-        "REC-081",
-        "REC-082",
-        "REC-083",
-        "REC-084",
-        "REC-085",
-        "REC-086",
-        "REC-087",
-        "REC-088"
-      ],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-076", "REC-078", "REC-080", "REC-081", "REC-082"],
+      "exception_ids": ["EXC-052"]
     },
     {
       "id": "DEC-083",
@@ -2181,66 +1478,36 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
-      "transition_context": ["due_diligence -> active"],
-      "required_inputs": [
-        "Grower and organization identity",
-        "Vineyard, block, row, variety, acreage, and alias history",
-        "Contract tonnage, pricing, quality, pick authority, delivery, adjustment, and payment terms",
-        "Spray history, certifications, buyer specifications, and reporting cadence",
-        "Crop estimates, maturity samples, visits, delivery records, and prior disputes"
+      "transition_context": [
+        "due_diligence -> active",
+        "due_diligence -> terms_negotiating",
+        "terms_negotiating -> active",
+        "terms_negotiating -> ended",
+        "renewal_due -> active",
+        "active -> superseded",
+        "active -> at_risk"
       ],
-      "records_consulted": [
-        "Grower profile",
+      "required_inputs": [
         "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
         "Contract",
         "Quality specification",
-        "Spray and certification history",
-        "Visit record",
-        "Crop and maturity report",
-        "Notice and acknowledgment",
-        "Corrective action",
-        "Dispute",
-        "Delivery and settlement history"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Stable grower-vineyard-block relationship and alias history",
-        "Active contract and operating responsibility model",
-        "Seasonal communication and visit history",
-        "Corrective-action or dispute record",
-        "Contract-to-delivery-to-settlement history"
+      "records_consulted": [
+        "Organization and contact record",
+        "Contract",
+        "Quality specification"
       ],
+      "records_produced": ["Contract", "Notice and acknowledgment"],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
         "A key practical distinction is between estate-grown blocks and contract fruit.",
         "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
         "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
       ],
-      "role_ids": ["ROLE-GROWER-RELATIONS"],
-      "record_ids": [
-        "REC-076",
-        "REC-077",
-        "REC-078",
-        "REC-079",
-        "REC-080",
-        "REC-081",
-        "REC-082",
-        "REC-083",
-        "REC-084",
-        "REC-085",
-        "REC-086",
-        "REC-087",
-        "REC-088"
-      ],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-CONTRACT-GROWER"],
+      "record_ids": ["REC-077", "REC-080", "REC-081", "REC-085"],
+      "exception_ids": ["EXC-053"]
     },
     {
       "id": "DEC-084",
@@ -2256,22 +1523,28 @@
       "classification": "strong_inference",
       "confidence": "medium-high",
       "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
-      "transition_context": ["active -> aligned"],
+      "transition_context": [
+        "active -> aligned",
+        "report_due -> aligned",
+        "at_risk -> corrective_action",
+        "disputed -> corrective_action",
+        "corrective_action -> aligned",
+        "corrective_action -> ended",
+        "active -> at_risk",
+        "report_due -> disputed",
+        "at_risk -> disputed",
+        "fulfilled -> disputed"
+      ],
       "required_inputs": [
-        "Grower and organization identity",
-        "Vineyard, block, row, variety, acreage, and alias history",
-        "Contract tonnage, pricing, quality, pick authority, delivery, adjustment, and payment terms",
-        "Spray history, certifications, buyer specifications, and reporting cadence",
-        "Crop estimates, maturity samples, visits, delivery records, and prior disputes"
+        "Visit record",
+        "Crop and maturity report",
+        "Notice and acknowledgment",
+        "Corrective action",
+        "Dispute",
+        "Delivery and settlement history",
+        "Current state, effective time, accountable authority, and source version"
       ],
       "records_consulted": [
-        "Grower profile",
-        "Organization and contact record",
-        "Vineyard and block map",
-        "Alias history",
-        "Contract",
-        "Quality specification",
-        "Spray and certification history",
         "Visit record",
         "Crop and maturity report",
         "Notice and acknowledgment",
@@ -2280,11 +1553,10 @@
         "Delivery and settlement history"
       ],
       "records_produced": [
-        "Stable grower-vineyard-block relationship and alias history",
-        "Active contract and operating responsibility model",
-        "Seasonal communication and visit history",
-        "Corrective-action or dispute record",
-        "Contract-to-delivery-to-settlement history"
+        "Notice and acknowledgment",
+        "Corrective action",
+        "Dispute",
+        "Delivery and settlement history"
       ],
       "source_anchors": [
         "| 8 | Grower onboarding, contract administration, and relationship history |",
@@ -2292,15 +1564,8 @@
         "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
         "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
       ],
-      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
       "record_ids": [
-        "REC-076",
-        "REC-077",
-        "REC-078",
-        "REC-079",
-        "REC-080",
-        "REC-081",
-        "REC-082",
         "REC-083",
         "REC-084",
         "REC-085",
@@ -2308,14 +1573,7 @@
         "REC-087",
         "REC-088"
       ],
-      "exception_ids": [
-        "EXC-051",
-        "EXC-052",
-        "EXC-053",
-        "EXC-054",
-        "EXC-055",
-        "EXC-056"
-      ]
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
     },
     {
       "id": "DEC-091",
@@ -2330,74 +1588,35 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-010", "EVD-011"],
-      "transition_context": ["∅ -> requirements_mapped"],
-      "required_inputs": [
-        "Applicable certification standards, regulation, and buyer requirements",
-        "Stable site, vineyard, field, block, buffer, and alias identity",
-        "Management plans, questionnaires, training, biosecurity, and worker records",
-        "Spray, water, nitrogen, material, equipment-cleaning, transport, and buffer-crop records",
-        "Prior audit findings and corrective actions"
+      "transition_context": [
+        "entry -> requirements_mapped",
+        "package_prepared -> superseded",
+        "evidence_collecting -> gap_identified",
+        "under_review -> noncompliant"
       ],
-      "records_consulted": [
+      "required_inputs": [
+        "Contract",
+        "Spray and certification history",
         "Certification scope",
         "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record",
-        "Organic field history and buffer map",
-        "Equipment-cleaning log",
-        "Clean-transport affidavit",
-        "Buffer-crop disposition",
-        "Biodynamic preparation record",
-        "Audit evidence",
-        "Finding",
-        "Corrective action",
-        "Certification decision"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Requirement-to-operation evidence map",
-        "Annual questionnaire, plan, diary, and audit package",
-        "Attributed evidence gap and finding inventory",
-        "Corrective-action plan and verification",
-        "Certification decision and historical archive"
+      "records_consulted": [
+        "Contract",
+        "Spray and certification history",
+        "Certification scope",
+        "Requirement map"
       ],
+      "records_produced": ["Requirement map"],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists.",
         "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
         "where noncompliance appears, certification is withheld until corrective actions are completed."
       ],
-      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
-      "record_ids": [
-        "REC-089",
-        "REC-090",
-        "REC-091",
-        "REC-092",
-        "REC-015",
-        "REC-093",
-        "REC-094",
-        "REC-095",
-        "REC-096",
-        "REC-097",
-        "REC-098",
-        "REC-099",
-        "REC-100",
-        "REC-101",
-        "REC-102",
-        "REC-086",
-        "REC-103"
-      ],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-CERTIFIER"],
+      "record_ids": ["REC-080", "REC-082", "REC-089", "REC-090"],
+      "exception_ids": ["EXC-057", "EXC-058", "EXC-059", "EXC-060"]
     },
     {
       "id": "DEC-092",
@@ -2413,20 +1632,16 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-010", "EVD-011"],
-      "transition_context": ["evidence_collecting -> package_prepared"],
-      "required_inputs": [
-        "Applicable certification standards, regulation, and buyer requirements",
-        "Stable site, vineyard, field, block, buffer, and alias identity",
-        "Management plans, questionnaires, training, biosecurity, and worker records",
-        "Spray, water, nitrogen, material, equipment-cleaning, transport, and buffer-crop records",
-        "Prior audit findings and corrective actions"
+      "transition_context": [
+        "evidence_collecting -> package_prepared",
+        "evidence_collecting -> gap_identified",
+        "gap_identified -> corrective_action_open",
+        "package_prepared -> superseded"
       ],
-      "records_consulted": [
-        "Certification scope",
+      "required_inputs": [
         "Requirement map",
         "Site management plan",
         "Annual questionnaire",
-        "Spray diary",
         "Biosecurity register",
         "Water and nitrogen totals",
         "Training record",
@@ -2436,30 +1651,34 @@
         "Buffer-crop disposition",
         "Biodynamic preparation record",
         "Audit evidence",
-        "Finding",
-        "Corrective action",
-        "Certification decision"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Requirement-to-operation evidence map",
-        "Annual questionnaire, plan, diary, and audit package",
-        "Attributed evidence gap and finding inventory",
-        "Corrective-action plan and verification",
-        "Certification decision and historical archive"
+      "records_consulted": [
+        "Requirement map",
+        "Site management plan",
+        "Annual questionnaire",
+        "Biosecurity register",
+        "Water and nitrogen totals",
+        "Training record",
+        "Organic field history and buffer map",
+        "Equipment-cleaning log",
+        "Clean-transport affidavit",
+        "Buffer-crop disposition",
+        "Biodynamic preparation record",
+        "Audit evidence"
       ],
+      "records_produced": ["Audit evidence"],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists.",
         "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
         "where noncompliance appears, certification is withheld until corrective actions are completed."
       ],
-      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-VINEYARD-MANAGER"],
       "record_ids": [
-        "REC-089",
         "REC-090",
         "REC-091",
         "REC-092",
-        "REC-015",
         "REC-093",
         "REC-094",
         "REC-095",
@@ -2468,19 +1687,9 @@
         "REC-098",
         "REC-099",
         "REC-100",
-        "REC-101",
-        "REC-102",
-        "REC-086",
-        "REC-103"
+        "REC-101"
       ],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "exception_ids": ["EXC-057", "EXC-058", "EXC-060"]
     },
     {
       "id": "DEC-093",
@@ -2496,74 +1705,29 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-010", "EVD-011"],
-      "transition_context": ["submitted -> under_review"],
-      "required_inputs": [
-        "Applicable certification standards, regulation, and buyer requirements",
-        "Stable site, vineyard, field, block, buffer, and alias identity",
-        "Management plans, questionnaires, training, biosecurity, and worker records",
-        "Spray, water, nitrogen, material, equipment-cleaning, transport, and buffer-crop records",
-        "Prior audit findings and corrective actions"
+      "transition_context": [
+        "submitted -> under_review",
+        "under_review -> compliant",
+        "under_review -> noncompliant",
+        "under_review -> certification_withheld",
+        "noncompliant -> corrective_action_open"
       ],
-      "records_consulted": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record",
-        "Organic field history and buffer map",
-        "Equipment-cleaning log",
-        "Clean-transport affidavit",
-        "Buffer-crop disposition",
-        "Biodynamic preparation record",
+      "required_inputs": [
         "Audit evidence",
         "Finding",
-        "Corrective action",
-        "Certification decision"
+        "Current state, effective time, accountable authority, and source version"
       ],
-      "records_produced": [
-        "Requirement-to-operation evidence map",
-        "Annual questionnaire, plan, diary, and audit package",
-        "Attributed evidence gap and finding inventory",
-        "Corrective-action plan and verification",
-        "Certification decision and historical archive"
-      ],
+      "records_consulted": ["Audit evidence", "Finding"],
+      "records_produced": ["Finding", "Certification decision"],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
         "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists.",
         "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
         "where noncompliance appears, certification is withheld until corrective actions are completed."
       ],
-      "role_ids": ["ROLE-AUDITOR"],
-      "record_ids": [
-        "REC-089",
-        "REC-090",
-        "REC-091",
-        "REC-092",
-        "REC-015",
-        "REC-093",
-        "REC-094",
-        "REC-095",
-        "REC-096",
-        "REC-097",
-        "REC-098",
-        "REC-099",
-        "REC-100",
-        "REC-101",
-        "REC-102",
-        "REC-086",
-        "REC-103"
-      ],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "role_ids": ["ROLE-AUDITOR", "ROLE-CERTIFIER"],
+      "record_ids": ["REC-101", "REC-102", "REC-103"],
+      "exception_ids": ["EXC-059", "EXC-061", "EXC-062"]
     },
     {
       "id": "DEC-094",
@@ -2579,39 +1743,32 @@
       "classification": "confirmed_source",
       "confidence": "high",
       "evidence_ids": ["EVD-010", "EVD-011"],
-      "transition_context": ["under_review -> certified"],
-      "required_inputs": [
-        "Applicable certification standards, regulation, and buyer requirements",
-        "Stable site, vineyard, field, block, buffer, and alias identity",
-        "Management plans, questionnaires, training, biosecurity, and worker records",
-        "Spray, water, nitrogen, material, equipment-cleaning, transport, and buffer-crop records",
-        "Prior audit findings and corrective actions"
+      "transition_context": [
+        "certification_withheld -> corrective_action_open",
+        "corrective_action_open -> remediation_in_progress",
+        "remediation_in_progress -> evidence_resubmitted",
+        "evidence_resubmitted -> compliant",
+        "evidence_resubmitted -> remediation_in_progress",
+        "under_review -> noncompliant",
+        "under_review -> certification_withheld"
       ],
-      "records_consulted": [
-        "Certification scope",
-        "Requirement map",
-        "Site management plan",
-        "Annual questionnaire",
-        "Spray diary",
-        "Biosecurity register",
-        "Water and nitrogen totals",
-        "Training record",
-        "Organic field history and buffer map",
-        "Equipment-cleaning log",
-        "Clean-transport affidavit",
-        "Buffer-crop disposition",
-        "Biodynamic preparation record",
+      "required_inputs": [
+        "Corrective action",
         "Audit evidence",
         "Finding",
+        "Certification decision",
+        "Current state, effective time, accountable authority, and source version"
+      ],
+      "records_consulted": [
         "Corrective action",
+        "Audit evidence",
+        "Finding",
         "Certification decision"
       ],
       "records_produced": [
-        "Requirement-to-operation evidence map",
-        "Annual questionnaire, plan, diary, and audit package",
-        "Attributed evidence gap and finding inventory",
-        "Corrective-action plan and verification",
-        "Certification decision and historical archive"
+        "Corrective action",
+        "Audit evidence",
+        "Certification decision"
       ],
       "source_anchors": [
         "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
@@ -2619,34 +1776,9 @@
         "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
         "where noncompliance appears, certification is withheld until corrective actions are completed."
       ],
-      "role_ids": ["ROLE-CERTIFIER"],
-      "record_ids": [
-        "REC-089",
-        "REC-090",
-        "REC-091",
-        "REC-092",
-        "REC-015",
-        "REC-093",
-        "REC-094",
-        "REC-095",
-        "REC-096",
-        "REC-097",
-        "REC-098",
-        "REC-099",
-        "REC-100",
-        "REC-101",
-        "REC-102",
-        "REC-086",
-        "REC-103"
-      ],
-      "exception_ids": [
-        "EXC-057",
-        "EXC-058",
-        "EXC-059",
-        "EXC-060",
-        "EXC-061",
-        "EXC-062"
-      ]
+      "role_ids": ["ROLE-CERTIFIER", "ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": ["REC-086", "REC-101", "REC-102", "REC-103"],
+      "exception_ids": ["EXC-061", "EXC-062"]
     }
   ]
 }

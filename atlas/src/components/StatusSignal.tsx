@@ -4,6 +4,7 @@ import { Icon, type IconName } from "./Icon";
 const statusMeta: Record<WorkStatus, { label: string; icon: IconName }> = {
   ready: { label: "Ready", icon: "check" },
   assigned: { label: "Assigned", icon: "crew" },
+  acknowledged: { label: "Acknowledged", icon: "check" },
   "in-progress": { label: "In progress", icon: "arrow" },
   completed: { label: "Completed", icon: "check" },
   partial: { label: "Partial", icon: "info" },

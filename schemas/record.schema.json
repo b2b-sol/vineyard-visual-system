@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/record.schema.json",
+  "title": "Canonical vineyard operating record",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "classification",
+    "confidence",
+    "purpose",
+    "workflow_ids",
+    "evidence_ids",
+    "responsible_roles",
+    "lifecycle",
+    "required_provenance",
+    "correction_policy",
+    "related_records",
+    "source_anchors",
+    "decision_ids",
+    "exception_ids"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/recordId"
+    },
+    "name": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/name"
+    },
+    "classification": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/classification"
+    },
+    "confidence": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/confidence"
+    },
+    "purpose": { "type": "string", "minLength": 30 },
+    "workflow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/workflowId"
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/evidenceId"
+      }
+    },
+    "responsible_roles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/roleId"
+      }
+    },
+    "lifecycle": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/lifecycleState"
+      }
+    },
+    "required_provenance": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "correction_policy": { "type": "string", "minLength": 30 },
+    "related_records": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "source_anchors": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/sourceAnchor"
+      }
+    },
+    "decision_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/decisionId"
+      }
+    },
+    "exception_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/exceptionId"
+      }
+    }
+  },
+  "additionalProperties": false
+}

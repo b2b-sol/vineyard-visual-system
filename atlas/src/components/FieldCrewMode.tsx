@@ -1,10 +1,10 @@
 import { useState } from "react";
 import {
-  blockedEvent,
   canonicalBlock,
   canonicalHistory,
   canonicalWorkOrder,
   formatFixtureTime,
+  partialEvent,
   personName,
 } from "../data/planningDispatch";
 import { Icon } from "./Icon";
@@ -34,7 +34,7 @@ export function FieldCrewMode() {
     }
     setSyncState("queued");
     setAnnouncement(
-      `${reportedAcres} acres queued on this device for ${personName(blockedEvent!.actor_person_id)} at ${formatFixtureTime(blockedEvent!.at)}.`,
+      `${reportedAcres} acres queued on this device for ${personName(partialEvent!.actor_person_id)} at ${formatFixtureTime(partialEvent!.at)}.`,
     );
   };
 
@@ -42,7 +42,7 @@ export function FieldCrewMode() {
     setIsOnline(true);
     setSyncState("conflict");
     setAnnouncement(
-      "Sync found a conflict. The server advanced to ready to resume before this queued partial report arrived.",
+      "Sync found a conflict. The server redispatched the repaired remaining-scope assignment before this queued partial report arrived.",
     );
   };
 
@@ -76,7 +76,7 @@ export function FieldCrewMode() {
           {canonicalBlock.name} · {canonicalBlock.variety} ·{" "}
           {canonicalBlock.acres} acres
         </p>
-        <StatusSignal status="blocked" />
+        <StatusSignal status="in-progress" />
       </header>
 
       <div className="field-stop-card" role="note">
@@ -87,8 +87,8 @@ export function FieldCrewMode() {
           </strong>
           <p>{canonicalWorkOrder.blocker.reason}</p>
           <small>
-            {personName(blockedEvent!.actor_person_id)} ·{" "}
-            {formatFixtureTime(blockedEvent!.at)}
+            {personName(partialEvent!.actor_person_id)} ·{" "}
+            {formatFixtureTime(partialEvent!.at)}
           </small>
         </div>
       </div>
@@ -160,7 +160,7 @@ export function FieldCrewMode() {
           <dl>
             <div>
               <dt>Change</dt>
-              <dd>Blocked → partially completed</dd>
+              <dd>In progress → partially completed</dd>
             </div>
             <div>
               <dt>Actual</dt>
@@ -168,7 +168,7 @@ export function FieldCrewMode() {
             </div>
             <div>
               <dt>Actor</dt>
-              <dd>{personName(blockedEvent!.actor_person_id)}</dd>
+              <dd>{personName(partialEvent!.actor_person_id)}</dd>
             </div>
           </dl>
           {syncState === "queued" && (
@@ -193,9 +193,9 @@ export function FieldCrewMode() {
             </div>
           </header>
           <p>
-            The server advanced to <strong>Ready — repair confirmed</strong> at
-            11:45 AM. Review the newer status before retrying; this device will
-            not overwrite it.
+            The server advanced to <strong>Assigned — repair confirmed</strong>{" "}
+            at 11:45 AM. Review the newer status before retrying; this device
+            will not overwrite it.
           </p>
           <div className="conflict-comparison">
             <span>
@@ -204,7 +204,7 @@ export function FieldCrewMode() {
             </span>
             <span>
               <small>Server</small>
-              <strong>Ready to resume</strong>
+              <strong>Assigned remaining scope</strong>
             </span>
           </div>
           <button
