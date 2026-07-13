@@ -1,0 +1,57 @@
+%% visual_id: VIS-WF-002-SWIMLANE
+%% title: WF-002 role swimlane
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-002; workflow-model/roles.json#ROLE-ASSISTANT-VINEYARD-MANAGER,ROLE-COMPLIANCE-COORDINATOR,ROLE-CROP-PROTECTION-LEAD,ROLE-FOREMAN,ROLE-PESTICIDE-HANDLER,ROLE-REGULATOR,ROLE-SCOUT,ROLE-VINEYARD-MANAGER,ROLE-VITICULTURIST
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  START["WF-002 · Trigger"]
+  END["WF-002 · Output and accountable closure"]
+  subgraph LANE_ROLE_SCOUT["ROLE-SCOUT · Scout"]
+    direction TB
+    STEP_01["01 · Observation · The scout monitors the identified block and records pressure, symptoms, trap counts, mapped areas, a…"]
+  end
+  subgraph LANE_ROLE_VITICULTURIST["ROLE-VITICULTURIST · Viticulturist"]
+    direction TB
+    STEP_02["02 · Recommendation · The viticulturist compares the observation with risk and threshold evidence and selects action or…"]
+    STEP_09["09 · Verification · The viticulturist performs and records follow-up monitoring to assess efficacy and determine furthe…"]
+  end
+  subgraph LANE_ROLE_CROP_PROTECTION_LEAD["ROLE-CROP-PROTECTION-LEAD · Crop Protection Lead"]
+    direction TB
+    STEP_03["03 · Approval · The crop-protection lead verifies material, method, calibration, wind, sensitive areas, worker protecti…"]
+    STEP_04["04 · Assignment · The approved plan enters a release check for product, calibration, weather, worker presence, REI, PHI…"]
+    STEP_05["05 · Approval · The crop-protection lead releases the current application only after the application-time preflight rem…"]
+  end
+  subgraph LANE_ROLE_VINEYARD_MANAGER["ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+    direction TB
+    PARTICIPANT_ROLE_VINEYARD_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_PESTICIDE_HANDLER["ROLE-PESTICIDE-HANDLER · Pesticide Handler"]
+    direction TB
+    STEP_06["06 · Execution · The qualified handler performs the application within approved conditions and records actual date, loc…"]
+  end
+  subgraph LANE_ROLE_FOREMAN["ROLE-FOREMAN · Foreman"]
+    direction TB
+    STEP_07["07 · Completion · Required application information, worker protections, and restricted-entry notice are posted or made…"]
+  end
+  subgraph LANE_ROLE_COMPLIANCE_COORDINATOR["ROLE-COMPLIANCE-COORDINATOR · Compliance Coordinator"]
+    direction TB
+    STEP_08["08 · Reconciliation · The compliance coordinator updates spray diary, buyer or certification formats, and jurisdictiona…"]
+  end
+  subgraph LANE_ROLE_REGULATOR["ROLE-REGULATOR · Regulator"]
+    direction TB
+    PARTICIPANT_ROLE_REGULATOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_ASSISTANT_VINEYARD_MANAGER["ROLE-ASSISTANT-VINEYARD-MANAGER · Assistant Vineyard Manager"]
+    direction TB
+    PARTICIPANT_ROLE_ASSISTANT_VINEYARD_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  START -->|observation_recorded| STEP_01
+  STEP_01 -->|treatment_recommended| STEP_02
+  STEP_02 -->|approved| STEP_03
+  STEP_03 -->|preflight_check| STEP_04
+  STEP_04 -->|scheduled| STEP_05
+  STEP_05 -->|applied| STEP_06
+  STEP_06 -->|posted| STEP_07
+  STEP_07 -->|reported| STEP_08
+  STEP_08 -->|effective| STEP_09
+  STEP_09 -->|effective| END

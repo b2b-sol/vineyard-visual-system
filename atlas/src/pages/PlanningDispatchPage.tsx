@@ -34,14 +34,15 @@ const filterLabels: Record<FilterKey, string> = {
 
 const filterStatuses: Record<Exclude<FilterKey, "all">, WorkStatus[]> = {
   attention: ["blocked", "offline", "stale", "partial"],
-  active: ["ready", "assigned", "in-progress"],
+  active: ["ready", "assigned", "acknowledged", "in-progress"],
   closed: ["completed", "verified", "corrected", "historical"],
 };
 
 const recoveryQueueStatus: Record<RecoveryState, WorkStatus> = {
   blocked: "blocked",
-  partially_completed: "partial",
-  ready_to_resume: "ready",
+  assigned: "assigned",
+  acknowledged: "acknowledged",
+  in_progress: "in-progress",
   completed: "completed",
   verified: "verified",
 };
@@ -182,13 +183,13 @@ function EvidencePanel({
           </div>
         )}
 
-        {isCanonical && selected.status === "ready" && (
+        {isCanonical && selected.status === "assigned" && (
           <div className="decision-banner decision-info" role="status">
             <Icon name="check" />
             <span>
-              <strong>Repair confirmed; remaining rows released</strong>
-              The original hydraulic blocker remains visible in immutable
-              history.
+              <strong>Repair confirmed; remaining scope redispatched</strong>
+              Foreman acknowledgement is required before execution resumes; the
+              original hydraulic blocker remains visible in history.
             </span>
           </div>
         )}
@@ -444,11 +445,13 @@ export function PlanningDispatchPage({
                   ? "Verified by Elena Ortiz · 3:10 PM"
                   : replay.state === "completed"
                     ? "Full acreage reported · 2:36 PM"
-                    : replay.state === "ready_to_resume"
-                      ? "Repair confirmed · 11:45 AM"
-                      : replay.state === "partially_completed"
-                        ? "11.2 acres retained · 9:16 AM"
-                        : order.update,
+                    : replay.state === "in_progress"
+                      ? "Remaining rows resumed · 11:52 AM"
+                      : replay.state === "acknowledged"
+                        ? "Foreman acknowledged · 11:48 AM"
+                        : replay.state === "assigned"
+                          ? "Repair confirmed · redispatched 11:45 AM"
+                          : order.update,
             }
           : order,
       ),
@@ -520,7 +523,7 @@ export function PlanningDispatchPage({
             <h1>
               {screenMode
                 ? "Morning dispatch board"
-                : "Seasonal planning + work-order dispatch"}
+                : "Seasonal planning, dispatch, execution + verification"}
             </h1>
             <p className="lede">
               Convert seasonal intent and current field signals into executable

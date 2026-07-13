@@ -8,9 +8,10 @@ import {
 } from "../data/planningDispatch";
 
 const stateLabels: Record<RecoveryState, string> = {
-  blocked: "Blocked — field stop recorded",
-  partially_completed: "Partial — remaining rows open",
-  ready_to_resume: "Ready — repair confirmed",
+  blocked: "Blocked — equipment unavailable",
+  assigned: "Assigned — repair confirmed",
+  acknowledged: "Acknowledged — instructions confirmed",
+  in_progress: "In progress — remaining rows underway",
   completed: "Completed — awaiting verification",
   verified: "Verified — acreage reconciled",
 };

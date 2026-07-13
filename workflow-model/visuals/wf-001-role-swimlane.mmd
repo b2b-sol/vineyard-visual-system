@@ -1,0 +1,57 @@
+%% visual_id: VIS-WF-001-SWIMLANE
+%% title: WF-001 role swimlane
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-001; workflow-model/roles.json#ROLE-ASSISTANT-VINEYARD-MANAGER,ROLE-COMPLIANCE-COORDINATOR,ROLE-CONTRACTOR,ROLE-FIELD-CREW,ROLE-FOREMAN,ROLE-OPERATIONS-COORDINATOR,ROLE-OWNER-GENERAL-MANAGER,ROLE-VINEYARD-MANAGER,ROLE-VITICULTURIST
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  START["WF-001 · Trigger"]
+  END["WF-001 · Output and accountable closure"]
+  subgraph LANE_ROLE_VINEYARD_MANAGER["ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+    direction TB
+    STEP_03["03 · Approval · The manager approves, revises, escalates, or declines the proposed work according to cost, safety, comp…"]
+    STEP_08["08 · Verification · The manager verifies field scope and actuals before closure data flows to progress, payroll, compli…"]
+  end
+  subgraph LANE_ROLE_VITICULTURIST["ROLE-VITICULTURIST · Viticulturist"]
+    direction TB
+    STEP_01["01 · Observation · A seasonal, field, weather, winery, certification, or equipment signal is recorded against a stable…"]
+    STEP_02["02 · Recommendation · The accountable specialist defines whether work is needed, its scope, timing, method, and operati…"]
+  end
+  subgraph LANE_ROLE_FOREMAN["ROLE-FOREMAN · Foreman"]
+    direction TB
+    STEP_05["05 · Assignment · The foreman acknowledges the current assignment and confirms that field instructions and constraints…"]
+    STEP_06["06 · Execution · The crew executes the work while preserving progress, actual resource use, and exception context at bl…"]
+    STEP_07["07 · Completion · The foreman reports actual scope, labor, equipment, materials, completion status, and any unresolved…"]
+  end
+  subgraph LANE_ROLE_OPERATIONS_COORDINATOR["ROLE-OPERATIONS-COORDINATOR · Operations Coordinator"]
+    direction TB
+    STEP_04["04 · Assignment · The manager or coordinator assigns the block, priority, crew, equipment, materials, timing, and evide…"]
+  end
+  subgraph LANE_ROLE_FIELD_CREW["ROLE-FIELD-CREW · Field Crew"]
+    direction TB
+    PARTICIPANT_ROLE_FIELD_CREW["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_CONTRACTOR["ROLE-CONTRACTOR · Contractor"]
+    direction TB
+    PARTICIPANT_ROLE_CONTRACTOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_COMPLIANCE_COORDINATOR["ROLE-COMPLIANCE-COORDINATOR · Compliance Coordinator"]
+    direction TB
+    PARTICIPANT_ROLE_COMPLIANCE_COORDINATOR["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_OWNER_GENERAL_MANAGER["ROLE-OWNER-GENERAL-MANAGER · Owner or General Manager"]
+    direction TB
+    PARTICIPANT_ROLE_OWNER_GENERAL_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_ASSISTANT_VINEYARD_MANAGER["ROLE-ASSISTANT-VINEYARD-MANAGER · Assistant Vineyard Manager"]
+    direction TB
+    PARTICIPANT_ROLE_ASSISTANT_VINEYARD_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  START -->|observed| STEP_01
+  STEP_01 -->|planned| STEP_02
+  STEP_02 -->|approved| STEP_03
+  STEP_03 -->|assigned| STEP_04
+  STEP_04 -->|acknowledged| STEP_05
+  STEP_05 -->|in_progress| STEP_06
+  STEP_06 -->|completed| STEP_07
+  STEP_07 -->|verified| STEP_08
+  STEP_08 -->|verified| END

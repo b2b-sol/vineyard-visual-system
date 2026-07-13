@@ -1,0 +1,4571 @@
+{
+  "schema_version": "1.0",
+  "records": [
+    {
+      "id": "REC-001",
+      "name": "Seasonal plan",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve seasonal plan as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-001"],
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-OPERATIONS-COORDINATOR"
+      ],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-002", "REC-003", "REC-005"],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**"
+      ],
+      "decision_ids": ["DEC-001", "DEC-002"],
+      "exception_ids": ["EXC-001", "EXC-002", "EXC-003"]
+    },
+    {
+      "id": "REC-002",
+      "name": "Field signal",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve field signal as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-001"],
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-VITICULTURIST",
+        "ROLE-FOREMAN",
+        "ROLE-FIELD-CREW"
+      ],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-001", "REC-003", "REC-004", "REC-005"],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**"
+      ],
+      "decision_ids": ["DEC-001"],
+      "exception_ids": ["EXC-001", "EXC-002", "EXC-003"]
+    },
+    {
+      "id": "REC-003",
+      "name": "Work assignment",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve work assignment as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-001", "WF-007"],
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012", "EVD-007"],
+      "responsible_roles": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-FOREMAN"
+      ],
+      "lifecycle": [
+        "planned",
+        "assigned",
+        "in_progress",
+        "partially_completed",
+        "completed",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-055",
+        "REC-056",
+        "REC-001",
+        "REC-054",
+        "REC-057",
+        "REC-002"
+      ],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**"
+      ],
+      "decision_ids": ["DEC-001", "DEC-002", "DEC-003", "DEC-061", "DEC-062"],
+      "exception_ids": [
+        "EXC-001",
+        "EXC-002",
+        "EXC-003",
+        "EXC-004",
+        "EXC-005",
+        "EXC-037",
+        "EXC-038",
+        "EXC-039",
+        "EXC-040"
+      ]
+    },
+    {
+      "id": "REC-004",
+      "name": "Activity log",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve activity log as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-001"],
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-FOREMAN", "ROLE-FIELD-CREW"],
+      "lifecycle": [
+        "open",
+        "in_progress",
+        "partially_completed",
+        "completed",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-005",
+        "REC-006",
+        "REC-003",
+        "REC-007",
+        "REC-002"
+      ],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**"
+      ],
+      "decision_ids": ["DEC-003"],
+      "exception_ids": ["EXC-004", "EXC-005"]
+    },
+    {
+      "id": "REC-005",
+      "name": "Status history",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve status history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-001"],
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-FOREMAN",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR"
+      ],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-004",
+        "REC-006",
+        "REC-007",
+        "REC-003",
+        "REC-001",
+        "REC-002"
+      ],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**"
+      ],
+      "decision_ids": ["DEC-001", "DEC-002", "DEC-003"],
+      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
+    },
+    {
+      "id": "REC-006",
+      "name": "Actual-use record",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve actual-use record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-001"],
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-005", "REC-007", "REC-004", "REC-003"],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**"
+      ],
+      "decision_ids": ["DEC-003"],
+      "exception_ids": ["EXC-004", "EXC-005"]
+    },
+    {
+      "id": "REC-007",
+      "name": "Verification record",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve verification record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-001"],
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-006", "REC-005", "REC-004"],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**"
+      ],
+      "decision_ids": ["DEC-003"],
+      "exception_ids": ["EXC-004", "EXC-005"]
+    },
+    {
+      "id": "REC-008",
+      "name": "Scouting record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve scouting record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-SCOUT", "ROLE-VITICULTURIST"],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-009",
+        "REC-012",
+        "REC-017",
+        "REC-015",
+        "REC-016",
+        "REC-010"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-011"],
+      "exception_ids": ["EXC-011"]
+    },
+    {
+      "id": "REC-009",
+      "name": "Treatment recommendation",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve treatment recommendation as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-CROP-PROTECTION-LEAD"],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-010",
+        "REC-008",
+        "REC-013",
+        "REC-011",
+        "REC-012",
+        "REC-014"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-011", "DEC-012", "DEC-014"],
+      "exception_ids": ["EXC-007", "EXC-009", "EXC-011"]
+    },
+    {
+      "id": "REC-010",
+      "name": "Product and label check",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve product and label check as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-009",
+        "REC-011",
+        "REC-013",
+        "REC-012",
+        "REC-014",
+        "REC-016"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-012", "DEC-013"],
+      "exception_ids": ["EXC-006", "EXC-007", "EXC-009"]
+    },
+    {
+      "id": "REC-011",
+      "name": "Calibration record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve calibration record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-PESTICIDE-HANDLER"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-012",
+        "REC-010",
+        "REC-009",
+        "REC-013",
+        "REC-014",
+        "REC-016"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-013"],
+      "exception_ids": ["EXC-006", "EXC-009"]
+    },
+    {
+      "id": "REC-012",
+      "name": "Application record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve application record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "scheduled",
+        "in_progress",
+        "completed",
+        "reported",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-013",
+        "REC-011",
+        "REC-010",
+        "REC-014",
+        "REC-008",
+        "REC-009"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-012", "DEC-013", "DEC-014", "DEC-015"],
+      "exception_ids": [
+        "EXC-006",
+        "EXC-007",
+        "EXC-008",
+        "EXC-009",
+        "EXC-010",
+        "EXC-011"
+      ]
+    },
+    {
+      "id": "REC-013",
+      "name": "REI and PHI record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve rei and phi record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-012",
+        "REC-014",
+        "REC-009",
+        "REC-010",
+        "REC-011",
+        "REC-016"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-012", "DEC-013", "DEC-015"],
+      "exception_ids": ["EXC-007", "EXC-008", "EXC-009", "EXC-010"]
+    },
+    {
+      "id": "REC-014",
+      "name": "Worker posting",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve worker posting as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-FOREMAN", "ROLE-COMPLIANCE-COORDINATOR"],
+      "lifecycle": [
+        "proposed",
+        "communicated",
+        "acknowledged",
+        "active",
+        "expired",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-013",
+        "REC-015",
+        "REC-012",
+        "REC-016",
+        "REC-009",
+        "REC-010"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-013", "DEC-015"],
+      "exception_ids": ["EXC-008", "EXC-009", "EXC-010"]
+    },
+    {
+      "id": "REC-015",
+      "name": "Spray diary",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve spray diary as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002", "WF-010"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012", "EVD-010"],
+      "responsible_roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "complete",
+        "submitted",
+        "under_review",
+        "finding_open",
+        "corrected",
+        "accepted",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-093",
+        "REC-016",
+        "REC-092",
+        "REC-096",
+        "REC-091",
+        "REC-094"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-015"],
+      "exception_ids": ["EXC-010"]
+    },
+    {
+      "id": "REC-016",
+      "name": "Pesticide-use report",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve pesticide-use report as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-REGULATOR"],
+      "lifecycle": [
+        "draft",
+        "complete",
+        "submitted",
+        "under_review",
+        "finding_open",
+        "corrected",
+        "accepted",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-015",
+        "REC-017",
+        "REC-014",
+        "REC-012",
+        "REC-008",
+        "REC-009"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-015"],
+      "exception_ids": ["EXC-010"]
+    },
+    {
+      "id": "REC-017",
+      "name": "Efficacy follow-up",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve efficacy follow-up as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-002"],
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-SCOUT"],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-016", "REC-015", "REC-008", "REC-012"],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold"
+      ],
+      "decision_ids": ["DEC-011", "DEC-014"],
+      "exception_ids": ["EXC-011"]
+    },
+    {
+      "id": "REC-018",
+      "name": "Block condition note",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve block condition note as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-003"],
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-IRRIGATOR"
+      ],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-019", "REC-022", "REC-020", "REC-024"],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
+      ],
+      "decision_ids": ["DEC-021", "DEC-022", "DEC-024"],
+      "exception_ids": ["EXC-012", "EXC-014", "EXC-015", "EXC-016", "EXC-017"]
+    },
+    {
+      "id": "REC-019",
+      "name": "Soil-moisture or ET record",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve soil-moisture or et record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-003"],
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-IRRIGATION-LEAD"],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-018", "REC-020", "REC-022", "REC-021"],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
+      ],
+      "decision_ids": ["DEC-021", "DEC-024"],
+      "exception_ids": ["EXC-012", "EXC-014", "EXC-015", "EXC-016"]
+    },
+    {
+      "id": "REC-020",
+      "name": "Plant-status observation",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve plant-status observation as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-003"],
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-VITICULTURIST"],
+      "lifecycle": [
+        "observed",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-019",
+        "REC-021",
+        "REC-018",
+        "REC-022",
+        "REC-024"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
+      ],
+      "decision_ids": ["DEC-021"],
+      "exception_ids": ["EXC-012", "EXC-014", "EXC-015", "EXC-017"]
+    },
+    {
+      "id": "REC-021",
+      "name": "Tissue or petiole result",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve tissue or petiole result as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-003"],
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-LAB", "ROLE-VITICULTURIST"],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-020",
+        "REC-022",
+        "REC-024",
+        "REC-019",
+        "REC-023"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
+      ],
+      "decision_ids": ["DEC-022", "DEC-024"],
+      "exception_ids": ["EXC-014", "EXC-015", "EXC-016"]
+    },
+    {
+      "id": "REC-022",
+      "name": "Irrigation schedule",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve irrigation schedule as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-003"],
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-024",
+        "REC-018",
+        "REC-021",
+        "REC-023",
+        "REC-020",
+        "REC-019"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
+      ],
+      "decision_ids": ["DEC-021", "DEC-022", "DEC-023", "DEC-024"],
+      "exception_ids": [
+        "EXC-012",
+        "EXC-013",
+        "EXC-014",
+        "EXC-015",
+        "EXC-016",
+        "EXC-017"
+      ]
+    },
+    {
+      "id": "REC-023",
+      "name": "Irrigation log",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve irrigation log as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-003"],
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-IRRIGATOR", "ROLE-IRRIGATION-LEAD"],
+      "lifecycle": [
+        "planned",
+        "assigned",
+        "in_progress",
+        "partially_completed",
+        "completed",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-024",
+        "REC-025",
+        "REC-022",
+        "REC-026",
+        "REC-021"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
+      ],
+      "decision_ids": ["DEC-021", "DEC-023"],
+      "exception_ids": ["EXC-012", "EXC-013", "EXC-014", "EXC-015", "EXC-017"]
+    },
+    {
+      "id": "REC-024",
+      "name": "Fertility input record",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve fertility input record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-003"],
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATOR",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-023",
+        "REC-025",
+        "REC-022",
+        "REC-026",
+        "REC-020",
+        "REC-021"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
+      ],
+      "decision_ids": ["DEC-022", "DEC-024"],
+      "exception_ids": ["EXC-014", "EXC-015", "EXC-016"]
+    },
+    {
+      "id": "REC-025",
+      "name": "Malfunction record",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve malfunction record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-003"],
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-IRRIGATOR",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-MECHANIC"
+      ],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-026", "REC-024", "REC-023"],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
+      ],
+      "decision_ids": ["DEC-023"],
+      "exception_ids": ["EXC-012", "EXC-013", "EXC-017"]
+    },
+    {
+      "id": "REC-026",
+      "name": "Resource-use total",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve resource-use total as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-003"],
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-025", "REC-024", "REC-023", "REC-022"],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update"
+      ],
+      "decision_ids": ["DEC-023"],
+      "exception_ids": ["EXC-012", "EXC-013", "EXC-017"]
+    },
+    {
+      "id": "REC-027",
+      "name": "Sampling plan",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve sampling plan as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-004", "WF-005"],
+      "evidence_ids": ["EVD-004", "EVD-011", "EVD-005", "EVD-012"],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-028",
+        "REC-035",
+        "REC-029",
+        "REC-036",
+        "REC-037",
+        "REC-038"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-031", "DEC-041"],
+      "exception_ids": [
+        "EXC-018",
+        "EXC-019",
+        "EXC-020",
+        "EXC-024",
+        "EXC-025",
+        "EXC-026"
+      ]
+    },
+    {
+      "id": "REC-028",
+      "name": "Vine and cluster sample",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve vine and cluster sample as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-004"],
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "responsible_roles": ["ROLE-VITICULTURIST"],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-029", "REC-027", "REC-030", "REC-031"],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-031", "DEC-033"],
+      "exception_ids": [
+        "EXC-018",
+        "EXC-019",
+        "EXC-020",
+        "EXC-021",
+        "EXC-022",
+        "EXC-023"
+      ]
+    },
+    {
+      "id": "REC-029",
+      "name": "Block crop estimate",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve block crop estimate as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-004"],
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-028",
+        "REC-030",
+        "REC-027",
+        "REC-031",
+        "REC-032",
+        "REC-033"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-031", "DEC-032", "DEC-033"],
+      "exception_ids": [
+        "EXC-018",
+        "EXC-019",
+        "EXC-020",
+        "EXC-021",
+        "EXC-022",
+        "EXC-023"
+      ]
+    },
+    {
+      "id": "REC-030",
+      "name": "Forecast revision history",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve forecast revision history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-004"],
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-029",
+        "REC-032",
+        "REC-031",
+        "REC-033",
+        "REC-034",
+        "REC-028"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-032", "DEC-033"],
+      "exception_ids": ["EXC-020", "EXC-021", "EXC-022", "EXC-023"]
+    },
+    {
+      "id": "REC-031",
+      "name": "Crop-load recommendation",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve crop-load recommendation as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-004"],
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-VINEYARD-MANAGER"],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-029",
+        "REC-030",
+        "REC-032",
+        "REC-027",
+        "REC-028",
+        "REC-033"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-032"],
+      "exception_ids": ["EXC-020", "EXC-022"]
+    },
+    {
+      "id": "REC-032",
+      "name": "Communication record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve communication record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-004"],
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
+      "lifecycle": [
+        "proposed",
+        "communicated",
+        "acknowledged",
+        "active",
+        "expired",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-033",
+        "REC-030",
+        "REC-031",
+        "REC-029",
+        "REC-034"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-032", "DEC-033"],
+      "exception_ids": ["EXC-020", "EXC-021", "EXC-022", "EXC-023"]
+    },
+    {
+      "id": "REC-033",
+      "name": "Harvest actual",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve harvest actual as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-004"],
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-FINANCE"
+      ],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-034",
+        "REC-032",
+        "REC-029",
+        "REC-030",
+        "REC-031"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-033"],
+      "exception_ids": ["EXC-021", "EXC-022", "EXC-023"]
+    },
+    {
+      "id": "REC-034",
+      "name": "Forecast error record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve forecast error record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-004"],
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "responsible_roles": ["ROLE-VINEYARD-MANAGER", "ROLE-VITICULTURIST"],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-033", "REC-032", "REC-029", "REC-030"],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-033"],
+      "exception_ids": ["EXC-021", "EXC-022", "EXC-023"]
+    },
+    {
+      "id": "REC-035",
+      "name": "Sample chain of identity",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve sample chain of identity as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-005"],
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-LAB",
+        "ROLE-VITICULTURIST"
+      ],
+      "lifecycle": [
+        "proposed",
+        "mapped",
+        "active",
+        "disputed",
+        "corrected",
+        "superseded",
+        "historical"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-027",
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "REC-039",
+        "REC-080"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-041"],
+      "exception_ids": ["EXC-024", "EXC-025", "EXC-026"]
+    },
+    {
+      "id": "REC-036",
+      "name": "Field condition assessment",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve field condition assessment as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-005"],
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VITICULTURIST"],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-037",
+        "REC-035",
+        "REC-038",
+        "REC-027",
+        "REC-039",
+        "REC-084"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-041", "DEC-042"],
+      "exception_ids": ["EXC-024", "EXC-025", "EXC-026", "EXC-027"]
+    },
+    {
+      "id": "REC-037",
+      "name": "Laboratory result",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve laboratory result as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-005"],
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-LAB", "ROLE-VITICULTURIST"],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-036",
+        "REC-038",
+        "REC-035",
+        "REC-039",
+        "REC-027",
+        "REC-084"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-041", "DEC-042"],
+      "exception_ids": ["EXC-024", "EXC-025", "EXC-026", "EXC-027"]
+    },
+    {
+      "id": "REC-038",
+      "name": "Maturity trend",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve maturity trend as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-005"],
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-037",
+        "REC-039",
+        "REC-036",
+        "REC-035",
+        "REC-027",
+        "REC-084"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-041", "DEC-042"],
+      "exception_ids": ["EXC-024", "EXC-025", "EXC-026", "EXC-027"]
+    },
+    {
+      "id": "REC-039",
+      "name": "Pick proposal",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve pick proposal as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-005"],
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VITICULTURIST"],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-040",
+        "REC-041",
+        "REC-038",
+        "REC-080",
+        "REC-037",
+        "REC-042"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-042", "DEC-043", "DEC-044"],
+      "exception_ids": ["EXC-026", "EXC-027", "EXC-028", "EXC-029"]
+    },
+    {
+      "id": "REC-040",
+      "name": "Decision communication",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve decision communication as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-005"],
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-WINEMAKER",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "proposed",
+        "communicated",
+        "acknowledged",
+        "active",
+        "expired",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-039",
+        "REC-041",
+        "REC-080",
+        "REC-042",
+        "REC-038"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-043", "DEC-044"],
+      "exception_ids": ["EXC-026", "EXC-027", "EXC-028", "EXC-029"]
+    },
+    {
+      "id": "REC-041",
+      "name": "Pick authorization",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve pick authorization as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-005", "WF-006"],
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012", "EVD-006"],
+      "responsible_roles": [
+        "ROLE-WINEMAKER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "lifecycle": [
+        "proposed",
+        "communicated",
+        "acknowledged",
+        "active",
+        "expired",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-040",
+        "REC-039",
+        "REC-042",
+        "REC-043",
+        "REC-080",
+        "REC-044"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-043", "DEC-044", "DEC-051", "DEC-052"],
+      "exception_ids": [
+        "EXC-026",
+        "EXC-027",
+        "EXC-028",
+        "EXC-029",
+        "EXC-030",
+        "EXC-031",
+        "EXC-033"
+      ]
+    },
+    {
+      "id": "REC-042",
+      "name": "Supersession history",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve supersession history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-005"],
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-041",
+        "REC-040",
+        "REC-039",
+        "REC-080",
+        "REC-036",
+        "REC-038"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**"
+      ],
+      "decision_ids": ["DEC-044"],
+      "exception_ids": ["EXC-027", "EXC-028", "EXC-029"]
+    },
+    {
+      "id": "REC-043",
+      "name": "Harvest plan",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve harvest plan as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-HARVEST-CREW-LEADER"
+      ],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-044", "REC-041", "REC-046", "REC-045"],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-051"],
+      "exception_ids": ["EXC-030", "EXC-031"]
+    },
+    {
+      "id": "REC-044",
+      "name": "Crew and container assignment",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve crew and container assignment as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-OPERATIONS-COORDINATOR"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-043", "REC-046", "REC-041", "REC-045"],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-051"],
+      "exception_ids": ["EXC-030", "EXC-031"]
+    },
+    {
+      "id": "REC-045",
+      "name": "Load identity",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve load identity as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-WINERY-INTAKE"
+      ],
+      "lifecycle": [
+        "proposed",
+        "mapped",
+        "active",
+        "disputed",
+        "corrected",
+        "superseded",
+        "historical"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-046",
+        "REC-047",
+        "REC-044",
+        "REC-048",
+        "REC-043",
+        "REC-050"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-052", "DEC-053", "DEC-054"],
+      "exception_ids": ["EXC-032", "EXC-033", "EXC-034", "EXC-035", "EXC-036"]
+    },
+    {
+      "id": "REC-046",
+      "name": "Transport record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve transport record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-TRANSPORTATION", "ROLE-HARVEST-CREW-LEADER"],
+      "lifecycle": [
+        "planned",
+        "assigned",
+        "in_progress",
+        "partially_completed",
+        "completed",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-045",
+        "REC-047",
+        "REC-044",
+        "REC-043",
+        "REC-048",
+        "REC-041"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-052"],
+      "exception_ids": ["EXC-033"]
+    },
+    {
+      "id": "REC-047",
+      "name": "Weigh bill",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve weigh bill as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-WINERY-INTAKE",
+        "ROLE-TRANSPORTATION",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-046",
+        "REC-050",
+        "REC-048",
+        "REC-052",
+        "REC-080",
+        "REC-045"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-052", "DEC-053", "DEC-054"],
+      "exception_ids": ["EXC-032", "EXC-033", "EXC-034", "EXC-035", "EXC-036"]
+    },
+    {
+      "id": "REC-048",
+      "name": "Intake sample and quality result",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve intake sample and quality result as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-WINERY-INTAKE", "ROLE-WINEMAKER", "ROLE-LAB"],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-049",
+        "REC-047",
+        "REC-046",
+        "REC-080",
+        "REC-081",
+        "REC-045"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-053"],
+      "exception_ids": ["EXC-032", "EXC-034"]
+    },
+    {
+      "id": "REC-049",
+      "name": "Disposition notice",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve disposition notice as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "lifecycle": [
+        "proposed",
+        "communicated",
+        "acknowledged",
+        "active",
+        "expired",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-048",
+        "REC-050",
+        "REC-080",
+        "REC-047",
+        "REC-051",
+        "REC-052"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-053", "DEC-054", "DEC-055"],
+      "exception_ids": ["EXC-032", "EXC-033", "EXC-034", "EXC-035", "EXC-036"]
+    },
+    {
+      "id": "REC-050",
+      "name": "Delivery entry",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve delivery entry as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-WINERY-INTAKE", "ROLE-GROWER-RELATIONS"],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-051",
+        "REC-047",
+        "REC-052",
+        "REC-049",
+        "REC-080",
+        "REC-053"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-052", "DEC-054", "DEC-055"],
+      "exception_ids": ["EXC-033", "EXC-035", "EXC-036"]
+    },
+    {
+      "id": "REC-051",
+      "name": "Correction history",
+      "classification": "strong_inference",
+      "confidence": "high",
+      "purpose": "Preserve correction history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006", "WF-007"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012", "EVD-007"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-062",
+        "REC-050",
+        "REC-063",
+        "REC-052",
+        "REC-059",
+        "REC-047"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-054", "DEC-064"],
+      "exception_ids": [
+        "EXC-033",
+        "EXC-035",
+        "EXC-036",
+        "EXC-041",
+        "EXC-042",
+        "EXC-043"
+      ]
+    },
+    {
+      "id": "REC-052",
+      "name": "Contract adjustment",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve contract adjustment as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-FINANCE",
+        "ROLE-WINEMAKER"
+      ],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-051",
+        "REC-053",
+        "REC-050",
+        "REC-080",
+        "REC-047",
+        "REC-049"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-055"],
+      "exception_ids": ["EXC-036"]
+    },
+    {
+      "id": "REC-053",
+      "name": "Settlement record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve settlement record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-006"],
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-FINANCE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-052",
+        "REC-047",
+        "REC-050",
+        "REC-051",
+        "REC-080"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**"
+      ],
+      "decision_ids": ["DEC-055"],
+      "exception_ids": ["EXC-036"]
+    },
+    {
+      "id": "REC-054",
+      "name": "Crew roster",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve crew roster as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-007"],
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-055",
+        "REC-003",
+        "REC-057",
+        "REC-056",
+        "REC-059",
+        "REC-060"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
+      ],
+      "decision_ids": ["DEC-061"],
+      "exception_ids": ["EXC-037", "EXC-038"]
+    },
+    {
+      "id": "REC-055",
+      "name": "Qualification and training evidence",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve qualification and training evidence as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-007"],
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-FOREMAN",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-LABOR-CONTRACTOR"
+      ],
+      "lifecycle": [
+        "required",
+        "scheduled",
+        "completed",
+        "verified",
+        "expired",
+        "renewed",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-054", "REC-003", "REC-056"],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
+      ],
+      "decision_ids": ["DEC-061"],
+      "exception_ids": ["EXC-037", "EXC-038"]
+    },
+    {
+      "id": "REC-056",
+      "name": "Safety briefing",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve safety briefing as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-007"],
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-FOREMAN"],
+      "lifecycle": [
+        "required",
+        "delivered",
+        "acknowledged",
+        "completed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-003",
+        "REC-057",
+        "REC-058",
+        "REC-055",
+        "REC-054"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
+      ],
+      "decision_ids": ["DEC-062"],
+      "exception_ids": ["EXC-038", "EXC-039", "EXC-040"]
+    },
+    {
+      "id": "REC-057",
+      "name": "Attendance record",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve attendance record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-007"],
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-FOREMAN", "ROLE-PAYROLL"],
+      "lifecycle": [
+        "planned",
+        "assigned",
+        "in_progress",
+        "partially_completed",
+        "completed",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-058",
+        "REC-059",
+        "REC-056",
+        "REC-003",
+        "REC-060",
+        "REC-051"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
+      ],
+      "decision_ids": ["DEC-062", "DEC-063"],
+      "exception_ids": ["EXC-039", "EXC-040", "EXC-041", "EXC-042", "EXC-043"]
+    },
+    {
+      "id": "REC-058",
+      "name": "Break record",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve break record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-007"],
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-FOREMAN", "ROLE-PAYROLL"],
+      "lifecycle": [
+        "planned",
+        "assigned",
+        "in_progress",
+        "partially_completed",
+        "completed",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-057",
+        "REC-059",
+        "REC-056",
+        "REC-060",
+        "REC-051",
+        "REC-061"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
+      ],
+      "decision_ids": ["DEC-062", "DEC-063"],
+      "exception_ids": ["EXC-039", "EXC-040", "EXC-041", "EXC-042"]
+    },
+    {
+      "id": "REC-059",
+      "name": "Time and piece-rate record",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve time and piece-rate record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-007"],
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-FOREMAN",
+        "ROLE-PAYROLL",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "planned",
+        "assigned",
+        "in_progress",
+        "partially_completed",
+        "completed",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-058",
+        "REC-060",
+        "REC-057",
+        "REC-061",
+        "REC-051",
+        "REC-062"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
+      ],
+      "decision_ids": ["DEC-063", "DEC-064"],
+      "exception_ids": ["EXC-041", "EXC-042", "EXC-043"]
+    },
+    {
+      "id": "REC-060",
+      "name": "Task quantity",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve task quantity as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-007"],
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-FOREMAN", "ROLE-VINEYARD-MANAGER"],
+      "lifecycle": [
+        "planned",
+        "assigned",
+        "in_progress",
+        "partially_completed",
+        "completed",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-059",
+        "REC-061",
+        "REC-058",
+        "REC-057",
+        "REC-062",
+        "REC-051"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
+      ],
+      "decision_ids": ["DEC-063"],
+      "exception_ids": ["EXC-041", "EXC-042"]
+    },
+    {
+      "id": "REC-061",
+      "name": "Supervisor verification",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve supervisor verification as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-007"],
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-060",
+        "REC-062",
+        "REC-059",
+        "REC-051",
+        "REC-057",
+        "REC-058"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
+      ],
+      "decision_ids": ["DEC-063"],
+      "exception_ids": ["EXC-041", "EXC-042", "EXC-043"]
+    },
+    {
+      "id": "REC-062",
+      "name": "Payroll exception",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve payroll exception as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-007"],
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-PAYROLL",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-LABOR-CONTRACTOR"
+      ],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-051",
+        "REC-061",
+        "REC-063",
+        "REC-059",
+        "REC-060",
+        "REC-057"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
+      ],
+      "decision_ids": ["DEC-063", "DEC-064"],
+      "exception_ids": ["EXC-041", "EXC-042", "EXC-043"]
+    },
+    {
+      "id": "REC-063",
+      "name": "Cost allocation",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve cost allocation as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-007"],
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-FINANCE", "ROLE-PAYROLL"],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-051",
+        "REC-062",
+        "REC-059",
+        "REC-057",
+        "REC-058",
+        "REC-060"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere."
+      ],
+      "decision_ids": ["DEC-064"],
+      "exception_ids": ["EXC-041", "EXC-042"]
+    },
+    {
+      "id": "REC-064",
+      "name": "Resource demand",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve resource demand as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-065",
+        "REC-067",
+        "REC-069",
+        "REC-071",
+        "REC-066",
+        "REC-068"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-071", "DEC-073"],
+      "exception_ids": ["EXC-044", "EXC-046", "EXC-048", "EXC-050"]
+    },
+    {
+      "id": "REC-065",
+      "name": "Inventory record",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve inventory record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-PURCHASING",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-067",
+        "REC-064",
+        "REC-066",
+        "REC-071",
+        "REC-070",
+        "REC-068"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-071", "DEC-072"],
+      "exception_ids": ["EXC-044", "EXC-045", "EXC-046", "EXC-048", "EXC-049"]
+    },
+    {
+      "id": "REC-066",
+      "name": "Equipment readiness and calibration record",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve equipment readiness and calibration record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-MECHANIC",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-FOREMAN"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-065",
+        "REC-067",
+        "REC-072",
+        "REC-073",
+        "REC-075",
+        "REC-064"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-071", "DEC-074"],
+      "exception_ids": ["EXC-044", "EXC-046", "EXC-047", "EXC-048"]
+    },
+    {
+      "id": "REC-067",
+      "name": "Purchase request",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve purchase request as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-PURCHASING",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-068",
+        "REC-065",
+        "REC-064",
+        "REC-071",
+        "REC-066",
+        "REC-069"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-071", "DEC-072", "DEC-073"],
+      "exception_ids": [
+        "EXC-044",
+        "EXC-045",
+        "EXC-046",
+        "EXC-048",
+        "EXC-049",
+        "EXC-050"
+      ]
+    },
+    {
+      "id": "REC-068",
+      "name": "Approval",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve approval as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "proposed",
+        "communicated",
+        "acknowledged",
+        "active",
+        "expired",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-067",
+        "REC-069",
+        "REC-064",
+        "REC-070",
+        "REC-065",
+        "REC-066"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-072", "DEC-073"],
+      "exception_ids": ["EXC-045", "EXC-046", "EXC-049", "EXC-050"]
+    },
+    {
+      "id": "REC-069",
+      "name": "Purchase order",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve purchase order as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-PURCHASING", "ROLE-FINANCE"],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-068",
+        "REC-067",
+        "REC-070",
+        "REC-064",
+        "REC-071",
+        "REC-074"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-072", "DEC-073"],
+      "exception_ids": ["EXC-045", "EXC-046", "EXC-049", "EXC-050"]
+    },
+    {
+      "id": "REC-070",
+      "name": "Receipt and lot record",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve receipt and lot record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-PURCHASING", "ROLE-OPERATIONS-COORDINATOR"],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-071",
+        "REC-069",
+        "REC-065",
+        "REC-067",
+        "REC-068",
+        "REC-064"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-072"],
+      "exception_ids": ["EXC-045", "EXC-049"]
+    },
+    {
+      "id": "REC-071",
+      "name": "Staging record",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve staging record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-070",
+        "REC-067",
+        "REC-065",
+        "REC-064",
+        "REC-072",
+        "REC-069"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-071"],
+      "exception_ids": ["EXC-044", "EXC-046", "EXC-048"]
+    },
+    {
+      "id": "REC-072",
+      "name": "Failure report",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve failure report as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-MECHANIC",
+        "ROLE-FOREMAN"
+      ],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-073",
+        "REC-074",
+        "REC-066",
+        "REC-075",
+        "REC-071",
+        "REC-070"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-074"],
+      "exception_ids": ["EXC-047", "EXC-048"]
+    },
+    {
+      "id": "REC-073",
+      "name": "Repair order",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve repair order as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-MECHANIC", "ROLE-OPERATIONS-COORDINATOR"],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-072",
+        "REC-074",
+        "REC-075",
+        "REC-066",
+        "REC-071"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-074"],
+      "exception_ids": ["EXC-047", "EXC-048"]
+    },
+    {
+      "id": "REC-074",
+      "name": "Parts and labor actuals",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve parts and labor actuals as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-MECHANIC", "ROLE-FINANCE", "ROLE-PURCHASING"],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-073",
+        "REC-075",
+        "REC-072",
+        "REC-066",
+        "REC-064",
+        "REC-067"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-074"],
+      "exception_ids": ["EXC-047", "EXC-048"]
+    },
+    {
+      "id": "REC-075",
+      "name": "Return-to-service verification",
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "purpose": "Preserve return-to-service verification as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-008"],
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-MECHANIC",
+        "ROLE-FOREMAN",
+        "ROLE-EQUIPMENT-OPERATOR"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-074", "REC-073", "REC-066", "REC-072"],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available"
+      ],
+      "decision_ids": ["DEC-074"],
+      "exception_ids": ["EXC-047", "EXC-048"]
+    },
+    {
+      "id": "REC-076",
+      "name": "Grower profile",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve grower profile as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-CONTRACT-GROWER"],
+      "lifecycle": [
+        "proposed",
+        "mapped",
+        "active",
+        "disputed",
+        "corrected",
+        "superseded",
+        "historical"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-077",
+        "REC-078",
+        "REC-079",
+        "REC-081",
+        "REC-082",
+        "REC-083"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-081", "DEC-082"],
+      "exception_ids": ["EXC-051", "EXC-052"]
+    },
+    {
+      "id": "REC-077",
+      "name": "Organization and contact record",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve organization and contact record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-CONTRACT-GROWER"],
+      "lifecycle": [
+        "proposed",
+        "mapped",
+        "active",
+        "disputed",
+        "corrected",
+        "superseded",
+        "historical"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-076",
+        "REC-078",
+        "REC-079",
+        "REC-080",
+        "REC-081",
+        "REC-085"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-081", "DEC-083"],
+      "exception_ids": ["EXC-051", "EXC-053"]
+    },
+    {
+      "id": "REC-078",
+      "name": "Vineyard and block map",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve vineyard and block map as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-VITICULTURIST"
+      ],
+      "lifecycle": [
+        "proposed",
+        "mapped",
+        "active",
+        "disputed",
+        "corrected",
+        "superseded",
+        "historical"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": ["REC-077", "REC-079", "REC-076", "REC-080"],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-081", "DEC-082"],
+      "exception_ids": ["EXC-051", "EXC-052"]
+    },
+    {
+      "id": "REC-079",
+      "name": "Alias history",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve alias history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
+      "lifecycle": [
+        "proposed",
+        "mapped",
+        "active",
+        "disputed",
+        "corrected",
+        "superseded",
+        "historical"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-078",
+        "REC-077",
+        "REC-080",
+        "REC-076",
+        "REC-081"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-081"],
+      "exception_ids": ["EXC-051"]
+    },
+    {
+      "id": "REC-080",
+      "name": "Contract",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve contract as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-005", "WF-006", "WF-009", "WF-010"],
+      "evidence_ids": [
+        "EVD-009",
+        "EVD-011",
+        "EVD-012",
+        "EVD-005",
+        "EVD-006",
+        "EVD-010"
+      ],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-FINANCE",
+        "ROLE-WINEMAKER"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-081",
+        "REC-039",
+        "REC-041",
+        "REC-047",
+        "REC-049",
+        "REC-082"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": [
+        "DEC-043",
+        "DEC-044",
+        "DEC-051",
+        "DEC-053",
+        "DEC-055",
+        "DEC-082",
+        "DEC-083",
+        "DEC-091"
+      ],
+      "exception_ids": [
+        "EXC-026",
+        "EXC-027",
+        "EXC-028",
+        "EXC-029",
+        "EXC-030",
+        "EXC-031",
+        "EXC-032",
+        "EXC-034",
+        "EXC-036",
+        "EXC-052",
+        "EXC-053",
+        "EXC-057",
+        "EXC-058",
+        "EXC-059"
+      ]
+    },
+    {
+      "id": "REC-081",
+      "name": "Quality specification",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve quality specification as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-WINEMAKER",
+        "ROLE-CONTRACT-GROWER"
+      ],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-080",
+        "REC-083",
+        "REC-082",
+        "REC-085",
+        "REC-084",
+        "REC-086"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-082", "DEC-083"],
+      "exception_ids": ["EXC-052", "EXC-053"]
+    },
+    {
+      "id": "REC-082",
+      "name": "Spray and certification history",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve spray and certification history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "draft",
+        "complete",
+        "submitted",
+        "under_review",
+        "finding_open",
+        "corrected",
+        "accepted",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-081",
+        "REC-083",
+        "REC-080",
+        "REC-076",
+        "REC-015",
+        "REC-089"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-082", "DEC-091"],
+      "exception_ids": ["EXC-052", "EXC-057", "EXC-058", "EXC-059"]
+    },
+    {
+      "id": "REC-083",
+      "name": "Visit record",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve visit record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VITICULTURIST"],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-084",
+        "REC-081",
+        "REC-082",
+        "REC-085",
+        "REC-080",
+        "REC-087"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-084"],
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
+    },
+    {
+      "id": "REC-084",
+      "name": "Crop and maturity report",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve crop and maturity report as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-VITICULTURIST",
+        "ROLE-CONTRACT-GROWER"
+      ],
+      "lifecycle": [
+        "pending",
+        "recorded",
+        "validated",
+        "disputed",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-083",
+        "REC-085",
+        "REC-081",
+        "REC-086",
+        "REC-080",
+        "REC-087"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-084"],
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
+    },
+    {
+      "id": "REC-085",
+      "name": "Notice and acknowledgment",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve notice and acknowledgment as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-WINEMAKER"
+      ],
+      "lifecycle": [
+        "proposed",
+        "communicated",
+        "acknowledged",
+        "active",
+        "expired",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-084",
+        "REC-086",
+        "REC-080",
+        "REC-081",
+        "REC-083",
+        "REC-087"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-083", "DEC-084"],
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
+    },
+    {
+      "id": "REC-086",
+      "name": "Corrective action",
+      "classification": "strong_inference",
+      "confidence": "high",
+      "purpose": "Preserve corrective action as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009", "WF-010"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012", "EVD-010"],
+      "responsible_roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "open",
+        "assigned",
+        "remediation_in_progress",
+        "evidence_submitted",
+        "verified",
+        "closed",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-102",
+        "REC-103",
+        "REC-085",
+        "REC-087",
+        "REC-101",
+        "REC-081"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-084", "DEC-094"],
+      "exception_ids": [
+        "EXC-053",
+        "EXC-054",
+        "EXC-055",
+        "EXC-056",
+        "EXC-061",
+        "EXC-062"
+      ]
+    },
+    {
+      "id": "REC-087",
+      "name": "Dispute",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve dispute as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-FINANCE",
+        "ROLE-CONTRACT-GROWER"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-086",
+        "REC-088",
+        "REC-085",
+        "REC-080",
+        "REC-081",
+        "REC-083"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-084"],
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
+    },
+    {
+      "id": "REC-088",
+      "name": "Delivery and settlement history",
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "purpose": "Preserve delivery and settlement history as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-009"],
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "responsible_roles": ["ROLE-GROWER-RELATIONS", "ROLE-FINANCE"],
+      "lifecycle": [
+        "initiated",
+        "recorded",
+        "matched",
+        "disputed",
+        "corrected",
+        "reconciled",
+        "settled"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-087",
+        "REC-086",
+        "REC-080",
+        "REC-081",
+        "REC-083",
+        "REC-084"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit."
+      ],
+      "decision_ids": ["DEC-084"],
+      "exception_ids": ["EXC-053", "EXC-054", "EXC-055", "EXC-056"]
+    },
+    {
+      "id": "REC-089",
+      "name": "Certification scope",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve certification scope as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CERTIFIER",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "complete",
+        "submitted",
+        "under_review",
+        "finding_open",
+        "corrected",
+        "accepted",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-090",
+        "REC-091",
+        "REC-095",
+        "REC-015",
+        "REC-093",
+        "REC-094"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-091"],
+      "exception_ids": ["EXC-057", "EXC-059"]
+    },
+    {
+      "id": "REC-090",
+      "name": "Requirement map",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve requirement map as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-CERTIFIER"],
+      "lifecycle": [
+        "proposed",
+        "mapped",
+        "active",
+        "disputed",
+        "corrected",
+        "superseded",
+        "historical"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-091",
+        "REC-089",
+        "REC-015",
+        "REC-093",
+        "REC-094",
+        "REC-095"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-091", "DEC-092"],
+      "exception_ids": ["EXC-057", "EXC-059", "EXC-060"]
+    },
+    {
+      "id": "REC-091",
+      "name": "Site management plan",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve site management plan as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-090",
+        "REC-092",
+        "REC-015",
+        "REC-093",
+        "REC-096",
+        "REC-100"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
+    },
+    {
+      "id": "REC-092",
+      "name": "Annual questionnaire",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve annual questionnaire as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "reviewed",
+        "approved",
+        "active",
+        "revised",
+        "superseded",
+        "archived",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-015",
+        "REC-091",
+        "REC-090",
+        "REC-093",
+        "REC-095",
+        "REC-101"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
+    },
+    {
+      "id": "REC-093",
+      "name": "Biosecurity register",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve biosecurity register as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-FOREMAN"],
+      "lifecycle": [
+        "draft",
+        "complete",
+        "submitted",
+        "under_review",
+        "finding_open",
+        "corrected",
+        "accepted",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-015",
+        "REC-094",
+        "REC-095",
+        "REC-091",
+        "REC-096",
+        "REC-100"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
+    },
+    {
+      "id": "REC-094",
+      "name": "Water and nitrogen totals",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve water and nitrogen totals as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-IRRIGATION-LEAD"
+      ],
+      "lifecycle": [
+        "draft",
+        "recorded",
+        "active",
+        "verified",
+        "corrected",
+        "superseded",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-093",
+        "REC-095",
+        "REC-015",
+        "REC-096",
+        "REC-090",
+        "REC-091"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
+    },
+    {
+      "id": "REC-095",
+      "name": "Training record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve training record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-FOREMAN"],
+      "lifecycle": [
+        "required",
+        "scheduled",
+        "completed",
+        "verified",
+        "expired",
+        "renewed",
+        "corrected"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-094",
+        "REC-096",
+        "REC-093",
+        "REC-097",
+        "REC-015",
+        "REC-090"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057", "EXC-058"]
+    },
+    {
+      "id": "REC-096",
+      "name": "Organic field history and buffer map",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve organic field history and buffer map as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "lifecycle": [
+        "proposed",
+        "mapped",
+        "active",
+        "disputed",
+        "corrected",
+        "superseded",
+        "historical"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-095",
+        "REC-097",
+        "REC-015",
+        "REC-099",
+        "REC-094",
+        "REC-091"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
+    },
+    {
+      "id": "REC-097",
+      "name": "Equipment-cleaning log",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve equipment-cleaning log as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-FOREMAN",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "required",
+        "scheduled",
+        "completed",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-096",
+        "REC-098",
+        "REC-099",
+        "REC-095",
+        "REC-091",
+        "REC-093"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057", "EXC-060"]
+    },
+    {
+      "id": "REC-098",
+      "name": "Clean-transport affidavit",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve clean-transport affidavit as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-CONTRACTOR",
+        "ROLE-TRANSPORTATION",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "requested",
+        "drafted",
+        "signed",
+        "submitted",
+        "verified",
+        "rejected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-097",
+        "REC-099",
+        "REC-096",
+        "REC-100",
+        "REC-095",
+        "REC-015"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057", "EXC-058", "EXC-060"]
+    },
+    {
+      "id": "REC-099",
+      "name": "Buffer-crop disposition",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve buffer-crop disposition as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "lifecycle": [
+        "draft",
+        "complete",
+        "submitted",
+        "under_review",
+        "finding_open",
+        "corrected",
+        "accepted",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-100",
+        "REC-098",
+        "REC-096",
+        "REC-097",
+        "REC-015",
+        "REC-101"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
+    },
+    {
+      "id": "REC-100",
+      "name": "Biodynamic preparation record",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve biodynamic preparation record as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VITICULTURIST",
+        "ROLE-PESTICIDE-HANDLER"
+      ],
+      "lifecycle": [
+        "planned",
+        "assigned",
+        "in_progress",
+        "partially_completed",
+        "completed",
+        "verified",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-099",
+        "REC-101",
+        "REC-091",
+        "REC-093",
+        "REC-096",
+        "REC-098"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092"],
+      "exception_ids": ["EXC-057"]
+    },
+    {
+      "id": "REC-101",
+      "name": "Audit evidence",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve audit evidence as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-AUDITOR"],
+      "lifecycle": [
+        "draft",
+        "complete",
+        "submitted",
+        "under_review",
+        "finding_open",
+        "corrected",
+        "accepted",
+        "archived"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-102",
+        "REC-100",
+        "REC-086",
+        "REC-103",
+        "REC-099",
+        "REC-015"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-092", "DEC-093", "DEC-094"],
+      "exception_ids": [
+        "EXC-057",
+        "EXC-058",
+        "EXC-059",
+        "EXC-060",
+        "EXC-061",
+        "EXC-062"
+      ]
+    },
+    {
+      "id": "REC-102",
+      "name": "Finding",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve finding as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": [
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "lifecycle": [
+        "open",
+        "acknowledged",
+        "corrective_action_assigned",
+        "evidence_submitted",
+        "verified",
+        "closed",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-101",
+        "REC-086",
+        "REC-103",
+        "REC-015",
+        "REC-096",
+        "REC-099"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-093", "DEC-094"],
+      "exception_ids": ["EXC-059", "EXC-061", "EXC-062"]
+    },
+    {
+      "id": "REC-103",
+      "name": "Certification decision",
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "purpose": "Preserve certification decision as an attributable operational record linked to stable block, organization, workflow, effective time, and source context where applicable.",
+      "workflow_ids": ["WF-010"],
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "responsible_roles": ["ROLE-CERTIFIER", "ROLE-COMPLIANCE-COORDINATOR"],
+      "lifecycle": [
+        "proposed",
+        "communicated",
+        "acknowledged",
+        "active",
+        "expired",
+        "corrected",
+        "superseded"
+      ],
+      "required_provenance": [
+        "stable record identifier",
+        "author or source organization",
+        "observed or effective time",
+        "captured time",
+        "source version",
+        "stable block or explicit non-block scope"
+      ],
+      "correction_policy": "A correction creates an attributable successor version with reason and downstream impact; it never erases the original value or source context.",
+      "related_records": [
+        "REC-086",
+        "REC-102",
+        "REC-101",
+        "REC-015",
+        "REC-096",
+        "REC-099"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists."
+      ],
+      "decision_ids": ["DEC-093", "DEC-094"],
+      "exception_ids": ["EXC-059", "EXC-061", "EXC-062"]
+    }
+  ]
+}

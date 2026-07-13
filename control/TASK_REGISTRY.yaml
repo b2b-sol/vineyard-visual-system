@@ -134,7 +134,7 @@ tasks:
   - id: FACT-003
     title: Establish CI and Pages scaffold
     phase: factory
-    status: in_progress
+    status: complete
     depends_on: [FACT-002]
     artifacts:
       [
@@ -154,10 +154,12 @@ tasks:
     owner: parent_agent
     branch: codex/main-provenance
     started_at: "2026-07-13T14:52:58-07:00"
+    commit: 3dcc6c59582bfe2da9ad3c36a00d734365678375
+    completed_at: "2026-07-13T15:50:00-07:00"
   - id: GOV-001
     title: Configure main ruleset and prove the merge workflow
     phase: governance
-    status: planned
+    status: in_progress
     depends_on: [FACT-003]
     artifacts: [validation/governance-audit.md]
     acceptance_criteria:
@@ -169,6 +171,8 @@ tasks:
     checks: [GitHub ruleset API, governance smoke PR]
     gate_ids: [G1, G12]
     owner: parent_agent
+    branch: codex/workflow-ontology
+    started_at: "2026-07-13T15:50:00-07:00"
   - id: SRC-001
     title: Normalize source evidence and public bibliography
     phase: workflow_model
@@ -220,6 +224,12 @@ tasks:
         workflow-model/records.json,
         workflow-model/decisions.json,
         workflow-model/exceptions.json,
+        workflow-model/overlays.json,
+        workflow-model/adjudication.md,
+        workflow-model/visuals,
+        validation/WORKFLOW_REVIEW.md,
+        scripts/refine-workflow-ontology.mjs,
+        scripts/generate-workflow-visuals.mjs,
       ]
     acceptance_criteria:
       [
@@ -233,7 +243,7 @@ tasks:
     checks: [npm run validate:workflow, workflow critic score]
     gate_ids: [G3]
     owner: workflow_adjudicator
-    branch: codex/factory-foundation
+    branch: codex/workflow-ontology
     started_at: "2026-07-13T15:30:00-07:00"
   - id: DATA-001
     title: Create seeded operation contracts and full-season data

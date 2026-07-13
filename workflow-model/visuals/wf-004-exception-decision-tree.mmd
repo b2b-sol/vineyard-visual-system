@@ -1,0 +1,95 @@
+%% visual_id: VIS-WF-004-EXCEPTION-TREE
+%% title: WF-004 exception and decision tree
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-004; workflow-model/exceptions.json#EXC-018,EXC-019,EXC-020,EXC-021,EXC-022,EXC-023; workflow-model/decisions.json#DEC-031,DEC-032,DEC-033; workflow-model/records.json#REC-027,REC-028,REC-029,REC-030,REC-031,REC-032,REC-033,REC-034
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart TD
+  ROOT["WF-004 · Crop estimation and forecast revision"]
+  TRIGGER["EXC-018 · Unrepresentative sample · The crop estimation and forecast revision workflow encounters: Unrepresentative sam…"]
+  SCOPE{"Are affected scope, safe partial results, and authority explicit?"}
+  HOLD["Block and escalate · ROLE-VITICULTURIST · Viticulturist"]
+  RETAIN["Retain unaffected and safely completed scope with attribution"]
+  ROOT --> TRIGGER
+  TRIGGER --> SCOPE
+  SCOPE -->|No| HOLD
+  SCOPE -->|Yes| RETAIN
+  RECOVERY_1["1 · Record and contain unrepresentative sample at the affected scope."]
+  RECOVERY_2["2 · Use DEC-031 authority to move from reviewed to revision_due; do not overwrite predecessor evidence."]
+  RECOVERY_3["3 · Notify only the roles and downstream records affected by the decision."]
+  HOLD --> RECOVERY_1
+  RETAIN --> RECOVERY_1
+  RECOVERY_1 --> RECOVERY_2
+  RECOVERY_2 --> RECOVERY_3
+  DECISION_1{"DEC-031 · Is the sample representative enough to publish a block estimate?"}
+  RECOVERY_3 -. accountable decision .-> DECISION_1
+  D1_OUTCOME_1["Calculate and review"]
+  DECISION_1 -->|Outcome 1| D1_OUTCOME_1
+  D1_OUTCOME_2["Resample"]
+  DECISION_1 -->|Outcome 2| D1_OUTCOME_2
+  D1_OUTCOME_3["Publish with explicit low confidence"]
+  DECISION_1 -->|Outcome 3| D1_OUTCOME_3
+  DECISION_2{"DEC-032 · Does the estimate require crop-load action or a planning change?"}
+  ROOT -. registered authority .-> DECISION_2
+  D2_OUTCOME_1["Keep crop and update plans"]
+  DECISION_2 -->|Outcome 1| D2_OUTCOME_1
+  D2_OUTCOME_2["Recommend crop adjustment"]
+  DECISION_2 -->|Outcome 2| D2_OUTCOME_2
+  D2_OUTCOME_3["Investigate variation before action"]
+  DECISION_2 -->|Outcome 3| D2_OUTCOME_3
+  DECISION_3{"DEC-033 · Does new evidence materially change the current forecast?"}
+  ROOT -. registered authority .-> DECISION_3
+  D3_OUTCOME_1["Publish a superseding revision"]
+  DECISION_3 -->|Outcome 1| D3_OUTCOME_1
+  D3_OUTCOME_2["Retain current forecast"]
+  DECISION_3 -->|Outcome 2| D3_OUTCOME_2
+  D3_OUTCOME_3["Flag an unresolved range"]
+  DECISION_3 -->|Outcome 3| D3_OUTCOME_3
+  EVIDENCE["Closure evidence · attributed EXC-018 observation and affected scope · reviewed to revision_due transition with decisio…"]
+  RECONCILED{"Are recovery, disposition, and downstream records reconciled?"}
+  CORRECT["Correction required · preserve prior state and reason"]
+  CLOSE["Recover as Revision Due"]
+  D1_OUTCOME_1 --> EVIDENCE
+  D1_OUTCOME_2 --> EVIDENCE
+  D1_OUTCOME_3 --> EVIDENCE
+  D2_OUTCOME_1 --> EVIDENCE
+  D2_OUTCOME_2 --> EVIDENCE
+  D2_OUTCOME_3 --> EVIDENCE
+  D3_OUTCOME_1 --> EVIDENCE
+  D3_OUTCOME_2 --> EVIDENCE
+  D3_OUTCOME_3 --> EVIDENCE
+  EVIDENCE --> RECONCILED
+  RECONCILED -->|No| CORRECT
+  CORRECT --> EVIDENCE
+  RECONCILED -->|Yes| CLOSE
+  EXCEPTION_2["EXC-019 · Block identity or vine count mismatch · The crop estimation and forecast revision workflow encounters: Block…"]
+  EXCEPTION_2_RECOVERY["Calculated to Revision Due · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_2
+  EXCEPTION_2 --> EXCEPTION_2_RECOVERY
+  EXCEPTION_2_RECOVERY --> EVIDENCE
+  EXCEPTION_2 -. accountable decision .-> DECISION_1
+  EXCEPTION_3["EXC-020 · Visible within-block variation · The crop estimation and forecast revision workflow encounters: Visible withi…"]
+  EXCEPTION_3_RECOVERY["Reviewed to Revision Due · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_3
+  EXCEPTION_3 --> EXCEPTION_3_RECOVERY
+  EXCEPTION_3_RECOVERY --> EVIDENCE
+  EXCEPTION_3 -. accountable decision .-> DECISION_1
+  EXCEPTION_3 -. accountable decision .-> DECISION_2
+  EXCEPTION_4["EXC-021 · Rapid weather or crop-condition change · The crop estimation and forecast revision workflow encounters: Rapid…"]
+  EXCEPTION_4_RECOVERY["Published to Revision Due · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_4
+  EXCEPTION_4 --> EXCEPTION_4_RECOVERY
+  EXCEPTION_4_RECOVERY --> EVIDENCE
+  EXCEPTION_4 -. accountable decision .-> DECISION_3
+  EXCEPTION_5["EXC-022 · Winery and grower estimates disagree · The crop estimation and forecast revision workflow encounters: Winery…"]
+  EXCEPTION_5_RECOVERY["Reviewed to Revision Due · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_5
+  EXCEPTION_5 --> EXCEPTION_5_RECOVERY
+  EXCEPTION_5_RECOVERY --> EVIDENCE
+  EXCEPTION_5 -. accountable decision .-> DECISION_2
+  EXCEPTION_5 -. accountable decision .-> DECISION_3
+  EXCEPTION_6["EXC-023 · Actual harvest diverges materially · The crop estimation and forecast revision workflow encounters: Actual ha…"]
+  EXCEPTION_6_RECOVERY["Actualized to Revision Due · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_6
+  EXCEPTION_6 --> EXCEPTION_6_RECOVERY
+  EXCEPTION_6_RECOVERY --> EVIDENCE
+  EXCEPTION_6 -. accountable decision .-> DECISION_3

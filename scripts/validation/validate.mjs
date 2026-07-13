@@ -139,9 +139,939 @@ function validateRecord(ajv, schemaFile, record, label) {
   );
 }
 
+function assertSameValues(actual, expected, label) {
+  const actualValues = [...actual].sort();
+  const expectedValues = [...expected].sort();
+  assert(
+    deepEqual(actualValues, expectedValues),
+    `${label}: expected ${expectedValues.join(", ")}; received ${actualValues.join(", ")}`,
+  );
+}
+
+function assertProperSubset(values, universe, label) {
+  const valueSet = new Set(values);
+  for (const value of valueSet) {
+    assert(
+      universe.has(value),
+      `${label}: ${value} is outside the workflow family`,
+    );
+  }
+  assert(
+    valueSet.size < universe.size,
+    `${label}: must be a domain-specific subset, not the entire workflow family`,
+  );
+}
+
+function assertBidirectional(
+  leftItems,
+  leftField,
+  rightIndex,
+  rightField,
+  label,
+) {
+  for (const left of leftItems) {
+    for (const rightId of left[leftField]) {
+      const right = rightIndex.get(rightId);
+      assert(Boolean(right), `${label}: ${rightId} does not resolve`);
+      assert(
+        right[rightField].includes(left.id),
+        `${label}: ${left.id} -> ${rightId} is missing reciprocal ${rightField}`,
+      );
+    }
+  }
+}
+
+async function validateCanonicalOntology() {
+  const registryNames = [
+    "workflows",
+    "roles",
+    "records",
+    "decisions",
+    "exceptions",
+    "overlays",
+  ];
+  const documents = Object.fromEntries(
+    await Promise.all(
+      registryNames.map(async (name) => [
+        name,
+        await readJson(`workflow-model/${name}.json`),
+      ]),
+    ),
+  );
+  const collections = Object.fromEntries(
+    registryNames.map((name) => [name, documents[name][name]]),
+  );
+  const indexes = Object.fromEntries(
+    registryNames.map((name) => [name, byId(collections[name], name)]),
+  );
+  const evidence = await readJson("source/evidence.json");
+  const evidenceIndex = byId(evidence.claims, "ontology evidence");
+  const expectedEvidenceIds = Array.from(
+    { length: 12 },
+    (_, index) => `EVD-${String(index + 1).padStart(3, "0")}`,
+  );
+  const expectedWorkflowIds = Array.from(
+    { length: 10 },
+    (_, index) => `WF-${String(index + 1).padStart(3, "0")}`,
+  );
+  const expectedOverlayCoverage = new Map([
+    ["OVL-001", expectedWorkflowIds],
+    ["OVL-002", expectedWorkflowIds],
+    ["OVL-003", expectedWorkflowIds],
+    ["OVL-004", expectedWorkflowIds],
+    ["OVL-005", expectedWorkflowIds],
+    [
+      "OVL-006",
+      expectedWorkflowIds
+        .slice(0, 9)
+        .filter((workflowId) => workflowId !== "WF-004"),
+    ],
+    ["OVL-007", expectedWorkflowIds],
+    ["OVL-008", ["WF-004", "WF-005", "WF-006", "WF-009", "WF-010"]],
+    [
+      "OVL-009",
+      [
+        "WF-001",
+        "WF-002",
+        "WF-003",
+        "WF-006",
+        "WF-007",
+        "WF-008",
+        "WF-009",
+        "WF-010",
+      ],
+    ],
+  ]);
+
+  assertSameValues(
+    evidenceIndex.keys(),
+    expectedEvidenceIds,
+    "canonical evidence IDs",
+  );
+  assertSameValues(
+    indexes.workflows.keys(),
+    expectedWorkflowIds,
+    "canonical workflow families",
+  );
+  assertSameValues(
+    indexes.overlays.keys(),
+    expectedOverlayCoverage.keys(),
+    "required ontology overlays",
+  );
+  assertSameValues(
+    Object.keys(documents.workflows),
+    ["schema_version", "source_document", "adjudication", "workflows"],
+    "workflow-model/workflows.json top-level keys",
+  );
+  for (const name of registryNames.filter((name) => name !== "workflows")) {
+    assertSameValues(
+      Object.keys(documents[name]),
+      ["schema_version", name],
+      `workflow-model/${name}.json top-level keys`,
+    );
+  }
+  assert(
+    documents.workflows.source_document ===
+      "source/Vineyard-Workflow-Discovery-report.md",
+    "workflow-model/workflows.json: source_document must identify the canonical discovery report",
+  );
+  assert(
+    documents.workflows.adjudication === "workflow-model/adjudication.md",
+    "workflow-model/workflows.json: adjudication must identify the canonical adjudication record",
+  );
+
+  const source = await readText(documents.workflows.source_document);
+  const usedEvidenceIds = new Set();
+  for (const name of registryNames) {
+    for (const item of collections[name]) {
+      for (const evidenceId of item.evidence_ids) {
+        usedEvidenceIds.add(evidenceId);
+        assert(
+          evidenceIndex.has(evidenceId),
+          `${name}/${item.id}: evidence ${evidenceId} does not resolve`,
+        );
+      }
+      for (const anchor of item.source_anchors) {
+        assert(
+          source.includes(anchor),
+          `${name}/${item.id}: source anchor is not an exact discovery-report substring (${anchor})`,
+        );
+      }
+    }
+  }
+  assertSameValues(
+    usedEvidenceIds,
+    expectedEvidenceIds,
+    "canonical ontology evidence coverage",
+  );
+
+  const recordNameIndex = new Map();
+  for (const record of collections.records) {
+    assert(
+      !recordNameIndex.has(record.name),
+      `records: duplicate canonical record name ${record.name}`,
+    );
+    recordNameIndex.set(record.name, record);
+  }
+
+  for (const role of collections.roles) {
+    assertReferenceList(
+      role.workflow_ids,
+      indexes.workflows,
+      `${role.id}.workflow_ids`,
+    );
+    assertReferenceList(
+      role.decision_ids,
+      indexes.decisions,
+      `${role.id}.decision_ids`,
+    );
+    assertReferenceList(
+      role.record_ids,
+      indexes.records,
+      `${role.id}.record_ids`,
+    );
+    assertReferenceList(
+      role.exception_ids,
+      indexes.exceptions,
+      `${role.id}.exception_ids`,
+    );
+  }
+
+  const lifecycleEntryStates = new Set([
+    "draft",
+    "drafted",
+    "pending",
+    "planned",
+    "open",
+    "initiated",
+    "scheduled",
+    "proposed",
+    "observed",
+    "required",
+    "requested",
+  ]);
+  const lifecycleDispositionStates = new Set([
+    "verified",
+    "validated",
+    "completed",
+    "complete",
+    "accepted",
+    "settled",
+    "closed",
+    "superseded",
+    "archived",
+    "rejected",
+    "expired",
+    "historical",
+    "corrected",
+  ]);
+  const lifecycleSignatures = new Set();
+  for (const record of collections.records) {
+    assertReferenceList(
+      record.workflow_ids,
+      indexes.workflows,
+      `${record.id}.workflow_ids`,
+    );
+    assertReferenceList(
+      record.responsible_roles,
+      indexes.roles,
+      `${record.id}.responsible_roles`,
+    );
+    assertReferenceList(
+      record.decision_ids,
+      indexes.decisions,
+      `${record.id}.decision_ids`,
+    );
+    assertReferenceList(
+      record.exception_ids,
+      indexes.exceptions,
+      `${record.id}.exception_ids`,
+    );
+    lifecycleSignatures.add(record.lifecycle.join(">"));
+    assert(
+      lifecycleEntryStates.has(record.lifecycle[0]),
+      `${record.id}: lifecycle must start with an appropriate creation, observation, request, or open state`,
+    );
+    assert(
+      record.lifecycle.some((stateName) =>
+        lifecycleDispositionStates.has(stateName),
+      ),
+      `${record.id}: lifecycle has no verification or disposition state`,
+    );
+    for (const stateName of ["corrected", "superseded", "archived"]) {
+      const stateIndex = record.lifecycle.indexOf(stateName);
+      if (stateIndex >= 0)
+        assert(
+          stateIndex > 0,
+          `${record.id}: ${stateName} cannot precede the record's captured history`,
+        );
+    }
+    assertReferenceList(
+      record.related_records,
+      indexes.records,
+      `${record.id}.related_records`,
+    );
+    assert(
+      !record.related_records.includes(record.id),
+      `${record.id}: related_records cannot contain itself`,
+    );
+  }
+  assert(
+    lifecycleSignatures.size >= 8,
+    `Canonical records expose only ${lifecycleSignatures.size} distinct lifecycle signatures; at least 8 meaningful lifecycles are required`,
+  );
+
+  for (const decision of collections.decisions) {
+    const workflow = indexes.workflows.get(decision.workflow_id);
+    assert(Boolean(workflow), `${decision.id}: workflow does not resolve`);
+    assert(
+      indexes.roles.has(decision.owner),
+      `${decision.id}: owner ${decision.owner} does not resolve`,
+    );
+    assertReferenceList(
+      decision.role_ids,
+      indexes.roles,
+      `${decision.id}.role_ids`,
+    );
+    assert(
+      decision.role_ids.includes(decision.owner),
+      `${decision.id}: role_ids must include the accountable owner`,
+    );
+    assertReferenceList(
+      decision.record_ids,
+      indexes.records,
+      `${decision.id}.record_ids`,
+    );
+    assertReferenceList(
+      decision.exception_ids,
+      indexes.exceptions,
+      `${decision.id}.exception_ids`,
+    );
+    const consultedRecordIds = new Set();
+    for (const recordName of decision.records_consulted) {
+      assert(
+        recordNameIndex.has(recordName),
+        `${decision.id}: consulted record ${recordName} does not resolve`,
+      );
+      consultedRecordIds.add(recordNameIndex.get(recordName).id);
+    }
+    const producedRecordIds = new Set();
+    for (const recordName of decision.records_produced) {
+      assert(
+        recordNameIndex.has(recordName),
+        `${decision.id}: produced record ${recordName} does not resolve`,
+      );
+      producedRecordIds.add(recordNameIndex.get(recordName).id);
+    }
+    const workflowRecordIds = new Set(
+      collections.records
+        .filter((record) => record.workflow_ids.includes(decision.workflow_id))
+        .map((record) => record.id),
+    );
+    const workflowExceptionIds = new Set(
+      collections.exceptions
+        .filter((exception) =>
+          exception.workflow_ids.includes(decision.workflow_id),
+        )
+        .map((exception) => exception.id),
+    );
+    for (const recordId of decision.record_ids) {
+      assert(
+        consultedRecordIds.has(recordId) || producedRecordIds.has(recordId),
+        `${decision.id}: record ${recordId} is neither consulted nor produced`,
+      );
+      if (!workflowRecordIds.has(recordId)) {
+        assert(
+          consultedRecordIds.has(recordId) && !producedRecordIds.has(recordId),
+          `${decision.id}: cross-workflow record ${recordId} must be read-only`,
+        );
+      }
+    }
+    for (const recordId of producedRecordIds) {
+      assert(
+        workflowRecordIds.has(recordId),
+        `${decision.id}: produced record ${recordId} is outside the workflow family`,
+      );
+    }
+    const localDecisionRecordIds = decision.record_ids.filter((recordId) =>
+      workflowRecordIds.has(recordId),
+    );
+    if (workflowRecordIds.size > 1) {
+      assertProperSubset(
+        localDecisionRecordIds,
+        workflowRecordIds,
+        `${decision.id}.record_ids`,
+      );
+    }
+    if (workflowExceptionIds.size > 1) {
+      assertProperSubset(
+        decision.exception_ids,
+        workflowExceptionIds,
+        `${decision.id}.exception_ids`,
+      );
+    }
+  }
+
+  for (const exception of collections.exceptions) {
+    assert(
+      exception.workflow_ids.length === 1,
+      `${exception.id}: exception must have one domain-specific workflow family`,
+    );
+    const workflow = indexes.workflows.get(exception.workflow_ids[0]);
+    assert(Boolean(workflow), `${exception.id}: workflow does not resolve`);
+    assert(
+      indexes.roles.has(exception.accountable_owner),
+      `${exception.id}: accountable owner does not resolve`,
+    );
+    assertReferenceList(
+      exception.escalation_roles,
+      indexes.roles,
+      `${exception.id}.escalation_roles`,
+    );
+    assertReferenceList(
+      exception.role_ids,
+      indexes.roles,
+      `${exception.id}.role_ids`,
+    );
+    assert(
+      exception.role_ids.includes(exception.accountable_owner),
+      `${exception.id}: role_ids must include the accountable owner`,
+    );
+    for (const roleId of exception.escalation_roles) {
+      assert(
+        exception.role_ids.includes(roleId),
+        `${exception.id}: role_ids must include escalation role ${roleId}`,
+      );
+    }
+    assertReferenceList(
+      exception.decisions,
+      indexes.decisions,
+      `${exception.id}.decisions`,
+    );
+    assertReferenceList(
+      exception.record_ids,
+      indexes.records,
+      `${exception.id}.record_ids`,
+    );
+    for (const stateName of [
+      ...exception.interrupted_states,
+      ...exception.recovery_states,
+    ]) {
+      assert(
+        workflow.states.includes(stateName),
+        `${exception.id}: state ${stateName} is outside ${workflow.id}`,
+      );
+    }
+    const requiredExceptionRecordIds = new Set();
+    for (const recordName of exception.required_records) {
+      assert(
+        recordNameIndex.has(recordName),
+        `${exception.id}: required record ${recordName} does not resolve`,
+      );
+      requiredExceptionRecordIds.add(recordNameIndex.get(recordName).id);
+    }
+    const workflowDecisionIds = new Set(
+      collections.decisions
+        .filter((decision) => decision.workflow_id === workflow.id)
+        .map((decision) => decision.id),
+    );
+    const workflowRecordIds = new Set(
+      collections.records
+        .filter((record) => record.workflow_ids.includes(workflow.id))
+        .map((record) => record.id),
+    );
+    if (workflowDecisionIds.size > 1) {
+      assertProperSubset(
+        exception.decisions,
+        workflowDecisionIds,
+        `${exception.id}.decisions`,
+      );
+    }
+    for (const recordId of exception.record_ids) {
+      assert(
+        requiredExceptionRecordIds.has(recordId),
+        `${exception.id}: linked record ${recordId} is not required by the recovery contract`,
+      );
+    }
+    const localExceptionRecordIds = exception.record_ids.filter((recordId) =>
+      workflowRecordIds.has(recordId),
+    );
+    if (workflowRecordIds.size > 1) {
+      assertProperSubset(
+        localExceptionRecordIds,
+        workflowRecordIds,
+        `${exception.id}.record_ids`,
+      );
+    }
+  }
+
+  for (const overlay of collections.overlays) {
+    assertSameValues(
+      overlay.applies_to,
+      expectedOverlayCoverage.get(overlay.id),
+      `${overlay.id}.applies_to`,
+    );
+    assertReferenceList(
+      overlay.role_ids,
+      indexes.roles,
+      `${overlay.id}.role_ids`,
+    );
+    assertReferenceList(
+      overlay.decision_ids,
+      indexes.decisions,
+      `${overlay.id}.decision_ids`,
+    );
+    assertReferenceList(
+      overlay.record_ids,
+      indexes.records,
+      `${overlay.id}.record_ids`,
+    );
+    assertReferenceList(
+      overlay.required_records,
+      indexes.records,
+      `${overlay.id}.required_records`,
+    );
+    assertSameValues(
+      overlay.required_records,
+      overlay.record_ids,
+      `${overlay.id}: required_records and record_ids must describe the same canonical records`,
+    );
+    assertReferenceList(
+      overlay.exception_ids,
+      indexes.exceptions,
+      `${overlay.id}.exception_ids`,
+    );
+  }
+
+  assertBidirectional(
+    collections.roles,
+    "workflow_ids",
+    indexes.workflows,
+    "roles",
+    "role/workflow relation",
+  );
+  assertBidirectional(
+    collections.workflows,
+    "roles",
+    indexes.roles,
+    "workflow_ids",
+    "workflow/role relation",
+  );
+  assertBidirectional(
+    collections.roles,
+    "decision_ids",
+    indexes.decisions,
+    "role_ids",
+    "role/decision relation",
+  );
+  assertBidirectional(
+    collections.decisions,
+    "role_ids",
+    indexes.roles,
+    "decision_ids",
+    "decision/role relation",
+  );
+  assertBidirectional(
+    collections.roles,
+    "record_ids",
+    indexes.records,
+    "responsible_roles",
+    "role/record relation",
+  );
+  assertBidirectional(
+    collections.records,
+    "responsible_roles",
+    indexes.roles,
+    "record_ids",
+    "record/role relation",
+  );
+  assertBidirectional(
+    collections.roles,
+    "exception_ids",
+    indexes.exceptions,
+    "role_ids",
+    "role/exception relation",
+  );
+  assertBidirectional(
+    collections.exceptions,
+    "role_ids",
+    indexes.roles,
+    "exception_ids",
+    "exception/role relation",
+  );
+  assertBidirectional(
+    collections.records,
+    "decision_ids",
+    indexes.decisions,
+    "record_ids",
+    "record/decision relation",
+  );
+  assertBidirectional(
+    collections.decisions,
+    "record_ids",
+    indexes.records,
+    "decision_ids",
+    "decision/record relation",
+  );
+  assertBidirectional(
+    collections.records,
+    "exception_ids",
+    indexes.exceptions,
+    "record_ids",
+    "record/exception relation",
+  );
+  assertBidirectional(
+    collections.exceptions,
+    "record_ids",
+    indexes.records,
+    "exception_ids",
+    "exception/record relation",
+  );
+  assertBidirectional(
+    collections.decisions,
+    "exception_ids",
+    indexes.exceptions,
+    "decisions",
+    "decision/exception relation",
+  );
+  assertBidirectional(
+    collections.exceptions,
+    "decisions",
+    indexes.decisions,
+    "exception_ids",
+    "exception/decision relation",
+  );
+
+  for (const workflow of collections.workflows) {
+    const stateSet = new Set(workflow.states);
+    const transitionIndex = byId(
+      workflow.transitions,
+      `${workflow.id} transitions`,
+    );
+    const canonicalDecisions = collections.decisions.filter(
+      (decision) => decision.workflow_id === workflow.id,
+    );
+    const canonicalExceptions = collections.exceptions.filter((exception) =>
+      exception.workflow_ids.includes(workflow.id),
+    );
+    const canonicalDecisionIndex = new Map(
+      canonicalDecisions.map((decision) => [decision.id, decision]),
+    );
+    const canonicalExceptionIndex = new Map(
+      canonicalExceptions.map((exception) => [exception.id, exception]),
+    );
+    const workflowRecordIds = new Set(
+      collections.records
+        .filter((record) => record.workflow_ids.includes(workflow.id))
+        .map((record) => record.id),
+    );
+
+    assertUnique(
+      workflow.transitions.map((transition) =>
+        JSON.stringify([
+          transition.from,
+          transition.to,
+          transition.kind,
+          [...transition.decision_ids].sort(),
+          [...transition.exception_ids].sort(),
+        ]),
+      ),
+      `${workflow.id} semantic transition edges`,
+    );
+    assertReferenceList(
+      workflow.terminal_states,
+      new Map(workflow.states.map((stateName) => [stateName, true])),
+      `${workflow.id}.terminal_states`,
+    );
+
+    const adjacency = new Map(
+      workflow.states.map((stateName) => [stateName, new Set()]),
+    );
+    const reverseAdjacency = new Map(
+      workflow.states.map((stateName) => [stateName, new Set()]),
+    );
+    const entryStates = new Set();
+    for (const transition of transitionIndex.values()) {
+      assert(
+        transition.id.startsWith(`TRN-${workflow.id}-`),
+        `${transition.id}: transition ID must be namespaced to ${workflow.id}`,
+      );
+      assert(
+        stateSet.has(transition.to),
+        `${transition.id}: destination ${transition.to} is outside ${workflow.id}`,
+      );
+      if (transition.from === null) {
+        entryStates.add(transition.to);
+      } else {
+        assert(
+          stateSet.has(transition.from),
+          `${transition.id}: source ${transition.from} is outside ${workflow.id}`,
+        );
+        adjacency.get(transition.from).add(transition.to);
+        reverseAdjacency.get(transition.to).add(transition.from);
+      }
+      assert(
+        workflow.roles.includes(transition.owner),
+        `${transition.id}: owner ${transition.owner} is outside ${workflow.id}`,
+      );
+      assertReferenceList(
+        transition.record_reads,
+        indexes.records,
+        `${transition.id}.record_reads`,
+      );
+      assertReferenceList(
+        transition.record_writes,
+        indexes.records,
+        `${transition.id}.record_writes`,
+      );
+      for (const recordId of transition.record_writes) {
+        assert(
+          workflowRecordIds.has(recordId),
+          `${transition.id}: write ${recordId} is outside ${workflow.id}; cross-workflow access is read-only`,
+        );
+      }
+      for (const evidenceId of transition.evidence_ids) {
+        assert(
+          evidenceIndex.has(evidenceId),
+          `${transition.id}: evidence ${evidenceId} does not resolve`,
+        );
+        assert(
+          workflow.evidence_ids.includes(evidenceId),
+          `${transition.id}: evidence ${evidenceId} is outside ${workflow.id}`,
+        );
+      }
+      for (const decisionId of transition.decision_ids) {
+        assert(
+          canonicalDecisionIndex.has(decisionId),
+          `${transition.id}: decision ${decisionId} is outside ${workflow.id}`,
+        );
+      }
+      for (const exceptionId of transition.exception_ids) {
+        assert(
+          canonicalExceptionIndex.has(exceptionId),
+          `${transition.id}: exception ${exceptionId} is outside ${workflow.id}`,
+        );
+      }
+      if (transition.decision_outcome !== undefined) {
+        assert(
+          transition.decision_ids.some((decisionId) =>
+            canonicalDecisionIndex
+              .get(decisionId)
+              .outcomes.includes(transition.decision_outcome),
+          ),
+          `${transition.id}: decision_outcome is not declared by a referenced decision`,
+        );
+      }
+    }
+    assert(entryStates.size > 0, `${workflow.id}: no entry transition exists`);
+
+    const reachable = new Set(entryStates);
+    const forwardQueue = [...entryStates];
+    while (forwardQueue.length > 0) {
+      const current = forwardQueue.shift();
+      for (const next of adjacency.get(current)) {
+        if (!reachable.has(next)) {
+          reachable.add(next);
+          forwardQueue.push(next);
+        }
+      }
+    }
+    assertSameValues(reachable, stateSet, `${workflow.id} reachable states`);
+
+    const canReachDisposition = new Set(workflow.terminal_states);
+    const reverseQueue = [...workflow.terminal_states];
+    while (reverseQueue.length > 0) {
+      const current = reverseQueue.shift();
+      for (const previous of reverseAdjacency.get(current)) {
+        if (!canReachDisposition.has(previous)) {
+          canReachDisposition.add(previous);
+          reverseQueue.push(previous);
+        }
+      }
+    }
+    assertSameValues(
+      canReachDisposition,
+      stateSet,
+      `${workflow.id} states with a path to a terminal disposition`,
+    );
+
+    workflow.steps.forEach((step, index) => {
+      assert(
+        step.order === index + 1,
+        `${workflow.id}: primary step orders must be contiguous from 1`,
+      );
+      if (step.state_from !== null) {
+        assert(
+          stateSet.has(step.state_from),
+          `${workflow.id} step ${step.order}: source state is undeclared`,
+        );
+      }
+      assert(
+        stateSet.has(step.state_to),
+        `${workflow.id} step ${step.order}: destination state is undeclared`,
+      );
+      if (index > 0) {
+        assert(
+          step.state_from === workflow.steps[index - 1].state_to,
+          `${workflow.id} step ${step.order}: primary chain is discontinuous`,
+        );
+      }
+      const matchingTransitions = workflow.transitions.filter(
+        (transition) =>
+          transition.from === step.state_from &&
+          transition.to === step.state_to &&
+          transition.kind === step.stage &&
+          transition.owner === step.owner &&
+          deepEqual(
+            [...transition.decision_ids].sort(),
+            [...(step.decision_ids ?? [])].sort(),
+          ) &&
+          transition.exception_ids.length === 0,
+      );
+      assert(
+        matchingTransitions.length === 1,
+        `${workflow.id} step ${step.order}: expected one exact canonical transition`,
+      );
+    });
+
+    assertSameValues(
+      workflow.decisions.map((decision) => decision.id),
+      canonicalDecisionIndex.keys(),
+      `${workflow.id} canonical decisions`,
+    );
+    for (const nestedDecision of workflow.decisions) {
+      const canonicalDecision = canonicalDecisionIndex.get(nestedDecision.id);
+      assert(
+        deepEqual(nestedDecision, {
+          id: canonicalDecision.id,
+          question: canonicalDecision.question,
+          owner: canonicalDecision.owner,
+          outcomes: canonicalDecision.outcomes,
+        }),
+        `${workflow.id}: embedded decision ${nestedDecision.id} differs from the canonical registry`,
+      );
+    }
+    for (const decision of canonicalDecisions) {
+      const matchingTransitions = workflow.transitions.filter((transition) =>
+        transition.decision_ids.includes(decision.id),
+      );
+      assert(
+        matchingTransitions.length > 0,
+        `${decision.id}: no explicit ${workflow.id} transition references the decision`,
+      );
+      for (const context of decision.transition_context) {
+        const match = context.match(/^(.+?) -> ([a-z][a-z0-9_]*)$/u);
+        if (match) {
+          const from = match[1] === "entry" ? null : match[1];
+          assert(
+            matchingTransitions.some(
+              (transition) =>
+                transition.from === from && transition.to === match[2],
+            ),
+            `${decision.id}: transition_context ${context} has no explicit edge`,
+          );
+        } else {
+          assert(
+            context === "Exception or recovery branch; see exception registry.",
+            `${decision.id}: unsupported transition_context ${context}`,
+          );
+          assert(
+            matchingTransitions.some((transition) =>
+              ["exception", "recovery"].includes(transition.kind),
+            ),
+            `${decision.id}: exception context has no exception or recovery transition`,
+          );
+        }
+      }
+    }
+
+    const exceptionRelationshipSignatures = [];
+    for (const exception of canonicalExceptions) {
+      const matchingTransitions = workflow.transitions.filter((transition) =>
+        transition.exception_ids.includes(exception.id),
+      );
+      assert(
+        matchingTransitions.length > 0,
+        `${exception.id}: no explicit ${workflow.id} transition references the exception`,
+      );
+      for (const interruptedState of exception.interrupted_states) {
+        assert(
+          matchingTransitions.some(
+            (transition) => transition.from === interruptedState,
+          ),
+          `${exception.id}: interrupted state ${interruptedState} has no explicit exception edge`,
+        );
+      }
+      for (const recoveryState of exception.recovery_states) {
+        assert(
+          matchingTransitions.some(
+            (transition) => transition.to === recoveryState,
+          ),
+          `${exception.id}: recovery state ${recoveryState} has no explicit recovery edge`,
+        );
+      }
+      exceptionRelationshipSignatures.push(
+        JSON.stringify([
+          [...exception.interrupted_states].sort(),
+          [...exception.recovery_states].sort(),
+          [...exception.decisions].sort(),
+          [...exception.role_ids].sort(),
+          [...exception.record_ids].sort(),
+        ]),
+      );
+    }
+    assertUnique(
+      exceptionRelationshipSignatures,
+      `${workflow.id} exception relationship signatures`,
+    );
+
+    for (const recordName of workflow.records) {
+      const record = recordNameIndex.get(recordName);
+      assert(
+        record?.workflow_ids.includes(workflow.id),
+        `${workflow.id}: record ${recordName} does not resolve back to the workflow`,
+      );
+    }
+    for (const record of collections.records.filter((candidate) =>
+      candidate.workflow_ids.includes(workflow.id),
+    )) {
+      assert(
+        workflow.records.includes(record.name),
+        `${record.id}: ${workflow.id} is missing record ${record.name}`,
+      );
+    }
+    for (const exceptionName of workflow.exceptions) {
+      assert(
+        canonicalExceptions.some(
+          (exception) => exception.name === exceptionName,
+        ),
+        `${workflow.id}: exception ${exceptionName} lacks a canonical record`,
+      );
+    }
+    for (const exception of canonicalExceptions) {
+      assert(
+        workflow.exceptions.includes(exception.name),
+        `${exception.id}: ${workflow.id} is missing exception ${exception.name}`,
+      );
+    }
+  }
+
+  return `${collections.workflows.length} workflows, ${collections.roles.length} roles, ${collections.records.length} records, ${collections.decisions.length} decisions, ${collections.exceptions.length} exceptions, and ${collections.overlays.length} overlays with explicit reachable state graphs`;
+}
+
 async function validateSchemas() {
   const ajv = await createSchemaValidator();
   const registries = [
+    [
+      "workflow-model/workflows.json",
+      "workflows",
+      "canonical-workflow.schema.json",
+    ],
+    ["workflow-model/roles.json", "roles", "role.schema.json"],
+    ["workflow-model/records.json", "records", "record.schema.json"],
+    ["workflow-model/decisions.json", "decisions", "decision.schema.json"],
+    ["workflow-model/exceptions.json", "exceptions", "exception.schema.json"],
+    ["workflow-model/overlays.json", "overlays", "overlay.schema.json"],
     ["workflow-model/walking-slice.json", "workflows", "workflow.schema.json"],
     ["scenarios/walking-slice.json", "scenarios", "scenario.schema.json"],
     ["data/walking-slice.json", "fixtures", "fixture.schema.json"],
@@ -219,7 +1149,9 @@ async function validateSchemas() {
     "control/DOD_MATRIX.yaml",
   );
 
-  return `compiled ${state.schemas.size} schemas and validated ${registries.length + 6} registries`;
+  const ontologySummary = await validateCanonicalOntology();
+
+  return `compiled ${state.schemas.size} schemas and validated ${registries.length + 6} registries; ${ontologySummary}`;
 }
 
 async function validateEvidence() {
@@ -387,7 +1319,7 @@ async function validateTrace() {
   await Promise.all(nodeDocument.nodes.map(assertNodeLocator));
 
   const registryDefinitions = [
-    ["workflow", "workflow-model/walking-slice.json", "workflows"],
+    ["workflow", "workflow-model/workflows.json", "workflows"],
     ["scenario", "scenarios/walking-slice.json", "scenarios"],
     ["fixture", "data/walking-slice.json", "fixtures"],
     ["screen", "screens/walking-slice.json", "screens"],
@@ -469,13 +1401,20 @@ async function validateTrace() {
     outgoing.get(edge.from).push(edge.to);
   }
 
+  const dod = await readYaml("control/DOD_MATRIX.yaml");
+  const productTraceRequired =
+    dod.criteria.find((criterion) => criterion.id === "G5")?.status ===
+    "passed";
   for (const node of nodeDocument.nodes) {
     if (node.type !== "evidence")
       assert(
         incoming.get(node.id) > 0,
         `${node.id}: orphan node has no incoming trace edge`,
       );
-    if (node.type !== "construction_packet")
+    if (
+      node.type !== "construction_packet" &&
+      (node.type !== "workflow" || productTraceRequired)
+    )
       assert(
         outgoing.get(node.id).length > 0,
         `${node.id}: orphan node has no outgoing trace edge`,
@@ -504,11 +1443,19 @@ async function validateTrace() {
   const evidenceNodes = nodeDocument.nodes.filter(
     (node) => node.type === "evidence",
   );
-  for (const evidence of evidenceNodes)
-    assert(
-      hasCompleteChain(evidence.id, 0, new Set()),
-      `${evidence.id}: no complete evidence-to-packet chain`,
-    );
+  const completeEvidenceChains = evidenceNodes.filter((evidence) =>
+    hasCompleteChain(evidence.id, 0, new Set()),
+  );
+  assert(
+    completeEvidenceChains.length > 0,
+    "Trace graph must retain at least one complete evidence-to-packet walking slice",
+  );
+  if (productTraceRequired)
+    for (const evidence of evidenceNodes)
+      assert(
+        hasCompleteChain(evidence.id, 0, new Set()),
+        `${evidence.id}: no complete evidence-to-packet chain`,
+      );
 
   const evidenceIndex = new Map(
     evidenceNodes.map((evidence) => [evidence.id, evidence]),
@@ -554,7 +1501,7 @@ async function validateTrace() {
     );
     const supportedTransitions = new Set(
       scenario.workflow_ids.flatMap((workflowId) =>
-        workflows.get(workflowId).steps.map(transitionKey),
+        workflows.get(workflowId).transitions.map(transitionKey),
       ),
     );
     for (const transition of scenario.expected_transitions)
@@ -617,7 +1564,7 @@ async function validateTrace() {
     );
     const supportedTransitions = new Set(
       screen.workflow_ids.flatMap((workflowId) =>
-        workflows.get(workflowId).steps.map(transitionKey),
+        workflows.get(workflowId).transitions.map(transitionKey),
       ),
     );
     for (const action of screen.actions.filter(
@@ -706,7 +1653,7 @@ async function validateTrace() {
     (total, registry) => total + registry.size,
     0,
   );
-  return `validated all ${recordCount} canonical records, ${nodeDocument.nodes.length} nodes, ${edgeDocument.edges.length} semantic edges, complete evidence chains, and generated manifest parity`;
+  return `validated all ${recordCount} canonical records, ${nodeDocument.nodes.length} nodes, ${edgeDocument.edges.length} semantic edges, ${completeEvidenceChains.length} complete evidence chains, and generated manifest parity`;
 }
 
 function dateValue(value, label) {
@@ -718,7 +1665,7 @@ function dateValue(value, label) {
 async function validateData() {
   const fixtures = (await readJson("data/walking-slice.json")).fixtures;
   const workflowIndex = byId(
-    (await readJson("workflow-model/walking-slice.json")).workflows,
+    (await readJson("workflow-model/workflows.json")).workflows,
     "workflow",
   );
   const scenarioIndex = byId(
@@ -875,8 +1822,8 @@ async function validateData() {
       const blockedEvent = workOrder.status_history.find(
         (event) => event.to === "blocked",
       );
-      const resumeEvent = workOrder.status_history.find(
-        (event) => event.to === "ready_to_resume",
+      const recoveryEvent = workOrder.status_history.find(
+        (event) => event.from === "blocked" && event.to === "assigned",
       );
       assert(
         Boolean(blockedEvent) === Boolean(workOrder.blocker),
@@ -905,17 +1852,17 @@ async function validateData() {
             `${workOrder.id}: blocker resolution must follow blocker report`,
           );
           assert(
-            Boolean(resumeEvent),
-            `${workOrder.id}: resolved blocker has no ready-to-resume transition`,
+            Boolean(recoveryEvent),
+            `${workOrder.id}: resolved blocker has no canonical blocked-to-assigned recovery transition`,
           );
           assert(
             resolvedAt <=
-              dateValue(resumeEvent.at, `${workOrder.id}.ready_to_resume`),
+              dateValue(recoveryEvent.at, `${workOrder.id}.reassigned`),
             `${workOrder.id}: work resumed before blocker resolution`,
           );
         } else {
           assert(
-            !resumeEvent,
+            !recoveryEvent,
             `${workOrder.id}: unresolved blocker cannot resume`,
           );
         }
@@ -951,8 +1898,8 @@ async function validateData() {
         `${workOrder.id}: fixture history does not realize ${scenario.id} expected transitions`,
       );
       const workflowTransitions = new Set(
-        workflow.steps.map(
-          (step) => `${step.state_from ?? "null"}->${step.state_to}`,
+        workflow.transitions.map(
+          (transition) => `${transition.from ?? "null"}->${transition.to}`,
         ),
       );
       for (const transition of actualTransitions)

@@ -1,0 +1,18 @@
+%% visual_id: VIS-CERTIFICATION-OVERLAY
+%% title: Certification overlay
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/overlays.json#OVL-009; workflow-model/roles.json#ROLE-AUDITOR,ROLE-CERTIFIER,ROLE-COMPLIANCE-COORDINATOR,ROLE-VINEYARD-MANAGER; workflow-model/workflows.json#WF-001,WF-002,WF-003,WF-006,WF-007,WF-008,WF-009,WF-010
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  SCOPE["OVL-009 · Applicable regime, block scope, and requirement version"]
+  PRECHECK["Pre-work constraints · REC-010 · REC-015 · REC-055"]
+  EXECUTION["Point-of-work proof · REC-066 · REC-080 · REC-082"]
+  EVIDENCE["Audit-ready record · REC-089 · REC-090 · REC-091 · REC-092 · REC-093 · REC-094 · REC-095 · REC-096 · REC-097 · REC-098…"]
+  GAP{"Certification exception · Uncertified input / Buffer crop mixed with certified crop / Contractor contamination / Cleani…"}
+  CORRECTIVE["Corrective path · Segregate affected crop or activity · Assign corrective action · Collect supplemental evidence · Disc…"]
+  AUTHORITY["Accountable review · Compliance Coordinator · Certifier · Auditor · Vineyard Manager"]
+  STATUS["Certification status retained across WF-001 · WF-002 · WF-003 · WF-006 · WF-007 · WF-008 · WF-009 · WF-010"]
+  SCOPE --> PRECHECK --> EXECUTION --> EVIDENCE --> GAP
+  GAP -->|Gap found| CORRECTIVE --> AUTHORITY --> STATUS
+  GAP -->|Evidence complete| AUTHORITY
+  STATUS -. requirement and decision history .-> SCOPE

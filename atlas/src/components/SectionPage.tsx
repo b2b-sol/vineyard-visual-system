@@ -56,7 +56,9 @@ export function SectionPage({ section }: { section: AtlasSection }) {
         <Link className="featured-link" to="/workflows/WF-001">
           <span>
             <small>Live workflow · WF-001</small>
-            <strong>Seasonal planning + work-order dispatch</strong>
+            <strong>
+              Seasonal planning, dispatch, execution + verification
+            </strong>
             <span>
               Open the data-driven manager board, responsive crew context, state
               model, and trace chain.

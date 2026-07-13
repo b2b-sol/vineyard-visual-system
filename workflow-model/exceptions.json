@@ -1,0 +1,3708 @@
+{
+  "schema_version": "1.0",
+  "exceptions": [
+    {
+      "id": "EXC-001",
+      "name": "Priority or weather changes after dispatch",
+      "workflow_ids": ["WF-001"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "trigger": "The seasonal planning, dispatch, execution, and verification workflow encounters: Priority or weather changes after dispatch.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by priority or weather changes after dispatch; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VINEYARD-MANAGER",
+      "escalation_roles": ["ROLE-VITICULTURIST"],
+      "interrupted_states": ["assigned"],
+      "recovery_actions": [
+        "Record and contain priority or weather changes after dispatch at the affected scope.",
+        "Use DEC-001 authority to move from assigned to blocked; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["blocked"],
+      "required_records": [
+        "Seasonal plan",
+        "Field signal",
+        "Status history",
+        "Work assignment"
+      ],
+      "decisions": ["DEC-001"],
+      "closure_evidence": [
+        "attributed EXC-001 observation and affected scope",
+        "assigned to blocked transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**",
+        "**Typical sequence.** Inspect or receive a field signal; decide whether action is required",
+        "Managers need “done/not done/why not” visibility across estates and crews."
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-VITICULTURIST"],
+      "record_ids": ["REC-001", "REC-002", "REC-005", "REC-003"],
+      "inputs": [
+        "REC-001",
+        "REC-002",
+        "REC-005",
+        "REC-003",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-001 exception event",
+        "blocked state transition",
+        "REC-005",
+        "REC-003"
+      ]
+    },
+    {
+      "id": "EXC-002",
+      "name": "Wrong or ambiguous block identity",
+      "workflow_ids": ["WF-001"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "trigger": "The seasonal planning, dispatch, execution, and verification workflow encounters: Wrong or ambiguous block identity.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by wrong or ambiguous block identity; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VINEYARD-MANAGER",
+      "escalation_roles": ["ROLE-VITICULTURIST", "ROLE-OPERATIONS-COORDINATOR"],
+      "interrupted_states": ["in_progress"],
+      "recovery_actions": [
+        "Record and contain wrong or ambiguous block identity at the affected scope.",
+        "Use DEC-001 and DEC-002 authority to move from in_progress to blocked; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["blocked"],
+      "required_records": [
+        "Seasonal plan",
+        "Field signal",
+        "Status history",
+        "Work assignment"
+      ],
+      "decisions": ["DEC-001", "DEC-002"],
+      "closure_evidence": [
+        "attributed EXC-002 observation and affected scope",
+        "in_progress to blocked transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**",
+        "**Typical sequence.** Inspect or receive a field signal; decide whether action is required",
+        "Managers need “done/not done/why not” visibility across estates and crews."
+      ],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-OPERATIONS-COORDINATOR"
+      ],
+      "record_ids": ["REC-001", "REC-002", "REC-005", "REC-003"],
+      "inputs": [
+        "REC-001",
+        "REC-002",
+        "REC-005",
+        "REC-003",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-002 exception event",
+        "blocked state transition",
+        "REC-005",
+        "REC-003"
+      ]
+    },
+    {
+      "id": "EXC-003",
+      "name": "Labor, equipment, material, or contractor unavailable",
+      "workflow_ids": ["WF-001"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "trigger": "The seasonal planning, dispatch, execution, and verification workflow encounters: Labor, equipment, material, or contractor unavailable.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by labor, equipment, material, or contractor unavailable; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VINEYARD-MANAGER",
+      "escalation_roles": ["ROLE-VITICULTURIST", "ROLE-OPERATIONS-COORDINATOR"],
+      "interrupted_states": ["assigned"],
+      "recovery_actions": [
+        "Record and contain labor, equipment, material, or contractor unavailable at the affected scope.",
+        "Use DEC-001 and DEC-002 authority to move from assigned to blocked; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["blocked"],
+      "required_records": [
+        "Seasonal plan",
+        "Field signal",
+        "Status history",
+        "Work assignment"
+      ],
+      "decisions": ["DEC-001", "DEC-002"],
+      "closure_evidence": [
+        "attributed EXC-003 observation and affected scope",
+        "assigned to blocked transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**",
+        "**Typical sequence.** Inspect or receive a field signal; decide whether action is required",
+        "Managers need “done/not done/why not” visibility across estates and crews."
+      ],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-OPERATIONS-COORDINATOR"
+      ],
+      "record_ids": ["REC-001", "REC-002", "REC-005", "REC-003"],
+      "inputs": [
+        "REC-001",
+        "REC-002",
+        "REC-005",
+        "REC-003",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-003 exception event",
+        "blocked state transition",
+        "REC-005",
+        "REC-003"
+      ]
+    },
+    {
+      "id": "EXC-004",
+      "name": "Work partially completed",
+      "workflow_ids": ["WF-001"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "trigger": "The seasonal planning, dispatch, execution, and verification workflow encounters: Work partially completed.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by work partially completed; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-FOREMAN",
+      "escalation_roles": ["ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["in_progress"],
+      "recovery_actions": [
+        "Record and contain work partially completed at the affected scope.",
+        "Use DEC-003 authority to move from in_progress to partially_completed; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["partially_completed"],
+      "required_records": [
+        "Work assignment",
+        "Activity log",
+        "Actual-use record",
+        "Status history",
+        "Verification record"
+      ],
+      "decisions": ["DEC-003"],
+      "closure_evidence": [
+        "attributed EXC-004 observation and affected scope",
+        "in_progress to partially_completed transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**",
+        "**Typical sequence.** Inspect or receive a field signal; decide whether action is required",
+        "Managers need “done/not done/why not” visibility across estates and crews."
+      ],
+      "role_ids": ["ROLE-FOREMAN", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-003", "REC-004", "REC-006", "REC-005", "REC-007"],
+      "inputs": [
+        "REC-003",
+        "REC-004",
+        "REC-006",
+        "REC-005",
+        "REC-007",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-004 exception event",
+        "partially_completed state transition",
+        "REC-005",
+        "REC-007"
+      ]
+    },
+    {
+      "id": "EXC-005",
+      "name": "Completion quantities missing or disputed",
+      "workflow_ids": ["WF-001"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-001", "EVD-011", "EVD-012"],
+      "trigger": "The seasonal planning, dispatch, execution, and verification workflow encounters: Completion quantities missing or disputed.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by completion quantities missing or disputed; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-FOREMAN",
+      "escalation_roles": ["ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["completed"],
+      "recovery_actions": [
+        "Record and contain completion quantities missing or disputed at the affected scope.",
+        "Use DEC-003 authority to move from completed to correction_required; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["correction_required"],
+      "required_records": [
+        "Work assignment",
+        "Activity log",
+        "Actual-use record",
+        "Status history",
+        "Verification record"
+      ],
+      "decisions": ["DEC-003"],
+      "closure_evidence": [
+        "attributed EXC-005 observation and affected scope",
+        "completed to correction_required transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Detailed workflow cards and handoff maps",
+        "**Workflow card: seasonal work planning and work-order dispatch**",
+        "**Typical sequence.** Inspect or receive a field signal; decide whether action is required",
+        "Managers need “done/not done/why not” visibility across estates and crews."
+      ],
+      "role_ids": ["ROLE-FOREMAN", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-003", "REC-004", "REC-006", "REC-005", "REC-007"],
+      "inputs": [
+        "REC-003",
+        "REC-004",
+        "REC-006",
+        "REC-005",
+        "REC-007",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-005 exception event",
+        "correction_required state transition",
+        "REC-005",
+        "REC-007"
+      ]
+    },
+    {
+      "id": "EXC-006",
+      "name": "Wind or rain outside allowable conditions",
+      "workflow_ids": ["WF-002"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "trigger": "The scouting, recommendation, crop protection, and application records workflow encounters: Wind or rain outside allowable conditions.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by wind or rain outside allowable conditions; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-CROP-PROTECTION-LEAD",
+      "escalation_roles": ["ROLE-PESTICIDE-HANDLER"],
+      "interrupted_states": ["preflight_check"],
+      "recovery_actions": [
+        "Record and contain wind or rain outside allowable conditions at the affected scope.",
+        "Use DEC-013 authority to move from preflight_check to cancelled; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["cancelled"],
+      "required_records": [
+        "Product and label check",
+        "Calibration record",
+        "Application record"
+      ],
+      "decisions": ["DEC-013"],
+      "closure_evidence": [
+        "attributed EXC-006 observation and affected scope",
+        "preflight_check to cancelled transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
+        "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
+        "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
+      ],
+      "role_ids": ["ROLE-CROP-PROTECTION-LEAD", "ROLE-PESTICIDE-HANDLER"],
+      "record_ids": ["REC-010", "REC-011", "REC-012"],
+      "inputs": [
+        "REC-010",
+        "REC-011",
+        "REC-012",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-006 exception event",
+        "cancelled state transition",
+        "REC-011",
+        "REC-012"
+      ]
+    },
+    {
+      "id": "EXC-007",
+      "name": "Product unavailable or not certified",
+      "workflow_ids": ["WF-002"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "trigger": "The scouting, recommendation, crop protection, and application records workflow encounters: Product unavailable or not certified.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by product unavailable or not certified; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-CROP-PROTECTION-LEAD",
+      "escalation_roles": ["ROLE-COMPLIANCE-COORDINATOR"],
+      "interrupted_states": ["approved"],
+      "recovery_actions": [
+        "Record and contain product unavailable or not certified at the affected scope.",
+        "Use DEC-012 authority to move from approved to cancelled; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["cancelled"],
+      "required_records": [
+        "Treatment recommendation",
+        "Product and label check",
+        "REI and PHI record",
+        "Application record"
+      ],
+      "decisions": ["DEC-012"],
+      "closure_evidence": [
+        "attributed EXC-007 observation and affected scope",
+        "approved to cancelled transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
+        "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
+        "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
+      ],
+      "role_ids": ["ROLE-CROP-PROTECTION-LEAD", "ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": ["REC-009", "REC-010", "REC-013", "REC-012"],
+      "inputs": [
+        "REC-009",
+        "REC-010",
+        "REC-013",
+        "REC-012",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-007 exception event",
+        "cancelled state transition",
+        "REC-013",
+        "REC-012"
+      ]
+    },
+    {
+      "id": "EXC-008",
+      "name": "Worker presence in exclusion area",
+      "workflow_ids": ["WF-002"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "trigger": "The scouting, recommendation, crop protection, and application records workflow encounters: Worker presence in exclusion area.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by worker presence in exclusion area; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-CROP-PROTECTION-LEAD",
+      "escalation_roles": ["ROLE-PESTICIDE-HANDLER"],
+      "interrupted_states": ["preflight_check"],
+      "recovery_actions": [
+        "Record and contain worker presence in exclusion area at the affected scope.",
+        "Use DEC-013 authority to move from preflight_check to cancelled; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["cancelled"],
+      "required_records": [
+        "Application record",
+        "REI and PHI record",
+        "Worker posting"
+      ],
+      "decisions": ["DEC-013"],
+      "closure_evidence": [
+        "attributed EXC-008 observation and affected scope",
+        "preflight_check to cancelled transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
+        "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
+        "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
+      ],
+      "role_ids": ["ROLE-CROP-PROTECTION-LEAD", "ROLE-PESTICIDE-HANDLER"],
+      "record_ids": ["REC-012", "REC-013", "REC-014"],
+      "inputs": [
+        "REC-012",
+        "REC-013",
+        "REC-014",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-008 exception event",
+        "cancelled state transition",
+        "REC-013",
+        "REC-014"
+      ]
+    },
+    {
+      "id": "EXC-009",
+      "name": "REI or PHI conflict",
+      "workflow_ids": ["WF-002"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "trigger": "The scouting, recommendation, crop protection, and application records workflow encounters: REI or PHI conflict.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by rei or phi conflict; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-CROP-PROTECTION-LEAD",
+      "escalation_roles": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-PESTICIDE-HANDLER"
+      ],
+      "interrupted_states": ["preflight_check"],
+      "recovery_actions": [
+        "Record and contain rei or phi conflict at the affected scope.",
+        "Use DEC-012 and DEC-013 authority to move from preflight_check to cancelled; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["cancelled"],
+      "required_records": [
+        "Treatment recommendation",
+        "Product and label check",
+        "REI and PHI record",
+        "Application record",
+        "Calibration record",
+        "Worker posting"
+      ],
+      "decisions": ["DEC-012", "DEC-013"],
+      "closure_evidence": [
+        "attributed EXC-009 observation and affected scope",
+        "preflight_check to cancelled transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
+        "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
+        "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
+      ],
+      "role_ids": [
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-PESTICIDE-HANDLER"
+      ],
+      "record_ids": [
+        "REC-009",
+        "REC-010",
+        "REC-013",
+        "REC-012",
+        "REC-011",
+        "REC-014"
+      ],
+      "inputs": [
+        "REC-009",
+        "REC-010",
+        "REC-013",
+        "REC-012",
+        "REC-011",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-009 exception event",
+        "cancelled state transition",
+        "REC-011",
+        "REC-014"
+      ]
+    },
+    {
+      "id": "EXC-010",
+      "name": "Incorrect or late diary entry",
+      "workflow_ids": ["WF-002"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "trigger": "The scouting, recommendation, crop protection, and application records workflow encounters: Incorrect or late diary entry.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by incorrect or late diary entry; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-COMPLIANCE-COORDINATOR",
+      "escalation_roles": ["ROLE-CROP-PROTECTION-LEAD"],
+      "interrupted_states": ["reported"],
+      "recovery_actions": [
+        "Record and contain incorrect or late diary entry at the affected scope.",
+        "Use DEC-015 authority to move from reported to corrected; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["corrected"],
+      "required_records": [
+        "Application record",
+        "REI and PHI record",
+        "Worker posting",
+        "Spray diary",
+        "Pesticide-use report"
+      ],
+      "decisions": ["DEC-015"],
+      "closure_evidence": [
+        "attributed EXC-010 observation and affected scope",
+        "reported to corrected transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
+        "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
+        "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-CROP-PROTECTION-LEAD"],
+      "record_ids": ["REC-012", "REC-013", "REC-014", "REC-015", "REC-016"],
+      "inputs": [
+        "REC-012",
+        "REC-013",
+        "REC-014",
+        "REC-015",
+        "REC-016",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-010 exception event",
+        "corrected state transition",
+        "REC-015",
+        "REC-016"
+      ]
+    },
+    {
+      "id": "EXC-011",
+      "name": "Application ineffective",
+      "workflow_ids": ["WF-002"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-002", "EVD-011", "EVD-012"],
+      "trigger": "The scouting, recommendation, crop protection, and application records workflow encounters: Application ineffective.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by application ineffective; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-SCOUT", "ROLE-CROP-PROTECTION-LEAD"],
+      "interrupted_states": ["follow_up_due"],
+      "recovery_actions": [
+        "Record and contain application ineffective at the affected scope.",
+        "Use DEC-011 and DEC-014 authority to move from follow_up_due to ineffective; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["ineffective"],
+      "required_records": [
+        "Scouting record",
+        "Efficacy follow-up",
+        "Treatment recommendation",
+        "Application record"
+      ],
+      "decisions": ["DEC-011", "DEC-014"],
+      "closure_evidence": [
+        "attributed EXC-011 observation and affected scope",
+        "follow_up_due to ineffective transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: scouting to spray execution and compliance record**",
+        "**Step sequence.** Monitor and keep records; confirm pressure and treatment threshold",
+        "UC IPM explicitly calls for monitoring records, calibration, weather checks, REI/PHI review, application recording, and follow-up efficacy checks.",
+        "EPA WPS requires worker protections, handler instructions, PPE, central posting, and access to application information."
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-SCOUT",
+        "ROLE-CROP-PROTECTION-LEAD"
+      ],
+      "record_ids": ["REC-008", "REC-017", "REC-009", "REC-012"],
+      "inputs": [
+        "REC-008",
+        "REC-017",
+        "REC-009",
+        "REC-012",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-011 exception event",
+        "ineffective state transition",
+        "REC-009",
+        "REC-012"
+      ]
+    },
+    {
+      "id": "EXC-012",
+      "name": "System malfunction",
+      "workflow_ids": ["WF-003"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "trigger": "The irrigation scheduling, fertility adjustment, and delivery verification workflow encounters: System malfunction.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by system malfunction; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-IRRIGATION-LEAD", "ROLE-IRRIGATOR"],
+      "interrupted_states": ["delivering"],
+      "recovery_actions": [
+        "Record and contain system malfunction at the affected scope.",
+        "Use DEC-021 and DEC-023 authority to move from delivering to delivery_interrupted; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["delivery_interrupted"],
+      "required_records": [
+        "Block condition note",
+        "Soil-moisture or ET record",
+        "Plant-status observation",
+        "Irrigation schedule",
+        "Irrigation log",
+        "Malfunction record",
+        "Resource-use total"
+      ],
+      "decisions": ["DEC-021", "DEC-023"],
+      "closure_evidence": [
+        "attributed EXC-012 observation and affected scope",
+        "delivering to delivery_interrupted transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update",
+        "**Pain points.** Limited visibility into actual delivery",
+        "water-use totals and nitrogen-use totals for certification or management reporting"
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-IRRIGATOR"
+      ],
+      "record_ids": [
+        "REC-018",
+        "REC-019",
+        "REC-020",
+        "REC-022",
+        "REC-023",
+        "REC-025",
+        "REC-026"
+      ],
+      "inputs": [
+        "REC-018",
+        "REC-019",
+        "REC-020",
+        "REC-022",
+        "REC-023",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-012 exception event",
+        "delivery_interrupted state transition",
+        "REC-025",
+        "REC-026"
+      ]
+    },
+    {
+      "id": "EXC-013",
+      "name": "Uneven or partial delivery",
+      "workflow_ids": ["WF-003"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "trigger": "The irrigation scheduling, fertility adjustment, and delivery verification workflow encounters: Uneven or partial delivery.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by uneven or partial delivery; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-IRRIGATOR",
+      "escalation_roles": ["ROLE-IRRIGATION-LEAD"],
+      "interrupted_states": ["delivering"],
+      "recovery_actions": [
+        "Record and contain uneven or partial delivery at the affected scope.",
+        "Use DEC-023 authority to move from delivering to partially_delivered; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["partially_delivered"],
+      "required_records": [
+        "Irrigation schedule",
+        "Irrigation log",
+        "Malfunction record",
+        "Resource-use total"
+      ],
+      "decisions": ["DEC-023"],
+      "closure_evidence": [
+        "attributed EXC-013 observation and affected scope",
+        "delivering to partially_delivered transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update",
+        "**Pain points.** Limited visibility into actual delivery",
+        "water-use totals and nitrogen-use totals for certification or management reporting"
+      ],
+      "role_ids": ["ROLE-IRRIGATOR", "ROLE-IRRIGATION-LEAD"],
+      "record_ids": ["REC-022", "REC-023", "REC-025", "REC-026"],
+      "inputs": [
+        "REC-022",
+        "REC-023",
+        "REC-025",
+        "REC-026",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-013 exception event",
+        "partially_delivered state transition",
+        "REC-025",
+        "REC-026"
+      ]
+    },
+    {
+      "id": "EXC-014",
+      "name": "Water or input unavailable",
+      "workflow_ids": ["WF-003"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "trigger": "The irrigation scheduling, fertility adjustment, and delivery verification workflow encounters: Water or input unavailable.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by water or input unavailable; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-IRRIGATION-LEAD", "ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["assigned"],
+      "recovery_actions": [
+        "Record and contain water or input unavailable at the affected scope.",
+        "Use DEC-021 and DEC-022 and DEC-024 authority to move from assigned to delivery_interrupted; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["delivery_interrupted"],
+      "required_records": [
+        "Block condition note",
+        "Soil-moisture or ET record",
+        "Plant-status observation",
+        "Irrigation schedule",
+        "Irrigation log",
+        "Tissue or petiole result",
+        "Fertility input record"
+      ],
+      "decisions": ["DEC-021", "DEC-022", "DEC-024"],
+      "closure_evidence": [
+        "attributed EXC-014 observation and affected scope",
+        "assigned to delivery_interrupted transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update",
+        "**Pain points.** Limited visibility into actual delivery",
+        "water-use totals and nitrogen-use totals for certification or management reporting"
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-018",
+        "REC-019",
+        "REC-020",
+        "REC-022",
+        "REC-023",
+        "REC-021",
+        "REC-024"
+      ],
+      "inputs": [
+        "REC-018",
+        "REC-019",
+        "REC-020",
+        "REC-022",
+        "REC-023",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-014 exception event",
+        "delivery_interrupted state transition",
+        "REC-021",
+        "REC-024"
+      ]
+    },
+    {
+      "id": "EXC-015",
+      "name": "Heat changes timing",
+      "workflow_ids": ["WF-003"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "trigger": "The irrigation scheduling, fertility adjustment, and delivery verification workflow encounters: Heat changes timing.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by heat changes timing; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-IRRIGATION-LEAD", "ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["assigned"],
+      "recovery_actions": [
+        "Record and contain heat changes timing at the affected scope.",
+        "Use DEC-021 and DEC-024 authority to move from assigned to superseded; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["superseded"],
+      "required_records": [
+        "Block condition note",
+        "Soil-moisture or ET record",
+        "Plant-status observation",
+        "Irrigation schedule",
+        "Irrigation log",
+        "Tissue or petiole result",
+        "Fertility input record"
+      ],
+      "decisions": ["DEC-021", "DEC-024"],
+      "closure_evidence": [
+        "attributed EXC-015 observation and affected scope",
+        "assigned to superseded transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update",
+        "**Pain points.** Limited visibility into actual delivery",
+        "water-use totals and nitrogen-use totals for certification or management reporting"
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-018",
+        "REC-019",
+        "REC-020",
+        "REC-022",
+        "REC-023",
+        "REC-021",
+        "REC-024"
+      ],
+      "inputs": [
+        "REC-018",
+        "REC-019",
+        "REC-020",
+        "REC-022",
+        "REC-023",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-015 exception event",
+        "superseded state transition",
+        "REC-021",
+        "REC-024"
+      ]
+    },
+    {
+      "id": "EXC-016",
+      "name": "Lab result arrives after action window",
+      "workflow_ids": ["WF-003"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "trigger": "The irrigation scheduling, fertility adjustment, and delivery verification workflow encounters: Lab result arrives after action window.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by lab result arrives after action window; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["adjustment_recommended"],
+      "recovery_actions": [
+        "Record and contain lab result arrives after action window at the affected scope.",
+        "Use DEC-022 and DEC-024 authority to move from adjustment_recommended to superseded; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["superseded"],
+      "required_records": [
+        "Block condition note",
+        "Tissue or petiole result",
+        "Fertility input record",
+        "Irrigation schedule",
+        "Soil-moisture or ET record"
+      ],
+      "decisions": ["DEC-022", "DEC-024"],
+      "closure_evidence": [
+        "attributed EXC-016 observation and affected scope",
+        "adjustment_recommended to superseded transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update",
+        "**Pain points.** Limited visibility into actual delivery",
+        "water-use totals and nitrogen-use totals for certification or management reporting"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-018", "REC-021", "REC-024", "REC-022", "REC-019"],
+      "inputs": [
+        "REC-018",
+        "REC-021",
+        "REC-024",
+        "REC-022",
+        "REC-019",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-016 exception event",
+        "superseded state transition",
+        "REC-022",
+        "REC-019"
+      ]
+    },
+    {
+      "id": "EXC-017",
+      "name": "Block reality conflicts with office assumptions",
+      "workflow_ids": ["WF-003"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-003", "EVD-011", "EVD-012"],
+      "trigger": "The irrigation scheduling, fertility adjustment, and delivery verification workflow encounters: Block reality conflicts with office assumptions.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by block reality conflicts with office assumptions; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-IRRIGATION-LEAD", "ROLE-IRRIGATOR"],
+      "interrupted_states": ["delivered"],
+      "recovery_actions": [
+        "Record and contain block reality conflicts with office assumptions at the affected scope.",
+        "Use DEC-021 and DEC-022 and DEC-023 authority to move from delivered to correction_required; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["correction_required"],
+      "required_records": [
+        "Block condition note",
+        "Plant-status observation",
+        "Irrigation schedule",
+        "Irrigation log",
+        "Malfunction record",
+        "Resource-use total"
+      ],
+      "decisions": ["DEC-021", "DEC-022", "DEC-023"],
+      "closure_evidence": [
+        "attributed EXC-017 observation and affected scope",
+        "delivered to correction_required transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "**Workflow card: irrigation scheduling and fertility adjustment**",
+        "**Typical sequence.** Review recent block and weather conditions; inspect irrigation system or receive irrigator update",
+        "**Pain points.** Limited visibility into actual delivery",
+        "water-use totals and nitrogen-use totals for certification or management reporting"
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-IRRIGATOR"
+      ],
+      "record_ids": [
+        "REC-018",
+        "REC-020",
+        "REC-022",
+        "REC-023",
+        "REC-025",
+        "REC-026"
+      ],
+      "inputs": [
+        "REC-018",
+        "REC-020",
+        "REC-022",
+        "REC-023",
+        "REC-025",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-017 exception event",
+        "correction_required state transition",
+        "REC-025",
+        "REC-026"
+      ]
+    },
+    {
+      "id": "EXC-018",
+      "name": "Unrepresentative sample",
+      "workflow_ids": ["WF-004"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "trigger": "The crop estimation and forecast revision workflow encounters: Unrepresentative sample.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by unrepresentative sample; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-GROWER-RELATIONS"],
+      "interrupted_states": ["reviewed"],
+      "recovery_actions": [
+        "Record and contain unrepresentative sample at the affected scope.",
+        "Use DEC-031 authority to move from reviewed to revision_due; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["revision_due"],
+      "required_records": [
+        "Sampling plan",
+        "Vine and cluster sample",
+        "Block crop estimate"
+      ],
+      "decisions": ["DEC-031"],
+      "closure_evidence": [
+        "attributed EXC-018 observation and affected scope",
+        "reviewed to revision_due transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "**Typical sequence.** Count and sample representative vines; update forecast",
+        "Accuracy improves only if historical and current-season records stay connected at block level."
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-027", "REC-028", "REC-029"],
+      "inputs": [
+        "REC-027",
+        "REC-028",
+        "REC-029",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-018 exception event",
+        "revision_due state transition",
+        "REC-028",
+        "REC-029"
+      ]
+    },
+    {
+      "id": "EXC-019",
+      "name": "Block identity or vine count mismatch",
+      "workflow_ids": ["WF-004"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "trigger": "The crop estimation and forecast revision workflow encounters: Block identity or vine count mismatch.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by block identity or vine count mismatch; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-GROWER-RELATIONS"],
+      "interrupted_states": ["calculated"],
+      "recovery_actions": [
+        "Record and contain block identity or vine count mismatch at the affected scope.",
+        "Use DEC-031 authority to move from calculated to revision_due; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["revision_due"],
+      "required_records": [
+        "Sampling plan",
+        "Vine and cluster sample",
+        "Block crop estimate"
+      ],
+      "decisions": ["DEC-031"],
+      "closure_evidence": [
+        "attributed EXC-019 observation and affected scope",
+        "calculated to revision_due transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "**Typical sequence.** Count and sample representative vines; update forecast",
+        "Accuracy improves only if historical and current-season records stay connected at block level."
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-027", "REC-028", "REC-029"],
+      "inputs": [
+        "REC-027",
+        "REC-028",
+        "REC-029",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-019 exception event",
+        "revision_due state transition",
+        "REC-028",
+        "REC-029"
+      ]
+    },
+    {
+      "id": "EXC-020",
+      "name": "Visible within-block variation",
+      "workflow_ids": ["WF-004"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "trigger": "The crop estimation and forecast revision workflow encounters: Visible within-block variation.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by visible within-block variation; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["reviewed"],
+      "recovery_actions": [
+        "Record and contain visible within-block variation at the affected scope.",
+        "Use DEC-031 and DEC-032 authority to move from reviewed to revision_due; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["revision_due"],
+      "required_records": [
+        "Sampling plan",
+        "Vine and cluster sample",
+        "Block crop estimate",
+        "Forecast revision history",
+        "Crop-load recommendation",
+        "Communication record"
+      ],
+      "decisions": ["DEC-031", "DEC-032"],
+      "closure_evidence": [
+        "attributed EXC-020 observation and affected scope",
+        "reviewed to revision_due transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "**Typical sequence.** Count and sample representative vines; update forecast",
+        "Accuracy improves only if historical and current-season records stay connected at block level."
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-027",
+        "REC-028",
+        "REC-029",
+        "REC-030",
+        "REC-031",
+        "REC-032"
+      ],
+      "inputs": [
+        "REC-027",
+        "REC-028",
+        "REC-029",
+        "REC-030",
+        "REC-031",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-020 exception event",
+        "revision_due state transition",
+        "REC-031",
+        "REC-032"
+      ]
+    },
+    {
+      "id": "EXC-021",
+      "name": "Rapid weather or crop-condition change",
+      "workflow_ids": ["WF-004"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "trigger": "The crop estimation and forecast revision workflow encounters: Rapid weather or crop-condition change.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by rapid weather or crop-condition change; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-GROWER-RELATIONS"],
+      "interrupted_states": ["published"],
+      "recovery_actions": [
+        "Record and contain rapid weather or crop-condition change at the affected scope.",
+        "Use DEC-033 authority to move from published to revision_due; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["revision_due"],
+      "required_records": [
+        "Vine and cluster sample",
+        "Block crop estimate",
+        "Forecast revision history",
+        "Harvest actual",
+        "Communication record",
+        "Forecast error record"
+      ],
+      "decisions": ["DEC-033"],
+      "closure_evidence": [
+        "attributed EXC-021 observation and affected scope",
+        "published to revision_due transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "**Typical sequence.** Count and sample representative vines; update forecast",
+        "Accuracy improves only if historical and current-season records stay connected at block level."
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
+      "record_ids": [
+        "REC-028",
+        "REC-029",
+        "REC-030",
+        "REC-033",
+        "REC-032",
+        "REC-034"
+      ],
+      "inputs": [
+        "REC-028",
+        "REC-029",
+        "REC-030",
+        "REC-033",
+        "REC-032",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-021 exception event",
+        "revision_due state transition",
+        "REC-032",
+        "REC-034"
+      ]
+    },
+    {
+      "id": "EXC-022",
+      "name": "Winery and grower estimates disagree",
+      "workflow_ids": ["WF-004"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "trigger": "The crop estimation and forecast revision workflow encounters: Winery and grower estimates disagree.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by winery and grower estimates disagree; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VINEYARD-MANAGER",
+      "escalation_roles": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
+      "interrupted_states": ["reviewed"],
+      "recovery_actions": [
+        "Record and contain winery and grower estimates disagree at the affected scope.",
+        "Use DEC-032 and DEC-033 authority to move from reviewed to revision_due; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["revision_due"],
+      "required_records": [
+        "Block crop estimate",
+        "Forecast revision history",
+        "Crop-load recommendation",
+        "Communication record",
+        "Vine and cluster sample",
+        "Harvest actual",
+        "Forecast error record"
+      ],
+      "decisions": ["DEC-032", "DEC-033"],
+      "closure_evidence": [
+        "attributed EXC-022 observation and affected scope",
+        "reviewed to revision_due transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "**Typical sequence.** Count and sample representative vines; update forecast",
+        "Accuracy improves only if historical and current-season records stay connected at block level."
+      ],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "record_ids": [
+        "REC-029",
+        "REC-030",
+        "REC-031",
+        "REC-032",
+        "REC-028",
+        "REC-033",
+        "REC-034"
+      ],
+      "inputs": [
+        "REC-029",
+        "REC-030",
+        "REC-031",
+        "REC-032",
+        "REC-028",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-022 exception event",
+        "revision_due state transition",
+        "REC-033",
+        "REC-034"
+      ]
+    },
+    {
+      "id": "EXC-023",
+      "name": "Actual harvest diverges materially",
+      "workflow_ids": ["WF-004"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-004", "EVD-011"],
+      "trigger": "The crop estimation and forecast revision workflow encounters: Actual harvest diverges materially.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by actual harvest diverges materially; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-GROWER-RELATIONS"],
+      "interrupted_states": ["actualized"],
+      "recovery_actions": [
+        "Record and contain actual harvest diverges materially at the affected scope.",
+        "Use DEC-033 authority to move from actualized to revision_due; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["revision_due"],
+      "required_records": [
+        "Vine and cluster sample",
+        "Block crop estimate",
+        "Forecast revision history",
+        "Harvest actual",
+        "Communication record",
+        "Forecast error record"
+      ],
+      "decisions": ["DEC-033"],
+      "closure_evidence": [
+        "attributed EXC-023 observation and affected scope",
+        "actualized to revision_due transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 3 | Crop estimation and forecast revision |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "**Typical sequence.** Count and sample representative vines; update forecast",
+        "Accuracy improves only if historical and current-season records stay connected at block level."
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
+      "record_ids": [
+        "REC-028",
+        "REC-029",
+        "REC-030",
+        "REC-033",
+        "REC-032",
+        "REC-034"
+      ],
+      "inputs": [
+        "REC-028",
+        "REC-029",
+        "REC-030",
+        "REC-033",
+        "REC-032",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-023 exception event",
+        "revision_due state transition",
+        "REC-032",
+        "REC-034"
+      ]
+    },
+    {
+      "id": "EXC-024",
+      "name": "Late or stale sample",
+      "workflow_ids": ["WF-005"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "trigger": "The maturity sampling, winery communication, and pick decision workflow encounters: Late or stale sample.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by late or stale sample; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-LAB"],
+      "interrupted_states": ["lab_pending"],
+      "recovery_actions": [
+        "Record and contain late or stale sample at the affected scope.",
+        "Use DEC-041 authority to move from lab_pending to more_sampling_required; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["more_sampling_required"],
+      "required_records": [
+        "Sampling plan",
+        "Sample chain of identity",
+        "Field condition assessment",
+        "Laboratory result",
+        "Maturity trend"
+      ],
+      "decisions": ["DEC-041"],
+      "closure_evidence": [
+        "attributed EXC-024 observation and affected scope",
+        "lab_pending to more_sampling_required transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
+        "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-LAB"],
+      "record_ids": ["REC-027", "REC-035", "REC-036", "REC-037", "REC-038"],
+      "inputs": [
+        "REC-027",
+        "REC-035",
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-024 exception event",
+        "more_sampling_required state transition",
+        "REC-037",
+        "REC-038"
+      ]
+    },
+    {
+      "id": "EXC-025",
+      "name": "Nonrepresentative sample",
+      "workflow_ids": ["WF-005"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "trigger": "The maturity sampling, winery communication, and pick decision workflow encounters: Nonrepresentative sample.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by nonrepresentative sample; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-LAB"],
+      "interrupted_states": ["result_available"],
+      "recovery_actions": [
+        "Record and contain nonrepresentative sample at the affected scope.",
+        "Use DEC-041 authority to move from result_available to more_sampling_required; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["more_sampling_required"],
+      "required_records": [
+        "Sampling plan",
+        "Sample chain of identity",
+        "Field condition assessment",
+        "Laboratory result",
+        "Maturity trend"
+      ],
+      "decisions": ["DEC-041"],
+      "closure_evidence": [
+        "attributed EXC-025 observation and affected scope",
+        "result_available to more_sampling_required transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
+        "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-LAB"],
+      "record_ids": ["REC-027", "REC-035", "REC-036", "REC-037", "REC-038"],
+      "inputs": [
+        "REC-027",
+        "REC-035",
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-025 exception event",
+        "more_sampling_required state transition",
+        "REC-037",
+        "REC-038"
+      ]
+    },
+    {
+      "id": "EXC-026",
+      "name": "Field and winery measurements disagree",
+      "workflow_ids": ["WF-005"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "trigger": "The maturity sampling, winery communication, and pick decision workflow encounters: Field and winery measurements disagree.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by field and winery measurements disagree; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-LAB", "ROLE-GROWER-RELATIONS"],
+      "interrupted_states": ["result_available"],
+      "recovery_actions": [
+        "Record and contain field and winery measurements disagree at the affected scope.",
+        "Use DEC-041 and DEC-043 authority to move from result_available to negotiating; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["negotiating"],
+      "required_records": [
+        "Sampling plan",
+        "Sample chain of identity",
+        "Field condition assessment",
+        "Laboratory result",
+        "Maturity trend",
+        "Pick proposal",
+        "Decision communication",
+        "Contract",
+        "Pick authorization"
+      ],
+      "decisions": ["DEC-041", "DEC-043"],
+      "closure_evidence": [
+        "attributed EXC-026 observation and affected scope",
+        "result_available to negotiating transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
+        "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-LAB", "ROLE-GROWER-RELATIONS"],
+      "record_ids": [
+        "REC-027",
+        "REC-035",
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "REC-039",
+        "REC-040",
+        "REC-080",
+        "REC-041"
+      ],
+      "inputs": [
+        "REC-027",
+        "REC-035",
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-026 exception event",
+        "negotiating state transition",
+        "REC-080",
+        "REC-041"
+      ]
+    },
+    {
+      "id": "EXC-027",
+      "name": "Rapid rot, weather, heat, or smoke change",
+      "workflow_ids": ["WF-005"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "trigger": "The maturity sampling, winery communication, and pick decision workflow encounters: Rapid rot, weather, heat, or smoke change.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by rapid rot, weather, heat, or smoke change; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VITICULTURIST",
+      "escalation_roles": ["ROLE-WINEMAKER", "ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["readiness_assessed"],
+      "recovery_actions": [
+        "Record and contain rapid rot, weather, heat, or smoke change at the affected scope.",
+        "Use DEC-042 and DEC-044 authority to move from readiness_assessed to superseded; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["superseded"],
+      "required_records": [
+        "Field condition assessment",
+        "Laboratory result",
+        "Maturity trend",
+        "Pick proposal",
+        "Pick authorization",
+        "Contract",
+        "Decision communication",
+        "Supersession history"
+      ],
+      "decisions": ["DEC-042", "DEC-044"],
+      "closure_evidence": [
+        "attributed EXC-027 observation and affected scope",
+        "readiness_assessed to superseded transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
+        "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "REC-039",
+        "REC-041",
+        "REC-080",
+        "REC-040",
+        "REC-042"
+      ],
+      "inputs": [
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "REC-039",
+        "REC-041",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-027 exception event",
+        "superseded state transition",
+        "REC-040",
+        "REC-042"
+      ]
+    },
+    {
+      "id": "EXC-028",
+      "name": "Labor, tank, or delivery slot unavailable",
+      "workflow_ids": ["WF-005"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "trigger": "The maturity sampling, winery communication, and pick decision workflow encounters: Labor, tank, or delivery slot unavailable.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by labor, tank, or delivery slot unavailable; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-WINEMAKER",
+      "escalation_roles": ["ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["pick_proposed"],
+      "recovery_actions": [
+        "Record and contain labor, tank, or delivery slot unavailable at the affected scope.",
+        "Use DEC-044 authority to move from pick_proposed to deferred; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["deferred"],
+      "required_records": [
+        "Pick proposal",
+        "Pick authorization",
+        "Contract",
+        "Decision communication",
+        "Supersession history"
+      ],
+      "decisions": ["DEC-044"],
+      "closure_evidence": [
+        "attributed EXC-028 observation and affected scope",
+        "pick_proposed to deferred transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
+        "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
+      ],
+      "role_ids": ["ROLE-WINEMAKER", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-039", "REC-041", "REC-080", "REC-040", "REC-042"],
+      "inputs": [
+        "REC-039",
+        "REC-041",
+        "REC-080",
+        "REC-040",
+        "REC-042",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-028 exception event",
+        "deferred state transition",
+        "REC-040",
+        "REC-042"
+      ]
+    },
+    {
+      "id": "EXC-029",
+      "name": "Winery changes timing or target",
+      "workflow_ids": ["WF-005"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-005", "EVD-011", "EVD-012"],
+      "trigger": "The maturity sampling, winery communication, and pick decision workflow encounters: Winery changes timing or target.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by winery changes timing or target; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-GROWER-RELATIONS",
+      "escalation_roles": ["ROLE-VINEYARD-MANAGER", "ROLE-WINEMAKER"],
+      "interrupted_states": ["authorized"],
+      "recovery_actions": [
+        "Record and contain winery changes timing or target at the affected scope.",
+        "Use DEC-043 and DEC-044 authority to move from authorized to superseded; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["superseded"],
+      "required_records": [
+        "Pick proposal",
+        "Decision communication",
+        "Contract",
+        "Pick authorization",
+        "Supersession history"
+      ],
+      "decisions": ["DEC-043", "DEC-044"],
+      "closure_evidence": [
+        "attributed EXC-029 observation and affected scope",
+        "authorized to superseded transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 6 | Maturity sampling and winery communication |",
+        "**Workflow card: crop estimation and maturity tracking to harvest-date decision**",
+        "as harvest nears, increase sample frequency; send results to winemaker, manager, grower, or buyer as relevant",
+        "many arrangements rely on communication and mutual agreement even where final pick timing sits with the winery"
+      ],
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-WINEMAKER"
+      ],
+      "record_ids": ["REC-039", "REC-040", "REC-080", "REC-041", "REC-042"],
+      "inputs": [
+        "REC-039",
+        "REC-040",
+        "REC-080",
+        "REC-041",
+        "REC-042",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-029 exception event",
+        "superseded state transition",
+        "REC-041",
+        "REC-042"
+      ]
+    },
+    {
+      "id": "EXC-030",
+      "name": "Winery delay or changed tank capacity",
+      "workflow_ids": ["WF-006"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "trigger": "The harvest planning, execution, loads, intake, quality, and reconciliation workflow encounters: Winery delay or changed tank capacity.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by winery delay or changed tank capacity; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VINEYARD-MANAGER",
+      "escalation_roles": ["ROLE-HARVEST-CREW-LEADER"],
+      "interrupted_states": ["harvesting"],
+      "recovery_actions": [
+        "Record and contain winery delay or changed tank capacity at the affected scope.",
+        "Use DEC-051 authority to move from harvesting to delayed; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["delayed"],
+      "required_records": [
+        "Pick authorization",
+        "Harvest plan",
+        "Crew and container assignment",
+        "Contract"
+      ],
+      "decisions": ["DEC-051"],
+      "closure_evidence": [
+        "attributed EXC-030 observation and affected scope",
+        "harvesting to delayed transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
+        "the grower indicates grower number, variety, vineyard and block on the weigh bill",
+        "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-HARVEST-CREW-LEADER"],
+      "record_ids": ["REC-041", "REC-043", "REC-044", "REC-080"],
+      "inputs": [
+        "REC-041",
+        "REC-043",
+        "REC-044",
+        "REC-080",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-030 exception event",
+        "delayed state transition",
+        "REC-044",
+        "REC-080"
+      ]
+    },
+    {
+      "id": "EXC-031",
+      "name": "Missed truck slot",
+      "workflow_ids": ["WF-006"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "trigger": "The harvest planning, execution, loads, intake, quality, and reconciliation workflow encounters: Missed truck slot.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by missed truck slot; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VINEYARD-MANAGER",
+      "escalation_roles": ["ROLE-HARVEST-CREW-LEADER"],
+      "interrupted_states": ["in_transit"],
+      "recovery_actions": [
+        "Record and contain missed truck slot at the affected scope.",
+        "Use DEC-051 authority to move from in_transit to delayed; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["delayed"],
+      "required_records": [
+        "Pick authorization",
+        "Harvest plan",
+        "Crew and container assignment",
+        "Contract"
+      ],
+      "decisions": ["DEC-051"],
+      "closure_evidence": [
+        "attributed EXC-031 observation and affected scope",
+        "in_transit to delayed transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
+        "the grower indicates grower number, variety, vineyard and block on the weigh bill",
+        "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-HARVEST-CREW-LEADER"],
+      "record_ids": ["REC-041", "REC-043", "REC-044", "REC-080"],
+      "inputs": [
+        "REC-041",
+        "REC-043",
+        "REC-044",
+        "REC-080",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-031 exception event",
+        "delayed state transition",
+        "REC-044",
+        "REC-080"
+      ]
+    },
+    {
+      "id": "EXC-032",
+      "name": "Hot fruit or excessive material other than grapes",
+      "workflow_ids": ["WF-006"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "trigger": "The harvest planning, execution, loads, intake, quality, and reconciliation workflow encounters: Hot fruit or excessive material other than grapes.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by hot fruit or excessive material other than grapes; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-WINEMAKER",
+      "escalation_roles": ["ROLE-WINERY-INTAKE"],
+      "interrupted_states": ["quality_pending"],
+      "recovery_actions": [
+        "Record and contain hot fruit or excessive material other than grapes at the affected scope.",
+        "Use DEC-053 authority to move from quality_pending to downgraded; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["downgraded"],
+      "required_records": [
+        "Load identity",
+        "Weigh bill",
+        "Intake sample and quality result",
+        "Contract",
+        "Disposition notice"
+      ],
+      "decisions": ["DEC-053"],
+      "closure_evidence": [
+        "attributed EXC-032 observation and affected scope",
+        "quality_pending to downgraded transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
+        "the grower indicates grower number, variety, vineyard and block on the weigh bill",
+        "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
+      ],
+      "role_ids": ["ROLE-WINEMAKER", "ROLE-WINERY-INTAKE"],
+      "record_ids": ["REC-045", "REC-047", "REC-048", "REC-080", "REC-049"],
+      "inputs": [
+        "REC-045",
+        "REC-047",
+        "REC-048",
+        "REC-080",
+        "REC-049",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-032 exception event",
+        "downgraded state transition",
+        "REC-080",
+        "REC-049"
+      ]
+    },
+    {
+      "id": "EXC-033",
+      "name": "Wrong block or load identity",
+      "workflow_ids": ["WF-006"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "trigger": "The harvest planning, execution, loads, intake, quality, and reconciliation workflow encounters: Wrong block or load identity.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by wrong block or load identity; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-WINERY-INTAKE",
+      "escalation_roles": ["ROLE-TRANSPORTATION", "ROLE-GROWER-RELATIONS"],
+      "interrupted_states": ["arrived"],
+      "recovery_actions": [
+        "Record and contain wrong block or load identity at the affected scope.",
+        "Use DEC-052 and DEC-054 authority to move from arrived to disputed; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["disputed"],
+      "required_records": [
+        "Pick authorization",
+        "Load identity",
+        "Transport record",
+        "Weigh bill",
+        "Delivery entry",
+        "Disposition notice",
+        "Correction history"
+      ],
+      "decisions": ["DEC-052", "DEC-054"],
+      "closure_evidence": [
+        "attributed EXC-033 observation and affected scope",
+        "arrived to disputed transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
+        "the grower indicates grower number, variety, vineyard and block on the weigh bill",
+        "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
+      ],
+      "role_ids": [
+        "ROLE-WINERY-INTAKE",
+        "ROLE-TRANSPORTATION",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "record_ids": [
+        "REC-041",
+        "REC-045",
+        "REC-046",
+        "REC-047",
+        "REC-050",
+        "REC-049",
+        "REC-051"
+      ],
+      "inputs": [
+        "REC-041",
+        "REC-045",
+        "REC-046",
+        "REC-047",
+        "REC-050",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-033 exception event",
+        "disputed state transition",
+        "REC-049",
+        "REC-051"
+      ]
+    },
+    {
+      "id": "EXC-034",
+      "name": "Rejected or downgraded load",
+      "workflow_ids": ["WF-006"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "trigger": "The harvest planning, execution, loads, intake, quality, and reconciliation workflow encounters: Rejected or downgraded load.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by rejected or downgraded load; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-WINEMAKER",
+      "escalation_roles": ["ROLE-WINERY-INTAKE"],
+      "interrupted_states": ["quality_pending"],
+      "recovery_actions": [
+        "Record and contain rejected or downgraded load at the affected scope.",
+        "Use DEC-053 authority to move from quality_pending to rejected; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["rejected"],
+      "required_records": [
+        "Load identity",
+        "Weigh bill",
+        "Intake sample and quality result",
+        "Contract",
+        "Disposition notice"
+      ],
+      "decisions": ["DEC-053"],
+      "closure_evidence": [
+        "attributed EXC-034 observation and affected scope",
+        "quality_pending to rejected transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
+        "the grower indicates grower number, variety, vineyard and block on the weigh bill",
+        "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
+      ],
+      "role_ids": ["ROLE-WINEMAKER", "ROLE-WINERY-INTAKE"],
+      "record_ids": ["REC-045", "REC-047", "REC-048", "REC-080", "REC-049"],
+      "inputs": [
+        "REC-045",
+        "REC-047",
+        "REC-048",
+        "REC-080",
+        "REC-049",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-034 exception event",
+        "rejected state transition",
+        "REC-080",
+        "REC-049"
+      ]
+    },
+    {
+      "id": "EXC-035",
+      "name": "Late processor entry",
+      "workflow_ids": ["WF-006"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "trigger": "The harvest planning, execution, loads, intake, quality, and reconciliation workflow encounters: Late processor entry.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by late processor entry; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-GROWER-RELATIONS",
+      "escalation_roles": ["ROLE-WINERY-INTAKE"],
+      "interrupted_states": ["entered"],
+      "recovery_actions": [
+        "Record and contain late processor entry at the affected scope.",
+        "Use DEC-054 authority to move from entered to correction_required; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["correction_required"],
+      "required_records": [
+        "Load identity",
+        "Weigh bill",
+        "Disposition notice",
+        "Delivery entry",
+        "Correction history"
+      ],
+      "decisions": ["DEC-054"],
+      "closure_evidence": [
+        "attributed EXC-035 observation and affected scope",
+        "entered to correction_required transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
+        "the grower indicates grower number, variety, vineyard and block on the weigh bill",
+        "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-WINERY-INTAKE"],
+      "record_ids": ["REC-045", "REC-047", "REC-049", "REC-050", "REC-051"],
+      "inputs": [
+        "REC-045",
+        "REC-047",
+        "REC-049",
+        "REC-050",
+        "REC-051",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-035 exception event",
+        "correction_required state transition",
+        "REC-050",
+        "REC-051"
+      ]
+    },
+    {
+      "id": "EXC-036",
+      "name": "Weigh or payment dispute",
+      "workflow_ids": ["WF-006"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-006", "EVD-011", "EVD-012"],
+      "trigger": "The harvest planning, execution, loads, intake, quality, and reconciliation workflow encounters: Weigh or payment dispute.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by weigh or payment dispute; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-GROWER-RELATIONS",
+      "escalation_roles": ["ROLE-WINERY-INTAKE", "ROLE-FINANCE"],
+      "interrupted_states": ["weighed"],
+      "recovery_actions": [
+        "Record and contain weigh or payment dispute at the affected scope.",
+        "Use DEC-054 and DEC-055 authority to move from weighed to disputed; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["disputed"],
+      "required_records": [
+        "Load identity",
+        "Weigh bill",
+        "Disposition notice",
+        "Delivery entry",
+        "Correction history",
+        "Contract adjustment",
+        "Settlement record",
+        "Contract"
+      ],
+      "decisions": ["DEC-054", "DEC-055"],
+      "closure_evidence": [
+        "attributed EXC-036 observation and affected scope",
+        "weighed to disputed transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 1 | Harvest decision, execution, delivery, and reconciliation |",
+        "**Workflow card: harvest execution to weigh-ticket and payment reconciliation**",
+        "the grower indicates grower number, variety, vineyard and block on the weigh bill",
+        "the processor enters the weigh bill within 72 hours, and the grower reviews the entry for accuracy"
+      ],
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-FINANCE"
+      ],
+      "record_ids": [
+        "REC-045",
+        "REC-047",
+        "REC-049",
+        "REC-050",
+        "REC-051",
+        "REC-052",
+        "REC-053",
+        "REC-080"
+      ],
+      "inputs": [
+        "REC-045",
+        "REC-047",
+        "REC-049",
+        "REC-050",
+        "REC-051",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-036 exception event",
+        "disputed state transition",
+        "REC-053",
+        "REC-080"
+      ]
+    },
+    {
+      "id": "EXC-037",
+      "name": "Worker absent or crew short",
+      "workflow_ids": ["WF-007"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "trigger": "The crew scheduling, attendance, time, payroll, and cost allocation workflow encounters: Worker absent or crew short.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by worker absent or crew short; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-OPERATIONS-COORDINATOR",
+      "escalation_roles": ["ROLE-FOREMAN"],
+      "interrupted_states": ["crew_scheduled"],
+      "recovery_actions": [
+        "Record and contain worker absent or crew short at the affected scope.",
+        "Use DEC-061 authority to move from crew_scheduled to exception_flagged; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["exception_flagged"],
+      "required_records": [
+        "Work assignment",
+        "Crew roster",
+        "Qualification and training evidence"
+      ],
+      "decisions": ["DEC-061"],
+      "closure_evidence": [
+        "attributed EXC-037 observation and affected scope",
+        "crew_scheduled to exception_flagged transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere.",
+        "cost studies assume tracking of labor, custom work, materials, and equipment activity",
+        "The largest unknowns are behavioral rather than structural."
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR", "ROLE-FOREMAN"],
+      "record_ids": ["REC-003", "REC-054", "REC-055"],
+      "inputs": [
+        "REC-003",
+        "REC-054",
+        "REC-055",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-037 exception event",
+        "exception_flagged state transition",
+        "REC-054",
+        "REC-055"
+      ]
+    },
+    {
+      "id": "EXC-038",
+      "name": "Language or training mismatch",
+      "workflow_ids": ["WF-007"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "trigger": "The crew scheduling, attendance, time, payroll, and cost allocation workflow encounters: Language or training mismatch.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by language or training mismatch; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-OPERATIONS-COORDINATOR",
+      "escalation_roles": ["ROLE-FOREMAN"],
+      "interrupted_states": ["briefed"],
+      "recovery_actions": [
+        "Record and contain language or training mismatch at the affected scope.",
+        "Use DEC-061 authority to move from briefed to exception_flagged; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["exception_flagged"],
+      "required_records": [
+        "Work assignment",
+        "Crew roster",
+        "Qualification and training evidence",
+        "Safety briefing"
+      ],
+      "decisions": ["DEC-061"],
+      "closure_evidence": [
+        "attributed EXC-038 observation and affected scope",
+        "briefed to exception_flagged transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere.",
+        "cost studies assume tracking of labor, custom work, materials, and equipment activity",
+        "The largest unknowns are behavioral rather than structural."
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR", "ROLE-FOREMAN"],
+      "record_ids": ["REC-003", "REC-054", "REC-055", "REC-056"],
+      "inputs": [
+        "REC-003",
+        "REC-054",
+        "REC-055",
+        "REC-056",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-038 exception event",
+        "exception_flagged state transition",
+        "REC-055",
+        "REC-056"
+      ]
+    },
+    {
+      "id": "EXC-039",
+      "name": "Heat or safety pause",
+      "workflow_ids": ["WF-007"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "trigger": "The crew scheduling, attendance, time, payroll, and cost allocation workflow encounters: Heat or safety pause.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by heat or safety pause; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-FOREMAN",
+      "escalation_roles": ["ROLE-OPERATIONS-COORDINATOR"],
+      "interrupted_states": ["working"],
+      "recovery_actions": [
+        "Record and contain heat or safety pause at the affected scope.",
+        "Use DEC-062 authority to move from working to paused; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["paused"],
+      "required_records": [
+        "Work assignment",
+        "Safety briefing",
+        "Attendance record",
+        "Break record"
+      ],
+      "decisions": ["DEC-062"],
+      "closure_evidence": [
+        "attributed EXC-039 observation and affected scope",
+        "working to paused transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere.",
+        "cost studies assume tracking of labor, custom work, materials, and equipment activity",
+        "The largest unknowns are behavioral rather than structural."
+      ],
+      "role_ids": ["ROLE-FOREMAN", "ROLE-OPERATIONS-COORDINATOR"],
+      "record_ids": ["REC-003", "REC-056", "REC-057", "REC-058"],
+      "inputs": [
+        "REC-003",
+        "REC-056",
+        "REC-057",
+        "REC-058",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-039 exception event",
+        "paused state transition",
+        "REC-057",
+        "REC-058"
+      ]
+    },
+    {
+      "id": "EXC-040",
+      "name": "Mid-shift reassignment",
+      "workflow_ids": ["WF-007"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "trigger": "The crew scheduling, attendance, time, payroll, and cost allocation workflow encounters: Mid-shift reassignment.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by mid-shift reassignment; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-FOREMAN",
+      "escalation_roles": ["ROLE-OPERATIONS-COORDINATOR"],
+      "interrupted_states": ["working"],
+      "recovery_actions": [
+        "Record and contain mid-shift reassignment at the affected scope.",
+        "Use DEC-062 authority to move from working to reassigned; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["reassigned"],
+      "required_records": [
+        "Work assignment",
+        "Safety briefing",
+        "Attendance record",
+        "Break record"
+      ],
+      "decisions": ["DEC-062"],
+      "closure_evidence": [
+        "attributed EXC-040 observation and affected scope",
+        "working to reassigned transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere.",
+        "cost studies assume tracking of labor, custom work, materials, and equipment activity",
+        "The largest unknowns are behavioral rather than structural."
+      ],
+      "role_ids": ["ROLE-FOREMAN", "ROLE-OPERATIONS-COORDINATOR"],
+      "record_ids": ["REC-003", "REC-056", "REC-057", "REC-058"],
+      "inputs": [
+        "REC-003",
+        "REC-056",
+        "REC-057",
+        "REC-058",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-040 exception event",
+        "reassigned state transition",
+        "REC-057",
+        "REC-058"
+      ]
+    },
+    {
+      "id": "EXC-041",
+      "name": "Missing break, time, unit, or block allocation",
+      "workflow_ids": ["WF-007"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "trigger": "The crew scheduling, attendance, time, payroll, and cost allocation workflow encounters: Missing break, time, unit, or block allocation.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by missing break, time, unit, or block allocation; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VINEYARD-MANAGER",
+      "escalation_roles": ["ROLE-FOREMAN", "ROLE-PAYROLL"],
+      "interrupted_states": ["time_submitted"],
+      "recovery_actions": [
+        "Record and contain missing break, time, unit, or block allocation at the affected scope.",
+        "Use DEC-063 and DEC-064 authority to move from time_submitted to exception_flagged; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["exception_flagged"],
+      "required_records": [
+        "Attendance record",
+        "Break record",
+        "Time and piece-rate record",
+        "Task quantity",
+        "Supervisor verification",
+        "Payroll exception",
+        "Correction history",
+        "Cost allocation"
+      ],
+      "decisions": ["DEC-063", "DEC-064"],
+      "closure_evidence": [
+        "attributed EXC-041 observation and affected scope",
+        "time_submitted to exception_flagged transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere.",
+        "cost studies assume tracking of labor, custom work, materials, and equipment activity",
+        "The largest unknowns are behavioral rather than structural."
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-FOREMAN", "ROLE-PAYROLL"],
+      "record_ids": [
+        "REC-057",
+        "REC-058",
+        "REC-059",
+        "REC-060",
+        "REC-061",
+        "REC-062",
+        "REC-051",
+        "REC-063"
+      ],
+      "inputs": [
+        "REC-057",
+        "REC-058",
+        "REC-059",
+        "REC-060",
+        "REC-061",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-041 exception event",
+        "exception_flagged state transition",
+        "REC-051",
+        "REC-063"
+      ]
+    },
+    {
+      "id": "EXC-042",
+      "name": "Payroll and work record conflict",
+      "workflow_ids": ["WF-007"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "trigger": "The crew scheduling, attendance, time, payroll, and cost allocation workflow encounters: Payroll and work record conflict.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by payroll and work record conflict; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VINEYARD-MANAGER",
+      "escalation_roles": ["ROLE-FOREMAN", "ROLE-PAYROLL"],
+      "interrupted_states": ["supervisor_verified"],
+      "recovery_actions": [
+        "Record and contain payroll and work record conflict at the affected scope.",
+        "Use DEC-063 and DEC-064 authority to move from supervisor_verified to exception_flagged; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["exception_flagged"],
+      "required_records": [
+        "Attendance record",
+        "Break record",
+        "Time and piece-rate record",
+        "Task quantity",
+        "Supervisor verification",
+        "Payroll exception",
+        "Correction history",
+        "Cost allocation"
+      ],
+      "decisions": ["DEC-063", "DEC-064"],
+      "closure_evidence": [
+        "attributed EXC-042 observation and affected scope",
+        "supervisor_verified to exception_flagged transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere.",
+        "cost studies assume tracking of labor, custom work, materials, and equipment activity",
+        "The largest unknowns are behavioral rather than structural."
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-FOREMAN", "ROLE-PAYROLL"],
+      "record_ids": [
+        "REC-057",
+        "REC-058",
+        "REC-059",
+        "REC-060",
+        "REC-061",
+        "REC-062",
+        "REC-051",
+        "REC-063"
+      ],
+      "inputs": [
+        "REC-057",
+        "REC-058",
+        "REC-059",
+        "REC-060",
+        "REC-061",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-042 exception event",
+        "exception_flagged state transition",
+        "REC-051",
+        "REC-063"
+      ]
+    },
+    {
+      "id": "EXC-043",
+      "name": "Late contractor record",
+      "workflow_ids": ["WF-007"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-007", "EVD-011", "EVD-012"],
+      "trigger": "The crew scheduling, attendance, time, payroll, and cost allocation workflow encounters: Late contractor record.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by late contractor record; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VINEYARD-MANAGER",
+      "escalation_roles": ["ROLE-FOREMAN", "ROLE-PAYROLL"],
+      "interrupted_states": ["time_submitted"],
+      "recovery_actions": [
+        "Record and contain late contractor record at the affected scope.",
+        "Use DEC-063 and DEC-064 authority to move from time_submitted to exception_flagged; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["exception_flagged"],
+      "required_records": [
+        "Attendance record",
+        "Time and piece-rate record",
+        "Supervisor verification",
+        "Payroll exception",
+        "Correction history"
+      ],
+      "decisions": ["DEC-063", "DEC-064"],
+      "closure_evidence": [
+        "attributed EXC-043 observation and affected scope",
+        "time_submitted to exception_flagged transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 5 | Crew scheduling, attendance, task verification, and payroll allocation |",
+        "Operations coordination is often hidden inside other titles, but its work is visible everywhere.",
+        "cost studies assume tracking of labor, custom work, materials, and equipment activity",
+        "The largest unknowns are behavioral rather than structural."
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-FOREMAN", "ROLE-PAYROLL"],
+      "record_ids": ["REC-057", "REC-059", "REC-061", "REC-062", "REC-051"],
+      "inputs": [
+        "REC-057",
+        "REC-059",
+        "REC-061",
+        "REC-062",
+        "REC-051",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-043 exception event",
+        "exception_flagged state transition",
+        "REC-062",
+        "REC-051"
+      ]
+    },
+    {
+      "id": "EXC-044",
+      "name": "Material or PPE out of stock",
+      "workflow_ids": ["WF-008"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "trigger": "The materials, purchasing, equipment readiness, and repair workflow encounters: Material or PPE out of stock.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by material or ppe out of stock; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-OPERATIONS-COORDINATOR",
+      "escalation_roles": ["ROLE-PURCHASING"],
+      "interrupted_states": ["availability_checked"],
+      "recovery_actions": [
+        "Record and contain material or ppe out of stock at the affected scope.",
+        "Use DEC-071 authority to move from availability_checked to unavailable; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["unavailable"],
+      "required_records": [
+        "Resource demand",
+        "Inventory record",
+        "Equipment readiness and calibration record",
+        "Purchase request",
+        "Staging record"
+      ],
+      "decisions": ["DEC-071"],
+      "closure_evidence": [
+        "attributed EXC-044 observation and affected scope",
+        "availability_checked to unavailable transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available",
+        "manage or request PPE and materials, get equipment repaired",
+        "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR", "ROLE-PURCHASING"],
+      "record_ids": ["REC-064", "REC-065", "REC-066", "REC-067", "REC-071"],
+      "inputs": [
+        "REC-064",
+        "REC-065",
+        "REC-066",
+        "REC-067",
+        "REC-071",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-044 exception event",
+        "unavailable state transition",
+        "REC-067",
+        "REC-071"
+      ]
+    },
+    {
+      "id": "EXC-045",
+      "name": "Unapproved substitution",
+      "workflow_ids": ["WF-008"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "trigger": "The materials, purchasing, equipment readiness, and repair workflow encounters: Unapproved substitution.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by unapproved substitution; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-COMPLIANCE-COORDINATOR",
+      "escalation_roles": ["ROLE-PURCHASING"],
+      "interrupted_states": ["substitution_pending"],
+      "recovery_actions": [
+        "Record and contain unapproved substitution at the affected scope.",
+        "Use DEC-072 authority to move from substitution_pending to superseded; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["superseded"],
+      "required_records": [
+        "Inventory record",
+        "Purchase request",
+        "Receipt and lot record",
+        "Approval",
+        "Purchase order"
+      ],
+      "decisions": ["DEC-072"],
+      "closure_evidence": [
+        "attributed EXC-045 observation and affected scope",
+        "substitution_pending to superseded transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available",
+        "manage or request PPE and materials, get equipment repaired",
+        "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-PURCHASING"],
+      "record_ids": ["REC-065", "REC-067", "REC-070", "REC-068", "REC-069"],
+      "inputs": [
+        "REC-065",
+        "REC-067",
+        "REC-070",
+        "REC-068",
+        "REC-069",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-045 exception event",
+        "superseded state transition",
+        "REC-068",
+        "REC-069"
+      ]
+    },
+    {
+      "id": "EXC-046",
+      "name": "Late vendor or contractor",
+      "workflow_ids": ["WF-008"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "trigger": "The materials, purchasing, equipment readiness, and repair workflow encounters: Late vendor or contractor.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by late vendor or contractor; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-OPERATIONS-COORDINATOR",
+      "escalation_roles": ["ROLE-PURCHASING", "ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["ordered"],
+      "recovery_actions": [
+        "Record and contain late vendor or contractor at the affected scope.",
+        "Use DEC-071 and DEC-073 authority to move from ordered to unavailable; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["unavailable"],
+      "required_records": [
+        "Resource demand",
+        "Inventory record",
+        "Equipment readiness and calibration record",
+        "Purchase request",
+        "Staging record",
+        "Approval",
+        "Purchase order"
+      ],
+      "decisions": ["DEC-071", "DEC-073"],
+      "closure_evidence": [
+        "attributed EXC-046 observation and affected scope",
+        "ordered to unavailable transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available",
+        "manage or request PPE and materials, get equipment repaired",
+        "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
+      ],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-PURCHASING",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-064",
+        "REC-065",
+        "REC-066",
+        "REC-067",
+        "REC-071",
+        "REC-068",
+        "REC-069"
+      ],
+      "inputs": [
+        "REC-064",
+        "REC-065",
+        "REC-066",
+        "REC-067",
+        "REC-071",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-046 exception event",
+        "unavailable state transition",
+        "REC-068",
+        "REC-069"
+      ]
+    },
+    {
+      "id": "EXC-047",
+      "name": "Equipment failure during a narrow work window",
+      "workflow_ids": ["WF-008"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "trigger": "The materials, purchasing, equipment readiness, and repair workflow encounters: Equipment failure during a narrow work window.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by equipment failure during a narrow work window; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-FOREMAN",
+      "escalation_roles": ["ROLE-MECHANIC", "ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["in_use"],
+      "recovery_actions": [
+        "Record and contain equipment failure during a narrow work window at the affected scope.",
+        "Use DEC-074 authority to move from in_use to failure_reported; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["failure_reported"],
+      "required_records": [
+        "Equipment readiness and calibration record",
+        "Failure report",
+        "Repair order",
+        "Parts and labor actuals",
+        "Return-to-service verification"
+      ],
+      "decisions": ["DEC-074"],
+      "closure_evidence": [
+        "attributed EXC-047 observation and affected scope",
+        "in_use to failure_reported transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available",
+        "manage or request PPE and materials, get equipment repaired",
+        "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
+      ],
+      "role_ids": ["ROLE-FOREMAN", "ROLE-MECHANIC", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-066", "REC-072", "REC-073", "REC-074", "REC-075"],
+      "inputs": [
+        "REC-066",
+        "REC-072",
+        "REC-073",
+        "REC-074",
+        "REC-075",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-047 exception event",
+        "failure_reported state transition",
+        "REC-074",
+        "REC-075"
+      ]
+    },
+    {
+      "id": "EXC-048",
+      "name": "Repair part unavailable",
+      "workflow_ids": ["WF-008"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "trigger": "The materials, purchasing, equipment readiness, and repair workflow encounters: Repair part unavailable.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by repair part unavailable; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-OPERATIONS-COORDINATOR",
+      "escalation_roles": ["ROLE-PURCHASING", "ROLE-FOREMAN"],
+      "interrupted_states": ["repair_open"],
+      "recovery_actions": [
+        "Record and contain repair part unavailable at the affected scope.",
+        "Use DEC-071 and DEC-074 authority to move from repair_open to unavailable; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["unavailable"],
+      "required_records": [
+        "Resource demand",
+        "Inventory record",
+        "Equipment readiness and calibration record",
+        "Purchase request",
+        "Staging record",
+        "Failure report",
+        "Repair order",
+        "Parts and labor actuals",
+        "Return-to-service verification"
+      ],
+      "decisions": ["DEC-071", "DEC-074"],
+      "closure_evidence": [
+        "attributed EXC-048 observation and affected scope",
+        "repair_open to unavailable transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available",
+        "manage or request PPE and materials, get equipment repaired",
+        "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
+      ],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-PURCHASING",
+        "ROLE-FOREMAN"
+      ],
+      "record_ids": [
+        "REC-064",
+        "REC-065",
+        "REC-066",
+        "REC-067",
+        "REC-071",
+        "REC-072",
+        "REC-073",
+        "REC-074",
+        "REC-075"
+      ],
+      "inputs": [
+        "REC-064",
+        "REC-065",
+        "REC-066",
+        "REC-067",
+        "REC-071",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-048 exception event",
+        "unavailable state transition",
+        "REC-074",
+        "REC-075"
+      ]
+    },
+    {
+      "id": "EXC-049",
+      "name": "Receipt quantity or lot mismatch",
+      "workflow_ids": ["WF-008"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "trigger": "The materials, purchasing, equipment readiness, and repair workflow encounters: Receipt quantity or lot mismatch.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by receipt quantity or lot mismatch; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-COMPLIANCE-COORDINATOR",
+      "escalation_roles": ["ROLE-PURCHASING"],
+      "interrupted_states": ["received"],
+      "recovery_actions": [
+        "Record and contain receipt quantity or lot mismatch at the affected scope.",
+        "Use DEC-072 authority to move from received to corrected; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["corrected"],
+      "required_records": [
+        "Inventory record",
+        "Purchase request",
+        "Receipt and lot record",
+        "Approval",
+        "Purchase order"
+      ],
+      "decisions": ["DEC-072"],
+      "closure_evidence": [
+        "attributed EXC-049 observation and affected scope",
+        "received to corrected transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available",
+        "manage or request PPE and materials, get equipment repaired",
+        "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-PURCHASING"],
+      "record_ids": ["REC-065", "REC-067", "REC-070", "REC-068", "REC-069"],
+      "inputs": [
+        "REC-065",
+        "REC-067",
+        "REC-070",
+        "REC-068",
+        "REC-069",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-049 exception event",
+        "corrected state transition",
+        "REC-068",
+        "REC-069"
+      ]
+    },
+    {
+      "id": "EXC-050",
+      "name": "Budget conflict",
+      "workflow_ids": ["WF-008"],
+      "classification": "strong_inference",
+      "confidence": "medium",
+      "evidence_ids": ["EVD-008", "EVD-011", "EVD-012"],
+      "trigger": "The materials, purchasing, equipment readiness, and repair workflow encounters: Budget conflict.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by budget conflict; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-VINEYARD-MANAGER",
+      "escalation_roles": ["ROLE-PURCHASING"],
+      "interrupted_states": ["purchase_requested"],
+      "recovery_actions": [
+        "Record and contain budget conflict at the affected scope.",
+        "Use DEC-073 authority to move from purchase_requested to superseded; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["superseded"],
+      "required_records": [
+        "Resource demand",
+        "Purchase request",
+        "Approval",
+        "Purchase order"
+      ],
+      "decisions": ["DEC-073"],
+      "closure_evidence": [
+        "attributed EXC-050 observation and affected scope",
+        "purchase_requested to superseded transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 7 | Purchasing, materials staging, and equipment readiness |",
+        "Someone has to book custom operators, ensure bins are available",
+        "manage or request PPE and materials, get equipment repaired",
+        "Budget studies and manager postings both imply the need to coordinate tools, fuel, trellis supplies, sprayer materials, and repairs continuously."
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-PURCHASING"],
+      "record_ids": ["REC-064", "REC-067", "REC-068", "REC-069"],
+      "inputs": [
+        "REC-064",
+        "REC-067",
+        "REC-068",
+        "REC-069",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-050 exception event",
+        "superseded state transition",
+        "REC-068",
+        "REC-069"
+      ]
+    },
+    {
+      "id": "EXC-051",
+      "name": "Conflicting block aliases",
+      "workflow_ids": ["WF-009"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "trigger": "The grower onboarding, contract-fruit coordination, and relationship history workflow encounters: Conflicting block aliases.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by conflicting block aliases; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-GROWER-RELATIONS",
+      "escalation_roles": ["ROLE-CONTRACT-GROWER"],
+      "interrupted_states": ["identity_matching"],
+      "recovery_actions": [
+        "Record and contain conflicting block aliases at the affected scope.",
+        "Use DEC-081 authority to move from identity_matching to disputed; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["disputed"],
+      "required_records": [
+        "Grower profile",
+        "Organization and contact record",
+        "Vineyard and block map",
+        "Alias history"
+      ],
+      "decisions": ["DEC-081"],
+      "closure_evidence": [
+        "attributed EXC-051 observation and affected scope",
+        "identity_matching to disputed transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit.",
+        "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
+        "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-CONTRACT-GROWER"],
+      "record_ids": ["REC-076", "REC-077", "REC-078", "REC-079"],
+      "inputs": [
+        "REC-076",
+        "REC-077",
+        "REC-078",
+        "REC-079",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-051 exception event",
+        "disputed state transition",
+        "REC-078",
+        "REC-079"
+      ]
+    },
+    {
+      "id": "EXC-052",
+      "name": "Missing or unacceptable spray or certification history",
+      "workflow_ids": ["WF-009"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "trigger": "The grower onboarding, contract-fruit coordination, and relationship history workflow encounters: Missing or unacceptable spray or certification history.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by missing or unacceptable spray or certification history; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-COMPLIANCE-COORDINATOR",
+      "escalation_roles": ["ROLE-GROWER-RELATIONS"],
+      "interrupted_states": ["due_diligence"],
+      "recovery_actions": [
+        "Record and contain missing or unacceptable spray or certification history at the affected scope.",
+        "Use DEC-082 authority to move from due_diligence to at_risk; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["at_risk"],
+      "required_records": [
+        "Grower profile",
+        "Vineyard and block map",
+        "Contract",
+        "Quality specification",
+        "Spray and certification history"
+      ],
+      "decisions": ["DEC-082"],
+      "closure_evidence": [
+        "attributed EXC-052 observation and affected scope",
+        "due_diligence to at_risk transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit.",
+        "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
+        "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-076", "REC-078", "REC-080", "REC-081", "REC-082"],
+      "inputs": [
+        "REC-076",
+        "REC-078",
+        "REC-080",
+        "REC-081",
+        "REC-082",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-052 exception event",
+        "at_risk state transition",
+        "REC-081",
+        "REC-082"
+      ]
+    },
+    {
+      "id": "EXC-053",
+      "name": "Quality specification or timing changed",
+      "workflow_ids": ["WF-009"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "trigger": "The grower onboarding, contract-fruit coordination, and relationship history workflow encounters: Quality specification or timing changed.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by quality specification or timing changed; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-GROWER-RELATIONS",
+      "escalation_roles": ["ROLE-CONTRACT-GROWER", "ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["active"],
+      "recovery_actions": [
+        "Record and contain quality specification or timing changed at the affected scope.",
+        "Use DEC-083 and DEC-084 authority to move from active to at_risk; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["at_risk"],
+      "required_records": [
+        "Organization and contact record",
+        "Contract",
+        "Quality specification",
+        "Notice and acknowledgment",
+        "Visit record",
+        "Crop and maturity report",
+        "Corrective action",
+        "Dispute",
+        "Delivery and settlement history"
+      ],
+      "decisions": ["DEC-083", "DEC-084"],
+      "closure_evidence": [
+        "attributed EXC-053 observation and affected scope",
+        "active to at_risk transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit.",
+        "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
+        "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
+      ],
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-077",
+        "REC-080",
+        "REC-081",
+        "REC-085",
+        "REC-083",
+        "REC-084",
+        "REC-086",
+        "REC-087",
+        "REC-088"
+      ],
+      "inputs": [
+        "REC-077",
+        "REC-080",
+        "REC-081",
+        "REC-085",
+        "REC-083",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-053 exception event",
+        "at_risk state transition",
+        "REC-087",
+        "REC-088"
+      ]
+    },
+    {
+      "id": "EXC-054",
+      "name": "Grower and winery measurements disagree",
+      "workflow_ids": ["WF-009"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "trigger": "The grower onboarding, contract-fruit coordination, and relationship history workflow encounters: Grower and winery measurements disagree.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by grower and winery measurements disagree; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-GROWER-RELATIONS",
+      "escalation_roles": ["ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["report_due"],
+      "recovery_actions": [
+        "Record and contain grower and winery measurements disagree at the affected scope.",
+        "Use DEC-084 authority to move from report_due to disputed; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["disputed"],
+      "required_records": [
+        "Visit record",
+        "Crop and maturity report",
+        "Notice and acknowledgment",
+        "Corrective action",
+        "Dispute",
+        "Delivery and settlement history"
+      ],
+      "decisions": ["DEC-084"],
+      "closure_evidence": [
+        "attributed EXC-054 observation and affected scope",
+        "report_due to disputed transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit.",
+        "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
+        "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": [
+        "REC-083",
+        "REC-084",
+        "REC-085",
+        "REC-086",
+        "REC-087",
+        "REC-088"
+      ],
+      "inputs": [
+        "REC-083",
+        "REC-084",
+        "REC-085",
+        "REC-086",
+        "REC-087",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-054 exception event",
+        "disputed state transition",
+        "REC-087",
+        "REC-088"
+      ]
+    },
+    {
+      "id": "EXC-055",
+      "name": "Notice arrives too late for corrective action",
+      "workflow_ids": ["WF-009"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "trigger": "The grower onboarding, contract-fruit coordination, and relationship history workflow encounters: Notice arrives too late for corrective action.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by notice arrives too late for corrective action; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-GROWER-RELATIONS",
+      "escalation_roles": ["ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["at_risk"],
+      "recovery_actions": [
+        "Record and contain notice arrives too late for corrective action at the affected scope.",
+        "Use DEC-084 authority to move from at_risk to disputed; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["disputed"],
+      "required_records": [
+        "Visit record",
+        "Crop and maturity report",
+        "Notice and acknowledgment",
+        "Corrective action",
+        "Dispute",
+        "Delivery and settlement history"
+      ],
+      "decisions": ["DEC-084"],
+      "closure_evidence": [
+        "attributed EXC-055 observation and affected scope",
+        "at_risk to disputed transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit.",
+        "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
+        "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": [
+        "REC-083",
+        "REC-084",
+        "REC-085",
+        "REC-086",
+        "REC-087",
+        "REC-088"
+      ],
+      "inputs": [
+        "REC-083",
+        "REC-084",
+        "REC-085",
+        "REC-086",
+        "REC-087",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-055 exception event",
+        "disputed state transition",
+        "REC-087",
+        "REC-088"
+      ]
+    },
+    {
+      "id": "EXC-056",
+      "name": "Delivery, downgrade, rejection, or payment dispute",
+      "workflow_ids": ["WF-009"],
+      "classification": "strong_inference",
+      "confidence": "medium-high",
+      "evidence_ids": ["EVD-009", "EVD-011", "EVD-012"],
+      "trigger": "The grower onboarding, contract-fruit coordination, and relationship history workflow encounters: Delivery, downgrade, rejection, or payment dispute.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by delivery, downgrade, rejection, or payment dispute; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-GROWER-RELATIONS",
+      "escalation_roles": ["ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["fulfilled"],
+      "recovery_actions": [
+        "Record and contain delivery, downgrade, rejection, or payment dispute at the affected scope.",
+        "Use DEC-084 authority to move from fulfilled to disputed; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["disputed"],
+      "required_records": [
+        "Visit record",
+        "Crop and maturity report",
+        "Notice and acknowledgment",
+        "Corrective action",
+        "Dispute",
+        "Delivery and settlement history"
+      ],
+      "decisions": ["DEC-084"],
+      "closure_evidence": [
+        "attributed EXC-056 observation and affected scope",
+        "fulfilled to disputed transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "| 8 | Grower onboarding, contract administration, and relationship history |",
+        "A key practical distinction is between estate-grown blocks and contract fruit.",
+        "Grower-relations work sits at the boundary between viticulture, procurement, quality assurance, and operations.",
+        "quality expectations, spray history, crop estimates, maturity sampling, and harvest schedules must be aligned across two organizations"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": [
+        "REC-083",
+        "REC-084",
+        "REC-085",
+        "REC-086",
+        "REC-087",
+        "REC-088"
+      ],
+      "inputs": [
+        "REC-083",
+        "REC-084",
+        "REC-085",
+        "REC-086",
+        "REC-087",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-056 exception event",
+        "disputed state transition",
+        "REC-087",
+        "REC-088"
+      ]
+    },
+    {
+      "id": "EXC-057",
+      "name": "Missing, late, contradictory, or buyer-specific record",
+      "workflow_ids": ["WF-010"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "trigger": "The certification, audit preparation, corrective action, and evidence workflow encounters: Missing, late, contradictory, or buyer-specific record.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by missing, late, contradictory, or buyer-specific record; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-COMPLIANCE-COORDINATOR",
+      "escalation_roles": ["ROLE-CERTIFIER", "ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["evidence_collecting"],
+      "recovery_actions": [
+        "Record and contain missing, late, contradictory, or buyer-specific record at the affected scope.",
+        "Use DEC-091 and DEC-092 authority to move from evidence_collecting to gap_identified; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["gap_identified"],
+      "required_records": [
+        "Contract",
+        "Spray and certification history",
+        "Certification scope",
+        "Requirement map",
+        "Site management plan",
+        "Annual questionnaire",
+        "Biosecurity register",
+        "Water and nitrogen totals",
+        "Training record",
+        "Organic field history and buffer map",
+        "Equipment-cleaning log",
+        "Clean-transport affidavit",
+        "Buffer-crop disposition",
+        "Biodynamic preparation record",
+        "Audit evidence"
+      ],
+      "decisions": ["DEC-091", "DEC-092"],
+      "closure_evidence": [
+        "attributed EXC-057 observation and affected scope",
+        "evidence_collecting to gap_identified transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists.",
+        "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
+        "where noncompliance appears, certification is withheld until corrective actions are completed."
+      ],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CERTIFIER",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-080",
+        "REC-082",
+        "REC-089",
+        "REC-090",
+        "REC-091",
+        "REC-092",
+        "REC-093",
+        "REC-094",
+        "REC-095",
+        "REC-096",
+        "REC-097",
+        "REC-098",
+        "REC-099",
+        "REC-100",
+        "REC-101"
+      ],
+      "inputs": [
+        "REC-080",
+        "REC-082",
+        "REC-089",
+        "REC-090",
+        "REC-091",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-057 exception event",
+        "gap_identified state transition",
+        "REC-100",
+        "REC-101"
+      ]
+    },
+    {
+      "id": "EXC-058",
+      "name": "Contractor or grower evidence unavailable",
+      "workflow_ids": ["WF-010"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "trigger": "The certification, audit preparation, corrective action, and evidence workflow encounters: Contractor or grower evidence unavailable.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by contractor or grower evidence unavailable; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-COMPLIANCE-COORDINATOR",
+      "escalation_roles": ["ROLE-CERTIFIER", "ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["evidence_collecting"],
+      "recovery_actions": [
+        "Record and contain contractor or grower evidence unavailable at the affected scope.",
+        "Use DEC-091 and DEC-092 authority to move from evidence_collecting to gap_identified; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["gap_identified"],
+      "required_records": [
+        "Contract",
+        "Spray and certification history",
+        "Training record",
+        "Clean-transport affidavit",
+        "Audit evidence"
+      ],
+      "decisions": ["DEC-091", "DEC-092"],
+      "closure_evidence": [
+        "attributed EXC-058 observation and affected scope",
+        "evidence_collecting to gap_identified transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists.",
+        "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
+        "where noncompliance appears, certification is withheld until corrective actions are completed."
+      ],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CERTIFIER",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": ["REC-080", "REC-082", "REC-095", "REC-098", "REC-101"],
+      "inputs": [
+        "REC-080",
+        "REC-082",
+        "REC-095",
+        "REC-098",
+        "REC-101",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-058 exception event",
+        "gap_identified state transition",
+        "REC-098",
+        "REC-101"
+      ]
+    },
+    {
+      "id": "EXC-059",
+      "name": "Unapproved input or contaminated buffer",
+      "workflow_ids": ["WF-010"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "trigger": "The certification, audit preparation, corrective action, and evidence workflow encounters: Unapproved input or contaminated buffer.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by unapproved input or contaminated buffer; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-COMPLIANCE-COORDINATOR",
+      "escalation_roles": ["ROLE-CERTIFIER", "ROLE-AUDITOR"],
+      "interrupted_states": ["under_review"],
+      "recovery_actions": [
+        "Record and contain unapproved input or contaminated buffer at the affected scope.",
+        "Use DEC-091 and DEC-093 authority to move from under_review to noncompliant; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["noncompliant"],
+      "required_records": [
+        "Contract",
+        "Spray and certification history",
+        "Certification scope",
+        "Requirement map",
+        "Audit evidence",
+        "Finding",
+        "Certification decision"
+      ],
+      "decisions": ["DEC-091", "DEC-093"],
+      "closure_evidence": [
+        "attributed EXC-059 observation and affected scope",
+        "under_review to noncompliant transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists.",
+        "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
+        "where noncompliance appears, certification is withheld until corrective actions are completed."
+      ],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CERTIFIER",
+        "ROLE-AUDITOR"
+      ],
+      "record_ids": [
+        "REC-080",
+        "REC-082",
+        "REC-089",
+        "REC-090",
+        "REC-101",
+        "REC-102",
+        "REC-103"
+      ],
+      "inputs": [
+        "REC-080",
+        "REC-082",
+        "REC-089",
+        "REC-090",
+        "REC-101",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-059 exception event",
+        "noncompliant state transition",
+        "REC-102",
+        "REC-103"
+      ]
+    },
+    {
+      "id": "EXC-060",
+      "name": "Equipment or transport cleaning evidence missing",
+      "workflow_ids": ["WF-010"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "trigger": "The certification, audit preparation, corrective action, and evidence workflow encounters: Equipment or transport cleaning evidence missing.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by equipment or transport cleaning evidence missing; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-COMPLIANCE-COORDINATOR",
+      "escalation_roles": ["ROLE-CERTIFIER", "ROLE-VINEYARD-MANAGER"],
+      "interrupted_states": ["evidence_collecting"],
+      "recovery_actions": [
+        "Record and contain equipment or transport cleaning evidence missing at the affected scope.",
+        "Use DEC-091 and DEC-092 authority to move from evidence_collecting to gap_identified; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["gap_identified"],
+      "required_records": [
+        "Requirement map",
+        "Equipment-cleaning log",
+        "Clean-transport affidavit",
+        "Audit evidence"
+      ],
+      "decisions": ["DEC-091", "DEC-092"],
+      "closure_evidence": [
+        "attributed EXC-060 observation and affected scope",
+        "evidence_collecting to gap_identified transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists.",
+        "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
+        "where noncompliance appears, certification is withheld until corrective actions are completed."
+      ],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CERTIFIER",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": ["REC-090", "REC-097", "REC-098", "REC-101"],
+      "inputs": [
+        "REC-090",
+        "REC-097",
+        "REC-098",
+        "REC-101",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-060 exception event",
+        "gap_identified state transition",
+        "REC-098",
+        "REC-101"
+      ]
+    },
+    {
+      "id": "EXC-061",
+      "name": "Noncompliance discovered during audit",
+      "workflow_ids": ["WF-010"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "trigger": "The certification, audit preparation, corrective action, and evidence workflow encounters: Noncompliance discovered during audit.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by noncompliance discovered during audit; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-AUDITOR",
+      "escalation_roles": ["ROLE-CERTIFIER", "ROLE-COMPLIANCE-COORDINATOR"],
+      "interrupted_states": ["under_review"],
+      "recovery_actions": [
+        "Record and contain noncompliance discovered during audit at the affected scope.",
+        "Use DEC-093 and DEC-094 authority to move from under_review to noncompliant; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["noncompliant"],
+      "required_records": [
+        "Audit evidence",
+        "Finding",
+        "Certification decision",
+        "Corrective action"
+      ],
+      "decisions": ["DEC-093", "DEC-094"],
+      "closure_evidence": [
+        "attributed EXC-061 observation and affected scope",
+        "under_review to noncompliant transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists.",
+        "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
+        "where noncompliance appears, certification is withheld until corrective actions are completed."
+      ],
+      "role_ids": [
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "record_ids": ["REC-101", "REC-102", "REC-103", "REC-086"],
+      "inputs": [
+        "REC-101",
+        "REC-102",
+        "REC-103",
+        "REC-086",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-061 exception event",
+        "noncompliant state transition",
+        "REC-103",
+        "REC-086"
+      ]
+    },
+    {
+      "id": "EXC-062",
+      "name": "Certification withheld until corrective action",
+      "workflow_ids": ["WF-010"],
+      "classification": "confirmed_source",
+      "confidence": "high",
+      "evidence_ids": ["EVD-010", "EVD-011"],
+      "trigger": "The certification, audit preparation, corrective action, and evidence workflow encounters: Certification withheld until corrective action.",
+      "affected_scope": "Only the physical, organizational, and record scope affected by certification withheld until corrective action; safe and verified unaffected work remains valid.",
+      "accountable_owner": "ROLE-AUDITOR",
+      "escalation_roles": ["ROLE-CERTIFIER", "ROLE-COMPLIANCE-COORDINATOR"],
+      "interrupted_states": ["under_review"],
+      "recovery_actions": [
+        "Record and contain certification withheld until corrective action at the affected scope.",
+        "Use DEC-093 and DEC-094 authority to move from under_review to certification_withheld; do not overwrite predecessor evidence.",
+        "Notify only the roles and downstream records affected by the decision."
+      ],
+      "recovery_states": ["certification_withheld"],
+      "required_records": [
+        "Audit evidence",
+        "Finding",
+        "Certification decision",
+        "Corrective action"
+      ],
+      "decisions": ["DEC-093", "DEC-094"],
+      "closure_evidence": [
+        "attributed EXC-062 observation and affected scope",
+        "under_review to certification_withheld transition with decision authority",
+        "preserved predecessor record and successor or disposition link",
+        "downstream reconciliation and acknowledgement where applicable"
+      ],
+      "source_anchors": [
+        "## Certification overlays, exception inventory, digital opportunity map, field research guide, and sources",
+        "Compliance and sustainability personnel are best understood as workflow integrators, not mere record archivists.",
+        "SWNZ requires annual questionnaires, site management plans, full spray diaries, a biosecurity register, and periodic audits",
+        "where noncompliance appears, certification is withheld until corrective actions are completed."
+      ],
+      "role_ids": [
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "record_ids": ["REC-101", "REC-102", "REC-103", "REC-086"],
+      "inputs": [
+        "REC-101",
+        "REC-102",
+        "REC-103",
+        "REC-086",
+        "current state, restriction, deadline, and source version"
+      ],
+      "outputs": [
+        "EXC-062 exception event",
+        "certification_withheld state transition",
+        "REC-103",
+        "REC-086"
+      ]
+    }
+  ]
+}

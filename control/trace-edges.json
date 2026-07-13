@@ -6,38 +6,227 @@
       "from": "EVD-001",
       "to": "WF-001",
       "relationship": "supports",
-      "rationale": "The source card establishes the planning, assignment, execution, exception, and closure loop."
+      "rationale": "Seasonal planning, dispatch, execution, and verified closure supplies strong inference evidence for this workflow family."
     },
     {
       "id": "EDGE-002",
+      "from": "EVD-011",
+      "to": "WF-001",
+      "relationship": "supports",
+      "rationale": "Stable block identity across organizations and history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-003",
+      "from": "EVD-012",
+      "to": "WF-001",
+      "relationship": "supports",
+      "rationale": "Seasonal hazards, urgent replanning, and immutable exception history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-004",
+      "from": "EVD-002",
+      "to": "WF-002",
+      "relationship": "supports",
+      "rationale": "Scouting, recommendation, crop protection, and defensible application record supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-005",
+      "from": "EVD-011",
+      "to": "WF-002",
+      "relationship": "supports",
+      "rationale": "Stable block identity across organizations and history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-006",
+      "from": "EVD-012",
+      "to": "WF-002",
+      "relationship": "supports",
+      "rationale": "Seasonal hazards, urgent replanning, and immutable exception history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-007",
+      "from": "EVD-003",
+      "to": "WF-003",
+      "relationship": "supports",
+      "rationale": "Irrigation scheduling, fertility adjustment, and delivery verification supplies strong inference evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-008",
+      "from": "EVD-011",
+      "to": "WF-003",
+      "relationship": "supports",
+      "rationale": "Stable block identity across organizations and history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-009",
+      "from": "EVD-012",
+      "to": "WF-003",
+      "relationship": "supports",
+      "rationale": "Seasonal hazards, urgent replanning, and immutable exception history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-010",
+      "from": "EVD-004",
+      "to": "WF-004",
+      "relationship": "supports",
+      "rationale": "Crop estimation and forecast revision supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-011",
+      "from": "EVD-011",
+      "to": "WF-004",
+      "relationship": "supports",
+      "rationale": "Stable block identity across organizations and history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-012",
+      "from": "EVD-005",
+      "to": "WF-005",
+      "relationship": "supports",
+      "rationale": "Maturity sampling, winery communication, and pick decision supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-013",
+      "from": "EVD-011",
+      "to": "WF-005",
+      "relationship": "supports",
+      "rationale": "Stable block identity across organizations and history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-014",
+      "from": "EVD-012",
+      "to": "WF-005",
+      "relationship": "supports",
+      "rationale": "Seasonal hazards, urgent replanning, and immutable exception history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-015",
+      "from": "EVD-006",
+      "to": "WF-006",
+      "relationship": "supports",
+      "rationale": "Harvest, load identity, intake quality, and reconciliation supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-016",
+      "from": "EVD-011",
+      "to": "WF-006",
+      "relationship": "supports",
+      "rationale": "Stable block identity across organizations and history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-017",
+      "from": "EVD-012",
+      "to": "WF-006",
+      "relationship": "supports",
+      "rationale": "Seasonal hazards, urgent replanning, and immutable exception history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-018",
+      "from": "EVD-007",
+      "to": "WF-007",
+      "relationship": "supports",
+      "rationale": "Crew scheduling, attendance, time, payroll, and cost allocation supplies strong inference evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-019",
+      "from": "EVD-011",
+      "to": "WF-007",
+      "relationship": "supports",
+      "rationale": "Stable block identity across organizations and history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-020",
+      "from": "EVD-012",
+      "to": "WF-007",
+      "relationship": "supports",
+      "rationale": "Seasonal hazards, urgent replanning, and immutable exception history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-021",
+      "from": "EVD-008",
+      "to": "WF-008",
+      "relationship": "supports",
+      "rationale": "Materials, purchasing, equipment readiness, and repair supplies strong inference evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-022",
+      "from": "EVD-011",
+      "to": "WF-008",
+      "relationship": "supports",
+      "rationale": "Stable block identity across organizations and history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-023",
+      "from": "EVD-012",
+      "to": "WF-008",
+      "relationship": "supports",
+      "rationale": "Seasonal hazards, urgent replanning, and immutable exception history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-024",
+      "from": "EVD-009",
+      "to": "WF-009",
+      "relationship": "supports",
+      "rationale": "Grower onboarding and contract-fruit coordination supplies strong inference evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-025",
+      "from": "EVD-011",
+      "to": "WF-009",
+      "relationship": "supports",
+      "rationale": "Stable block identity across organizations and history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-026",
+      "from": "EVD-012",
+      "to": "WF-009",
+      "relationship": "supports",
+      "rationale": "Seasonal hazards, urgent replanning, and immutable exception history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-027",
+      "from": "EVD-010",
+      "to": "WF-010",
+      "relationship": "supports",
+      "rationale": "Certification, annual evidence, audit, and corrective action supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-028",
+      "from": "EVD-011",
+      "to": "WF-010",
+      "relationship": "supports",
+      "rationale": "Stable block identity across organizations and history supplies confirmed source evidence for this workflow family."
+    },
+    {
+      "id": "EDGE-029",
       "from": "WF-001",
       "to": "SCN-001-01",
       "relationship": "realized_by",
       "rationale": "The scenario exercises assignment, blocked partial execution, recovery, completion, and verification."
     },
     {
-      "id": "EDGE-003",
+      "id": "EDGE-030",
       "from": "SCN-001-01",
       "to": "FIX-001",
       "relationship": "instantiated_by",
       "rationale": "The deterministic fixture provides the people, block, observation, work order, and complete event history."
     },
     {
-      "id": "EDGE-004",
+      "id": "EDGE-031",
       "from": "FIX-001",
       "to": "SCR-001",
       "relationship": "rendered_by",
       "rationale": "The screen renders the fixture's stable identity, blocker, partial acreage, repair, and verification evidence."
     },
     {
-      "id": "EDGE-005",
+      "id": "EDGE-032",
       "from": "SCR-001",
       "to": "CMP-001",
       "relationship": "composed_with",
       "rationale": "The registered screen uses the reusable work-order queue as its primary operational composition."
     },
     {
-      "id": "EDGE-006",
+      "id": "EDGE-033",
       "from": "CMP-001",
       "to": "PKT-001",
       "relationship": "specified_by",

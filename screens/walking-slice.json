@@ -23,16 +23,34 @@
           "id": "ACT-001",
           "label": "Record partial completion",
           "kind": "advance",
-          "transition": { "from": "blocked", "to": "partially_completed" }
+          "transition": {
+            "from": "in_progress",
+            "to": "partially_completed"
+          }
         },
         {
           "id": "ACT-002",
-          "label": "Release remaining rows",
+          "label": "Release repaired work",
           "kind": "resolve",
-          "transition": {
-            "from": "partially_completed",
-            "to": "ready_to_resume"
-          }
+          "transition": { "from": "blocked", "to": "assigned" }
+        },
+        {
+          "id": "ACT-005",
+          "label": "Acknowledge remaining scope",
+          "kind": "advance",
+          "transition": { "from": "assigned", "to": "acknowledged" }
+        },
+        {
+          "id": "ACT-006",
+          "label": "Resume remaining rows",
+          "kind": "advance",
+          "transition": { "from": "acknowledged", "to": "in_progress" }
+        },
+        {
+          "id": "ACT-007",
+          "label": "Complete remaining rows",
+          "kind": "advance",
+          "transition": { "from": "in_progress", "to": "completed" }
         },
         {
           "id": "ACT-003",
@@ -58,9 +76,24 @@
       ],
       "states": [
         {
+          "id": "approved",
+          "kind": "normal",
+          "description": "The work plan is authorized before it can be assigned."
+        },
+        {
           "id": "assigned",
           "kind": "normal",
-          "description": "Work is owned and waiting for field execution."
+          "description": "Work is owned with current scope, timing, resources, and closure evidence."
+        },
+        {
+          "id": "acknowledged",
+          "kind": "normal",
+          "description": "The foreman confirmed the current assignment and field constraints."
+        },
+        {
+          "id": "in_progress",
+          "kind": "normal",
+          "description": "The foreman is executing the acknowledged assignment with attributed actuals."
         },
         {
           "id": "blocked",
@@ -73,9 +106,9 @@
           "description": "Safe completed acreage is retained while remaining rows stay open."
         },
         {
-          "id": "ready_to_resume",
-          "kind": "corrected",
-          "description": "Repair evidence releases only the remaining scope."
+          "id": "conflict",
+          "kind": "conflict",
+          "description": "A queued field event is retained without overwriting a newer authoritative server state."
         },
         {
           "id": "completed",
@@ -93,8 +126,8 @@
           "description": "Past transitions remain attributable and immutable."
         }
       ],
-      "permission_behavior": "Foremen report blockers and partials; vineyard managers release corrected work and verify closure.",
-      "offline_behavior": "Field transitions queue with local timestamps and require conflict review when the server state advanced first.",
+      "permission_behavior": "Foremen acknowledge assignments, execute work, and report partial or completed scope; operations coordinators assign and redispatch; vineyard managers contain blocked work and verify closure.",
+      "offline_behavior": "Field transitions queue with local timestamps; a canonical in-progress to partial event is retained as an immutable note when the server state advanced first.",
       "validation_behavior": "Verification is rejected when completed acreage exceeds block acreage or blocker resolution evidence is absent.",
       "component_ids": ["CMP-001"],
       "route": "/screens/SCR-001",

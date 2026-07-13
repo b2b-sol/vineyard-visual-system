@@ -1,0 +1,46 @@
+%% visual_id: VIS-ANNUAL-CALENDAR
+%% title: Annual vineyard operating calendar
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-001,WF-002,WF-003,WF-004,WF-005,WF-006,WF-007,WF-008,WF-009,WF-010
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  subgraph SEASONAL_CYCLE["Seasonal operating cycle"]
+    direction LR
+    SEASON_PRESEASON["Preseason · WF-009"]
+    SEASON_DORMANCY["Dormancy · WF-001 · WF-007 · WF-008"]
+    SEASON_DELAYED_DORMANCY["Delayed Dormancy · WF-002"]
+    SEASON_BUDBREAK["Budbreak · WF-001 · WF-002 · WF-003 · WF-008"]
+    SEASON_RAPID_SHOOT_GROWTH["Rapid Shoot Growth · WF-001 · WF-002 · WF-003 · WF-007 · WF-008"]
+    SEASON_BLOOM["Bloom · WF-002 · WF-003"]
+    SEASON_FRUIT_SET["Fruit Set · WF-002 · WF-003 · WF-004"]
+    SEASON_CROP_ESTIMATION["Crop Estimation · WF-009"]
+    SEASON_LAG_PHASE["Lag Phase · WF-004"]
+    SEASON_VERAISON["Veraison · WF-003 · WF-004 · WF-005"]
+    SEASON_PREHARVEST["Preharvest · WF-001 · WF-002 · WF-003 · WF-004 · WF-005 · WF-006 · WF-008 · WF-009"]
+    SEASON_HARVEST["Harvest · WF-004 · WF-005 · WF-006 · WF-007 · WF-008 · WF-009"]
+    SEASON_POSTHARVEST["Postharvest · WF-001 · WF-002 · WF-003 · WF-004 · WF-006 · WF-009 · WF-010"]
+    SEASON_PRESEASON --> SEASON_DORMANCY
+    SEASON_DORMANCY --> SEASON_DELAYED_DORMANCY
+    SEASON_DELAYED_DORMANCY --> SEASON_BUDBREAK
+    SEASON_BUDBREAK --> SEASON_RAPID_SHOOT_GROWTH
+    SEASON_RAPID_SHOOT_GROWTH --> SEASON_BLOOM
+    SEASON_BLOOM --> SEASON_FRUIT_SET
+    SEASON_FRUIT_SET --> SEASON_CROP_ESTIMATION
+    SEASON_CROP_ESTIMATION --> SEASON_LAG_PHASE
+    SEASON_LAG_PHASE --> SEASON_VERAISON
+    SEASON_VERAISON --> SEASON_PREHARVEST
+    SEASON_PREHARVEST --> SEASON_HARVEST
+    SEASON_HARVEST --> SEASON_POSTHARVEST
+    SEASON_POSTHARVEST -. next season .-> SEASON_PRESEASON
+  end
+  subgraph PERSISTENT["Persistent and overlay windows"]
+    direction TB
+    WINDOW_YEAR_ROUND["Year Round · WF-001 · WF-007 · WF-008 · WF-009 · WF-010"]
+    WINDOW_ANNUAL_PLANNING["Annual Planning · WF-010"]
+    WINDOW_APPLICATION_SEASON["Application Season · WF-010"]
+    WINDOW_AUDIT_WINDOW["Audit Window · WF-010"]
+  end
+  WINDOW_YEAR_ROUND -. constrains .-> SEASON_FRUIT_SET
+  WINDOW_ANNUAL_PLANNING -. constrains .-> SEASON_FRUIT_SET
+  WINDOW_APPLICATION_SEASON -. constrains .-> SEASON_FRUIT_SET
+  WINDOW_AUDIT_WINDOW -. constrains .-> SEASON_FRUIT_SET

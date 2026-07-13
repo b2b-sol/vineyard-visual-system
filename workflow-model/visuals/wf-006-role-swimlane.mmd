@@ -1,0 +1,58 @@
+%% visual_id: VIS-WF-006-SWIMLANE
+%% title: WF-006 role swimlane
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-006; workflow-model/roles.json#ROLE-ASSISTANT-VINEYARD-MANAGER,ROLE-CONTRACT-GROWER,ROLE-FINANCE,ROLE-GROWER-RELATIONS,ROLE-HARVEST-CREW-LEADER,ROLE-OWNER-GENERAL-MANAGER,ROLE-TRANSPORTATION,ROLE-VINEYARD-MANAGER,ROLE-WINEMAKER,ROLE-WINERY-INTAKE
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  START["WF-006 · Trigger"]
+  END["WF-006 · Output and accountable closure"]
+  subgraph LANE_ROLE_VINEYARD_MANAGER["ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+    direction TB
+    STEP_01["01 · Assignment · The manager converts final pick authorization into an accountable crew, container, equipment, transpo…"]
+  end
+  subgraph LANE_ROLE_GROWER_RELATIONS["ROLE-GROWER-RELATIONS · Grower Relations"]
+    direction TB
+    STEP_07["07 · Reconciliation · Grower-relations compares the vineyard, transport, intake, buyer-system, quality, and contract re…"]
+  end
+  subgraph LANE_ROLE_CONTRACT_GROWER["ROLE-CONTRACT-GROWER · Contract Grower"]
+    direction TB
+    PARTICIPANT_ROLE_CONTRACT_GROWER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_HARVEST_CREW_LEADER["ROLE-HARVEST-CREW-LEADER · Harvest Crew Leader"]
+    direction TB
+    STEP_02["02 · Execution · The harvest crew executes the authorized block and conditions while preserving container and source-bl…"]
+  end
+  subgraph LANE_ROLE_TRANSPORTATION["ROLE-TRANSPORTATION · Transportation"]
+    direction TB
+    STEP_03["03 · Execution · Transportation carries the identified load and its documentation to the assigned winery intake within…"]
+  end
+  subgraph LANE_ROLE_WINERY_INTAKE["ROLE-WINERY-INTAKE · Winery Intake"]
+    direction TB
+    STEP_04["04 · Observation · Winery intake verifies load and block identity, records weight, and preserves the intake sample and…"]
+    STEP_06["06 · Completion · Winery intake enters the accepted delivery with load, weight, quality, grower, vineyard, block, and t…"]
+  end
+  subgraph LANE_ROLE_WINEMAKER["ROLE-WINEMAKER · Winemaker"]
+    direction TB
+    STEP_05["05 · Approval · The authorized winery role records acceptance, downgrade, or rejection against agreed tolerances withou…"]
+  end
+  subgraph LANE_ROLE_FINANCE["ROLE-FINANCE · Finance"]
+    direction TB
+    STEP_08["08 · Reconciliation · Finance uses the accepted and reconciled record set to produce settlement inputs while preserving…"]
+  end
+  subgraph LANE_ROLE_OWNER_GENERAL_MANAGER["ROLE-OWNER-GENERAL-MANAGER · Owner or General Manager"]
+    direction TB
+    PARTICIPANT_ROLE_OWNER_GENERAL_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_ASSISTANT_VINEYARD_MANAGER["ROLE-ASSISTANT-VINEYARD-MANAGER · Assistant Vineyard Manager"]
+    direction TB
+    PARTICIPANT_ROLE_ASSISTANT_VINEYARD_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  START -->|staged| STEP_01
+  STEP_01 -->|load_created| STEP_02
+  STEP_02 -->|arrived| STEP_03
+  STEP_03 -->|weighed| STEP_04
+  STEP_04 -->|accepted| STEP_05
+  STEP_05 -->|entered| STEP_06
+  STEP_06 -->|reconciled| STEP_07
+  STEP_07 -->|settled| STEP_08
+  STEP_08 -->|settled| END

@@ -22,13 +22,21 @@
     "validate:trace": "node scripts/validation/validate.mjs --scope trace",
     "validate:data": "node scripts/validation/validate.mjs --scope data",
     "validate:all": "node scripts/validation/validate.mjs --scope all",
+    "generate:workflow-model": "node scripts/refine-workflow-ontology.mjs && npm run generate:workflow-visuals && npm run generate:trace",
+    "validate:workflow-model-current": "node scripts/refine-workflow-ontology.mjs --check",
+    "generate:workflow-visuals": "node scripts/generate-workflow-visuals.mjs",
+    "validate:workflow-visuals": "node scripts/generate-workflow-visuals.mjs --check",
+    "render:workflow-visuals": "node scripts/validate-mermaid.mjs",
+    "generate:trace": "node scripts/generate-trace.mjs",
+    "validate:trace-current": "node scripts/generate-trace.mjs --check",
+    "validate:workflow": "node scripts/validation/validate.mjs --scope schema && npm run validate:workflow-model-current && npm run validate:workflow-visuals && npm run render:workflow-visuals",
     "test": "npm run test:unit",
     "test:unit": "vitest run",
     "test:unit:watch": "vitest",
     "test:browser": "playwright test",
     "test:browser:update": "playwright test --update-snapshots",
     "audit:repository": "node scripts/repository-audit.mjs",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:all && npm run test:unit && npm run build && npm run audit:repository"
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:all && npm run validate:workflow-model-current && npm run validate:workflow-visuals && npm run render:workflow-visuals && npm run validate:trace-current && npm run test:unit && npm run build && npm run audit:repository"
   },
   "dependencies": {
     "ajv": "8.20.0",
@@ -41,6 +49,7 @@
   "devDependencies": {
     "@axe-core/playwright": "4.12.1",
     "@eslint/js": "10.0.1",
+    "@mermaid-js/mermaid-cli": "11.12.0",
     "@playwright/test": "1.61.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",

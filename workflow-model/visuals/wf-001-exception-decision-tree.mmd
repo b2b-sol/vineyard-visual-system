@@ -1,0 +1,92 @@
+%% visual_id: VIS-WF-001-EXCEPTION-TREE
+%% title: WF-001 exception and decision tree
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-001; workflow-model/exceptions.json#EXC-001,EXC-002,EXC-003,EXC-004,EXC-005; workflow-model/decisions.json#DEC-001,DEC-002,DEC-003; workflow-model/records.json#REC-001,REC-002,REC-003,REC-004,REC-005,REC-006,REC-007
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart TD
+  ROOT["WF-001 · Seasonal planning, dispatch, execution, and verification"]
+  TRIGGER["EXC-001 · Priority or weather changes after dispatch · The seasonal planning, dispatch, execution, and verification wor…"]
+  SCOPE{"Are affected scope, safe partial results, and authority explicit?"}
+  HOLD["Block and escalate · ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+  RETAIN["Retain unaffected and safely completed scope with attribution"]
+  ROOT --> TRIGGER
+  TRIGGER --> SCOPE
+  SCOPE -->|No| HOLD
+  SCOPE -->|Yes| RETAIN
+  RECOVERY_1["1 · Record and contain priority or weather changes after dispatch at the affected scope."]
+  RECOVERY_2["2 · Use DEC-001 authority to move from assigned to blocked; do not overwrite predecessor evidence."]
+  RECOVERY_3["3 · Notify only the roles and downstream records affected by the decision."]
+  HOLD --> RECOVERY_1
+  RETAIN --> RECOVERY_1
+  RECOVERY_1 --> RECOVERY_2
+  RECOVERY_2 --> RECOVERY_3
+  DECISION_1{"DEC-001 · Does the signal require action now, later, or no action?"}
+  RECOVERY_3 -. accountable decision .-> DECISION_1
+  D1_OUTCOME_1["Plan work now"]
+  DECISION_1 -->|Outcome 1| D1_OUTCOME_1
+  D1_OUTCOME_2["Defer with review condition"]
+  DECISION_1 -->|Outcome 2| D1_OUTCOME_2
+  D1_OUTCOME_3["Record no action and rationale"]
+  DECISION_1 -->|Outcome 3| D1_OUTCOME_3
+  DECISION_2{"DEC-002 · Does the work need explicit approval before assignment?"}
+  ROOT -. registered authority .-> DECISION_2
+  D2_OUTCOME_1["Approve and dispatch"]
+  DECISION_2 -->|Outcome 1| D2_OUTCOME_1
+  D2_OUTCOME_2["Escalate for approval"]
+  DECISION_2 -->|Outcome 2| D2_OUTCOME_2
+  D2_OUTCOME_3["Reject or revise the plan"]
+  DECISION_2 -->|Outcome 3| D2_OUTCOME_3
+  DECISION_3{"DEC-003 · What closure state accurately represents the field result?"}
+  ROOT -. registered authority .-> DECISION_3
+  D3_OUTCOME_1["Complete"]
+  DECISION_3 -->|Outcome 1| D3_OUTCOME_1
+  D3_OUTCOME_2["Partially complete"]
+  DECISION_3 -->|Outcome 2| D3_OUTCOME_2
+  D3_OUTCOME_3["Blocked"]
+  DECISION_3 -->|Outcome 3| D3_OUTCOME_3
+  D3_OUTCOME_4["Deferred"]
+  DECISION_3 -->|Outcome 4| D3_OUTCOME_4
+  EVIDENCE["Closure evidence · attributed EXC-001 observation and affected scope · assigned to blocked transition with decision aut…"]
+  RECONCILED{"Are recovery, disposition, and downstream records reconciled?"}
+  CORRECT["Correction required · preserve prior state and reason"]
+  CLOSE["Recover as Blocked"]
+  D1_OUTCOME_1 --> EVIDENCE
+  D1_OUTCOME_2 --> EVIDENCE
+  D1_OUTCOME_3 --> EVIDENCE
+  D2_OUTCOME_1 --> EVIDENCE
+  D2_OUTCOME_2 --> EVIDENCE
+  D2_OUTCOME_3 --> EVIDENCE
+  D3_OUTCOME_1 --> EVIDENCE
+  D3_OUTCOME_2 --> EVIDENCE
+  D3_OUTCOME_3 --> EVIDENCE
+  D3_OUTCOME_4 --> EVIDENCE
+  EVIDENCE --> RECONCILED
+  RECONCILED -->|No| CORRECT
+  CORRECT --> EVIDENCE
+  RECONCILED -->|Yes| CLOSE
+  EXCEPTION_2["EXC-002 · Wrong or ambiguous block identity · The seasonal planning, dispatch, execution, and verification workflow enc…"]
+  EXCEPTION_2_RECOVERY["In Progress to Blocked · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_2
+  EXCEPTION_2 --> EXCEPTION_2_RECOVERY
+  EXCEPTION_2_RECOVERY --> EVIDENCE
+  EXCEPTION_2 -. accountable decision .-> DECISION_1
+  EXCEPTION_2 -. accountable decision .-> DECISION_2
+  EXCEPTION_3["EXC-003 · Labor, equipment, material, or contractor unavailable · The seasonal planning, dispatch, execution, and verif…"]
+  EXCEPTION_3_RECOVERY["Assigned to Blocked · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_3
+  EXCEPTION_3 --> EXCEPTION_3_RECOVERY
+  EXCEPTION_3_RECOVERY --> EVIDENCE
+  EXCEPTION_3 -. accountable decision .-> DECISION_1
+  EXCEPTION_3 -. accountable decision .-> DECISION_2
+  EXCEPTION_4["EXC-004 · Work partially completed · The seasonal planning, dispatch, execution, and verification workflow encounters:…"]
+  EXCEPTION_4_RECOVERY["In Progress to Partially Completed · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_4
+  EXCEPTION_4 --> EXCEPTION_4_RECOVERY
+  EXCEPTION_4_RECOVERY --> EVIDENCE
+  EXCEPTION_4 -. accountable decision .-> DECISION_3
+  EXCEPTION_5["EXC-005 · Completion quantities missing or disputed · The seasonal planning, dispatch, execution, and verification work…"]
+  EXCEPTION_5_RECOVERY["Completed to Correction Required · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_5
+  EXCEPTION_5 --> EXCEPTION_5_RECOVERY
+  EXCEPTION_5_RECOVERY --> EVIDENCE
+  EXCEPTION_5 -. accountable decision .-> DECISION_3

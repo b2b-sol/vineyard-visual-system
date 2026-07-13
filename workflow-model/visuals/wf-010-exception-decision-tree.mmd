@@ -1,0 +1,118 @@
+%% visual_id: VIS-WF-010-EXCEPTION-TREE
+%% title: WF-010 exception and decision tree
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-010; workflow-model/exceptions.json#EXC-057,EXC-058,EXC-059,EXC-060,EXC-061,EXC-062; workflow-model/decisions.json#DEC-091,DEC-092,DEC-093,DEC-094; workflow-model/records.json#REC-080,REC-082,REC-086,REC-089,REC-090,REC-091,REC-092,REC-093,REC-094,REC-095,REC-096,REC-097,REC-098,REC-099,REC-100,REC-101,REC-102,REC-103
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart TD
+  ROOT["WF-010 · Certification, audit preparation, corrective action, and evidence"]
+  TRIGGER["EXC-057 · Missing, late, contradictory, or buyer-specific record · The certification, audit preparation, corrective act…"]
+  SCOPE{"Are affected scope, safe partial results, and authority explicit?"}
+  HOLD["Block and escalate · ROLE-COMPLIANCE-COORDINATOR · Compliance Coordinator"]
+  RETAIN["Retain unaffected and safely completed scope with attribution"]
+  ROOT --> TRIGGER
+  TRIGGER --> SCOPE
+  SCOPE -->|No| HOLD
+  SCOPE -->|Yes| RETAIN
+  RECOVERY_1["1 · Record and contain missing, late, contradictory, or buyer-specific record at the affected scope."]
+  RECOVERY_2["2 · Use DEC-091 and DEC-092 authority to move from evidence_collecting to gap_identified; do not overwrite predecessor…"]
+  RECOVERY_3["3 · Notify only the roles and downstream records affected by the decision."]
+  HOLD --> RECOVERY_1
+  RETAIN --> RECOVERY_1
+  RECOVERY_1 --> RECOVERY_2
+  RECOVERY_2 --> RECOVERY_3
+  DECISION_1{"DEC-091 · Which requirements and overlays apply to each site, block, crop, contractor, and buyer relationship?"}
+  RECOVERY_3 -. accountable decision .-> DECISION_1
+  D1_OUTCOME_1["Requirement applies"]
+  DECISION_1 -->|Outcome 1| D1_OUTCOME_1
+  D1_OUTCOME_2["Requirement does not apply with rationale"]
+  DECISION_1 -->|Outcome 2| D1_OUTCOME_2
+  D1_OUTCOME_3["Applicability needs authoritative clarification"]
+  DECISION_1 -->|Outcome 3| D1_OUTCOME_3
+  DECISION_2{"DEC-092 · Is the evidence package complete, attributable, and defensible for submission?"}
+  RECOVERY_3 -. accountable decision .-> DECISION_2
+  D2_OUTCOME_1["Ready to submit"]
+  DECISION_2 -->|Outcome 1| D2_OUTCOME_1
+  D2_OUTCOME_2["Gap requires correction"]
+  DECISION_2 -->|Outcome 2| D2_OUTCOME_2
+  D2_OUTCOME_3["Missing outside-party evidence"]
+  DECISION_2 -->|Outcome 3| D2_OUTCOME_3
+  D2_OUTCOME_4["Escalate unverifiable claim"]
+  DECISION_2 -->|Outcome 4| D2_OUTCOME_4
+  DECISION_3{"DEC-093 · Does submitted and observed evidence satisfy the applicable standard?"}
+  ROOT -. registered authority .-> DECISION_3
+  D3_OUTCOME_1["Compliant"]
+  DECISION_3 -->|Outcome 1| D3_OUTCOME_1
+  D3_OUTCOME_2["More evidence required"]
+  DECISION_3 -->|Outcome 2| D3_OUTCOME_2
+  D3_OUTCOME_3["Noncompliant"]
+  DECISION_3 -->|Outcome 3| D3_OUTCOME_3
+  D3_OUTCOME_4["Certification withheld"]
+  DECISION_3 -->|Outcome 4| D3_OUTCOME_4
+  DECISION_4{"DEC-094 · Does corrective evidence resolve the finding?"}
+  ROOT -. registered authority .-> DECISION_4
+  D4_OUTCOME_1["Verify and certify"]
+  DECISION_4 -->|Outcome 1| D4_OUTCOME_1
+  D4_OUTCOME_2["Keep corrective action open"]
+  DECISION_4 -->|Outcome 2| D4_OUTCOME_2
+  D4_OUTCOME_3["Withhold certification"]
+  DECISION_4 -->|Outcome 3| D4_OUTCOME_3
+  D4_OUTCOME_4["Require further review"]
+  DECISION_4 -->|Outcome 4| D4_OUTCOME_4
+  EVIDENCE["Closure evidence · attributed EXC-057 observation and affected scope · evidence_collecting to gap_identified transition…"]
+  RECONCILED{"Are recovery, disposition, and downstream records reconciled?"}
+  CORRECT["Correction required · preserve prior state and reason"]
+  CLOSE["Recover as Gap Identified"]
+  D1_OUTCOME_1 --> EVIDENCE
+  D1_OUTCOME_2 --> EVIDENCE
+  D1_OUTCOME_3 --> EVIDENCE
+  D2_OUTCOME_1 --> EVIDENCE
+  D2_OUTCOME_2 --> EVIDENCE
+  D2_OUTCOME_3 --> EVIDENCE
+  D2_OUTCOME_4 --> EVIDENCE
+  D3_OUTCOME_1 --> EVIDENCE
+  D3_OUTCOME_2 --> EVIDENCE
+  D3_OUTCOME_3 --> EVIDENCE
+  D3_OUTCOME_4 --> EVIDENCE
+  D4_OUTCOME_1 --> EVIDENCE
+  D4_OUTCOME_2 --> EVIDENCE
+  D4_OUTCOME_3 --> EVIDENCE
+  D4_OUTCOME_4 --> EVIDENCE
+  EVIDENCE --> RECONCILED
+  RECONCILED -->|No| CORRECT
+  CORRECT --> EVIDENCE
+  RECONCILED -->|Yes| CLOSE
+  EXCEPTION_2["EXC-058 · Contractor or grower evidence unavailable · The certification, audit preparation, corrective action, and evid…"]
+  EXCEPTION_2_RECOVERY["Evidence Collecting to Gap Identified · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_2
+  EXCEPTION_2 --> EXCEPTION_2_RECOVERY
+  EXCEPTION_2_RECOVERY --> EVIDENCE
+  EXCEPTION_2 -. accountable decision .-> DECISION_1
+  EXCEPTION_2 -. accountable decision .-> DECISION_2
+  EXCEPTION_3["EXC-059 · Unapproved input or contaminated buffer · The certification, audit preparation, corrective action, and eviden…"]
+  EXCEPTION_3_RECOVERY["Under Review to Noncompliant · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_3
+  EXCEPTION_3 --> EXCEPTION_3_RECOVERY
+  EXCEPTION_3_RECOVERY --> EVIDENCE
+  EXCEPTION_3 -. accountable decision .-> DECISION_1
+  EXCEPTION_3 -. accountable decision .-> DECISION_3
+  EXCEPTION_4["EXC-060 · Equipment or transport cleaning evidence missing · The certification, audit preparation, corrective action, a…"]
+  EXCEPTION_4_RECOVERY["Evidence Collecting to Gap Identified · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_4
+  EXCEPTION_4 --> EXCEPTION_4_RECOVERY
+  EXCEPTION_4_RECOVERY --> EVIDENCE
+  EXCEPTION_4 -. accountable decision .-> DECISION_1
+  EXCEPTION_4 -. accountable decision .-> DECISION_2
+  EXCEPTION_5["EXC-061 · Noncompliance discovered during audit · The certification, audit preparation, corrective action, and evidence…"]
+  EXCEPTION_5_RECOVERY["Under Review to Noncompliant · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_5
+  EXCEPTION_5 --> EXCEPTION_5_RECOVERY
+  EXCEPTION_5_RECOVERY --> EVIDENCE
+  EXCEPTION_5 -. accountable decision .-> DECISION_3
+  EXCEPTION_5 -. accountable decision .-> DECISION_4
+  EXCEPTION_6["EXC-062 · Certification withheld until corrective action · The certification, audit preparation, corrective action, and…"]
+  EXCEPTION_6_RECOVERY["Under Review to Certification Withheld · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_6
+  EXCEPTION_6 --> EXCEPTION_6_RECOVERY
+  EXCEPTION_6_RECOVERY --> EVIDENCE
+  EXCEPTION_6 -. accountable decision .-> DECISION_3
+  EXCEPTION_6 -. accountable decision .-> DECISION_4

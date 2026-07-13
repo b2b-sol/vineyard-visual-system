@@ -1,5 +1,5 @@
 schema_version: "1.0"
-updated_at: "2026-07-13T15:48:00-07:00"
+updated_at: "2026-07-13T16:53:00-07:00"
 findings:
   - id: FIND-001
     severity: P1
@@ -169,3 +169,88 @@ findings:
         scripts/validation/validate.mjs,
       ]
     resolution: All factory artifacts now cite the immutable main squash commit that introduced them; future evidence records cite target-branch commits after merge reconciliation.
+  - id: FIND-018
+    severity: P1
+    status: resolved
+    title: Canonical workflow states lacked complete operational graphs
+    description: Sixty-seven declared states were disconnected because the ontology recorded ordered happy-path steps without explicit decision, exception, recovery, supersession, and terminal edges.
+    artifact_refs:
+      [workflow-model/workflows.json, schemas/canonical-workflow.schema.json]
+    resolution: Added 235 typed, attributable transitions with explicit terminal states and graph validation proving every state is reachable from entry and can reach a terminal disposition.
+  - id: FIND-019
+    severity: P1
+    status: resolved
+    title: Ontology relationships were mechanically Cartesian
+    description: Decisions, exceptions, roles, and records inherited whole-workflow relationship sets that did not distinguish operational responsibility or evidence use.
+    artifact_refs:
+      [
+        workflow-model/decisions.json,
+        workflow-model/exceptions.json,
+        workflow-model/records.json,
+        workflow-model/roles.json,
+        scripts/refine-workflow-ontology.mjs,
+      ]
+    resolution: Rebuilt relationships from explicit read, write, authority, interruption, recovery, and accountability profiles; reciprocal links and proper-subset constraints now reject mechanical expansion.
+  - id: FIND-020
+    severity: P1
+    status: resolved
+    title: Consequential decisions appeared on incorrect workflow branches
+    description: Irrigation approval was assigned to delivery verification, crew briefing was labeled as approval, application reporting had no completeness authority, and certification correction was embedded in the normal path.
+    artifact_refs:
+      [
+        workflow-model/workflows.json,
+        workflow-model/decisions.json,
+        workflow-model/exceptions.json,
+      ]
+    resolution: Added manager irrigation approval and application-report completeness decisions, corrected crew briefing semantics, and separated direct certification from independently verified corrective-action recovery.
+  - id: FIND-021
+    severity: P1
+    status: resolved
+    title: Hazard overlay contradicted normalized evidence scope
+    description: OVL-006 applied the hazard and urgent-replanning claim to WF-004 even though EVD-012 explicitly excludes that family.
+    artifact_refs: [workflow-model/overlays.json, source/evidence.json]
+    resolution: Removed WF-004 from OVL-006 and added exact overlay-coverage validation against the normalized evidence mappings.
+  - id: FIND-022
+    severity: P2
+    status: resolved
+    title: Role layers and record lifecycles obscured operating reality
+    description: Three role layers omitted ownership governance and outside parties, while repeated lifecycle templates described unlike records with the same generic progression.
+    artifact_refs: [workflow-model/roles.json, workflow-model/records.json]
+    resolution: Established five organizational layers, added Owner or GM and Assistant Vineyard Manager roles, and introduced seventeen semantically checked lifecycle signatures with attributable correction ordering.
+  - id: FIND-023
+    severity: P2
+    status: resolved
+    title: Editable workflow visuals lacked deterministic render validation
+    description: Generated Mermaid sources could remain hash-current while containing syntax that failed to render in CI or downstream handoff tooling.
+    artifact_refs:
+      [
+        workflow-model/visuals,
+        scripts/validate-mermaid.mjs,
+        .github/workflows/visual-validation.yml,
+      ]
+    resolution: Locked Mermaid CLI 11.12.0 and added a deterministic render pass for all 36 editable diagrams to the aggregate verifier and visual-validation workflow.
+  - id: FIND-024
+    severity: P1
+    status: resolved
+    title: Factory walking slice bypassed canonical approval and acknowledgement
+    description: The original WF-001 fixture used legacy planned-to-assigned and assigned-to-in-progress shortcuts plus a noncanonical ready-to-resume state.
+    artifact_refs:
+      [
+        data/walking-slice.json,
+        scenarios/walking-slice.json,
+        screens/walking-slice.json,
+        atlas/tests/unit/canonical-model.test.ts,
+      ]
+    resolution: Replayed FIX-001 through approval, assignment acknowledgement, partial completion, remaining-scope assignment, blocked-to-assigned recovery, renewed acknowledgement, completion, and verification; unit and browser tests now resolve actions against canonical transitions and owners.
+  - id: FIND-025
+    severity: P1
+    status: resolved
+    title: Mermaid renderer could not launch in the GitHub runner sandbox
+    description: The locked Mermaid renderer passed locally but Puppeteer could not start Chromium under the Ubuntu runner's disabled unprivileged user namespace policy.
+    artifact_refs:
+      [
+        scripts/validate-mermaid.mjs,
+        scripts/mermaid-puppeteer.ci.json,
+        .github/workflows/visual-validation.yml,
+      ]
+    resolution: Added an explicit CI-only Puppeteer configuration that disables the unavailable Chromium sandbox inside the ephemeral GitHub runner while retaining the default local launch configuration.

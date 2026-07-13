@@ -21,7 +21,7 @@ test.describe("factory walking slice", () => {
     await expect(page).toHaveURL(/#\/workflows\/WF-001$/);
     await expect(
       page.getByRole("heading", {
-        name: /seasonal planning \+ work-order dispatch/i,
+        name: /seasonal planning, dispatch, execution \+ verification/i,
       }),
     ).toBeVisible();
   });
@@ -84,23 +84,24 @@ test.describe("factory walking slice", () => {
     await expect(recovery).toHaveAttribute("data-current-state", "blocked");
 
     await recovery
-      .getByRole("button", { name: "Record partial completion" })
+      .getByRole("button", { name: "Release repaired work" })
       .click();
-    await expect(recovery).toHaveAttribute(
-      "data-current-state",
-      "partially_completed",
-    );
+    await expect(recovery).toHaveAttribute("data-current-state", "assigned");
     await expect(recovery.getByText("11.2 of 18.6 acres")).toBeVisible();
 
     await recovery
-      .getByRole("button", { name: "Release remaining rows" })
+      .getByRole("button", { name: "Acknowledge remaining scope" })
       .click();
     await expect(recovery).toHaveAttribute(
       "data-current-state",
-      "ready_to_resume",
+      "acknowledged",
     );
     await recovery
-      .getByRole("button", { name: "Apply operator report" })
+      .getByRole("button", { name: "Resume remaining rows" })
+      .click();
+    await expect(recovery).toHaveAttribute("data-current-state", "in_progress");
+    await recovery
+      .getByRole("button", { name: "Complete remaining rows" })
       .click();
     await expect(recovery).toHaveAttribute("data-current-state", "completed");
 
@@ -116,7 +117,7 @@ test.describe("factory walking slice", () => {
       name: "Immutable status history",
     });
     await expect(history).toBeVisible();
-    await expect(history.getByText("EVT-008", { exact: true })).toBeVisible();
+    await expect(history.getByText("EVT-013", { exact: true })).toBeVisible();
     await expect(
       history.getByText(/Elena Ortiz · Vineyard manager/).first(),
     ).toBeVisible();
@@ -169,7 +170,7 @@ test.describe("factory walking slice", () => {
     const queue = page.getByRole("region", { name: "Offline queue" });
     await expect(queue.getByText("1 field update queued")).toBeVisible();
     await expect(
-      queue.getByText("Blocked → partially completed"),
+      queue.getByText("In progress → partially completed"),
     ).toBeVisible();
     await queue.getByRole("button", { name: "Attempt sync" }).click();
 
@@ -177,7 +178,7 @@ test.describe("factory walking slice", () => {
       hasText: "The work order changed elsewhere",
     });
     await expect(conflict).toBeVisible();
-    await expect(conflict).toContainText("Ready — repair confirmed");
+    await expect(conflict).toContainText("Assigned — repair confirmed");
     await conflict.getByRole("button", { name: "Review newer status" }).click();
     await expect(
       page.getByText("Conflict resolved without overwrite"),

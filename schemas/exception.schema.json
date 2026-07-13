@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/exception.schema.json",
+  "title": "Canonical vineyard workflow exception",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "workflow_ids",
+    "classification",
+    "confidence",
+    "evidence_ids",
+    "trigger",
+    "affected_scope",
+    "accountable_owner",
+    "escalation_roles",
+    "interrupted_states",
+    "recovery_actions",
+    "recovery_states",
+    "required_records",
+    "decisions",
+    "closure_evidence",
+    "source_anchors",
+    "role_ids",
+    "record_ids",
+    "inputs",
+    "outputs"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/exceptionId"
+    },
+    "name": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/name"
+    },
+    "workflow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/workflowId"
+      }
+    },
+    "classification": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/classification"
+    },
+    "confidence": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/confidence"
+    },
+    "evidence_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/evidenceId"
+      }
+    },
+    "trigger": { "type": "string", "minLength": 20 },
+    "affected_scope": { "type": "string", "minLength": 20 },
+    "accountable_owner": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/roleId"
+    },
+    "escalation_roles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/roleId"
+      }
+    },
+    "interrupted_states": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/state"
+      }
+    },
+    "recovery_actions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 8 }
+    },
+    "recovery_states": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/state"
+      }
+    },
+    "required_records": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/decisionId"
+      }
+    },
+    "closure_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "source_anchors": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/sourceAnchor"
+      }
+    },
+    "role_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/roleId"
+      }
+    },
+    "record_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/recordId"
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    }
+  },
+  "additionalProperties": false
+}

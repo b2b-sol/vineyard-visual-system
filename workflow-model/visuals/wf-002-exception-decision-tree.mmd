@@ -1,0 +1,123 @@
+%% visual_id: VIS-WF-002-EXCEPTION-TREE
+%% title: WF-002 exception and decision tree
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-002; workflow-model/exceptions.json#EXC-006,EXC-007,EXC-008,EXC-009,EXC-010,EXC-011; workflow-model/decisions.json#DEC-011,DEC-012,DEC-013,DEC-014,DEC-015; workflow-model/records.json#REC-008,REC-009,REC-010,REC-011,REC-012,REC-013,REC-014,REC-015,REC-016,REC-017
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart TD
+  ROOT["WF-002 · Scouting, recommendation, crop protection, and application records"]
+  TRIGGER["EXC-006 · Wind or rain outside allowable conditions · The scouting, recommendation, crop protection, and application re…"]
+  SCOPE{"Are affected scope, safe partial results, and authority explicit?"}
+  HOLD["Block and escalate · ROLE-CROP-PROTECTION-LEAD · Crop Protection Lead"]
+  RETAIN["Retain unaffected and safely completed scope with attribution"]
+  ROOT --> TRIGGER
+  TRIGGER --> SCOPE
+  SCOPE -->|No| HOLD
+  SCOPE -->|Yes| RETAIN
+  RECOVERY_1["1 · Record and contain wind or rain outside allowable conditions at the affected scope."]
+  RECOVERY_2["2 · Use DEC-013 authority to move from preflight_check to cancelled; do not overwrite predecessor evidence."]
+  RECOVERY_3["3 · Notify only the roles and downstream records affected by the decision."]
+  HOLD --> RECOVERY_1
+  RETAIN --> RECOVERY_1
+  RECOVERY_1 --> RECOVERY_2
+  RECOVERY_2 --> RECOVERY_3
+  DECISION_1{"DEC-011 · Has treatment pressure or risk reached the action threshold?"}
+  ROOT -. registered authority .-> DECISION_1
+  D1_OUTCOME_1["Recommend treatment"]
+  DECISION_1 -->|Outcome 1| D1_OUTCOME_1
+  D1_OUTCOME_2["Continue monitoring"]
+  DECISION_1 -->|Outcome 2| D1_OUTCOME_2
+  D1_OUTCOME_3["Use a non-chemical intervention"]
+  DECISION_1 -->|Outcome 3| D1_OUTCOME_3
+  DECISION_2{"DEC-012 · Is the selected product and method allowed for this block and target?"}
+  ROOT -. registered authority .-> DECISION_2
+  D2_OUTCOME_1["Allowed as proposed"]
+  DECISION_2 -->|Outcome 1| D2_OUTCOME_1
+  D2_OUTCOME_2["Select an allowed alternative"]
+  DECISION_2 -->|Outcome 2| D2_OUTCOME_2
+  D2_OUTCOME_3["Do not apply"]
+  DECISION_2 -->|Outcome 3| D2_OUTCOME_3
+  DECISION_3{"DEC-013 · Do weather, worker, calibration, REI, PHI, and sensitive-area prechecks permit execution?"}
+  RECOVERY_3 -. accountable decision .-> DECISION_3
+  D3_OUTCOME_1["Release application"]
+  DECISION_3 -->|Outcome 1| D3_OUTCOME_1
+  D3_OUTCOME_2["Reschedule"]
+  DECISION_3 -->|Outcome 2| D3_OUTCOME_2
+  D3_OUTCOME_3["Split or revise treatment area"]
+  DECISION_3 -->|Outcome 3| D3_OUTCOME_3
+  D3_OUTCOME_4["Cancel"]
+  DECISION_3 -->|Outcome 4| D3_OUTCOME_4
+  DECISION_4{"DEC-014 · Did follow-up monitoring show acceptable efficacy?"}
+  ROOT -. registered authority .-> DECISION_4
+  D4_OUTCOME_1["Close as effective"]
+  DECISION_4 -->|Outcome 1| D4_OUTCOME_1
+  D4_OUTCOME_2["Recommend follow-up action"]
+  DECISION_4 -->|Outcome 2| D4_OUTCOME_2
+  D4_OUTCOME_3["Correct the underlying application record"]
+  DECISION_4 -->|Outcome 3| D4_OUTCOME_3
+  DECISION_5{"DEC-015 · Is the application, restriction, posting, diary, and use-report record complete and attributable for reportin…"}
+  ROOT -. registered authority .-> DECISION_5
+  D5_OUTCOME_1["Accept and report"]
+  DECISION_5 -->|Outcome 1| D5_OUTCOME_1
+  D5_OUTCOME_2["Return for correction"]
+  DECISION_5 -->|Outcome 2| D5_OUTCOME_2
+  D5_OUTCOME_3["Hold reporting for missing evidence"]
+  DECISION_5 -->|Outcome 3| D5_OUTCOME_3
+  D5_OUTCOME_4["Escalate a compliance conflict"]
+  DECISION_5 -->|Outcome 4| D5_OUTCOME_4
+  EVIDENCE["Closure evidence · attributed EXC-006 observation and affected scope · preflight_check to cancelled transition with dec…"]
+  RECONCILED{"Are recovery, disposition, and downstream records reconciled?"}
+  CORRECT["Correction required · preserve prior state and reason"]
+  CLOSE["Recover as Cancelled"]
+  D1_OUTCOME_1 --> EVIDENCE
+  D1_OUTCOME_2 --> EVIDENCE
+  D1_OUTCOME_3 --> EVIDENCE
+  D2_OUTCOME_1 --> EVIDENCE
+  D2_OUTCOME_2 --> EVIDENCE
+  D2_OUTCOME_3 --> EVIDENCE
+  D3_OUTCOME_1 --> EVIDENCE
+  D3_OUTCOME_2 --> EVIDENCE
+  D3_OUTCOME_3 --> EVIDENCE
+  D3_OUTCOME_4 --> EVIDENCE
+  D4_OUTCOME_1 --> EVIDENCE
+  D4_OUTCOME_2 --> EVIDENCE
+  D4_OUTCOME_3 --> EVIDENCE
+  D5_OUTCOME_1 --> EVIDENCE
+  D5_OUTCOME_2 --> EVIDENCE
+  D5_OUTCOME_3 --> EVIDENCE
+  D5_OUTCOME_4 --> EVIDENCE
+  EVIDENCE --> RECONCILED
+  RECONCILED -->|No| CORRECT
+  CORRECT --> EVIDENCE
+  RECONCILED -->|Yes| CLOSE
+  EXCEPTION_2["EXC-007 · Product unavailable or not certified · The scouting, recommendation, crop protection, and application records…"]
+  EXCEPTION_2_RECOVERY["Approved to Cancelled · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_2
+  EXCEPTION_2 --> EXCEPTION_2_RECOVERY
+  EXCEPTION_2_RECOVERY --> EVIDENCE
+  EXCEPTION_2 -. accountable decision .-> DECISION_2
+  EXCEPTION_3["EXC-008 · Worker presence in exclusion area · The scouting, recommendation, crop protection, and application records wo…"]
+  EXCEPTION_3_RECOVERY["Preflight Check to Cancelled · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_3
+  EXCEPTION_3 --> EXCEPTION_3_RECOVERY
+  EXCEPTION_3_RECOVERY --> EVIDENCE
+  EXCEPTION_3 -. accountable decision .-> DECISION_3
+  EXCEPTION_4["EXC-009 · REI or PHI conflict · The scouting, recommendation, crop protection, and application records workflow encount…"]
+  EXCEPTION_4_RECOVERY["Preflight Check to Cancelled · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_4
+  EXCEPTION_4 --> EXCEPTION_4_RECOVERY
+  EXCEPTION_4_RECOVERY --> EVIDENCE
+  EXCEPTION_4 -. accountable decision .-> DECISION_2
+  EXCEPTION_4 -. accountable decision .-> DECISION_3
+  EXCEPTION_5["EXC-010 · Incorrect or late diary entry · The scouting, recommendation, crop protection, and application records workfl…"]
+  EXCEPTION_5_RECOVERY["Reported to Corrected · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_5
+  EXCEPTION_5 --> EXCEPTION_5_RECOVERY
+  EXCEPTION_5_RECOVERY --> EVIDENCE
+  EXCEPTION_5 -. accountable decision .-> DECISION_5
+  EXCEPTION_6["EXC-011 · Application ineffective · The scouting, recommendation, crop protection, and application records workflow enc…"]
+  EXCEPTION_6_RECOVERY["Follow Up Due to Ineffective · preserve scope and reconcile closure evidence"]
+  ROOT --> EXCEPTION_6
+  EXCEPTION_6 --> EXCEPTION_6_RECOVERY
+  EXCEPTION_6_RECOVERY --> EVIDENCE
+  EXCEPTION_6 -. accountable decision .-> DECISION_1
+  EXCEPTION_6 -. accountable decision .-> DECISION_4

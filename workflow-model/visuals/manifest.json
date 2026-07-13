@@ -1,0 +1,2374 @@
+{
+  "schema_version": "1.0",
+  "generator_version": "1.0.0",
+  "generator": "scripts/generate-workflow-visuals.mjs",
+  "deterministic": true,
+  "source_files": [
+    {
+      "path": "workflow-model/workflows.json",
+      "sha256": "c39914f4fd0afa76bfc58c2b3c9905a00cc0747e5ae90040635ef4bf66e9c12e"
+    },
+    {
+      "path": "workflow-model/roles.json",
+      "sha256": "910f72b0c2a384976e2df48c35445f99a9214c95413a1d829592ac7e593b657f"
+    },
+    {
+      "path": "workflow-model/records.json",
+      "sha256": "0a73f925e68e7ead8bf357765acdd7cde84c09539408b124c35202d1661d7402"
+    },
+    {
+      "path": "workflow-model/decisions.json",
+      "sha256": "ebd72304bceecbcf514f41ea534ac5fcf0a60e3c0e7b9e7e427445e7f5161d57"
+    },
+    {
+      "path": "workflow-model/exceptions.json",
+      "sha256": "27703649ea386ddf2a1592e3cf7870c73b3c081bb05a7a5304e20b8e8a561ba3"
+    },
+    {
+      "path": "workflow-model/overlays.json",
+      "sha256": "17fb242b1af06f428e00efc8d57e6f5a120f6d8c0322860f08ad06584e21f417"
+    }
+  ],
+  "counts": {
+    "role_swimlane": 10,
+    "state_machine": 10,
+    "exception_decision_tree": 10,
+    "required_operational": 6
+  },
+  "visual_count": 36,
+  "required_special_visual_ids": [
+    "VIS-OPERATING-MODEL",
+    "VIS-ANNUAL-CALENDAR",
+    "VIS-ROLES-INTERACTION",
+    "VIS-HANDOFF-INFORMATION",
+    "VIS-ESTATE-CONTRACT-COMPARISON",
+    "VIS-CERTIFICATION-OVERLAY"
+  ],
+  "visuals": [
+    {
+      "id": "VIS-WF-001-SWIMLANE",
+      "category": "role_swimlane",
+      "title": "WF-001 · Seasonal planning, dispatch, execution, and verification · Role swimlane",
+      "path": "workflow-model/visuals/wf-001-role-swimlane.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-001"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-ASSISTANT-VINEYARD-MANAGER",
+            "ROLE-COMPLIANCE-COORDINATOR",
+            "ROLE-CONTRACTOR",
+            "ROLE-FIELD-CREW",
+            "ROLE-FOREMAN",
+            "ROLE-OPERATIONS-COORDINATOR",
+            "ROLE-OWNER-GENERAL-MANAGER",
+            "ROLE-VINEYARD-MANAGER",
+            "ROLE-VITICULTURIST"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-001"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-FIELD-CREW",
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST"
+      ],
+      "record_ids": [],
+      "decision_ids": ["DEC-001", "DEC-002", "DEC-003"],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-001-STATE-MACHINE",
+      "category": "state_machine",
+      "title": "WF-001 · Seasonal planning, dispatch, execution, and verification · State machine",
+      "path": "workflow-model/visuals/wf-001-state-machine.mmd",
+      "diagram_type": "stateDiagram-v2",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-001"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-001",
+            "REC-002",
+            "REC-003",
+            "REC-004",
+            "REC-005",
+            "REC-006",
+            "REC-007"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-001"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-FIELD-CREW",
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST"
+      ],
+      "record_ids": [
+        "REC-001",
+        "REC-002",
+        "REC-003",
+        "REC-004",
+        "REC-005",
+        "REC-006",
+        "REC-007"
+      ],
+      "decision_ids": ["DEC-001", "DEC-002", "DEC-003"],
+      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-001-EXCEPTION-TREE",
+      "category": "exception_decision_tree",
+      "title": "WF-001 · Seasonal planning, dispatch, execution, and verification · Exception and decision tree",
+      "path": "workflow-model/visuals/wf-001-exception-decision-tree.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-001"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"]
+        },
+        {
+          "path": "workflow-model/decisions.json",
+          "ids": ["DEC-001", "DEC-002", "DEC-003"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-001",
+            "REC-002",
+            "REC-003",
+            "REC-004",
+            "REC-005",
+            "REC-006",
+            "REC-007"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-001"],
+      "role_ids": [
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST"
+      ],
+      "record_ids": [
+        "REC-001",
+        "REC-002",
+        "REC-003",
+        "REC-004",
+        "REC-005",
+        "REC-006",
+        "REC-007"
+      ],
+      "decision_ids": ["DEC-001", "DEC-002", "DEC-003"],
+      "exception_ids": ["EXC-001", "EXC-002", "EXC-003", "EXC-004", "EXC-005"],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-002-SWIMLANE",
+      "category": "role_swimlane",
+      "title": "WF-002 · Scouting, recommendation, crop protection, and application records · Role swimlane",
+      "path": "workflow-model/visuals/wf-002-role-swimlane.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-002"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-ASSISTANT-VINEYARD-MANAGER",
+            "ROLE-COMPLIANCE-COORDINATOR",
+            "ROLE-CROP-PROTECTION-LEAD",
+            "ROLE-FOREMAN",
+            "ROLE-PESTICIDE-HANDLER",
+            "ROLE-REGULATOR",
+            "ROLE-SCOUT",
+            "ROLE-VINEYARD-MANAGER",
+            "ROLE-VITICULTURIST"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-002"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-FOREMAN",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-REGULATOR",
+        "ROLE-SCOUT",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST"
+      ],
+      "record_ids": [],
+      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014", "DEC-015"],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-002-STATE-MACHINE",
+      "category": "state_machine",
+      "title": "WF-002 · Scouting, recommendation, crop protection, and application records · State machine",
+      "path": "workflow-model/visuals/wf-002-state-machine.mmd",
+      "diagram_type": "stateDiagram-v2",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-002"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-006",
+            "EXC-007",
+            "EXC-008",
+            "EXC-009",
+            "EXC-010",
+            "EXC-011"
+          ]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-008",
+            "REC-009",
+            "REC-010",
+            "REC-011",
+            "REC-012",
+            "REC-013",
+            "REC-014",
+            "REC-015",
+            "REC-016",
+            "REC-017"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-002"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-FOREMAN",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-REGULATOR",
+        "ROLE-SCOUT",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST"
+      ],
+      "record_ids": [
+        "REC-008",
+        "REC-009",
+        "REC-010",
+        "REC-011",
+        "REC-012",
+        "REC-013",
+        "REC-014",
+        "REC-015",
+        "REC-016",
+        "REC-017"
+      ],
+      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014", "DEC-015"],
+      "exception_ids": [
+        "EXC-006",
+        "EXC-007",
+        "EXC-008",
+        "EXC-009",
+        "EXC-010",
+        "EXC-011"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-002-EXCEPTION-TREE",
+      "category": "exception_decision_tree",
+      "title": "WF-002 · Scouting, recommendation, crop protection, and application records · Exception and decision tree",
+      "path": "workflow-model/visuals/wf-002-exception-decision-tree.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-002"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-006",
+            "EXC-007",
+            "EXC-008",
+            "EXC-009",
+            "EXC-010",
+            "EXC-011"
+          ]
+        },
+        {
+          "path": "workflow-model/decisions.json",
+          "ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014", "DEC-015"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-008",
+            "REC-009",
+            "REC-010",
+            "REC-011",
+            "REC-012",
+            "REC-013",
+            "REC-014",
+            "REC-015",
+            "REC-016",
+            "REC-017"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-002"],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-SCOUT",
+        "ROLE-VITICULTURIST"
+      ],
+      "record_ids": [
+        "REC-008",
+        "REC-009",
+        "REC-010",
+        "REC-011",
+        "REC-012",
+        "REC-013",
+        "REC-014",
+        "REC-015",
+        "REC-016",
+        "REC-017"
+      ],
+      "decision_ids": ["DEC-011", "DEC-012", "DEC-013", "DEC-014", "DEC-015"],
+      "exception_ids": [
+        "EXC-006",
+        "EXC-007",
+        "EXC-008",
+        "EXC-009",
+        "EXC-010",
+        "EXC-011"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-003-SWIMLANE",
+      "category": "role_swimlane",
+      "title": "WF-003 · Irrigation scheduling, fertility adjustment, and delivery verification · Role swimlane",
+      "path": "workflow-model/visuals/wf-003-role-swimlane.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-003"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-ASSISTANT-VINEYARD-MANAGER",
+            "ROLE-COMPLIANCE-COORDINATOR",
+            "ROLE-IRRIGATION-LEAD",
+            "ROLE-IRRIGATOR",
+            "ROLE-LAB",
+            "ROLE-VINEYARD-MANAGER",
+            "ROLE-VITICULTURIST"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-003"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-IRRIGATOR",
+        "ROLE-LAB",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST"
+      ],
+      "record_ids": [],
+      "decision_ids": ["DEC-021", "DEC-023", "DEC-024"],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-003-STATE-MACHINE",
+      "category": "state_machine",
+      "title": "WF-003 · Irrigation scheduling, fertility adjustment, and delivery verification · State machine",
+      "path": "workflow-model/visuals/wf-003-state-machine.mmd",
+      "diagram_type": "stateDiagram-v2",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-003"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-012",
+            "EXC-013",
+            "EXC-014",
+            "EXC-015",
+            "EXC-016",
+            "EXC-017"
+          ]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-018",
+            "REC-019",
+            "REC-020",
+            "REC-021",
+            "REC-022",
+            "REC-023",
+            "REC-024",
+            "REC-025",
+            "REC-026"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-003"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-IRRIGATOR",
+        "ROLE-LAB",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST"
+      ],
+      "record_ids": [
+        "REC-018",
+        "REC-019",
+        "REC-020",
+        "REC-021",
+        "REC-022",
+        "REC-023",
+        "REC-024",
+        "REC-025",
+        "REC-026"
+      ],
+      "decision_ids": ["DEC-021", "DEC-022", "DEC-023", "DEC-024"],
+      "exception_ids": [
+        "EXC-012",
+        "EXC-013",
+        "EXC-014",
+        "EXC-015",
+        "EXC-016",
+        "EXC-017"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-003-EXCEPTION-TREE",
+      "category": "exception_decision_tree",
+      "title": "WF-003 · Irrigation scheduling, fertility adjustment, and delivery verification · Exception and decision tree",
+      "path": "workflow-model/visuals/wf-003-exception-decision-tree.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-003"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-012",
+            "EXC-013",
+            "EXC-014",
+            "EXC-015",
+            "EXC-016",
+            "EXC-017"
+          ]
+        },
+        {
+          "path": "workflow-model/decisions.json",
+          "ids": ["DEC-021", "DEC-022", "DEC-023", "DEC-024"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-018",
+            "REC-019",
+            "REC-020",
+            "REC-021",
+            "REC-022",
+            "REC-023",
+            "REC-024",
+            "REC-025",
+            "REC-026"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-003"],
+      "role_ids": [
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-IRRIGATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST"
+      ],
+      "record_ids": [
+        "REC-018",
+        "REC-019",
+        "REC-020",
+        "REC-021",
+        "REC-022",
+        "REC-023",
+        "REC-024",
+        "REC-025",
+        "REC-026"
+      ],
+      "decision_ids": ["DEC-021", "DEC-022", "DEC-023", "DEC-024"],
+      "exception_ids": [
+        "EXC-012",
+        "EXC-013",
+        "EXC-014",
+        "EXC-015",
+        "EXC-016",
+        "EXC-017"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-004-SWIMLANE",
+      "category": "role_swimlane",
+      "title": "WF-004 · Crop estimation and forecast revision · Role swimlane",
+      "path": "workflow-model/visuals/wf-004-role-swimlane.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-004"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-ASSISTANT-VINEYARD-MANAGER",
+            "ROLE-CONTRACT-GROWER",
+            "ROLE-FINANCE",
+            "ROLE-GROWER-RELATIONS",
+            "ROLE-OWNER-GENERAL-MANAGER",
+            "ROLE-VINEYARD-MANAGER",
+            "ROLE-VITICULTURIST",
+            "ROLE-WINEMAKER"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-004"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-FINANCE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER"
+      ],
+      "record_ids": [],
+      "decision_ids": ["DEC-031", "DEC-032"],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-004-STATE-MACHINE",
+      "category": "state_machine",
+      "title": "WF-004 · Crop estimation and forecast revision · State machine",
+      "path": "workflow-model/visuals/wf-004-state-machine.mmd",
+      "diagram_type": "stateDiagram-v2",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-004"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-018",
+            "EXC-019",
+            "EXC-020",
+            "EXC-021",
+            "EXC-022",
+            "EXC-023"
+          ]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-027",
+            "REC-028",
+            "REC-029",
+            "REC-030",
+            "REC-031",
+            "REC-032",
+            "REC-033",
+            "REC-034"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-004"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-FINANCE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER"
+      ],
+      "record_ids": [
+        "REC-027",
+        "REC-028",
+        "REC-029",
+        "REC-030",
+        "REC-031",
+        "REC-032",
+        "REC-033",
+        "REC-034"
+      ],
+      "decision_ids": ["DEC-031", "DEC-032", "DEC-033"],
+      "exception_ids": [
+        "EXC-018",
+        "EXC-019",
+        "EXC-020",
+        "EXC-021",
+        "EXC-022",
+        "EXC-023"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-004-EXCEPTION-TREE",
+      "category": "exception_decision_tree",
+      "title": "WF-004 · Crop estimation and forecast revision · Exception and decision tree",
+      "path": "workflow-model/visuals/wf-004-exception-decision-tree.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-004"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-018",
+            "EXC-019",
+            "EXC-020",
+            "EXC-021",
+            "EXC-022",
+            "EXC-023"
+          ]
+        },
+        {
+          "path": "workflow-model/decisions.json",
+          "ids": ["DEC-031", "DEC-032", "DEC-033"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-027",
+            "REC-028",
+            "REC-029",
+            "REC-030",
+            "REC-031",
+            "REC-032",
+            "REC-033",
+            "REC-034"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-004"],
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST"
+      ],
+      "record_ids": [
+        "REC-027",
+        "REC-028",
+        "REC-029",
+        "REC-030",
+        "REC-031",
+        "REC-032",
+        "REC-033",
+        "REC-034"
+      ],
+      "decision_ids": ["DEC-031", "DEC-032", "DEC-033"],
+      "exception_ids": [
+        "EXC-018",
+        "EXC-019",
+        "EXC-020",
+        "EXC-021",
+        "EXC-022",
+        "EXC-023"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-005-SWIMLANE",
+      "category": "role_swimlane",
+      "title": "WF-005 · Maturity sampling, winery communication, and pick decision · Role swimlane",
+      "path": "workflow-model/visuals/wf-005-role-swimlane.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-005"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-CONTRACT-GROWER",
+            "ROLE-GROWER-RELATIONS",
+            "ROLE-LAB",
+            "ROLE-OWNER-GENERAL-MANAGER",
+            "ROLE-VINEYARD-MANAGER",
+            "ROLE-VITICULTURIST",
+            "ROLE-WINEMAKER"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-005"],
+      "role_ids": [
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-LAB",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER"
+      ],
+      "record_ids": [],
+      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-005-STATE-MACHINE",
+      "category": "state_machine",
+      "title": "WF-005 · Maturity sampling, winery communication, and pick decision · State machine",
+      "path": "workflow-model/visuals/wf-005-state-machine.mmd",
+      "diagram_type": "stateDiagram-v2",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-005"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-024",
+            "EXC-025",
+            "EXC-026",
+            "EXC-027",
+            "EXC-028",
+            "EXC-029"
+          ]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-027",
+            "REC-035",
+            "REC-036",
+            "REC-037",
+            "REC-038",
+            "REC-039",
+            "REC-040",
+            "REC-041",
+            "REC-042",
+            "REC-080"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-005"],
+      "role_ids": [
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-LAB",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER"
+      ],
+      "record_ids": [
+        "REC-027",
+        "REC-035",
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "REC-039",
+        "REC-040",
+        "REC-041",
+        "REC-042",
+        "REC-080"
+      ],
+      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
+      "exception_ids": [
+        "EXC-024",
+        "EXC-025",
+        "EXC-026",
+        "EXC-027",
+        "EXC-028",
+        "EXC-029"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-005-EXCEPTION-TREE",
+      "category": "exception_decision_tree",
+      "title": "WF-005 · Maturity sampling, winery communication, and pick decision · Exception and decision tree",
+      "path": "workflow-model/visuals/wf-005-exception-decision-tree.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-005"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-024",
+            "EXC-025",
+            "EXC-026",
+            "EXC-027",
+            "EXC-028",
+            "EXC-029"
+          ]
+        },
+        {
+          "path": "workflow-model/decisions.json",
+          "ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-027",
+            "REC-035",
+            "REC-036",
+            "REC-037",
+            "REC-038",
+            "REC-039",
+            "REC-040",
+            "REC-041",
+            "REC-042",
+            "REC-080"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-005"],
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-LAB",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER"
+      ],
+      "record_ids": [
+        "REC-027",
+        "REC-035",
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "REC-039",
+        "REC-040",
+        "REC-041",
+        "REC-042",
+        "REC-080"
+      ],
+      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
+      "exception_ids": [
+        "EXC-024",
+        "EXC-025",
+        "EXC-026",
+        "EXC-027",
+        "EXC-028",
+        "EXC-029"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-006-SWIMLANE",
+      "category": "role_swimlane",
+      "title": "WF-006 · Harvest planning, execution, loads, intake, quality, and reconciliation · Role swimlane",
+      "path": "workflow-model/visuals/wf-006-role-swimlane.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-006"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-ASSISTANT-VINEYARD-MANAGER",
+            "ROLE-CONTRACT-GROWER",
+            "ROLE-FINANCE",
+            "ROLE-GROWER-RELATIONS",
+            "ROLE-HARVEST-CREW-LEADER",
+            "ROLE-OWNER-GENERAL-MANAGER",
+            "ROLE-TRANSPORTATION",
+            "ROLE-VINEYARD-MANAGER",
+            "ROLE-WINEMAKER",
+            "ROLE-WINERY-INTAKE"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-006"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-FINANCE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE"
+      ],
+      "record_ids": [],
+      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-055"],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-006-STATE-MACHINE",
+      "category": "state_machine",
+      "title": "WF-006 · Harvest planning, execution, loads, intake, quality, and reconciliation · State machine",
+      "path": "workflow-model/visuals/wf-006-state-machine.mmd",
+      "diagram_type": "stateDiagram-v2",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-006"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-030",
+            "EXC-031",
+            "EXC-032",
+            "EXC-033",
+            "EXC-034",
+            "EXC-035",
+            "EXC-036"
+          ]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-041",
+            "REC-043",
+            "REC-044",
+            "REC-045",
+            "REC-046",
+            "REC-047",
+            "REC-048",
+            "REC-049",
+            "REC-050",
+            "REC-051",
+            "REC-052",
+            "REC-053",
+            "REC-080"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-006"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-FINANCE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE"
+      ],
+      "record_ids": [
+        "REC-041",
+        "REC-043",
+        "REC-044",
+        "REC-045",
+        "REC-046",
+        "REC-047",
+        "REC-048",
+        "REC-049",
+        "REC-050",
+        "REC-051",
+        "REC-052",
+        "REC-053",
+        "REC-080"
+      ],
+      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
+      "exception_ids": [
+        "EXC-030",
+        "EXC-031",
+        "EXC-032",
+        "EXC-033",
+        "EXC-034",
+        "EXC-035",
+        "EXC-036"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-006-EXCEPTION-TREE",
+      "category": "exception_decision_tree",
+      "title": "WF-006 · Harvest planning, execution, loads, intake, quality, and reconciliation · Exception and decision tree",
+      "path": "workflow-model/visuals/wf-006-exception-decision-tree.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-006"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-030",
+            "EXC-031",
+            "EXC-032",
+            "EXC-033",
+            "EXC-034",
+            "EXC-035",
+            "EXC-036"
+          ]
+        },
+        {
+          "path": "workflow-model/decisions.json",
+          "ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-041",
+            "REC-043",
+            "REC-044",
+            "REC-045",
+            "REC-046",
+            "REC-047",
+            "REC-048",
+            "REC-049",
+            "REC-050",
+            "REC-051",
+            "REC-052",
+            "REC-053",
+            "REC-080"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-006"],
+      "role_ids": [
+        "ROLE-FINANCE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE"
+      ],
+      "record_ids": [
+        "REC-041",
+        "REC-043",
+        "REC-044",
+        "REC-045",
+        "REC-046",
+        "REC-047",
+        "REC-048",
+        "REC-049",
+        "REC-050",
+        "REC-051",
+        "REC-052",
+        "REC-053",
+        "REC-080"
+      ],
+      "decision_ids": ["DEC-051", "DEC-052", "DEC-053", "DEC-054", "DEC-055"],
+      "exception_ids": [
+        "EXC-030",
+        "EXC-031",
+        "EXC-032",
+        "EXC-033",
+        "EXC-034",
+        "EXC-035",
+        "EXC-036"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-007-SWIMLANE",
+      "category": "role_swimlane",
+      "title": "WF-007 · Crew scheduling, attendance, time, payroll, and cost allocation · Role swimlane",
+      "path": "workflow-model/visuals/wf-007-role-swimlane.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-007"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-ASSISTANT-VINEYARD-MANAGER",
+            "ROLE-FIELD-CREW",
+            "ROLE-FINANCE",
+            "ROLE-FOREMAN",
+            "ROLE-HARVEST-CREW-LEADER",
+            "ROLE-LABOR-CONTRACTOR",
+            "ROLE-OPERATIONS-COORDINATOR",
+            "ROLE-PAYROLL",
+            "ROLE-VINEYARD-MANAGER"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-007"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-FIELD-CREW",
+        "ROLE-FINANCE",
+        "ROLE-FOREMAN",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-PAYROLL",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [],
+      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-007-STATE-MACHINE",
+      "category": "state_machine",
+      "title": "WF-007 · Crew scheduling, attendance, time, payroll, and cost allocation · State machine",
+      "path": "workflow-model/visuals/wf-007-state-machine.mmd",
+      "diagram_type": "stateDiagram-v2",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-007"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-037",
+            "EXC-038",
+            "EXC-039",
+            "EXC-040",
+            "EXC-041",
+            "EXC-042",
+            "EXC-043"
+          ]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-003",
+            "REC-051",
+            "REC-054",
+            "REC-055",
+            "REC-056",
+            "REC-057",
+            "REC-058",
+            "REC-059",
+            "REC-060",
+            "REC-061",
+            "REC-062",
+            "REC-063"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-007"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-FIELD-CREW",
+        "ROLE-FINANCE",
+        "ROLE-FOREMAN",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-PAYROLL",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-003",
+        "REC-051",
+        "REC-054",
+        "REC-055",
+        "REC-056",
+        "REC-057",
+        "REC-058",
+        "REC-059",
+        "REC-060",
+        "REC-061",
+        "REC-062",
+        "REC-063"
+      ],
+      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
+      "exception_ids": [
+        "EXC-037",
+        "EXC-038",
+        "EXC-039",
+        "EXC-040",
+        "EXC-041",
+        "EXC-042",
+        "EXC-043"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-007-EXCEPTION-TREE",
+      "category": "exception_decision_tree",
+      "title": "WF-007 · Crew scheduling, attendance, time, payroll, and cost allocation · Exception and decision tree",
+      "path": "workflow-model/visuals/wf-007-exception-decision-tree.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-007"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-037",
+            "EXC-038",
+            "EXC-039",
+            "EXC-040",
+            "EXC-041",
+            "EXC-042",
+            "EXC-043"
+          ]
+        },
+        {
+          "path": "workflow-model/decisions.json",
+          "ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-003",
+            "REC-051",
+            "REC-054",
+            "REC-055",
+            "REC-056",
+            "REC-057",
+            "REC-058",
+            "REC-059",
+            "REC-060",
+            "REC-061",
+            "REC-062",
+            "REC-063"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-007"],
+      "role_ids": [
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-PAYROLL",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-003",
+        "REC-051",
+        "REC-054",
+        "REC-055",
+        "REC-056",
+        "REC-057",
+        "REC-058",
+        "REC-059",
+        "REC-060",
+        "REC-061",
+        "REC-062",
+        "REC-063"
+      ],
+      "decision_ids": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
+      "exception_ids": [
+        "EXC-037",
+        "EXC-038",
+        "EXC-039",
+        "EXC-040",
+        "EXC-041",
+        "EXC-042",
+        "EXC-043"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-008-SWIMLANE",
+      "category": "role_swimlane",
+      "title": "WF-008 · Materials, purchasing, equipment readiness, and repair · Role swimlane",
+      "path": "workflow-model/visuals/wf-008-role-swimlane.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-008"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-ASSISTANT-VINEYARD-MANAGER",
+            "ROLE-COMPLIANCE-COORDINATOR",
+            "ROLE-CONTRACTOR",
+            "ROLE-EQUIPMENT-OPERATOR",
+            "ROLE-FINANCE",
+            "ROLE-FOREMAN",
+            "ROLE-MECHANIC",
+            "ROLE-OPERATIONS-COORDINATOR",
+            "ROLE-OWNER-GENERAL-MANAGER",
+            "ROLE-PURCHASING",
+            "ROLE-VINEYARD-MANAGER"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-008"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-FINANCE",
+        "ROLE-FOREMAN",
+        "ROLE-MECHANIC",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-PURCHASING",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [],
+      "decision_ids": ["DEC-071", "DEC-072", "DEC-073"],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-008-STATE-MACHINE",
+      "category": "state_machine",
+      "title": "WF-008 · Materials, purchasing, equipment readiness, and repair · State machine",
+      "path": "workflow-model/visuals/wf-008-state-machine.mmd",
+      "diagram_type": "stateDiagram-v2",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-008"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-044",
+            "EXC-045",
+            "EXC-046",
+            "EXC-047",
+            "EXC-048",
+            "EXC-049",
+            "EXC-050"
+          ]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-064",
+            "REC-065",
+            "REC-066",
+            "REC-067",
+            "REC-068",
+            "REC-069",
+            "REC-070",
+            "REC-071",
+            "REC-072",
+            "REC-073",
+            "REC-074",
+            "REC-075"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-008"],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-FINANCE",
+        "ROLE-FOREMAN",
+        "ROLE-MECHANIC",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-PURCHASING",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-064",
+        "REC-065",
+        "REC-066",
+        "REC-067",
+        "REC-068",
+        "REC-069",
+        "REC-070",
+        "REC-071",
+        "REC-072",
+        "REC-073",
+        "REC-074",
+        "REC-075"
+      ],
+      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
+      "exception_ids": [
+        "EXC-044",
+        "EXC-045",
+        "EXC-046",
+        "EXC-047",
+        "EXC-048",
+        "EXC-049",
+        "EXC-050"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-008-EXCEPTION-TREE",
+      "category": "exception_decision_tree",
+      "title": "WF-008 · Materials, purchasing, equipment readiness, and repair · Exception and decision tree",
+      "path": "workflow-model/visuals/wf-008-exception-decision-tree.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-008"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-044",
+            "EXC-045",
+            "EXC-046",
+            "EXC-047",
+            "EXC-048",
+            "EXC-049",
+            "EXC-050"
+          ]
+        },
+        {
+          "path": "workflow-model/decisions.json",
+          "ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-064",
+            "REC-065",
+            "REC-066",
+            "REC-067",
+            "REC-068",
+            "REC-069",
+            "REC-070",
+            "REC-071",
+            "REC-072",
+            "REC-073",
+            "REC-074",
+            "REC-075"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-008"],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-MECHANIC",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-PURCHASING",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-064",
+        "REC-065",
+        "REC-066",
+        "REC-067",
+        "REC-068",
+        "REC-069",
+        "REC-070",
+        "REC-071",
+        "REC-072",
+        "REC-073",
+        "REC-074",
+        "REC-075"
+      ],
+      "decision_ids": ["DEC-071", "DEC-072", "DEC-073", "DEC-074"],
+      "exception_ids": [
+        "EXC-044",
+        "EXC-045",
+        "EXC-046",
+        "EXC-047",
+        "EXC-048",
+        "EXC-049",
+        "EXC-050"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-009-SWIMLANE",
+      "category": "role_swimlane",
+      "title": "WF-009 · Grower onboarding, contract-fruit coordination, and relationship history · Role swimlane",
+      "path": "workflow-model/visuals/wf-009-role-swimlane.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-009"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-COMPLIANCE-COORDINATOR",
+            "ROLE-CONTRACT-GROWER",
+            "ROLE-FINANCE",
+            "ROLE-GROWER-RELATIONS",
+            "ROLE-OWNER-GENERAL-MANAGER",
+            "ROLE-TRANSPORTATION",
+            "ROLE-VINEYARD-MANAGER",
+            "ROLE-VITICULTURIST",
+            "ROLE-WINEMAKER",
+            "ROLE-WINERY-INTAKE"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-009"],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-FINANCE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE"
+      ],
+      "record_ids": [],
+      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-009-STATE-MACHINE",
+      "category": "state_machine",
+      "title": "WF-009 · Grower onboarding, contract-fruit coordination, and relationship history · State machine",
+      "path": "workflow-model/visuals/wf-009-state-machine.mmd",
+      "diagram_type": "stateDiagram-v2",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-009"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-051",
+            "EXC-052",
+            "EXC-053",
+            "EXC-054",
+            "EXC-055",
+            "EXC-056"
+          ]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-076",
+            "REC-077",
+            "REC-078",
+            "REC-079",
+            "REC-080",
+            "REC-081",
+            "REC-082",
+            "REC-083",
+            "REC-084",
+            "REC-085",
+            "REC-086",
+            "REC-087",
+            "REC-088"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-009"],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-FINANCE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE"
+      ],
+      "record_ids": [
+        "REC-076",
+        "REC-077",
+        "REC-078",
+        "REC-079",
+        "REC-080",
+        "REC-081",
+        "REC-082",
+        "REC-083",
+        "REC-084",
+        "REC-085",
+        "REC-086",
+        "REC-087",
+        "REC-088"
+      ],
+      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
+      "exception_ids": [
+        "EXC-051",
+        "EXC-052",
+        "EXC-053",
+        "EXC-054",
+        "EXC-055",
+        "EXC-056"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-009-EXCEPTION-TREE",
+      "category": "exception_decision_tree",
+      "title": "WF-009 · Grower onboarding, contract-fruit coordination, and relationship history · Exception and decision tree",
+      "path": "workflow-model/visuals/wf-009-exception-decision-tree.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-009"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-051",
+            "EXC-052",
+            "EXC-053",
+            "EXC-054",
+            "EXC-055",
+            "EXC-056"
+          ]
+        },
+        {
+          "path": "workflow-model/decisions.json",
+          "ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-076",
+            "REC-077",
+            "REC-078",
+            "REC-079",
+            "REC-080",
+            "REC-081",
+            "REC-082",
+            "REC-083",
+            "REC-084",
+            "REC-085",
+            "REC-086",
+            "REC-087",
+            "REC-088"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-009"],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-076",
+        "REC-077",
+        "REC-078",
+        "REC-079",
+        "REC-080",
+        "REC-081",
+        "REC-082",
+        "REC-083",
+        "REC-084",
+        "REC-085",
+        "REC-086",
+        "REC-087",
+        "REC-088"
+      ],
+      "decision_ids": ["DEC-081", "DEC-082", "DEC-083", "DEC-084"],
+      "exception_ids": [
+        "EXC-051",
+        "EXC-052",
+        "EXC-053",
+        "EXC-054",
+        "EXC-055",
+        "EXC-056"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-010-SWIMLANE",
+      "category": "role_swimlane",
+      "title": "WF-010 · Certification, audit preparation, corrective action, and evidence · Role swimlane",
+      "path": "workflow-model/visuals/wf-010-role-swimlane.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-010"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-AUDITOR",
+            "ROLE-CERTIFIER",
+            "ROLE-COMPLIANCE-COORDINATOR",
+            "ROLE-CONTRACTOR",
+            "ROLE-FOREMAN",
+            "ROLE-GROWER-RELATIONS",
+            "ROLE-IRRIGATION-LEAD",
+            "ROLE-OPERATIONS-COORDINATOR",
+            "ROLE-OWNER-GENERAL-MANAGER",
+            "ROLE-PESTICIDE-HANDLER",
+            "ROLE-REGULATOR",
+            "ROLE-VINEYARD-MANAGER"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-010"],
+      "role_ids": [
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-FOREMAN",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-REGULATOR",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [],
+      "decision_ids": ["DEC-091", "DEC-092", "DEC-093"],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-010-STATE-MACHINE",
+      "category": "state_machine",
+      "title": "WF-010 · Certification, audit preparation, corrective action, and evidence · State machine",
+      "path": "workflow-model/visuals/wf-010-state-machine.mmd",
+      "diagram_type": "stateDiagram-v2",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-010"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-057",
+            "EXC-058",
+            "EXC-059",
+            "EXC-060",
+            "EXC-061",
+            "EXC-062"
+          ]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-080",
+            "REC-082",
+            "REC-086",
+            "REC-089",
+            "REC-090",
+            "REC-091",
+            "REC-092",
+            "REC-093",
+            "REC-094",
+            "REC-095",
+            "REC-096",
+            "REC-097",
+            "REC-098",
+            "REC-099",
+            "REC-100",
+            "REC-101",
+            "REC-102",
+            "REC-103"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-010"],
+      "role_ids": [
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-FOREMAN",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-REGULATOR",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-080",
+        "REC-082",
+        "REC-086",
+        "REC-089",
+        "REC-090",
+        "REC-091",
+        "REC-092",
+        "REC-093",
+        "REC-094",
+        "REC-095",
+        "REC-096",
+        "REC-097",
+        "REC-098",
+        "REC-099",
+        "REC-100",
+        "REC-101",
+        "REC-102",
+        "REC-103"
+      ],
+      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
+      "exception_ids": [
+        "EXC-057",
+        "EXC-058",
+        "EXC-059",
+        "EXC-060",
+        "EXC-061",
+        "EXC-062"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-WF-010-EXCEPTION-TREE",
+      "category": "exception_decision_tree",
+      "title": "WF-010 · Certification, audit preparation, corrective action, and evidence · Exception and decision tree",
+      "path": "workflow-model/visuals/wf-010-exception-decision-tree.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/workflows.json", "ids": ["WF-010"] },
+        {
+          "path": "workflow-model/exceptions.json",
+          "ids": [
+            "EXC-057",
+            "EXC-058",
+            "EXC-059",
+            "EXC-060",
+            "EXC-061",
+            "EXC-062"
+          ]
+        },
+        {
+          "path": "workflow-model/decisions.json",
+          "ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"]
+        },
+        {
+          "path": "workflow-model/records.json",
+          "ids": [
+            "REC-080",
+            "REC-082",
+            "REC-086",
+            "REC-089",
+            "REC-090",
+            "REC-091",
+            "REC-092",
+            "REC-093",
+            "REC-094",
+            "REC-095",
+            "REC-096",
+            "REC-097",
+            "REC-098",
+            "REC-099",
+            "REC-100",
+            "REC-101",
+            "REC-102",
+            "REC-103"
+          ]
+        }
+      ],
+      "workflow_ids": ["WF-010"],
+      "role_ids": [
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-080",
+        "REC-082",
+        "REC-086",
+        "REC-089",
+        "REC-090",
+        "REC-091",
+        "REC-092",
+        "REC-093",
+        "REC-094",
+        "REC-095",
+        "REC-096",
+        "REC-097",
+        "REC-098",
+        "REC-099",
+        "REC-100",
+        "REC-101",
+        "REC-102",
+        "REC-103"
+      ],
+      "decision_ids": ["DEC-091", "DEC-092", "DEC-093", "DEC-094"],
+      "exception_ids": [
+        "EXC-057",
+        "EXC-058",
+        "EXC-059",
+        "EXC-060",
+        "EXC-061",
+        "EXC-062"
+      ],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-OPERATING-MODEL",
+      "category": "required_operational",
+      "title": "Vineyard operating model",
+      "path": "workflow-model/visuals/operating-model.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        {
+          "path": "workflow-model/workflows.json",
+          "ids": [
+            "WF-001",
+            "WF-002",
+            "WF-003",
+            "WF-004",
+            "WF-005",
+            "WF-006",
+            "WF-007",
+            "WF-008",
+            "WF-009",
+            "WF-010"
+          ]
+        },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-ASSISTANT-VINEYARD-MANAGER",
+            "ROLE-AUDITOR",
+            "ROLE-CERTIFIER",
+            "ROLE-COMPLIANCE-COORDINATOR",
+            "ROLE-CONTRACT-GROWER",
+            "ROLE-CONTRACTOR",
+            "ROLE-CROP-PROTECTION-LEAD",
+            "ROLE-EQUIPMENT-OPERATOR",
+            "ROLE-FIELD-CREW",
+            "ROLE-FINANCE",
+            "ROLE-FOREMAN",
+            "ROLE-GROWER-RELATIONS",
+            "ROLE-HARVEST-CREW-LEADER",
+            "ROLE-IRRIGATION-LEAD",
+            "ROLE-IRRIGATOR",
+            "ROLE-LAB",
+            "ROLE-LABOR-CONTRACTOR",
+            "ROLE-MECHANIC",
+            "ROLE-OPERATIONS-COORDINATOR",
+            "ROLE-OWNER-GENERAL-MANAGER",
+            "ROLE-PAYROLL",
+            "ROLE-PESTICIDE-HANDLER",
+            "ROLE-PURCHASING",
+            "ROLE-REGULATOR",
+            "ROLE-SCOUT",
+            "ROLE-TRANSPORTATION",
+            "ROLE-VINEYARD-MANAGER",
+            "ROLE-VITICULTURIST",
+            "ROLE-WINEMAKER",
+            "ROLE-WINERY-INTAKE"
+          ]
+        },
+        { "path": "workflow-model/overlays.json", "ids": ["OVL-001"] }
+      ],
+      "workflow_ids": [
+        "WF-001",
+        "WF-002",
+        "WF-003",
+        "WF-004",
+        "WF-005",
+        "WF-006",
+        "WF-007",
+        "WF-008",
+        "WF-009",
+        "WF-010"
+      ],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-CONTRACTOR",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-FIELD-CREW",
+        "ROLE-FINANCE",
+        "ROLE-FOREMAN",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-IRRIGATOR",
+        "ROLE-LAB",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-MECHANIC",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-PAYROLL",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-PURCHASING",
+        "ROLE-REGULATOR",
+        "ROLE-SCOUT",
+        "ROLE-TRANSPORTATION",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE"
+      ],
+      "record_ids": [],
+      "decision_ids": [],
+      "exception_ids": [],
+      "overlay_ids": ["OVL-001"]
+    },
+    {
+      "id": "VIS-ANNUAL-CALENDAR",
+      "category": "required_operational",
+      "title": "Annual vineyard operating calendar",
+      "path": "workflow-model/visuals/annual-calendar.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        {
+          "path": "workflow-model/workflows.json",
+          "ids": [
+            "WF-001",
+            "WF-002",
+            "WF-003",
+            "WF-004",
+            "WF-005",
+            "WF-006",
+            "WF-007",
+            "WF-008",
+            "WF-009",
+            "WF-010"
+          ]
+        }
+      ],
+      "workflow_ids": [
+        "WF-001",
+        "WF-002",
+        "WF-003",
+        "WF-004",
+        "WF-005",
+        "WF-006",
+        "WF-007",
+        "WF-008",
+        "WF-009",
+        "WF-010"
+      ],
+      "role_ids": [],
+      "record_ids": [],
+      "decision_ids": [],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-ROLES-INTERACTION",
+      "category": "required_operational",
+      "title": "Roles interaction map",
+      "path": "workflow-model/visuals/roles-interaction-map.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        {
+          "path": "workflow-model/workflows.json",
+          "ids": [
+            "WF-001",
+            "WF-002",
+            "WF-003",
+            "WF-004",
+            "WF-005",
+            "WF-006",
+            "WF-007",
+            "WF-008",
+            "WF-009",
+            "WF-010"
+          ]
+        },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-ASSISTANT-VINEYARD-MANAGER",
+            "ROLE-AUDITOR",
+            "ROLE-CERTIFIER",
+            "ROLE-COMPLIANCE-COORDINATOR",
+            "ROLE-CONTRACT-GROWER",
+            "ROLE-CONTRACTOR",
+            "ROLE-CROP-PROTECTION-LEAD",
+            "ROLE-EQUIPMENT-OPERATOR",
+            "ROLE-FIELD-CREW",
+            "ROLE-FINANCE",
+            "ROLE-FOREMAN",
+            "ROLE-GROWER-RELATIONS",
+            "ROLE-HARVEST-CREW-LEADER",
+            "ROLE-IRRIGATION-LEAD",
+            "ROLE-IRRIGATOR",
+            "ROLE-LAB",
+            "ROLE-LABOR-CONTRACTOR",
+            "ROLE-MECHANIC",
+            "ROLE-OPERATIONS-COORDINATOR",
+            "ROLE-OWNER-GENERAL-MANAGER",
+            "ROLE-PAYROLL",
+            "ROLE-PESTICIDE-HANDLER",
+            "ROLE-PURCHASING",
+            "ROLE-REGULATOR",
+            "ROLE-SCOUT",
+            "ROLE-TRANSPORTATION",
+            "ROLE-VINEYARD-MANAGER",
+            "ROLE-VITICULTURIST",
+            "ROLE-WINEMAKER",
+            "ROLE-WINERY-INTAKE"
+          ]
+        }
+      ],
+      "workflow_ids": [
+        "WF-001",
+        "WF-002",
+        "WF-003",
+        "WF-004",
+        "WF-005",
+        "WF-006",
+        "WF-007",
+        "WF-008",
+        "WF-009",
+        "WF-010"
+      ],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-CONTRACTOR",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-FIELD-CREW",
+        "ROLE-FINANCE",
+        "ROLE-FOREMAN",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-IRRIGATOR",
+        "ROLE-LAB",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-MECHANIC",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-PAYROLL",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-PURCHASING",
+        "ROLE-REGULATOR",
+        "ROLE-SCOUT",
+        "ROLE-TRANSPORTATION",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE"
+      ],
+      "record_ids": [],
+      "decision_ids": [],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-HANDOFF-INFORMATION",
+      "category": "required_operational",
+      "title": "Handoff and information map",
+      "path": "workflow-model/visuals/handoff-information-map.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        {
+          "path": "workflow-model/workflows.json",
+          "ids": [
+            "WF-001",
+            "WF-002",
+            "WF-003",
+            "WF-004",
+            "WF-005",
+            "WF-006",
+            "WF-007",
+            "WF-008",
+            "WF-009",
+            "WF-010"
+          ]
+        }
+      ],
+      "workflow_ids": [
+        "WF-001",
+        "WF-002",
+        "WF-003",
+        "WF-004",
+        "WF-005",
+        "WF-006",
+        "WF-007",
+        "WF-008",
+        "WF-009",
+        "WF-010"
+      ],
+      "role_ids": [
+        "ROLE-ASSISTANT-VINEYARD-MANAGER",
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-CONTRACTOR",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-FIELD-CREW",
+        "ROLE-FINANCE",
+        "ROLE-FOREMAN",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-IRRIGATOR",
+        "ROLE-LAB",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-MECHANIC",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-PAYROLL",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-PURCHASING",
+        "ROLE-REGULATOR",
+        "ROLE-SCOUT",
+        "ROLE-TRANSPORTATION",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE"
+      ],
+      "record_ids": [],
+      "decision_ids": [],
+      "exception_ids": [],
+      "overlay_ids": []
+    },
+    {
+      "id": "VIS-ESTATE-CONTRACT-COMPARISON",
+      "category": "required_operational",
+      "title": "Estate-grown versus contract-fruit comparison",
+      "path": "workflow-model/visuals/estate-grown-vs-contract-fruit.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/overlays.json", "ids": ["OVL-008"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-COMPLIANCE-COORDINATOR",
+            "ROLE-CONTRACT-GROWER",
+            "ROLE-FINANCE",
+            "ROLE-GROWER-RELATIONS",
+            "ROLE-TRANSPORTATION",
+            "ROLE-WINEMAKER",
+            "ROLE-WINERY-INTAKE"
+          ]
+        },
+        {
+          "path": "workflow-model/workflows.json",
+          "ids": ["WF-004", "WF-005", "WF-006", "WF-009", "WF-010"]
+        }
+      ],
+      "workflow_ids": ["WF-004", "WF-005", "WF-006", "WF-009", "WF-010"],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-FINANCE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-TRANSPORTATION",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE"
+      ],
+      "record_ids": [],
+      "decision_ids": [
+        "DEC-031",
+        "DEC-032",
+        "DEC-033",
+        "DEC-041",
+        "DEC-042",
+        "DEC-043",
+        "DEC-044",
+        "DEC-051",
+        "DEC-052",
+        "DEC-053",
+        "DEC-054",
+        "DEC-055",
+        "DEC-081",
+        "DEC-082",
+        "DEC-083",
+        "DEC-084",
+        "DEC-091"
+      ],
+      "exception_ids": [
+        "EXC-019",
+        "EXC-022",
+        "EXC-023",
+        "EXC-024",
+        "EXC-026",
+        "EXC-029",
+        "EXC-030",
+        "EXC-033",
+        "EXC-034",
+        "EXC-036",
+        "EXC-051",
+        "EXC-052",
+        "EXC-053",
+        "EXC-054",
+        "EXC-055",
+        "EXC-056",
+        "EXC-057",
+        "EXC-058"
+      ],
+      "overlay_ids": ["OVL-008"]
+    },
+    {
+      "id": "VIS-CERTIFICATION-OVERLAY",
+      "category": "required_operational",
+      "title": "Certification regime overlay",
+      "path": "workflow-model/visuals/certification-overlay.mmd",
+      "diagram_type": "flowchart",
+      "source_refs": [
+        { "path": "workflow-model/overlays.json", "ids": ["OVL-009"] },
+        {
+          "path": "workflow-model/roles.json",
+          "ids": [
+            "ROLE-AUDITOR",
+            "ROLE-CERTIFIER",
+            "ROLE-COMPLIANCE-COORDINATOR",
+            "ROLE-VINEYARD-MANAGER"
+          ]
+        },
+        {
+          "path": "workflow-model/workflows.json",
+          "ids": [
+            "WF-001",
+            "WF-002",
+            "WF-003",
+            "WF-006",
+            "WF-007",
+            "WF-008",
+            "WF-009",
+            "WF-010"
+          ]
+        }
+      ],
+      "workflow_ids": [
+        "WF-001",
+        "WF-002",
+        "WF-003",
+        "WF-006",
+        "WF-007",
+        "WF-008",
+        "WF-009",
+        "WF-010"
+      ],
+      "role_ids": [
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [],
+      "decision_ids": [
+        "DEC-012",
+        "DEC-013",
+        "DEC-022",
+        "DEC-024",
+        "DEC-053",
+        "DEC-061",
+        "DEC-072",
+        "DEC-073",
+        "DEC-082",
+        "DEC-083",
+        "DEC-091",
+        "DEC-092",
+        "DEC-093",
+        "DEC-094"
+      ],
+      "exception_ids": [
+        "EXC-007",
+        "EXC-009",
+        "EXC-010",
+        "EXC-014",
+        "EXC-016",
+        "EXC-034",
+        "EXC-038",
+        "EXC-041",
+        "EXC-044",
+        "EXC-045",
+        "EXC-049",
+        "EXC-052",
+        "EXC-057",
+        "EXC-058",
+        "EXC-059",
+        "EXC-060",
+        "EXC-061",
+        "EXC-062"
+      ],
+      "overlay_ids": ["OVL-009"]
+    }
+  ]
+}

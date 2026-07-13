@@ -1,0 +1,46 @@
+%% visual_id: VIS-WF-005-SWIMLANE
+%% title: WF-005 role swimlane
+%% generator: scripts/generate-workflow-visuals.mjs@1.0.0
+%% sources: workflow-model/workflows.json#WF-005; workflow-model/roles.json#ROLE-CONTRACT-GROWER,ROLE-GROWER-RELATIONS,ROLE-LAB,ROLE-OWNER-GENERAL-MANAGER,ROLE-VINEYARD-MANAGER,ROLE-VITICULTURIST,ROLE-WINEMAKER
+%% Regenerate after canonical JSON changes; this Mermaid source remains plain-text and editable.
+flowchart LR
+  START["WF-005 · Trigger"]
+  END["WF-005 · Output and accountable closure"]
+  subgraph LANE_ROLE_VITICULTURIST["ROLE-VITICULTURIST · Viticulturist"]
+    direction TB
+    STEP_04["04 · Recommendation · The viticulturist interprets the trend with sensory condition, weather, crop state, and forecast…"]
+  end
+  subgraph LANE_ROLE_GROWER_RELATIONS["ROLE-GROWER-RELATIONS · Grower Relations"]
+    direction TB
+    STEP_01["01 · Observation · The assigned sampler collects a representative, identified berry or cluster sample and records field…"]
+    STEP_05["05 · Recommendation · Grower-relations communicates a pick proposal or continued-sampling recommendation with current e…"]
+  end
+  subgraph LANE_ROLE_CONTRACT_GROWER["ROLE-CONTRACT-GROWER · Contract Grower"]
+    direction TB
+    PARTICIPANT_ROLE_CONTRACT_GROWER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  subgraph LANE_ROLE_LAB["ROLE-LAB · Lab"]
+    direction TB
+    STEP_02["02 · Assignment · The traceable sample enters laboratory custody with expected timing and chain-of-identity intact."]
+    STEP_03["03 · Completion · The laboratory processes the linked sample and returns Brix, pH, TA, and other agreed results."]
+  end
+  subgraph LANE_ROLE_WINEMAKER["ROLE-WINEMAKER · Winemaker"]
+    direction TB
+    STEP_06["06 · Approval · The authorized winery and vineyard participants negotiate or confirm pick timing, quality target, and d…"]
+  end
+  subgraph LANE_ROLE_VINEYARD_MANAGER["ROLE-VINEYARD-MANAGER · Vineyard Manager"]
+    direction TB
+    STEP_07["07 · Assignment · The authorized pick becomes a dated labor, container, truck, and winery-slot commitment."]
+  end
+  subgraph LANE_ROLE_OWNER_GENERAL_MANAGER["ROLE-OWNER-GENERAL-MANAGER · Owner or General Manager"]
+    direction TB
+    PARTICIPANT_ROLE_OWNER_GENERAL_MANAGER["Participant through inputs, handoffs, approvals, exceptions, or downstream records; no canonical owned step"]
+  end
+  START -->|sample_collected| STEP_01
+  STEP_01 -->|lab_pending| STEP_02
+  STEP_02 -->|result_available| STEP_03
+  STEP_03 -->|readiness_assessed| STEP_04
+  STEP_04 -->|pick_proposed| STEP_05
+  STEP_05 -->|authorized| STEP_06
+  STEP_06 -->|scheduled| STEP_07
+  STEP_07 -->|scheduled| END

@@ -4,7 +4,7 @@
     {
       "id": "EVD-001",
       "type": "evidence",
-      "title": "Seasonal work planning and work-order dispatch source card",
+      "title": "Seasonal planning, dispatch, execution, and verified closure",
       "path": "source/Vineyard-Workflow-Discovery-report.md",
       "locator": {
         "kind": "heading",
@@ -14,20 +14,266 @@
       "status": "approved"
     },
     {
+      "id": "EVD-002",
+      "type": "evidence",
+      "title": "Scouting, recommendation, crop protection, and defensible application record",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Detailed workflow cards and handoff maps"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
+      "id": "EVD-003",
+      "type": "evidence",
+      "title": "Irrigation scheduling, fertility adjustment, and delivery verification",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Detailed workflow cards and handoff maps"
+      },
+      "classification": "strong_inference",
+      "status": "approved"
+    },
+    {
+      "id": "EVD-004",
+      "type": "evidence",
+      "title": "Crop estimation and forecast revision",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Detailed workflow cards and handoff maps"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
+      "id": "EVD-005",
+      "type": "evidence",
+      "title": "Maturity sampling, winery communication, and pick decision",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Detailed workflow cards and handoff maps"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
+      "id": "EVD-006",
+      "type": "evidence",
+      "title": "Harvest, load identity, intake quality, and reconciliation",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Detailed workflow cards and handoff maps"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
+      "id": "EVD-007",
+      "type": "evidence",
+      "title": "Crew scheduling, attendance, time, payroll, and cost allocation",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Vineyard operating model"
+      },
+      "classification": "strong_inference",
+      "status": "approved"
+    },
+    {
+      "id": "EVD-008",
+      "type": "evidence",
+      "title": "Materials, purchasing, equipment readiness, and repair",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Vineyard operating model"
+      },
+      "classification": "strong_inference",
+      "status": "approved"
+    },
+    {
+      "id": "EVD-009",
+      "type": "evidence",
+      "title": "Grower onboarding and contract-fruit coordination",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Vineyard operating model"
+      },
+      "classification": "strong_inference",
+      "status": "approved"
+    },
+    {
+      "id": "EVD-010",
+      "type": "evidence",
+      "title": "Certification, annual evidence, audit, and corrective action",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Certification overlays, exception inventory, digital opportunity map, field research guide, and sources"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
+      "id": "EVD-011",
+      "type": "evidence",
+      "title": "Stable block identity across organizations and history",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Executive workflow summary"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
+      "id": "EVD-012",
+      "type": "evidence",
+      "title": "Seasonal hazards, urgent replanning, and immutable exception history",
+      "path": "source/Vineyard-Workflow-Discovery-report.md",
+      "locator": {
+        "kind": "heading",
+        "value": "Annual workflow calendar"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
       "id": "WF-001",
       "type": "workflow",
-      "title": "Seasonal work planning, dispatch, and verified closure",
-      "path": "workflow-model/walking-slice.json",
-      "locator": { "kind": "json_id", "value": "WF-001" },
+      "title": "Seasonal planning, dispatch, execution, and verification",
+      "path": "workflow-model/workflows.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "WF-001"
+      },
       "classification": "strong_inference",
-      "status": "review"
+      "status": "approved"
+    },
+    {
+      "id": "WF-002",
+      "type": "workflow",
+      "title": "Scouting, recommendation, crop protection, and application records",
+      "path": "workflow-model/workflows.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "WF-002"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
+      "id": "WF-003",
+      "type": "workflow",
+      "title": "Irrigation scheduling, fertility adjustment, and delivery verification",
+      "path": "workflow-model/workflows.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "WF-003"
+      },
+      "classification": "strong_inference",
+      "status": "approved"
+    },
+    {
+      "id": "WF-004",
+      "type": "workflow",
+      "title": "Crop estimation and forecast revision",
+      "path": "workflow-model/workflows.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "WF-004"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
+      "id": "WF-005",
+      "type": "workflow",
+      "title": "Maturity sampling, winery communication, and pick decision",
+      "path": "workflow-model/workflows.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "WF-005"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
+      "id": "WF-006",
+      "type": "workflow",
+      "title": "Harvest planning, execution, loads, intake, quality, and reconciliation",
+      "path": "workflow-model/workflows.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "WF-006"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
+    },
+    {
+      "id": "WF-007",
+      "type": "workflow",
+      "title": "Crew scheduling, attendance, time, payroll, and cost allocation",
+      "path": "workflow-model/workflows.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "WF-007"
+      },
+      "classification": "strong_inference",
+      "status": "approved"
+    },
+    {
+      "id": "WF-008",
+      "type": "workflow",
+      "title": "Materials, purchasing, equipment readiness, and repair",
+      "path": "workflow-model/workflows.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "WF-008"
+      },
+      "classification": "strong_inference",
+      "status": "approved"
+    },
+    {
+      "id": "WF-009",
+      "type": "workflow",
+      "title": "Grower onboarding, contract-fruit coordination, and relationship history",
+      "path": "workflow-model/workflows.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "WF-009"
+      },
+      "classification": "strong_inference",
+      "status": "approved"
+    },
+    {
+      "id": "WF-010",
+      "type": "workflow",
+      "title": "Certification, audit preparation, corrective action, and evidence",
+      "path": "workflow-model/workflows.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "WF-010"
+      },
+      "classification": "confirmed_source",
+      "status": "approved"
     },
     {
       "id": "SCN-001-01",
       "type": "scenario",
       "title": "Recover a partially completed mowing order after equipment failure",
       "path": "scenarios/walking-slice.json",
-      "locator": { "kind": "json_id", "value": "SCN-001-01" },
+      "locator": {
+        "kind": "json_id",
+        "value": "SCN-001-01"
+      },
       "classification": "product_decision",
       "status": "review"
     },
@@ -36,7 +282,10 @@
       "type": "fixture",
       "title": "Carneros Ridge blocked mowing recovery",
       "path": "data/walking-slice.json",
-      "locator": { "kind": "json_id", "value": "FIX-001" },
+      "locator": {
+        "kind": "json_id",
+        "value": "FIX-001"
+      },
       "classification": "synthetic_fixture",
       "status": "approved"
     },
@@ -45,7 +294,10 @@
       "type": "screen",
       "title": "Morning dispatch board",
       "path": "screens/walking-slice.json",
-      "locator": { "kind": "json_id", "value": "SCR-001" },
+      "locator": {
+        "kind": "json_id",
+        "value": "SCR-001"
+      },
       "classification": "implementation_contract",
       "status": "review"
     },
@@ -54,7 +306,10 @@
       "type": "component",
       "title": "WorkOrderQueue",
       "path": "design-system/walking-slice-components.json",
-      "locator": { "kind": "json_id", "value": "CMP-001" },
+      "locator": {
+        "kind": "json_id",
+        "value": "CMP-001"
+      },
       "classification": "implementation_contract",
       "status": "review"
     },
@@ -63,7 +318,10 @@
       "type": "construction_packet",
       "title": "Morning dispatch and blocked-work recovery",
       "path": "construction-packets/walking-slice.json",
-      "locator": { "kind": "json_id", "value": "PKT-001" },
+      "locator": {
+        "kind": "json_id",
+        "value": "PKT-001"
+      },
       "classification": "implementation_contract",
       "status": "review"
     }
