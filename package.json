@@ -23,7 +23,15 @@
     "validate:data": "node scripts/validation/validate.mjs --scope data",
     "generate:data": "node scripts/generate-data.ts",
     "validate:data-current": "node scripts/generate-data.ts --check",
-    "validate:all": "node scripts/validation/validate.mjs --scope all",
+    "generate:scenario-fixtures": "node scripts/generate-scenario-fixtures.mjs",
+    "validate:scenario-fixtures-current": "node scripts/generate-scenario-fixtures.mjs --check",
+    "generate:scenarios": "node scripts/generate-scenarios.ts",
+    "validate:scenarios-current": "node scripts/generate-scenarios.ts --check",
+    "generate:product": "npm run generate:scenario-fixtures && npm run generate:scenarios && node scripts/generate-product-model.ts && npm run generate:trace",
+    "render:product-visuals": "node scripts/validate-product-mermaid.mjs",
+    "validate:product": "node scripts/validation/product-model.mjs && npm run render:product-visuals",
+    "validate:product-current": "npm run validate:scenario-fixtures-current && npm run validate:scenarios-current && node scripts/generate-product-model.ts --check",
+    "validate:all": "node scripts/validation/validate.mjs --scope all && npm run validate:product",
     "generate:workflow-model": "node scripts/refine-workflow-ontology.mjs && npm run generate:workflow-visuals && npm run generate:trace",
     "validate:workflow-model-current": "node scripts/refine-workflow-ontology.mjs --check",
     "generate:workflow-visuals": "node scripts/generate-workflow-visuals.mjs",
@@ -38,7 +46,7 @@
     "test:browser": "playwright test",
     "test:browser:update": "playwright test --update-snapshots",
     "audit:repository": "node scripts/repository-audit.mjs",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:all && npm run validate:workflow-model-current && npm run validate:workflow-visuals && npm run render:workflow-visuals && npm run validate:trace-current && npm run validate:data-current && npm run test:unit && npm run build && npm run audit:repository"
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:all && npm run validate:workflow-model-current && npm run validate:workflow-visuals && npm run render:workflow-visuals && npm run validate:trace-current && npm run validate:data-current && npm run validate:product-current && npm run test:unit && npm run build && npm run audit:repository"
   },
   "dependencies": {
     "ajv": "8.20.0",

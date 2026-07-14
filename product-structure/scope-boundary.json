@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "objective": "Make vineyard operations understandable, actionable, attributable, recoverable, and visually buildable from seasonal intent through evidence-backed closure.",
+  "included": [
+    "Workflow planning, dispatch, execution, verification, and exception recovery",
+    "Scouting, crop protection, irrigation, forecast, maturity, harvest, labor, materials, growers, and certification",
+    "Stable estate and contract-fruit scope identity with block aliases and lineage",
+    "Role, organization, contract, scope, state, delegation, sensitivity, and time-aware permissions",
+    "Append-only events, corrections, supersessions, offline journals, conflicts, notifications, audit history, and evidence exports",
+    "Responsive desktop supervision and mobile field capture against one canonical model"
+  ],
+  "excluded": [
+    "General ledger, bank settlement, tax filing, and complete ERP functionality",
+    "Payroll calculation, benefits administration, and employment-system-of-record ownership",
+    "Laboratory instrumentation control or authoritative LIMS ownership",
+    "Weather forecasting, sensor telemetry ingestion infrastructure, and agronomic model training",
+    "Contract authoring legal advice, e-signature system-of-record ownership, and payment rails",
+    "Regulator or certifier decision systems; the product prepares and exchanges evidence but does not impersonate outside authority"
+  ],
+  "integration_seams": [
+    {
+      "system": "identity_provider",
+      "direction": "inbound",
+      "contract": "people, organization membership, and authentication assertions"
+    },
+    {
+      "system": "weather_and_sensors",
+      "direction": "inbound",
+      "contract": "timestamped observations with source and quality metadata"
+    },
+    {
+      "system": "laboratory",
+      "direction": "bidirectional",
+      "contract": "sample identity, custody status, results, units, and correction lineage"
+    },
+    {
+      "system": "payroll_and_finance",
+      "direction": "outbound",
+      "contract": "verified time, cost allocation, delivery, adjustment, and settlement evidence"
+    },
+    {
+      "system": "winery_intake",
+      "direction": "bidirectional",
+      "contract": "slot, load identity, weight, quality disposition, correction, and receipt evidence"
+    },
+    {
+      "system": "regulator_and_certifier",
+      "direction": "bidirectional",
+      "contract": "versioned submissions, acknowledgements, findings, and certification decisions"
+    }
+  ]
+}

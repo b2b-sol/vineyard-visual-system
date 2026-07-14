@@ -5,23 +5,25 @@
   "type": "object",
   "required": ["id", "from", "to", "relationship", "rationale"],
   "properties": {
-    "id": { "type": "string", "pattern": "^EDGE-[0-9]{3}$" },
+    "id": { "type": "string", "pattern": "^EDGE-[0-9]{3,4}$" },
     "from": {
       "type": "string",
-      "pattern": "^(EVD|WF|SCN|FIX|SCR|CMP|PKT)-[A-Z0-9-]+$"
+      "pattern": "^(EVD|WF|REQ|SCN|FIX|SCR|CMP|PKT)-[A-Z0-9-]+$"
     },
     "to": {
       "type": "string",
-      "pattern": "^(EVD|WF|SCN|FIX|SCR|CMP|PKT)-[A-Z0-9-]+$"
+      "pattern": "^(EVD|WF|REQ|SCN|FIX|SCR|CMP|PKT)-[A-Z0-9-]+$"
     },
     "relationship": {
       "enum": [
         "supports",
+        "motivates",
         "realized_by",
         "instantiated_by",
         "rendered_by",
         "composed_with",
-        "specified_by"
+        "specified_by",
+        "implemented_by"
       ]
     },
     "rationale": { "type": "string", "minLength": 10 }

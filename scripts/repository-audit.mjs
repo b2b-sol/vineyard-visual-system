@@ -49,6 +49,7 @@ function repositoryFiles() {
       )
         .split("\0")
         .filter(Boolean)
+        .filter((file) => existsSync(resolve(root, file)))
         .sort();
     } catch (error) {
       fail(`Unable to enumerate repository files with git: ${error.message}`);

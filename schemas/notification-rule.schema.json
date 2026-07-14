@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/notification-rule.schema.json",
+  "title": "Workflow notification and escalation rule",
+  "type": "object",
+  "required": [
+    "id",
+    "workflow_ids",
+    "trigger_transition_ids",
+    "severity",
+    "recipient_role_ids",
+    "canonical_channel",
+    "delivery_channels",
+    "acknowledgement",
+    "escalation_after_minutes",
+    "bundle_policy",
+    "dedupe_key",
+    "resolution_condition"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^NOT-[0-9]{3}$" },
+    "workflow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^WF-[0-9]{3}$" }
+    },
+    "trigger_transition_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$" }
+    },
+    "severity": { "enum": ["information", "attention", "urgent", "safety"] },
+    "recipient_role_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" }
+    },
+    "canonical_channel": { "const": "in_app" },
+    "delivery_channels": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["in_app", "push", "email", "sms"] }
+    },
+    "acknowledgement": { "enum": ["none", "recipient", "accountable_owner"] },
+    "escalation_after_minutes": { "type": ["integer", "null"], "minimum": 5 },
+    "bundle_policy": { "enum": ["bundle", "never_bundle"] },
+    "dedupe_key": { "type": "string", "minLength": 8 },
+    "resolution_condition": { "type": "string", "minLength": 15 }
+  },
+  "additionalProperties": false
+}

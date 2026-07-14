@@ -1,0 +1,17 @@
+sequenceDiagram
+  participant U as Field user
+  participant D as Device journal
+  participant S as Server event log
+  participant R as Reconciliation
+  U->>D: Capture action with base state and versions
+  D-->>U: Show pending local evidence
+  D->>S: Retry idempotently when connected
+  S->>S: Validate authority, state, scope, and evidence
+  alt compatible
+    S-->>D: Accept canonical event
+    D-->>U: Show synchronized state
+  else divergent
+    S-->>R: Preserve event as conflict evidence
+    R-->>U: Require accept, attach, reapply, or reject with reason
+    R->>S: Append resolution and any successor lineage
+  end

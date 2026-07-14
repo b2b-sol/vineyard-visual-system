@@ -1,0 +1,10 @@
+flowchart LR
+  ACTOR["Actor assignment"] --> REL["Organization relationship"]
+  REL --> SCOPE["Effective scope"]
+  SCOPE --> STATE["Current state and versions"]
+  STATE --> OWNER["Transition owner"]
+  OWNER --> DELEGATION["Delegation"]
+  DELEGATION --> SENSITIVITY["Sensitivity"]
+  SENSITIVITY --> TIME["Effective time"]
+  TIME -->|all resolve| ALLOW["Allow and append audit event"]
+  TIME -->|any unresolved| DENY["Default deny with reason and escalation"]

@@ -1,0 +1,421 @@
+{
+  "schema_version": "1.0",
+  "evaluated_at": "2026-12-31T23:40:00-08:00",
+  "coverage": {
+    "scenario_count": 80,
+    "workflow_specific_scenarios": 70,
+    "cross_workflow_scenarios": 10,
+    "workflow_counts": {
+      "WF-001": 8,
+      "WF-002": 7,
+      "WF-003": 7,
+      "WF-004": 11,
+      "WF-005": 11,
+      "WF-006": 15,
+      "WF-007": 10,
+      "WF-008": 7,
+      "WF-009": 13,
+      "WF-010": 10
+    },
+    "category_counts": {
+      "audit_historical": 8,
+      "blocked": 6,
+      "correction": 12,
+      "cross_organization": 9,
+      "incomplete_information": 4,
+      "offline_delayed": 7,
+      "routine": 14,
+      "supervisory_review": 12,
+      "urgent": 8
+    },
+    "fixture_count": 60,
+    "fixture_ids": [
+      "FIX-002",
+      "FIX-003",
+      "FIX-004",
+      "FIX-005",
+      "FIX-006",
+      "FIX-007",
+      "FIX-008",
+      "FIX-009",
+      "FIX-010",
+      "FIX-011",
+      "FIX-012",
+      "FIX-013",
+      "FIX-014",
+      "FIX-015",
+      "FIX-016",
+      "FIX-017",
+      "FIX-018",
+      "FIX-019",
+      "FIX-020",
+      "FIX-021",
+      "FIX-022",
+      "FIX-023",
+      "FIX-024",
+      "FIX-025",
+      "FIX-026",
+      "FIX-027",
+      "FIX-028",
+      "FIX-029",
+      "FIX-030",
+      "FIX-031",
+      "FIX-032",
+      "FIX-033",
+      "FIX-034",
+      "FIX-035",
+      "FIX-036",
+      "FIX-037",
+      "FIX-038",
+      "FIX-039",
+      "FIX-040",
+      "FIX-041",
+      "FIX-042",
+      "FIX-043",
+      "FIX-044",
+      "FIX-045",
+      "FIX-046",
+      "FIX-047",
+      "FIX-048",
+      "FIX-049",
+      "FIX-050",
+      "FIX-051",
+      "FIX-052",
+      "FIX-053",
+      "FIX-054",
+      "FIX-055",
+      "FIX-056",
+      "FIX-057",
+      "FIX-058",
+      "FIX-059",
+      "FIX-060",
+      "FIX-061"
+    ],
+    "event_count": 384,
+    "requirement_count": 100,
+    "offline_scenarios": 7,
+    "exception_scenarios": 43
+  },
+  "distinctness_keys": [
+    {
+      "scenario_id": "SCN-001-01",
+      "key": "WF-001|offline_delayed|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER|EVT-00007+EVT-00009+EVT-00011|Offline field observation reaches approval is complete only when EVT-00011 records approved through TRN-WF-001-003, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-001-02",
+      "key": "WF-001|blocked|ROLE-FOREMAN+ROLE-VINEYARD-MANAGER+ROLE-OPERATIONS-COORDINATOR|EVT-00017+EVT-00019+EVT-00021+EVT-00023+EVT-00025+EVT-00027+EVT-00029|Ambiguous block is contained, redispatched, and verified is complete only when EVT-00029 records verified through TRN-WF-001-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-001-03",
+      "key": "WF-001|incomplete_information|ROLE-FOREMAN+ROLE-VINEYARD-MANAGER|EVT-00061+EVT-00062+EVT-00063+EVT-00064|Safe partial work is accepted and verified is complete only when EVT-00064 records verified through TRN-WF-001-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-001-04",
+      "key": "WF-001|correction|ROLE-FOREMAN+ROLE-VINEYARD-MANAGER|EVT-00119+EVT-00121+EVT-00123+EVT-00125|Disputed completion quantities are corrected before verification is complete only when EVT-00125 records verified through TRN-WF-001-015, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-001-05",
+      "key": "WF-001|routine|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER|EVT-00165+EVT-00168+EVT-00171|Contract-block seasonal work is scoped and approved is complete only when EVT-00171 records approved through TRN-WF-001-003, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-001-06",
+      "key": "WF-001|supervisory_review|ROLE-OPERATIONS-COORDINATOR+ROLE-FOREMAN+ROLE-VINEYARD-MANAGER|EVT-00176+EVT-00178+EVT-00180+EVT-00182+EVT-00188|Dispatch acknowledgement advances to verified actuals is complete only when EVT-00188 records verified through TRN-WF-001-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-001-07",
+      "key": "WF-001|routine|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-OPERATIONS-COORDINATOR+ROLE-FOREMAN|EVT-00384+EVT-00386+EVT-00388+EVT-00391+EVT-00393+EVT-00395+EVT-00397+EVT-00400|End-to-end estate seasonal work package is complete only when EVT-00400 records verified through TRN-WF-001-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-002-01",
+      "key": "WF-002|routine|ROLE-SCOUT+ROLE-VITICULTURIST|EVT-00136+EVT-00138|Scout observation becomes treatment recommendation is complete only when EVT-00138 records treatment_recommended through TRN-WF-002-002, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-002-02",
+      "key": "WF-002|supervisory_review|ROLE-CROP-PROTECTION-LEAD|EVT-00139+EVT-00140+EVT-00141|Crop-protection lead releases a compliant application is complete only when EVT-00141 records scheduled through TRN-WF-002-005, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-002-03",
+      "key": "WF-002|routine|ROLE-PESTICIDE-HANDLER+ROLE-FOREMAN+ROLE-COMPLIANCE-COORDINATOR|EVT-00142+EVT-00143+EVT-00144|Handler applies, foreman posts, compliance reports is complete only when EVT-00144 records reported through TRN-WF-002-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-002-04",
+      "key": "WF-002|supervisory_review|ROLE-COMPLIANCE-COORDINATOR+ROLE-VITICULTURIST|EVT-00198+EVT-00199|Follow-up confirms application effectiveness is complete only when EVT-00199 records effective through TRN-WF-002-009, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-002-05",
+      "key": "WF-002|urgent|ROLE-SCOUT+ROLE-VITICULTURIST+ROLE-CROP-PROTECTION-LEAD|EVT-00030+EVT-00032+EVT-00033+EVT-00034+EVT-00035|Wind cancels an otherwise approved application is complete only when EVT-00035 records cancelled through TRN-WF-002-021, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-002-06",
+      "key": "WF-002|offline_delayed|ROLE-SCOUT+ROLE-VITICULTURIST+ROLE-CROP-PROTECTION-LEAD|EVT-00077+EVT-00080+EVT-00081+EVT-00084+EVT-00086|Offline scouting reveals an REI or PHI conflict is complete only when EVT-00086 records cancelled through TRN-WF-002-024, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-002-07",
+      "key": "WF-002|correction|ROLE-FOREMAN+ROLE-COMPLIANCE-COORDINATOR+ROLE-VITICULTURIST|EVT-00120+EVT-00122+EVT-00124+EVT-00126+EVT-00127|Incorrect application diary entry is corrected is complete only when EVT-00127 records effective through TRN-WF-002-009, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-003-01",
+      "key": "WF-003|routine|ROLE-VITICULTURIST|EVT-00166+EVT-00169|Field condition becomes an irrigation recommendation is complete only when EVT-00169 records adjustment_recommended through TRN-WF-003-002, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-003-02",
+      "key": "WF-003|supervisory_review|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER|EVT-00166+EVT-00169+EVT-00172|Irrigation recommendation is approved and assigned is complete only when EVT-00172 records approved through TRN-WF-003-003, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-003-03",
+      "key": "WF-003|routine|ROLE-IRRIGATION-LEAD+ROLE-IRRIGATOR|EVT-00177+EVT-00179+EVT-00181+EVT-00184|Assigned irrigation is delivered and verified is complete only when EVT-00184 records verified through TRN-WF-003-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-003-04",
+      "key": "WF-003|blocked|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-IRRIGATION-LEAD+ROLE-IRRIGATOR|EVT-00044+EVT-00045+EVT-00046+EVT-00047+EVT-00048+EVT-00049+EVT-00051+EVT-00054+EVT-00056+EVT-00058|System malfunction interrupts and restarts irrigation is complete only when EVT-00058 records verified through TRN-WF-003-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-003-05",
+      "key": "WF-003|urgent|ROLE-VITICULTURIST|EVT-00075+EVT-00078+EVT-00082|Late lab evidence supersedes an irrigation adjustment is complete only when EVT-00082 records superseded through TRN-WF-003-017, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-003-06",
+      "key": "WF-003|offline_delayed|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER|EVT-00129+EVT-00130+EVT-00131|Offline condition evidence reaches managerial approval is complete only when EVT-00131 records approved through TRN-WF-003-003, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-003-07",
+      "key": "WF-003|audit_historical|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-IRRIGATION-LEAD+ROLE-IRRIGATOR|EVT-00251+EVT-00255+EVT-00257+EVT-00259+EVT-00260+EVT-00262+EVT-00263|End-to-end irrigation package with verified water actuals is complete only when EVT-00263 records verified through TRN-WF-003-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-004-01",
+      "key": "WF-004|routine|ROLE-VITICULTURIST|EVT-00154+EVT-00191|Contract-fruit sampling becomes a crop estimate is complete only when EVT-00191 records calculated through TRN-WF-004-002, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-004-02",
+      "key": "WF-004|cross_organization|ROLE-VINEYARD-MANAGER+ROLE-GROWER-RELATIONS|EVT-00206+EVT-00213|Contract crop estimate is reviewed and published is complete only when EVT-00213 records published through TRN-WF-004-004, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-004-03",
+      "key": "WF-004|audit_historical|ROLE-GROWER-RELATIONS+ROLE-VINEYARD-MANAGER|EVT-00213+EVT-00287+EVT-00314|Published contract estimate is actualized and reconciled is complete only when EVT-00314 records reconciled through TRN-WF-004-006, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-004-04",
+      "key": "WF-004|urgent|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-GROWER-RELATIONS|EVT-00128+EVT-00132+EVT-00146+EVT-00147+EVT-00148+EVT-00153+EVT-00185+EVT-00205+EVT-00211+EVT-00285+EVT-00310|Weather change forces a published estimate revision is complete only when EVT-00310 records reconciled through TRN-WF-004-006, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-004-05",
+      "key": "WF-004|correction|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-GROWER-RELATIONS|EVT-00151+EVT-00173+EVT-00202+EVT-00209+EVT-00275+EVT-00308+EVT-00321+EVT-00330+EVT-00332+EVT-00337+EVT-00367+EVT-00373|Harvest actual divergence reopens and reconciles forecast is complete only when EVT-00373 records reconciled through TRN-WF-004-006, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-004-06",
+      "key": "WF-004|cross_organization|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-GROWER-RELATIONS|EVT-00241+EVT-00265+EVT-00269+EVT-00271+EVT-00339+EVT-00369|Contract-fruit estimate completes its full lifecycle is complete only when EVT-00369 records reconciled through TRN-WF-004-006, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-004-07",
+      "key": "WF-004|routine|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-GROWER-RELATIONS|EVT-00252+EVT-00268+EVT-00270+EVT-00273+EVT-00354+EVT-00372|Estate estimate completes its full lifecycle is complete only when EVT-00372 records reconciled through TRN-WF-004-006, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-005-01",
+      "key": "WF-005|routine|ROLE-GROWER-RELATIONS+ROLE-LAB|EVT-00231+EVT-00240+EVT-00245|Contract-fruit sample reaches traceable lab result is complete only when EVT-00245 records result_available through TRN-WF-005-003, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-005-02",
+      "key": "WF-005|supervisory_review|ROLE-LAB+ROLE-VITICULTURIST+ROLE-GROWER-RELATIONS|EVT-00319+EVT-00323+EVT-00326|Maturity evidence becomes a pick proposal is complete only when EVT-00326 records pick_proposed through TRN-WF-005-005, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-005-03",
+      "key": "WF-005|cross_organization|ROLE-GROWER-RELATIONS+ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER|EVT-00261+EVT-00266+EVT-00267|Winery authorizes and vineyard schedules contract pick is complete only when EVT-00267 records scheduled through TRN-WF-005-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-005-04",
+      "key": "WF-005|offline_delayed|ROLE-GROWER-RELATIONS+ROLE-LAB+ROLE-VITICULTURIST|EVT-00149+EVT-00150+EVT-00152+EVT-00155+EVT-00161+EVT-00174+EVT-00186|Late offline sample triggers a complete resampling cycle is complete only when EVT-00186 records result_available through TRN-WF-005-003, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-005-05",
+      "key": "WF-005|incomplete_information|ROLE-LAB+ROLE-VITICULTURIST+ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER|EVT-00186+EVT-00194+EVT-00200+EVT-00203|Field and winery measurements are negotiated to authorization is complete only when EVT-00203 records scheduled through TRN-WF-005-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-005-06",
+      "key": "WF-005|urgent|ROLE-GROWER-RELATIONS+ROLE-WINEMAKER|EVT-00248+EVT-00258+EVT-00264|Winery change supersedes an authorized pick is complete only when EVT-00264 records superseded through TRN-WF-005-021, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-005-07",
+      "key": "WF-005|cross_organization|ROLE-GROWER-RELATIONS+ROLE-LAB+ROLE-VITICULTURIST+ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER|EVT-00300+EVT-00311+EVT-00315+EVT-00318+EVT-00322+EVT-00325+EVT-00328|Contract-fruit maturity cycle reaches scheduled pick is complete only when EVT-00328 records scheduled through TRN-WF-005-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-006-01",
+      "key": "WF-006|routine|ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00355+EVT-00357+EVT-00358+EVT-00359+EVT-00360+EVT-00361+EVT-00362+EVT-00363+EVT-00364|Accept and settle a correctly identified estate load is complete only when EVT-00364 records settled through TRN-WF-006-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-006-02",
+      "key": "WF-006|urgent|ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00215+EVT-00216+EVT-00217+EVT-00218+EVT-00219+EVT-00220+EVT-00221+EVT-00222+EVT-00223+EVT-00224+EVT-00225+EVT-00226+EVT-00227+EVT-00228|Replan harvest through missed slot and winery-capacity delay is complete only when EVT-00228 records settled through TRN-WF-006-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-006-03",
+      "key": "WF-006|correction|ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00276+EVT-00277+EVT-00278+EVT-00279+EVT-00280+EVT-00281+EVT-00282+EVT-00283+EVT-00284|Correct a wrong arriving block or load identity is complete only when EVT-00284 records settled through TRN-WF-006-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-006-04",
+      "key": "WF-006|blocked|ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00288+EVT-00290+EVT-00291+EVT-00292+EVT-00293+EVT-00294+EVT-00295+EVT-00296+EVT-00297+EVT-00298|Reconcile and settle a rejected load is complete only when EVT-00298 records settled through TRN-WF-006-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-006-05",
+      "key": "WF-006|correction|ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00340+EVT-00342+EVT-00343+EVT-00344+EVT-00345+EVT-00346+EVT-00347+EVT-00348+EVT-00349+EVT-00350+EVT-00351|Append a late processor weigh-entry correction is complete only when EVT-00351 records settled through TRN-WF-006-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-006-06",
+      "key": "WF-006|offline_delayed|ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-GROWER-RELATIONS|EVT-00279+EVT-00280+EVT-00281+EVT-00282+EVT-00283|Resolve an intermittent intake identity conflict without losing the field event is complete only when EVT-00283 records reconciled through TRN-WF-006-022, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-006-07",
+      "key": "WF-006|audit_historical|ROLE-WINERY-INTAKE+ROLE-WINEMAKER+ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00223+EVT-00224+EVT-00225+EVT-00226+EVT-00227+EVT-00228|Audit the intake-to-settlement evidence chain is complete only when EVT-00228 records settled through TRN-WF-006-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-007-01",
+      "key": "WF-007|routine|ROLE-OPERATIONS-COORDINATOR+ROLE-FOREMAN+ROLE-VINEYARD-MANAGER+ROLE-PAYROLL+ROLE-FINANCE|EVT-00232+EVT-00233+EVT-00234+EVT-00235+EVT-00236+EVT-00237+EVT-00238|Schedule, verify, pay, and allocate a routine crew shift is complete only when EVT-00238 records cost_allocated through TRN-WF-007-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-007-02",
+      "key": "WF-007|blocked|ROLE-OPERATIONS-COORDINATOR+ROLE-PAYROLL+ROLE-VINEYARD-MANAGER+ROLE-FINANCE|EVT-00001+EVT-00002+EVT-00003+EVT-00004+EVT-00005+EVT-00006|Recover a shift when a worker is absent and the crew is short is complete only when EVT-00006 records cost_allocated through TRN-WF-007-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-007-03",
+      "key": "WF-007|urgent|ROLE-OPERATIONS-COORDINATOR+ROLE-FOREMAN+ROLE-VINEYARD-MANAGER+ROLE-PAYROLL+ROLE-FINANCE|EVT-00097+EVT-00098+EVT-00099+EVT-00100+EVT-00101+EVT-00102+EVT-00103+EVT-00104+EVT-00105+EVT-00106|Pause field labor for heat or safety and resume after re-briefing is complete only when EVT-00106 records cost_allocated through TRN-WF-007-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-007-04",
+      "key": "WF-007|correction|ROLE-OPERATIONS-COORDINATOR+ROLE-PAYROLL+ROLE-VINEYARD-MANAGER+ROLE-FINANCE|EVT-00002+EVT-00003+EVT-00004+EVT-00005+EVT-00006|Review and authorize a payroll correction is complete only when EVT-00006 records cost_allocated through TRN-WF-007-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-007-05",
+      "key": "WF-007|supervisory_review|ROLE-FOREMAN+ROLE-VINEYARD-MANAGER+ROLE-PAYROLL+ROLE-FINANCE|EVT-00103+EVT-00104+EVT-00105+EVT-00106|Supervisor verifies time, units, and task progress before payroll is complete only when EVT-00106 records cost_allocated through TRN-WF-007-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-007-06",
+      "key": "WF-007|audit_historical|ROLE-OPERATIONS-COORDINATOR+ROLE-FOREMAN+ROLE-VINEYARD-MANAGER+ROLE-PAYROLL+ROLE-FINANCE|EVT-00405+EVT-00408+EVT-00409+EVT-00410+EVT-00411+EVT-00413+EVT-00414|Audit year-end labor cost allocation and correction history is complete only when EVT-00414 records cost_allocated through TRN-WF-007-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-007-07",
+      "key": "WF-007|cross_organization|ROLE-OPERATIONS-COORDINATOR+ROLE-FOREMAN+ROLE-VINEYARD-MANAGER+ROLE-PAYROLL+ROLE-FINANCE|EVT-00301+EVT-00302+EVT-00303+EVT-00304+EVT-00305+EVT-00306+EVT-00307|Allocate labor for a contract-fruit block across organizational boundaries is complete only when EVT-00307 records cost_allocated through TRN-WF-007-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-008-01",
+      "key": "WF-008|routine|ROLE-OPERATIONS-COORDINATOR+ROLE-VINEYARD-MANAGER+ROLE-PURCHASING+ROLE-FOREMAN+ROLE-FINANCE|EVT-00156+EVT-00158+EVT-00159+EVT-00160+EVT-00162+EVT-00164+EVT-00167+EVT-00170|Purchase, receive, stage, and reconcile a routine resource demand is complete only when EVT-00170 records cost_reconciled through TRN-WF-008-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-008-02",
+      "key": "WF-008|incomplete_information|ROLE-OPERATIONS-COORDINATOR+ROLE-PURCHASING+ROLE-VINEYARD-MANAGER+ROLE-FOREMAN+ROLE-FINANCE|EVT-00008+EVT-00010+EVT-00012+EVT-00014+EVT-00016+EVT-00018+EVT-00020+EVT-00022+EVT-00024+EVT-00026+EVT-00028|Substitute and purchase material or PPE that is out of stock is complete only when EVT-00028 records cost_reconciled through TRN-WF-008-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-008-03",
+      "key": "WF-008|blocked|ROLE-OPERATIONS-COORDINATOR+ROLE-VINEYARD-MANAGER+ROLE-PURCHASING+ROLE-FOREMAN+ROLE-EQUIPMENT-OPERATOR+ROLE-MECHANIC+ROLE-FINANCE|EVT-00076+EVT-00079+EVT-00083+EVT-00085+EVT-00087+EVT-00088+EVT-00089+EVT-00090+EVT-00091+EVT-00092+EVT-00093+EVT-00094+EVT-00095+EVT-00096|Isolate, repair, and return failed equipment during a narrow work window is complete only when EVT-00096 records cost_reconciled through TRN-WF-008-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-008-04",
+      "key": "WF-008|offline_delayed|ROLE-OPERATIONS-COORDINATOR+ROLE-PURCHASING|EVT-00008+EVT-00010+EVT-00012+EVT-00014+EVT-00016|Synchronize an offline field demand before approving substitution is complete only when EVT-00016 records purchase_requested through TRN-WF-008-018, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-008-05",
+      "key": "WF-008|supervisory_review|ROLE-OPERATIONS-COORDINATOR+ROLE-VINEYARD-MANAGER+ROLE-PURCHASING|EVT-00243+EVT-00244+EVT-00246+EVT-00247|Approve a resource commitment against priority, budget, and compliance is complete only when EVT-00247 records ordered through TRN-WF-008-004, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-008-06",
+      "key": "WF-008|urgent|ROLE-EQUIPMENT-OPERATOR+ROLE-FOREMAN+ROLE-MECHANIC+ROLE-OPERATIONS-COORDINATOR+ROLE-FINANCE|EVT-00090+EVT-00091+EVT-00092+EVT-00093+EVT-00094+EVT-00095+EVT-00096|Verify repaired equipment before returning it to active readiness is complete only when EVT-00096 records cost_reconciled through TRN-WF-008-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-008-07",
+      "key": "WF-008|audit_historical|ROLE-OPERATIONS-COORDINATOR+ROLE-VINEYARD-MANAGER+ROLE-PURCHASING+ROLE-FOREMAN+ROLE-FINANCE|EVT-00385+EVT-00387+EVT-00389+EVT-00392+EVT-00394+EVT-00396+EVT-00398+EVT-00401|Audit purchase-to-readiness and cost evidence is complete only when EVT-00401 records cost_reconciled through TRN-WF-008-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-009-01",
+      "key": "WF-009|routine|ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00333+EVT-00334+EVT-00336+EVT-00341+EVT-00353+EVT-00365+EVT-00368|Onboard and settle a grower relationship without exception is complete only when EVT-00368 records historical through TRN-WF-009-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-009-02",
+      "key": "WF-009|correction|ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00272+EVT-00274+EVT-00286+EVT-00289+EVT-00299+EVT-00309+EVT-00313+EVT-00317+EVT-00320+EVT-00324+EVT-00327|Resolve a delivery or payment dispute and restore aligned terms is complete only when EVT-00327 records historical through TRN-WF-009-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-009-03",
+      "key": "WF-009|correction|ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00335+EVT-00338+EVT-00352+EVT-00356+EVT-00366+EVT-00370+EVT-00371|Correct conflicting winery and operations block aliases is complete only when EVT-00371 records historical through TRN-WF-009-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-009-04",
+      "key": "WF-009|supervisory_review|ROLE-GROWER-RELATIONS|EVT-00374+EVT-00383+EVT-00390+EVT-00399|Approve grower authority, quality, notice, delivery, and payment terms is complete only when EVT-00399 records aligned through TRN-WF-009-004, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-009-05",
+      "key": "WF-009|audit_historical|ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00424+EVT-00425+EVT-00426|Review settled grower history without reopening the agreement is complete only when EVT-00426 records historical through TRN-WF-009-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-009-06",
+      "key": "WF-009|offline_delayed|ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00299+EVT-00309+EVT-00313+EVT-00317+EVT-00320+EVT-00324+EVT-00327|Continue commercial-dispute recovery after intermittent synchronization is complete only when EVT-00327 records historical through TRN-WF-009-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-009-07",
+      "key": "WF-009|cross_organization|ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00374+EVT-00383+EVT-00390+EVT-00399+EVT-00402+EVT-00403+EVT-00404|Maintain an external grower relationship through settlement is complete only when EVT-00404 records historical through TRN-WF-009-007, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-010-01",
+      "key": "WF-010|routine|ROLE-COMPLIANCE-COORDINATOR+ROLE-VINEYARD-MANAGER+ROLE-AUDITOR+ROLE-CERTIFIER|EVT-00375+EVT-00376+EVT-00377+EVT-00378+EVT-00379+EVT-00380+EVT-00381+EVT-00382|Prepare, submit, certify, and archive a complete audit package is complete only when EVT-00382 records archived through TRN-WF-010-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-010-02",
+      "key": "WF-010|incomplete_information|ROLE-COMPLIANCE-COORDINATOR+ROLE-CERTIFIER|EVT-00031+EVT-00036+EVT-00037+EVT-00038+EVT-00039+EVT-00040+EVT-00041+EVT-00042+EVT-00043|Close a missing or contradictory evidence gap is complete only when EVT-00043 records archived through TRN-WF-010-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-010-03",
+      "key": "WF-010|correction|ROLE-COMPLIANCE-COORDINATOR+ROLE-VINEYARD-MANAGER+ROLE-AUDITOR+ROLE-CERTIFIER|EVT-00052+EVT-00060+EVT-00065+EVT-00066+EVT-00067+EVT-00068+EVT-00069+EVT-00070+EVT-00071+EVT-00072+EVT-00073+EVT-00074|Correct noncompliance discovered during audit is complete only when EVT-00074 records archived through TRN-WF-010-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-010-04",
+      "key": "WF-010|blocked|ROLE-COMPLIANCE-COORDINATOR+ROLE-VINEYARD-MANAGER+ROLE-AUDITOR+ROLE-CERTIFIER|EVT-00157+EVT-00163+EVT-00175+EVT-00187+EVT-00195+EVT-00201+EVT-00204+EVT-00207+EVT-00208+EVT-00210+EVT-00212+EVT-00214|Recover certification withheld pending corrective action is complete only when EVT-00214 records archived through TRN-WF-010-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-010-05",
+      "key": "WF-010|supervisory_review|ROLE-COMPLIANCE-COORDINATOR+ROLE-VINEYARD-MANAGER|EVT-00407+EVT-00412+EVT-00415+EVT-00416|Supervisory review of an evidence package before submission is complete only when EVT-00416 records submitted through TRN-WF-010-004, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-010-06",
+      "key": "WF-010|audit_historical|ROLE-AUDITOR+ROLE-CERTIFIER+ROLE-COMPLIANCE-COORDINATOR|EVT-00379+EVT-00380+EVT-00381+EVT-00382|Reconstruct the independent review-to-archive decision history is complete only when EVT-00382 records archived through TRN-WF-010-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-010-07",
+      "key": "WF-010|cross_organization|ROLE-VINEYARD-MANAGER+ROLE-AUDITOR+ROLE-COMPLIANCE-COORDINATOR+ROLE-CERTIFIER|EVT-00066+EVT-00067+EVT-00068+EVT-00069+EVT-00070+EVT-00071+EVT-00072+EVT-00073+EVT-00074|Coordinate auditor, certifier, and operator authority through finding closure is complete only when EVT-00074 records archived through TRN-WF-010-008, required records and authority resolve, and every predecessor, exception, correction, and sync consequence remains inspectable."
+    },
+    {
+      "scenario_id": "SCN-900-01",
+      "key": "WF-004+WF-005+WF-006+WF-009|urgent|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-GROWER-RELATIONS+ROLE-LAB+ROLE-WINEMAKER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-FINANCE|EVT-00128+EVT-00132+EVT-00146+EVT-00147+EVT-00148+EVT-00153+EVT-00185+EVT-00205+EVT-00211+EVT-00285+EVT-00310+EVT-00149+EVT-00150+EVT-00152+EVT-00155+EVT-00161+EVT-00174+EVT-00186+EVT-00194+EVT-00200+EVT-00203+EVT-00215+EVT-00216+EVT-00217+EVT-00218+EVT-00219+EVT-00220+EVT-00221+EVT-00222+EVT-00223+EVT-00224+EVT-00225+EVT-00226+EVT-00227+EVT-00228+EVT-00272+EVT-00274+EVT-00286+EVT-00289+EVT-00299+EVT-00309+EVT-00313+EVT-00317+EVT-00320+EVT-00324+EVT-00327|Estate forecast revision survives late sampling and harvest delay to settlement is complete only when every independent path terminal is satisfied (WFI-0016:EVT-00310:reconciled; WFI-0021:EVT-00203:scheduled; WFI-0026:EVT-00228:settled; WFI-0041:EVT-00327:historical), required authority resolves, and the explicit record links remain inspectable without imposing a false single chronology."
+    },
+    {
+      "scenario_id": "SCN-900-02",
+      "key": "WF-004+WF-005+WF-006+WF-009|correction|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-GROWER-RELATIONS+ROLE-LAB+ROLE-WINEMAKER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-FINANCE|EVT-00151+EVT-00173+EVT-00202+EVT-00209+EVT-00275+EVT-00308+EVT-00321+EVT-00330+EVT-00332+EVT-00337+EVT-00367+EVT-00373+EVT-00229+EVT-00230+EVT-00239+EVT-00242+EVT-00248+EVT-00258+EVT-00264+EVT-00276+EVT-00277+EVT-00278+EVT-00279+EVT-00280+EVT-00281+EVT-00282+EVT-00283+EVT-00284+EVT-00333+EVT-00334+EVT-00336+EVT-00341+EVT-00353+EVT-00365+EVT-00368|Estate actual divergence and superseded pick recover through load correction is complete only when every independent path terminal is satisfied (WFI-0017:EVT-00373:reconciled; WFI-0022:EVT-00264:superseded; WFI-0027:EVT-00284:settled; WFI-0042:EVT-00368:historical), required authority resolves, and the explicit record links remain inspectable without imposing a false single chronology."
+    },
+    {
+      "scenario_id": "SCN-900-03",
+      "key": "WF-004+WF-005+WF-006+WF-009|cross_organization|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-GROWER-RELATIONS+ROLE-LAB+ROLE-WINEMAKER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-FINANCE|EVT-00154+EVT-00191+EVT-00206+EVT-00213+EVT-00287+EVT-00314+EVT-00231+EVT-00240+EVT-00245+EVT-00253+EVT-00261+EVT-00266+EVT-00267+EVT-00288+EVT-00290+EVT-00291+EVT-00292+EVT-00293+EVT-00294+EVT-00295+EVT-00296+EVT-00297+EVT-00298+EVT-00335+EVT-00338+EVT-00352+EVT-00356+EVT-00366+EVT-00370+EVT-00371|Contract fruit survives quality rejection and block-alias dispute is complete only when every independent path terminal is satisfied (WFI-0018:EVT-00314:reconciled; WFI-0023:EVT-00267:scheduled; WFI-0028:EVT-00298:settled; WFI-0043:EVT-00371:historical), required authority resolves, and the explicit record links remain inspectable without imposing a false single chronology."
+    },
+    {
+      "scenario_id": "SCN-900-04",
+      "key": "WF-004+WF-005+WF-006+WF-009|correction|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-GROWER-RELATIONS+ROLE-LAB+ROLE-WINEMAKER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-FINANCE|EVT-00241+EVT-00265+EVT-00269+EVT-00271+EVT-00339+EVT-00369+EVT-00300+EVT-00311+EVT-00315+EVT-00318+EVT-00322+EVT-00325+EVT-00328+EVT-00340+EVT-00342+EVT-00343+EVT-00344+EVT-00345+EVT-00346+EVT-00347+EVT-00348+EVT-00349+EVT-00350+EVT-00351+EVT-00374+EVT-00383+EVT-00390+EVT-00399+EVT-00402+EVT-00403+EVT-00404|Contract pick reaches settlement through corrected weigh ticket is complete only when every independent path terminal is satisfied (WFI-0019:EVT-00369:reconciled; WFI-0024:EVT-00328:scheduled; WFI-0029:EVT-00351:settled; WFI-0044:EVT-00404:historical), required authority resolves, and the explicit record links remain inspectable without imposing a false single chronology."
+    },
+    {
+      "scenario_id": "SCN-900-05",
+      "key": "WF-001+WF-007|supervisory_review|ROLE-VITICULTURIST+ROLE-VINEYARD-MANAGER+ROLE-OPERATIONS-COORDINATOR+ROLE-FOREMAN+ROLE-PAYROLL+ROLE-FINANCE|EVT-00050+EVT-00053+EVT-00055+EVT-00057+EVT-00059+EVT-00061+EVT-00062+EVT-00063+EVT-00064+EVT-00097+EVT-00098+EVT-00099+EVT-00100+EVT-00101+EVT-00102+EVT-00103+EVT-00104+EVT-00105+EVT-00106|Heat-paused field work flows into crew time, payroll, and cost allocation is complete only when every independent path terminal is satisfied (WFI-0002:EVT-00064:verified; WFI-0032:EVT-00106:cost_allocated), required authority resolves, and the explicit record links remain inspectable without imposing a false single chronology."
+    },
+    {
+      "scenario_id": "SCN-900-06",
+      "key": "WF-006+WF-009|cross_organization|ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-GROWER-RELATIONS+ROLE-FINANCE|EVT-00215+EVT-00216+EVT-00217+EVT-00218+EVT-00219+EVT-00220+EVT-00221+EVT-00222+EVT-00223+EVT-00224+EVT-00225+EVT-00226+EVT-00227+EVT-00228+EVT-00272+EVT-00274+EVT-00286+EVT-00289+EVT-00299+EVT-00309+EVT-00313+EVT-00317+EVT-00320+EVT-00324+EVT-00327|Trace an accepted harvest load into grower settlement history is complete only when every independent path terminal is satisfied (WFI-0026:EVT-00228:settled; WFI-0041:EVT-00327:historical), required authority resolves, and the explicit record links remain inspectable without imposing a false single chronology."
+    },
+    {
+      "scenario_id": "SCN-900-07",
+      "key": "WF-007+WF-010|audit_historical|ROLE-OPERATIONS-COORDINATOR+ROLE-PAYROLL+ROLE-VINEYARD-MANAGER+ROLE-FINANCE+ROLE-COMPLIANCE-COORDINATOR+ROLE-CERTIFIER|EVT-00001+EVT-00002+EVT-00003+EVT-00004+EVT-00005+EVT-00006+EVT-00031+EVT-00036+EVT-00037+EVT-00038+EVT-00039+EVT-00040+EVT-00041+EVT-00042+EVT-00043|Use corrected labor time as certification audit evidence is complete only when every independent path terminal is satisfied (WFI-0031:EVT-00006:cost_allocated; WFI-0046:EVT-00043:archived), required authority resolves, and the explicit record links remain inspectable without imposing a false single chronology."
+    },
+    {
+      "scenario_id": "SCN-900-08",
+      "key": "WF-006+WF-010|correction|ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-GROWER-RELATIONS+ROLE-FINANCE+ROLE-COMPLIANCE-COORDINATOR+ROLE-AUDITOR+ROLE-CERTIFIER|EVT-00276+EVT-00277+EVT-00278+EVT-00279+EVT-00280+EVT-00281+EVT-00282+EVT-00283+EVT-00284+EVT-00052+EVT-00060+EVT-00065+EVT-00066+EVT-00067+EVT-00068+EVT-00069+EVT-00070+EVT-00071+EVT-00072+EVT-00073+EVT-00074|Carry a wrong-load correction into audit-finding closure is complete only when every independent path terminal is satisfied (WFI-0027:EVT-00284:settled; WFI-0047:EVT-00074:archived), required authority resolves, and the explicit record links remain inspectable without imposing a false single chronology."
+    },
+    {
+      "scenario_id": "SCN-900-09",
+      "key": "WF-006+WF-007|supervisory_review|ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-GROWER-RELATIONS+ROLE-FINANCE+ROLE-OPERATIONS-COORDINATOR+ROLE-FOREMAN+ROLE-PAYROLL|EVT-00355+EVT-00357+EVT-00358+EVT-00359+EVT-00360+EVT-00361+EVT-00362+EVT-00363+EVT-00364+EVT-00405+EVT-00408+EVT-00409+EVT-00410+EVT-00411+EVT-00413+EVT-00414|Reconcile harvest delivery with crew time, task quantity, and allocation is complete only when every independent path terminal is satisfied (WFI-0030:EVT-00364:settled; WFI-0035:EVT-00414:cost_allocated), required authority resolves, and the explicit record links remain inspectable without imposing a false single chronology."
+    },
+    {
+      "scenario_id": "SCN-900-10",
+      "key": "WF-006+WF-009+WF-010|supervisory_review|ROLE-WINEMAKER+ROLE-VINEYARD-MANAGER+ROLE-HARVEST-CREW-LEADER+ROLE-TRANSPORTATION+ROLE-WINERY-INTAKE+ROLE-GROWER-RELATIONS+ROLE-FINANCE+ROLE-COMPLIANCE-COORDINATOR+ROLE-AUDITOR+ROLE-CERTIFIER|EVT-00288+EVT-00290+EVT-00291+EVT-00292+EVT-00293+EVT-00294+EVT-00295+EVT-00296+EVT-00297+EVT-00298+EVT-00335+EVT-00338+EVT-00352+EVT-00356+EVT-00366+EVT-00370+EVT-00371+EVT-00157+EVT-00163+EVT-00175+EVT-00187+EVT-00195+EVT-00201+EVT-00204+EVT-00207+EVT-00208+EVT-00210+EVT-00212+EVT-00214|Resolve contract-block alias, rejected delivery, and withheld certification as one package is complete only when every independent path terminal is satisfied (WFI-0028:EVT-00298:settled; WFI-0043:EVT-00371:historical; WFI-0048:EVT-00214:archived), required authority resolves, and the explicit record links remain inspectable without imposing a false single chronology."
+    }
+  ]
+}

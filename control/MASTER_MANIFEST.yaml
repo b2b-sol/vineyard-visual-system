@@ -1,6 +1,6 @@
 schema_version: "1.0"
 generated_from: control/trace-nodes.json
-artifact_count: 27
+artifact_count: 367
 artifacts:
   - id: EVD-001
     type: evidence
@@ -138,31 +138,2136 @@ artifacts:
     status: approved
   - id: SCN-001-01
     type: scenario
-    title: Recover a partially completed mowing order after equipment failure
-    path: scenarios/walking-slice.json
+    title: Offline field observation reaches approval
+    path: scenarios/scenarios.json
     locator: json_id:SCN-001-01
-    status: review
+    status: approved
+  - id: SCN-001-02
+    type: scenario
+    title: Ambiguous block is contained, redispatched, and verified
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-001-02
+    status: approved
+  - id: SCN-001-03
+    type: scenario
+    title: Safe partial work is accepted and verified
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-001-03
+    status: approved
+  - id: SCN-001-04
+    type: scenario
+    title: Disputed completion quantities are corrected before verification
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-001-04
+    status: approved
+  - id: SCN-001-05
+    type: scenario
+    title: Contract-block seasonal work is scoped and approved
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-001-05
+    status: approved
+  - id: SCN-001-06
+    type: scenario
+    title: Dispatch acknowledgement advances to verified actuals
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-001-06
+    status: approved
+  - id: SCN-001-07
+    type: scenario
+    title: End-to-end estate seasonal work package
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-001-07
+    status: approved
+  - id: SCN-002-01
+    type: scenario
+    title: Scout observation becomes treatment recommendation
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-002-01
+    status: approved
+  - id: SCN-002-02
+    type: scenario
+    title: Crop-protection lead releases a compliant application
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-002-02
+    status: approved
+  - id: SCN-002-03
+    type: scenario
+    title: Handler applies, foreman posts, compliance reports
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-002-03
+    status: approved
+  - id: SCN-002-04
+    type: scenario
+    title: Follow-up confirms application effectiveness
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-002-04
+    status: approved
+  - id: SCN-002-05
+    type: scenario
+    title: Wind cancels an otherwise approved application
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-002-05
+    status: approved
+  - id: SCN-002-06
+    type: scenario
+    title: Offline scouting reveals an REI or PHI conflict
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-002-06
+    status: approved
+  - id: SCN-002-07
+    type: scenario
+    title: Incorrect application diary entry is corrected
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-002-07
+    status: approved
+  - id: SCN-003-01
+    type: scenario
+    title: Field condition becomes an irrigation recommendation
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-003-01
+    status: approved
+  - id: SCN-003-02
+    type: scenario
+    title: Irrigation recommendation is approved and assigned
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-003-02
+    status: approved
+  - id: SCN-003-03
+    type: scenario
+    title: Assigned irrigation is delivered and verified
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-003-03
+    status: approved
+  - id: SCN-003-04
+    type: scenario
+    title: System malfunction interrupts and restarts irrigation
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-003-04
+    status: approved
+  - id: SCN-003-05
+    type: scenario
+    title: Late lab evidence supersedes an irrigation adjustment
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-003-05
+    status: approved
+  - id: SCN-003-06
+    type: scenario
+    title: Offline condition evidence reaches managerial approval
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-003-06
+    status: approved
+  - id: SCN-003-07
+    type: scenario
+    title: End-to-end irrigation package with verified water actuals
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-003-07
+    status: approved
+  - id: SCN-004-01
+    type: scenario
+    title: Contract-fruit sampling becomes a crop estimate
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-004-01
+    status: approved
+  - id: SCN-004-02
+    type: scenario
+    title: Contract crop estimate is reviewed and published
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-004-02
+    status: approved
+  - id: SCN-004-03
+    type: scenario
+    title: Published contract estimate is actualized and reconciled
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-004-03
+    status: approved
+  - id: SCN-004-04
+    type: scenario
+    title: Weather change forces a published estimate revision
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-004-04
+    status: approved
+  - id: SCN-004-05
+    type: scenario
+    title: Harvest actual divergence reopens and reconciles forecast
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-004-05
+    status: approved
+  - id: SCN-004-06
+    type: scenario
+    title: Contract-fruit estimate completes its full lifecycle
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-004-06
+    status: approved
+  - id: SCN-004-07
+    type: scenario
+    title: Estate estimate completes its full lifecycle
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-004-07
+    status: approved
+  - id: SCN-005-01
+    type: scenario
+    title: Contract-fruit sample reaches traceable lab result
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-005-01
+    status: approved
+  - id: SCN-005-02
+    type: scenario
+    title: Maturity evidence becomes a pick proposal
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-005-02
+    status: approved
+  - id: SCN-005-03
+    type: scenario
+    title: Winery authorizes and vineyard schedules contract pick
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-005-03
+    status: approved
+  - id: SCN-005-04
+    type: scenario
+    title: Late offline sample triggers a complete resampling cycle
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-005-04
+    status: approved
+  - id: SCN-005-05
+    type: scenario
+    title: Field and winery measurements are negotiated to authorization
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-005-05
+    status: approved
+  - id: SCN-005-06
+    type: scenario
+    title: Winery change supersedes an authorized pick
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-005-06
+    status: approved
+  - id: SCN-005-07
+    type: scenario
+    title: Contract-fruit maturity cycle reaches scheduled pick
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-005-07
+    status: approved
+  - id: SCN-006-01
+    type: scenario
+    title: Accept and settle a correctly identified estate load
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-006-01
+    status: approved
+  - id: SCN-006-02
+    type: scenario
+    title: Replan harvest through missed slot and winery-capacity delay
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-006-02
+    status: approved
+  - id: SCN-006-03
+    type: scenario
+    title: Correct a wrong arriving block or load identity
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-006-03
+    status: approved
+  - id: SCN-006-04
+    type: scenario
+    title: Reconcile and settle a rejected load
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-006-04
+    status: approved
+  - id: SCN-006-05
+    type: scenario
+    title: Append a late processor weigh-entry correction
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-006-05
+    status: approved
+  - id: SCN-006-06
+    type: scenario
+    title:
+      Resolve an intermittent intake identity conflict without losing the field
+      event
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-006-06
+    status: approved
+  - id: SCN-006-07
+    type: scenario
+    title: Audit the intake-to-settlement evidence chain
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-006-07
+    status: approved
+  - id: SCN-007-01
+    type: scenario
+    title: Schedule, verify, pay, and allocate a routine crew shift
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-007-01
+    status: approved
+  - id: SCN-007-02
+    type: scenario
+    title: Recover a shift when a worker is absent and the crew is short
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-007-02
+    status: approved
+  - id: SCN-007-03
+    type: scenario
+    title: Pause field labor for heat or safety and resume after re-briefing
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-007-03
+    status: approved
+  - id: SCN-007-04
+    type: scenario
+    title: Review and authorize a payroll correction
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-007-04
+    status: approved
+  - id: SCN-007-05
+    type: scenario
+    title: Supervisor verifies time, units, and task progress before payroll
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-007-05
+    status: approved
+  - id: SCN-007-06
+    type: scenario
+    title: Audit year-end labor cost allocation and correction history
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-007-06
+    status: approved
+  - id: SCN-007-07
+    type: scenario
+    title: Allocate labor for a contract-fruit block across organizational boundaries
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-007-07
+    status: approved
+  - id: SCN-008-01
+    type: scenario
+    title: Purchase, receive, stage, and reconcile a routine resource demand
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-008-01
+    status: approved
+  - id: SCN-008-02
+    type: scenario
+    title: Substitute and purchase material or PPE that is out of stock
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-008-02
+    status: approved
+  - id: SCN-008-03
+    type: scenario
+    title: Isolate, repair, and return failed equipment during a narrow work window
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-008-03
+    status: approved
+  - id: SCN-008-04
+    type: scenario
+    title: Synchronize an offline field demand before approving substitution
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-008-04
+    status: approved
+  - id: SCN-008-05
+    type: scenario
+    title: Approve a resource commitment against priority, budget, and compliance
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-008-05
+    status: approved
+  - id: SCN-008-06
+    type: scenario
+    title: Verify repaired equipment before returning it to active readiness
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-008-06
+    status: approved
+  - id: SCN-008-07
+    type: scenario
+    title: Audit purchase-to-readiness and cost evidence
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-008-07
+    status: approved
+  - id: SCN-009-01
+    type: scenario
+    title: Onboard and settle a grower relationship without exception
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-009-01
+    status: approved
+  - id: SCN-009-02
+    type: scenario
+    title: Resolve a delivery or payment dispute and restore aligned terms
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-009-02
+    status: approved
+  - id: SCN-009-03
+    type: scenario
+    title: Correct conflicting winery and operations block aliases
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-009-03
+    status: approved
+  - id: SCN-009-04
+    type: scenario
+    title: Approve grower authority, quality, notice, delivery, and payment terms
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-009-04
+    status: approved
+  - id: SCN-009-05
+    type: scenario
+    title: Review settled grower history without reopening the agreement
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-009-05
+    status: approved
+  - id: SCN-009-06
+    type: scenario
+    title: Continue commercial-dispute recovery after intermittent synchronization
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-009-06
+    status: approved
+  - id: SCN-009-07
+    type: scenario
+    title: Maintain an external grower relationship through settlement
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-009-07
+    status: approved
+  - id: SCN-010-01
+    type: scenario
+    title: Prepare, submit, certify, and archive a complete audit package
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-010-01
+    status: approved
+  - id: SCN-010-02
+    type: scenario
+    title: Close a missing or contradictory evidence gap
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-010-02
+    status: approved
+  - id: SCN-010-03
+    type: scenario
+    title: Correct noncompliance discovered during audit
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-010-03
+    status: approved
+  - id: SCN-010-04
+    type: scenario
+    title: Recover certification withheld pending corrective action
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-010-04
+    status: approved
+  - id: SCN-010-05
+    type: scenario
+    title: Supervisory review of an evidence package before submission
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-010-05
+    status: approved
+  - id: SCN-010-06
+    type: scenario
+    title: Reconstruct the independent review-to-archive decision history
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-010-06
+    status: approved
+  - id: SCN-010-07
+    type: scenario
+    title: Coordinate auditor, certifier, and operator authority through finding
+      closure
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-010-07
+    status: approved
+  - id: SCN-900-01
+    type: scenario
+    title: Estate forecast revision survives late sampling and harvest delay to
+      settlement
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-900-01
+    status: approved
+  - id: SCN-900-02
+    type: scenario
+    title: Estate actual divergence and superseded pick recover through load
+      correction
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-900-02
+    status: approved
+  - id: SCN-900-03
+    type: scenario
+    title: Contract fruit survives quality rejection and block-alias dispute
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-900-03
+    status: approved
+  - id: SCN-900-04
+    type: scenario
+    title: Contract pick reaches settlement through corrected weigh ticket
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-900-04
+    status: approved
+  - id: SCN-900-05
+    type: scenario
+    title: Heat-paused field work flows into crew time, payroll, and cost allocation
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-900-05
+    status: approved
+  - id: SCN-900-06
+    type: scenario
+    title: Trace an accepted harvest load into grower settlement history
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-900-06
+    status: approved
+  - id: SCN-900-07
+    type: scenario
+    title: Use corrected labor time as certification audit evidence
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-900-07
+    status: approved
+  - id: SCN-900-08
+    type: scenario
+    title: Carry a wrong-load correction into audit-finding closure
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-900-08
+    status: approved
+  - id: SCN-900-09
+    type: scenario
+    title: Reconcile harvest delivery with crew time, task quantity, and allocation
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-900-09
+    status: approved
+  - id: SCN-900-10
+    type: scenario
+    title: Resolve contract-block alias, rejected delivery, and withheld
+      certification as one package
+    path: scenarios/scenarios.json
+    locator: json_id:SCN-900-10
+    status: approved
   - id: FIX-001
     type: fixture
     title: Carneros Ridge blocked mowing recovery
     path: data/walking-slice.json
     locator: json_id:FIX-001
     status: approved
+  - id: FIX-002
+    type: fixture
+    title: WFI-0001 · Seasonal planning, dispatch, execution, and verification —
+      BLK-001 season case 1
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-002
+    status: approved
+  - id: FIX-003
+    type: fixture
+    title: WFI-0002 · Seasonal planning, dispatch, execution, and verification —
+      BLK-002 season case 2
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-003
+    status: approved
+  - id: FIX-004
+    type: fixture
+    title: WFI-0003 · Seasonal planning, dispatch, execution, and verification —
+      BLK-009 season case 3
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-004
+    status: approved
+  - id: FIX-005
+    type: fixture
+    title: WFI-0004 · Seasonal planning, dispatch, execution, and verification —
+      BLK-010 season case 4
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-005
+    status: approved
+  - id: FIX-006
+    type: fixture
+    title: WFI-0005 · Seasonal planning, dispatch, execution, and verification —
+      BLK-005 season case 5
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-006
+    status: approved
+  - id: FIX-007
+    type: fixture
+    title: WFI-0006 · Scouting, recommendation, crop protection, and application
+      records — BLK-001 season case 1
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-007
+    status: approved
+  - id: FIX-008
+    type: fixture
+    title: WFI-0007 · Scouting, recommendation, crop protection, and application
+      records — BLK-002 season case 2
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-008
+    status: approved
+  - id: FIX-009
+    type: fixture
+    title: WFI-0008 · Scouting, recommendation, crop protection, and application
+      records — BLK-009 season case 3
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-009
+    status: approved
+  - id: FIX-010
+    type: fixture
+    title: WFI-0009 · Scouting, recommendation, crop protection, and application
+      records — BLK-010 season case 4
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-010
+    status: approved
+  - id: FIX-011
+    type: fixture
+    title: WFI-0010 · Scouting, recommendation, crop protection, and application
+      records — BLK-005 season case 5
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-011
+    status: approved
+  - id: FIX-012
+    type: fixture
+    title: WFI-0011 · Irrigation scheduling, fertility adjustment, and delivery
+      verification — BLK-003 season case 1
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-012
+    status: approved
+  - id: FIX-013
+    type: fixture
+    title: WFI-0012 · Irrigation scheduling, fertility adjustment, and delivery
+      verification — BLK-004 season case 2
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-013
+    status: approved
+  - id: FIX-014
+    type: fixture
+    title: WFI-0013 · Irrigation scheduling, fertility adjustment, and delivery
+      verification — BLK-006 season case 3
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-014
+    status: approved
+  - id: FIX-015
+    type: fixture
+    title: WFI-0014 · Irrigation scheduling, fertility adjustment, and delivery
+      verification — BLK-007 season case 4
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-015
+    status: approved
+  - id: FIX-016
+    type: fixture
+    title: WFI-0015 · Irrigation scheduling, fertility adjustment, and delivery
+      verification — BLK-008 season case 5
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-016
+    status: approved
+  - id: FIX-017
+    type: fixture
+    title: WFI-0016 · Crop estimation and forecast revision — BLK-001 season case 1
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-017
+    status: approved
+  - id: FIX-018
+    type: fixture
+    title: WFI-0017 · Crop estimation and forecast revision — BLK-002 season case 2
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-018
+    status: approved
+  - id: FIX-019
+    type: fixture
+    title: WFI-0018 · Crop estimation and forecast revision — BLK-009 season case 3
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-019
+    status: approved
+  - id: FIX-020
+    type: fixture
+    title: WFI-0019 · Crop estimation and forecast revision — BLK-011 season case 4
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-020
+    status: approved
+  - id: FIX-021
+    type: fixture
+    title: WFI-0020 · Crop estimation and forecast revision — BLK-005 season case 5
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-021
+    status: approved
+  - id: FIX-022
+    type: fixture
+    title:
+      WFI-0021 · Maturity sampling, winery communication, and pick decision —
+      BLK-001 season case 1
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-022
+    status: approved
+  - id: FIX-023
+    type: fixture
+    title:
+      WFI-0022 · Maturity sampling, winery communication, and pick decision —
+      BLK-002 season case 2
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-023
+    status: approved
+  - id: FIX-024
+    type: fixture
+    title:
+      WFI-0023 · Maturity sampling, winery communication, and pick decision —
+      BLK-009 season case 3
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-024
+    status: approved
+  - id: FIX-025
+    type: fixture
+    title:
+      WFI-0024 · Maturity sampling, winery communication, and pick decision —
+      BLK-011 season case 4
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-025
+    status: approved
+  - id: FIX-026
+    type: fixture
+    title:
+      WFI-0025 · Maturity sampling, winery communication, and pick decision —
+      BLK-005 season case 5
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-026
+    status: approved
+  - id: FIX-027
+    type: fixture
+    title: WFI-0026 · Harvest planning, execution, loads, intake, quality, and
+      reconciliation — BLK-001 season case 1
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-027
+    status: approved
+  - id: FIX-028
+    type: fixture
+    title: WFI-0027 · Harvest planning, execution, loads, intake, quality, and
+      reconciliation — BLK-002 season case 2
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-028
+    status: approved
+  - id: FIX-029
+    type: fixture
+    title: WFI-0028 · Harvest planning, execution, loads, intake, quality, and
+      reconciliation — BLK-009 season case 3
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-029
+    status: approved
+  - id: FIX-030
+    type: fixture
+    title: WFI-0029 · Harvest planning, execution, loads, intake, quality, and
+      reconciliation — BLK-011 season case 4
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-030
+    status: approved
+  - id: FIX-031
+    type: fixture
+    title: WFI-0030 · Harvest planning, execution, loads, intake, quality, and
+      reconciliation — BLK-005 season case 5
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-031
+    status: approved
+  - id: FIX-032
+    type: fixture
+    title: WFI-0031 · Crew scheduling, attendance, time, payroll, and cost
+      allocation — BLK-001 season case 1
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-032
+    status: approved
+  - id: FIX-033
+    type: fixture
+    title: WFI-0032 · Crew scheduling, attendance, time, payroll, and cost
+      allocation — BLK-002 season case 2
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-033
+    status: approved
+  - id: FIX-034
+    type: fixture
+    title: WFI-0033 · Crew scheduling, attendance, time, payroll, and cost
+      allocation — BLK-009 season case 3
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-034
+    status: approved
+  - id: FIX-035
+    type: fixture
+    title: WFI-0034 · Crew scheduling, attendance, time, payroll, and cost
+      allocation — BLK-010 season case 4
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-035
+    status: approved
+  - id: FIX-036
+    type: fixture
+    title: WFI-0035 · Crew scheduling, attendance, time, payroll, and cost
+      allocation — BLK-005 season case 5
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-036
+    status: approved
+  - id: FIX-037
+    type: fixture
+    title: WFI-0036 · Materials, purchasing, equipment readiness, and repair —
+      BLK-011 season case 1
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-037
+    status: approved
+  - id: FIX-038
+    type: fixture
+    title: WFI-0037 · Materials, purchasing, equipment readiness, and repair —
+      BLK-012 season case 2
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-038
+    status: approved
+  - id: FIX-039
+    type: fixture
+    title: WFI-0038 · Materials, purchasing, equipment readiness, and repair —
+      BLK-003 season case 3
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-039
+    status: approved
+  - id: FIX-040
+    type: fixture
+    title: WFI-0039 · Materials, purchasing, equipment readiness, and repair —
+      BLK-004 season case 4
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-040
+    status: approved
+  - id: FIX-041
+    type: fixture
+    title: WFI-0040 · Materials, purchasing, equipment readiness, and repair —
+      BLK-006 season case 5
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-041
+    status: approved
+  - id: FIX-042
+    type: fixture
+    title: WFI-0041 · Grower onboarding, contract-fruit coordination, and
+      relationship history — BLK-001 season case 1
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-042
+    status: approved
+  - id: FIX-043
+    type: fixture
+    title: WFI-0042 · Grower onboarding, contract-fruit coordination, and
+      relationship history — BLK-002 season case 2
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-043
+    status: approved
+  - id: FIX-044
+    type: fixture
+    title: WFI-0043 · Grower onboarding, contract-fruit coordination, and
+      relationship history — BLK-009 season case 3
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-044
+    status: approved
+  - id: FIX-045
+    type: fixture
+    title: WFI-0044 · Grower onboarding, contract-fruit coordination, and
+      relationship history — BLK-011 season case 4
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-045
+    status: approved
+  - id: FIX-046
+    type: fixture
+    title: WFI-0045 · Grower onboarding, contract-fruit coordination, and
+      relationship history — BLK-005 season case 5
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-046
+    status: approved
+  - id: FIX-047
+    type: fixture
+    title: WFI-0046 · Certification, audit preparation, corrective action, and
+      evidence — BLK-001 season case 1
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-047
+    status: approved
+  - id: FIX-048
+    type: fixture
+    title: WFI-0047 · Certification, audit preparation, corrective action, and
+      evidence — BLK-002 season case 2
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-048
+    status: approved
+  - id: FIX-049
+    type: fixture
+    title: WFI-0048 · Certification, audit preparation, corrective action, and
+      evidence — BLK-009 season case 3
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-049
+    status: approved
+  - id: FIX-050
+    type: fixture
+    title: WFI-0049 · Certification, audit preparation, corrective action, and
+      evidence — BLK-011 season case 4
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-050
+    status: approved
+  - id: FIX-051
+    type: fixture
+    title: WFI-0050 · Certification, audit preparation, corrective action, and
+      evidence — BLK-005 season case 5
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-051
+    status: approved
+  - id: FIX-052
+    type: fixture
+    title: "EXH-0001 · Canonical EXC-002 occurred: Wrong or ambiguous block identity."
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-052
+    status: approved
+  - id: FIX-053
+    type: fixture
+    title: "EXH-0002 · Canonical EXC-004 occurred: Work partially completed."
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-053
+    status: approved
+  - id: FIX-054
+    type: fixture
+    title:
+      "EXH-0003 · Canonical EXC-005 occurred: Completion quantities missing or
+      disputed."
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-054
+    status: approved
+  - id: FIX-055
+    type: fixture
+    title:
+      "EXH-0004 · Canonical EXC-006 occurred: Wind or rain outside allowable
+      conditions."
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-055
+    status: approved
+  - id: FIX-056
+    type: fixture
+    title: "EXH-0005 · Canonical EXC-009 occurred: REI or PHI conflict."
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-056
+    status: approved
+  - id: FIX-057
+    type: fixture
+    title: "EXH-0006 · Canonical EXC-010 occurred: Incorrect or late diary entry."
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-057
+    status: approved
+  - id: FIX-058
+    type: fixture
+    title: "EXH-0007 · Canonical EXC-012 occurred: System malfunction."
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-058
+    status: approved
+  - id: FIX-059
+    type: fixture
+    title:
+      "EXH-0008 · Canonical EXC-016 occurred: Lab result arrives after action
+      window."
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-059
+    status: approved
+  - id: FIX-060
+    type: fixture
+    title:
+      "EXH-0009 · Canonical EXC-021 occurred: Rapid weather or crop-condition
+      change."
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-060
+    status: approved
+  - id: FIX-061
+    type: fixture
+    title: "EXH-0010 · Canonical EXC-023 occurred: Actual harvest diverges
+      materially."
+    path: data/scenario-fixtures.json
+    locator: json_id:FIX-061
+    status: approved
+  - id: REQ-001
+    type: requirement
+    title: "WF-001: Make accountable decisions from current evidence"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-001
+    status: approved
+  - id: REQ-002
+    type: requirement
+    title: "WF-001: Advance only valid canonical transitions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-002
+    status: approved
+  - id: REQ-003
+    type: requirement
+    title: "WF-001: Resolve stable scope and record identity"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-003
+    status: approved
+  - id: REQ-004
+    type: requirement
+    title: "WF-001: Contain exceptions without losing completed work"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-004
+    status: approved
+  - id: REQ-005
+    type: requirement
+    title: "WF-001: Inspect attributable append-only history"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-005
+    status: approved
+  - id: REQ-006
+    type: requirement
+    title: "WF-001: Capture field evidence through connectivity loss"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-006
+    status: approved
+  - id: REQ-007
+    type: requirement
+    title: "WF-001: Respect cross-organization authority boundaries"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-007
+    status: approved
+  - id: REQ-008
+    type: requirement
+    title: "WF-001: Keep regulated evidence defensible"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-008
+    status: approved
+  - id: REQ-009
+    type: requirement
+    title: "WF-001: Correct records through explicit supersession"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-009
+    status: approved
+  - id: REQ-010
+    type: requirement
+    title: "WF-001: Close work with evidence and accountable verification"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-010
+    status: approved
+  - id: REQ-011
+    type: requirement
+    title: "WF-002: Make accountable decisions from current evidence"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-011
+    status: approved
+  - id: REQ-012
+    type: requirement
+    title: "WF-002: Advance only valid canonical transitions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-012
+    status: approved
+  - id: REQ-013
+    type: requirement
+    title: "WF-002: Resolve stable scope and record identity"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-013
+    status: approved
+  - id: REQ-014
+    type: requirement
+    title: "WF-002: Contain exceptions without losing completed work"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-014
+    status: approved
+  - id: REQ-015
+    type: requirement
+    title: "WF-002: Inspect attributable append-only history"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-015
+    status: approved
+  - id: REQ-016
+    type: requirement
+    title: "WF-002: Capture field evidence through connectivity loss"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-016
+    status: approved
+  - id: REQ-017
+    type: requirement
+    title: "WF-002: Respect cross-organization authority boundaries"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-017
+    status: approved
+  - id: REQ-018
+    type: requirement
+    title: "WF-002: Keep regulated evidence defensible"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-018
+    status: approved
+  - id: REQ-019
+    type: requirement
+    title: "WF-002: Correct records through explicit supersession"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-019
+    status: approved
+  - id: REQ-020
+    type: requirement
+    title: "WF-002: Close work with evidence and accountable verification"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-020
+    status: approved
+  - id: REQ-021
+    type: requirement
+    title: "WF-003: Make accountable decisions from current evidence"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-021
+    status: approved
+  - id: REQ-022
+    type: requirement
+    title: "WF-003: Advance only valid canonical transitions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-022
+    status: approved
+  - id: REQ-023
+    type: requirement
+    title: "WF-003: Resolve stable scope and record identity"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-023
+    status: approved
+  - id: REQ-024
+    type: requirement
+    title: "WF-003: Contain exceptions without losing completed work"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-024
+    status: approved
+  - id: REQ-025
+    type: requirement
+    title: "WF-003: Inspect attributable append-only history"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-025
+    status: approved
+  - id: REQ-026
+    type: requirement
+    title: "WF-003: Capture field evidence through connectivity loss"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-026
+    status: approved
+  - id: REQ-027
+    type: requirement
+    title: "WF-003: Respect cross-organization authority boundaries"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-027
+    status: approved
+  - id: REQ-028
+    type: requirement
+    title: "WF-003: Keep regulated evidence defensible"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-028
+    status: approved
+  - id: REQ-029
+    type: requirement
+    title: "WF-003: Correct records through explicit supersession"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-029
+    status: approved
+  - id: REQ-030
+    type: requirement
+    title: "WF-003: Close work with evidence and accountable verification"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-030
+    status: approved
+  - id: REQ-031
+    type: requirement
+    title: "WF-004: Make accountable decisions from current evidence"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-031
+    status: approved
+  - id: REQ-032
+    type: requirement
+    title: "WF-004: Advance only valid canonical transitions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-032
+    status: approved
+  - id: REQ-033
+    type: requirement
+    title: "WF-004: Resolve stable scope and record identity"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-033
+    status: approved
+  - id: REQ-034
+    type: requirement
+    title: "WF-004: Contain exceptions without losing completed work"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-034
+    status: approved
+  - id: REQ-035
+    type: requirement
+    title: "WF-004: Inspect attributable append-only history"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-035
+    status: approved
+  - id: REQ-036
+    type: requirement
+    title: "WF-004: Capture field evidence through connectivity loss"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-036
+    status: approved
+  - id: REQ-037
+    type: requirement
+    title: "WF-004: Respect cross-organization authority boundaries"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-037
+    status: approved
+  - id: REQ-038
+    type: requirement
+    title: "WF-004: Keep regulated evidence defensible"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-038
+    status: approved
+  - id: REQ-039
+    type: requirement
+    title: "WF-004: Correct records through explicit supersession"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-039
+    status: approved
+  - id: REQ-040
+    type: requirement
+    title: "WF-004: Close work with evidence and accountable verification"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-040
+    status: approved
+  - id: REQ-041
+    type: requirement
+    title: "WF-005: Make accountable decisions from current evidence"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-041
+    status: approved
+  - id: REQ-042
+    type: requirement
+    title: "WF-005: Advance only valid canonical transitions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-042
+    status: approved
+  - id: REQ-043
+    type: requirement
+    title: "WF-005: Resolve stable scope and record identity"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-043
+    status: approved
+  - id: REQ-044
+    type: requirement
+    title: "WF-005: Contain exceptions without losing completed work"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-044
+    status: approved
+  - id: REQ-045
+    type: requirement
+    title: "WF-005: Inspect attributable append-only history"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-045
+    status: approved
+  - id: REQ-046
+    type: requirement
+    title: "WF-005: Capture field evidence through connectivity loss"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-046
+    status: approved
+  - id: REQ-047
+    type: requirement
+    title: "WF-005: Respect cross-organization authority boundaries"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-047
+    status: approved
+  - id: REQ-048
+    type: requirement
+    title: "WF-005: Keep regulated evidence defensible"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-048
+    status: approved
+  - id: REQ-049
+    type: requirement
+    title: "WF-005: Correct records through explicit supersession"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-049
+    status: approved
+  - id: REQ-050
+    type: requirement
+    title: "WF-005: Close work with evidence and accountable verification"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-050
+    status: approved
+  - id: REQ-051
+    type: requirement
+    title: "WF-006: Make accountable decisions from current evidence"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-051
+    status: approved
+  - id: REQ-052
+    type: requirement
+    title: "WF-006: Advance only valid canonical transitions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-052
+    status: approved
+  - id: REQ-053
+    type: requirement
+    title: "WF-006: Resolve stable scope and record identity"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-053
+    status: approved
+  - id: REQ-054
+    type: requirement
+    title: "WF-006: Contain exceptions without losing completed work"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-054
+    status: approved
+  - id: REQ-055
+    type: requirement
+    title: "WF-006: Inspect attributable append-only history"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-055
+    status: approved
+  - id: REQ-056
+    type: requirement
+    title: "WF-006: Capture field evidence through connectivity loss"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-056
+    status: approved
+  - id: REQ-057
+    type: requirement
+    title: "WF-006: Respect cross-organization authority boundaries"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-057
+    status: approved
+  - id: REQ-058
+    type: requirement
+    title: "WF-006: Keep regulated evidence defensible"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-058
+    status: approved
+  - id: REQ-059
+    type: requirement
+    title: "WF-006: Correct records through explicit supersession"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-059
+    status: approved
+  - id: REQ-060
+    type: requirement
+    title: "WF-006: Close work with evidence and accountable verification"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-060
+    status: approved
+  - id: REQ-061
+    type: requirement
+    title: "WF-007: Make accountable decisions from current evidence"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-061
+    status: approved
+  - id: REQ-062
+    type: requirement
+    title: "WF-007: Advance only valid canonical transitions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-062
+    status: approved
+  - id: REQ-063
+    type: requirement
+    title: "WF-007: Resolve stable scope and record identity"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-063
+    status: approved
+  - id: REQ-064
+    type: requirement
+    title: "WF-007: Contain exceptions without losing completed work"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-064
+    status: approved
+  - id: REQ-065
+    type: requirement
+    title: "WF-007: Inspect attributable append-only history"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-065
+    status: approved
+  - id: REQ-066
+    type: requirement
+    title: "WF-007: Capture field evidence through connectivity loss"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-066
+    status: approved
+  - id: REQ-067
+    type: requirement
+    title: "WF-007: Respect cross-organization authority boundaries"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-067
+    status: approved
+  - id: REQ-068
+    type: requirement
+    title: "WF-007: Keep regulated evidence defensible"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-068
+    status: approved
+  - id: REQ-069
+    type: requirement
+    title: "WF-007: Correct records through explicit supersession"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-069
+    status: approved
+  - id: REQ-070
+    type: requirement
+    title: "WF-007: Close work with evidence and accountable verification"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-070
+    status: approved
+  - id: REQ-071
+    type: requirement
+    title: "WF-008: Make accountable decisions from current evidence"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-071
+    status: approved
+  - id: REQ-072
+    type: requirement
+    title: "WF-008: Advance only valid canonical transitions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-072
+    status: approved
+  - id: REQ-073
+    type: requirement
+    title: "WF-008: Resolve stable scope and record identity"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-073
+    status: approved
+  - id: REQ-074
+    type: requirement
+    title: "WF-008: Contain exceptions without losing completed work"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-074
+    status: approved
+  - id: REQ-075
+    type: requirement
+    title: "WF-008: Inspect attributable append-only history"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-075
+    status: approved
+  - id: REQ-076
+    type: requirement
+    title: "WF-008: Capture field evidence through connectivity loss"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-076
+    status: approved
+  - id: REQ-077
+    type: requirement
+    title: "WF-008: Respect cross-organization authority boundaries"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-077
+    status: approved
+  - id: REQ-078
+    type: requirement
+    title: "WF-008: Keep regulated evidence defensible"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-078
+    status: approved
+  - id: REQ-079
+    type: requirement
+    title: "WF-008: Preserve authoritative record versions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-079
+    status: approved
+  - id: REQ-080
+    type: requirement
+    title: "WF-008: Close work with evidence and accountable verification"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-080
+    status: approved
+  - id: REQ-081
+    type: requirement
+    title: "WF-009: Make accountable decisions from current evidence"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-081
+    status: approved
+  - id: REQ-082
+    type: requirement
+    title: "WF-009: Advance only valid canonical transitions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-082
+    status: approved
+  - id: REQ-083
+    type: requirement
+    title: "WF-009: Resolve stable scope and record identity"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-083
+    status: approved
+  - id: REQ-084
+    type: requirement
+    title: "WF-009: Contain exceptions without losing completed work"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-084
+    status: approved
+  - id: REQ-085
+    type: requirement
+    title: "WF-009: Inspect attributable append-only history"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-085
+    status: approved
+  - id: REQ-086
+    type: requirement
+    title: "WF-009: Capture field evidence through connectivity loss"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-086
+    status: approved
+  - id: REQ-087
+    type: requirement
+    title: "WF-009: Respect cross-organization authority boundaries"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-087
+    status: approved
+  - id: REQ-088
+    type: requirement
+    title: "WF-009: Keep regulated evidence defensible"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-088
+    status: approved
+  - id: REQ-089
+    type: requirement
+    title: "WF-009: Correct records through explicit supersession"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-089
+    status: approved
+  - id: REQ-090
+    type: requirement
+    title: "WF-009: Close work with evidence and accountable verification"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-090
+    status: approved
+  - id: REQ-091
+    type: requirement
+    title: "WF-010: Make accountable decisions from current evidence"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-091
+    status: approved
+  - id: REQ-092
+    type: requirement
+    title: "WF-010: Advance only valid canonical transitions"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-092
+    status: approved
+  - id: REQ-093
+    type: requirement
+    title: "WF-010: Resolve stable scope and record identity"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-093
+    status: approved
+  - id: REQ-094
+    type: requirement
+    title: "WF-010: Contain exceptions without losing completed work"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-094
+    status: approved
+  - id: REQ-095
+    type: requirement
+    title: "WF-010: Inspect attributable append-only history"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-095
+    status: approved
+  - id: REQ-096
+    type: requirement
+    title: "WF-010: Capture field evidence through connectivity loss"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-096
+    status: approved
+  - id: REQ-097
+    type: requirement
+    title: "WF-010: Respect cross-organization authority boundaries"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-097
+    status: approved
+  - id: REQ-098
+    type: requirement
+    title: "WF-010: Keep regulated evidence defensible"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-098
+    status: approved
+  - id: REQ-099
+    type: requirement
+    title: "WF-010: Correct records through explicit supersession"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-099
+    status: approved
+  - id: REQ-100
+    type: requirement
+    title: "WF-010: Close work with evidence and accountable verification"
+    path: product-structure/requirements.json
+    locator: json_id:REQ-100
+    status: approved
   - id: SCR-001
     type: screen
-    title: Morning dispatch board
-    path: screens/walking-slice.json
+    title: Daily operations brief
+    path: product-structure/screens.json
     locator: json_id:SCR-001
-    status: review
+    status: approved
+  - id: SCR-002
+    type: screen
+    title: Seasonal plan
+    path: product-structure/screens.json
+    locator: json_id:SCR-002
+    status: approved
+  - id: SCR-003
+    type: screen
+    title: Work plan detail
+    path: product-structure/screens.json
+    locator: json_id:SCR-003
+    status: approved
+  - id: SCR-004
+    type: screen
+    title: Dispatch board
+    path: product-structure/screens.json
+    locator: json_id:SCR-004
+    status: approved
+  - id: SCR-005
+    type: screen
+    title: Field assignment
+    path: product-structure/screens.json
+    locator: json_id:SCR-005
+    status: approved
+  - id: SCR-006
+    type: screen
+    title: Verification and history
+    path: product-structure/screens.json
+    locator: json_id:SCR-006
+    status: approved
+  - id: SCR-007
+    type: screen
+    title: Monitoring queue
+    path: product-structure/screens.json
+    locator: json_id:SCR-007
+    status: approved
+  - id: SCR-008
+    type: screen
+    title: Scout capture
+    path: product-structure/screens.json
+    locator: json_id:SCR-008
+    status: approved
+  - id: SCR-009
+    type: screen
+    title: Pressure assessment
+    path: product-structure/screens.json
+    locator: json_id:SCR-009
+    status: approved
+  - id: SCR-010
+    type: screen
+    title: Treatment recommendation
+    path: product-structure/screens.json
+    locator: json_id:SCR-010
+    status: approved
+  - id: SCR-011
+    type: screen
+    title: Preflight and schedule
+    path: product-structure/screens.json
+    locator: json_id:SCR-011
+    status: approved
+  - id: SCR-012
+    type: screen
+    title: Application execution
+    path: product-structure/screens.json
+    locator: json_id:SCR-012
+    status: approved
+  - id: SCR-013
+    type: screen
+    title: Water demand
+    path: product-structure/screens.json
+    locator: json_id:SCR-013
+    status: approved
+  - id: SCR-014
+    type: screen
+    title: Condition observation
+    path: product-structure/screens.json
+    locator: json_id:SCR-014
+    status: approved
+  - id: SCR-015
+    type: screen
+    title: Irrigation schedule builder
+    path: product-structure/screens.json
+    locator: json_id:SCR-015
+    status: approved
+  - id: SCR-016
+    type: screen
+    title: Field delivery control
+    path: product-structure/screens.json
+    locator: json_id:SCR-016
+    status: approved
+  - id: SCR-017
+    type: screen
+    title: Interruption recovery
+    path: product-structure/screens.json
+    locator: json_id:SCR-017
+    status: approved
+  - id: SCR-018
+    type: screen
+    title: Resource verification
+    path: product-structure/screens.json
+    locator: json_id:SCR-018
+    status: approved
+  - id: SCR-019
+    type: screen
+    title: Estimate calendar
+    path: product-structure/screens.json
+    locator: json_id:SCR-019
+    status: approved
+  - id: SCR-020
+    type: screen
+    title: Sampling plan
+    path: product-structure/screens.json
+    locator: json_id:SCR-020
+    status: approved
+  - id: SCR-021
+    type: screen
+    title: Sample capture
+    path: product-structure/screens.json
+    locator: json_id:SCR-021
+    status: approved
+  - id: SCR-022
+    type: screen
+    title: Estimate calculation
+    path: product-structure/screens.json
+    locator: json_id:SCR-022
+    status: approved
+  - id: SCR-023
+    type: screen
+    title: Forecast review
+    path: product-structure/screens.json
+    locator: json_id:SCR-023
+    status: approved
+  - id: SCR-024
+    type: screen
+    title: Revision history
+    path: product-structure/screens.json
+    locator: json_id:SCR-024
+    status: approved
+  - id: SCR-025
+    type: screen
+    title: Maturity board
+    path: product-structure/screens.json
+    locator: json_id:SCR-025
+    status: approved
+  - id: SCR-026
+    type: screen
+    title: Sample chain of identity
+    path: product-structure/screens.json
+    locator: json_id:SCR-026
+    status: approved
+  - id: SCR-027
+    type: screen
+    title: Lab result inbox
+    path: product-structure/screens.json
+    locator: json_id:SCR-027
+    status: approved
+  - id: SCR-028
+    type: screen
+    title: Readiness assessment
+    path: product-structure/screens.json
+    locator: json_id:SCR-028
+    status: approved
+  - id: SCR-029
+    type: screen
+    title: Pick proposal
+    path: product-structure/screens.json
+    locator: json_id:SCR-029
+    status: approved
+  - id: SCR-030
+    type: screen
+    title: Authorization timeline
+    path: product-structure/screens.json
+    locator: json_id:SCR-030
+    status: approved
+  - id: SCR-031
+    type: screen
+    title: Harvest command
+    path: product-structure/screens.json
+    locator: json_id:SCR-031
+    status: approved
+  - id: SCR-032
+    type: screen
+    title: Pick-run staging
+    path: product-structure/screens.json
+    locator: json_id:SCR-032
+    status: approved
+  - id: SCR-033
+    type: screen
+    title: Load creation
+    path: product-structure/screens.json
+    locator: json_id:SCR-033
+    status: approved
+  - id: SCR-034
+    type: screen
+    title: Transport tracking
+    path: product-structure/screens.json
+    locator: json_id:SCR-034
+    status: approved
+  - id: SCR-035
+    type: screen
+    title: Intake identity
+    path: product-structure/screens.json
+    locator: json_id:SCR-035
+    status: approved
+  - id: SCR-036
+    type: screen
+    title: Quality disposition
+    path: product-structure/screens.json
+    locator: json_id:SCR-036
+    status: approved
+  - id: SCR-037
+    type: screen
+    title: Reconciliation workspace
+    path: product-structure/screens.json
+    locator: json_id:SCR-037
+    status: approved
+  - id: SCR-038
+    type: screen
+    title: Settlement evidence
+    path: product-structure/screens.json
+    locator: json_id:SCR-038
+    status: approved
+  - id: SCR-039
+    type: screen
+    title: Labor demand
+    path: product-structure/screens.json
+    locator: json_id:SCR-039
+    status: approved
+  - id: SCR-040
+    type: screen
+    title: Crew schedule
+    path: product-structure/screens.json
+    locator: json_id:SCR-040
+    status: approved
+  - id: SCR-041
+    type: screen
+    title: Check-in kiosk
+    path: product-structure/screens.json
+    locator: json_id:SCR-041
+    status: approved
+  - id: SCR-042
+    type: screen
+    title: Crew workboard
+    path: product-structure/screens.json
+    locator: json_id:SCR-042
+    status: approved
+  - id: SCR-043
+    type: screen
+    title: Time review
+    path: product-structure/screens.json
+    locator: json_id:SCR-043
+    status: approved
+  - id: SCR-044
+    type: screen
+    title: Payroll exception
+    path: product-structure/screens.json
+    locator: json_id:SCR-044
+    status: approved
+  - id: SCR-045
+    type: screen
+    title: Cost allocation
+    path: product-structure/screens.json
+    locator: json_id:SCR-045
+    status: approved
+  - id: SCR-046
+    type: screen
+    title: Resource demand
+    path: product-structure/screens.json
+    locator: json_id:SCR-046
+    status: approved
+  - id: SCR-047
+    type: screen
+    title: Availability check
+    path: product-structure/screens.json
+    locator: json_id:SCR-047
+    status: approved
+  - id: SCR-048
+    type: screen
+    title: Purchase request
+    path: product-structure/screens.json
+    locator: json_id:SCR-048
+    status: approved
+  - id: SCR-049
+    type: screen
+    title: Receiving and lot identity
+    path: product-structure/screens.json
+    locator: json_id:SCR-049
+    status: approved
+  - id: SCR-050
+    type: screen
+    title: Staging and readiness
+    path: product-structure/screens.json
+    locator: json_id:SCR-050
+    status: approved
+  - id: SCR-051
+    type: screen
+    title: Failure and repair
+    path: product-structure/screens.json
+    locator: json_id:SCR-051
+    status: approved
+  - id: SCR-052
+    type: screen
+    title: Resource cost reconciliation
+    path: product-structure/screens.json
+    locator: json_id:SCR-052
+    status: approved
+  - id: SCR-053
+    type: screen
+    title: Grower portfolio
+    path: product-structure/screens.json
+    locator: json_id:SCR-053
+    status: approved
+  - id: SCR-054
+    type: screen
+    title: Block identity resolution
+    path: product-structure/screens.json
+    locator: json_id:SCR-054
+    status: approved
+  - id: SCR-055
+    type: screen
+    title: Due-diligence workspace
+    path: product-structure/screens.json
+    locator: json_id:SCR-055
+    status: approved
+  - id: SCR-056
+    type: screen
+    title: Terms workspace
+    path: product-structure/screens.json
+    locator: json_id:SCR-056
+    status: approved
+  - id: SCR-057
+    type: screen
+    title: Relationship health
+    path: product-structure/screens.json
+    locator: json_id:SCR-057
+    status: approved
+  - id: SCR-058
+    type: screen
+    title: Corrective action and dispute
+    path: product-structure/screens.json
+    locator: json_id:SCR-058
+    status: approved
+  - id: SCR-059
+    type: screen
+    title: History and renewal
+    path: product-structure/screens.json
+    locator: json_id:SCR-059
+    status: approved
+  - id: SCR-060
+    type: screen
+    title: Compliance coverage
+    path: product-structure/screens.json
+    locator: json_id:SCR-060
+    status: approved
+  - id: SCR-061
+    type: screen
+    title: Requirement map
+    path: product-structure/screens.json
+    locator: json_id:SCR-061
+    status: approved
+  - id: SCR-062
+    type: screen
+    title: Evidence workbench
+    path: product-structure/screens.json
+    locator: json_id:SCR-062
+    status: approved
+  - id: SCR-063
+    type: screen
+    title: Gap resolution
+    path: product-structure/screens.json
+    locator: json_id:SCR-063
+    status: approved
+  - id: SCR-064
+    type: screen
+    title: Package review
+    path: product-structure/screens.json
+    locator: json_id:SCR-064
+    status: approved
+  - id: SCR-065
+    type: screen
+    title: Submission portal
+    path: product-structure/screens.json
+    locator: json_id:SCR-065
+    status: approved
+  - id: SCR-066
+    type: screen
+    title: Audit findings
+    path: product-structure/screens.json
+    locator: json_id:SCR-066
+    status: approved
+  - id: SCR-067
+    type: screen
+    title: Certification archive
+    path: product-structure/screens.json
+    locator: json_id:SCR-067
+    status: approved
   - id: CMP-001
     type: component
-    title: WorkOrderQueue
-    path: design-system/walking-slice-components.json
+    title: Work order queue
+    path: product-structure/component-requirements.json
     locator: json_id:CMP-001
+    status: approved
+  - id: CMP-002
+    type: component
+    title: App shell
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-002
+    status: review
+  - id: CMP-003
+    type: component
+    title: Role and scope switcher
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-003
+    status: review
+  - id: CMP-004
+    type: component
+    title: Block identity chip
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-004
+    status: review
+  - id: CMP-005
+    type: component
+    title: Record provenance panel
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-005
+    status: review
+  - id: CMP-006
+    type: component
+    title: Workflow state rail
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-006
+    status: review
+  - id: CMP-007
+    type: component
+    title: Transition action bar
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-007
+    status: review
+  - id: CMP-008
+    type: component
+    title: Decision evidence panel
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-008
+    status: review
+  - id: CMP-009
+    type: component
+    title: Missing information callout
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-009
+    status: review
+  - id: CMP-010
+    type: component
+    title: Exception card
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-010
+    status: review
+  - id: CMP-011
+    type: component
+    title: Recovery checklist
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-011
+    status: review
+  - id: CMP-012
+    type: component
+    title: Partial scope meter
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-012
+    status: review
+  - id: CMP-013
+    type: component
+    title: Correction lineage
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-013
+    status: review
+  - id: CMP-014
+    type: component
+    title: Audit timeline
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-014
+    status: review
+  - id: CMP-015
+    type: component
+    title: Offline queue indicator
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-015
+    status: review
+  - id: CMP-016
+    type: component
+    title: Sync conflict resolver
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-016
+    status: review
+  - id: CMP-017
+    type: component
+    title: Staleness badge
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-017
+    status: review
+  - id: CMP-018
+    type: component
+    title: Notification center
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-018
+    status: review
+  - id: CMP-019
+    type: component
+    title: Escalation clock
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-019
+    status: review
+  - id: CMP-020
+    type: component
+    title: Assignment roster
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-020
+    status: review
+  - id: CMP-021
+    type: component
+    title: Block and row selector
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-021
+    status: review
+  - id: CMP-022
+    type: component
+    title: Date and effective-time control
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-022
+    status: review
+  - id: CMP-023
+    type: component
+    title: Sample chain panel
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-023
+    status: review
+  - id: CMP-024
+    type: component
+    title: Trend chart
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-024
+    status: review
+  - id: CMP-025
+    type: component
+    title: Forecast range
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-025
+    status: review
+  - id: CMP-026
+    type: component
+    title: Map scope viewer
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-026
+    status: review
+  - id: CMP-027
+    type: component
+    title: Load identity card
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-027
+    status: review
+  - id: CMP-028
+    type: component
+    title: Quality disposition panel
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-028
+    status: review
+  - id: CMP-029
+    type: component
+    title: Contract authority banner
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-029
+    status: review
+  - id: CMP-030
+    type: component
+    title: Evidence completeness meter
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-030
+    status: review
+  - id: CMP-031
+    type: component
+    title: Requirement coverage matrix
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-031
+    status: review
+  - id: CMP-032
+    type: component
+    title: Finding and corrective action
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-032
+    status: review
+  - id: CMP-033
+    type: component
+    title: Approval chain
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-033
+    status: review
+  - id: CMP-034
+    type: component
+    title: Reconciliation comparison
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-034
+    status: review
+  - id: CMP-035
+    type: component
+    title: Export evidence packet
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-035
+    status: review
+  - id: CMP-036
+    type: component
+    title: Accessible status legend
+    path: product-structure/component-requirements.json
+    locator: json_id:CMP-036
     status: review
   - id: PKT-001
     type: construction_packet
-    title: Morning dispatch and blocked-work recovery
+    title: Morning dispatch and blocked-work redispatch
     path: construction-packets/walking-slice.json
     locator: json_id:PKT-001
-    status: review
+    status: approved

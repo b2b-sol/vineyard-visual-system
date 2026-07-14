@@ -1,0 +1,468 @@
+{
+  "schema_version": "1.0",
+  "principles": [
+    "Stable scope identity precedes workflow state and actions.",
+    "Today is role-aware; records and history remain entity-centered and durable.",
+    "Exceptions are filtered views over canonical workflow state, not a parallel task system.",
+    "Desktop plans and supervises; mobile executes and captures; both share the same event and record contracts.",
+    "Cross-organization views reveal authority and provenance at every handoff."
+  ],
+  "global_sections": [
+    {
+      "id": "today",
+      "label": "Today",
+      "route": "/today",
+      "purpose": "Role-aware priorities, clocks, pending acknowledgements, and sync consequences"
+    },
+    {
+      "id": "plan",
+      "label": "Plan",
+      "route": "/plan",
+      "purpose": "Seasonal, daily, crop, labor, resource, forecast, and evidence planning"
+    },
+    {
+      "id": "execute",
+      "label": "Execute",
+      "route": "/execute",
+      "purpose": "Assigned field and operational actions with offline-safe capture"
+    },
+    {
+      "id": "verify",
+      "label": "Verify",
+      "route": "/verify",
+      "purpose": "Approvals, verification, reconciliation, acceptance, and certification"
+    },
+    {
+      "id": "records",
+      "label": "Records",
+      "route": "/records",
+      "purpose": "Stable block, contract, work, sample, load, evidence, and audit lineage"
+    },
+    {
+      "id": "exceptions",
+      "label": "Exceptions",
+      "route": "/exceptions",
+      "purpose": "Blocked, delayed, stale, conflict, correction, dispute, and corrective-action queues"
+    },
+    {
+      "id": "administration",
+      "label": "Administration",
+      "route": "/administration",
+      "purpose": "Organizations, roles, scope, delegation, integrations, and policy"
+    }
+  ],
+  "entity_routes": [
+    "organizations/:organizationId",
+    "properties/:propertyId",
+    "blocks/:blockId",
+    "contracts/:contractId",
+    "workflows/:workflowId/instances/:workflowInstanceId",
+    "records/:recordInstanceId",
+    "exceptions/:exceptionHistoryId",
+    "people/:personId/assignments/:assignmentId"
+  ],
+  "screen_routes": [
+    {
+      "screen_id": "SCR-001",
+      "route": "/workflows/wf-001/daily-operations-brief",
+      "section": "today",
+      "parent_route": "/workflows/wf-001"
+    },
+    {
+      "screen_id": "SCR-002",
+      "route": "/workflows/wf-001/seasonal-plan",
+      "section": "plan",
+      "parent_route": "/workflows/wf-001"
+    },
+    {
+      "screen_id": "SCR-003",
+      "route": "/workflows/wf-001/work-plan-detail",
+      "section": "execute",
+      "parent_route": "/workflows/wf-001"
+    },
+    {
+      "screen_id": "SCR-004",
+      "route": "/workflows/wf-001/dispatch-board",
+      "section": "execute",
+      "parent_route": "/workflows/wf-001"
+    },
+    {
+      "screen_id": "SCR-005",
+      "route": "/workflows/wf-001/field-assignment",
+      "section": "verify",
+      "parent_route": "/workflows/wf-001"
+    },
+    {
+      "screen_id": "SCR-006",
+      "route": "/workflows/wf-001/verification-and-history",
+      "section": "records",
+      "parent_route": "/workflows/wf-001"
+    },
+    {
+      "screen_id": "SCR-007",
+      "route": "/workflows/wf-002/monitoring-queue",
+      "section": "today",
+      "parent_route": "/workflows/wf-002"
+    },
+    {
+      "screen_id": "SCR-008",
+      "route": "/workflows/wf-002/scout-capture",
+      "section": "plan",
+      "parent_route": "/workflows/wf-002"
+    },
+    {
+      "screen_id": "SCR-009",
+      "route": "/workflows/wf-002/pressure-assessment",
+      "section": "execute",
+      "parent_route": "/workflows/wf-002"
+    },
+    {
+      "screen_id": "SCR-010",
+      "route": "/workflows/wf-002/treatment-recommendation",
+      "section": "execute",
+      "parent_route": "/workflows/wf-002"
+    },
+    {
+      "screen_id": "SCR-011",
+      "route": "/workflows/wf-002/preflight-and-schedule",
+      "section": "verify",
+      "parent_route": "/workflows/wf-002"
+    },
+    {
+      "screen_id": "SCR-012",
+      "route": "/workflows/wf-002/application-execution",
+      "section": "records",
+      "parent_route": "/workflows/wf-002"
+    },
+    {
+      "screen_id": "SCR-013",
+      "route": "/workflows/wf-003/water-demand",
+      "section": "today",
+      "parent_route": "/workflows/wf-003"
+    },
+    {
+      "screen_id": "SCR-014",
+      "route": "/workflows/wf-003/condition-observation",
+      "section": "plan",
+      "parent_route": "/workflows/wf-003"
+    },
+    {
+      "screen_id": "SCR-015",
+      "route": "/workflows/wf-003/irrigation-schedule-builder",
+      "section": "execute",
+      "parent_route": "/workflows/wf-003"
+    },
+    {
+      "screen_id": "SCR-016",
+      "route": "/workflows/wf-003/field-delivery-control",
+      "section": "execute",
+      "parent_route": "/workflows/wf-003"
+    },
+    {
+      "screen_id": "SCR-017",
+      "route": "/workflows/wf-003/interruption-recovery",
+      "section": "verify",
+      "parent_route": "/workflows/wf-003"
+    },
+    {
+      "screen_id": "SCR-018",
+      "route": "/workflows/wf-003/resource-verification",
+      "section": "records",
+      "parent_route": "/workflows/wf-003"
+    },
+    {
+      "screen_id": "SCR-019",
+      "route": "/workflows/wf-004/estimate-calendar",
+      "section": "today",
+      "parent_route": "/workflows/wf-004"
+    },
+    {
+      "screen_id": "SCR-020",
+      "route": "/workflows/wf-004/sampling-plan",
+      "section": "plan",
+      "parent_route": "/workflows/wf-004"
+    },
+    {
+      "screen_id": "SCR-021",
+      "route": "/workflows/wf-004/sample-capture",
+      "section": "execute",
+      "parent_route": "/workflows/wf-004"
+    },
+    {
+      "screen_id": "SCR-022",
+      "route": "/workflows/wf-004/estimate-calculation",
+      "section": "execute",
+      "parent_route": "/workflows/wf-004"
+    },
+    {
+      "screen_id": "SCR-023",
+      "route": "/workflows/wf-004/forecast-review",
+      "section": "verify",
+      "parent_route": "/workflows/wf-004"
+    },
+    {
+      "screen_id": "SCR-024",
+      "route": "/workflows/wf-004/revision-history",
+      "section": "records",
+      "parent_route": "/workflows/wf-004"
+    },
+    {
+      "screen_id": "SCR-025",
+      "route": "/workflows/wf-005/maturity-board",
+      "section": "today",
+      "parent_route": "/workflows/wf-005"
+    },
+    {
+      "screen_id": "SCR-026",
+      "route": "/workflows/wf-005/sample-chain-of-identity",
+      "section": "plan",
+      "parent_route": "/workflows/wf-005"
+    },
+    {
+      "screen_id": "SCR-027",
+      "route": "/workflows/wf-005/lab-result-inbox",
+      "section": "execute",
+      "parent_route": "/workflows/wf-005"
+    },
+    {
+      "screen_id": "SCR-028",
+      "route": "/workflows/wf-005/readiness-assessment",
+      "section": "execute",
+      "parent_route": "/workflows/wf-005"
+    },
+    {
+      "screen_id": "SCR-029",
+      "route": "/workflows/wf-005/pick-proposal",
+      "section": "verify",
+      "parent_route": "/workflows/wf-005"
+    },
+    {
+      "screen_id": "SCR-030",
+      "route": "/workflows/wf-005/authorization-timeline",
+      "section": "records",
+      "parent_route": "/workflows/wf-005"
+    },
+    {
+      "screen_id": "SCR-031",
+      "route": "/workflows/wf-006/harvest-command",
+      "section": "today",
+      "parent_route": "/workflows/wf-006"
+    },
+    {
+      "screen_id": "SCR-032",
+      "route": "/workflows/wf-006/pick-run-staging",
+      "section": "plan",
+      "parent_route": "/workflows/wf-006"
+    },
+    {
+      "screen_id": "SCR-033",
+      "route": "/workflows/wf-006/load-creation",
+      "section": "plan",
+      "parent_route": "/workflows/wf-006"
+    },
+    {
+      "screen_id": "SCR-034",
+      "route": "/workflows/wf-006/transport-tracking",
+      "section": "execute",
+      "parent_route": "/workflows/wf-006"
+    },
+    {
+      "screen_id": "SCR-035",
+      "route": "/workflows/wf-006/intake-identity",
+      "section": "execute",
+      "parent_route": "/workflows/wf-006"
+    },
+    {
+      "screen_id": "SCR-036",
+      "route": "/workflows/wf-006/quality-disposition",
+      "section": "execute",
+      "parent_route": "/workflows/wf-006"
+    },
+    {
+      "screen_id": "SCR-037",
+      "route": "/workflows/wf-006/reconciliation-workspace",
+      "section": "verify",
+      "parent_route": "/workflows/wf-006"
+    },
+    {
+      "screen_id": "SCR-038",
+      "route": "/workflows/wf-006/settlement-evidence",
+      "section": "records",
+      "parent_route": "/workflows/wf-006"
+    },
+    {
+      "screen_id": "SCR-039",
+      "route": "/workflows/wf-007/labor-demand",
+      "section": "today",
+      "parent_route": "/workflows/wf-007"
+    },
+    {
+      "screen_id": "SCR-040",
+      "route": "/workflows/wf-007/crew-schedule",
+      "section": "plan",
+      "parent_route": "/workflows/wf-007"
+    },
+    {
+      "screen_id": "SCR-041",
+      "route": "/workflows/wf-007/check-in-kiosk",
+      "section": "plan",
+      "parent_route": "/workflows/wf-007"
+    },
+    {
+      "screen_id": "SCR-042",
+      "route": "/workflows/wf-007/crew-workboard",
+      "section": "execute",
+      "parent_route": "/workflows/wf-007"
+    },
+    {
+      "screen_id": "SCR-043",
+      "route": "/workflows/wf-007/time-review",
+      "section": "execute",
+      "parent_route": "/workflows/wf-007"
+    },
+    {
+      "screen_id": "SCR-044",
+      "route": "/workflows/wf-007/payroll-exception",
+      "section": "verify",
+      "parent_route": "/workflows/wf-007"
+    },
+    {
+      "screen_id": "SCR-045",
+      "route": "/workflows/wf-007/cost-allocation",
+      "section": "records",
+      "parent_route": "/workflows/wf-007"
+    },
+    {
+      "screen_id": "SCR-046",
+      "route": "/workflows/wf-008/resource-demand",
+      "section": "today",
+      "parent_route": "/workflows/wf-008"
+    },
+    {
+      "screen_id": "SCR-047",
+      "route": "/workflows/wf-008/availability-check",
+      "section": "plan",
+      "parent_route": "/workflows/wf-008"
+    },
+    {
+      "screen_id": "SCR-048",
+      "route": "/workflows/wf-008/purchase-request",
+      "section": "plan",
+      "parent_route": "/workflows/wf-008"
+    },
+    {
+      "screen_id": "SCR-049",
+      "route": "/workflows/wf-008/receiving-and-lot-identity",
+      "section": "execute",
+      "parent_route": "/workflows/wf-008"
+    },
+    {
+      "screen_id": "SCR-050",
+      "route": "/workflows/wf-008/staging-and-readiness",
+      "section": "execute",
+      "parent_route": "/workflows/wf-008"
+    },
+    {
+      "screen_id": "SCR-051",
+      "route": "/workflows/wf-008/failure-and-repair",
+      "section": "verify",
+      "parent_route": "/workflows/wf-008"
+    },
+    {
+      "screen_id": "SCR-052",
+      "route": "/workflows/wf-008/resource-cost-reconciliation",
+      "section": "records",
+      "parent_route": "/workflows/wf-008"
+    },
+    {
+      "screen_id": "SCR-053",
+      "route": "/workflows/wf-009/grower-portfolio",
+      "section": "today",
+      "parent_route": "/workflows/wf-009"
+    },
+    {
+      "screen_id": "SCR-054",
+      "route": "/workflows/wf-009/block-identity-resolution",
+      "section": "plan",
+      "parent_route": "/workflows/wf-009"
+    },
+    {
+      "screen_id": "SCR-055",
+      "route": "/workflows/wf-009/due-diligence-workspace",
+      "section": "plan",
+      "parent_route": "/workflows/wf-009"
+    },
+    {
+      "screen_id": "SCR-056",
+      "route": "/workflows/wf-009/terms-workspace",
+      "section": "execute",
+      "parent_route": "/workflows/wf-009"
+    },
+    {
+      "screen_id": "SCR-057",
+      "route": "/workflows/wf-009/relationship-health",
+      "section": "execute",
+      "parent_route": "/workflows/wf-009"
+    },
+    {
+      "screen_id": "SCR-058",
+      "route": "/workflows/wf-009/corrective-action-and-dispute",
+      "section": "verify",
+      "parent_route": "/workflows/wf-009"
+    },
+    {
+      "screen_id": "SCR-059",
+      "route": "/workflows/wf-009/history-and-renewal",
+      "section": "records",
+      "parent_route": "/workflows/wf-009"
+    },
+    {
+      "screen_id": "SCR-060",
+      "route": "/workflows/wf-010/compliance-coverage",
+      "section": "today",
+      "parent_route": "/workflows/wf-010"
+    },
+    {
+      "screen_id": "SCR-061",
+      "route": "/workflows/wf-010/requirement-map",
+      "section": "plan",
+      "parent_route": "/workflows/wf-010"
+    },
+    {
+      "screen_id": "SCR-062",
+      "route": "/workflows/wf-010/evidence-workbench",
+      "section": "plan",
+      "parent_route": "/workflows/wf-010"
+    },
+    {
+      "screen_id": "SCR-063",
+      "route": "/workflows/wf-010/gap-resolution",
+      "section": "execute",
+      "parent_route": "/workflows/wf-010"
+    },
+    {
+      "screen_id": "SCR-064",
+      "route": "/workflows/wf-010/package-review",
+      "section": "execute",
+      "parent_route": "/workflows/wf-010"
+    },
+    {
+      "screen_id": "SCR-065",
+      "route": "/workflows/wf-010/submission-portal",
+      "section": "execute",
+      "parent_route": "/workflows/wf-010"
+    },
+    {
+      "screen_id": "SCR-066",
+      "route": "/workflows/wf-010/audit-findings",
+      "section": "verify",
+      "parent_route": "/workflows/wf-010"
+    },
+    {
+      "screen_id": "SCR-067",
+      "route": "/workflows/wf-010/certification-archive",
+      "section": "records",
+      "parent_route": "/workflows/wf-010"
+    }
+  ]
+}

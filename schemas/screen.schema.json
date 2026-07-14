@@ -19,6 +19,7 @@
     "route"
   ],
   "properties": {
+    "contract_version": { "const": "2.0" },
     "id": { "type": "string", "pattern": "^SCR-[0-9]{3}$" },
     "name": { "type": "string", "minLength": 3 },
     "platform": {
@@ -42,6 +43,44 @@
       "uniqueItems": true,
       "items": { "type": "string", "pattern": "^FIX-[0-9]{3}$" }
     },
+    "requirement_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^REQ-[0-9]{3}$" }
+    },
+    "primary_role_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" }
+    },
+    "review_role_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" }
+    },
+    "information_architecture": {
+      "type": "object",
+      "required": ["section", "navigation_label", "parent_route"],
+      "properties": {
+        "section": {
+          "enum": [
+            "today",
+            "plan",
+            "execute",
+            "verify",
+            "records",
+            "exceptions",
+            "administration"
+          ]
+        },
+        "navigation_label": { "type": "string", "minLength": 3 },
+        "parent_route": { "type": "string", "pattern": "^/" }
+      },
+      "additionalProperties": false
+    },
     "purpose": { "type": "string", "minLength": 15 },
     "primary_decision": { "type": "string", "minLength": 10 },
     "data_shown": {
@@ -62,12 +101,188 @@
           "kind": {
             "enum": ["inspect", "advance", "resolve", "correct", "supersede"]
           },
+          "semantic_kind": {
+            "enum": [
+              "observation",
+              "recommendation",
+              "approval",
+              "assignment",
+              "acknowledgement",
+              "execution",
+              "completion",
+              "verification",
+              "reconciliation",
+              "correction",
+              "supersession",
+              "recovery",
+              "exception",
+              "inspection"
+            ]
+          },
+          "scenario_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^SCN-[0-9]{3}-[0-9]{2}$"
+            }
+          },
+          "evidence_status": {
+            "enum": ["fixture_realized", "canonical_branch"]
+          },
+          "permission_rule_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^PERM-[0-9]{3}$" }
+          },
+          "notification_rule_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^NOT-[0-9]{3}$" }
+          },
+          "sync_class_id": {
+            "type": "string",
+            "pattern": "^SYNC-[0-9]{3}$"
+          },
           "transition": {
             "type": "object",
             "required": ["from", "to"],
             "properties": {
-              "from": { "type": "string", "minLength": 2 },
+              "workflow_id": {
+                "type": "string",
+                "pattern": "^WF-[0-9]{3}$"
+              },
+              "transition_id": {
+                "type": "string",
+                "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$"
+              },
+              "from": { "type": ["string", "null"], "minLength": 2 },
               "to": { "type": "string", "minLength": 2 }
+            },
+            "additionalProperties": false
+          },
+          "permission": {
+            "type": "object",
+            "required": [
+              "allowed_role_ids",
+              "scope_match",
+              "denied_behavior",
+              "delegation"
+            ],
+            "properties": {
+              "allowed_role_ids": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^ROLE-[A-Z0-9-]+$"
+                }
+              },
+              "scope_match": {
+                "enum": [
+                  "assigned_scope",
+                  "managed_scope",
+                  "organization_scope",
+                  "cross_organization_contract"
+                ]
+              },
+              "denied_behavior": { "type": "string", "minLength": 10 },
+              "delegation": {
+                "enum": [
+                  "forbidden",
+                  "explicit_assignment",
+                  "organization_policy"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "notifications": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "recipient_role_ids",
+                "trigger",
+                "channel",
+                "urgency",
+                "acknowledgement_required"
+              ],
+              "properties": {
+                "recipient_role_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^ROLE-[A-Z0-9-]+$"
+                  }
+                },
+                "trigger": { "type": "string", "minLength": 8 },
+                "channel": {
+                  "enum": [
+                    "in_app",
+                    "push",
+                    "email",
+                    "sms",
+                    "dispatch_queue",
+                    "audit_feed"
+                  ]
+                },
+                "urgency": { "enum": ["routine", "attention", "urgent"] },
+                "acknowledgement_required": { "type": "boolean" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "sync": {
+            "type": "object",
+            "required": [
+              "mode",
+              "offline_capable",
+              "conflict_policy",
+              "idempotency_key_source"
+            ],
+            "properties": {
+              "mode": { "enum": ["online", "queueable", "local_first"] },
+              "offline_capable": { "type": "boolean" },
+              "conflict_policy": { "type": "string", "minLength": 12 },
+              "idempotency_key_source": { "type": "string", "minLength": 8 }
+            },
+            "additionalProperties": false
+          },
+          "decision_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^DEC-[0-9]{3}$" }
+          },
+          "record_reads": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^REC-[0-9]{3}$" }
+          },
+          "record_writes": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^REC-[0-9]{3}$" }
+          },
+          "audit": {
+            "type": "object",
+            "required": [
+              "event_kind",
+              "actor_attribution",
+              "immutable",
+              "reason_required",
+              "records_snapshot"
+            ],
+            "properties": {
+              "event_kind": { "type": "string", "minLength": 3 },
+              "actor_attribution": { "const": "assignment_and_person" },
+              "immutable": { "type": "boolean" },
+              "reason_required": { "type": "boolean" },
+              "records_snapshot": { "type": "boolean" }
             },
             "additionalProperties": false
           }
@@ -113,7 +328,16 @@
               "offline",
               "stale",
               "conflict",
-              "completion"
+              "completion",
+              "loading",
+              "empty",
+              "error",
+              "read_only",
+              "approval_pending",
+              "rejected",
+              "superseded",
+              "delayed",
+              "incomplete_information"
             ]
           },
           "description": { "type": "string", "minLength": 8 }
@@ -133,5 +357,92 @@
     "route": { "type": "string", "pattern": "^/" },
     "figma_frame_name": { "type": "string", "minLength": 3 }
   },
+  "allOf": [
+    {
+      "if": {
+        "required": ["contract_version"],
+        "properties": { "contract_version": { "const": "2.0" } }
+      },
+      "then": {
+        "required": [
+          "requirement_ids",
+          "primary_role_ids",
+          "review_role_ids",
+          "information_architecture"
+        ],
+        "properties": {
+          "requirement_ids": {},
+          "primary_role_ids": {},
+          "review_role_ids": {},
+          "information_architecture": {},
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "allOf": [
+                {
+                  "if": {
+                    "properties": { "kind": { "not": { "const": "inspect" } } }
+                  },
+                  "then": {
+                    "type": "object",
+                    "required": [
+                      "semantic_kind",
+                      "scenario_ids",
+                      "evidence_status",
+                      "permission_rule_ids",
+                      "notification_rule_ids",
+                      "sync_class_id",
+                      "transition",
+                      "permission",
+                      "notifications",
+                      "sync",
+                      "decision_ids",
+                      "record_reads",
+                      "record_writes",
+                      "audit"
+                    ],
+                    "properties": {
+                      "semantic_kind": {},
+                      "scenario_ids": {},
+                      "evidence_status": {},
+                      "permission_rule_ids": {},
+                      "notification_rule_ids": {},
+                      "sync_class_id": {},
+                      "transition": {
+                        "type": "object",
+                        "required": [
+                          "workflow_id",
+                          "transition_id",
+                          "from",
+                          "to"
+                        ],
+                        "properties": {
+                          "workflow_id": {},
+                          "transition_id": {},
+                          "from": {},
+                          "to": {}
+                        }
+                      },
+                      "permission": {},
+                      "notifications": {},
+                      "sync": {},
+                      "decision_ids": {},
+                      "record_reads": {},
+                      "record_writes": {},
+                      "audit": {
+                        "type": "object",
+                        "properties": { "immutable": { "const": true } }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
   "additionalProperties": false
 }

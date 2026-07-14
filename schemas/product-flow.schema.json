@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/product-flow.schema.json",
+  "title": "Operational interaction flow",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "workflow_ids",
+    "scenario_ids",
+    "fixture_ids",
+    "operational_chain_ids",
+    "record_link_ids",
+    "platforms",
+    "entry_points",
+    "normal_path",
+    "exception_path",
+    "recovery_path",
+    "completion_path",
+    "screen_ids",
+    "handoff_role_ids",
+    "offline_behavior"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^FLW-[0-9]{3}$" },
+    "title": { "type": "string", "minLength": 8 },
+    "workflow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^WF-[0-9]{3}$" }
+    },
+    "scenario_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^SCN-[0-9]{3}-[0-9]{2}$" }
+    },
+    "fixture_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^FIX-[0-9]{3}$" }
+    },
+    "operational_chain_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^CHN-[0-9]{3}$" }
+    },
+    "record_link_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^LNK-[0-9]{5}$" }
+    },
+    "platforms": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["mobile", "desktop", "responsive", "print"] }
+    },
+    "entry_points": { "$ref": "#/$defs/steps" },
+    "normal_path": { "$ref": "#/$defs/steps" },
+    "exception_path": { "$ref": "#/$defs/steps" },
+    "recovery_path": { "$ref": "#/$defs/steps" },
+    "completion_path": { "$ref": "#/$defs/steps" },
+    "screen_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^SCR-[0-9]{3}$" }
+    },
+    "handoff_role_ids": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" }
+    },
+    "offline_behavior": { "type": "string", "minLength": 20 }
+  },
+  "$defs": {
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "screen_id",
+          "action_id",
+          "actor_role_id",
+          "scenario_id",
+          "fixture_id",
+          "event_id",
+          "transition_id",
+          "record_instance_ids",
+          "intent",
+          "outcome"
+        ],
+        "properties": {
+          "screen_id": { "type": "string", "pattern": "^SCR-[0-9]{3}$" },
+          "action_id": { "type": "string", "pattern": "^ACT-[0-9]{3}$" },
+          "actor_role_id": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" },
+          "scenario_id": {
+            "type": "string",
+            "pattern": "^SCN-[0-9]{3}-[0-9]{2}$"
+          },
+          "fixture_id": { "type": "string", "pattern": "^FIX-[0-9]{3}$" },
+          "event_id": { "type": "string", "pattern": "^EVT-[0-9]{5}$" },
+          "transition_id": {
+            "type": "string",
+            "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$"
+          },
+          "record_instance_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^RCI-[0-9]{5}$" }
+          },
+          "intent": { "type": "string", "minLength": 8 },
+          "outcome": { "type": "string", "minLength": 8 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

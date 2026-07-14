@@ -1,0 +1,505 @@
+{
+  "schema_version": "1.0",
+  "responsibilities": {
+    "mobile": [
+      "assignment acknowledgement",
+      "identity confirmation",
+      "field capture",
+      "safe partial reporting",
+      "offline journal",
+      "exception escalation"
+    ],
+    "desktop": [
+      "multi-scope planning",
+      "comparison",
+      "approval",
+      "cross-organization review",
+      "reconciliation",
+      "evidence packaging"
+    ],
+    "responsive": [
+      "daily brief",
+      "workflow detail",
+      "record history",
+      "notifications",
+      "exception recovery"
+    ],
+    "print": [
+      "field instruction",
+      "posting",
+      "transport affidavit",
+      "audit evidence index"
+    ]
+  },
+  "screens": [
+    {
+      "screen_id": "SCR-001",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-002",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-003",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-004",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-005",
+      "primary_platform": "mobile",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "supervisory_monitor_and_history",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-006",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-007",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-008",
+      "primary_platform": "mobile",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "supervisory_monitor_and_history",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-009",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-010",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-011",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-012",
+      "primary_platform": "mobile",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "supervisory_monitor_and_history",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-013",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-014",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-015",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-016",
+      "primary_platform": "mobile",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "supervisory_monitor_and_history",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-017",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-018",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-019",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-020",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-021",
+      "primary_platform": "mobile",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "supervisory_monitor_and_history",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-022",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-023",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-024",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-025",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-026",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-027",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-028",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-029",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-030",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-031",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-032",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-033",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-034",
+      "primary_platform": "mobile",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "supervisory_monitor_and_history",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-035",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-036",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-037",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-038",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-039",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-040",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-041",
+      "primary_platform": "mobile",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "supervisory_monitor_and_history",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-042",
+      "primary_platform": "mobile",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "supervisory_monitor_and_history",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-043",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-044",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-045",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-046",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-047",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-048",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-049",
+      "primary_platform": "mobile",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "supervisory_monitor_and_history",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-050",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-051",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-052",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-053",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-054",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-055",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-056",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-057",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-058",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-059",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-060",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-061",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-062",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-063",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-064",
+      "primary_platform": "desktop",
+      "mobile_responsibility": "read_only_summary_and_deep_link",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-065",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-066",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    },
+    {
+      "screen_id": "SCR-067",
+      "primary_platform": "responsive",
+      "mobile_responsibility": "full_or_bounded_action",
+      "desktop_responsibility": "full_planning_and_review",
+      "offline_class": "offline_safe"
+    }
+  ]
+}

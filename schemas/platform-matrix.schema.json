@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/platform-matrix.schema.json",
+  "title": "Platform responsibility matrix",
+  "type": "object",
+  "required": ["schema_version", "responsibilities", "screens"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "responsibilities": {
+      "type": "object",
+      "required": ["mobile", "desktop", "responsive", "print"],
+      "properties": {
+        "mobile": { "$ref": "#/$defs/responsibilities" },
+        "desktop": { "$ref": "#/$defs/responsibilities" },
+        "responsive": { "$ref": "#/$defs/responsibilities" },
+        "print": { "$ref": "#/$defs/responsibilities" }
+      },
+      "additionalProperties": false
+    },
+    "screens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "screen_id",
+          "primary_platform",
+          "mobile_responsibility",
+          "desktop_responsibility",
+          "offline_class"
+        ],
+        "properties": {
+          "screen_id": { "type": "string", "pattern": "^SCR-[0-9]{3}$" },
+          "primary_platform": {
+            "enum": ["mobile", "desktop", "tablet", "responsive", "print"]
+          },
+          "mobile_responsibility": { "type": "string", "minLength": 5 },
+          "desktop_responsibility": { "type": "string", "minLength": 5 },
+          "offline_class": {
+            "enum": ["offline_safe", "offline_conditional", "online_required"]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "responsibilities": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    }
+  },
+  "additionalProperties": false
+}

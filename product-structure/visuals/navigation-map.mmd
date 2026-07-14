@@ -1,0 +1,15 @@
+flowchart TD
+  TODAY["Today · role-aware command"]
+  PLAN["Plan"]
+  EXECUTE["Execute"]
+  VERIFY["Verify"]
+  RECORDS["Records and history"]
+  EXCEPTIONS["Exceptions and recovery"]
+  ADMIN["Administration"]
+  TODAY --> PLAN
+  PLAN --> EXECUTE
+  EXECUTE --> VERIFY
+  VERIFY --> RECORDS
+  EXECUTE --> EXCEPTIONS
+  EXCEPTIONS --> EXECUTE
+  ADMIN -. scope and authority .-> TODAY
