@@ -61,3 +61,23 @@ Use `DEC-###` identifiers. Record date, context, decision, alternatives, rationa
 - Rationale: One operational truth prevents approval, acknowledgement, recovery, provenance, and authority semantics from drifting between source, model, data, screens, tests, and handoff artifacts.
 - Affected artifacts: canonical workflow registries, generated visuals, trace registries, WF-001 walking slice, validators, and future scenario/data generation.
 - Reversibility: Low; downstream production waves will rely on these stable identifiers and transition semantics.
+
+## DEC-007 — Deterministic append-only season graph
+
+- Date: 2026-07-13
+- Context: Representative fixtures cannot prove cross-workflow continuity, corrected history, offline recovery, contract-fruit handoffs, or harvest-to-settlement traceability across a complete operating season.
+- Decision: Generate one connected 2026 North Coast composite season from a fixed seed. Keep operational identities stable, record every workflow state change as an append-only event, preserve corrections and supersession rather than rewriting history, and connect shared records through explicit typed links and operational chains. The existing walking slice remains a small regression fixture.
+- Alternatives: Hand-author disconnected examples; replace the walking slice; generate nondeterministic samples at test time; flatten the season into current-state snapshots.
+- Rationale: A reproducible event graph gives every later scenario, screen, prototype, audit, and Figma handoff a coherent source of truth while keeping failures reviewable in version control.
+- Affected artifacts: `data/operation.json`, `data/events.json`, `data/exceptions.json`, `scripts/generate-data.ts`, data schemas, semantic validators, and later scenario and screen fixtures.
+- Reversibility: Medium; the seed and generator can evolve through explicit versions without changing stable canonical ontology identifiers.
+
+## DEC-008 — State-aware synthetic evidence and causal record contracts
+
+- Date: 2026-07-13
+- Context: Structurally valid generated data can still mislead product work when facts appear before they are knowable, links reverse causal direction, corrections change only metadata, or workflow descriptions omit the records required to realize their states.
+- Decision: Treat the synthetic season as an executable knowledge-time graph. Event measurements derive from current transition access; supports, documents, and fulfills links point forward in effective time; corrections and supersessions preserve substantive attributable deltas; named cases must connect to the identities and recovery windows they claim; and canonical state transitions must declare the records their descriptions require. WF-004 actualization therefore reads REC-029 and writes REC-033, while reconciliation reads REC-029 and REC-033 and writes REC-034.
+- Alternatives: Validate structure and counts only; allow completed snapshots on every event; keep record semantics outside the canonical transition contract.
+- Rationale: Scenarios and screens will inherit these fixtures directly, so truthful availability, authority, chronology, identity, and reconciliation matter more than plausible-looking volume.
+- Affected artifacts: `workflow-model/workflows.json`, `scripts/refine-workflow-ontology.mjs`, `scripts/generate-data.ts`, full-season data schemas and validators, `validation/DATA_REVIEW.md`, and downstream scenario fixtures.
+- Reversibility: Low for the semantic rules; individual synthetic values and coverage cases remain regenerable.
