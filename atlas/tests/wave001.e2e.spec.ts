@@ -40,10 +40,7 @@ test.describe("WAVE-001 production atlas", () => {
             .locator(".wave-component-grid [data-component-id]")
             .count(),
         ).toBeGreaterThanOrEqual(3);
-        await expect(screen).toHaveAttribute(
-          "data-state-contract-id",
-          /^STM-/,
-        );
+        await expect(screen).toHaveAttribute("data-state-contract-id", /^STM-/);
         if ((await screen.locator(".wave-model-badge").count()) === 0) {
           await expect(screen).toHaveAttribute("data-scenario-id", /^SCN-/);
         }
@@ -180,7 +177,10 @@ test.describe("WAVE-001 production atlas", () => {
       const action = fieldPage.locator(".wave-action:not(:disabled)").first();
       await expect(action).toBeVisible();
       const box = await action.boundingBox();
-      expect(box, `${screenId} requires an enabled field action`).not.toBeNull();
+      expect(
+        box,
+        `${screenId} requires an enabled field action`,
+      ).not.toBeNull();
       expect(
         box!.y + box!.height,
         `${screenId} action must be visible within 844 px`,

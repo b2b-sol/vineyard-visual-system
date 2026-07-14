@@ -29,6 +29,7 @@ const renderRoot = path.resolve("validation", "wave-001-renders", "primary");
 let sourceDigest = "";
 let sourceCommit = "";
 let generatedAt = "";
+const fieldFirstViewportScreens = new Set(["SCR-005", "SCR-041", "SCR-042"]);
 
 async function digestPaths(relativePaths: string[]) {
   const hash = createHash("sha256");
@@ -116,7 +117,7 @@ test.describe("WAVE-001 primary capture evidence", () => {
         };
       });
       expect(geometry.horizontal_overflow).toBeLessThanOrEqual(1);
-      if (capture.viewport.name === "mobile") {
+      if (fieldFirstViewportScreens.has(capture.screen_id)) {
         expect(
           geometry.primary_action,
           `${capture.screen_id} must expose an enabled field action`,

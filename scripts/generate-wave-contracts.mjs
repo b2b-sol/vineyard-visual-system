@@ -80,7 +80,7 @@ const REVIEW_STATES = new Map([
 ]);
 const PRIMARY_FIXTURES = new Map([
   ["SCR-001", "FIX-002"],
-  ["SCR-002", "FIX-005"],
+  ["SCR-002", "FIX-002"],
   ["SCR-003", "FIX-002"],
   ["SCR-004", "FIX-002"],
   ["SCR-005", "FIX-002"],
