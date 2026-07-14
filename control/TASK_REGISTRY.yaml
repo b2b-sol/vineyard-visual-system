@@ -383,7 +383,7 @@ tasks:
         foundation_system_critic,
         parent_agent,
       ]
-    notes: Canopy Signal selected at 92/100 as a token-bound sunlit fieldbook; all nine exact source-digested renders and the full browser suite pass with no unresolved P0/P1/P2. Validated artifact commit is pending protected PR integration and target-branch provenance reconciliation.
+    notes: Canopy Signal selected at 92/100 as a token-bound sunlit fieldbook; all nine exact source-digested renders and the full browser suite pass with no unresolved P0/P1/P2. G7 remains in progress until protected squash integration provides the immutable target-branch commit required by DEC-005.
   - id: WAVE-001
     title: Deliver plan, dispatch, crew, verification, time, and cost wave
     phase: production_wave

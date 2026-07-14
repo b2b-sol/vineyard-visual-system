@@ -107,7 +107,7 @@
     },
     {
       "id": "G7",
-      "status": "passed",
+      "status": "in_progress",
       "checks": [
         "Three materially distinct lighthouse directions scored against invariant content",
         "Selected thesis clears total and every criterion floor with no hard rejection",
@@ -130,7 +130,7 @@
         "validation/visual-direction-renders",
         "validation/visual-direction-review.md"
       ],
-      "commit_sha": "30ab694f6318a3a1564d6c7f9f1f682c603f850e"
+      "commit_sha": null
     }
   ]
 }
