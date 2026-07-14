@@ -29,7 +29,7 @@ const [
   readJson("product-structure/requirements.json"),
   readJson("product-structure/screens.json"),
   readJson("product-structure/component-requirements.json"),
-  readJson("construction-packets/walking-slice.json"),
+  readJson("construction-packets/packets.json"),
 ]);
 
 const evidence = evidenceDocument.claims;
@@ -119,7 +119,7 @@ const nodes = [
     id: packet.id,
     type: "construction_packet",
     title: packet.title,
-    path: "construction-packets/walking-slice.json",
+    path: "construction-packets/packets.json",
     locator: { kind: "json_id", value: packet.id },
     classification: "implementation_contract",
     status: "approved",
@@ -204,6 +204,14 @@ for (const fixture of legacyFixtureDocument.fixtures)
     "rendered_by",
     `SCR-001 retains the verified rendered walking-slice state, blocker, partial progress, recovery, and completion evidence from ${fixture.id}.`,
   );
+for (const packet of packets)
+  for (const screenId of packet.screen_ids)
+    addEdge(
+      screenId,
+      packet.id,
+      "documented_in",
+      `${packet.id} specifies the complete screen responsibility, state, permission, data, interaction, copy, validation, responsive, accessibility, and Figma handoff contract for ${screenId}.`,
+    );
 for (const packet of packets)
   for (const componentId of packet.component_ids)
     addEdge(

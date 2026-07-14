@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/figma-map-entry.schema.json",
+  "title": "Figma code-to-design artifact mapping",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "id",
+    "figma_name",
+    "stable_key",
+    "code_path",
+    "export_name",
+    "status",
+    "source_sha256"
+  ],
+  "properties": {
+    "artifact_type": { "enum": ["component", "screen", "prototype"] },
+    "id": { "type": "string", "pattern": "^(CMP|SCR|FLW)-[0-9]{3}$" },
+    "figma_name": { "type": "string", "minLength": 3 },
+    "stable_key": { "type": "string", "pattern": "^figma-ready:" },
+    "code_path": { "type": "string", "pattern": "^atlas/src/" },
+    "export_name": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9]*$" },
+    "status": { "enum": ["pending", "implemented"] },
+    "source_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "figma_key": { "type": "string", "pattern": "^vineyard/" },
+    "screen_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^SCR-[0-9]{3}$" }
+    },
+    "route": {
+      "type": "string",
+      "pattern": "^/(screens/SCR|prototypes/FLW)-[0-9]{3}$"
+    },
+    "states": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+    },
+    "sequence_source": {
+      "type": "string",
+      "const": "product-structure/flows.json"
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "implemented" } } },
+      "then": { "properties": { "source_sha256": { "type": "string" } } }
+    },
+    {
+      "if": { "properties": { "artifact_type": { "const": "component" } } },
+      "then": {
+        "required": ["figma_key", "screen_ids"],
+        "properties": { "figma_key": {}, "screen_ids": {} }
+      }
+    },
+    {
+      "if": { "properties": { "artifact_type": { "const": "screen" } } },
+      "then": {
+        "required": ["route", "states"],
+        "properties": { "route": {}, "states": {} }
+      }
+    },
+    {
+      "if": { "properties": { "artifact_type": { "const": "prototype" } } },
+      "then": {
+        "required": ["route", "screen_ids", "sequence_source"],
+        "properties": {
+          "route": {},
+          "screen_ids": {},
+          "sequence_source": {}
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

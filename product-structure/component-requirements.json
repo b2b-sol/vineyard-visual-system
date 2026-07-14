@@ -103,7 +103,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Landmarks, current location, scope changes, and focus restoration are programmatically identified.",
       "figma_key": "vineyard/navigation/app-shell",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-003",
@@ -183,7 +183,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Stable identifiers and aliases are textual, copyable, and announced before any scope switch.",
       "figma_key": "vineyard/identity/role-and-scope-switcher",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-004",
@@ -263,7 +263,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Stable identifiers and aliases are textual, copyable, and announced before any scope switch.",
       "figma_key": "vineyard/identity/block-identity-chip",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-005",
@@ -350,7 +350,7 @@
       ],
       "accessibility_contract": "Version order, predecessor/successor relations, and changes are available as structured text and tables.",
       "figma_key": "vineyard/record/record-provenance-panel",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-006",
@@ -430,7 +430,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Status uses text, icon, shape, and live-region announcements; motion and color are never required to understand it.",
       "figma_key": "vineyard/status/workflow-state-rail",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-007",
@@ -510,7 +510,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Actions are keyboard reachable, announce owner and state consequence, and expose disabled reasons before activation.",
       "figma_key": "vineyard/workflow/transition-action-bar",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-008",
@@ -554,10 +554,9 @@
         "SCR-038",
         "SCR-039",
         "SCR-040",
-        "SCR-041",
+        "SCR-042",
         "SCR-043",
         "SCR-044",
-        "SCR-045",
         "SCR-046",
         "SCR-048",
         "SCR-049",
@@ -590,7 +589,7 @@
       ],
       "accessibility_contract": "Evidence groups have headings, missing facts are enumerated, and the decision consequence is announced on confirmation.",
       "figma_key": "vineyard/decision/decision-evidence-panel",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-009",
@@ -627,7 +626,7 @@
       ],
       "accessibility_contract": "Evidence groups have headings, missing facts are enumerated, and the decision consequence is announced on confirmation.",
       "figma_key": "vineyard/decision/missing-information-callout",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-010",
@@ -706,7 +705,7 @@
       ],
       "accessibility_contract": "Urgency, affected scope, blocked actions, owner, and recovery steps are announced in that order.",
       "figma_key": "vineyard/exception/exception-card",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-011",
@@ -720,7 +719,7 @@
         "SCR-017",
         "SCR-029",
         "SCR-035",
-        "SCR-043",
+        "SCR-042",
         "SCR-051",
         "SCR-057",
         "SCR-058"
@@ -735,7 +734,7 @@
       ],
       "accessibility_contract": "Urgency, affected scope, blocked actions, owner, and recovery steps are announced in that order.",
       "figma_key": "vineyard/exception/recovery-checklist",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-012",
@@ -761,11 +760,11 @@
         "SCR-034",
         "SCR-035",
         "SCR-038",
-        "SCR-039",
         "SCR-040",
         "SCR-041",
         "SCR-042",
         "SCR-043",
+        "SCR-044",
         "SCR-045",
         "SCR-046",
         "SCR-047",
@@ -788,7 +787,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Status uses text, icon, shape, and live-region announcements; motion and color are never required to understand it.",
       "figma_key": "vineyard/status/partial-scope-meter",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-013",
@@ -807,7 +806,7 @@
         "SCR-030",
         "SCR-036",
         "SCR-038",
-        "SCR-043",
+        "SCR-044",
         "SCR-050",
         "SCR-051",
         "SCR-052",
@@ -828,7 +827,7 @@
       ],
       "accessibility_contract": "Version order, predecessor/successor relations, and changes are available as structured text and tables.",
       "figma_key": "vineyard/record/correction-lineage",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-014",
@@ -915,7 +914,7 @@
       ],
       "accessibility_contract": "Version order, predecessor/successor relations, and changes are available as structured text and tables.",
       "figma_key": "vineyard/record/audit-timeline",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-015",
@@ -965,7 +964,6 @@
         "SCR-042",
         "SCR-043",
         "SCR-044",
-        "SCR-045",
         "SCR-046",
         "SCR-047",
         "SCR-048",
@@ -984,7 +982,7 @@
       ],
       "accessibility_contract": "Pending, accepted, stale, and conflict states use polite live regions and never steal focus during background sync.",
       "figma_key": "vineyard/sync/offline-queue-indicator",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-016",
@@ -1023,7 +1021,7 @@
       ],
       "accessibility_contract": "Pending, accepted, stale, and conflict states use polite live regions and never steal focus during background sync.",
       "figma_key": "vineyard/sync/sync-conflict-resolver",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-017",
@@ -1056,6 +1054,7 @@
         "SCR-042",
         "SCR-043",
         "SCR-044",
+        "SCR-045",
         "SCR-046",
         "SCR-047",
         "SCR-048",
@@ -1083,7 +1082,7 @@
       ],
       "accessibility_contract": "Pending, accepted, stale, and conflict states use polite live regions and never steal focus during background sync.",
       "figma_key": "vineyard/sync/staleness-badge",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-018",
@@ -1095,7 +1094,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Notifications are navigable by severity and time; urgent acknowledgement remains operable by keyboard and touch.",
       "figma_key": "vineyard/feedback/notification-center",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-019",
@@ -1107,7 +1106,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Notifications are navigable by severity and time; urgent acknowledgement remains operable by keyboard and touch.",
       "figma_key": "vineyard/feedback/escalation-clock",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-020",
@@ -1129,7 +1128,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Actions are keyboard reachable, announce owner and state consequence, and expose disabled reasons before activation.",
       "figma_key": "vineyard/workflow/assignment-roster",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-021",
@@ -1172,7 +1171,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Labels, units, formats, errors, and correction guidance are associated with controls and persist after validation.",
       "figma_key": "vineyard/input/block-and-row-selector",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-022",
@@ -1193,7 +1192,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Labels, units, formats, errors, and correction guidance are associated with controls and persist after validation.",
       "figma_key": "vineyard/input/date-and-effective-time-control",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-023",
@@ -1301,7 +1300,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Every chart has a structured table or summary, named axes and units, and a non-color representation of series and thresholds.",
       "figma_key": "vineyard/data-visualization/map-scope-viewer",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-027",
@@ -1469,8 +1468,7 @@
         "SCR-032",
         "SCR-033",
         "SCR-034",
-        "SCR-041",
-        "SCR-044",
+        "SCR-043",
         "SCR-046",
         "SCR-048",
         "SCR-049",
@@ -1490,7 +1488,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Actions are keyboard reachable, announce owner and state consequence, and expose disabled reasons before activation.",
       "figma_key": "vineyard/workflow/approval-chain",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-034",
@@ -1505,8 +1503,7 @@
         "SCR-036",
         "SCR-037",
         "SCR-038",
-        "SCR-041",
-        "SCR-042",
+        "SCR-044",
         "SCR-045",
         "SCR-048",
         "SCR-052",
@@ -1523,7 +1520,7 @@
       ],
       "accessibility_contract": "Version order, predecessor/successor relations, and changes are available as structured text and tables.",
       "figma_key": "vineyard/record/reconciliation-comparison",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-035",
@@ -1545,7 +1542,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Notifications are navigable by severity and time; urgent acknowledgement remains operable by keyboard and touch.",
       "figma_key": "vineyard/feedback/export-evidence-packet",
-      "status": "planned"
+      "status": "implemented"
     },
     {
       "id": "CMP-036",
@@ -1625,7 +1622,7 @@
       "required_states": ["normal", "disabled", "loading", "error"],
       "accessibility_contract": "Status uses text, icon, shape, and live-region announcements; motion and color are never required to understand it.",
       "figma_key": "vineyard/status/accessible-status-legend",
-      "status": "planned"
+      "status": "implemented"
     }
   ]
 }

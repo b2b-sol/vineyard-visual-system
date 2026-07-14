@@ -479,6 +479,70 @@ const screenSeedsByWorkflow = new Map(
   ]),
 );
 
+const explicitScreenIdByTransition = new Map<string, string>([
+  ["TRN-WF-007-008", "SCR-039"],
+  ["TRN-WF-007-018", "SCR-039"],
+  ["TRN-WF-007-019", "SCR-039"],
+  ["TRN-WF-007-001", "SCR-040"],
+  ["TRN-WF-007-002", "SCR-040"],
+  ["TRN-WF-007-009", "SCR-040"],
+  ["TRN-WF-007-010", "SCR-041"],
+  ["TRN-WF-007-011", "SCR-041"],
+  ["TRN-WF-007-003", "SCR-042"],
+  ["TRN-WF-007-004", "SCR-042"],
+  ["TRN-WF-007-012", "SCR-042"],
+  ["TRN-WF-007-014", "SCR-042"],
+  ["TRN-WF-007-015", "SCR-042"],
+  ["TRN-WF-007-020", "SCR-042"],
+  ["TRN-WF-007-021", "SCR-042"],
+  ["TRN-WF-007-005", "SCR-043"],
+  ["TRN-WF-007-013", "SCR-043"],
+  ["TRN-WF-007-017", "SCR-043"],
+  ["TRN-WF-007-022", "SCR-043"],
+  ["TRN-WF-007-024", "SCR-043"],
+  ["TRN-WF-007-006", "SCR-044"],
+  ["TRN-WF-007-016", "SCR-044"],
+  ["TRN-WF-007-023", "SCR-044"],
+  ["TRN-WF-007-007", "SCR-045"],
+]);
+
+const stableActionIdByTransition = new Map<string, string>([
+  ["TRN-WF-007-001", "ACT-173"],
+  ["TRN-WF-007-002", "ACT-174"],
+  ["TRN-WF-007-003", "ACT-176"],
+  ["TRN-WF-007-004", "ACT-177"],
+  ["TRN-WF-007-005", "ACT-179"],
+  ["TRN-WF-007-006", "ACT-180"],
+  ["TRN-WF-007-008", "ACT-181"],
+  ["TRN-WF-007-009", "ACT-182"],
+  ["TRN-WF-007-010", "ACT-183"],
+  ["TRN-WF-007-011", "ACT-184"],
+  ["TRN-WF-007-007", "ACT-186"],
+  ["TRN-WF-007-012", "ACT-187"],
+  ["TRN-WF-007-013", "ACT-188"],
+  ["TRN-WF-007-014", "ACT-190"],
+  ["TRN-WF-007-015", "ACT-191"],
+  ["TRN-WF-007-016", "ACT-192"],
+  ["TRN-WF-007-017", "ACT-194"],
+  ["TRN-WF-007-018", "ACT-195"],
+  ["TRN-WF-007-019", "ACT-196"],
+  ["TRN-WF-007-021", "ACT-197"],
+  ["TRN-WF-007-020", "ACT-199"],
+  ["TRN-WF-007-022", "ACT-200"],
+  ["TRN-WF-007-023", "ACT-201"],
+  ["TRN-WF-007-024", "ACT-202"],
+]);
+
+const stableInspectActionIdByScreen = new Map<string, string>([
+  ["SCR-039", "ACT-175"],
+  ["SCR-040", "ACT-178"],
+  ["SCR-041", "ACT-185"],
+  ["SCR-042", "ACT-189"],
+  ["SCR-043", "ACT-193"],
+  ["SCR-044", "ACT-198"],
+  ["SCR-045", "ACT-203"],
+]);
+
 const scenarioTransitionIds = (scenario: Scenario, workflowId?: string) =>
   unique(
     scenario.operational_steps
@@ -509,6 +573,25 @@ for (const workflow of workflows) {
     (transition) => !realizedIds.has(transition.id),
   );
   localScreens.forEach((screen) => transitionsByScreenId.set(screen.id, []));
+  if (workflow.id === "WF-007") {
+    for (const transition of workflow.transitions) {
+      const screenId = explicitScreenIdByTransition.get(transition.id);
+      if (!screenId)
+        throw new Error(
+          `${transition.id}: missing explicit screen responsibility`,
+        );
+      transitionsByScreenId.get(screenId)!.push(transition);
+    }
+    for (const screen of localScreens)
+      transitionsByScreenId
+        .get(screen.id)!
+        .sort(
+          (left, right) =>
+            workflow.transitions.indexOf(left) -
+            workflow.transitions.indexOf(right),
+        );
+    continue;
+  }
   realized.forEach((transition, index) => {
     const screen =
       localScreens[
@@ -549,6 +632,26 @@ const screenIdByTransition = new Map(
   [...transitionsByScreenId.entries()].flatMap(([screenId, transitions]) =>
     transitions.map((transition) => [transition.id, screenId] as const),
   ),
+);
+
+const canonicalOnlyScreenIdsByWorkflow = new Map(
+  workflows.map((workflow) => {
+    const realizedIds = new Set(
+      (realizedTransitionsByWorkflow.get(workflow.id) ?? []).map(
+        (transition) => transition.id,
+      ),
+    );
+    return [
+      workflow.id,
+      (screenSeedsByWorkflow.get(workflow.id) ?? [])
+        .filter((screen) =>
+          (transitionsByScreenId.get(screen.id) ?? []).every(
+            (transition) => !realizedIds.has(transition.id),
+          ),
+        )
+        .map((screen) => screen.id),
+    ] as const;
+  }),
 );
 
 const notificationIdByTransition = new Map<string, string>();
@@ -654,13 +757,17 @@ const requirements = workflows.flatMap((workflow, workflowOffset) => {
     if (linkedScenarios.length === 0)
       throw new Error(`${id}: no exact motivating scenario`);
     const scenario_ids = linkedScenarios.map((scenario) => scenario.id);
-    const screen_ids = unique(
-      selectedTransitions.map((transition) => {
+    const canonicalSupportScreenIds = new Set([1, 2, 5]).has(profileIndex)
+      ? (canonicalOnlyScreenIdsByWorkflow.get(workflow.id) ?? [])
+      : [];
+    const screen_ids = unique([
+      ...selectedTransitions.map((transition) => {
         const screenId = screenIdByTransition.get(transition.id);
         if (!screenId) throw new Error(`${id}: no screen for ${transition.id}`);
         return screenId;
       }),
-    );
+      ...canonicalSupportScreenIds,
+    ]);
     const decision_ids = unique(
       selectedTransitions.flatMap((transition) => transition.decision_ids),
     );
@@ -911,6 +1018,27 @@ const allStateKinds = [
   "incomplete_information",
 ] as const;
 
+const explicitReviewStateKindsByScreen = new Map<string, string[]>([
+  ["SCR-001", ["normal", "offline", "partial", "urgent", "completion"]],
+  ["SCR-002", ["normal", "blocked", "partial", "completion"]],
+  ["SCR-003", ["normal", "blocked", "stale", "partial", "completion"]],
+  ["SCR-004", ["normal", "blocked", "stale", "corrected", "completion"]],
+  ["SCR-005", ["normal", "blocked", "corrected", "historical", "completion"]],
+  ["SCR-006", ["normal", "stale", "corrected", "offline", "completion"]],
+  ["SCR-039", ["normal", "blocked", "urgent", "historical", "completion"]],
+  ["SCR-040", ["normal", "urgent", "partial", "offline", "completion"]],
+  ["SCR-041", ["normal", "blocked", "urgent", "stale", "completion"]],
+  ["SCR-042", ["normal", "blocked", "urgent", "conflict", "completion"]],
+  ["SCR-043", ["normal", "blocked", "urgent", "loading", "completion"]],
+  ["SCR-044", ["normal", "blocked", "corrected", "empty", "completion"]],
+  ["SCR-045", ["normal", "urgent", "partial", "error", "completion"]],
+]);
+
+const splitNormalStateByAction = new Map<string, Set<string>>([
+  ["SCR-042", new Set(["working"])],
+  ["SCR-043", new Set(["time_submitted"])],
+]);
+
 const syncClassIdFor = (workflow: Workflow, transition: Transition) => {
   const semanticKind = inferSemanticKind(transition);
   if (
@@ -954,22 +1082,18 @@ const screens = screenSeeds.map((seed) => {
   const selectedTransitionIds = new Set(
     selectedTransitions.map((transition) => transition.id),
   );
-  const assignedScenarios = localScenarios.filter((scenario) =>
+  const exactAssignedScenarios = localScenarios.filter((scenario) =>
     scenarioTransitionIds(scenario, workflow.id).some((transitionId) =>
       selectedTransitionIds.has(transitionId),
     ),
   );
+  const assignedScenarios =
+    exactAssignedScenarios.length > 0 ? exactAssignedScenarios : localScenarios;
   if (assignedScenarios.length === 0)
-    throw new Error(`${seed.id}: no exact fixture-realized scenario`);
+    throw new Error(`${seed.id}: no approved workflow scenario`);
   const workflowRequirements = requirementsByWorkflow.get(workflow.id) ?? [];
   const requirement_ids = workflowRequirements
-    .filter(
-      (requirement) =>
-        requirement.screen_ids.includes(seed.id) &&
-        requirement.transition_ids.some((transitionId) =>
-          selectedTransitionIds.has(transitionId),
-        ),
-    )
+    .filter((requirement) => requirement.screen_ids.includes(seed.id))
     .map((requirement) => requirement.id);
   const fixture_ids = unique(
     assignedScenarios.flatMap((scenario) => scenario.synthetic_fixture_refs),
@@ -988,7 +1112,9 @@ const screens = screenSeeds.map((seed) => {
     const notificationRule = notificationContractFor(workflow, transition);
     const syncClassId = syncClassIdFor(workflow, transition);
     return {
-      id: `ACT-${pad(actionCounter)}`,
+      id:
+        stableActionIdByTransition.get(transition.id) ??
+        `ACT-${pad(actionCounter)}`,
       label: `${semanticKind === "recovery" ? "Resolve" : "Record"} ${transition.to.replaceAll("_", " ")}`,
       kind,
       semantic_kind: semanticKind,
@@ -1064,7 +1190,9 @@ const screens = screenSeeds.map((seed) => {
   const actions = [
     ...consequentialActions,
     {
-      id: `ACT-${pad(actionCounter)}`,
+      id:
+        stableInspectActionIdByScreen.get(seed.id) ??
+        `ACT-${pad(actionCounter)}`,
       label: "Inspect attributable history",
       kind: "inspect",
       scenario_ids: assignedScenarios.map((scenario) => scenario.id),
@@ -1079,12 +1207,14 @@ const screens = screenSeeds.map((seed) => {
       (scenario) => categoryToStateKind[scenario.category] ?? "normal",
     ),
   ).filter((kind) => !["normal", "completion"].includes(kind));
-  const stateKinds = unique([
-    "normal",
-    ...extraKinds.slice(0, 2),
-    allStateKinds[screenSeeds.indexOf(seed) % allStateKinds.length],
-    "completion",
-  ]);
+  const stateKinds =
+    explicitReviewStateKindsByScreen.get(seed.id) ??
+    unique([
+      "normal",
+      ...extraKinds.slice(0, 2),
+      allStateKinds[screenSeeds.indexOf(seed) % allStateKinds.length],
+      "completion",
+    ]);
   const recordIds = unique(
     selectedTransitions.flatMap((transition) => [
       ...transition.record_reads,
@@ -1346,16 +1476,22 @@ const stateMatrix = screens.flatMap((screen) => {
     };
   };
 
-  const normalContracts = unique(
-    consequential.map((action) =>
-      "transition" in action ? action.transition.from : null,
-    ),
-  ).map((canonicalState) => {
-    const available = consequential.filter(
-      (action) =>
-        "transition" in action && action.transition.from === canonicalState,
-    );
+  const normalGroups = new Map<string, typeof consequential>();
+  for (const action of consequential) {
+    const canonicalState =
+      "transition" in action ? action.transition.from : null;
+    const splitByAction = splitNormalStateByAction
+      .get(screen.id)
+      ?.has(canonicalState ?? "entry");
+    const key = splitByAction
+      ? `${canonicalState ?? "entry"}:${action.id}`
+      : (canonicalState ?? "entry");
+    normalGroups.set(key, [...(normalGroups.get(key) ?? []), action]);
+  }
+  const normalContracts = [...normalGroups.values()].map((available) => {
     const example = available[0];
+    const canonicalState =
+      example && "transition" in example ? example.transition.from : null;
     const exampleScenario =
       example && "scenario_ids" in example
         ? scenarios.find((scenario) =>
@@ -1533,52 +1669,80 @@ const flows = workflows.map((workflow, workflowOffset) => {
       left.id.localeCompare(right.id),
   )[0];
   const path = scenario.operational_steps;
-  const exceptionIndex = Math.max(
-    0,
-    path.findIndex(nonIdealStep) >= 0
-      ? path.findIndex(nonIdealStep)
-      : Math.floor(path.length / 2),
-  );
+  const exceptionIndex = path.findIndex(nonIdealStep);
+  const recoveryIndex =
+    exceptionIndex < 0
+      ? -1
+      : path.findIndex(
+          (step, index) =>
+            index > exceptionIndex &&
+            ["recovery", "correction", "supersession"].includes(
+              step.semantic_kind,
+            ),
+        );
+  const normalSource =
+    exceptionIndex < 0 ? path.slice(0, -1) : path.slice(0, exceptionIndex);
+  const exceptionSource =
+    exceptionIndex < 0
+      ? []
+      : path.slice(
+          exceptionIndex,
+          recoveryIndex < 0 ? exceptionIndex + 1 : recoveryIndex,
+        );
+  const recoverySource = recoveryIndex < 0 ? [] : [path[recoveryIndex]];
+  const completionSource =
+    exceptionIndex < 0
+      ? path.slice(-1)
+      : path.slice(recoveryIndex < 0 ? exceptionIndex + 1 : recoveryIndex + 1);
   const entry = makeFlowStep(
     scenario,
     path[0],
     "Open exact current work and its stable scope",
     `${path[0].event_id} exposes the attributable ${path[0].to_state} state`,
   );
-  const normal = path
-    .slice(0, Math.min(3, path.length))
-    .map((step) =>
-      makeFlowStep(
-        scenario,
-        step,
-        `Perform ${step.transition_id} from the current canonical state`,
-        `${step.event_id} records ${step.from_state ?? "entry"} → ${step.to_state}`,
-      ),
-    );
-  const exception = makeFlowStep(
-    scenario,
-    path[exceptionIndex],
-    "Contain the exact non-ideal state and preserve accepted evidence",
-    `${path[exceptionIndex].event_id} remains attributable and bounded`,
+  const normal = normalSource.map((step) =>
+    makeFlowStep(
+      scenario,
+      step,
+      `Perform ${step.transition_id} from the current canonical state`,
+      `${step.event_id} records ${step.from_state ?? "entry"} → ${step.to_state}`,
+    ),
   );
-  const recoveryStep = path[Math.min(path.length - 1, exceptionIndex + 1)];
-  const recovery = makeFlowStep(
-    scenario,
-    recoveryStep,
-    "Apply the next exact recovery or accountable disposition",
-    `${recoveryStep.event_id} advances only through ${recoveryStep.transition_id}`,
+  const exception = exceptionSource.map((step) =>
+    makeFlowStep(
+      scenario,
+      step,
+      "Contain the exact non-ideal state and preserve accepted evidence",
+      `${step.event_id} remains attributable and bounded`,
+    ),
   );
-  const completionStep = path.at(-1)!;
-  const completion = makeFlowStep(
-    scenario,
-    completionStep,
-    "Confirm terminal evidence and immutable lineage",
-    `${completionStep.event_id} records the scenario terminal ${completionStep.to_state}`,
+  const recovery = recoverySource.map((step) =>
+    makeFlowStep(
+      scenario,
+      step,
+      "Apply the exact recovery without rewriting accepted evidence",
+      `${step.event_id} advances only through ${step.transition_id}`,
+    ),
   );
-  const usedSteps = [entry, ...normal, exception, recovery, completion];
+  const completion = completionSource.map((step) =>
+    makeFlowStep(
+      scenario,
+      step,
+      "Continue the accountable path and confirm terminal evidence",
+      `${step.event_id} records ${step.from_state ?? "entry"} → ${step.to_state}`,
+    ),
+  );
+  const usedSteps = [
+    entry,
+    ...normal,
+    ...exception,
+    ...recovery,
+    ...completion,
+  ];
   return {
     id: `FLW-${pad(workflowOffset + 1)}`,
     title: `${scenario.title}: exact operational interaction flow`,
+    flow_kind: "ordered_narrative",
     workflow_ids: [workflow.id],
     scenario_ids: [scenario.id],
     fixture_ids: scenario.synthetic_fixture_refs,
@@ -1592,9 +1756,9 @@ const flows = workflows.map((workflow, workflowOffset) => {
     ),
     entry_points: [entry],
     normal_path: normal,
-    exception_path: [exception],
-    recovery_path: [recovery],
-    completion_path: [completion],
+    exception_path: exception,
+    recovery_path: recovery,
+    completion_path: completion,
     screen_ids: unique(usedSteps.map((step) => step.screen_id)),
     handoff_role_ids: unique([
       ...usedSteps.map((step) => step.actor_role_id),
@@ -1671,7 +1835,8 @@ crossScenarios.forEach((scenario, index) => {
   const usedSteps = [entry, ...normal, exception, recovery, ...completions];
   flows.push({
     id: `FLW-${pad(workflows.length + index + 1)}`,
-    title: `${scenario.title}: linked multi-path evidence flow`,
+    title: `${scenario.title}: linked-evidence comparison`,
+    flow_kind: "linked_evidence_comparison",
     workflow_ids: scenario.workflow_ids,
     scenario_ids: [scenario.id],
     fixture_ids: scenario.synthetic_fixture_refs,
@@ -1714,6 +1879,15 @@ const domains = domainSeeds.map((domain, index) => ({
     .map((screen) => screen.id),
   integration_seams: domain.seams,
 }));
+
+const implementedComponentIds = new Set([
+  ...Array.from({ length: 22 }, (_, index) => `CMP-${pad(index + 1)}`),
+  "CMP-026",
+  "CMP-033",
+  "CMP-034",
+  "CMP-035",
+  "CMP-036",
+]);
 
 const componentRequirements = componentSeeds.map(([name, category], index) => {
   const id = `CMP-${pad(index + 1)}`;
@@ -1797,7 +1971,7 @@ const componentRequirements = componentSeeds.map(([name, category], index) => {
     ]),
     accessibility_contract: categoryAccessibility[category],
     figma_key: `vineyard/${category.replaceAll("_", "-")}/${slugify(name)}`,
-    status: index === 0 ? "implemented" : "planned",
+    status: implementedComponentIds.has(id) ? "implemented" : "planned",
   };
 });
 

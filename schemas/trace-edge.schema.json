@@ -22,6 +22,7 @@
         "instantiated_by",
         "rendered_by",
         "composed_with",
+        "documented_in",
         "specified_by",
         "implemented_by"
       ]

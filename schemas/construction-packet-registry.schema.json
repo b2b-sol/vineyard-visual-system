@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/construction-packet-registry.schema.json",
+  "title": "Construction packet registry",
+  "type": "object",
+  "required": ["schema_version", "packets"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "packets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/construction-packet.schema.json"
+      }
+    }
+  },
+  "additionalProperties": false
+}

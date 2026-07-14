@@ -65,6 +65,25 @@ describe("connected full-season data", () => {
     expect(metrics.record_fact_units).toBeGreaterThanOrEqual(8);
   });
 
+  it("retains exact WF-007 offline and conflict evidence without renumbering events", () => {
+    const wf007Events = eventDocument.events.filter(
+      (event) => event.workflow_id === "WF-007",
+    );
+    expect(
+      wf007Events
+        .filter((event) => event.connectivity.captured_offline)
+        .map((event) => [event.id, event.transition_id]),
+    ).toEqual([
+      ["EVT-00301", "TRN-WF-007-001"],
+      ["EVT-00302", "TRN-WF-007-002"],
+    ]);
+    expect(
+      wf007Events
+        .filter((event) => event.connectivity.sync_status === "resolved")
+        .map((event) => [event.id, event.transition_id]),
+    ).toEqual([["EVT-00100", "TRN-WF-007-020"]]);
+  });
+
   it("rejects a dangling role assignment reference", () => {
     const invalidEvents = structuredClone(eventDocument);
     invalidEvents.events[0].actor_assignment_id = "ASG-999";

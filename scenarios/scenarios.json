@@ -94,7 +94,7 @@
     ],
     "event_count": 384,
     "requirement_count": 100,
-    "offline_scenarios": 7,
+    "offline_scenarios": 8,
     "exception_scenarios": 43
   },
   "scenarios": [
@@ -19843,7 +19843,7 @@
         "ROLE-PAYROLL hands payroll accepted evidence to ROLE-FINANCE for cost allocated."
       ],
       "device_context": "Field-safe capture uses mobile where applicable; planning, approval, reconciliation, and history use responsive desktop.",
-      "connectivity": "The realized path synchronizes online; the product still discloses staleness and disables online-only actions when fresh authority cannot be confirmed.",
+      "connectivity": "Intermittent connectivity is visible. Events remain append-only and no workflow state uses silent last-write-wins resolution.",
       "compliance_implications": [
         "Every consequential event remains attributable to person, assignment, organization, occurred time, captured time, reason, and record versions.",
         "Corrections, supersessions, rejections, disputes, and safe terminal containment remain in immutable history.",
@@ -19912,8 +19912,8 @@
           "reason": "TRN-WF-007-020 · Contain heat or safety pause and preserve the affected scope before recovery.",
           "record_read_ids": ["RCI-00011", "RCI-00273", "RCI-00274"],
           "record_write_ids": ["RCI-00011", "RCI-00274", "RCI-00275"],
-          "connectivity_mode": "online",
-          "sync_status": "synced"
+          "connectivity_mode": "intermittent",
+          "sync_status": "resolved"
         },
         {
           "event_id": "EVT-00101",
@@ -21714,13 +21714,13 @@
         }
       ],
       "exception_path": [
-        "EVT-00304 exposes the scenario's cross organization pressure at working → time_submitted.",
-        "The interface preserves affected scope, actor ASG-003, base record versions, timing, and the explicit non-ideal rationale."
+        "EVT-00301 exposes the scenario's cross organization pressure at entry → crew_scheduled.",
+        "The interface preserves affected scope, actor ASG-004, base record versions, timing, and the explicit non-ideal rationale."
       ],
       "recovery_path": [
-        "EVT-00305 performs TRN-WF-007-005 toward supervisor_verified without erasing predecessor evidence.",
-        "EVT-00306 performs TRN-WF-007-006 toward payroll_accepted without erasing predecessor evidence.",
-        "EVT-00307 performs TRN-WF-007-007 toward cost_allocated without erasing predecessor evidence."
+        "EVT-00302 performs TRN-WF-007-002 toward briefed without erasing predecessor evidence.",
+        "EVT-00303 performs TRN-WF-007-003 toward working without erasing predecessor evidence.",
+        "EVT-00304 performs TRN-WF-007-004 toward time_submitted without erasing predecessor evidence."
       ],
       "decision_points": ["DEC-061", "DEC-062", "DEC-063", "DEC-064"],
       "branches": [
@@ -21871,8 +21871,8 @@
         "ROLE-VINEYARD-MANAGER hands supervisor verified evidence to ROLE-PAYROLL for payroll accepted.",
         "ROLE-PAYROLL hands payroll accepted evidence to ROLE-FINANCE for cost allocated."
       ],
-      "device_context": "Field-safe capture uses mobile where applicable; planning, approval, reconciliation, and history use responsive desktop.",
-      "connectivity": "The realized path synchronizes online; the product still discloses staleness and disables online-only actions when fresh authority cannot be confirmed.",
+      "device_context": "Field mobile captures offline-safe evidence; responsive desktop reviews sync consequences and accountable state changes.",
+      "connectivity": "At least one event is captured offline. The device journal retains occurred time and base versions; server synchronization is idempotent and conflicts require explicit resolution.",
       "compliance_implications": [
         "Every consequential event remains attributable to person, assignment, organization, occurred time, captured time, reason, and record versions.",
         "Corrections, supersessions, rejections, disputes, and safe terminal containment remain in immutable history.",
@@ -21901,7 +21901,7 @@
           "reason": "TRN-WF-007-001 · The coordinator schedules a qualified crew or contractor against block work, timing, safety, and labor demand.",
           "record_read_ids": ["RCI-00025", "RCI-00293", "RCI-00294"],
           "record_write_ids": ["RCI-00293"],
-          "connectivity_mode": "online",
+          "connectivity_mode": "offline",
           "sync_status": "synced"
         },
         {
@@ -21914,7 +21914,7 @@
           "reason": "TRN-WF-007-002 · The foreman confirms the roster, qualification, instructions, and safety briefing before work begins.",
           "record_read_ids": ["RCI-00025", "RCI-00293", "RCI-00294"],
           "record_write_ids": ["RCI-00295"],
-          "connectivity_mode": "online",
+          "connectivity_mode": "offline",
           "sync_status": "synced"
         },
         {
@@ -44902,7 +44902,7 @@
         "ROLE-PAYROLL hands payroll accepted evidence to ROLE-FINANCE for cost allocated."
       ],
       "device_context": "Field-safe capture uses mobile where applicable; planning, approval, reconciliation, and history use responsive desktop.",
-      "connectivity": "The realized path synchronizes online; the product still discloses staleness and disables online-only actions when fresh authority cannot be confirmed.",
+      "connectivity": "Intermittent connectivity is visible. Events remain append-only and no workflow state uses silent last-write-wins resolution.",
       "compliance_implications": [
         "Every consequential event remains attributable to person, assignment, organization, occurred time, captured time, reason, and record versions.",
         "Corrections, supersessions, rejections, disputes, and safe terminal containment remain in immutable history.",
@@ -45097,8 +45097,8 @@
           "reason": "TRN-WF-007-020 · Contain heat or safety pause and preserve the affected scope before recovery.",
           "record_read_ids": ["RCI-00011", "RCI-00273", "RCI-00274"],
           "record_write_ids": ["RCI-00011", "RCI-00274", "RCI-00275"],
-          "connectivity_mode": "online",
-          "sync_status": "synced"
+          "connectivity_mode": "intermittent",
+          "sync_status": "resolved"
         },
         {
           "event_id": "EVT-00101",

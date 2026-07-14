@@ -887,6 +887,32 @@ for (const requirement of requirements) {
 }
 
 const expectedScreenCounts = [6, 6, 6, 6, 6, 8, 7, 7, 7, 8];
+const expectedWf007ScreenByTransition = new Map([
+  ["TRN-WF-007-008", "SCR-039"],
+  ["TRN-WF-007-018", "SCR-039"],
+  ["TRN-WF-007-019", "SCR-039"],
+  ["TRN-WF-007-001", "SCR-040"],
+  ["TRN-WF-007-002", "SCR-040"],
+  ["TRN-WF-007-009", "SCR-040"],
+  ["TRN-WF-007-010", "SCR-041"],
+  ["TRN-WF-007-011", "SCR-041"],
+  ["TRN-WF-007-003", "SCR-042"],
+  ["TRN-WF-007-004", "SCR-042"],
+  ["TRN-WF-007-012", "SCR-042"],
+  ["TRN-WF-007-014", "SCR-042"],
+  ["TRN-WF-007-015", "SCR-042"],
+  ["TRN-WF-007-020", "SCR-042"],
+  ["TRN-WF-007-021", "SCR-042"],
+  ["TRN-WF-007-005", "SCR-043"],
+  ["TRN-WF-007-013", "SCR-043"],
+  ["TRN-WF-007-017", "SCR-043"],
+  ["TRN-WF-007-022", "SCR-043"],
+  ["TRN-WF-007-024", "SCR-043"],
+  ["TRN-WF-007-006", "SCR-044"],
+  ["TRN-WF-007-016", "SCR-044"],
+  ["TRN-WF-007-023", "SCR-044"],
+  ["TRN-WF-007-007", "SCR-045"],
+]);
 assert(screens.length === 67, `Expected 67 screens; found ${screens.length}`);
 assert(
   unique(screens.map((screen) => screen.route)).length === screens.length,
@@ -913,20 +939,28 @@ for (const screen of screens) {
       `${screen.id}: unresolved ${scenarioId}`,
     );
   });
+  const hasExactActionOverlap = screen.scenario_ids.some((scenarioId) => {
+    const scenarioTransitions = new Set(
+      scenarioIndex
+        .get(scenarioId)
+        .operational_steps.map((step) => step.transition_id),
+    );
+    return screen.actions.some(
+      (action) =>
+        action.kind !== "inspect" &&
+        scenarioTransitions.has(action.transition.transition_id),
+    );
+  });
+  const isExplicitCanonicalBranchScreen = screen.actions
+    .filter((action) => action.kind !== "inspect")
+    .every(
+      (action) =>
+        action.evidence_status === "canonical_branch" &&
+        action.scenario_ids.length === 0,
+    );
   assert(
-    screen.scenario_ids.some((scenarioId) => {
-      const scenarioTransitions = new Set(
-        scenarioIndex
-          .get(scenarioId)
-          .operational_steps.map((step) => step.transition_id),
-      );
-      return screen.actions.some(
-        (action) =>
-          action.kind !== "inspect" &&
-          scenarioTransitions.has(action.transition.transition_id),
-      );
-    }),
-    `${screen.id}: no exact action overlap with linked scenarios`,
+    hasExactActionOverlap || isExplicitCanonicalBranchScreen,
+    `${screen.id}: neither exact action evidence nor an explicit canonical-only contract`,
   );
   screen.requirement_ids.forEach((requirementId) => {
     screenUsedRequirements.add(requirementId);
@@ -945,8 +979,8 @@ for (const screen of screens) {
     );
   });
   assert(
-    screen.actions.filter((action) => action.kind !== "inspect").length >= 2,
-    `${screen.id}: fewer than two consequential actions`,
+    screen.actions.some((action) => action.kind !== "inspect"),
+    `${screen.id}: no consequential action`,
   );
   assert(
     screen.actions.some((action) => action.kind === "inspect"),
@@ -1114,6 +1148,24 @@ for (const screen of screens) {
         `${screen.id}/${action.id}: online-only action has another sync mode`,
       );
   }
+}
+
+for (const [
+  transitionId,
+  expectedScreenId,
+] of expectedWf007ScreenByTransition) {
+  const realizingScreens = screens.filter((screen) =>
+    screen.actions.some(
+      (action) =>
+        action.kind !== "inspect" &&
+        action.transition.transition_id === transitionId,
+    ),
+  );
+  assert(
+    realizingScreens.length === 1 &&
+      realizingScreens[0].id === expectedScreenId,
+    `${transitionId}: expected exact responsibility on ${expectedScreenId}`,
+  );
 }
 assert(
   screenUsedScenarios.size === scenarios.length,
@@ -1407,6 +1459,13 @@ for (const scenario of scenarios.filter(
     `${scenario.id}: missing cross-workflow interaction flow`,
   );
 for (const flow of flows) {
+  assert(
+    flow.flow_kind ===
+      (flow.workflow_ids.length === 1
+        ? "ordered_narrative"
+        : "linked_evidence_comparison"),
+    `${flow.id}: flow kind does not disclose its chronology semantics`,
+  );
   flow.scenario_ids.forEach((scenarioId) =>
     assert(
       scenarioIndex.has(scenarioId),
@@ -1436,6 +1495,22 @@ for (const flow of flows) {
     flow.completion_path,
   ];
   const steps = pathGroups.flat();
+  if (flow.flow_kind === "ordered_narrative") {
+    const scenario = scenarioIndex.get(flow.scenario_ids[0]);
+    const orderedSteps = [
+      ...flow.normal_path,
+      ...flow.exception_path,
+      ...flow.recovery_path,
+      ...flow.completion_path,
+    ];
+    assert(
+      same(
+        orderedSteps.map((step) => step.event_id),
+        scenario.operational_steps.map((step) => step.event_id),
+      ),
+      `${flow.id}: ordered path is not the complete exact scenario sequence`,
+    );
+  }
   assert(
     same(
       unique(steps.map((step) => step.screen_id)).sort(),

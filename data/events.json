@@ -5567,10 +5567,11 @@
       ],
       "exception_history_ids": ["EXH-0018"],
       "connectivity": {
-        "mode": "online",
+        "mode": "intermittent",
         "captured_offline": false,
         "synced_at": "2026-05-07T10:35:00-07:00",
-        "sync_status": "synced"
+        "sync_status": "resolved",
+        "conflict_record_instance_ids": ["RCI-00011"]
       },
       "provenance": {
         "source_type": "synthetic_generator",
@@ -16611,8 +16612,9 @@
       ],
       "exception_history_ids": [],
       "connectivity": {
-        "mode": "online",
-        "captured_offline": false,
+        "mode": "offline",
+        "captured_offline": true,
+        "device_recorded_at": "2026-09-13T06:00:00-07:00",
         "synced_at": "2026-09-13T06:05:00-07:00",
         "sync_status": "synced"
       },
@@ -16630,7 +16632,8 @@
         "recorded_at": "2026-09-13T06:05:00-07:00",
         "recorded_by_person_id": "PER-004"
       },
-      "measurements": {}
+      "measurements": {},
+      "notes": "Field observation captured without service and synchronized later with original effective time intact."
     },
     {
       "id": "EVT-00302",
@@ -16654,8 +16657,9 @@
       "decision_results": [],
       "exception_history_ids": [],
       "connectivity": {
-        "mode": "online",
-        "captured_offline": false,
+        "mode": "offline",
+        "captured_offline": true,
+        "device_recorded_at": "2026-09-13T07:30:00-07:00",
         "synced_at": "2026-09-13T07:35:00-07:00",
         "sync_status": "synced"
       },
@@ -16674,7 +16678,8 @@
         "recorded_by_person_id": "PER-003"
       },
       "cause_event_id": "EVT-00301",
-      "measurements": {}
+      "measurements": {},
+      "notes": "Field observation captured without service and synchronized later with original effective time intact."
     },
     {
       "id": "EVT-00303",

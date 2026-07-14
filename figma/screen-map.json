@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0",
+  "map_type": "screens",
+  "screens": [
+    {
+      "artifact_type": "screen",
+      "id": "SCR-001",
+      "figma_name": "SCR-001 · Daily operations brief · responsive",
+      "stable_key": "figma-ready:SCR-001",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-001",
+      "states": ["normal", "offline", "partial", "urgent", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-002",
+      "figma_name": "SCR-002 · Seasonal plan · responsive",
+      "stable_key": "figma-ready:SCR-002",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-002",
+      "states": ["normal", "blocked", "partial", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-003",
+      "figma_name": "SCR-003 · Work plan detail · responsive",
+      "stable_key": "figma-ready:SCR-003",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-003",
+      "states": ["normal", "blocked", "stale", "partial", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-004",
+      "figma_name": "SCR-004 · Dispatch board · responsive",
+      "stable_key": "figma-ready:SCR-004",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-004",
+      "states": ["normal", "blocked", "stale", "corrected", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-005",
+      "figma_name": "SCR-005 · Field assignment · mobile",
+      "stable_key": "figma-ready:SCR-005",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-005",
+      "states": ["normal", "blocked", "corrected", "historical", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-006",
+      "figma_name": "SCR-006 · Verification and history · responsive",
+      "stable_key": "figma-ready:SCR-006",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-006",
+      "states": ["normal", "stale", "corrected", "offline", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-039",
+      "figma_name": "SCR-039 · Labor demand · responsive",
+      "stable_key": "figma-ready:SCR-039",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-039",
+      "states": ["normal", "blocked", "urgent", "historical", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-040",
+      "figma_name": "SCR-040 · Crew schedule · responsive",
+      "stable_key": "figma-ready:SCR-040",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-040",
+      "states": ["normal", "urgent", "partial", "offline", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-041",
+      "figma_name": "SCR-041 · Check-in kiosk · mobile",
+      "stable_key": "figma-ready:SCR-041",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-041",
+      "states": ["normal", "blocked", "urgent", "stale", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-042",
+      "figma_name": "SCR-042 · Crew workboard · mobile",
+      "stable_key": "figma-ready:SCR-042",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-042",
+      "states": ["normal", "blocked", "urgent", "conflict", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-043",
+      "figma_name": "SCR-043 · Time review · desktop",
+      "stable_key": "figma-ready:SCR-043",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-043",
+      "states": ["normal", "blocked", "urgent", "loading", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-044",
+      "figma_name": "SCR-044 · Payroll exception · responsive",
+      "stable_key": "figma-ready:SCR-044",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-044",
+      "states": ["normal", "blocked", "corrected", "empty", "completion"]
+    },
+    {
+      "artifact_type": "screen",
+      "id": "SCR-045",
+      "figma_name": "SCR-045 · Cost allocation · responsive",
+      "stable_key": "figma-ready:SCR-045",
+      "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
+      "export_name": "ProductionScreenPage",
+      "status": "implemented",
+      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "route": "/screens/SCR-045",
+      "states": ["normal", "urgent", "partial", "error", "completion"]
+    }
+  ]
+}

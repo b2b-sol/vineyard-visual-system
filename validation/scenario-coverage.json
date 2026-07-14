@@ -93,7 +93,7 @@
     ],
     "event_count": 384,
     "requirement_count": 100,
-    "offline_scenarios": 7,
+    "offline_scenarios": 8,
     "exception_scenarios": 43
   },
   "distinctness_keys": [

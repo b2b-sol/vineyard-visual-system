@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/figma-token-map.schema.json",
+  "title": "Figma token import map",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "map_type",
+    "status",
+    "collection",
+    "source_paths",
+    "source_digest",
+    "tokens"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "map_type": { "const": "tokens" },
+    "status": { "enum": ["pending", "implemented"] },
+    "collection": { "type": "string", "minLength": 3 },
+    "source_paths": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "source_digest": {
+      "type": ["string", "null"],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "tokens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["token_path", "figma_variable", "collection", "type"],
+        "properties": {
+          "token_path": {
+            "type": "string",
+            "pattern": "^(ref|sys|component)\\."
+          },
+          "figma_variable": {
+            "type": "string",
+            "pattern": "^(ref|sys|component)/"
+          },
+          "collection": { "type": "string", "minLength": 3 },
+          "type": {
+            "enum": [
+              "color",
+              "dimension",
+              "fontFamily",
+              "fontWeight",
+              "number",
+              "duration",
+              "cubicBezier",
+              "shadow",
+              "strokeStyle",
+              "border",
+              "typography"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "implemented" } } },
+      "then": { "properties": { "source_digest": { "type": "string" } } }
+    }
+  ],
+  "additionalProperties": false
+}

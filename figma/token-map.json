@@ -1,0 +1,673 @@
+{
+  "schema_version": "1.0",
+  "map_type": "tokens",
+  "status": "implemented",
+  "collection": "Vineyard Foundations",
+  "source_paths": [
+    "design-system/tokens/vineyard.tokens.json",
+    "design-system/tokens/vineyard.css"
+  ],
+  "source_digest": "a33fdcf14c44d38f6ac0435f27f3b15ab2baeb048b34d1536f8e57ba360a247b",
+  "tokens": [
+    {
+      "token_path": "ref.color.ink.300",
+      "figma_variable": "ref/color/ink/300",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.ink.500",
+      "figma_variable": "ref/color/ink/500",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.ink.650",
+      "figma_variable": "ref/color/ink/650",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.ink.800",
+      "figma_variable": "ref/color/ink/800",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.ink.950",
+      "figma_variable": "ref/color/ink/950",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.mineral.0",
+      "figma_variable": "ref/color/mineral/0",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.mineral.50",
+      "figma_variable": "ref/color/mineral/50",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.mineral.100",
+      "figma_variable": "ref/color/mineral/100",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.mineral.200",
+      "figma_variable": "ref/color/mineral/200",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.mineral.300",
+      "figma_variable": "ref/color/mineral/300",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.vine.100",
+      "figma_variable": "ref/color/vine/100",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.vine.300",
+      "figma_variable": "ref/color/vine/300",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.vine.500",
+      "figma_variable": "ref/color/vine/500",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.vine.700",
+      "figma_variable": "ref/color/vine/700",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.vine.900",
+      "figma_variable": "ref/color/vine/900",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.clay.100",
+      "figma_variable": "ref/color/clay/100",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.clay.500",
+      "figma_variable": "ref/color/clay/500",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.clay.700",
+      "figma_variable": "ref/color/clay/700",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.amber.100",
+      "figma_variable": "ref/color/amber/100",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.amber.500",
+      "figma_variable": "ref/color/amber/500",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.amber.700",
+      "figma_variable": "ref/color/amber/700",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.water.100",
+      "figma_variable": "ref/color/water/100",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.water.500",
+      "figma_variable": "ref/color/water/500",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.water.700",
+      "figma_variable": "ref/color/water/700",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.grape.100",
+      "figma_variable": "ref/color/grape/100",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.color.grape.700",
+      "figma_variable": "ref/color/grape/700",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "ref.font.family.display",
+      "figma_variable": "ref/font/family/display",
+      "collection": "Vineyard Foundations",
+      "type": "fontFamily"
+    },
+    {
+      "token_path": "ref.font.family.ui",
+      "figma_variable": "ref/font/family/ui",
+      "collection": "Vineyard Foundations",
+      "type": "fontFamily"
+    },
+    {
+      "token_path": "ref.font.family.mono",
+      "figma_variable": "ref/font/family/mono",
+      "collection": "Vineyard Foundations",
+      "type": "fontFamily"
+    },
+    {
+      "token_path": "ref.font.size.100",
+      "figma_variable": "ref/font/size/100",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.font.size.200",
+      "figma_variable": "ref/font/size/200",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.font.size.300",
+      "figma_variable": "ref/font/size/300",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.font.size.400",
+      "figma_variable": "ref/font/size/400",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.font.size.500",
+      "figma_variable": "ref/font/size/500",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.font.size.600",
+      "figma_variable": "ref/font/size/600",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.font.size.700",
+      "figma_variable": "ref/font/size/700",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.font.size.800",
+      "figma_variable": "ref/font/size/800",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.font.size.900",
+      "figma_variable": "ref/font/size/900",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.font.weight.regular",
+      "figma_variable": "ref/font/weight/regular",
+      "collection": "Vineyard Foundations",
+      "type": "fontWeight"
+    },
+    {
+      "token_path": "ref.font.weight.semibold",
+      "figma_variable": "ref/font/weight/semibold",
+      "collection": "Vineyard Foundations",
+      "type": "fontWeight"
+    },
+    {
+      "token_path": "ref.font.weight.bold",
+      "figma_variable": "ref/font/weight/bold",
+      "collection": "Vineyard Foundations",
+      "type": "fontWeight"
+    },
+    {
+      "token_path": "ref.space.0",
+      "figma_variable": "ref/space/0",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.space.1",
+      "figma_variable": "ref/space/1",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.space.2",
+      "figma_variable": "ref/space/2",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.space.3",
+      "figma_variable": "ref/space/3",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.space.4",
+      "figma_variable": "ref/space/4",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.space.5",
+      "figma_variable": "ref/space/5",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.space.6",
+      "figma_variable": "ref/space/6",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.space.8",
+      "figma_variable": "ref/space/8",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.space.10",
+      "figma_variable": "ref/space/10",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.space.12",
+      "figma_variable": "ref/space/12",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.space.16",
+      "figma_variable": "ref/space/16",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.radius.sm",
+      "figma_variable": "ref/radius/sm",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.radius.md",
+      "figma_variable": "ref/radius/md",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.radius.lg",
+      "figma_variable": "ref/radius/lg",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.radius.xl",
+      "figma_variable": "ref/radius/xl",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.radius.round",
+      "figma_variable": "ref/radius/round",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "ref.motion.duration.quick",
+      "figma_variable": "ref/motion/duration/quick",
+      "collection": "Vineyard Foundations",
+      "type": "duration"
+    },
+    {
+      "token_path": "ref.motion.duration.standard",
+      "figma_variable": "ref/motion/duration/standard",
+      "collection": "Vineyard Foundations",
+      "type": "duration"
+    },
+    {
+      "token_path": "ref.motion.easing.productive",
+      "figma_variable": "ref/motion/easing/productive",
+      "collection": "Vineyard Foundations",
+      "type": "cubicBezier"
+    },
+    {
+      "token_path": "ref.shadow.raised",
+      "figma_variable": "ref/shadow/raised",
+      "collection": "Vineyard Foundations",
+      "type": "shadow"
+    },
+    {
+      "token_path": "sys.color.canvas",
+      "figma_variable": "sys/color/canvas",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.surface.base",
+      "figma_variable": "sys/color/surface/base",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.surface.subtle",
+      "figma_variable": "sys/color/surface/subtle",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.surface.raised",
+      "figma_variable": "sys/color/surface/raised",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.surface.inverse",
+      "figma_variable": "sys/color/surface/inverse",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.text.primary",
+      "figma_variable": "sys/color/text/primary",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.text.secondary",
+      "figma_variable": "sys/color/text/secondary",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.text.muted",
+      "figma_variable": "sys/color/text/muted",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.text.inverse",
+      "figma_variable": "sys/color/text/inverse",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.text.link",
+      "figma_variable": "sys/color/text/link",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.border.subtle",
+      "figma_variable": "sys/color/border/subtle",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.border.default",
+      "figma_variable": "sys/color/border/default",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.border.strong",
+      "figma_variable": "sys/color/border/strong",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.action.primaryBackground",
+      "figma_variable": "sys/color/action/primaryBackground",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.action.primaryText",
+      "figma_variable": "sys/color/action/primaryText",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.map.selectedBoundary",
+      "figma_variable": "sys/color/map/selectedBoundary",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.map.restrictedBoundary",
+      "figma_variable": "sys/color/map/restrictedBoundary",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.map.staleBoundary",
+      "figma_variable": "sys/color/map/staleBoundary",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.map.crossOrganizationBoundary",
+      "figma_variable": "sys/color/map/crossOrganizationBoundary",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.focus.ring",
+      "figma_variable": "sys/color/focus/ring",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.positive.text",
+      "figma_variable": "sys/color/feedback/positive/text",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.positive.surface",
+      "figma_variable": "sys/color/feedback/positive/surface",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.informative.text",
+      "figma_variable": "sys/color/feedback/informative/text",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.informative.surface",
+      "figma_variable": "sys/color/feedback/informative/surface",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.notice.text",
+      "figma_variable": "sys/color/feedback/notice/text",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.notice.surface",
+      "figma_variable": "sys/color/feedback/notice/surface",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.critical.text",
+      "figma_variable": "sys/color/feedback/critical/text",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.critical.surface",
+      "figma_variable": "sys/color/feedback/critical/surface",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.revision.text",
+      "figma_variable": "sys/color/feedback/revision/text",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.revision.surface",
+      "figma_variable": "sys/color/feedback/revision/surface",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.neutral.text",
+      "figma_variable": "sys/color/feedback/neutral/text",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.color.feedback.neutral.surface",
+      "figma_variable": "sys/color/feedback/neutral/surface",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "sys.density.compact.control",
+      "figma_variable": "sys/density/compact/control",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "sys.density.comfortable.control",
+      "figma_variable": "sys/density/comfortable/control",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "sys.density.field.control",
+      "figma_variable": "sys/density/field/control",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "sys.size.sidebar",
+      "figma_variable": "sys/size/sidebar",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "sys.size.contentMax",
+      "figma_variable": "sys/size/contentMax",
+      "collection": "Vineyard Foundations",
+      "type": "dimension"
+    },
+    {
+      "token_path": "component.statusSignal.blocked.background",
+      "figma_variable": "component/statusSignal/blocked/background",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.statusSignal.blocked.text",
+      "figma_variable": "component/statusSignal/blocked/text",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.statusSignal.stale.background",
+      "figma_variable": "component/statusSignal/stale/background",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.statusSignal.stale.text",
+      "figma_variable": "component/statusSignal/stale/text",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.statusSignal.corrected.background",
+      "figma_variable": "component/statusSignal/corrected/background",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.statusSignal.corrected.text",
+      "figma_variable": "component/statusSignal/corrected/text",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.button.primary.background",
+      "figma_variable": "component/button/primary/background",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.button.primary.text",
+      "figma_variable": "component/button/primary/text",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.map.selectedBlock.stroke",
+      "figma_variable": "component/map/selectedBlock/stroke",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.map.restrictedBlock.stroke",
+      "figma_variable": "component/map/restrictedBlock/stroke",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.map.staleBlock.stroke",
+      "figma_variable": "component/map/staleBlock/stroke",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    },
+    {
+      "token_path": "component.map.crossOrganizationBlock.stroke",
+      "figma_variable": "component/map/crossOrganizationBlock/stroke",
+      "collection": "Vineyard Foundations",
+      "type": "color"
+    }
+  ]
+}

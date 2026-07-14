@@ -1796,7 +1796,7 @@
       "record_ids": ["REC-051", "REC-059", "REC-062", "REC-063"],
       "decision_ids": ["DEC-064"],
       "transition_ids": ["TRN-WF-007-016"],
-      "screen_ids": ["SCR-043"],
+      "screen_ids": ["SCR-044"],
       "acceptance_criteria": [
         "Given a referenced full-season fixture, the interface resolves TRN-WF-007-016 without inventing an unsupported state change.",
         "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
@@ -1826,7 +1826,7 @@
       "record_ids": ["REC-003", "REC-054", "REC-055", "REC-056"],
       "decision_ids": ["DEC-061"],
       "transition_ids": ["TRN-WF-007-001", "TRN-WF-007-002"],
-      "screen_ids": ["SCR-039"],
+      "screen_ids": ["SCR-040", "SCR-041"],
       "acceptance_criteria": [
         "Given a referenced full-season fixture, the interface resolves TRN-WF-007-001 and TRN-WF-007-002 without inventing an unsupported state change.",
         "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
@@ -1856,7 +1856,7 @@
       "record_ids": ["REC-003", "REC-054", "REC-055"],
       "decision_ids": ["DEC-061"],
       "transition_ids": ["TRN-WF-007-001"],
-      "screen_ids": ["SCR-039"],
+      "screen_ids": ["SCR-040", "SCR-041"],
       "acceptance_criteria": [
         "Given a referenced full-season fixture, the interface resolves TRN-WF-007-001 without inventing an unsupported state change.",
         "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
@@ -1903,7 +1903,7 @@
         "TRN-WF-007-018",
         "TRN-WF-007-020"
       ],
-      "screen_ids": ["SCR-043", "SCR-044", "SCR-045"],
+      "screen_ids": ["SCR-044", "SCR-042", "SCR-039"],
       "acceptance_criteria": [
         "Given a referenced full-season fixture, the interface resolves TRN-WF-007-016 and TRN-WF-007-014 and TRN-WF-007-018 and TRN-WF-007-020 without inventing an unsupported state change.",
         "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
@@ -1939,7 +1939,7 @@
       ],
       "decision_ids": ["DEC-063"],
       "transition_ids": ["TRN-WF-007-005"],
-      "screen_ids": ["SCR-041"],
+      "screen_ids": ["SCR-043"],
       "acceptance_criteria": [
         "Given a referenced full-season fixture, the interface resolves TRN-WF-007-005 without inventing an unsupported state change.",
         "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
@@ -1967,7 +1967,7 @@
       "record_ids": ["REC-003", "REC-056", "REC-057", "REC-058"],
       "decision_ids": ["DEC-062"],
       "transition_ids": ["TRN-WF-007-003"],
-      "screen_ids": ["SCR-040"],
+      "screen_ids": ["SCR-042", "SCR-041"],
       "acceptance_criteria": [
         "Given a referenced full-season fixture, the interface resolves TRN-WF-007-003 without inventing an unsupported state change.",
         "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
@@ -1997,7 +1997,7 @@
       "record_ids": ["REC-003", "REC-054", "REC-055"],
       "decision_ids": ["DEC-061"],
       "transition_ids": ["TRN-WF-007-001"],
-      "screen_ids": ["SCR-039"],
+      "screen_ids": ["SCR-040"],
       "acceptance_criteria": [
         "Given a referenced full-season fixture, the interface resolves TRN-WF-007-001 without inventing an unsupported state change.",
         "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
@@ -2033,7 +2033,7 @@
       ],
       "decision_ids": ["DEC-063"],
       "transition_ids": ["TRN-WF-007-005"],
-      "screen_ids": ["SCR-041"],
+      "screen_ids": ["SCR-043"],
       "acceptance_criteria": [
         "Given a referenced full-season fixture, the interface resolves TRN-WF-007-005 without inventing an unsupported state change.",
         "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
@@ -2054,7 +2054,7 @@
       "record_ids": ["REC-051", "REC-059", "REC-062", "REC-063"],
       "decision_ids": ["DEC-064"],
       "transition_ids": ["TRN-WF-007-016"],
-      "screen_ids": ["SCR-043"],
+      "screen_ids": ["SCR-044"],
       "acceptance_criteria": [
         "Given a referenced full-season fixture, the interface resolves TRN-WF-007-016 without inventing an unsupported state change.",
         "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
@@ -2105,7 +2105,7 @@
         "TRN-WF-007-006",
         "TRN-WF-007-017"
       ],
-      "screen_ids": ["SCR-042", "SCR-040", "SCR-041", "SCR-044"],
+      "screen_ids": ["SCR-045", "SCR-042", "SCR-044", "SCR-043"],
       "acceptance_criteria": [
         "Given a referenced full-season fixture, the interface resolves TRN-WF-007-007 and TRN-WF-007-004 and TRN-WF-007-006 and TRN-WF-007-017 without inventing an unsupported state change.",
         "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",

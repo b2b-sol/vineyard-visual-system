@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "wave_id": "WAVE-001",
+  "status": "pending",
+  "critics": [
+    {
+      "discipline": "operational_ux",
+      "status": "pending",
+      "reviewer": null,
+      "completed_at": null
+    },
+    {
+      "discipline": "visual_component_accessibility",
+      "status": "pending",
+      "reviewer": null,
+      "completed_at": null
+    }
+  ],
+  "findings": [],
+  "acceptance": {
+    "status": "pending",
+    "accepted_by": null,
+    "accepted_at": null,
+    "evidence_paths": []
+  }
+}

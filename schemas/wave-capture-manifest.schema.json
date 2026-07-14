@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/wave-capture-manifest.schema.json",
+  "title": "Wave capture and currentness manifest",
+  "type": "object",
+  "required": ["schema_version", "wave_id", "source_paths", "captures"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "wave_id": { "type": "string", "pattern": "^WAVE-[0-9]{3}$" },
+    "source_paths": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "captures": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "screen_id",
+          "route",
+          "state",
+          "fixture_id",
+          "viewport",
+          "status",
+          "artifact_path",
+          "metadata_path",
+          "artifact_sha256",
+          "source_digest",
+          "generated_at",
+          "commit_sha"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^CAP-W001-[0-9]{3}$" },
+          "screen_id": { "type": "string", "pattern": "^SCR-[0-9]{3}$" },
+          "route": { "type": "string", "pattern": "^/screens/SCR-[0-9]{3}\\?" },
+          "state": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "fixture_id": { "type": "string", "pattern": "^FIX-[0-9]{3}$" },
+          "viewport": {
+            "type": "object",
+            "required": ["name", "width", "height"],
+            "properties": {
+              "name": { "enum": ["desktop", "mobile"] },
+              "width": { "type": "integer", "minimum": 320 },
+              "height": { "type": "integer", "minimum": 480 }
+            },
+            "additionalProperties": false
+          },
+          "status": { "enum": ["pending", "complete"] },
+          "artifact_path": {
+            "type": ["string", "null"],
+            "pattern": "^validation/wave-001-renders/primary/"
+          },
+          "metadata_path": {
+            "type": ["string", "null"],
+            "pattern": "^validation/wave-001-renders/primary/"
+          },
+          "artifact_sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "source_digest": {
+            "type": ["string", "null"],
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "generated_at": { "type": ["string", "null"], "format": "date-time" },
+          "commit_sha": {
+            "type": ["string", "null"],
+            "pattern": "^[a-f0-9]{40}$"
+          }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "status": { "const": "complete" } } },
+            "then": {
+              "properties": {
+                "artifact_path": { "type": "string" },
+                "metadata_path": { "type": "string" },
+                "artifact_sha256": { "type": "string" },
+                "source_digest": { "type": "string" },
+                "generated_at": { "type": "string" },
+                "commit_sha": { "type": "string" }
+              }
+            }
+          },
+          {
+            "if": { "properties": { "status": { "const": "pending" } } },
+            "then": {
+              "properties": {
+                "artifact_path": { "type": "null" },
+                "metadata_path": { "type": "null" },
+                "artifact_sha256": { "type": "null" },
+                "source_digest": { "type": "null" },
+                "generated_at": { "type": "null" },
+                "commit_sha": { "type": "null" }
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

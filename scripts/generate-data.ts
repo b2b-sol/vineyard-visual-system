@@ -2070,11 +2070,13 @@ async function main(): Promise<void> {
     "WF-002:2",
     "WF-003:3",
     "WF-005:1",
+    "WF-007:4",
     "WF-008:1",
   ]);
   const conflictResolutionPlans = new Set([
     "WF-002:3",
     "WF-006:2",
+    "WF-007:2",
     "WF-008:2",
     "WF-009:1",
     "WF-010:1",
@@ -2118,8 +2120,13 @@ async function main(): Promise<void> {
       const isConflictCase =
         conflictResolutionPlans.has(planCaseKey) &&
         transitionIndex === plan.exceptionTransitionIndex;
+      const offlineDelayMinutes = plan.workflow.id === "WF-007" ? 5 : 480;
       const recordedAt = isOfflineCase
-        ? sourceTimestamp(plan.month, plan.day, occurredMinuteOffset + 480)
+        ? sourceTimestamp(
+            plan.month,
+            plan.day,
+            occurredMinuteOffset + offlineDelayMinutes,
+          )
         : sourceTimestamp(plan.month, plan.day, occurredMinuteOffset + 5);
       const assignment = requireValue(
         assignmentByRole.get(transition.owner),

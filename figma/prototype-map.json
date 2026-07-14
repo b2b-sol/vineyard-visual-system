@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "map_type": "prototypes",
+  "prototypes": [
+    {
+      "artifact_type": "prototype",
+      "id": "FLW-001",
+      "figma_name": "FLW-001 · End-to-end estate seasonal work package: exact operational interaction flow",
+      "stable_key": "figma-ready:FLW-001",
+      "code_path": "atlas/src/pages/PrototypePage.tsx",
+      "export_name": "PrototypePage",
+      "status": "implemented",
+      "source_sha256": "8c3f14fcbb0bac5aa6b3221474c3957a112ca389662fc7c15e97e45235e1470b",
+      "route": "/prototypes/FLW-001",
+      "screen_ids": ["SCR-001", "SCR-002", "SCR-003"],
+      "sequence_source": "product-structure/flows.json"
+    },
+    {
+      "artifact_type": "prototype",
+      "id": "FLW-007",
+      "figma_name": "FLW-007 · Pause field labor for heat or safety and resume after re-briefing: exact operational interaction flow",
+      "stable_key": "figma-ready:FLW-007",
+      "code_path": "atlas/src/pages/PrototypePage.tsx",
+      "export_name": "PrototypePage",
+      "status": "implemented",
+      "source_sha256": "8c3f14fcbb0bac5aa6b3221474c3957a112ca389662fc7c15e97e45235e1470b",
+      "route": "/prototypes/FLW-007",
+      "screen_ids": ["SCR-040", "SCR-042", "SCR-043", "SCR-044", "SCR-045"],
+      "sequence_source": "product-structure/flows.json"
+    },
+    {
+      "artifact_type": "prototype",
+      "id": "FLW-015",
+      "figma_name": "FLW-015 · Heat-paused field work flows into crew time, payroll, and cost allocation: linked-evidence comparison",
+      "stable_key": "figma-ready:FLW-015",
+      "code_path": "atlas/src/pages/PrototypePage.tsx",
+      "export_name": "PrototypePage",
+      "status": "implemented",
+      "source_sha256": "8c3f14fcbb0bac5aa6b3221474c3957a112ca389662fc7c15e97e45235e1470b",
+      "route": "/prototypes/FLW-015",
+      "screen_ids": [
+        "SCR-001",
+        "SCR-040",
+        "SCR-006",
+        "SCR-004",
+        "SCR-003",
+        "SCR-045"
+      ],
+      "sequence_source": "product-structure/flows.json"
+    }
+  ]
+}

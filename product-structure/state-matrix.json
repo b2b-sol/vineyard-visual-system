@@ -7196,11 +7196,11 @@
       "kind": "normal",
       "canonical_state": null,
       "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-01",
-        "fixture_id": "FIX-034",
-        "event_id": "EVT-00232",
-        "rationale": "Exact full-season event realizes this canonical current-state action set."
+        "type": "canonical",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
       },
       "trigger": "The canonical record is in entry; current scope, evidence versions, and actor authority resolve.",
       "information_priority": [
@@ -7208,8 +7208,8 @@
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-175", "ACT-173"],
-      "blocked_actions": ["ACT-174"],
+      "available_actions": ["ACT-175", "ACT-181"],
+      "blocked_actions": ["ACT-195", "ACT-196"],
       "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7223,9 +7223,9 @@
       "canonical_state": "crew_scheduled",
       "source_ref": {
         "type": "operational",
-        "scenario_id": "SCN-007-01",
-        "fixture_id": "FIX-034",
-        "event_id": "EVT-00233",
+        "scenario_id": "SCN-007-02",
+        "fixture_id": "FIX-032",
+        "event_id": "EVT-00002",
         "rationale": "Exact full-season event realizes this canonical current-state action set."
       },
       "trigger": "The canonical record is in crew_scheduled; current scope, evidence versions, and actor authority resolve.",
@@ -7234,8 +7234,8 @@
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-175", "ACT-174"],
-      "blocked_actions": ["ACT-173"],
+      "available_actions": ["ACT-175", "ACT-195"],
+      "blocked_actions": ["ACT-181", "ACT-196"],
       "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7245,13 +7245,39 @@
     {
       "id": "STM-0271",
       "screen_id": "SCR-039",
+      "kind": "normal",
+      "canonical_state": "briefed",
+      "source_ref": {
+        "type": "canonical",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
+      },
+      "trigger": "The canonical record is in briefed; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-175", "ACT-196"],
+      "blocked_actions": ["ACT-181", "ACT-195"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Labor demand: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0272",
+      "screen_id": "SCR-039",
       "kind": "blocked",
-      "canonical_state": "crew_scheduled",
+      "canonical_state": "exception_flagged",
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-02",
         "fixture_id": "FIX-032",
-        "event_id": "EVT-00001",
+        "event_id": "EVT-00002",
         "rationale": "SCN-007-02 realizes the blocked condition on this screen."
       },
       "trigger": "The screen detects or receives a blocked condition for its active scope.",
@@ -7260,25 +7286,25 @@
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-175", "ACT-174"],
-      "blocked_actions": ["ACT-173"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "available_actions": ["ACT-175"],
+      "blocked_actions": ["ACT-181", "ACT-195", "ACT-196"],
+      "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
       "recovery": "Keep consequential actions unavailable until the blocked condition is resolved, corrected, or escalated by an authorized owner.",
       "accessibility_announcement": "Labor demand: blocked state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0272",
+      "id": "STM-0273",
       "screen_id": "SCR-039",
       "kind": "urgent",
-      "canonical_state": "crew_scheduled",
+      "canonical_state": null,
       "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-03",
-        "fixture_id": "FIX-033",
-        "event_id": "EVT-00097",
-        "rationale": "SCN-007-03 realizes the urgent condition on this screen."
+        "type": "ui",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "urgent is a product-system presentation state rather than a claimed operational event for this screen."
       },
       "trigger": "The screen detects or receives a urgent condition for its active scope.",
       "information_priority": [
@@ -7286,25 +7312,25 @@
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-175", "ACT-174"],
-      "blocked_actions": ["ACT-173"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "available_actions": ["ACT-175"],
+      "blocked_actions": ["ACT-181", "ACT-195", "ACT-196"],
+      "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
       "recovery": "Keep consequential actions unavailable until the urgent condition is resolved, corrected, or escalated by an authorized owner.",
       "accessibility_announcement": "Labor demand: urgent state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0273",
+      "id": "STM-0274",
       "screen_id": "SCR-039",
       "kind": "historical",
-      "canonical_state": "crew_scheduled",
+      "canonical_state": "exception_flagged",
       "source_ref": {
         "type": "operational",
-        "scenario_id": "SCN-007-06",
-        "fixture_id": "FIX-036",
-        "event_id": "EVT-00405",
-        "rationale": "SCN-007-06 realizes the historical condition on this screen."
+        "scenario_id": "SCN-900-07",
+        "fixture_id": "FIX-032",
+        "event_id": "EVT-00002",
+        "rationale": "SCN-900-07 realizes the historical condition on this screen."
       },
       "trigger": "The screen detects or receives a historical condition for its active scope.",
       "information_priority": [
@@ -7312,16 +7338,16 @@
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-175", "ACT-174"],
-      "blocked_actions": ["ACT-173"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "available_actions": ["ACT-175"],
+      "blocked_actions": ["ACT-181", "ACT-195", "ACT-196"],
+      "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
       "recovery": "Keep consequential actions unavailable until the historical condition is resolved, corrected, or escalated by an authorized owner.",
       "accessibility_announcement": "Labor demand: historical state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0274",
+      "id": "STM-0275",
       "screen_id": "SCR-039",
       "kind": "completion",
       "canonical_state": "cost_allocated",
@@ -7339,7 +7365,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-175"],
-      "blocked_actions": ["ACT-173", "ACT-174"],
+      "blocked_actions": ["ACT-181", "ACT-195", "ACT-196"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7347,51 +7373,25 @@
       "accessibility_announcement": "Labor demand: completion state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0275",
-      "screen_id": "SCR-040",
-      "kind": "normal",
-      "canonical_state": "briefed",
-      "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-01",
-        "fixture_id": "FIX-034",
-        "event_id": "EVT-00234",
-        "rationale": "Exact full-season event realizes this canonical current-state action set."
-      },
-      "trigger": "The canonical record is in briefed; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-178", "ACT-176"],
-      "blocked_actions": ["ACT-177"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Crew schedule: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
       "id": "STM-0276",
       "screen_id": "SCR-040",
       "kind": "normal",
-      "canonical_state": "working",
+      "canonical_state": null,
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-01",
         "fixture_id": "FIX-034",
-        "event_id": "EVT-00235",
+        "event_id": "EVT-00232",
         "rationale": "Exact full-season event realizes this canonical current-state action set."
       },
-      "trigger": "The canonical record is in working; current scope, evidence versions, and actor authority resolve.",
+      "trigger": "The canonical record is in entry; current scope, evidence versions, and actor authority resolve.",
       "information_priority": [
         "Name the normal condition and affected operational scope",
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-178", "ACT-177"],
-      "blocked_actions": ["ACT-176"],
+      "available_actions": ["ACT-178", "ACT-173"],
+      "blocked_actions": ["ACT-174", "ACT-182"],
       "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7401,13 +7401,65 @@
     {
       "id": "STM-0277",
       "screen_id": "SCR-040",
+      "kind": "normal",
+      "canonical_state": "crew_scheduled",
+      "source_ref": {
+        "type": "operational",
+        "scenario_id": "SCN-007-01",
+        "fixture_id": "FIX-034",
+        "event_id": "EVT-00233",
+        "rationale": "Exact full-season event realizes this canonical current-state action set."
+      },
+      "trigger": "The canonical record is in crew_scheduled; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-178", "ACT-174"],
+      "blocked_actions": ["ACT-173", "ACT-182"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Crew schedule: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0278",
+      "screen_id": "SCR-040",
+      "kind": "normal",
+      "canonical_state": "labor_demanded",
+      "source_ref": {
+        "type": "canonical",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
+      },
+      "trigger": "The canonical record is in labor_demanded; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-178", "ACT-182"],
+      "blocked_actions": ["ACT-173", "ACT-174"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Crew schedule: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0279",
+      "screen_id": "SCR-040",
       "kind": "urgent",
-      "canonical_state": "working",
+      "canonical_state": "crew_scheduled",
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-03",
         "fixture_id": "FIX-033",
-        "event_id": "EVT-00099",
+        "event_id": "EVT-00097",
         "rationale": "SCN-007-03 realizes the urgent condition on this screen."
       },
       "trigger": "The screen detects or receives a urgent condition for its active scope.",
@@ -7416,8 +7468,8 @@
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-178", "ACT-177"],
-      "blocked_actions": ["ACT-176"],
+      "available_actions": ["ACT-178", "ACT-174"],
+      "blocked_actions": ["ACT-173", "ACT-182"],
       "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7425,16 +7477,16 @@
       "accessibility_announcement": "Crew schedule: urgent state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0278",
+      "id": "STM-0280",
       "screen_id": "SCR-040",
       "kind": "partial",
-      "canonical_state": "time_submitted",
+      "canonical_state": "crew_scheduled",
       "source_ref": {
         "type": "operational",
-        "scenario_id": "SCN-007-05",
+        "scenario_id": "SCN-900-05",
         "fixture_id": "FIX-033",
-        "event_id": "EVT-00103",
-        "rationale": "SCN-007-05 realizes the partial condition on this screen."
+        "event_id": "EVT-00097",
+        "rationale": "SCN-900-05 realizes the partial condition on this screen."
       },
       "trigger": "The screen detects or receives a partial condition for its active scope.",
       "information_priority": [
@@ -7442,16 +7494,16 @@
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-178"],
-      "blocked_actions": ["ACT-176", "ACT-177"],
-      "permission_rule_ids": ["PERM-037", "PERM-042"],
+      "available_actions": ["ACT-178", "ACT-174"],
+      "blocked_actions": ["ACT-173", "ACT-182"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
       "recovery": "Keep consequential actions unavailable until the partial condition is resolved, corrected, or escalated by an authorized owner.",
       "accessibility_announcement": "Crew schedule: partial state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0279",
+      "id": "STM-0281",
       "screen_id": "SCR-040",
       "kind": "offline",
       "canonical_state": null,
@@ -7469,7 +7521,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-178"],
-      "blocked_actions": ["ACT-176", "ACT-177"],
+      "blocked_actions": ["ACT-173", "ACT-174", "ACT-182"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Retain the device journal and disclose pending sync; never imply server acceptance before reconciliation.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7477,7 +7529,7 @@
       "accessibility_announcement": "Crew schedule: offline state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0280",
+      "id": "STM-0282",
       "screen_id": "SCR-040",
       "kind": "completion",
       "canonical_state": "cost_allocated",
@@ -7495,7 +7547,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-178"],
-      "blocked_actions": ["ACT-176", "ACT-177"],
+      "blocked_actions": ["ACT-173", "ACT-174", "ACT-182"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7503,135 +7555,7 @@
       "accessibility_announcement": "Crew schedule: completion state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0281",
-      "screen_id": "SCR-041",
-      "kind": "normal",
-      "canonical_state": "time_submitted",
-      "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-01",
-        "fixture_id": "FIX-034",
-        "event_id": "EVT-00236",
-        "rationale": "Exact full-season event realizes this canonical current-state action set."
-      },
-      "trigger": "The canonical record is in time_submitted; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-185", "ACT-179"],
-      "blocked_actions": [
-        "ACT-180",
-        "ACT-181",
-        "ACT-182",
-        "ACT-183",
-        "ACT-184"
-      ],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Check-in kiosk: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
-      "id": "STM-0282",
-      "screen_id": "SCR-041",
-      "kind": "normal",
-      "canonical_state": "supervisor_verified",
-      "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-01",
-        "fixture_id": "FIX-034",
-        "event_id": "EVT-00237",
-        "rationale": "Exact full-season event realizes this canonical current-state action set."
-      },
-      "trigger": "The canonical record is in supervisor_verified; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-185", "ACT-180"],
-      "blocked_actions": [
-        "ACT-179",
-        "ACT-181",
-        "ACT-182",
-        "ACT-183",
-        "ACT-184"
-      ],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Check-in kiosk: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
       "id": "STM-0283",
-      "screen_id": "SCR-041",
-      "kind": "normal",
-      "canonical_state": null,
-      "source_ref": {
-        "type": "canonical",
-        "scenario_id": null,
-        "fixture_id": null,
-        "event_id": null,
-        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
-      },
-      "trigger": "The canonical record is in entry; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-185", "ACT-181"],
-      "blocked_actions": [
-        "ACT-179",
-        "ACT-180",
-        "ACT-182",
-        "ACT-183",
-        "ACT-184"
-      ],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Check-in kiosk: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
-      "id": "STM-0284",
-      "screen_id": "SCR-041",
-      "kind": "normal",
-      "canonical_state": "labor_demanded",
-      "source_ref": {
-        "type": "canonical",
-        "scenario_id": null,
-        "fixture_id": null,
-        "event_id": null,
-        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
-      },
-      "trigger": "The canonical record is in labor_demanded; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-185", "ACT-182"],
-      "blocked_actions": [
-        "ACT-179",
-        "ACT-180",
-        "ACT-181",
-        "ACT-183",
-        "ACT-184"
-      ],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Check-in kiosk: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
-      "id": "STM-0285",
       "screen_id": "SCR-041",
       "kind": "normal",
       "canonical_state": "briefed",
@@ -7649,13 +7573,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-185", "ACT-183"],
-      "blocked_actions": [
-        "ACT-179",
-        "ACT-180",
-        "ACT-181",
-        "ACT-182",
-        "ACT-184"
-      ],
+      "blocked_actions": ["ACT-184"],
       "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7663,7 +7581,7 @@
       "accessibility_announcement": "Check-in kiosk: normal state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0286",
+      "id": "STM-0284",
       "screen_id": "SCR-041",
       "kind": "normal",
       "canonical_state": "checked_in",
@@ -7681,13 +7599,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-185", "ACT-184"],
-      "blocked_actions": [
-        "ACT-179",
-        "ACT-180",
-        "ACT-181",
-        "ACT-182",
-        "ACT-183"
-      ],
+      "blocked_actions": ["ACT-183"],
       "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7695,16 +7607,16 @@
       "accessibility_announcement": "Check-in kiosk: normal state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0287",
+      "id": "STM-0285",
       "screen_id": "SCR-041",
       "kind": "blocked",
-      "canonical_state": "payroll_accepted",
+      "canonical_state": null,
       "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-02",
-        "fixture_id": "FIX-032",
-        "event_id": "EVT-00005",
-        "rationale": "SCN-007-02 realizes the blocked condition on this screen."
+        "type": "ui",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "blocked is a product-system presentation state rather than a claimed operational event for this screen."
       },
       "trigger": "The screen detects or receives a blocked condition for its active scope.",
       "information_priority": [
@@ -7713,14 +7625,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-185"],
-      "blocked_actions": [
-        "ACT-179",
-        "ACT-180",
-        "ACT-181",
-        "ACT-182",
-        "ACT-183",
-        "ACT-184"
-      ],
+      "blocked_actions": ["ACT-183", "ACT-184"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7728,16 +7633,16 @@
       "accessibility_announcement": "Check-in kiosk: blocked state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0288",
+      "id": "STM-0286",
       "screen_id": "SCR-041",
       "kind": "urgent",
-      "canonical_state": "supervisor_verified",
+      "canonical_state": null,
       "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-03",
-        "fixture_id": "FIX-033",
-        "event_id": "EVT-00104",
-        "rationale": "SCN-007-03 realizes the urgent condition on this screen."
+        "type": "ui",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "urgent is a product-system presentation state rather than a claimed operational event for this screen."
       },
       "trigger": "The screen detects or receives a urgent condition for its active scope.",
       "information_priority": [
@@ -7745,22 +7650,16 @@
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-185", "ACT-180"],
-      "blocked_actions": [
-        "ACT-179",
-        "ACT-181",
-        "ACT-182",
-        "ACT-183",
-        "ACT-184"
-      ],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "available_actions": ["ACT-185"],
+      "blocked_actions": ["ACT-183", "ACT-184"],
+      "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
       "recovery": "Keep consequential actions unavailable until the urgent condition is resolved, corrected, or escalated by an authorized owner.",
       "accessibility_announcement": "Check-in kiosk: urgent state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0289",
+      "id": "STM-0287",
       "screen_id": "SCR-041",
       "kind": "stale",
       "canonical_state": null,
@@ -7778,14 +7677,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-185"],
-      "blocked_actions": [
-        "ACT-179",
-        "ACT-180",
-        "ACT-181",
-        "ACT-182",
-        "ACT-183",
-        "ACT-184"
-      ],
+      "blocked_actions": ["ACT-183", "ACT-184"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7793,7 +7685,7 @@
       "accessibility_announcement": "Check-in kiosk: stale state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0290",
+      "id": "STM-0288",
       "screen_id": "SCR-041",
       "kind": "completion",
       "canonical_state": "cost_allocated",
@@ -7811,14 +7703,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-185"],
-      "blocked_actions": [
-        "ACT-179",
-        "ACT-180",
-        "ACT-181",
-        "ACT-182",
-        "ACT-183",
-        "ACT-184"
-      ],
+      "blocked_actions": ["ACT-183", "ACT-184"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7826,25 +7711,32 @@
       "accessibility_announcement": "Check-in kiosk: completion state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0291",
+      "id": "STM-0289",
       "screen_id": "SCR-042",
       "kind": "normal",
-      "canonical_state": "payroll_accepted",
+      "canonical_state": "briefed",
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-01",
         "fixture_id": "FIX-034",
-        "event_id": "EVT-00238",
+        "event_id": "EVT-00234",
         "rationale": "Exact full-season event realizes this canonical current-state action set."
       },
-      "trigger": "The canonical record is in payroll_accepted; current scope, evidence versions, and actor authority resolve.",
+      "trigger": "The canonical record is in briefed; current scope, evidence versions, and actor authority resolve.",
       "information_priority": [
         "Name the normal condition and affected operational scope",
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-189", "ACT-186"],
-      "blocked_actions": ["ACT-187", "ACT-188"],
+      "available_actions": ["ACT-189", "ACT-176"],
+      "blocked_actions": [
+        "ACT-177",
+        "ACT-187",
+        "ACT-190",
+        "ACT-191",
+        "ACT-199",
+        "ACT-197"
+      ],
       "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7852,7 +7744,40 @@
       "accessibility_announcement": "Crew workboard: normal state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0292",
+      "id": "STM-0290",
+      "screen_id": "SCR-042",
+      "kind": "normal",
+      "canonical_state": "working",
+      "source_ref": {
+        "type": "operational",
+        "scenario_id": "SCN-007-01",
+        "fixture_id": "FIX-034",
+        "event_id": "EVT-00235",
+        "rationale": "Exact full-season event realizes this canonical current-state action set."
+      },
+      "trigger": "The canonical record is in working; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-189", "ACT-177"],
+      "blocked_actions": [
+        "ACT-176",
+        "ACT-187",
+        "ACT-190",
+        "ACT-191",
+        "ACT-199",
+        "ACT-197"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Crew workboard: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0291",
       "screen_id": "SCR-042",
       "kind": "normal",
       "canonical_state": "working",
@@ -7870,8 +7795,48 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-189", "ACT-187"],
-      "blocked_actions": ["ACT-186", "ACT-188"],
+      "blocked_actions": [
+        "ACT-176",
+        "ACT-177",
+        "ACT-190",
+        "ACT-191",
+        "ACT-199",
+        "ACT-197"
+      ],
       "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Crew workboard: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0292",
+      "screen_id": "SCR-042",
+      "kind": "normal",
+      "canonical_state": "paused",
+      "source_ref": {
+        "type": "operational",
+        "scenario_id": "SCN-007-03",
+        "fixture_id": "FIX-033",
+        "event_id": "EVT-00101",
+        "rationale": "Exact full-season event realizes this canonical current-state action set."
+      },
+      "trigger": "The canonical record is in paused; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-189", "ACT-190"],
+      "blocked_actions": [
+        "ACT-176",
+        "ACT-177",
+        "ACT-187",
+        "ACT-191",
+        "ACT-199",
+        "ACT-197"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-039", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
       "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
@@ -7881,7 +7846,7 @@
       "id": "STM-0293",
       "screen_id": "SCR-042",
       "kind": "normal",
-      "canonical_state": "checked_out",
+      "canonical_state": "reassigned",
       "source_ref": {
         "type": "canonical",
         "scenario_id": null,
@@ -7889,15 +7854,22 @@
         "event_id": null,
         "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
       },
-      "trigger": "The canonical record is in checked_out; current scope, evidence versions, and actor authority resolve.",
+      "trigger": "The canonical record is in reassigned; current scope, evidence versions, and actor authority resolve.",
       "information_priority": [
         "Name the normal condition and affected operational scope",
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-189", "ACT-188"],
-      "blocked_actions": ["ACT-186", "ACT-187"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "available_actions": ["ACT-189", "ACT-191"],
+      "blocked_actions": [
+        "ACT-176",
+        "ACT-177",
+        "ACT-187",
+        "ACT-190",
+        "ACT-199",
+        "ACT-197"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-039", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
       "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
@@ -7906,14 +7878,80 @@
     {
       "id": "STM-0294",
       "screen_id": "SCR-042",
-      "kind": "blocked",
-      "canonical_state": "cost_allocated",
+      "kind": "normal",
+      "canonical_state": "working",
       "source_ref": {
         "type": "operational",
-        "scenario_id": "SCN-007-02",
-        "fixture_id": "FIX-032",
-        "event_id": "EVT-00006",
-        "rationale": "SCN-007-02 realizes the blocked condition on this screen."
+        "scenario_id": "SCN-007-03",
+        "fixture_id": "FIX-033",
+        "event_id": "EVT-00100",
+        "rationale": "Exact full-season event realizes this canonical current-state action set."
+      },
+      "trigger": "The canonical record is in working; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-189", "ACT-199"],
+      "blocked_actions": [
+        "ACT-176",
+        "ACT-177",
+        "ACT-187",
+        "ACT-190",
+        "ACT-191",
+        "ACT-197"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Crew workboard: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0295",
+      "screen_id": "SCR-042",
+      "kind": "normal",
+      "canonical_state": "working",
+      "source_ref": {
+        "type": "canonical",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
+      },
+      "trigger": "The canonical record is in working; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-189", "ACT-197"],
+      "blocked_actions": [
+        "ACT-176",
+        "ACT-177",
+        "ACT-187",
+        "ACT-190",
+        "ACT-191",
+        "ACT-199"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Crew workboard: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0296",
+      "screen_id": "SCR-042",
+      "kind": "blocked",
+      "canonical_state": null,
+      "source_ref": {
+        "type": "ui",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "blocked is a product-system presentation state rather than a claimed operational event for this screen."
       },
       "trigger": "The screen detects or receives a blocked condition for its active scope.",
       "information_priority": [
@@ -7922,7 +7960,15 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-189"],
-      "blocked_actions": ["ACT-186", "ACT-187", "ACT-188"],
+      "blocked_actions": [
+        "ACT-176",
+        "ACT-177",
+        "ACT-187",
+        "ACT-190",
+        "ACT-191",
+        "ACT-199",
+        "ACT-197"
+      ],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -7930,15 +7976,15 @@
       "accessibility_announcement": "Crew workboard: blocked state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0295",
+      "id": "STM-0297",
       "screen_id": "SCR-042",
       "kind": "urgent",
-      "canonical_state": "cost_allocated",
+      "canonical_state": "working",
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-03",
         "fixture_id": "FIX-033",
-        "event_id": "EVT-00106",
+        "event_id": "EVT-00099",
         "rationale": "SCN-007-03 realizes the urgent condition on this screen."
       },
       "trigger": "The screen detects or receives a urgent condition for its active scope.",
@@ -7947,24 +7993,30 @@
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-189"],
-      "blocked_actions": ["ACT-186", "ACT-187", "ACT-188"],
-      "permission_rule_ids": ["PERM-037", "PERM-042"],
+      "available_actions": [
+        "ACT-189",
+        "ACT-177",
+        "ACT-187",
+        "ACT-199",
+        "ACT-197"
+      ],
+      "blocked_actions": ["ACT-176", "ACT-190", "ACT-191"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
       "recovery": "Keep consequential actions unavailable until the urgent condition is resolved, corrected, or escalated by an authorized owner.",
       "accessibility_announcement": "Crew workboard: urgent state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0296",
+      "id": "STM-0298",
       "screen_id": "SCR-042",
       "kind": "conflict",
-      "canonical_state": "cost_allocated",
+      "canonical_state": "working",
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-07",
         "fixture_id": "FIX-035",
-        "event_id": "EVT-00307",
+        "event_id": "EVT-00303",
         "rationale": "SCN-007-07 realizes the conflict condition on this screen."
       },
       "trigger": "The screen detects or receives a conflict condition for its active scope.",
@@ -7973,16 +8025,22 @@
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-189"],
-      "blocked_actions": ["ACT-186", "ACT-187", "ACT-188"],
-      "permission_rule_ids": ["PERM-037", "PERM-042"],
+      "available_actions": [
+        "ACT-189",
+        "ACT-177",
+        "ACT-187",
+        "ACT-199",
+        "ACT-197"
+      ],
+      "blocked_actions": ["ACT-176", "ACT-190", "ACT-191"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Preserve both device and server events and require an attributable resolution or successor correction.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
       "recovery": "Keep consequential actions unavailable until the conflict condition is resolved, corrected, or escalated by an authorized owner.",
       "accessibility_announcement": "Crew workboard: conflict state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0297",
+      "id": "STM-0299",
       "screen_id": "SCR-042",
       "kind": "completion",
       "canonical_state": "cost_allocated",
@@ -8000,7 +8058,15 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-189"],
-      "blocked_actions": ["ACT-186", "ACT-187", "ACT-188"],
+      "blocked_actions": [
+        "ACT-176",
+        "ACT-177",
+        "ACT-187",
+        "ACT-190",
+        "ACT-191",
+        "ACT-199",
+        "ACT-197"
+      ],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8008,78 +8074,26 @@
       "accessibility_announcement": "Crew workboard: completion state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0298",
-      "screen_id": "SCR-043",
-      "kind": "normal",
-      "canonical_state": "paused",
-      "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-03",
-        "fixture_id": "FIX-033",
-        "event_id": "EVT-00101",
-        "rationale": "Exact full-season event realizes this canonical current-state action set."
-      },
-      "trigger": "The canonical record is in paused; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-193", "ACT-190"],
-      "blocked_actions": ["ACT-191", "ACT-192"],
-      "permission_rule_ids": ["PERM-037", "PERM-039", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Time review: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
-      "id": "STM-0299",
-      "screen_id": "SCR-043",
-      "kind": "normal",
-      "canonical_state": "reassigned",
-      "source_ref": {
-        "type": "canonical",
-        "scenario_id": null,
-        "fixture_id": null,
-        "event_id": null,
-        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
-      },
-      "trigger": "The canonical record is in reassigned; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-193", "ACT-191"],
-      "blocked_actions": ["ACT-190", "ACT-192"],
-      "permission_rule_ids": ["PERM-037", "PERM-039", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Time review: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
       "id": "STM-0300",
       "screen_id": "SCR-043",
       "kind": "normal",
-      "canonical_state": "exception_flagged",
+      "canonical_state": "time_submitted",
       "source_ref": {
         "type": "operational",
-        "scenario_id": "SCN-007-02",
-        "fixture_id": "FIX-032",
-        "event_id": "EVT-00003",
+        "scenario_id": "SCN-007-01",
+        "fixture_id": "FIX-034",
+        "event_id": "EVT-00236",
         "rationale": "Exact full-season event realizes this canonical current-state action set."
       },
-      "trigger": "The canonical record is in exception_flagged; current scope, evidence versions, and actor authority resolve.",
+      "trigger": "The canonical record is in time_submitted; current scope, evidence versions, and actor authority resolve.",
       "information_priority": [
         "Name the normal condition and affected operational scope",
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
-      "available_actions": ["ACT-193", "ACT-192"],
-      "blocked_actions": ["ACT-190", "ACT-191"],
-      "permission_rule_ids": ["PERM-037", "PERM-040", "PERM-042"],
+      "available_actions": ["ACT-193", "ACT-179"],
+      "blocked_actions": ["ACT-188", "ACT-194", "ACT-200", "ACT-202"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
       "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
@@ -8088,13 +8102,117 @@
     {
       "id": "STM-0301",
       "screen_id": "SCR-043",
-      "kind": "blocked",
+      "kind": "normal",
+      "canonical_state": "checked_out",
+      "source_ref": {
+        "type": "canonical",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
+      },
+      "trigger": "The canonical record is in checked_out; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-193", "ACT-188"],
+      "blocked_actions": ["ACT-179", "ACT-194", "ACT-200", "ACT-202"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Time review: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0302",
+      "screen_id": "SCR-043",
+      "kind": "normal",
       "canonical_state": "corrected",
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-02",
         "fixture_id": "FIX-032",
-        "event_id": "EVT-00003",
+        "event_id": "EVT-00004",
+        "rationale": "Exact full-season event realizes this canonical current-state action set."
+      },
+      "trigger": "The canonical record is in corrected; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-193", "ACT-194"],
+      "blocked_actions": ["ACT-179", "ACT-188", "ACT-200", "ACT-202"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Time review: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0303",
+      "screen_id": "SCR-043",
+      "kind": "normal",
+      "canonical_state": "time_submitted",
+      "source_ref": {
+        "type": "canonical",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
+      },
+      "trigger": "The canonical record is in time_submitted; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-193", "ACT-200"],
+      "blocked_actions": ["ACT-179", "ACT-188", "ACT-194", "ACT-202"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Time review: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0304",
+      "screen_id": "SCR-043",
+      "kind": "normal",
+      "canonical_state": "time_submitted",
+      "source_ref": {
+        "type": "canonical",
+        "scenario_id": null,
+        "fixture_id": null,
+        "event_id": null,
+        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
+      },
+      "trigger": "The canonical record is in time_submitted; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-193", "ACT-202"],
+      "blocked_actions": ["ACT-179", "ACT-188", "ACT-194", "ACT-200"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Time review: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0305",
+      "screen_id": "SCR-043",
+      "kind": "blocked",
+      "canonical_state": "supervisor_verified",
+      "source_ref": {
+        "type": "operational",
+        "scenario_id": "SCN-007-02",
+        "fixture_id": "FIX-032",
+        "event_id": "EVT-00004",
         "rationale": "SCN-007-02 realizes the blocked condition on this screen."
       },
       "trigger": "The screen detects or receives a blocked condition for its active scope.",
@@ -8104,7 +8222,13 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-193"],
-      "blocked_actions": ["ACT-190", "ACT-191", "ACT-192"],
+      "blocked_actions": [
+        "ACT-179",
+        "ACT-188",
+        "ACT-194",
+        "ACT-200",
+        "ACT-202"
+      ],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8112,15 +8236,15 @@
       "accessibility_announcement": "Time review: blocked state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0302",
+      "id": "STM-0306",
       "screen_id": "SCR-043",
       "kind": "urgent",
-      "canonical_state": "briefed",
+      "canonical_state": "supervisor_verified",
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-03",
         "fixture_id": "FIX-033",
-        "event_id": "EVT-00101",
+        "event_id": "EVT-00104",
         "rationale": "SCN-007-03 realizes the urgent condition on this screen."
       },
       "trigger": "The screen detects or receives a urgent condition for its active scope.",
@@ -8130,7 +8254,13 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-193"],
-      "blocked_actions": ["ACT-190", "ACT-191", "ACT-192"],
+      "blocked_actions": [
+        "ACT-179",
+        "ACT-188",
+        "ACT-194",
+        "ACT-200",
+        "ACT-202"
+      ],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8138,7 +8268,7 @@
       "accessibility_announcement": "Time review: urgent state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0303",
+      "id": "STM-0307",
       "screen_id": "SCR-043",
       "kind": "loading",
       "canonical_state": null,
@@ -8156,7 +8286,13 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-193"],
-      "blocked_actions": ["ACT-190", "ACT-191", "ACT-192"],
+      "blocked_actions": [
+        "ACT-179",
+        "ACT-188",
+        "ACT-194",
+        "ACT-200",
+        "ACT-202"
+      ],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8164,7 +8300,7 @@
       "accessibility_announcement": "Time review: loading state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0304",
+      "id": "STM-0308",
       "screen_id": "SCR-043",
       "kind": "completion",
       "canonical_state": "cost_allocated",
@@ -8182,7 +8318,13 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-193"],
-      "blocked_actions": ["ACT-190", "ACT-191", "ACT-192"],
+      "blocked_actions": [
+        "ACT-179",
+        "ACT-188",
+        "ACT-194",
+        "ACT-200",
+        "ACT-202"
+      ],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8190,119 +8332,67 @@
       "accessibility_announcement": "Time review: completion state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0305",
-      "screen_id": "SCR-044",
-      "kind": "normal",
-      "canonical_state": "corrected",
-      "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-02",
-        "fixture_id": "FIX-032",
-        "event_id": "EVT-00004",
-        "rationale": "Exact full-season event realizes this canonical current-state action set."
-      },
-      "trigger": "The canonical record is in corrected; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-198", "ACT-194"],
-      "blocked_actions": ["ACT-195", "ACT-196", "ACT-197"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Payroll exception: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
-      "id": "STM-0306",
-      "screen_id": "SCR-044",
-      "kind": "normal",
-      "canonical_state": "crew_scheduled",
-      "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-02",
-        "fixture_id": "FIX-032",
-        "event_id": "EVT-00002",
-        "rationale": "Exact full-season event realizes this canonical current-state action set."
-      },
-      "trigger": "The canonical record is in crew_scheduled; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-198", "ACT-195"],
-      "blocked_actions": ["ACT-194", "ACT-196", "ACT-197"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Payroll exception: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
-      "id": "STM-0307",
-      "screen_id": "SCR-044",
-      "kind": "normal",
-      "canonical_state": "briefed",
-      "source_ref": {
-        "type": "canonical",
-        "scenario_id": null,
-        "fixture_id": null,
-        "event_id": null,
-        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
-      },
-      "trigger": "The canonical record is in briefed; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-198", "ACT-196"],
-      "blocked_actions": ["ACT-194", "ACT-195", "ACT-197"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Payroll exception: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
-      "id": "STM-0308",
-      "screen_id": "SCR-044",
-      "kind": "normal",
-      "canonical_state": "working",
-      "source_ref": {
-        "type": "canonical",
-        "scenario_id": null,
-        "fixture_id": null,
-        "event_id": null,
-        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
-      },
-      "trigger": "The canonical record is in working; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-198", "ACT-197"],
-      "blocked_actions": ["ACT-194", "ACT-195", "ACT-196"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Payroll exception: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
       "id": "STM-0309",
       "screen_id": "SCR-044",
-      "kind": "blocked",
+      "kind": "normal",
+      "canonical_state": "supervisor_verified",
+      "source_ref": {
+        "type": "operational",
+        "scenario_id": "SCN-007-01",
+        "fixture_id": "FIX-034",
+        "event_id": "EVT-00237",
+        "rationale": "Exact full-season event realizes this canonical current-state action set."
+      },
+      "trigger": "The canonical record is in supervisor_verified; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-198", "ACT-180", "ACT-201"],
+      "blocked_actions": ["ACT-192"],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Payroll exception: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0310",
+      "screen_id": "SCR-044",
+      "kind": "normal",
       "canonical_state": "exception_flagged",
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-02",
         "fixture_id": "FIX-032",
-        "event_id": "EVT-00002",
+        "event_id": "EVT-00003",
+        "rationale": "Exact full-season event realizes this canonical current-state action set."
+      },
+      "trigger": "The canonical record is in exception_flagged; current scope, evidence versions, and actor authority resolve.",
+      "information_priority": [
+        "Name the normal condition and affected operational scope",
+        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
+        "Explain which action is blocked and the exact recovery or escalation owner"
+      ],
+      "available_actions": ["ACT-198", "ACT-192"],
+      "blocked_actions": ["ACT-180", "ACT-201"],
+      "permission_rule_ids": ["PERM-037", "PERM-040", "PERM-042"],
+      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
+      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
+      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "accessibility_announcement": "Payroll exception: normal state. Scope, consequence, and available recovery are announced before actions."
+    },
+    {
+      "id": "STM-0311",
+      "screen_id": "SCR-044",
+      "kind": "blocked",
+      "canonical_state": "corrected",
+      "source_ref": {
+        "type": "operational",
+        "scenario_id": "SCN-007-02",
+        "fixture_id": "FIX-032",
+        "event_id": "EVT-00003",
         "rationale": "SCN-007-02 realizes the blocked condition on this screen."
       },
       "trigger": "The screen detects or receives a blocked condition for its active scope.",
@@ -8312,7 +8402,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-198"],
-      "blocked_actions": ["ACT-194", "ACT-195", "ACT-196", "ACT-197"],
+      "blocked_actions": ["ACT-180", "ACT-192", "ACT-201"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8320,15 +8410,15 @@
       "accessibility_announcement": "Payroll exception: blocked state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0310",
+      "id": "STM-0312",
       "screen_id": "SCR-044",
       "kind": "corrected",
-      "canonical_state": "exception_flagged",
+      "canonical_state": "corrected",
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-04",
         "fixture_id": "FIX-032",
-        "event_id": "EVT-00002",
+        "event_id": "EVT-00003",
         "rationale": "SCN-007-04 realizes the corrected condition on this screen."
       },
       "trigger": "The screen detects or receives a corrected condition for its active scope.",
@@ -8338,7 +8428,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-198"],
-      "blocked_actions": ["ACT-194", "ACT-195", "ACT-196", "ACT-197"],
+      "blocked_actions": ["ACT-180", "ACT-192", "ACT-201"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8346,7 +8436,7 @@
       "accessibility_announcement": "Payroll exception: corrected state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0311",
+      "id": "STM-0313",
       "screen_id": "SCR-044",
       "kind": "empty",
       "canonical_state": null,
@@ -8364,7 +8454,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-198"],
-      "blocked_actions": ["ACT-194", "ACT-195", "ACT-196", "ACT-197"],
+      "blocked_actions": ["ACT-180", "ACT-192", "ACT-201"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8372,7 +8462,7 @@
       "accessibility_announcement": "Payroll exception: empty state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0312",
+      "id": "STM-0314",
       "screen_id": "SCR-044",
       "kind": "completion",
       "canonical_state": "cost_allocated",
@@ -8390,7 +8480,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-198"],
-      "blocked_actions": ["ACT-194", "ACT-195", "ACT-196", "ACT-197"],
+      "blocked_actions": ["ACT-180", "ACT-192", "ACT-201"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8398,93 +8488,41 @@
       "accessibility_announcement": "Payroll exception: completion state. Scope, consequence, and available recovery are announced before actions."
     },
     {
-      "id": "STM-0313",
-      "screen_id": "SCR-045",
-      "kind": "normal",
-      "canonical_state": "working",
-      "source_ref": {
-        "type": "operational",
-        "scenario_id": "SCN-007-03",
-        "fixture_id": "FIX-033",
-        "event_id": "EVT-00100",
-        "rationale": "Exact full-season event realizes this canonical current-state action set."
-      },
-      "trigger": "The canonical record is in working; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-203", "ACT-199"],
-      "blocked_actions": ["ACT-200", "ACT-201", "ACT-202"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Cost allocation: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
-      "id": "STM-0314",
-      "screen_id": "SCR-045",
-      "kind": "normal",
-      "canonical_state": "time_submitted",
-      "source_ref": {
-        "type": "canonical",
-        "scenario_id": null,
-        "fixture_id": null,
-        "event_id": null,
-        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
-      },
-      "trigger": "The canonical record is in time_submitted; current scope, evidence versions, and actor authority resolve.",
-      "information_priority": [
-        "Name the normal condition and affected operational scope",
-        "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
-      ],
-      "available_actions": ["ACT-203", "ACT-200", "ACT-202"],
-      "blocked_actions": ["ACT-199", "ACT-201"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
-      "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
-      "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
-      "accessibility_announcement": "Cost allocation: normal state. Scope, consequence, and available recovery are announced before actions."
-    },
-    {
       "id": "STM-0315",
       "screen_id": "SCR-045",
       "kind": "normal",
-      "canonical_state": "supervisor_verified",
+      "canonical_state": "payroll_accepted",
       "source_ref": {
-        "type": "canonical",
-        "scenario_id": null,
-        "fixture_id": null,
-        "event_id": null,
-        "rationale": "The ontology defines this branch, but the current 2026 fixture set does not realize it."
+        "type": "operational",
+        "scenario_id": "SCN-007-01",
+        "fixture_id": "FIX-034",
+        "event_id": "EVT-00238",
+        "rationale": "Exact full-season event realizes this canonical current-state action set."
       },
-      "trigger": "The canonical record is in supervisor_verified; current scope, evidence versions, and actor authority resolve.",
+      "trigger": "The canonical record is in payroll_accepted; current scope, evidence versions, and actor authority resolve.",
       "information_priority": [
         "Name the normal condition and affected operational scope",
         "Show current server state, record versions, actor, effective time, and immutable predecessor evidence",
-        "Explain which action is blocked and the exact recovery or escalation owner"
+        "Expose the valid next action and evidence required for accountable completion"
       ],
-      "available_actions": ["ACT-203", "ACT-201"],
-      "blocked_actions": ["ACT-199", "ACT-200", "ACT-202"],
-      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-042"],
+      "available_actions": ["ACT-203", "ACT-186"],
+      "blocked_actions": [],
+      "permission_rule_ids": ["PERM-037", "PERM-038"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
-      "recovery": "Keep consequential actions unavailable until the normal condition is resolved, corrected, or escalated by an authorized owner.",
+      "recovery": "Advance only through the displayed canonical transition and return to attributable history after acceptance.",
       "accessibility_announcement": "Cost allocation: normal state. Scope, consequence, and available recovery are announced before actions."
     },
     {
       "id": "STM-0316",
       "screen_id": "SCR-045",
       "kind": "urgent",
-      "canonical_state": "paused",
+      "canonical_state": "cost_allocated",
       "source_ref": {
         "type": "operational",
         "scenario_id": "SCN-007-03",
         "fixture_id": "FIX-033",
-        "event_id": "EVT-00100",
+        "event_id": "EVT-00106",
         "rationale": "SCN-007-03 realizes the urgent condition on this screen."
       },
       "trigger": "The screen detects or receives a urgent condition for its active scope.",
@@ -8494,7 +8532,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-203"],
-      "blocked_actions": ["ACT-199", "ACT-200", "ACT-201", "ACT-202"],
+      "blocked_actions": ["ACT-186"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8505,13 +8543,13 @@
       "id": "STM-0317",
       "screen_id": "SCR-045",
       "kind": "partial",
-      "canonical_state": "paused",
+      "canonical_state": "cost_allocated",
       "source_ref": {
         "type": "operational",
-        "scenario_id": "SCN-900-05",
+        "scenario_id": "SCN-007-05",
         "fixture_id": "FIX-033",
-        "event_id": "EVT-00100",
-        "rationale": "SCN-900-05 realizes the partial condition on this screen."
+        "event_id": "EVT-00106",
+        "rationale": "SCN-007-05 realizes the partial condition on this screen."
       },
       "trigger": "The screen detects or receives a partial condition for its active scope.",
       "information_priority": [
@@ -8520,7 +8558,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-203"],
-      "blocked_actions": ["ACT-199", "ACT-200", "ACT-201", "ACT-202"],
+      "blocked_actions": ["ACT-186"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8546,7 +8584,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-203"],
-      "blocked_actions": ["ACT-199", "ACT-200", "ACT-201", "ACT-202"],
+      "blocked_actions": ["ACT-186"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",
@@ -8572,7 +8610,7 @@
         "Explain which action is blocked and the exact recovery or escalation owner"
       ],
       "available_actions": ["ACT-203"],
-      "blocked_actions": ["ACT-199", "ACT-200", "ACT-201", "ACT-202"],
+      "blocked_actions": ["ACT-186"],
       "permission_rule_ids": ["PERM-037", "PERM-042"],
       "sync_behavior": "Use the current server event log and disclose any pending local journal entries for this scope.",
       "audit_behavior": "State presentation and any user response retain actor, assignment, organization, record versions, occurred time, captured time, and reason.",

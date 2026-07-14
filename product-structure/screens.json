@@ -11849,6 +11849,254 @@
       "name": "Labor demand",
       "platform": "responsive",
       "workflow_ids": ["WF-007"],
+      "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
+      "fixture_ids": ["FIX-032", "FIX-047"],
+      "requirement_ids": ["REQ-064"],
+      "primary_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+      "review_role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-FIELD-CREW",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "information_architecture": {
+        "section": "today",
+        "navigation_label": "Labor demand",
+        "parent_route": "/workflows/wf-007"
+      },
+      "purpose": "Labor demand supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "primary_decision": "Is the proposed crew qualified and available for this work and hazard profile?",
+      "data_shown": [
+        "REC-003 · Work assignment",
+        "REC-054 · Crew roster",
+        "REC-055 · Qualification and training evidence"
+      ],
+      "actions": [
+        {
+          "id": "ACT-181",
+          "label": "Record labor demanded",
+          "kind": "advance",
+          "semantic_kind": "assignment",
+          "scenario_ids": [],
+          "evidence_status": "canonical_branch",
+          "permission_rule_ids": ["PERM-038"],
+          "notification_rule_ids": ["NOT-142"],
+          "sync_class_id": "SYNC-002",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-008",
+            "from": null,
+            "to": "labor_demanded"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "explicit_assignment"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+              "trigger": "TRN-WF-007-008 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "attention",
+              "acknowledgement_required": true
+            }
+          ],
+          "sync": {
+            "mode": "queueable",
+            "offline_capable": true,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": [],
+          "record_reads": ["REC-003"],
+          "record_writes": ["REC-054"],
+          "audit": {
+            "event_kind": "workflow.assignment",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": false,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-195",
+          "label": "Record exception flagged",
+          "kind": "advance",
+          "semantic_kind": "execution",
+          "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
+          "evidence_status": "fixture_realized",
+          "permission_rule_ids": ["PERM-038"],
+          "notification_rule_ids": ["NOT-152"],
+          "sync_class_id": "SYNC-001",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-018",
+            "from": "crew_scheduled",
+            "to": "exception_flagged"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "explicit_assignment"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+              "trigger": "TRN-WF-007-018 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "urgent",
+              "acknowledgement_required": true
+            }
+          ],
+          "sync": {
+            "mode": "local_first",
+            "offline_capable": true,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": ["DEC-061"],
+          "record_reads": ["REC-003", "REC-054", "REC-055"],
+          "record_writes": ["REC-054"],
+          "audit": {
+            "event_kind": "workflow.execution",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": false,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-196",
+          "label": "Record exception flagged",
+          "kind": "advance",
+          "semantic_kind": "execution",
+          "scenario_ids": [],
+          "evidence_status": "canonical_branch",
+          "permission_rule_ids": ["PERM-038"],
+          "notification_rule_ids": ["NOT-153"],
+          "sync_class_id": "SYNC-001",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-019",
+            "from": "briefed",
+            "to": "exception_flagged"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "explicit_assignment"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+              "trigger": "TRN-WF-007-019 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "urgent",
+              "acknowledgement_required": true
+            }
+          ],
+          "sync": {
+            "mode": "local_first",
+            "offline_capable": true,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": ["DEC-061"],
+          "record_reads": ["REC-003", "REC-054", "REC-055"],
+          "record_writes": ["REC-054"],
+          "audit": {
+            "event_kind": "workflow.execution",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": false,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-175",
+          "label": "Inspect attributable history",
+          "kind": "inspect",
+          "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
+          "evidence_status": "fixture_realized",
+          "permission_rule_ids": ["PERM-037"],
+          "notification_rule_ids": [],
+          "sync_class_id": "SYNC-001"
+        }
+      ],
+      "entry_points": [
+        "Role-aware daily brief",
+        "Notification deep link",
+        "Stable record or block identity link"
+      ],
+      "exit_points": [
+        "Next canonical state after TRN-WF-007-008",
+        "Attributable record history",
+        "Accountable exception or approval queue"
+      ],
+      "states": [
+        {
+          "id": "normal",
+          "kind": "normal",
+          "description": "Current evidence and authority resolve; valid actions are available for the canonical state."
+        },
+        {
+          "id": "blocked",
+          "kind": "blocked",
+          "description": "The blocked condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+        },
+        {
+          "id": "urgent",
+          "kind": "urgent",
+          "description": "The urgent condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+        },
+        {
+          "id": "historical",
+          "kind": "historical",
+          "description": "The historical condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+        },
+        {
+          "id": "completion",
+          "kind": "completion",
+          "description": "The responsible actor can inspect terminal evidence, verification, and immutable history."
+        }
+      ],
+      "permission_behavior": "Consequential actions are denied by default and resolve from role, organization relationship, scope, state, transition ownership, delegation, sensitivity, and effective time.",
+      "offline_behavior": "Permitted field actions journal locally with visible sync state; online-only approvals remain disabled, and conflicts append evidence for explicit reconciliation.",
+      "validation_behavior": "The client and server both validate current state, source versions, required records, authority, effective time, units, and correction lineage before accepting an action.",
+      "component_ids": [
+        "CMP-001",
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-020",
+        "CMP-036"
+      ],
+      "route": "/workflows/wf-007/labor-demand",
+      "figma_frame_name": "SCR-039 · Labor demand · responsive"
+    },
+    {
+      "contract_version": "2.0",
+      "id": "SCR-040",
+      "name": "Crew schedule",
+      "platform": "responsive",
+      "workflow_ids": ["WF-007"],
       "scenario_ids": [
         "SCN-007-01",
         "SCN-007-02",
@@ -11883,12 +12131,12 @@
         "ROLE-ASSISTANT-VINEYARD-MANAGER"
       ],
       "information_architecture": {
-        "section": "today",
-        "navigation_label": "Labor demand",
+        "section": "plan",
+        "navigation_label": "Crew schedule",
         "parent_route": "/workflows/wf-007"
       },
-      "purpose": "Labor demand supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
-      "primary_decision": "Is the proposed crew qualified and available for this work and hazard profile?",
+      "purpose": "Crew schedule supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "primary_decision": "Does a field change require pause, reassignment, or schedule revision?",
       "data_shown": [
         "REC-003 · Work assignment",
         "REC-054 · Crew roster",
@@ -12009,7 +12257,55 @@
           }
         },
         {
-          "id": "ACT-175",
+          "id": "ACT-182",
+          "label": "Record crew scheduled",
+          "kind": "advance",
+          "semantic_kind": "assignment",
+          "scenario_ids": [],
+          "evidence_status": "canonical_branch",
+          "permission_rule_ids": ["PERM-038"],
+          "notification_rule_ids": ["NOT-143"],
+          "sync_class_id": "SYNC-002",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-009",
+            "from": "labor_demanded",
+            "to": "crew_scheduled"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "explicit_assignment"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+              "trigger": "TRN-WF-007-009 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "attention",
+              "acknowledgement_required": true
+            }
+          ],
+          "sync": {
+            "mode": "queueable",
+            "offline_capable": true,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": ["DEC-061"],
+          "record_reads": ["REC-003", "REC-054", "REC-055"],
+          "record_writes": ["REC-054"],
+          "audit": {
+            "event_kind": "workflow.assignment",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": false,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-178",
           "label": "Inspect attributable history",
           "kind": "inspect",
           "scenario_ids": [
@@ -12029,254 +12325,12 @@
         }
       ],
       "entry_points": [
-        "Role-aware daily brief",
-        "Notification deep link",
-        "Stable record or block identity link"
-      ],
-      "exit_points": [
-        "Next canonical state after TRN-WF-007-001",
-        "Attributable record history",
-        "Accountable exception or approval queue"
-      ],
-      "states": [
-        {
-          "id": "normal",
-          "kind": "normal",
-          "description": "Current evidence and authority resolve; valid actions are available for the canonical state."
-        },
-        {
-          "id": "blocked",
-          "kind": "blocked",
-          "description": "The blocked condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
-        },
-        {
-          "id": "urgent",
-          "kind": "urgent",
-          "description": "The urgent condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
-        },
-        {
-          "id": "historical",
-          "kind": "historical",
-          "description": "The historical condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
-        },
-        {
-          "id": "completion",
-          "kind": "completion",
-          "description": "The responsible actor can inspect terminal evidence, verification, and immutable history."
-        }
-      ],
-      "permission_behavior": "Consequential actions are denied by default and resolve from role, organization relationship, scope, state, transition ownership, delegation, sensitivity, and effective time.",
-      "offline_behavior": "Permitted field actions journal locally with visible sync state; online-only approvals remain disabled, and conflicts append evidence for explicit reconciliation.",
-      "validation_behavior": "The client and server both validate current state, source versions, required records, authority, effective time, units, and correction lineage before accepting an action.",
-      "component_ids": [
-        "CMP-001",
-        "CMP-002",
-        "CMP-003",
-        "CMP-004",
-        "CMP-005",
-        "CMP-006",
-        "CMP-007",
-        "CMP-008",
-        "CMP-010",
-        "CMP-012",
-        "CMP-014",
-        "CMP-015",
-        "CMP-017",
-        "CMP-020",
-        "CMP-036"
-      ],
-      "route": "/workflows/wf-007/labor-demand",
-      "figma_frame_name": "SCR-039 · Labor demand · responsive"
-    },
-    {
-      "contract_version": "2.0",
-      "id": "SCR-040",
-      "name": "Crew schedule",
-      "platform": "responsive",
-      "workflow_ids": ["WF-007"],
-      "scenario_ids": [
-        "SCN-007-01",
-        "SCN-007-03",
-        "SCN-007-05",
-        "SCN-007-06",
-        "SCN-007-07",
-        "SCN-900-05",
-        "SCN-900-09"
-      ],
-      "fixture_ids": [
-        "FIX-034",
-        "FIX-033",
-        "FIX-036",
-        "FIX-035",
-        "FIX-003",
-        "FIX-031"
-      ],
-      "requirement_ids": ["REQ-066", "REQ-070"],
-      "primary_role_ids": ["ROLE-FOREMAN"],
-      "review_role_ids": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE",
-        "ROLE-ASSISTANT-VINEYARD-MANAGER"
-      ],
-      "information_architecture": {
-        "section": "plan",
-        "navigation_label": "Crew schedule",
-        "parent_route": "/workflows/wf-007"
-      },
-      "purpose": "Crew schedule supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
-      "primary_decision": "Does a field change require pause, reassignment, or schedule revision?",
-      "data_shown": [
-        "REC-003 · Work assignment",
-        "REC-056 · Safety briefing",
-        "REC-057 · Attendance record",
-        "REC-058 · Break record",
-        "REC-059 · Time and piece-rate record",
-        "REC-060 · Task quantity"
-      ],
-      "actions": [
-        {
-          "id": "ACT-176",
-          "label": "Record working",
-          "kind": "advance",
-          "semantic_kind": "execution",
-          "scenario_ids": [
-            "SCN-007-01",
-            "SCN-007-03",
-            "SCN-007-06",
-            "SCN-007-07",
-            "SCN-900-05",
-            "SCN-900-09"
-          ],
-          "evidence_status": "fixture_realized",
-          "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-137"],
-          "sync_class_id": "SYNC-001",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-003",
-            "from": "briefed",
-            "to": "working"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-FOREMAN"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "explicit_assignment"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-FOREMAN"],
-              "trigger": "TRN-WF-007-003 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "attention",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "local_first",
-            "offline_capable": true,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": ["DEC-062"],
-          "record_reads": ["REC-003", "REC-056", "REC-057"],
-          "record_writes": ["REC-003", "REC-057", "REC-058"],
-          "audit": {
-            "event_kind": "workflow.execution",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": false,
-            "records_snapshot": true
-          }
-        },
-        {
-          "id": "ACT-177",
-          "label": "Record time submitted",
-          "kind": "advance",
-          "semantic_kind": "completion",
-          "scenario_ids": [
-            "SCN-007-01",
-            "SCN-007-03",
-            "SCN-007-05",
-            "SCN-007-06",
-            "SCN-007-07",
-            "SCN-900-05",
-            "SCN-900-09"
-          ],
-          "evidence_status": "fixture_realized",
-          "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-138"],
-          "sync_class_id": "SYNC-003",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-004",
-            "from": "working",
-            "to": "time_submitted"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-FOREMAN"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "explicit_assignment"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-FOREMAN"],
-              "trigger": "TRN-WF-007-004 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "attention",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "online",
-            "offline_capable": false,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": [],
-          "record_reads": ["REC-057", "REC-058"],
-          "record_writes": ["REC-059", "REC-060"],
-          "audit": {
-            "event_kind": "workflow.completion",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": false,
-            "records_snapshot": true
-          }
-        },
-        {
-          "id": "ACT-178",
-          "label": "Inspect attributable history",
-          "kind": "inspect",
-          "scenario_ids": [
-            "SCN-007-01",
-            "SCN-007-03",
-            "SCN-007-05",
-            "SCN-007-06",
-            "SCN-007-07",
-            "SCN-900-05",
-            "SCN-900-09"
-          ],
-          "evidence_status": "fixture_realized",
-          "permission_rule_ids": ["PERM-037"],
-          "notification_rule_ids": [],
-          "sync_class_id": "SYNC-001"
-        }
-      ],
-      "entry_points": [
         "Crew scheduling, attendance, time, payroll, and cost allocation workspace",
         "Notification deep link",
         "Stable record or block identity link"
       ],
       "exit_points": [
-        "Next canonical state after TRN-WF-007-003",
+        "Next canonical state after TRN-WF-007-001",
         "Attributable record history",
         "Accountable exception or approval queue"
       ],
@@ -12358,13 +12412,8 @@
         "FIX-047",
         "FIX-031"
       ],
-      "requirement_ids": ["REQ-065", "REQ-068", "REQ-070"],
-      "primary_role_ids": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-PAYROLL",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN"
-      ],
+      "requirement_ids": ["REQ-062", "REQ-063", "REQ-066"],
+      "primary_role_ids": ["ROLE-FOREMAN"],
       "review_role_ids": [
         "ROLE-VINEYARD-MANAGER",
         "ROLE-OPERATIONS-COORDINATOR",
@@ -12384,231 +12433,14 @@
       "purpose": "Check-in kiosk supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
       "primary_decision": "Do time, units, and task progress form a credible, non-conflicting submission?",
       "data_shown": [
-        "REC-057 · Attendance record",
-        "REC-058 · Break record",
-        "REC-059 · Time and piece-rate record",
-        "REC-060 · Task quantity",
-        "REC-061 · Supervisor verification",
-        "REC-062 · Payroll exception",
-        "REC-051 · Correction history",
-        "REC-063 · Cost allocation",
-        "REC-003 · Work assignment",
         "REC-054 · Crew roster",
         "REC-055 · Qualification and training evidence",
-        "REC-056 · Safety briefing"
+        "REC-056 · Safety briefing",
+        "REC-057 · Attendance record",
+        "REC-003 · Work assignment",
+        "REC-059 · Time and piece-rate record"
       ],
       "actions": [
-        {
-          "id": "ACT-179",
-          "label": "Record supervisor verified",
-          "kind": "advance",
-          "semantic_kind": "verification",
-          "scenario_ids": [
-            "SCN-007-01",
-            "SCN-007-03",
-            "SCN-007-05",
-            "SCN-007-06",
-            "SCN-007-07",
-            "SCN-900-05",
-            "SCN-900-09"
-          ],
-          "evidence_status": "fixture_realized",
-          "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-139"],
-          "sync_class_id": "SYNC-003",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-005",
-            "from": "time_submitted",
-            "to": "supervisor_verified"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-VINEYARD-MANAGER"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "forbidden"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-VINEYARD-MANAGER"],
-              "trigger": "TRN-WF-007-005 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "attention",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "online",
-            "offline_capable": false,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": ["DEC-063"],
-          "record_reads": ["REC-057", "REC-058", "REC-059", "REC-060"],
-          "record_writes": ["REC-061", "REC-062"],
-          "audit": {
-            "event_kind": "workflow.verification",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": false,
-            "records_snapshot": true
-          }
-        },
-        {
-          "id": "ACT-180",
-          "label": "Record payroll accepted",
-          "kind": "advance",
-          "semantic_kind": "reconciliation",
-          "scenario_ids": [
-            "SCN-007-01",
-            "SCN-007-02",
-            "SCN-007-03",
-            "SCN-007-04",
-            "SCN-007-05",
-            "SCN-007-06",
-            "SCN-007-07",
-            "SCN-900-05",
-            "SCN-900-07",
-            "SCN-900-09"
-          ],
-          "evidence_status": "fixture_realized",
-          "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-140"],
-          "sync_class_id": "SYNC-003",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-006",
-            "from": "supervisor_verified",
-            "to": "payroll_accepted"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-PAYROLL"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "forbidden"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-PAYROLL"],
-              "trigger": "TRN-WF-007-006 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "attention",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "online",
-            "offline_capable": false,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": ["DEC-064"],
-          "record_reads": ["REC-051", "REC-059", "REC-062", "REC-063"],
-          "record_writes": ["REC-051", "REC-059", "REC-062", "REC-063"],
-          "audit": {
-            "event_kind": "workflow.reconciliation",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": false,
-            "records_snapshot": true
-          }
-        },
-        {
-          "id": "ACT-181",
-          "label": "Record labor demanded",
-          "kind": "advance",
-          "semantic_kind": "assignment",
-          "scenario_ids": [],
-          "evidence_status": "canonical_branch",
-          "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-142"],
-          "sync_class_id": "SYNC-002",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-008",
-            "from": null,
-            "to": "labor_demanded"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "explicit_assignment"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
-              "trigger": "TRN-WF-007-008 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "attention",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "queueable",
-            "offline_capable": true,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": [],
-          "record_reads": ["REC-003"],
-          "record_writes": ["REC-054"],
-          "audit": {
-            "event_kind": "workflow.assignment",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": false,
-            "records_snapshot": true
-          }
-        },
-        {
-          "id": "ACT-182",
-          "label": "Record crew scheduled",
-          "kind": "advance",
-          "semantic_kind": "assignment",
-          "scenario_ids": [],
-          "evidence_status": "canonical_branch",
-          "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-143"],
-          "sync_class_id": "SYNC-002",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-009",
-            "from": "labor_demanded",
-            "to": "crew_scheduled"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "explicit_assignment"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
-              "trigger": "TRN-WF-007-009 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "attention",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "queueable",
-            "offline_capable": true,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": ["DEC-061"],
-          "record_reads": ["REC-003", "REC-054", "REC-055"],
-          "record_writes": ["REC-054"],
-          "audit": {
-            "event_kind": "workflow.assignment",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": false,
-            "records_snapshot": true
-          }
-        },
         {
           "id": "ACT-183",
           "label": "Record checked in",
@@ -12733,7 +12565,7 @@
         "Stable record or block identity link"
       ],
       "exit_points": [
-        "Next canonical state after TRN-WF-007-005",
+        "Next canonical state after TRN-WF-007-010",
         "Attributable record history",
         "Accountable exception or approval queue"
       ],
@@ -12774,15 +12606,12 @@
         "CMP-005",
         "CMP-006",
         "CMP-007",
-        "CMP-008",
         "CMP-010",
         "CMP-012",
         "CMP-014",
         "CMP-015",
         "CMP-017",
         "CMP-020",
-        "CMP-033",
-        "CMP-034",
         "CMP-036"
       ],
       "route": "/workflows/wf-007/check-in-kiosk",
@@ -12796,28 +12625,23 @@
       "workflow_ids": ["WF-007"],
       "scenario_ids": [
         "SCN-007-01",
-        "SCN-007-02",
         "SCN-007-03",
-        "SCN-007-04",
         "SCN-007-05",
         "SCN-007-06",
         "SCN-007-07",
         "SCN-900-05",
-        "SCN-900-07",
         "SCN-900-09"
       ],
       "fixture_ids": [
         "FIX-034",
-        "FIX-032",
         "FIX-033",
         "FIX-036",
         "FIX-035",
         "FIX-003",
-        "FIX-047",
         "FIX-031"
       ],
-      "requirement_ids": ["REQ-070"],
-      "primary_role_ids": ["ROLE-FINANCE", "ROLE-FOREMAN"],
+      "requirement_ids": ["REQ-064", "REQ-066", "REQ-070"],
+      "primary_role_ids": ["ROLE-FOREMAN"],
       "review_role_ids": [
         "ROLE-VINEYARD-MANAGER",
         "ROLE-OPERATIONS-COORDINATOR",
@@ -12837,53 +12661,106 @@
       "purpose": "Crew workboard supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
       "primary_decision": "Does a disputed labor record require an authorized correction?",
       "data_shown": [
-        "REC-059 · Time and piece-rate record",
-        "REC-060 · Task quantity",
-        "REC-063 · Cost allocation",
+        "REC-003 · Work assignment",
+        "REC-056 · Safety briefing",
         "REC-057 · Attendance record",
-        "REC-058 · Break record"
+        "REC-058 · Break record",
+        "REC-059 · Time and piece-rate record",
+        "REC-060 · Task quantity"
       ],
       "actions": [
         {
-          "id": "ACT-186",
-          "label": "Record cost allocated",
+          "id": "ACT-176",
+          "label": "Record working",
           "kind": "advance",
-          "semantic_kind": "reconciliation",
+          "semantic_kind": "execution",
           "scenario_ids": [
             "SCN-007-01",
-            "SCN-007-02",
             "SCN-007-03",
-            "SCN-007-04",
-            "SCN-007-05",
             "SCN-007-06",
             "SCN-007-07",
             "SCN-900-05",
-            "SCN-900-07",
             "SCN-900-09"
           ],
           "evidence_status": "fixture_realized",
           "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-141"],
-          "sync_class_id": "SYNC-003",
+          "notification_rule_ids": ["NOT-137"],
+          "sync_class_id": "SYNC-001",
           "transition": {
             "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-007",
-            "from": "payroll_accepted",
-            "to": "cost_allocated"
+            "transition_id": "TRN-WF-007-003",
+            "from": "briefed",
+            "to": "working"
           },
           "permission": {
-            "allowed_role_ids": ["ROLE-FINANCE"],
+            "allowed_role_ids": ["ROLE-FOREMAN"],
             "scope_match": "managed_scope",
             "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "forbidden"
+            "delegation": "explicit_assignment"
           },
           "notifications": [
             {
-              "recipient_role_ids": ["ROLE-FINANCE"],
-              "trigger": "TRN-WF-007-007 is accepted into the canonical server event log",
+              "recipient_role_ids": ["ROLE-FOREMAN"],
+              "trigger": "TRN-WF-007-003 is accepted into the canonical server event log",
               "channel": "in_app",
-              "urgency": "routine",
-              "acknowledgement_required": false
+              "urgency": "attention",
+              "acknowledgement_required": true
+            }
+          ],
+          "sync": {
+            "mode": "local_first",
+            "offline_capable": true,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": ["DEC-062"],
+          "record_reads": ["REC-003", "REC-056", "REC-057"],
+          "record_writes": ["REC-003", "REC-057", "REC-058"],
+          "audit": {
+            "event_kind": "workflow.execution",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": false,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-177",
+          "label": "Record time submitted",
+          "kind": "advance",
+          "semantic_kind": "completion",
+          "scenario_ids": [
+            "SCN-007-01",
+            "SCN-007-03",
+            "SCN-007-05",
+            "SCN-007-06",
+            "SCN-007-07",
+            "SCN-900-05",
+            "SCN-900-09"
+          ],
+          "evidence_status": "fixture_realized",
+          "permission_rule_ids": ["PERM-038"],
+          "notification_rule_ids": ["NOT-138"],
+          "sync_class_id": "SYNC-003",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-004",
+            "from": "working",
+            "to": "time_submitted"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-FOREMAN"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "explicit_assignment"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-FOREMAN"],
+              "trigger": "TRN-WF-007-004 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "attention",
+              "acknowledgement_required": true
             }
           ],
           "sync": {
@@ -12893,10 +12770,10 @@
             "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
           },
           "decision_ids": [],
-          "record_reads": ["REC-059", "REC-060", "REC-063"],
-          "record_writes": ["REC-063"],
+          "record_reads": ["REC-057", "REC-058"],
+          "record_writes": ["REC-059", "REC-060"],
           "audit": {
-            "event_kind": "workflow.reconciliation",
+            "event_kind": "workflow.completion",
             "actor_attribution": "assignment_and_person",
             "immutable": true,
             "reason_required": false,
@@ -12951,181 +12828,6 @@
             "records_snapshot": true
           }
         },
-        {
-          "id": "ACT-188",
-          "label": "Record time submitted",
-          "kind": "advance",
-          "semantic_kind": "completion",
-          "scenario_ids": [],
-          "evidence_status": "canonical_branch",
-          "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-147"],
-          "sync_class_id": "SYNC-003",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-013",
-            "from": "checked_out",
-            "to": "time_submitted"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-FOREMAN"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "explicit_assignment"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-FOREMAN"],
-              "trigger": "TRN-WF-007-013 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "attention",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "online",
-            "offline_capable": false,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": [],
-          "record_reads": ["REC-057", "REC-058", "REC-060"],
-          "record_writes": ["REC-059"],
-          "audit": {
-            "event_kind": "workflow.completion",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": false,
-            "records_snapshot": true
-          }
-        },
-        {
-          "id": "ACT-189",
-          "label": "Inspect attributable history",
-          "kind": "inspect",
-          "scenario_ids": [
-            "SCN-007-01",
-            "SCN-007-02",
-            "SCN-007-03",
-            "SCN-007-04",
-            "SCN-007-05",
-            "SCN-007-06",
-            "SCN-007-07",
-            "SCN-900-05",
-            "SCN-900-07",
-            "SCN-900-09"
-          ],
-          "evidence_status": "fixture_realized",
-          "permission_rule_ids": ["PERM-037"],
-          "notification_rule_ids": [],
-          "sync_class_id": "SYNC-001"
-        }
-      ],
-      "entry_points": [
-        "Crew scheduling, attendance, time, payroll, and cost allocation workspace",
-        "Notification deep link",
-        "Stable record or block identity link"
-      ],
-      "exit_points": [
-        "Next canonical state after TRN-WF-007-007",
-        "Attributable record history",
-        "Accountable exception or approval queue"
-      ],
-      "states": [
-        {
-          "id": "normal",
-          "kind": "normal",
-          "description": "Current evidence and authority resolve; valid actions are available for the canonical state."
-        },
-        {
-          "id": "blocked",
-          "kind": "blocked",
-          "description": "The blocked condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
-        },
-        {
-          "id": "urgent",
-          "kind": "urgent",
-          "description": "The urgent condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
-        },
-        {
-          "id": "conflict",
-          "kind": "conflict",
-          "description": "The conflict condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
-        },
-        {
-          "id": "completion",
-          "kind": "completion",
-          "description": "The responsible actor can inspect terminal evidence, verification, and immutable history."
-        }
-      ],
-      "permission_behavior": "Consequential actions are denied by default and resolve from role, organization relationship, scope, state, transition ownership, delegation, sensitivity, and effective time.",
-      "offline_behavior": "Permitted field actions journal locally with visible sync state; online-only approvals remain disabled, and conflicts append evidence for explicit reconciliation.",
-      "validation_behavior": "The client and server both validate current state, source versions, required records, authority, effective time, units, and correction lineage before accepting an action.",
-      "component_ids": [
-        "CMP-001",
-        "CMP-002",
-        "CMP-003",
-        "CMP-004",
-        "CMP-005",
-        "CMP-006",
-        "CMP-007",
-        "CMP-010",
-        "CMP-012",
-        "CMP-014",
-        "CMP-015",
-        "CMP-017",
-        "CMP-020",
-        "CMP-034",
-        "CMP-036"
-      ],
-      "route": "/workflows/wf-007/crew-workboard",
-      "figma_frame_name": "SCR-042 · Crew workboard · mobile"
-    },
-    {
-      "contract_version": "2.0",
-      "id": "SCR-043",
-      "name": "Time review",
-      "platform": "desktop",
-      "workflow_ids": ["WF-007"],
-      "scenario_ids": [
-        "SCN-007-02",
-        "SCN-007-03",
-        "SCN-007-04",
-        "SCN-900-05",
-        "SCN-900-07"
-      ],
-      "fixture_ids": ["FIX-032", "FIX-033", "FIX-003", "FIX-047"],
-      "requirement_ids": ["REQ-061", "REQ-064", "REQ-069"],
-      "primary_role_ids": ["ROLE-FOREMAN", "ROLE-PAYROLL"],
-      "review_role_ids": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE",
-        "ROLE-ASSISTANT-VINEYARD-MANAGER"
-      ],
-      "information_architecture": {
-        "section": "execute",
-        "navigation_label": "Time review",
-        "parent_route": "/workflows/wf-007"
-      },
-      "purpose": "Time review supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
-      "primary_decision": "Is the proposed crew qualified and available for this work and hazard profile?",
-      "data_shown": [
-        "REC-056 · Safety briefing",
-        "REC-058 · Break record",
-        "REC-003 · Work assignment",
-        "REC-057 · Attendance record",
-        "REC-051 · Correction history",
-        "REC-059 · Time and piece-rate record",
-        "REC-062 · Payroll exception",
-        "REC-063 · Cost allocation"
-      ],
-      "actions": [
         {
           "id": "ACT-190",
           "label": "Resolve briefed",
@@ -13223,259 +12925,31 @@
           }
         },
         {
-          "id": "ACT-192",
-          "label": "Record corrected",
-          "kind": "correct",
-          "semantic_kind": "correction",
-          "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
-          "evidence_status": "fixture_realized",
-          "permission_rule_ids": ["PERM-040"],
-          "notification_rule_ids": ["NOT-150"],
-          "sync_class_id": "SYNC-003",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-016",
-            "from": "exception_flagged",
-            "to": "corrected"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-PAYROLL"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "explicit_assignment"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-PAYROLL"],
-              "trigger": "TRN-WF-007-016 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "urgent",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "online",
-            "offline_capable": false,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": ["DEC-064"],
-          "record_reads": ["REC-051", "REC-059", "REC-062", "REC-063"],
-          "record_writes": ["REC-051", "REC-059", "REC-062", "REC-063"],
-          "audit": {
-            "event_kind": "workflow.correction",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": true,
-            "records_snapshot": true
-          }
-        },
-        {
-          "id": "ACT-193",
-          "label": "Inspect attributable history",
-          "kind": "inspect",
-          "scenario_ids": [
-            "SCN-007-02",
-            "SCN-007-03",
-            "SCN-007-04",
-            "SCN-900-05",
-            "SCN-900-07"
-          ],
-          "evidence_status": "fixture_realized",
-          "permission_rule_ids": ["PERM-037"],
-          "notification_rule_ids": [],
-          "sync_class_id": "SYNC-001"
-        }
-      ],
-      "entry_points": [
-        "Crew scheduling, attendance, time, payroll, and cost allocation workspace",
-        "Notification deep link",
-        "Stable record or block identity link"
-      ],
-      "exit_points": [
-        "Next canonical state after TRN-WF-007-014",
-        "Attributable record history",
-        "Accountable exception or approval queue"
-      ],
-      "states": [
-        {
-          "id": "normal",
-          "kind": "normal",
-          "description": "Current evidence and authority resolve; valid actions are available for the canonical state."
-        },
-        {
-          "id": "blocked",
-          "kind": "blocked",
-          "description": "The blocked condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
-        },
-        {
-          "id": "urgent",
-          "kind": "urgent",
-          "description": "The urgent condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
-        },
-        {
-          "id": "loading",
-          "kind": "loading",
-          "description": "The loading condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
-        },
-        {
-          "id": "completion",
-          "kind": "completion",
-          "description": "The responsible actor can inspect terminal evidence, verification, and immutable history."
-        }
-      ],
-      "permission_behavior": "Consequential actions are denied by default and resolve from role, organization relationship, scope, state, transition ownership, delegation, sensitivity, and effective time.",
-      "offline_behavior": "Permitted field actions journal locally with visible sync state; online-only approvals remain disabled, and conflicts append evidence for explicit reconciliation.",
-      "validation_behavior": "The client and server both validate current state, source versions, required records, authority, effective time, units, and correction lineage before accepting an action.",
-      "component_ids": [
-        "CMP-002",
-        "CMP-003",
-        "CMP-004",
-        "CMP-005",
-        "CMP-006",
-        "CMP-007",
-        "CMP-008",
-        "CMP-010",
-        "CMP-011",
-        "CMP-012",
-        "CMP-013",
-        "CMP-014",
-        "CMP-015",
-        "CMP-017",
-        "CMP-020",
-        "CMP-035",
-        "CMP-036"
-      ],
-      "route": "/workflows/wf-007/time-review",
-      "figma_frame_name": "SCR-043 · Time review · desktop"
-    },
-    {
-      "contract_version": "2.0",
-      "id": "SCR-044",
-      "name": "Payroll exception",
-      "platform": "responsive",
-      "workflow_ids": ["WF-007"],
-      "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
-      "fixture_ids": ["FIX-032", "FIX-047"],
-      "requirement_ids": ["REQ-064", "REQ-070"],
-      "primary_role_ids": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN"
-      ],
-      "review_role_ids": [
-        "ROLE-VINEYARD-MANAGER",
-        "ROLE-OPERATIONS-COORDINATOR",
-        "ROLE-FOREMAN",
-        "ROLE-FIELD-CREW",
-        "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
-        "ROLE-FINANCE",
-        "ROLE-ASSISTANT-VINEYARD-MANAGER"
-      ],
-      "information_architecture": {
-        "section": "verify",
-        "navigation_label": "Payroll exception",
-        "parent_route": "/workflows/wf-007"
-      },
-      "purpose": "Payroll exception supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
-      "primary_decision": "Does a field change require pause, reassignment, or schedule revision?",
-      "data_shown": [
-        "REC-051 · Correction history",
-        "REC-059 · Time and piece-rate record",
-        "REC-062 · Payroll exception",
-        "REC-057 · Attendance record",
-        "REC-058 · Break record",
-        "REC-060 · Task quantity",
-        "REC-061 · Supervisor verification",
-        "REC-003 · Work assignment",
-        "REC-054 · Crew roster",
-        "REC-055 · Qualification and training evidence",
-        "REC-056 · Safety briefing"
-      ],
-      "actions": [
-        {
-          "id": "ACT-194",
-          "label": "Record supervisor verified",
-          "kind": "advance",
-          "semantic_kind": "verification",
-          "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
-          "evidence_status": "fixture_realized",
-          "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-151"],
-          "sync_class_id": "SYNC-003",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-017",
-            "from": "corrected",
-            "to": "supervisor_verified"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-VINEYARD-MANAGER"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "forbidden"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-VINEYARD-MANAGER"],
-              "trigger": "TRN-WF-007-017 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "attention",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "online",
-            "offline_capable": false,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": ["DEC-063"],
-          "record_reads": [
-            "REC-051",
-            "REC-059",
-            "REC-062",
-            "REC-057",
-            "REC-058",
-            "REC-060"
-          ],
-          "record_writes": ["REC-061", "REC-062"],
-          "audit": {
-            "event_kind": "workflow.verification",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": false,
-            "records_snapshot": true
-          }
-        },
-        {
-          "id": "ACT-195",
-          "label": "Record exception flagged",
+          "id": "ACT-199",
+          "label": "Record paused",
           "kind": "advance",
           "semantic_kind": "execution",
-          "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
+          "scenario_ids": ["SCN-007-03", "SCN-900-05"],
           "evidence_status": "fixture_realized",
           "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-152"],
+          "notification_rule_ids": ["NOT-154"],
           "sync_class_id": "SYNC-001",
           "transition": {
             "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-018",
-            "from": "crew_scheduled",
-            "to": "exception_flagged"
+            "transition_id": "TRN-WF-007-020",
+            "from": "working",
+            "to": "paused"
           },
           "permission": {
-            "allowed_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+            "allowed_role_ids": ["ROLE-FOREMAN"],
             "scope_match": "managed_scope",
             "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
             "delegation": "explicit_assignment"
           },
           "notifications": [
             {
-              "recipient_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
-              "trigger": "TRN-WF-007-018 is accepted into the canonical server event log",
+              "recipient_role_ids": ["ROLE-FOREMAN"],
+              "trigger": "TRN-WF-007-020 is accepted into the canonical server event log",
               "channel": "in_app",
               "urgency": "urgent",
               "acknowledgement_required": true
@@ -13487,57 +12961,9 @@
             "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
             "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
           },
-          "decision_ids": ["DEC-061"],
-          "record_reads": ["REC-003", "REC-054", "REC-055"],
-          "record_writes": ["REC-054"],
-          "audit": {
-            "event_kind": "workflow.execution",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": false,
-            "records_snapshot": true
-          }
-        },
-        {
-          "id": "ACT-196",
-          "label": "Record exception flagged",
-          "kind": "advance",
-          "semantic_kind": "execution",
-          "scenario_ids": [],
-          "evidence_status": "canonical_branch",
-          "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-153"],
-          "sync_class_id": "SYNC-001",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-019",
-            "from": "briefed",
-            "to": "exception_flagged"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "explicit_assignment"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
-              "trigger": "TRN-WF-007-019 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "urgent",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "local_first",
-            "offline_capable": true,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": ["DEC-061"],
-          "record_reads": ["REC-003", "REC-054", "REC-055"],
-          "record_writes": ["REC-054"],
+          "decision_ids": ["DEC-062"],
+          "record_reads": ["REC-003", "REC-056", "REC-057"],
+          "record_writes": ["REC-003", "REC-057", "REC-058"],
           "audit": {
             "event_kind": "workflow.execution",
             "actor_attribution": "assignment_and_person",
@@ -13595,10 +13021,18 @@
           }
         },
         {
-          "id": "ACT-198",
+          "id": "ACT-189",
           "label": "Inspect attributable history",
           "kind": "inspect",
-          "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
+          "scenario_ids": [
+            "SCN-007-01",
+            "SCN-007-03",
+            "SCN-007-05",
+            "SCN-007-06",
+            "SCN-007-07",
+            "SCN-900-05",
+            "SCN-900-09"
+          ],
           "evidence_status": "fixture_realized",
           "permission_rule_ids": ["PERM-037"],
           "notification_rule_ids": [],
@@ -13611,7 +13045,7 @@
         "Stable record or block identity link"
       ],
       "exit_points": [
-        "Next canonical state after TRN-WF-007-017",
+        "Next canonical state after TRN-WF-007-003",
         "Attributable record history",
         "Accountable exception or approval queue"
       ],
@@ -13627,14 +13061,14 @@
           "description": "The blocked condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
         },
         {
-          "id": "corrected",
-          "kind": "corrected",
-          "description": "The corrected condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+          "id": "urgent",
+          "kind": "urgent",
+          "description": "The urgent condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
         },
         {
-          "id": "empty",
-          "kind": "empty",
-          "description": "The empty condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+          "id": "conflict",
+          "kind": "conflict",
+          "description": "The conflict condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
         },
         {
           "id": "completion",
@@ -13646,6 +13080,7 @@
       "offline_behavior": "Permitted field actions journal locally with visible sync state; online-only approvals remain disabled, and conflicts append evidence for explicit reconciliation.",
       "validation_behavior": "The client and server both validate current state, source versions, required records, authority, effective time, units, and correction lineage before accepting an action.",
       "component_ids": [
+        "CMP-001",
         "CMP-002",
         "CMP-003",
         "CMP-004",
@@ -13654,28 +13089,47 @@
         "CMP-007",
         "CMP-008",
         "CMP-010",
+        "CMP-011",
+        "CMP-012",
         "CMP-014",
         "CMP-015",
         "CMP-017",
-        "CMP-018",
-        "CMP-019",
         "CMP-020",
-        "CMP-033",
         "CMP-036"
       ],
-      "route": "/workflows/wf-007/payroll-exception",
-      "figma_frame_name": "SCR-044 · Payroll exception · responsive"
+      "route": "/workflows/wf-007/crew-workboard",
+      "figma_frame_name": "SCR-042 · Crew workboard · mobile"
     },
     {
       "contract_version": "2.0",
-      "id": "SCR-045",
-      "name": "Cost allocation",
-      "platform": "responsive",
+      "id": "SCR-043",
+      "name": "Time review",
+      "platform": "desktop",
       "workflow_ids": ["WF-007"],
-      "scenario_ids": ["SCN-007-03", "SCN-900-05"],
-      "fixture_ids": ["FIX-033", "FIX-003"],
-      "requirement_ids": ["REQ-064"],
-      "primary_role_ids": ["ROLE-FOREMAN", "ROLE-VINEYARD-MANAGER"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-02",
+        "SCN-007-03",
+        "SCN-007-04",
+        "SCN-007-05",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-07",
+        "SCN-900-09"
+      ],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ],
+      "requirement_ids": ["REQ-065", "REQ-068", "REQ-070"],
+      "primary_role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-FOREMAN"],
       "review_role_ids": [
         "ROLE-VINEYARD-MANAGER",
         "ROLE-OPERATIONS-COORDINATOR",
@@ -13688,40 +13142,94 @@
         "ROLE-ASSISTANT-VINEYARD-MANAGER"
       ],
       "information_architecture": {
-        "section": "records",
-        "navigation_label": "Cost allocation",
+        "section": "execute",
+        "navigation_label": "Time review",
         "parent_route": "/workflows/wf-007"
       },
-      "purpose": "Cost allocation supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
-      "primary_decision": "Do time, units, and task progress form a credible, non-conflicting submission?",
+      "purpose": "Time review supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "primary_decision": "Is the proposed crew qualified and available for this work and hazard profile?",
       "data_shown": [
-        "REC-003 · Work assignment",
-        "REC-056 · Safety briefing",
         "REC-057 · Attendance record",
         "REC-058 · Break record",
         "REC-059 · Time and piece-rate record",
         "REC-060 · Task quantity",
-        "REC-051 · Correction history",
+        "REC-061 · Supervisor verification",
         "REC-062 · Payroll exception",
-        "REC-063 · Cost allocation",
-        "REC-061 · Supervisor verification"
+        "REC-051 · Correction history",
+        "REC-063 · Cost allocation"
       ],
       "actions": [
         {
-          "id": "ACT-199",
-          "label": "Record paused",
+          "id": "ACT-179",
+          "label": "Record supervisor verified",
           "kind": "advance",
-          "semantic_kind": "execution",
-          "scenario_ids": ["SCN-007-03", "SCN-900-05"],
+          "semantic_kind": "verification",
+          "scenario_ids": [
+            "SCN-007-01",
+            "SCN-007-03",
+            "SCN-007-05",
+            "SCN-007-06",
+            "SCN-007-07",
+            "SCN-900-05",
+            "SCN-900-09"
+          ],
           "evidence_status": "fixture_realized",
           "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-154"],
-          "sync_class_id": "SYNC-001",
+          "notification_rule_ids": ["NOT-139"],
+          "sync_class_id": "SYNC-003",
           "transition": {
             "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-020",
-            "from": "working",
-            "to": "paused"
+            "transition_id": "TRN-WF-007-005",
+            "from": "time_submitted",
+            "to": "supervisor_verified"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-VINEYARD-MANAGER"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "forbidden"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-VINEYARD-MANAGER"],
+              "trigger": "TRN-WF-007-005 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "attention",
+              "acknowledgement_required": true
+            }
+          ],
+          "sync": {
+            "mode": "online",
+            "offline_capable": false,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": ["DEC-063"],
+          "record_reads": ["REC-057", "REC-058", "REC-059", "REC-060"],
+          "record_writes": ["REC-061", "REC-062"],
+          "audit": {
+            "event_kind": "workflow.verification",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": false,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-188",
+          "label": "Record time submitted",
+          "kind": "advance",
+          "semantic_kind": "completion",
+          "scenario_ids": [],
+          "evidence_status": "canonical_branch",
+          "permission_rule_ids": ["PERM-038"],
+          "notification_rule_ids": ["NOT-147"],
+          "sync_class_id": "SYNC-003",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-013",
+            "from": "checked_out",
+            "to": "time_submitted"
           },
           "permission": {
             "allowed_role_ids": ["ROLE-FOREMAN"],
@@ -13732,23 +13240,78 @@
           "notifications": [
             {
               "recipient_role_ids": ["ROLE-FOREMAN"],
-              "trigger": "TRN-WF-007-020 is accepted into the canonical server event log",
+              "trigger": "TRN-WF-007-013 is accepted into the canonical server event log",
               "channel": "in_app",
-              "urgency": "urgent",
+              "urgency": "attention",
               "acknowledgement_required": true
             }
           ],
           "sync": {
-            "mode": "local_first",
-            "offline_capable": true,
+            "mode": "online",
+            "offline_capable": false,
             "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
             "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
           },
-          "decision_ids": ["DEC-062"],
-          "record_reads": ["REC-003", "REC-056", "REC-057"],
-          "record_writes": ["REC-003", "REC-057", "REC-058"],
+          "decision_ids": [],
+          "record_reads": ["REC-057", "REC-058", "REC-060"],
+          "record_writes": ["REC-059"],
           "audit": {
-            "event_kind": "workflow.execution",
+            "event_kind": "workflow.completion",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": false,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-194",
+          "label": "Record supervisor verified",
+          "kind": "advance",
+          "semantic_kind": "verification",
+          "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
+          "evidence_status": "fixture_realized",
+          "permission_rule_ids": ["PERM-038"],
+          "notification_rule_ids": ["NOT-151"],
+          "sync_class_id": "SYNC-003",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-017",
+            "from": "corrected",
+            "to": "supervisor_verified"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-VINEYARD-MANAGER"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "forbidden"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-VINEYARD-MANAGER"],
+              "trigger": "TRN-WF-007-017 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "attention",
+              "acknowledgement_required": true
+            }
+          ],
+          "sync": {
+            "mode": "online",
+            "offline_capable": false,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": ["DEC-063"],
+          "record_reads": [
+            "REC-051",
+            "REC-059",
+            "REC-062",
+            "REC-057",
+            "REC-058",
+            "REC-060"
+          ],
+          "record_writes": ["REC-061", "REC-062"],
+          "audit": {
+            "event_kind": "workflow.verification",
             "actor_attribution": "assignment_and_person",
             "immutable": true,
             "reason_required": false,
@@ -13781,68 +13344,6 @@
             {
               "recipient_role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-PAYROLL"],
               "trigger": "TRN-WF-007-022 is accepted into the canonical server event log",
-              "channel": "in_app",
-              "urgency": "urgent",
-              "acknowledgement_required": true
-            }
-          ],
-          "sync": {
-            "mode": "local_first",
-            "offline_capable": true,
-            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
-            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
-          },
-          "decision_ids": ["DEC-063", "DEC-064"],
-          "record_reads": [
-            "REC-057",
-            "REC-058",
-            "REC-059",
-            "REC-060",
-            "REC-051",
-            "REC-062",
-            "REC-063"
-          ],
-          "record_writes": [
-            "REC-061",
-            "REC-062",
-            "REC-051",
-            "REC-059",
-            "REC-063"
-          ],
-          "audit": {
-            "event_kind": "workflow.execution",
-            "actor_attribution": "assignment_and_person",
-            "immutable": true,
-            "reason_required": false,
-            "records_snapshot": true
-          }
-        },
-        {
-          "id": "ACT-201",
-          "label": "Record exception flagged",
-          "kind": "advance",
-          "semantic_kind": "execution",
-          "scenario_ids": [],
-          "evidence_status": "canonical_branch",
-          "permission_rule_ids": ["PERM-038"],
-          "notification_rule_ids": ["NOT-157"],
-          "sync_class_id": "SYNC-001",
-          "transition": {
-            "workflow_id": "WF-007",
-            "transition_id": "TRN-WF-007-023",
-            "from": "supervisor_verified",
-            "to": "exception_flagged"
-          },
-          "permission": {
-            "allowed_role_ids": ["ROLE-VINEYARD-MANAGER"],
-            "scope_match": "managed_scope",
-            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
-            "delegation": "explicit_assignment"
-          },
-          "notifications": [
-            {
-              "recipient_role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-PAYROLL"],
-              "trigger": "TRN-WF-007-023 is accepted into the canonical server event log",
               "channel": "in_app",
               "urgency": "urgent",
               "acknowledgement_required": true
@@ -13942,10 +13443,21 @@
           }
         },
         {
-          "id": "ACT-203",
+          "id": "ACT-193",
           "label": "Inspect attributable history",
           "kind": "inspect",
-          "scenario_ids": ["SCN-007-03", "SCN-900-05"],
+          "scenario_ids": [
+            "SCN-007-01",
+            "SCN-007-02",
+            "SCN-007-03",
+            "SCN-007-04",
+            "SCN-007-05",
+            "SCN-007-06",
+            "SCN-007-07",
+            "SCN-900-05",
+            "SCN-900-07",
+            "SCN-900-09"
+          ],
           "evidence_status": "fixture_realized",
           "permission_rule_ids": ["PERM-037"],
           "notification_rule_ids": [],
@@ -13958,7 +13470,516 @@
         "Stable record or block identity link"
       ],
       "exit_points": [
-        "Next canonical state after TRN-WF-007-020",
+        "Next canonical state after TRN-WF-007-005",
+        "Attributable record history",
+        "Accountable exception or approval queue"
+      ],
+      "states": [
+        {
+          "id": "normal",
+          "kind": "normal",
+          "description": "Current evidence and authority resolve; valid actions are available for the canonical state."
+        },
+        {
+          "id": "blocked",
+          "kind": "blocked",
+          "description": "The blocked condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+        },
+        {
+          "id": "urgent",
+          "kind": "urgent",
+          "description": "The urgent condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+        },
+        {
+          "id": "loading",
+          "kind": "loading",
+          "description": "The loading condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+        },
+        {
+          "id": "completion",
+          "kind": "completion",
+          "description": "The responsible actor can inspect terminal evidence, verification, and immutable history."
+        }
+      ],
+      "permission_behavior": "Consequential actions are denied by default and resolve from role, organization relationship, scope, state, transition ownership, delegation, sensitivity, and effective time.",
+      "offline_behavior": "Permitted field actions journal locally with visible sync state; online-only approvals remain disabled, and conflicts append evidence for explicit reconciliation.",
+      "validation_behavior": "The client and server both validate current state, source versions, required records, authority, effective time, units, and correction lineage before accepting an action.",
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-020",
+        "CMP-033",
+        "CMP-035",
+        "CMP-036"
+      ],
+      "route": "/workflows/wf-007/time-review",
+      "figma_frame_name": "SCR-043 · Time review · desktop"
+    },
+    {
+      "contract_version": "2.0",
+      "id": "SCR-044",
+      "name": "Payroll exception",
+      "platform": "responsive",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-02",
+        "SCN-007-03",
+        "SCN-007-04",
+        "SCN-007-05",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-07",
+        "SCN-900-09"
+      ],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ],
+      "requirement_ids": ["REQ-061", "REQ-064", "REQ-069", "REQ-070"],
+      "primary_role_ids": ["ROLE-PAYROLL", "ROLE-VINEYARD-MANAGER"],
+      "review_role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-FIELD-CREW",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "information_architecture": {
+        "section": "verify",
+        "navigation_label": "Payroll exception",
+        "parent_route": "/workflows/wf-007"
+      },
+      "purpose": "Payroll exception supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "primary_decision": "Does a field change require pause, reassignment, or schedule revision?",
+      "data_shown": [
+        "REC-051 · Correction history",
+        "REC-059 · Time and piece-rate record",
+        "REC-062 · Payroll exception",
+        "REC-063 · Cost allocation",
+        "REC-057 · Attendance record",
+        "REC-058 · Break record",
+        "REC-060 · Task quantity",
+        "REC-061 · Supervisor verification"
+      ],
+      "actions": [
+        {
+          "id": "ACT-180",
+          "label": "Record payroll accepted",
+          "kind": "advance",
+          "semantic_kind": "reconciliation",
+          "scenario_ids": [
+            "SCN-007-01",
+            "SCN-007-02",
+            "SCN-007-03",
+            "SCN-007-04",
+            "SCN-007-05",
+            "SCN-007-06",
+            "SCN-007-07",
+            "SCN-900-05",
+            "SCN-900-07",
+            "SCN-900-09"
+          ],
+          "evidence_status": "fixture_realized",
+          "permission_rule_ids": ["PERM-038"],
+          "notification_rule_ids": ["NOT-140"],
+          "sync_class_id": "SYNC-003",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-006",
+            "from": "supervisor_verified",
+            "to": "payroll_accepted"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-PAYROLL"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "forbidden"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-PAYROLL"],
+              "trigger": "TRN-WF-007-006 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "attention",
+              "acknowledgement_required": true
+            }
+          ],
+          "sync": {
+            "mode": "online",
+            "offline_capable": false,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": ["DEC-064"],
+          "record_reads": ["REC-051", "REC-059", "REC-062", "REC-063"],
+          "record_writes": ["REC-051", "REC-059", "REC-062", "REC-063"],
+          "audit": {
+            "event_kind": "workflow.reconciliation",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": false,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-192",
+          "label": "Record corrected",
+          "kind": "correct",
+          "semantic_kind": "correction",
+          "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
+          "evidence_status": "fixture_realized",
+          "permission_rule_ids": ["PERM-040"],
+          "notification_rule_ids": ["NOT-150"],
+          "sync_class_id": "SYNC-003",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-016",
+            "from": "exception_flagged",
+            "to": "corrected"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-PAYROLL"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "explicit_assignment"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-PAYROLL"],
+              "trigger": "TRN-WF-007-016 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "urgent",
+              "acknowledgement_required": true
+            }
+          ],
+          "sync": {
+            "mode": "online",
+            "offline_capable": false,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": ["DEC-064"],
+          "record_reads": ["REC-051", "REC-059", "REC-062", "REC-063"],
+          "record_writes": ["REC-051", "REC-059", "REC-062", "REC-063"],
+          "audit": {
+            "event_kind": "workflow.correction",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": true,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-201",
+          "label": "Record exception flagged",
+          "kind": "advance",
+          "semantic_kind": "execution",
+          "scenario_ids": [],
+          "evidence_status": "canonical_branch",
+          "permission_rule_ids": ["PERM-038"],
+          "notification_rule_ids": ["NOT-157"],
+          "sync_class_id": "SYNC-001",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-023",
+            "from": "supervisor_verified",
+            "to": "exception_flagged"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-VINEYARD-MANAGER"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "explicit_assignment"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-PAYROLL"],
+              "trigger": "TRN-WF-007-023 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "urgent",
+              "acknowledgement_required": true
+            }
+          ],
+          "sync": {
+            "mode": "local_first",
+            "offline_capable": true,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": ["DEC-063", "DEC-064"],
+          "record_reads": [
+            "REC-057",
+            "REC-058",
+            "REC-059",
+            "REC-060",
+            "REC-051",
+            "REC-062",
+            "REC-063"
+          ],
+          "record_writes": [
+            "REC-061",
+            "REC-062",
+            "REC-051",
+            "REC-059",
+            "REC-063"
+          ],
+          "audit": {
+            "event_kind": "workflow.execution",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": false,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-198",
+          "label": "Inspect attributable history",
+          "kind": "inspect",
+          "scenario_ids": [
+            "SCN-007-01",
+            "SCN-007-02",
+            "SCN-007-03",
+            "SCN-007-04",
+            "SCN-007-05",
+            "SCN-007-06",
+            "SCN-007-07",
+            "SCN-900-05",
+            "SCN-900-07",
+            "SCN-900-09"
+          ],
+          "evidence_status": "fixture_realized",
+          "permission_rule_ids": ["PERM-037"],
+          "notification_rule_ids": [],
+          "sync_class_id": "SYNC-001"
+        }
+      ],
+      "entry_points": [
+        "Crew scheduling, attendance, time, payroll, and cost allocation workspace",
+        "Notification deep link",
+        "Stable record or block identity link"
+      ],
+      "exit_points": [
+        "Next canonical state after TRN-WF-007-006",
+        "Attributable record history",
+        "Accountable exception or approval queue"
+      ],
+      "states": [
+        {
+          "id": "normal",
+          "kind": "normal",
+          "description": "Current evidence and authority resolve; valid actions are available for the canonical state."
+        },
+        {
+          "id": "blocked",
+          "kind": "blocked",
+          "description": "The blocked condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+        },
+        {
+          "id": "corrected",
+          "kind": "corrected",
+          "description": "The corrected condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+        },
+        {
+          "id": "empty",
+          "kind": "empty",
+          "description": "The empty condition is explicit, non-color-coded, attributable, and paired with a bounded recovery path."
+        },
+        {
+          "id": "completion",
+          "kind": "completion",
+          "description": "The responsible actor can inspect terminal evidence, verification, and immutable history."
+        }
+      ],
+      "permission_behavior": "Consequential actions are denied by default and resolve from role, organization relationship, scope, state, transition ownership, delegation, sensitivity, and effective time.",
+      "offline_behavior": "Permitted field actions journal locally with visible sync state; online-only approvals remain disabled, and conflicts append evidence for explicit reconciliation.",
+      "validation_behavior": "The client and server both validate current state, source versions, required records, authority, effective time, units, and correction lineage before accepting an action.",
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-012",
+        "CMP-013",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-018",
+        "CMP-019",
+        "CMP-020",
+        "CMP-034",
+        "CMP-036"
+      ],
+      "route": "/workflows/wf-007/payroll-exception",
+      "figma_frame_name": "SCR-044 · Payroll exception · responsive"
+    },
+    {
+      "contract_version": "2.0",
+      "id": "SCR-045",
+      "name": "Cost allocation",
+      "platform": "responsive",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-02",
+        "SCN-007-03",
+        "SCN-007-04",
+        "SCN-007-05",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-07",
+        "SCN-900-09"
+      ],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ],
+      "requirement_ids": ["REQ-070"],
+      "primary_role_ids": ["ROLE-FINANCE"],
+      "review_role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-FIELD-CREW",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "information_architecture": {
+        "section": "records",
+        "navigation_label": "Cost allocation",
+        "parent_route": "/workflows/wf-007"
+      },
+      "purpose": "Cost allocation supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "primary_decision": "Do time, units, and task progress form a credible, non-conflicting submission?",
+      "data_shown": [
+        "REC-059 · Time and piece-rate record",
+        "REC-060 · Task quantity",
+        "REC-063 · Cost allocation"
+      ],
+      "actions": [
+        {
+          "id": "ACT-186",
+          "label": "Record cost allocated",
+          "kind": "advance",
+          "semantic_kind": "reconciliation",
+          "scenario_ids": [
+            "SCN-007-01",
+            "SCN-007-02",
+            "SCN-007-03",
+            "SCN-007-04",
+            "SCN-007-05",
+            "SCN-007-06",
+            "SCN-007-07",
+            "SCN-900-05",
+            "SCN-900-07",
+            "SCN-900-09"
+          ],
+          "evidence_status": "fixture_realized",
+          "permission_rule_ids": ["PERM-038"],
+          "notification_rule_ids": ["NOT-141"],
+          "sync_class_id": "SYNC-003",
+          "transition": {
+            "workflow_id": "WF-007",
+            "transition_id": "TRN-WF-007-007",
+            "from": "payroll_accepted",
+            "to": "cost_allocated"
+          },
+          "permission": {
+            "allowed_role_ids": ["ROLE-FINANCE"],
+            "scope_match": "managed_scope",
+            "denied_behavior": "Keep the record read-only, name the unmet authority or state condition, and offer accountable escalation.",
+            "delegation": "forbidden"
+          },
+          "notifications": [
+            {
+              "recipient_role_ids": ["ROLE-FINANCE"],
+              "trigger": "TRN-WF-007-007 is accepted into the canonical server event log",
+              "channel": "in_app",
+              "urgency": "routine",
+              "acknowledgement_required": false
+            }
+          ],
+          "sync": {
+            "mode": "online",
+            "offline_capable": false,
+            "conflict_policy": "Append the device event, compare base version and current server state, and require explicit reconciliation when they diverge.",
+            "idempotency_key_source": "device_id + local_event_id + actor_assignment_id + scope_id"
+          },
+          "decision_ids": [],
+          "record_reads": ["REC-059", "REC-060", "REC-063"],
+          "record_writes": ["REC-063"],
+          "audit": {
+            "event_kind": "workflow.reconciliation",
+            "actor_attribution": "assignment_and_person",
+            "immutable": true,
+            "reason_required": false,
+            "records_snapshot": true
+          }
+        },
+        {
+          "id": "ACT-203",
+          "label": "Inspect attributable history",
+          "kind": "inspect",
+          "scenario_ids": [
+            "SCN-007-01",
+            "SCN-007-02",
+            "SCN-007-03",
+            "SCN-007-04",
+            "SCN-007-05",
+            "SCN-007-06",
+            "SCN-007-07",
+            "SCN-900-05",
+            "SCN-900-07",
+            "SCN-900-09"
+          ],
+          "evidence_status": "fixture_realized",
+          "permission_rule_ids": ["PERM-037"],
+          "notification_rule_ids": [],
+          "sync_class_id": "SYNC-001"
+        }
+      ],
+      "entry_points": [
+        "Crew scheduling, attendance, time, payroll, and cost allocation workspace",
+        "Notification deep link",
+        "Stable record or block identity link"
+      ],
+      "exit_points": [
+        "Next canonical state after TRN-WF-007-007",
         "Attributable record history",
         "Accountable exception or approval queue"
       ],
@@ -13999,11 +14020,10 @@
         "CMP-005",
         "CMP-006",
         "CMP-007",
-        "CMP-008",
         "CMP-010",
         "CMP-012",
         "CMP-014",
-        "CMP-015",
+        "CMP-017",
         "CMP-020",
         "CMP-034",
         "CMP-036"

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import { AtlasShell } from "./components/AtlasShell";
 import { sections } from "./data/catalog";
 import { HomePage } from "./pages/HomePage";
@@ -9,6 +9,13 @@ import {
   VisualDirectionsPage,
 } from "./pages/VisualDirectionsPage";
 import { SectionPage } from "./components/SectionPage";
+import { ProductionScreenPage } from "./pages/ProductionScreenPage";
+import { PrototypePage } from "./pages/PrototypePage";
+
+function PrototypeRoute() {
+  const { flowId } = useParams();
+  return <PrototypePage key={flowId} />;
+}
 
 export function App() {
   return (
@@ -23,10 +30,8 @@ export function App() {
           />
         ))}
         <Route element={<PlanningDispatchPage />} path="/workflows/WF-001" />
-        <Route
-          element={<PlanningDispatchPage screenMode />}
-          path="/screens/SCR-001"
-        />
+        <Route element={<ProductionScreenPage />} path="/screens/:screenId" />
+        <Route element={<PrototypeRoute />} path="/prototypes/:flowId" />
         <Route element={<VisualDirectionsPage />} path="/visual-directions" />
         <Route
           element={<LighthousePage />}
