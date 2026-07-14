@@ -1,0 +1,24 @@
+{
+  "capture_version": "1.0",
+  "source_digest": "88c6044ebe1ce616b958d930393a8ffbdc5b81d11c91f3c27f7723debcd40ab6",
+  "direction": "canopy-signal",
+  "lighthouse": "reconciliation",
+  "viewport": {
+    "width": 1440,
+    "height": 1024
+  },
+  "scroll": {
+    "page_y": 0,
+    "field_main_y": 0
+  },
+  "top_content": {
+    "top": 74.203125,
+    "bottom": 115,
+    "height": 40.796875
+  },
+  "accountable_action": {
+    "top": 462.4375,
+    "bottom": 506.4375,
+    "height": 44
+  }
+}

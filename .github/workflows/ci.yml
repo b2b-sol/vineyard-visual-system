@@ -41,6 +41,9 @@ jobs:
       - name: Validate schemas, traceability, and data
         run: npm run validate:all
 
+      - name: Validate design tokens and generated CSS
+        run: npm run validate:tokens && npm run validate:tokens-current && npm run validate:visual-directions
+
       - name: Run unit tests
         run: npm run test:unit
 

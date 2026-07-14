@@ -47,5 +47,6 @@ jobs:
           path: |
             playwright-report
             test-results
+            validation/visual-direction-renders
           if-no-files-found: ignore
           retention-days: 14

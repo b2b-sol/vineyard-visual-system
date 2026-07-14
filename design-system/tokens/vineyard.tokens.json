@@ -1,146 +1,514 @@
 {
-  "$schema": "https://tr.designtokens.org/format/",
-  "color": {
-    "$type": "color",
-    "ink": {
-      "950": { "$value": "#142019" },
-      "800": { "$value": "#26382b" },
-      "650": { "$value": "#415346" },
-      "500": { "$value": "#526258" },
-      "300": { "$value": "#5d6c62" }
-    },
-    "paper": {
-      "0": { "$value": "#ffffff" },
-      "50": { "$value": "#fbfaf5" },
-      "100": { "$value": "#f4f1e7" },
-      "200": { "$value": "#e9e3d2" },
-      "300": { "$value": "#d8cfb9" }
-    },
-    "vine": {
-      "900": { "$value": "#1f3025" },
-      "700": { "$value": "#36513d" },
-      "500": { "$value": "#5f7c5b" },
-      "300": { "$value": "#a8bda3" },
-      "100": { "$value": "#e1e9dc" }
-    },
-    "harvest": {
-      "700": { "$value": "#7b3c34" },
-      "500": { "$value": "#aa5b46" },
-      "100": { "$value": "#f5dfd4" }
-    },
-    "sun": {
-      "700": { "$value": "#805816" },
-      "500": { "$value": "#d39b2f" },
-      "100": { "$value": "#faedc7" }
-    },
-    "sky": {
-      "700": { "$value": "#28636a" },
-      "500": { "$value": "#4d8b8d" },
-      "100": { "$value": "#dceeed" }
-    },
-    "semantic": {
-      "success": { "$value": "{color.vine.700}" },
-      "warning": { "$value": "{color.sun.700}" },
-      "danger": { "$value": "{color.harvest.700}" },
-      "info": { "$value": "{color.sky.700}" },
-      "neutral": { "$value": "{color.ink.650}" }
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Vineyard Visual System — Canopy Signal / sunlit fieldbook foundation",
+  "$extensions": {
+    "com.b2b-sol.vineyard": {
+      "version": "1.0.0",
+      "selectedDirection": "canopy-signal",
+      "figmaCollection": "Vineyard Foundations",
+      "decision": "DEC-013"
     }
   },
-  "font": {
-    "family": {
-      "$type": "fontFamily",
-      "display": {
-        "$value": [
-          "Iowan Old Style",
-          "Palatino Linotype",
-          "Book Antiqua",
-          "Georgia",
-          "serif"
-        ]
+  "ref": {
+    "$description": "Context-free visual facts. Semantic and component tokens may alias this layer.",
+    "color": {
+      "$type": "color",
+      "ink": {
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.078431, 0.12549, 0.098039],
+            "alpha": 1,
+            "hex": "#142019"
+          }
+        },
+        "800": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.14902, 0.219608, 0.168627],
+            "alpha": 1,
+            "hex": "#26382b"
+          }
+        },
+        "650": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.254902, 0.32549, 0.27451],
+            "alpha": 1,
+            "hex": "#415346"
+          }
+        },
+        "500": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.321569, 0.384314, 0.345098],
+            "alpha": 1,
+            "hex": "#526258"
+          }
+        },
+        "300": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.364706, 0.423529, 0.384314],
+            "alpha": 1,
+            "hex": "#5d6c62"
+          }
+        }
       },
-      "body": { "$value": ["Inter", "Aptos", "Segoe UI", "sans-serif"] },
-      "mono": {
-        "$value": ["SFMono-Regular", "Consolas", "Liberation Mono", "monospace"]
+      "mineral": {
+        "0": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [1, 1, 1],
+            "alpha": 1,
+            "hex": "#ffffff"
+          }
+        },
+        "50": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.984314, 0.980392, 0.960784],
+            "alpha": 1,
+            "hex": "#fbfaf5"
+          }
+        },
+        "100": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.956863, 0.945098, 0.905882],
+            "alpha": 1,
+            "hex": "#f4f1e7"
+          }
+        },
+        "200": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.913725, 0.890196, 0.823529],
+            "alpha": 1,
+            "hex": "#e9e3d2"
+          }
+        },
+        "300": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.847059, 0.811765, 0.72549],
+            "alpha": 1,
+            "hex": "#d8cfb9"
+          }
+        }
+      },
+      "vine": {
+        "900": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.121569, 0.188235, 0.145098],
+            "alpha": 1,
+            "hex": "#1f3025"
+          }
+        },
+        "700": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.211765, 0.317647, 0.239216],
+            "alpha": 1,
+            "hex": "#36513d"
+          }
+        },
+        "500": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.372549, 0.486275, 0.356863],
+            "alpha": 1,
+            "hex": "#5f7c5b"
+          }
+        },
+        "300": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.658824, 0.741176, 0.639216],
+            "alpha": 1,
+            "hex": "#a8bda3"
+          }
+        },
+        "100": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.882353, 0.913725, 0.862745],
+            "alpha": 1,
+            "hex": "#e1e9dc"
+          }
+        }
+      },
+      "clay": {
+        "700": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.482353, 0.235294, 0.203922],
+            "alpha": 1,
+            "hex": "#7b3c34"
+          }
+        },
+        "500": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.666667, 0.356863, 0.27451],
+            "alpha": 1,
+            "hex": "#aa5b46"
+          }
+        },
+        "100": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.960784, 0.87451, 0.831373],
+            "alpha": 1,
+            "hex": "#f5dfd4"
+          }
+        }
+      },
+      "amber": {
+        "700": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.501961, 0.345098, 0.086275],
+            "alpha": 1,
+            "hex": "#805816"
+          }
+        },
+        "500": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.827451, 0.607843, 0.184314],
+            "alpha": 1,
+            "hex": "#d39b2f"
+          }
+        },
+        "100": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.980392, 0.929412, 0.780392],
+            "alpha": 1,
+            "hex": "#faedc7"
+          }
+        }
+      },
+      "water": {
+        "700": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.156863, 0.388235, 0.415686],
+            "alpha": 1,
+            "hex": "#28636a"
+          }
+        },
+        "500": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.301961, 0.545098, 0.552941],
+            "alpha": 1,
+            "hex": "#4d8b8d"
+          }
+        },
+        "100": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.862745, 0.933333, 0.929412],
+            "alpha": 1,
+            "hex": "#dceeed"
+          }
+        }
+      },
+      "grape": {
+        "700": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.384314, 0.290196, 0.427451],
+            "alpha": 1,
+            "hex": "#624a6d"
+          }
+        },
+        "100": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [0.933333, 0.909804, 0.937255],
+            "alpha": 1,
+            "hex": "#eee8ef"
+          }
+        }
+      }
+    },
+    "font": {
+      "family": {
+        "$type": "fontFamily",
+        "display": {
+          "$value": [
+            "Iowan Old Style",
+            "Palatino Linotype",
+            "Book Antiqua",
+            "Georgia",
+            "serif"
+          ]
+        },
+        "ui": {
+          "$value": ["Aptos", "Segoe UI", "Helvetica Neue", "sans-serif"]
+        },
+        "mono": {
+          "$value": [
+            "SFMono-Regular",
+            "Consolas",
+            "Liberation Mono",
+            "monospace"
+          ]
+        }
+      },
+      "size": {
+        "$type": "dimension",
+        "100": { "$value": { "value": 12, "unit": "px" } },
+        "200": { "$value": { "value": 13, "unit": "px" } },
+        "300": { "$value": { "value": 14, "unit": "px" } },
+        "400": { "$value": { "value": 16, "unit": "px" } },
+        "500": { "$value": { "value": 18, "unit": "px" } },
+        "600": { "$value": { "value": 22, "unit": "px" } },
+        "700": { "$value": { "value": 28, "unit": "px" } },
+        "800": { "$value": { "value": 36, "unit": "px" } },
+        "900": { "$value": { "value": 48, "unit": "px" } }
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "regular": { "$value": 400 },
+        "semibold": { "$value": 600 },
+        "bold": { "$value": 700 }
+      }
+    },
+    "space": {
+      "$type": "dimension",
+      "0": { "$value": { "value": 0, "unit": "px" } },
+      "1": { "$value": { "value": 4, "unit": "px" } },
+      "2": { "$value": { "value": 8, "unit": "px" } },
+      "3": { "$value": { "value": 12, "unit": "px" } },
+      "4": { "$value": { "value": 16, "unit": "px" } },
+      "5": { "$value": { "value": 20, "unit": "px" } },
+      "6": { "$value": { "value": 24, "unit": "px" } },
+      "8": { "$value": { "value": 32, "unit": "px" } },
+      "10": { "$value": { "value": 40, "unit": "px" } },
+      "12": { "$value": { "value": 48, "unit": "px" } },
+      "16": { "$value": { "value": 64, "unit": "px" } }
+    },
+    "radius": {
+      "$type": "dimension",
+      "sm": { "$value": { "value": 6, "unit": "px" } },
+      "md": { "$value": { "value": 10, "unit": "px" } },
+      "lg": { "$value": { "value": 14, "unit": "px" } },
+      "xl": { "$value": { "value": 20, "unit": "px" } },
+      "round": { "$value": { "value": 999, "unit": "px" } }
+    },
+    "motion": {
+      "duration": {
+        "$type": "duration",
+        "quick": { "$value": { "value": 120, "unit": "ms" } },
+        "standard": { "$value": { "value": 220, "unit": "ms" } }
+      },
+      "easing": {
+        "$type": "cubicBezier",
+        "productive": { "$value": [0.2, 0, 0, 1] }
+      }
+    },
+    "shadow": {
+      "$type": "shadow",
+      "raised": {
+        "$value": {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [0.078431, 0.12549, 0.098039],
+            "alpha": 0.08,
+            "hex": "#14201914"
+          },
+          "offsetX": { "value": 0, "unit": "px" },
+          "offsetY": { "value": 8, "unit": "px" },
+          "blur": { "value": 24, "unit": "px" },
+          "spread": { "value": 0, "unit": "px" }
+        }
+      }
+    }
+  },
+  "sys": {
+    "$description": "Contextual meaning. Theme and accessibility modes replace this layer without changing component contracts.",
+    "color": {
+      "$type": "color",
+      "canvas": { "$value": "{ref.color.mineral.50}" },
+      "surface": {
+        "base": { "$value": "{ref.color.mineral.0}" },
+        "subtle": { "$value": "{ref.color.mineral.100}" },
+        "raised": { "$value": "{ref.color.mineral.0}" },
+        "inverse": { "$value": "{ref.color.vine.900}" }
+      },
+      "text": {
+        "primary": { "$value": "{ref.color.ink.950}" },
+        "secondary": { "$value": "{ref.color.ink.500}" },
+        "muted": { "$value": "{ref.color.ink.300}" },
+        "inverse": { "$value": "{ref.color.mineral.0}" },
+        "link": { "$value": "{ref.color.water.700}" }
+      },
+      "border": {
+        "subtle": { "$value": "{ref.color.mineral.200}" },
+        "default": { "$value": "{ref.color.mineral.300}" },
+        "strong": { "$value": "{ref.color.ink.500}" }
+      },
+      "action": {
+        "primaryBackground": { "$value": "{ref.color.vine.700}" },
+        "primaryText": { "$value": "{ref.color.mineral.0}" }
+      },
+      "map": {
+        "selectedBoundary": { "$value": "{ref.color.water.700}" },
+        "restrictedBoundary": { "$value": "{ref.color.clay.700}" },
+        "staleBoundary": { "$value": "{ref.color.amber.700}" },
+        "crossOrganizationBoundary": { "$value": "{ref.color.grape.700}" }
+      },
+      "focus": { "ring": { "$value": "{ref.color.water.700}" } },
+      "feedback": {
+        "positive": {
+          "text": { "$value": "{ref.color.vine.700}" },
+          "surface": { "$value": "{ref.color.vine.100}" }
+        },
+        "informative": {
+          "text": { "$value": "{ref.color.water.700}" },
+          "surface": { "$value": "{ref.color.water.100}" }
+        },
+        "notice": {
+          "text": { "$value": "{ref.color.amber.700}" },
+          "surface": { "$value": "{ref.color.amber.100}" }
+        },
+        "critical": {
+          "text": { "$value": "{ref.color.clay.700}" },
+          "surface": { "$value": "{ref.color.clay.100}" }
+        },
+        "revision": {
+          "text": { "$value": "{ref.color.grape.700}" },
+          "surface": { "$value": "{ref.color.grape.100}" }
+        },
+        "neutral": {
+          "text": { "$value": "{ref.color.ink.650}" },
+          "surface": { "$value": "{ref.color.mineral.100}" }
+        }
+      }
+    },
+    "density": {
+      "compact": {
+        "control": {
+          "$type": "dimension",
+          "$value": { "value": 40, "unit": "px" }
+        }
+      },
+      "comfortable": {
+        "control": {
+          "$type": "dimension",
+          "$value": { "value": 44, "unit": "px" }
+        }
+      },
+      "field": {
+        "control": {
+          "$type": "dimension",
+          "$value": { "value": 52, "unit": "px" }
+        }
       }
     },
     "size": {
       "$type": "dimension",
-      "100": { "$value": "0.75rem" },
-      "200": { "$value": "0.8125rem" },
-      "300": { "$value": "0.875rem" },
-      "400": { "$value": "1rem" },
-      "500": { "$value": "1.125rem" },
-      "600": { "$value": "1.375rem" },
-      "700": { "$value": "1.75rem" },
-      "800": { "$value": "2.25rem" },
-      "900": { "$value": "3rem" }
-    },
-    "weight": {
-      "$type": "fontWeight",
-      "regular": { "$value": 400 },
-      "medium": { "$value": 520 },
-      "semibold": { "$value": 640 },
-      "bold": { "$value": 740 }
+      "sidebar": { "$value": { "value": 272, "unit": "px" } },
+      "contentMax": { "$value": { "value": 1600, "unit": "px" } }
     }
   },
-  "space": {
-    "$type": "dimension",
-    "0": { "$value": "0" },
-    "1": { "$value": "0.25rem" },
-    "2": { "$value": "0.5rem" },
-    "3": { "$value": "0.75rem" },
-    "4": { "$value": "1rem" },
-    "5": { "$value": "1.25rem" },
-    "6": { "$value": "1.5rem" },
-    "8": { "$value": "2rem" },
-    "10": { "$value": "2.5rem" },
-    "12": { "$value": "3rem" },
-    "16": { "$value": "4rem" }
-  },
-  "radius": {
-    "$type": "dimension",
-    "sm": { "$value": "0.375rem" },
-    "md": { "$value": "0.625rem" },
-    "lg": { "$value": "0.875rem" },
-    "xl": { "$value": "1.25rem" },
-    "round": { "$value": "999px" }
-  },
-  "shadow": {
-    "$type": "shadow",
-    "raised": {
-      "$value": {
-        "color": "#14201914",
-        "offsetX": "0px",
-        "offsetY": "8px",
-        "blur": "24px",
-        "spread": "0px"
+  "component": {
+    "$description": "Aliases proven by the three lighthouse compositions.",
+    "statusSignal": {
+      "$extensions": {
+        "com.b2b-sol.vineyard": {
+          "componentId": "CMP-006",
+          "figmaName": "Workflow state rail / Status signal",
+          "figmaKey": "vineyard/status/workflow-state-rail"
+        }
+      },
+      "blocked": {
+        "background": {
+          "$type": "color",
+          "$value": "{sys.color.feedback.critical.surface}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{sys.color.feedback.critical.text}"
+        }
+      },
+      "stale": {
+        "background": {
+          "$type": "color",
+          "$value": "{sys.color.feedback.notice.surface}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{sys.color.feedback.notice.text}"
+        }
+      },
+      "corrected": {
+        "background": {
+          "$type": "color",
+          "$value": "{sys.color.feedback.revision.surface}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{sys.color.feedback.revision.text}"
+        }
       }
     },
-    "focus": {
-      "$value": {
-        "color": "#28636a66",
-        "offsetX": "0px",
-        "offsetY": "0px",
-        "blur": "0px",
-        "spread": "3px"
+    "button": {
+      "$extensions": {
+        "com.b2b-sol.vineyard": {
+          "componentId": "CMP-007",
+          "figmaName": "Transition action bar / Primary action",
+          "figmaKey": "vineyard/workflow/transition-action-bar"
+        }
+      },
+      "primary": {
+        "background": {
+          "$type": "color",
+          "$value": "{sys.color.action.primaryBackground}"
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{sys.color.action.primaryText}"
+        }
       }
-    }
-  },
-  "size": {
-    "$type": "dimension",
-    "touchTarget": { "$value": "2.75rem" },
-    "sidebar": { "$value": "17rem" },
-    "contentMax": { "$value": "100rem" }
-  },
-  "motion": {
-    "duration": {
-      "$type": "duration",
-      "quick": { "$value": "120ms" },
-      "standard": { "$value": "220ms" }
     },
-    "easing": {
-      "$type": "cubicBezier",
-      "productive": { "$value": [0.2, 0, 0, 1] }
+    "map": {
+      "$extensions": {
+        "com.b2b-sol.vineyard": {
+          "componentId": "CMP-026",
+          "figmaName": "Map scope viewer / Boundary states",
+          "figmaKey": "vineyard/data-visualization/map-scope-viewer"
+        }
+      },
+      "selectedBlock": {
+        "stroke": {
+          "$type": "color",
+          "$value": "{sys.color.map.selectedBoundary}"
+        }
+      },
+      "restrictedBlock": {
+        "stroke": {
+          "$type": "color",
+          "$value": "{sys.color.map.restrictedBoundary}"
+        }
+      },
+      "staleBlock": {
+        "stroke": {
+          "$type": "color",
+          "$value": "{sys.color.map.staleBoundary}"
+        }
+      },
+      "crossOrganizationBlock": {
+        "stroke": {
+          "$type": "color",
+          "$value": "{sys.color.map.crossOrganizationBoundary}"
+        }
+      }
     }
   }
 }

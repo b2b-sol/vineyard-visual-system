@@ -1,50 +1,196 @@
+/* Generated from vineyard.tokens.json. Run npm run generate:tokens; do not edit. */
 :root {
   color-scheme: light;
-  --color-ink-950: #142019;
-  --color-ink-800: #26382b;
-  --color-ink-650: #415346;
-  --color-ink-500: #526258;
-  --color-ink-300: #5d6c62;
-  --color-paper-0: #ffffff;
-  --color-paper-50: #fbfaf5;
-  --color-paper-100: #f4f1e7;
-  --color-paper-200: #e9e3d2;
-  --color-paper-300: #d8cfb9;
-  --color-vine-900: #1f3025;
-  --color-vine-700: #36513d;
-  --color-vine-500: #5f7c5b;
-  --color-vine-300: #a8bda3;
-  --color-vine-100: #e1e9dc;
-  --color-harvest-700: #7b3c34;
-  --color-harvest-500: #aa5b46;
-  --color-harvest-100: #f5dfd4;
-  --color-sun-700: #805816;
-  --color-sun-500: #d39b2f;
-  --color-sun-100: #faedc7;
-  --color-sky-700: #28636a;
-  --color-sky-500: #4d8b8d;
-  --color-sky-100: #dceeed;
-  --font-display:
+  --component-button-primary-background: var(
+    --sys-color-action-primaryBackground
+  );
+  --component-button-primary-text: var(--sys-color-action-primaryText);
+  --component-map-crossOrganizationBlock-stroke: var(
+    --sys-color-map-crossOrganizationBoundary
+  );
+  --component-map-restrictedBlock-stroke: var(
+    --sys-color-map-restrictedBoundary
+  );
+  --component-map-selectedBlock-stroke: var(--sys-color-map-selectedBoundary);
+  --component-map-staleBlock-stroke: var(--sys-color-map-staleBoundary);
+  --component-statusSignal-blocked-background: var(
+    --sys-color-feedback-critical-surface
+  );
+  --component-statusSignal-blocked-text: var(
+    --sys-color-feedback-critical-text
+  );
+  --component-statusSignal-corrected-background: var(
+    --sys-color-feedback-revision-surface
+  );
+  --component-statusSignal-corrected-text: var(
+    --sys-color-feedback-revision-text
+  );
+  --component-statusSignal-stale-background: var(
+    --sys-color-feedback-notice-surface
+  );
+  --component-statusSignal-stale-text: var(--sys-color-feedback-notice-text);
+  --ref-color-amber-100: #faedc7;
+  --ref-color-amber-500: #d39b2f;
+  --ref-color-amber-700: #805816;
+  --ref-color-clay-100: #f5dfd4;
+  --ref-color-clay-500: #aa5b46;
+  --ref-color-clay-700: #7b3c34;
+  --ref-color-grape-100: #eee8ef;
+  --ref-color-grape-700: #624a6d;
+  --ref-color-ink-300: #5d6c62;
+  --ref-color-ink-500: #526258;
+  --ref-color-ink-650: #415346;
+  --ref-color-ink-800: #26382b;
+  --ref-color-ink-950: #142019;
+  --ref-color-mineral-0: #ffffff;
+  --ref-color-mineral-100: #f4f1e7;
+  --ref-color-mineral-200: #e9e3d2;
+  --ref-color-mineral-300: #d8cfb9;
+  --ref-color-mineral-50: #fbfaf5;
+  --ref-color-vine-100: #e1e9dc;
+  --ref-color-vine-300: #a8bda3;
+  --ref-color-vine-500: #5f7c5b;
+  --ref-color-vine-700: #36513d;
+  --ref-color-vine-900: #1f3025;
+  --ref-color-water-100: #dceeed;
+  --ref-color-water-500: #4d8b8d;
+  --ref-color-water-700: #28636a;
+  --ref-font-family-display:
     "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  --font-body: Inter, Aptos, "Segoe UI", sans-serif;
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --radius-sm: 0.375rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 0.875rem;
-  --radius-xl: 1.25rem;
-  --shadow-raised: 0 8px 24px #14201914;
-  --size-touch-target: 2.75rem;
-  --size-sidebar: 17rem;
-  --size-content-max: 100rem;
-  --motion-quick: 120ms;
-  --motion-standard: 220ms;
+  --ref-font-family-mono:
+    SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  --ref-font-family-ui: Aptos, "Segoe UI", "Helvetica Neue", sans-serif;
+  --ref-font-size-100: 12px;
+  --ref-font-size-200: 13px;
+  --ref-font-size-300: 14px;
+  --ref-font-size-400: 16px;
+  --ref-font-size-500: 18px;
+  --ref-font-size-600: 22px;
+  --ref-font-size-700: 28px;
+  --ref-font-size-800: 36px;
+  --ref-font-size-900: 48px;
+  --ref-font-weight-bold: 700;
+  --ref-font-weight-regular: 400;
+  --ref-font-weight-semibold: 600;
+  --ref-motion-duration-quick: 120ms;
+  --ref-motion-duration-standard: 220ms;
+  --ref-motion-easing-productive: cubic-bezier(0.2, 0, 0, 1);
+  --ref-radius-lg: 14px;
+  --ref-radius-md: 10px;
+  --ref-radius-round: 999px;
+  --ref-radius-sm: 6px;
+  --ref-radius-xl: 20px;
+  --ref-shadow-raised: 0px 8px 24px 0px #14201914;
+  --ref-space-0: 0px;
+  --ref-space-1: 4px;
+  --ref-space-10: 40px;
+  --ref-space-12: 48px;
+  --ref-space-16: 64px;
+  --ref-space-2: 8px;
+  --ref-space-3: 12px;
+  --ref-space-4: 16px;
+  --ref-space-5: 20px;
+  --ref-space-6: 24px;
+  --ref-space-8: 32px;
+  --sys-color-action-primaryBackground: var(--ref-color-vine-700);
+  --sys-color-action-primaryText: var(--ref-color-mineral-0);
+  --sys-color-border-default: var(--ref-color-mineral-300);
+  --sys-color-border-strong: var(--ref-color-ink-500);
+  --sys-color-border-subtle: var(--ref-color-mineral-200);
+  --sys-color-canvas: var(--ref-color-mineral-50);
+  --sys-color-feedback-critical-surface: var(--ref-color-clay-100);
+  --sys-color-feedback-critical-text: var(--ref-color-clay-700);
+  --sys-color-feedback-informative-surface: var(--ref-color-water-100);
+  --sys-color-feedback-informative-text: var(--ref-color-water-700);
+  --sys-color-feedback-neutral-surface: var(--ref-color-mineral-100);
+  --sys-color-feedback-neutral-text: var(--ref-color-ink-650);
+  --sys-color-feedback-notice-surface: var(--ref-color-amber-100);
+  --sys-color-feedback-notice-text: var(--ref-color-amber-700);
+  --sys-color-feedback-positive-surface: var(--ref-color-vine-100);
+  --sys-color-feedback-positive-text: var(--ref-color-vine-700);
+  --sys-color-feedback-revision-surface: var(--ref-color-grape-100);
+  --sys-color-feedback-revision-text: var(--ref-color-grape-700);
+  --sys-color-focus-ring: var(--ref-color-water-700);
+  --sys-color-map-crossOrganizationBoundary: var(--ref-color-grape-700);
+  --sys-color-map-restrictedBoundary: var(--ref-color-clay-700);
+  --sys-color-map-selectedBoundary: var(--ref-color-water-700);
+  --sys-color-map-staleBoundary: var(--ref-color-amber-700);
+  --sys-color-surface-base: var(--ref-color-mineral-0);
+  --sys-color-surface-inverse: var(--ref-color-vine-900);
+  --sys-color-surface-raised: var(--ref-color-mineral-0);
+  --sys-color-surface-subtle: var(--ref-color-mineral-100);
+  --sys-color-text-inverse: var(--ref-color-mineral-0);
+  --sys-color-text-link: var(--ref-color-water-700);
+  --sys-color-text-muted: var(--ref-color-ink-300);
+  --sys-color-text-primary: var(--ref-color-ink-950);
+  --sys-color-text-secondary: var(--ref-color-ink-500);
+  --sys-density-comfortable-control: 44px;
+  --sys-density-compact-control: 40px;
+  --sys-density-field-control: 52px;
+  --sys-size-contentMax: 1600px;
+  --sys-size-sidebar: 272px;
+
+  /* Compatibility aliases retained while the atlas migrates to semantic names. */
+  --color-ink-950: var(--ref-color-ink-950);
+  --color-ink-800: var(--ref-color-ink-800);
+  --color-ink-650: var(--ref-color-ink-650);
+  --color-ink-500: var(--ref-color-ink-500);
+  --color-ink-300: var(--ref-color-ink-300);
+  --color-paper-0: var(--ref-color-mineral-0);
+  --color-paper-50: var(--ref-color-mineral-50);
+  --color-paper-100: var(--ref-color-mineral-100);
+  --color-paper-200: var(--ref-color-mineral-200);
+  --color-paper-300: var(--ref-color-mineral-300);
+  --color-vine-900: var(--ref-color-vine-900);
+  --color-vine-700: var(--ref-color-vine-700);
+  --color-vine-500: var(--ref-color-vine-500);
+  --color-vine-300: var(--ref-color-vine-300);
+  --color-vine-100: var(--ref-color-vine-100);
+  --color-harvest-700: var(--ref-color-clay-700);
+  --color-harvest-500: var(--ref-color-clay-500);
+  --color-harvest-100: var(--ref-color-clay-100);
+  --color-sun-700: var(--ref-color-amber-700);
+  --color-sun-500: var(--ref-color-amber-500);
+  --color-sun-100: var(--ref-color-amber-100);
+  --color-sky-700: var(--ref-color-water-700);
+  --color-sky-500: var(--ref-color-water-500);
+  --color-sky-100: var(--ref-color-water-100);
+  --font-display: var(--ref-font-family-display);
+  --font-body: var(--ref-font-family-ui);
+  --font-mono: var(--ref-font-family-mono);
+  --space-1: var(--ref-space-1);
+  --space-2: var(--ref-space-2);
+  --space-3: var(--ref-space-3);
+  --space-4: var(--ref-space-4);
+  --space-5: var(--ref-space-5);
+  --space-6: var(--ref-space-6);
+  --space-8: var(--ref-space-8);
+  --space-10: var(--ref-space-10);
+  --space-12: var(--ref-space-12);
+  --radius-sm: var(--ref-radius-sm);
+  --radius-md: var(--ref-radius-md);
+  --radius-lg: var(--ref-radius-lg);
+  --radius-xl: var(--ref-radius-xl);
+  --radius-round: var(--ref-radius-round);
+  --shadow-raised: var(--ref-shadow-raised);
+  --size-touch-target: var(--sys-density-comfortable-control);
+  --size-sidebar: var(--sys-size-sidebar);
+  --size-content-max: var(--sys-size-contentMax);
+  --motion-quick: var(--ref-motion-duration-quick);
+  --motion-standard: var(--ref-motion-duration-standard);
+  --control-size: var(--sys-density-comfortable-control);
+}
+
+[data-density="compact"] {
+  --control-size: var(--sys-density-compact-control);
+}
+[data-density="field"] {
+  --control-size: var(--sys-density-field-control);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-quick: 0ms;
+    --motion-standard: 0ms;
+  }
 }

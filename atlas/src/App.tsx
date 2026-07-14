@@ -4,6 +4,10 @@ import { sections } from "./data/catalog";
 import { HomePage } from "./pages/HomePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { PlanningDispatchPage } from "./pages/PlanningDispatchPage";
+import {
+  LighthousePage,
+  VisualDirectionsPage,
+} from "./pages/VisualDirectionsPage";
 import { SectionPage } from "./components/SectionPage";
 
 export function App() {
@@ -22,6 +26,11 @@ export function App() {
         <Route
           element={<PlanningDispatchPage screenMode />}
           path="/screens/SCR-001"
+        />
+        <Route element={<VisualDirectionsPage />} path="/visual-directions" />
+        <Route
+          element={<LighthousePage />}
+          path="/visual-directions/:direction/:lighthouse"
         />
         <Route element={<NotFoundPage />} path="*" />
       </Route>

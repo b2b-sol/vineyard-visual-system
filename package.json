@@ -38,15 +38,20 @@
     "validate:workflow-visuals": "node scripts/generate-workflow-visuals.mjs --check",
     "render:workflow-visuals": "node scripts/validate-mermaid.mjs",
     "generate:trace": "node scripts/generate-trace.mjs",
+    "generate:tokens": "node scripts/generate-token-css.mjs",
+    "validate:tokens": "node scripts/validation/design-tokens.mjs",
+    "validate:tokens-current": "node scripts/generate-token-css.mjs --check",
+    "validate:visual-directions": "node scripts/validation/visual-directions.mjs",
     "validate:trace-current": "node scripts/generate-trace.mjs --check",
     "validate:workflow": "node scripts/validation/validate.mjs --scope schema && npm run validate:workflow-model-current && npm run validate:workflow-visuals && npm run render:workflow-visuals",
     "test": "npm run test:unit",
     "test:unit": "vitest run",
     "test:unit:watch": "vitest",
-    "test:browser": "playwright test",
+    "test:browser": "npm run build && playwright test",
+    "test:visual-directions": "npm run build && playwright test atlas/tests/visual-directions.e2e.spec.ts",
     "test:browser:update": "playwright test --update-snapshots",
     "audit:repository": "node scripts/repository-audit.mjs",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:all && npm run validate:workflow-model-current && npm run validate:workflow-visuals && npm run render:workflow-visuals && npm run validate:trace-current && npm run validate:data-current && npm run validate:product-current && npm run test:unit && npm run build && npm run audit:repository"
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:all && npm run validate:workflow-model-current && npm run validate:workflow-visuals && npm run render:workflow-visuals && npm run validate:trace-current && npm run validate:data-current && npm run validate:product-current && npm run validate:tokens && npm run validate:tokens-current && npm run validate:visual-directions && npm run test:unit && npm run build && npm run audit:repository"
   },
   "dependencies": {
     "ajv": "8.20.0",

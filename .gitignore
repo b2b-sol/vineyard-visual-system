@@ -11,3 +11,9 @@ Thumbs.db
 .env.*
 !.env.example
 review-exports/generated/
+design-system/visual-directions/exploration/generated/.codex-exec/
+design-system/visual-directions/exploration/data/runtime-config.json
+design-system/visual-directions/exploration/server.*.log
+design-system/visual-directions/exploration/run-state.json
+design-system/visual-directions/exploration/latest-action.json
+design-system/visual-directions/exploration/pending-actions.jsonl

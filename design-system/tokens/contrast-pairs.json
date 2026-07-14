@@ -1,0 +1,75 @@
+{
+  "$schema": "../../schemas/design-token-contrast-pairs.schema.json",
+  "pairs": [
+    {
+      "id": "CP-001",
+      "foreground": "sys.color.text.primary",
+      "background": "sys.color.canvas",
+      "minimum": 7,
+      "context": "Field and office primary text"
+    },
+    {
+      "id": "CP-002",
+      "foreground": "sys.color.text.secondary",
+      "background": "sys.color.surface.base",
+      "minimum": 4.5,
+      "context": "Secondary body text"
+    },
+    {
+      "id": "CP-003",
+      "foreground": "sys.color.text.inverse",
+      "background": "sys.color.surface.inverse",
+      "minimum": 7,
+      "context": "Persistent identity and field header"
+    },
+    {
+      "id": "CP-004",
+      "foreground": "sys.color.feedback.positive.text",
+      "background": "sys.color.feedback.positive.surface",
+      "minimum": 4.5,
+      "context": "Positive status label"
+    },
+    {
+      "id": "CP-005",
+      "foreground": "sys.color.feedback.informative.text",
+      "background": "sys.color.feedback.informative.surface",
+      "minimum": 4.5,
+      "context": "Informative and offline-safe label"
+    },
+    {
+      "id": "CP-006",
+      "foreground": "sys.color.feedback.notice.text",
+      "background": "sys.color.feedback.notice.surface",
+      "minimum": 4.5,
+      "context": "Stale, partial, or awaiting label"
+    },
+    {
+      "id": "CP-007",
+      "foreground": "sys.color.feedback.critical.text",
+      "background": "sys.color.feedback.critical.surface",
+      "minimum": 4.5,
+      "context": "Blocked, conflict, and urgent label"
+    },
+    {
+      "id": "CP-008",
+      "foreground": "sys.color.feedback.revision.text",
+      "background": "sys.color.feedback.revision.surface",
+      "minimum": 4.5,
+      "context": "Corrected and superseded label"
+    },
+    {
+      "id": "CP-009",
+      "foreground": "component.button.primary.text",
+      "background": "component.button.primary.background",
+      "minimum": 7,
+      "context": "Consequential primary action"
+    },
+    {
+      "id": "CP-010",
+      "foreground": "sys.color.focus.ring",
+      "background": "sys.color.surface.base",
+      "minimum": 3,
+      "context": "Focus indicator against base surface"
+    }
+  ]
+}

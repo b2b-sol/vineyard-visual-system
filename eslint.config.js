@@ -7,6 +7,7 @@ import tseslint from "typescript-eslint";
 const generatedDirectories = [
   "**/coverage/**",
   "**/dist/**",
+  "**/design-system/visual-directions/exploration/**",
   "**/node_modules/**",
   "**/playwright-report/**",
   "**/review-exports/generated/**",

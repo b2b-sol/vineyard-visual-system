@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://b2b-sol.github.io/vineyard-visual-system/schemas/design-token-contrast-pairs.schema.json",
+  "type": "object",
+  "required": ["pairs"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "pairs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "foreground", "background", "minimum", "context"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^CP-[0-9]{3}$" },
+          "foreground": { "type": "string" },
+          "background": { "type": "string" },
+          "minimum": { "type": "number", "minimum": 3 },
+          "context": { "type": "string", "minLength": 3 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
