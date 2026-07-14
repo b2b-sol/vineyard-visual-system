@@ -47,9 +47,18 @@ criteria:
       - validation/WORKFLOW_REVIEW.md
   - id: G4
     title: Scenario and data integrity
-    status: pending
+    status: passed
     verification: coverage floor, seeded full season, exception histories, references, chronology, units, and statuses pass
-    evidence: []
+    evidence:
+      - data/operation.json
+      - data/events.json
+      - data/exceptions.json
+      - data/scenario-fixtures.json
+      - scenarios/scenarios.json
+      - validation/data-coverage.json
+      - validation/scenario-coverage.json
+      - validation/DATA_REVIEW.md
+      - validation/PRODUCT_REVIEW.md
   - id: G5
     title: Product traceability
     status: pending
