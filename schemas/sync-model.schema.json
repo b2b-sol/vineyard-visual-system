@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/sync-model.schema.json",
+  "title": "Canonical offline and synchronization model",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "authority",
+    "classes",
+    "idempotency",
+    "conflict_rules",
+    "stale_policy"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "authority": {
+      "type": "object",
+      "required": ["server_event_log", "device_journal", "projection"],
+      "properties": {
+        "server_event_log": { "type": "string", "minLength": 20 },
+        "device_journal": { "type": "string", "minLength": 20 },
+        "projection": { "type": "string", "minLength": 20 }
+      },
+      "additionalProperties": false
+    },
+    "classes": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "permits", "constraints"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^SYNC-[0-9]{3}$" },
+          "name": {
+            "enum": ["offline_safe", "offline_conditional", "online_required"]
+          },
+          "permits": {
+            "type": "array",
+            "minItems": 3,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 3 }
+          },
+          "constraints": { "type": "string", "minLength": 30 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "idempotency": { "type": "string", "minLength": 30 },
+    "conflict_rules": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 30 }
+    },
+    "stale_policy": { "type": "string", "minLength": 30 }
+  },
+  "additionalProperties": false
+}

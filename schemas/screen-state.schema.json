@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/screen-state.schema.json",
+  "title": "Screen state contract",
+  "type": "object",
+  "required": [
+    "id",
+    "screen_id",
+    "kind",
+    "canonical_state",
+    "source_ref",
+    "trigger",
+    "information_priority",
+    "available_actions",
+    "blocked_actions",
+    "permission_rule_ids",
+    "sync_behavior",
+    "audit_behavior",
+    "recovery",
+    "accessibility_announcement"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^STM-[0-9]{4}$" },
+    "screen_id": { "type": "string", "pattern": "^SCR-[0-9]{3}$" },
+    "kind": {
+      "enum": [
+        "normal",
+        "urgent",
+        "blocked",
+        "partial",
+        "corrected",
+        "historical",
+        "offline",
+        "stale",
+        "conflict",
+        "completion",
+        "loading",
+        "empty",
+        "error",
+        "read_only",
+        "approval_pending",
+        "rejected",
+        "superseded",
+        "delayed",
+        "incomplete_information"
+      ]
+    },
+    "canonical_state": { "type": ["string", "null"] },
+    "source_ref": {
+      "type": "object",
+      "required": [
+        "type",
+        "scenario_id",
+        "fixture_id",
+        "event_id",
+        "rationale"
+      ],
+      "properties": {
+        "type": { "enum": ["operational", "canonical", "ui"] },
+        "scenario_id": {
+          "type": ["string", "null"],
+          "pattern": "^SCN-[0-9]{3}-[0-9]{2}$"
+        },
+        "fixture_id": {
+          "type": ["string", "null"],
+          "pattern": "^FIX-[0-9]{3}$"
+        },
+        "event_id": {
+          "type": ["string", "null"],
+          "pattern": "^EVT-[0-9]{5}$"
+        },
+        "rationale": { "type": "string", "minLength": 20 }
+      },
+      "additionalProperties": false
+    },
+    "trigger": { "type": "string", "minLength": 12 },
+    "information_priority": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 5 }
+    },
+    "available_actions": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^ACT-[0-9]{3}$" }
+    },
+    "blocked_actions": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^ACT-[0-9]{3}$" }
+    },
+    "permission_rule_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^PERM-[0-9]{3}$" }
+    },
+    "sync_behavior": { "type": "string", "minLength": 15 },
+    "audit_behavior": { "type": "string", "minLength": 15 },
+    "recovery": { "type": "string", "minLength": 15 },
+    "accessibility_announcement": { "type": "string", "minLength": 12 }
+  },
+  "additionalProperties": false
+}

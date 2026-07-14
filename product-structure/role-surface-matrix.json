@@ -1,0 +1,2006 @@
+{
+  "schema_version": "1.0",
+  "rows": [
+    {
+      "role_id": "ROLE-VINEYARD-MANAGER",
+      "workflow_id": "WF-001",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-006"
+      ],
+      "mobile_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "permission_rule_ids": ["PERM-001", "PERM-002", "PERM-005", "PERM-006"]
+    },
+    {
+      "role_id": "ROLE-VINEYARD-MANAGER",
+      "workflow_id": "WF-002",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": ["SCR-007", "SCR-009", "SCR-010", "SCR-011"],
+      "mobile_screen_ids": [
+        "SCR-007",
+        "SCR-008",
+        "SCR-009",
+        "SCR-010",
+        "SCR-011",
+        "SCR-012"
+      ],
+      "permission_rule_ids": ["PERM-007", "PERM-010", "PERM-011", "PERM-012"]
+    },
+    {
+      "role_id": "ROLE-VINEYARD-MANAGER",
+      "workflow_id": "WF-003",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-015",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "mobile_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-016",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "permission_rule_ids": ["PERM-013", "PERM-014", "PERM-017", "PERM-018"]
+    },
+    {
+      "role_id": "ROLE-VINEYARD-MANAGER",
+      "workflow_id": "WF-004",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-019",
+        "SCR-020",
+        "SCR-022",
+        "SCR-023",
+        "SCR-024"
+      ],
+      "mobile_screen_ids": ["SCR-020", "SCR-021", "SCR-022", "SCR-024"],
+      "permission_rule_ids": [
+        "PERM-019",
+        "PERM-020",
+        "PERM-021",
+        "PERM-022",
+        "PERM-024"
+      ]
+    },
+    {
+      "role_id": "ROLE-VINEYARD-MANAGER",
+      "workflow_id": "WF-005",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "mobile_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "permission_rule_ids": [
+        "PERM-025",
+        "PERM-026",
+        "PERM-028",
+        "PERM-029",
+        "PERM-030"
+      ]
+    },
+    {
+      "role_id": "ROLE-VINEYARD-MANAGER",
+      "workflow_id": "WF-006",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-035",
+        "SCR-036",
+        "SCR-037",
+        "SCR-038"
+      ],
+      "mobile_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036",
+        "SCR-038"
+      ],
+      "permission_rule_ids": ["PERM-031", "PERM-032", "PERM-035", "PERM-036"]
+    },
+    {
+      "role_id": "ROLE-VINEYARD-MANAGER",
+      "workflow_id": "WF-007",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-043",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "mobile_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-041",
+        "SCR-042",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-041", "PERM-042"]
+    },
+    {
+      "role_id": "ROLE-VINEYARD-MANAGER",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": ["PERM-043", "PERM-044", "PERM-047", "PERM-048"]
+    },
+    {
+      "role_id": "ROLE-VINEYARD-MANAGER",
+      "workflow_id": "WF-009",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-056",
+        "SCR-057",
+        "SCR-058",
+        "SCR-059"
+      ],
+      "mobile_screen_ids": ["SCR-054", "SCR-057", "SCR-058", "SCR-059"],
+      "permission_rule_ids": ["PERM-049", "PERM-050", "PERM-052", "PERM-054"]
+    },
+    {
+      "role_id": "ROLE-VINEYARD-MANAGER",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": ["PERM-055", "PERM-056", "PERM-057", "PERM-060"]
+    },
+    {
+      "role_id": "ROLE-VITICULTURIST",
+      "workflow_id": "WF-001",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-006"
+      ],
+      "mobile_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "permission_rule_ids": ["PERM-001", "PERM-002", "PERM-006"]
+    },
+    {
+      "role_id": "ROLE-VITICULTURIST",
+      "workflow_id": "WF-002",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": ["SCR-007", "SCR-009", "SCR-010", "SCR-011"],
+      "mobile_screen_ids": [
+        "SCR-007",
+        "SCR-008",
+        "SCR-009",
+        "SCR-010",
+        "SCR-011",
+        "SCR-012"
+      ],
+      "permission_rule_ids": [
+        "PERM-007",
+        "PERM-008",
+        "PERM-010",
+        "PERM-011",
+        "PERM-012"
+      ]
+    },
+    {
+      "role_id": "ROLE-VITICULTURIST",
+      "workflow_id": "WF-003",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-015",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "mobile_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-016",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "permission_rule_ids": ["PERM-013", "PERM-014", "PERM-017", "PERM-018"]
+    },
+    {
+      "role_id": "ROLE-VITICULTURIST",
+      "workflow_id": "WF-004",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-019",
+        "SCR-020",
+        "SCR-022",
+        "SCR-023",
+        "SCR-024"
+      ],
+      "mobile_screen_ids": ["SCR-020", "SCR-021", "SCR-022", "SCR-024"],
+      "permission_rule_ids": [
+        "PERM-019",
+        "PERM-020",
+        "PERM-021",
+        "PERM-022",
+        "PERM-023",
+        "PERM-024"
+      ]
+    },
+    {
+      "role_id": "ROLE-VITICULTURIST",
+      "workflow_id": "WF-005",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "mobile_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "permission_rule_ids": [
+        "PERM-025",
+        "PERM-026",
+        "PERM-027",
+        "PERM-028",
+        "PERM-029",
+        "PERM-030"
+      ]
+    },
+    {
+      "role_id": "ROLE-VITICULTURIST",
+      "workflow_id": "WF-009",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-056",
+        "SCR-057",
+        "SCR-058",
+        "SCR-059"
+      ],
+      "mobile_screen_ids": ["SCR-054", "SCR-057", "SCR-058", "SCR-059"],
+      "permission_rule_ids": ["PERM-049", "PERM-052", "PERM-054"]
+    },
+    {
+      "role_id": "ROLE-FOREMAN",
+      "workflow_id": "WF-001",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-006"
+      ],
+      "mobile_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "permission_rule_ids": ["PERM-001", "PERM-002", "PERM-004", "PERM-006"]
+    },
+    {
+      "role_id": "ROLE-FOREMAN",
+      "workflow_id": "WF-002",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": ["SCR-007", "SCR-009", "SCR-010", "SCR-011"],
+      "mobile_screen_ids": [
+        "SCR-007",
+        "SCR-008",
+        "SCR-009",
+        "SCR-010",
+        "SCR-011",
+        "SCR-012"
+      ],
+      "permission_rule_ids": [
+        "PERM-007",
+        "PERM-008",
+        "PERM-010",
+        "PERM-011",
+        "PERM-012"
+      ]
+    },
+    {
+      "role_id": "ROLE-FOREMAN",
+      "workflow_id": "WF-007",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-043",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "mobile_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-041",
+        "SCR-042",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "permission_rule_ids": [
+        "PERM-037",
+        "PERM-038",
+        "PERM-039",
+        "PERM-041",
+        "PERM-042"
+      ]
+    },
+    {
+      "role_id": "ROLE-FOREMAN",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": ["PERM-043", "PERM-044", "PERM-047", "PERM-048"]
+    },
+    {
+      "role_id": "ROLE-FOREMAN",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": ["PERM-055", "PERM-057", "PERM-060"]
+    },
+    {
+      "role_id": "ROLE-OPERATIONS-COORDINATOR",
+      "workflow_id": "WF-001",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-006"
+      ],
+      "mobile_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "permission_rule_ids": ["PERM-001", "PERM-002", "PERM-003", "PERM-006"]
+    },
+    {
+      "role_id": "ROLE-OPERATIONS-COORDINATOR",
+      "workflow_id": "WF-007",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-043",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "mobile_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-041",
+        "SCR-042",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-041", "PERM-042"]
+    },
+    {
+      "role_id": "ROLE-OPERATIONS-COORDINATOR",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": [
+        "PERM-043",
+        "PERM-044",
+        "PERM-045",
+        "PERM-047",
+        "PERM-048"
+      ]
+    },
+    {
+      "role_id": "ROLE-OPERATIONS-COORDINATOR",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": ["PERM-055", "PERM-057", "PERM-060"]
+    },
+    {
+      "role_id": "ROLE-FIELD-CREW",
+      "workflow_id": "WF-001",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-006"
+      ],
+      "mobile_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "permission_rule_ids": ["PERM-001", "PERM-006"]
+    },
+    {
+      "role_id": "ROLE-FIELD-CREW",
+      "workflow_id": "WF-007",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-043",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "mobile_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-041",
+        "SCR-042",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-041", "PERM-042"]
+    },
+    {
+      "role_id": "ROLE-CONTRACTOR",
+      "workflow_id": "WF-001",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-006"
+      ],
+      "mobile_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "permission_rule_ids": ["PERM-001", "PERM-006"]
+    },
+    {
+      "role_id": "ROLE-CONTRACTOR",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": ["PERM-043", "PERM-047", "PERM-048"]
+    },
+    {
+      "role_id": "ROLE-CONTRACTOR",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": ["PERM-055", "PERM-057", "PERM-060"]
+    },
+    {
+      "role_id": "ROLE-COMPLIANCE-COORDINATOR",
+      "workflow_id": "WF-001",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-006"
+      ],
+      "mobile_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "permission_rule_ids": ["PERM-001", "PERM-006"]
+    },
+    {
+      "role_id": "ROLE-COMPLIANCE-COORDINATOR",
+      "workflow_id": "WF-002",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": ["SCR-007", "SCR-009", "SCR-010", "SCR-011"],
+      "mobile_screen_ids": [
+        "SCR-007",
+        "SCR-008",
+        "SCR-009",
+        "SCR-010",
+        "SCR-011",
+        "SCR-012"
+      ],
+      "permission_rule_ids": [
+        "PERM-007",
+        "PERM-008",
+        "PERM-009",
+        "PERM-010",
+        "PERM-011",
+        "PERM-012"
+      ]
+    },
+    {
+      "role_id": "ROLE-COMPLIANCE-COORDINATOR",
+      "workflow_id": "WF-003",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-015",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "mobile_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-016",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "permission_rule_ids": ["PERM-013", "PERM-017", "PERM-018"]
+    },
+    {
+      "role_id": "ROLE-COMPLIANCE-COORDINATOR",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": ["PERM-043", "PERM-044", "PERM-047", "PERM-048"]
+    },
+    {
+      "role_id": "ROLE-COMPLIANCE-COORDINATOR",
+      "workflow_id": "WF-009",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-056",
+        "SCR-057",
+        "SCR-058",
+        "SCR-059"
+      ],
+      "mobile_screen_ids": ["SCR-054", "SCR-057", "SCR-058", "SCR-059"],
+      "permission_rule_ids": ["PERM-049", "PERM-050", "PERM-052", "PERM-054"]
+    },
+    {
+      "role_id": "ROLE-COMPLIANCE-COORDINATOR",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": [
+        "PERM-055",
+        "PERM-056",
+        "PERM-057",
+        "PERM-058",
+        "PERM-059",
+        "PERM-060"
+      ]
+    },
+    {
+      "role_id": "ROLE-SCOUT",
+      "workflow_id": "WF-002",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": ["SCR-007", "SCR-009", "SCR-010", "SCR-011"],
+      "mobile_screen_ids": [
+        "SCR-007",
+        "SCR-008",
+        "SCR-009",
+        "SCR-010",
+        "SCR-011",
+        "SCR-012"
+      ],
+      "permission_rule_ids": [
+        "PERM-007",
+        "PERM-008",
+        "PERM-010",
+        "PERM-011",
+        "PERM-012"
+      ]
+    },
+    {
+      "role_id": "ROLE-CROP-PROTECTION-LEAD",
+      "workflow_id": "WF-002",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": ["SCR-007", "SCR-009", "SCR-010", "SCR-011"],
+      "mobile_screen_ids": [
+        "SCR-007",
+        "SCR-008",
+        "SCR-009",
+        "SCR-010",
+        "SCR-011",
+        "SCR-012"
+      ],
+      "permission_rule_ids": [
+        "PERM-007",
+        "PERM-008",
+        "PERM-009",
+        "PERM-010",
+        "PERM-011",
+        "PERM-012"
+      ]
+    },
+    {
+      "role_id": "ROLE-PESTICIDE-HANDLER",
+      "workflow_id": "WF-002",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": ["SCR-007", "SCR-009", "SCR-010", "SCR-011"],
+      "mobile_screen_ids": [
+        "SCR-007",
+        "SCR-008",
+        "SCR-009",
+        "SCR-010",
+        "SCR-011",
+        "SCR-012"
+      ],
+      "permission_rule_ids": [
+        "PERM-007",
+        "PERM-008",
+        "PERM-010",
+        "PERM-011",
+        "PERM-012"
+      ]
+    },
+    {
+      "role_id": "ROLE-PESTICIDE-HANDLER",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": ["PERM-055", "PERM-057", "PERM-060"]
+    },
+    {
+      "role_id": "ROLE-REGULATOR",
+      "workflow_id": "WF-002",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": ["SCR-007", "SCR-009", "SCR-010", "SCR-011"],
+      "mobile_screen_ids": [
+        "SCR-007",
+        "SCR-008",
+        "SCR-009",
+        "SCR-010",
+        "SCR-011",
+        "SCR-012"
+      ],
+      "permission_rule_ids": ["PERM-007", "PERM-010", "PERM-011", "PERM-012"]
+    },
+    {
+      "role_id": "ROLE-REGULATOR",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": ["PERM-055", "PERM-057", "PERM-060"]
+    },
+    {
+      "role_id": "ROLE-IRRIGATION-LEAD",
+      "workflow_id": "WF-003",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-015",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "mobile_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-016",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "permission_rule_ids": [
+        "PERM-013",
+        "PERM-014",
+        "PERM-015",
+        "PERM-016",
+        "PERM-017",
+        "PERM-018"
+      ]
+    },
+    {
+      "role_id": "ROLE-IRRIGATION-LEAD",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": ["PERM-055", "PERM-057", "PERM-060"]
+    },
+    {
+      "role_id": "ROLE-IRRIGATOR",
+      "workflow_id": "WF-003",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-015",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "mobile_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-016",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "permission_rule_ids": ["PERM-013", "PERM-014", "PERM-017", "PERM-018"]
+    },
+    {
+      "role_id": "ROLE-LAB",
+      "workflow_id": "WF-003",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-015",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "mobile_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-016",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "permission_rule_ids": ["PERM-013", "PERM-017", "PERM-018"]
+    },
+    {
+      "role_id": "ROLE-LAB",
+      "workflow_id": "WF-005",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "mobile_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "permission_rule_ids": [
+        "PERM-025",
+        "PERM-026",
+        "PERM-028",
+        "PERM-029",
+        "PERM-030"
+      ]
+    },
+    {
+      "role_id": "ROLE-GROWER-RELATIONS",
+      "workflow_id": "WF-004",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-019",
+        "SCR-020",
+        "SCR-022",
+        "SCR-023",
+        "SCR-024"
+      ],
+      "mobile_screen_ids": ["SCR-020", "SCR-021", "SCR-022", "SCR-024"],
+      "permission_rule_ids": [
+        "PERM-019",
+        "PERM-020",
+        "PERM-021",
+        "PERM-022",
+        "PERM-024"
+      ]
+    },
+    {
+      "role_id": "ROLE-GROWER-RELATIONS",
+      "workflow_id": "WF-005",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "mobile_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "permission_rule_ids": [
+        "PERM-025",
+        "PERM-026",
+        "PERM-028",
+        "PERM-029",
+        "PERM-030"
+      ]
+    },
+    {
+      "role_id": "ROLE-GROWER-RELATIONS",
+      "workflow_id": "WF-006",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-035",
+        "SCR-036",
+        "SCR-037",
+        "SCR-038"
+      ],
+      "mobile_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036",
+        "SCR-038"
+      ],
+      "permission_rule_ids": [
+        "PERM-031",
+        "PERM-032",
+        "PERM-034",
+        "PERM-035",
+        "PERM-036"
+      ]
+    },
+    {
+      "role_id": "ROLE-GROWER-RELATIONS",
+      "workflow_id": "WF-009",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-056",
+        "SCR-057",
+        "SCR-058",
+        "SCR-059"
+      ],
+      "mobile_screen_ids": ["SCR-054", "SCR-057", "SCR-058", "SCR-059"],
+      "permission_rule_ids": [
+        "PERM-049",
+        "PERM-050",
+        "PERM-051",
+        "PERM-052",
+        "PERM-053",
+        "PERM-054"
+      ]
+    },
+    {
+      "role_id": "ROLE-GROWER-RELATIONS",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": ["PERM-055", "PERM-057", "PERM-060"]
+    },
+    {
+      "role_id": "ROLE-CONTRACT-GROWER",
+      "workflow_id": "WF-004",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-019",
+        "SCR-020",
+        "SCR-022",
+        "SCR-023",
+        "SCR-024"
+      ],
+      "mobile_screen_ids": ["SCR-020", "SCR-021", "SCR-022", "SCR-024"],
+      "permission_rule_ids": ["PERM-019", "PERM-021", "PERM-022", "PERM-024"]
+    },
+    {
+      "role_id": "ROLE-CONTRACT-GROWER",
+      "workflow_id": "WF-005",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "mobile_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "permission_rule_ids": ["PERM-025", "PERM-028", "PERM-029", "PERM-030"]
+    },
+    {
+      "role_id": "ROLE-CONTRACT-GROWER",
+      "workflow_id": "WF-006",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-035",
+        "SCR-036",
+        "SCR-037",
+        "SCR-038"
+      ],
+      "mobile_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036",
+        "SCR-038"
+      ],
+      "permission_rule_ids": ["PERM-031", "PERM-035", "PERM-036"]
+    },
+    {
+      "role_id": "ROLE-CONTRACT-GROWER",
+      "workflow_id": "WF-009",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-056",
+        "SCR-057",
+        "SCR-058",
+        "SCR-059"
+      ],
+      "mobile_screen_ids": ["SCR-054", "SCR-057", "SCR-058", "SCR-059"],
+      "permission_rule_ids": ["PERM-049", "PERM-052", "PERM-054"]
+    },
+    {
+      "role_id": "ROLE-WINEMAKER",
+      "workflow_id": "WF-004",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-019",
+        "SCR-020",
+        "SCR-022",
+        "SCR-023",
+        "SCR-024"
+      ],
+      "mobile_screen_ids": ["SCR-020", "SCR-021", "SCR-022", "SCR-024"],
+      "permission_rule_ids": ["PERM-019", "PERM-021", "PERM-022", "PERM-024"]
+    },
+    {
+      "role_id": "ROLE-WINEMAKER",
+      "workflow_id": "WF-005",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "mobile_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "permission_rule_ids": [
+        "PERM-025",
+        "PERM-026",
+        "PERM-028",
+        "PERM-029",
+        "PERM-030"
+      ]
+    },
+    {
+      "role_id": "ROLE-WINEMAKER",
+      "workflow_id": "WF-006",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-035",
+        "SCR-036",
+        "SCR-037",
+        "SCR-038"
+      ],
+      "mobile_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036",
+        "SCR-038"
+      ],
+      "permission_rule_ids": ["PERM-031", "PERM-032", "PERM-035", "PERM-036"]
+    },
+    {
+      "role_id": "ROLE-WINEMAKER",
+      "workflow_id": "WF-009",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-056",
+        "SCR-057",
+        "SCR-058",
+        "SCR-059"
+      ],
+      "mobile_screen_ids": ["SCR-054", "SCR-057", "SCR-058", "SCR-059"],
+      "permission_rule_ids": ["PERM-049", "PERM-052", "PERM-054"]
+    },
+    {
+      "role_id": "ROLE-FINANCE",
+      "workflow_id": "WF-004",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-019",
+        "SCR-020",
+        "SCR-022",
+        "SCR-023",
+        "SCR-024"
+      ],
+      "mobile_screen_ids": ["SCR-020", "SCR-021", "SCR-022", "SCR-024"],
+      "permission_rule_ids": ["PERM-019", "PERM-021", "PERM-022", "PERM-024"]
+    },
+    {
+      "role_id": "ROLE-FINANCE",
+      "workflow_id": "WF-006",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-035",
+        "SCR-036",
+        "SCR-037",
+        "SCR-038"
+      ],
+      "mobile_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036",
+        "SCR-038"
+      ],
+      "permission_rule_ids": ["PERM-031", "PERM-032", "PERM-035", "PERM-036"]
+    },
+    {
+      "role_id": "ROLE-FINANCE",
+      "workflow_id": "WF-007",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-043",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "mobile_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-041",
+        "SCR-042",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-038", "PERM-041", "PERM-042"]
+    },
+    {
+      "role_id": "ROLE-FINANCE",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": ["PERM-043", "PERM-044", "PERM-047", "PERM-048"]
+    },
+    {
+      "role_id": "ROLE-FINANCE",
+      "workflow_id": "WF-009",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-056",
+        "SCR-057",
+        "SCR-058",
+        "SCR-059"
+      ],
+      "mobile_screen_ids": ["SCR-054", "SCR-057", "SCR-058", "SCR-059"],
+      "permission_rule_ids": ["PERM-049", "PERM-050", "PERM-052", "PERM-054"]
+    },
+    {
+      "role_id": "ROLE-HARVEST-CREW-LEADER",
+      "workflow_id": "WF-006",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-035",
+        "SCR-036",
+        "SCR-037",
+        "SCR-038"
+      ],
+      "mobile_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036",
+        "SCR-038"
+      ],
+      "permission_rule_ids": [
+        "PERM-031",
+        "PERM-032",
+        "PERM-033",
+        "PERM-035",
+        "PERM-036"
+      ]
+    },
+    {
+      "role_id": "ROLE-HARVEST-CREW-LEADER",
+      "workflow_id": "WF-007",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-043",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "mobile_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-041",
+        "SCR-042",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-041", "PERM-042"]
+    },
+    {
+      "role_id": "ROLE-TRANSPORTATION",
+      "workflow_id": "WF-006",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-035",
+        "SCR-036",
+        "SCR-037",
+        "SCR-038"
+      ],
+      "mobile_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036",
+        "SCR-038"
+      ],
+      "permission_rule_ids": [
+        "PERM-031",
+        "PERM-032",
+        "PERM-033",
+        "PERM-035",
+        "PERM-036"
+      ]
+    },
+    {
+      "role_id": "ROLE-TRANSPORTATION",
+      "workflow_id": "WF-009",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-056",
+        "SCR-057",
+        "SCR-058",
+        "SCR-059"
+      ],
+      "mobile_screen_ids": ["SCR-054", "SCR-057", "SCR-058", "SCR-059"],
+      "permission_rule_ids": ["PERM-049", "PERM-052", "PERM-054"]
+    },
+    {
+      "role_id": "ROLE-WINERY-INTAKE",
+      "workflow_id": "WF-006",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-035",
+        "SCR-036",
+        "SCR-037",
+        "SCR-038"
+      ],
+      "mobile_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036",
+        "SCR-038"
+      ],
+      "permission_rule_ids": [
+        "PERM-031",
+        "PERM-032",
+        "PERM-034",
+        "PERM-035",
+        "PERM-036"
+      ]
+    },
+    {
+      "role_id": "ROLE-WINERY-INTAKE",
+      "workflow_id": "WF-009",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-056",
+        "SCR-057",
+        "SCR-058",
+        "SCR-059"
+      ],
+      "mobile_screen_ids": ["SCR-054", "SCR-057", "SCR-058", "SCR-059"],
+      "permission_rule_ids": ["PERM-049", "PERM-052", "PERM-054"]
+    },
+    {
+      "role_id": "ROLE-LABOR-CONTRACTOR",
+      "workflow_id": "WF-007",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-043",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "mobile_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-041",
+        "SCR-042",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-041", "PERM-042"]
+    },
+    {
+      "role_id": "ROLE-PAYROLL",
+      "workflow_id": "WF-007",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-043",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "mobile_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-041",
+        "SCR-042",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "permission_rule_ids": [
+        "PERM-037",
+        "PERM-038",
+        "PERM-040",
+        "PERM-041",
+        "PERM-042"
+      ]
+    },
+    {
+      "role_id": "ROLE-PURCHASING",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": [
+        "PERM-043",
+        "PERM-044",
+        "PERM-045",
+        "PERM-046",
+        "PERM-047",
+        "PERM-048"
+      ]
+    },
+    {
+      "role_id": "ROLE-MECHANIC",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": ["PERM-043", "PERM-044", "PERM-047", "PERM-048"]
+    },
+    {
+      "role_id": "ROLE-EQUIPMENT-OPERATOR",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": ["PERM-043", "PERM-044", "PERM-047", "PERM-048"]
+    },
+    {
+      "role_id": "ROLE-CERTIFIER",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": [
+        "PERM-055",
+        "PERM-056",
+        "PERM-057",
+        "PERM-058",
+        "PERM-060"
+      ]
+    },
+    {
+      "role_id": "ROLE-AUDITOR",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": ["PERM-055", "PERM-056", "PERM-057", "PERM-060"]
+    },
+    {
+      "role_id": "ROLE-OWNER-GENERAL-MANAGER",
+      "workflow_id": "WF-001",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-006"
+      ],
+      "mobile_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "permission_rule_ids": ["PERM-001", "PERM-006"]
+    },
+    {
+      "role_id": "ROLE-OWNER-GENERAL-MANAGER",
+      "workflow_id": "WF-004",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-019",
+        "SCR-020",
+        "SCR-022",
+        "SCR-023",
+        "SCR-024"
+      ],
+      "mobile_screen_ids": ["SCR-020", "SCR-021", "SCR-022", "SCR-024"],
+      "permission_rule_ids": ["PERM-019", "PERM-021", "PERM-022", "PERM-024"]
+    },
+    {
+      "role_id": "ROLE-OWNER-GENERAL-MANAGER",
+      "workflow_id": "WF-005",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "mobile_screen_ids": [
+        "SCR-025",
+        "SCR-026",
+        "SCR-027",
+        "SCR-028",
+        "SCR-029",
+        "SCR-030"
+      ],
+      "permission_rule_ids": ["PERM-025", "PERM-028", "PERM-029", "PERM-030"]
+    },
+    {
+      "role_id": "ROLE-OWNER-GENERAL-MANAGER",
+      "workflow_id": "WF-006",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-035",
+        "SCR-036",
+        "SCR-037",
+        "SCR-038"
+      ],
+      "mobile_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036",
+        "SCR-038"
+      ],
+      "permission_rule_ids": ["PERM-031", "PERM-035", "PERM-036"]
+    },
+    {
+      "role_id": "ROLE-OWNER-GENERAL-MANAGER",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": ["PERM-043", "PERM-047", "PERM-048"]
+    },
+    {
+      "role_id": "ROLE-OWNER-GENERAL-MANAGER",
+      "workflow_id": "WF-009",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-056",
+        "SCR-057",
+        "SCR-058",
+        "SCR-059"
+      ],
+      "mobile_screen_ids": ["SCR-054", "SCR-057", "SCR-058", "SCR-059"],
+      "permission_rule_ids": ["PERM-049", "PERM-052", "PERM-054"]
+    },
+    {
+      "role_id": "ROLE-OWNER-GENERAL-MANAGER",
+      "workflow_id": "WF-010",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-062",
+        "SCR-063",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "mobile_screen_ids": [
+        "SCR-062",
+        "SCR-063",
+        "SCR-065",
+        "SCR-066",
+        "SCR-067"
+      ],
+      "permission_rule_ids": ["PERM-055", "PERM-057", "PERM-060"]
+    },
+    {
+      "role_id": "ROLE-ASSISTANT-VINEYARD-MANAGER",
+      "workflow_id": "WF-001",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-006"
+      ],
+      "mobile_screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "permission_rule_ids": ["PERM-001", "PERM-006"]
+    },
+    {
+      "role_id": "ROLE-ASSISTANT-VINEYARD-MANAGER",
+      "workflow_id": "WF-002",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": ["SCR-007", "SCR-009", "SCR-010", "SCR-011"],
+      "mobile_screen_ids": [
+        "SCR-007",
+        "SCR-008",
+        "SCR-009",
+        "SCR-010",
+        "SCR-011",
+        "SCR-012"
+      ],
+      "permission_rule_ids": ["PERM-007", "PERM-010", "PERM-011", "PERM-012"]
+    },
+    {
+      "role_id": "ROLE-ASSISTANT-VINEYARD-MANAGER",
+      "workflow_id": "WF-003",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-015",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "mobile_screen_ids": [
+        "SCR-013",
+        "SCR-014",
+        "SCR-016",
+        "SCR-017",
+        "SCR-018"
+      ],
+      "permission_rule_ids": ["PERM-013", "PERM-017", "PERM-018"]
+    },
+    {
+      "role_id": "ROLE-ASSISTANT-VINEYARD-MANAGER",
+      "workflow_id": "WF-004",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-019",
+        "SCR-020",
+        "SCR-022",
+        "SCR-023",
+        "SCR-024"
+      ],
+      "mobile_screen_ids": ["SCR-020", "SCR-021", "SCR-022", "SCR-024"],
+      "permission_rule_ids": ["PERM-019", "PERM-021", "PERM-022", "PERM-024"]
+    },
+    {
+      "role_id": "ROLE-ASSISTANT-VINEYARD-MANAGER",
+      "workflow_id": "WF-006",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-035",
+        "SCR-036",
+        "SCR-037",
+        "SCR-038"
+      ],
+      "mobile_screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036",
+        "SCR-038"
+      ],
+      "permission_rule_ids": ["PERM-031", "PERM-035", "PERM-036"]
+    },
+    {
+      "role_id": "ROLE-ASSISTANT-VINEYARD-MANAGER",
+      "workflow_id": "WF-007",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-043",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "mobile_screen_ids": [
+        "SCR-039",
+        "SCR-040",
+        "SCR-041",
+        "SCR-042",
+        "SCR-044",
+        "SCR-045"
+      ],
+      "permission_rule_ids": ["PERM-037", "PERM-041", "PERM-042"]
+    },
+    {
+      "role_id": "ROLE-ASSISTANT-VINEYARD-MANAGER",
+      "workflow_id": "WF-008",
+      "responsibility": "act_and_review",
+      "desktop_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-050",
+        "SCR-051",
+        "SCR-052"
+      ],
+      "mobile_screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-050",
+        "SCR-051"
+      ],
+      "permission_rule_ids": ["PERM-043", "PERM-047", "PERM-048"]
+    }
+  ]
+}

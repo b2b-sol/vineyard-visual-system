@@ -1,5 +1,5 @@
 schema_version: "1.0"
-updated_at: "2026-07-13T19:07:00-07:00"
+updated_at: "2026-07-13T20:42:00-07:00"
 findings:
   - id: FIND-001
     severity: P1
@@ -411,3 +411,98 @@ findings:
         scripts/validation/season-data.mjs,
       ]
     resolution: The generated canonical contract now reads the published estimate, writes REC-033 at actualization, reads REC-033 at reconciliation, and writes REC-034; all five WF-004 instances and negative tests enforce the contract.
+  - id: FIND-042
+    severity: P1
+    status: resolved
+    title: Product trace relationships were positionally plausible but operationally false
+    description: The first product candidate connected scenarios, requirements, screens, and transitions by category and ordinal distribution, allowing a linked scenario or screen to omit the transition a requirement claimed.
+    artifact_refs:
+      [
+        scripts/generate-scenarios.ts,
+        scripts/generate-product-model.ts,
+        scripts/product-requirement-allocation.ts,
+        product-structure/requirements.json,
+      ]
+    resolution: Requirements now use semantic transition affinity and exact scenario intersections; every realized requirement transition resolves in a named scenario and exact screen action.
+  - id: FIND-043
+    severity: P1
+    status: resolved
+    title: Canonical transition and role surface coverage was incomplete
+    description: Product screens exposed only 133 of 235 canonical transitions, and several canonical role/workflow responsibilities had no inspectable product surface.
+    artifact_refs:
+      [
+        product-structure/transition-dispositions.json,
+        product-structure/role-surface-matrix.json,
+        screens/screens.json,
+      ]
+    resolution: All 235 transitions have one explicit disposition and screen action, including 94 honestly labeled canonical-only branches; all 92 role/workflow relationships have an action or scoped review surface.
+  - id: FIND-044
+    severity: P1
+    status: resolved
+    title: Screen-state contracts exposed impossible or contradictory actions
+    description: One hundred eighty-three state contracts placed the same action in available and blocked sets, and completion states exposed ordinary forward actions that were invalid from the terminal state.
+    artifact_refs:
+      [product-structure/state-matrix.json, schemas/screen-state.schema.json]
+    resolution: State contracts are generated from an exact canonical current state, available and blocked actions are disjoint, and completion permits inspection plus only canonical terminal correction or supersession.
+  - id: FIND-045
+    severity: P1
+    status: resolved
+    title: Product actions lacked stable contextual policy contracts
+    description: Actions embedded broad role permissions, notifications, and sync prose without stable rule identifiers; permission grants were Cartesian and could not prove exact transition ownership.
+    artifact_refs:
+      [
+        product-structure/permissions.json,
+        product-structure/notifications.json,
+        product-structure/sync-model.json,
+        screens/screens.json,
+      ]
+    resolution: Every consequential action names one transition-specific permission rule, one canonical notification rule, and one stable sync class; grants resolve the exact canonical owner and default denial remains explicit.
+  - id: FIND-046
+    severity: P1
+    status: resolved
+    title: Interaction flows were narrative rather than attributable
+    description: Flow steps lacked exact event, action, fixture, actor, and record pointers, so a nominal path could name a screen the responsible actor could not access.
+    artifact_refs:
+      [product-structure/flows.json, schemas/product-flow.schema.json]
+    resolution: All 20 flows resolve every step through an exact scenario, fixture, event, transition, action, screen, actor role, and selected record set, with separate terminals for independent multi-path evidence.
+  - id: FIND-047
+    severity: P1
+    status: resolved
+    title: Cross-workflow chronology and scenario aggregates asserted false continuity
+    description: Multi-workflow events were flattened into one apparent chronology, one cross scenario used disconnected fixtures, another had the wrong category, and decision and record aggregates included values outside their exact event paths.
+    artifact_refs: [scenarios/scenarios.json, schemas/scenario.schema.json]
+    resolution: Cross-workflow scenarios preserve independent path segments and explicit link relations; the disconnected and misclassified scenarios were corrected; decisions, records, and expected transitions are exact event unions.
+  - id: FIND-048
+    severity: P2
+    status: resolved
+    title: Product infrastructure and component semantics were under-specified
+    description: Several product registries had no schemas, and generic component assignment did not explain recurring vineyard information, action, state, accessibility, or platform needs.
+    artifact_refs:
+      [
+        schemas,
+        product-structure/component-requirements.json,
+        product-structure/information-architecture.json,
+      ]
+    resolution: Added schemas for every product registry and replaced positional components with 36 category-specific semantic contracts, variants, states, accessibility behavior, and exact screen relationships.
+  - id: FIND-049
+    severity: P1
+    status: resolved
+    title: Screen notification copies contradicted canonical notification rules
+    description: One hundred forty actions disagreed with their named rule about acknowledgement, and two urgent never-bundle consequences appeared routine inline.
+    artifact_refs: [screens/screens.json, product-structure/notifications.json]
+    resolution: Canonical and inline notification contracts now share one generator, and validation requires exact recipient, trigger, channel, urgency, and acknowledgement parity for every consequential action.
+  - id: FIND-050
+    severity: P1
+    status: resolved
+    title: Downgraded intake quality was incorrectly offline-capable
+    description: TRN-WF-006-026 committed a quality disposition through the offline-safe class even though the canonical sync model requires current online authority for quality disposition.
+    artifact_refs: [screens/screens.json, product-structure/sync-model.json]
+    resolution: Every WF-006 quality-pending disposition, including downgrade, is SYNC-003 online-required; ontology-state validation rejects future regressions.
+  - id: FIND-051
+    severity: P1
+    status: resolved
+    title: Multi-path validation accepted unrelated link and chain identifiers
+    description: The validator proved referenced links and chains existed but did not prove that their endpoints connected selected evidence across path segments, so an unrelated valid identifier could pass.
+    artifact_refs:
+      [scripts/validation/product-model.mjs, scenarios/scenarios.json]
+    resolution: Every non-entry segment must graph-connect its exact event records to prior selected evidence, and every claimed operational chain must intersect selected workflow instances and linked evidence records.

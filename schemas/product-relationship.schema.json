@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/product-relationship.schema.json",
+  "title": "Product semantic relationship",
+  "type": "object",
+  "required": ["id", "from", "to", "relationship", "rationale"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^PRL-[0-9]{4}$" },
+    "from": { "type": "string", "minLength": 3 },
+    "to": { "type": "string", "minLength": 3 },
+    "relationship": {
+      "enum": [
+        "motivates",
+        "realized_by",
+        "composed_with",
+        "offers",
+        "authorized_by",
+        "notifies_by",
+        "synchronizes_by"
+      ]
+    },
+    "rationale": { "type": "string", "minLength": 20 }
+  },
+  "additionalProperties": false
+}

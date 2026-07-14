@@ -81,3 +81,43 @@ Use `DEC-###` identifiers. Record date, context, decision, alternatives, rationa
 - Rationale: Scenarios and screens will inherit these fixtures directly, so truthful availability, authority, chronology, identity, and reconciliation matter more than plausible-looking volume.
 - Affected artifacts: `workflow-model/workflows.json`, `scripts/refine-workflow-ontology.mjs`, `scripts/generate-data.ts`, full-season data schemas and validators, `validation/DATA_REVIEW.md`, and downstream scenario fixtures.
 - Reversibility: Low for the semantic rules; individual synthetic values and coverage cases remain regenerable.
+
+## DEC-009 — Exact pointer fixtures and role/job scenario slices
+
+- Date: 2026-07-13
+- Context: Seventy-plus scenarios cannot each require a unique season workflow instance without inflating synthetic data or weakening the connection to the reviewed operating history. A single workflow instance also contains several materially different jobs, handoffs, and exception slices.
+- Decision: Generate 60 stable pointer fixtures over all 50 workflow instances and ten exception-focused views, then author 80 distinct role/job/path scenarios against exact event, transition, actor-assignment, record, decision, exception, scope, and timing tuples. Scenario distinctness is validated from workflow family, category, role set, selected event path, and completion condition rather than one-fixture-per-scenario.
+- Alternatives: Generate a new workflow instance for every scenario; permit prose-only scenario references; treat one full workflow instance as one indivisible scenario.
+- Rationale: Exact slices expose real decision and handoff responsibilities without duplicating operational history, while full fixture coverage ensures no workflow instance or exception case silently disappears.
+- Affected artifacts: `data/scenario-fixtures.json`, `scenarios/scenarios.json`, scenario schemas and generators, `validation/scenario-coverage.json`, and product validation.
+- Reversibility: Medium; additional season instances can replace or supplement slices while stable scenario and fixture IDs remain versioned.
+
+## DEC-010 — Contextual authorization and append-only synchronization
+
+- Date: 2026-07-13
+- Context: Vineyard roles cross estate, contractor, grower, winery, regulator, auditor, and certifier boundaries; role-only access control or last-write-wins offline behavior would grant unsafe actions and erase evidence.
+- Decision: Deny consequential actions by default and resolve authorization from role, organization relationship, effective scope, current record state and versions, canonical transition ownership, explicit delegation, sensitivity, and effective time. Use a canonical append-only server event log plus durable device journal; classify actions as offline-safe, offline-conditional, or online-required, and preserve divergent device events for explicit reconciliation.
+- Alternatives: Static role matrices; permissive edit access with later review; last-write-wins synchronization; online-only field capture.
+- Rationale: This keeps authority and history inspectable at the moment of action, supports degraded field connectivity, and prevents offline convenience from silently changing regulated, commercial, safety, or terminal decisions.
+- Affected artifacts: `product-structure/permissions.json`, `product-structure/sync-model.json`, screen action contracts, state matrix, notifications, flows, and semantic validators.
+- Reversibility: Low for default denial and append-only history; individual policy and sync classifications remain configurable.
+
+## DEC-011 — Responsibility-led screen and component contracts
+
+- Date: 2026-07-13
+- Context: A raw page count can create superficial dashboards, duplicated mobile and desktop views, and components without operational purpose.
+- Decision: Register 67 screens as bounded decision, capture, handoff, recovery, verification, or history responsibilities across the ten workflow families. Desktop owns multi-scope planning and adjudication; mobile owns bounded field capture and acknowledgement; responsive surfaces share canonical event and record contracts. Thirty-six stable component contracts are planned from recurring semantic needs before visual-system implementation.
+- Alternatives: One generic dashboard per workflow; mirror every desktop screen on mobile; design components before operational contracts.
+- Rationale: Responsibility-led screens make every major action traceable to state, evidence, permission, audit, and sync behavior while giving later visual waves a stable, reusable build target.
+- Affected artifacts: product domains, information architecture, navigation, role/surface and platform matrices, requirements, screen registry, state matrix, flows, component requirements, and trace graph.
+- Reversibility: Medium; screen composition can change while stable requirements and component semantics preserve migration paths.
+
+## DEC-012 — Exact semantic product contracts over positional generation
+
+- Date: 2026-07-13
+- Context: The first mechanically valid product candidate assigned scenario, requirement, screen, policy, state, and flow relationships by ordinal or broad workflow membership. It passed schemas while asserting false transition coverage, overlapping available and blocked actions, ambiguous authorization, unsafe notification deduplication, and cross-workflow handoffs without evidence.
+- Decision: Product structure is generated from exact canonical transition and full-season event intersections. Every transition has one explicit disposition and screen action; every realized action names its scenarios, permission rule, notification rule, and sync class; every state contract is evaluated from a canonical current state; and every interaction-flow step resolves an exact event, transition, action, actor, fixture, and record set. Cross-workflow scenarios retain independent path segments connected only by explicit chain or record-link evidence.
+- Alternatives: Keep ordinal allocation and rely on prose review; model only fixture-realized transitions; use broad role matrices and screen-level policies; flatten multi-workflow evidence into a single sorted timeline.
+- Rationale: Exact contracts make false joins and unavailable-state actions mechanically rejectable, preserve ontology branches without fabricating evidence, and give later visual and construction work stable identifiers for authority, notification, synchronization, and recovery behavior.
+- Affected artifacts: scenario generator and schema; product generator, registries, schemas, validator, tests, trace graph, and product review evidence.
+- Reversibility: Low for exact trace and state semantics; screen composition, requirement grouping, policy copy, and fixture coverage can evolve while identifiers and evidence relationships remain versioned.

@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "authority": {
+    "server_event_log": "Canonical append-only ordering, authorization, record-version lineage, and accepted workflow state",
+    "device_journal": "Durable local intent and evidence captured before server acknowledgement",
+    "projection": "Rebuildable current-state and query views derived from accepted events"
+  },
+  "classes": [
+    {
+      "id": "SYNC-001",
+      "name": "offline_safe",
+      "permits": [
+        "observation",
+        "acknowledgement",
+        "execution evidence",
+        "partial result",
+        "exception report",
+        "photo or note attachment"
+      ],
+      "constraints": "Actor assignment and scope were cached while effective; action cannot assert approval, acceptance, reconciliation, settlement, or certification."
+    },
+    {
+      "id": "SYNC-002",
+      "name": "offline_conditional",
+      "permits": [
+        "assignment detail edits",
+        "completion report",
+        "correction draft",
+        "sample custody handoff",
+        "load creation"
+      ],
+      "constraints": "Queue locally but require current server state, base record versions, authority, and duplicate detection before acceptance."
+    },
+    {
+      "id": "SYNC-003",
+      "name": "online_required",
+      "permits": [
+        "approval",
+        "verification",
+        "cross-organization authorization",
+        "quality disposition",
+        "reconciliation",
+        "settlement",
+        "submission",
+        "certification"
+      ],
+      "constraints": "Disable consequential commitment until fresh server state, effective authority, and all required evidence resolve."
+    }
+  ],
+  "idempotency": "Every device event uses device_id + local_event_id + actor_assignment_id + scope_id; retries return the existing server event.",
+  "conflict_rules": [
+    "Never discard a device event because the server state advanced; retain it as evidence with conflict status.",
+    "Never use last-write-wins for workflow state, quantities, identity, authority, restrictions, or correction lineage.",
+    "Auto-merge only disjoint attachments or notes that do not change canonical state or record meaning.",
+    "When base state or version differs, require an authorized actor to accept as successor, attach as historical evidence, reapply to current scope, or reject with reason.",
+    "A resolved conflict emits its own immutable event and reciprocal predecessor/successor references where records change."
+  ],
+  "stale_policy": "Display data age, source age, last successful sync, and impacted decisions. Disable actions whose evidence freshness window or authority lease has expired."
+}

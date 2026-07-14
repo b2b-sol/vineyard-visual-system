@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/scenario-fixture.schema.json",
+  "title": "Deterministic full-season scenario pointer fixtures",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "operation_id",
+    "generated_at",
+    "reserved_fixture_ids",
+    "source_snapshot",
+    "coverage",
+    "fixtures"
+  ],
+  "properties": {
+    "schema_version": { "const": "2.0" },
+    "operation_id": { "type": "string", "pattern": "^OPR-[0-9]{3}$" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "reserved_fixture_ids": {
+      "type": "array",
+      "const": ["FIX-001"]
+    },
+    "source_snapshot": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {
+            "enum": [
+              "data/operation.json",
+              "data/events.json",
+              "data/exceptions.json"
+            ]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "required": [
+        "fixture_count",
+        "workflow_instances",
+        "workflow_families",
+        "events",
+        "record_instances",
+        "exception_histories",
+        "operational_chains",
+        "overlays",
+        "offline_fixtures",
+        "conflict_fixtures",
+        "category_counts"
+      ],
+      "properties": {
+        "fixture_count": { "const": 60 },
+        "workflow_instances": { "const": 50 },
+        "workflow_families": { "const": 10 },
+        "events": { "type": "integer", "minimum": 400 },
+        "record_instances": { "type": "integer", "minimum": 450 },
+        "exception_histories": { "type": "integer", "minimum": 25 },
+        "operational_chains": { "type": "integer", "minimum": 4 },
+        "overlays": { "type": "integer", "minimum": 9 },
+        "offline_fixtures": { "type": "integer", "minimum": 5 },
+        "conflict_fixtures": { "type": "integer", "minimum": 5 },
+        "category_counts": {
+          "type": "object",
+          "minProperties": 4,
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "fixtures": {
+      "type": "array",
+      "minItems": 60,
+      "maxItems": 60,
+      "items": { "$ref": "#/$defs/fixture" }
+    }
+  },
+  "$defs": {
+    "fixture": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "focus_kind",
+        "selection_reason",
+        "category",
+        "state_flags",
+        "workflow_id",
+        "workflow_instance_id",
+        "current_state",
+        "anchor",
+        "event_ids",
+        "record_instance_ids",
+        "exception_history_ids",
+        "operational_chain_ids",
+        "overlay_ids",
+        "block_ids",
+        "contract_ids",
+        "actor_assignment_ids",
+        "started_at",
+        "completed_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^FIX-0(0[2-9]|[1-5][0-9]|6[01])$"
+        },
+        "title": { "type": "string", "minLength": 12 },
+        "focus_kind": {
+          "enum": ["workflow_instance", "exception_history"]
+        },
+        "selection_reason": { "type": "string", "minLength": 30 },
+        "category": {
+          "enum": [
+            "routine",
+            "urgent",
+            "blocked",
+            "incomplete_information",
+            "correction",
+            "cross_organization",
+            "offline_delayed",
+            "supervisory_review",
+            "audit_historical",
+            "conflict"
+          ]
+        },
+        "state_flags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "normal",
+              "offline",
+              "conflict",
+              "exception",
+              "corrected",
+              "superseded",
+              "partial",
+              "blocked",
+              "historical"
+            ]
+          }
+        },
+        "workflow_id": {
+          "type": "string",
+          "pattern": "^WF-[0-9]{3}$"
+        },
+        "workflow_instance_id": {
+          "type": "string",
+          "pattern": "^WFI-[0-9]{4}$"
+        },
+        "current_state": { "type": "string", "minLength": 2 },
+        "anchor": { "$ref": "#/$defs/anchor" },
+        "event_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^EVT-[0-9]{5}$" }
+        },
+        "record_instance_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^RCI-[0-9]{5}$" }
+        },
+        "exception_history_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^EXH-[0-9]{4}$" }
+        },
+        "operational_chain_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^CHN-[0-9]{3}$" }
+        },
+        "overlay_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^OVL-[0-9]{3}$" }
+        },
+        "block_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^BLK-[0-9]{3}$" }
+        },
+        "contract_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^CON-[0-9]{3}$" }
+        },
+        "actor_assignment_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^ASG-[0-9]{3}$" }
+        },
+        "started_at": { "type": "string", "format": "date-time" },
+        "completed_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "anchor": {
+      "type": "object",
+      "required": [
+        "event_id",
+        "transition_id",
+        "from_state",
+        "to_state",
+        "semantic_kind",
+        "actor_assignment_id",
+        "occurred_at",
+        "record_reads",
+        "record_writes",
+        "decision_ids",
+        "exception_history_ids",
+        "connectivity"
+      ],
+      "properties": {
+        "event_id": { "type": "string", "pattern": "^EVT-[0-9]{5}$" },
+        "transition_id": {
+          "type": "string",
+          "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$"
+        },
+        "from_state": { "type": ["string", "null"] },
+        "to_state": { "type": "string", "minLength": 2 },
+        "semantic_kind": { "type": "string", "minLength": 3 },
+        "actor_assignment_id": {
+          "type": "string",
+          "pattern": "^ASG-[0-9]{3}$"
+        },
+        "occurred_at": { "type": "string", "format": "date-time" },
+        "record_reads": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^RCI-[0-9]{5}$" }
+        },
+        "record_writes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^RCI-[0-9]{5}$" }
+        },
+        "decision_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^DEC-[0-9]{3}$" }
+        },
+        "exception_history_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^EXH-[0-9]{4}$" }
+        },
+        "connectivity": {
+          "type": "object",
+          "required": ["mode", "captured_offline", "sync_status"],
+          "properties": {
+            "mode": { "enum": ["online", "offline", "intermittent"] },
+            "captured_offline": { "type": "boolean" },
+            "sync_status": {
+              "enum": ["pending", "synced", "conflict", "resolved"]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

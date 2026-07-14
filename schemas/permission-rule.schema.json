@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/permission-rule.schema.json",
+  "title": "Contextual permission rule",
+  "type": "object",
+  "required": [
+    "id",
+    "effect",
+    "action_kind",
+    "workflow_ids",
+    "transition_ids",
+    "grants",
+    "role_ids",
+    "organization_relationships",
+    "scope_rule",
+    "record_state_rule",
+    "delegation_rule",
+    "sensitivity",
+    "effective_time_rule",
+    "evidence_required",
+    "audit_event",
+    "denial_copy"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^PERM-[0-9]{3}$" },
+    "effect": { "enum": ["allow", "deny", "escalate"] },
+    "action_kind": {
+      "enum": [
+        "inspect",
+        "create",
+        "advance",
+        "approve",
+        "resolve",
+        "correct",
+        "supersede",
+        "export"
+      ]
+    },
+    "workflow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^WF-[0-9]{3}$" }
+    },
+    "transition_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$" }
+    },
+    "grants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["transition_id", "role_ids", "delegation"],
+        "properties": {
+          "transition_id": {
+            "type": "string",
+            "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$"
+          },
+          "role_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" }
+          },
+          "delegation": {
+            "enum": ["forbidden", "explicit_assignment", "organization_policy"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "role_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" }
+    },
+    "organization_relationships": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "same_organization",
+          "contracted_operator",
+          "contract_grower",
+          "buyer_winery",
+          "service_provider",
+          "regulator",
+          "certifier",
+          "auditor"
+        ]
+      }
+    },
+    "scope_rule": { "type": "string", "minLength": 15 },
+    "record_state_rule": { "type": "string", "minLength": 15 },
+    "delegation_rule": { "type": "string", "minLength": 15 },
+    "sensitivity": {
+      "enum": ["operational", "personnel", "commercial", "regulated"]
+    },
+    "effective_time_rule": { "type": "string", "minLength": 15 },
+    "evidence_required": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 5 }
+    },
+    "audit_event": { "type": "string", "pattern": "^[a-z][a-z0-9_.]+$" },
+    "denial_copy": { "type": "string", "minLength": 15 }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,46 @@
+flowchart LR
+  DOM_01["Field operations"]
+  DOM_02["Crop intelligence"]
+  DOM_03["Harvest and intake"]
+  DOM_04["Partners and commercial history"]
+  DOM_05["Compliance and certification"]
+  DOM_06["Operational control and history"]
+  WF_001["WF-001 · Seasonal planning, dispatch, execution, and verification"]
+  WF_002["WF-002 · Scouting, recommendation, crop protection, and application records"]
+  WF_003["WF-003 · Irrigation scheduling, fertility adjustment, and delivery verification"]
+  WF_004["WF-004 · Crop estimation and forecast revision"]
+  WF_005["WF-005 · Maturity sampling, winery communication, and pick decision"]
+  WF_006["WF-006 · Harvest planning, execution, loads, intake, quality, and reconciliation"]
+  WF_007["WF-007 · Crew scheduling, attendance, time, payroll, and cost allocation"]
+  WF_008["WF-008 · Materials, purchasing, equipment readiness, and repair"]
+  WF_009["WF-009 · Grower onboarding, contract-fruit coordination, and relationship history"]
+  WF_010["WF-010 · Certification, audit preparation, corrective action, and evidence"]
+  DOM_01 --> WF_001
+  DOM_01 --> WF_003
+  DOM_01 --> WF_007
+  DOM_01 --> WF_008
+  DOM_02 --> WF_002
+  DOM_02 --> WF_003
+  DOM_02 --> WF_004
+  DOM_02 --> WF_005
+  DOM_03 --> WF_005
+  DOM_03 --> WF_006
+  DOM_03 --> WF_007
+  DOM_04 --> WF_004
+  DOM_04 --> WF_005
+  DOM_04 --> WF_006
+  DOM_04 --> WF_009
+  DOM_05 --> WF_002
+  DOM_05 --> WF_003
+  DOM_05 --> WF_008
+  DOM_05 --> WF_010
+  DOM_06 --> WF_001
+  DOM_06 --> WF_002
+  DOM_06 --> WF_003
+  DOM_06 --> WF_004
+  DOM_06 --> WF_005
+  DOM_06 --> WF_006
+  DOM_06 --> WF_007
+  DOM_06 --> WF_008
+  DOM_06 --> WF_009
+  DOM_06 --> WF_010

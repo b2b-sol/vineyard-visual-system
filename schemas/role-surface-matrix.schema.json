@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/role-surface-matrix.schema.json",
+  "title": "Role to product surface matrix",
+  "type": "object",
+  "required": ["schema_version", "rows"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "role_id",
+          "workflow_id",
+          "responsibility",
+          "desktop_screen_ids",
+          "mobile_screen_ids",
+          "permission_rule_ids"
+        ],
+        "properties": {
+          "role_id": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" },
+          "workflow_id": { "type": "string", "pattern": "^WF-[0-9]{3}$" },
+          "responsibility": {
+            "enum": ["act_and_review", "inspect_and_handoff"]
+          },
+          "desktop_screen_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^SCR-[0-9]{3}$" }
+          },
+          "mobile_screen_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^SCR-[0-9]{3}$" }
+          },
+          "permission_rule_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^PERM-[0-9]{3}$" }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -21,6 +21,7 @@
     "expected_transitions"
   ],
   "properties": {
+    "contract_version": { "const": "2.0" },
     "id": { "type": "string", "pattern": "^SCN-[0-9]{3}-[0-9]{2}$" },
     "title": { "type": "string", "minLength": 6 },
     "workflow_ids": {
@@ -28,6 +29,28 @@
       "minItems": 1,
       "uniqueItems": true,
       "items": { "type": "string", "pattern": "^WF-[0-9]{3}$" }
+    },
+    "workflow_instance_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^WFI-[0-9]{4}$" }
+    },
+    "chronology_mode": { "enum": ["linear", "multi_path"] },
+    "path_segments": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/pathSegment" }
+    },
+    "operational_chain_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^CHN-[0-9]{3}$" }
+    },
+    "record_link_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^LNK-[0-9]{5}$" }
     },
     "category": {
       "enum": [
@@ -71,6 +94,11 @@
       "minItems": 2,
       "items": { "type": "string", "minLength": 8 }
     },
+    "operational_steps": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/operationalStep" }
+    },
     "exception_path": {
       "type": "array",
       "minItems": 1,
@@ -83,7 +111,6 @@
     },
     "decision_points": {
       "type": "array",
-      "minItems": 1,
       "uniqueItems": true,
       "items": { "type": "string", "pattern": "^DEC-[0-9]{3}$" }
     },
@@ -93,15 +120,17 @@
     },
     "records_read": {
       "type": "array",
-      "minItems": 1,
       "uniqueItems": true,
       "items": { "type": "string", "minLength": 3 }
     },
     "records_created": {
       "type": "array",
-      "minItems": 1,
       "uniqueItems": true,
       "items": { "type": "string", "minLength": 3 }
+    },
+    "record_operations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/recordOperation" }
     },
     "communications": {
       "type": "array",
@@ -114,6 +143,20 @@
       "items": { "type": "string", "minLength": 5 }
     },
     "completion_condition": { "type": "string", "minLength": 10 },
+    "requirement_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^REQ-[0-9]{3}$" }
+    },
+    "evidence_classification": {
+      "enum": [
+        "confirmed_source",
+        "strong_inference",
+        "product_decision",
+        "synthetic_fixture"
+      ]
+    },
     "synthetic_fixture_refs": {
       "type": "array",
       "minItems": 1,
@@ -127,9 +170,34 @@
         "type": "object",
         "required": ["from", "to", "reason"],
         "properties": {
+          "event_id": { "type": "string", "pattern": "^EVT-[0-9]{5}$" },
+          "transition_id": {
+            "type": "string",
+            "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$"
+          },
+          "workflow_instance_id": {
+            "type": "string",
+            "pattern": "^WFI-[0-9]{4}$"
+          },
+          "actor_assignment_id": {
+            "type": "string",
+            "pattern": "^ASG-[0-9]{3}$"
+          },
           "from": { "type": ["string", "null"] },
           "to": { "type": "string", "minLength": 2 },
-          "reason": { "type": "string", "minLength": 5 }
+          "reason": { "type": "string", "minLength": 5 },
+          "record_read_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^RCI-[0-9]{5}$" }
+          },
+          "record_write_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^RCI-[0-9]{5}$" }
+          },
+          "connectivity_mode": { "type": "string", "minLength": 2 },
+          "sync_status": { "type": "string", "minLength": 2 }
         },
         "additionalProperties": false
       }
@@ -145,7 +213,261 @@
           "recovery_path": { "type": "array", "minItems": 1 }
         }
       }
+    },
+    {
+      "if": {
+        "required": ["contract_version"],
+        "properties": { "contract_version": { "const": "2.0" } }
+      },
+      "then": {
+        "required": [
+          "operational_steps",
+          "workflow_instance_ids",
+          "chronology_mode",
+          "path_segments",
+          "operational_chain_ids",
+          "record_link_ids",
+          "record_operations",
+          "requirement_ids",
+          "evidence_classification"
+        ],
+        "properties": {
+          "operational_steps": {},
+          "workflow_instance_ids": {},
+          "chronology_mode": {},
+          "path_segments": {},
+          "operational_chain_ids": {},
+          "record_link_ids": {},
+          "record_operations": {},
+          "requirement_ids": {},
+          "evidence_classification": {}
+        }
+      }
     }
   ],
+  "$defs": {
+    "operationalStep": {
+      "type": "object",
+      "required": [
+        "id",
+        "sequence",
+        "segment_id",
+        "segment_sequence",
+        "within_segment_sequence",
+        "event_id",
+        "transition_id",
+        "semantic_kind",
+        "actor_assignment_id",
+        "from_state",
+        "to_state",
+        "record_reads",
+        "record_writes",
+        "decision_results",
+        "exception_history_ids",
+        "handoff",
+        "fixture_ref"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^STEP-[0-9]{3}$" },
+        "sequence": { "type": "integer", "minimum": 1 },
+        "segment_id": { "type": "string", "pattern": "^SEG-[0-9]{3}$" },
+        "segment_sequence": { "type": "integer", "minimum": 1 },
+        "within_segment_sequence": { "type": "integer", "minimum": 1 },
+        "event_id": { "type": "string", "pattern": "^EVT-[0-9]{5}$" },
+        "transition_id": {
+          "type": "string",
+          "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$"
+        },
+        "semantic_kind": {
+          "enum": [
+            "observation",
+            "recommendation",
+            "approval",
+            "assignment",
+            "acknowledgement",
+            "execution",
+            "completion",
+            "verification",
+            "reconciliation",
+            "correction",
+            "supersession",
+            "recovery",
+            "exception",
+            "inspection"
+          ]
+        },
+        "actor_assignment_id": {
+          "type": "string",
+          "pattern": "^ASG-[0-9]{3}$"
+        },
+        "from_state": { "type": ["string", "null"] },
+        "to_state": { "type": "string", "minLength": 2 },
+        "record_reads": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^RCI-[0-9]{5}$" }
+        },
+        "record_writes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^RCI-[0-9]{5}$" }
+        },
+        "decision_results": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "required": ["decision_id", "outcome"],
+            "properties": {
+              "decision_id": {
+                "type": "string",
+                "pattern": "^DEC-[0-9]{3}$"
+              },
+              "outcome": { "type": "string", "minLength": 2 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "exception_history_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^EXH-[0-9]{4}$" }
+        },
+        "handoff": {
+          "type": "object",
+          "required": [
+            "from_actor_assignment_id",
+            "to_actor_assignment_ids",
+            "communication",
+            "acknowledgement_required"
+          ],
+          "properties": {
+            "from_actor_assignment_id": {
+              "type": "string",
+              "pattern": "^ASG-[0-9]{3}$"
+            },
+            "to_actor_assignment_ids": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^ASG-[0-9]{3}$"
+              }
+            },
+            "communication": { "type": "string", "minLength": 8 },
+            "acknowledgement_required": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "fixture_ref": {
+          "type": "object",
+          "required": ["fixture_id", "workflow_instance_id", "event_id"],
+          "properties": {
+            "fixture_id": {
+              "type": "string",
+              "pattern": "^FIX-[0-9]{3}$"
+            },
+            "workflow_instance_id": {
+              "type": "string",
+              "pattern": "^WFI-[0-9]{4}$"
+            },
+            "event_id": {
+              "type": "string",
+              "pattern": "^EVT-[0-9]{5}$"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "pathSegment": {
+      "type": "object",
+      "required": [
+        "id",
+        "sequence",
+        "workflow_id",
+        "workflow_instance_id",
+        "fixture_id",
+        "relation_to_previous",
+        "connecting_record_link_ids",
+        "event_ids",
+        "starts_at",
+        "ends_at"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^SEG-[0-9]{3}$" },
+        "sequence": { "type": "integer", "minimum": 1 },
+        "workflow_id": { "type": "string", "pattern": "^WF-[0-9]{3}$" },
+        "workflow_instance_id": {
+          "type": "string",
+          "pattern": "^WFI-[0-9]{4}$"
+        },
+        "fixture_id": { "type": "string", "pattern": "^FIX-[0-9]{3}$" },
+        "relation_to_previous": {
+          "enum": [
+            "entry",
+            "linked_evidence",
+            "correction_support",
+            "historical_reference",
+            "parallel"
+          ]
+        },
+        "connecting_record_link_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^LNK-[0-9]{5}$" }
+        },
+        "event_ids": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^EVT-[0-9]{5}$" }
+        },
+        "starts_at": { "type": "string", "format": "date-time" },
+        "ends_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "recordOperation": {
+      "type": "object",
+      "required": [
+        "record_definition_id",
+        "record_instance_id",
+        "action",
+        "lifecycle_state",
+        "source_event_id",
+        "predecessor_record_instance_id",
+        "successor_record_instance_id"
+      ],
+      "properties": {
+        "record_definition_id": {
+          "type": "string",
+          "pattern": "^REC-[0-9]{3}$"
+        },
+        "record_instance_id": {
+          "type": "string",
+          "pattern": "^RCI-[0-9]{5}$"
+        },
+        "action": {
+          "enum": ["read", "create", "append", "correct", "supersede"]
+        },
+        "lifecycle_state": { "type": "string", "minLength": 2 },
+        "source_event_id": {
+          "type": ["string", "null"],
+          "pattern": "^EVT-[0-9]{5}$"
+        },
+        "predecessor_record_instance_id": {
+          "type": ["string", "null"],
+          "pattern": "^RCI-[0-9]{5}$"
+        },
+        "successor_record_instance_id": {
+          "type": ["string", "null"],
+          "pattern": "^RCI-[0-9]{5}$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
   "additionalProperties": false
 }

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/information-architecture.schema.json",
+  "title": "Product information architecture",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "principles",
+    "global_sections",
+    "entity_routes",
+    "screen_routes"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "principles": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 15 }
+    },
+    "global_sections": {
+      "type": "array",
+      "minItems": 7,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "route", "purpose"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z_]*$" },
+          "label": { "type": "string", "minLength": 3 },
+          "route": { "type": "string", "pattern": "^/" },
+          "purpose": { "type": "string", "minLength": 15 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "entity_routes": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 5 }
+    },
+    "screen_routes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["screen_id", "route", "section", "parent_route"],
+        "properties": {
+          "screen_id": { "type": "string", "pattern": "^SCR-[0-9]{3}$" },
+          "route": { "type": "string", "pattern": "^/" },
+          "section": { "type": "string", "minLength": 3 },
+          "parent_route": { "type": "string", "pattern": "^/" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

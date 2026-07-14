@@ -1360,10 +1360,16 @@ async function validateTrace() {
 
   const registryDefinitions = [
     ["workflow", "workflow-model/workflows.json", "workflows"],
-    ["scenario", "scenarios/walking-slice.json", "scenarios"],
+    ["scenario", "scenarios/scenarios.json", "scenarios"],
     ["fixture", "data/walking-slice.json", "fixtures"],
-    ["screen", "screens/walking-slice.json", "screens"],
-    ["component", "design-system/walking-slice-components.json", "components"],
+    ["fixture", "data/scenario-fixtures.json", "fixtures"],
+    ["requirement", "product-structure/requirements.json", "requirements"],
+    ["screen", "product-structure/screens.json", "screens"],
+    [
+      "component",
+      "product-structure/component-requirements.json",
+      "components",
+    ],
     [
       "construction_packet",
       "construction-packets/walking-slice.json",
@@ -1374,9 +1380,14 @@ async function validateTrace() {
   const registryPaths = new Map();
   for (const [type, relativePath, key] of registryDefinitions) {
     const records = (await readJson(relativePath))[key];
-    registries.set(type, byId(records, type));
-    registryPaths.set(type, relativePath);
+    if (!registries.has(type)) registries.set(type, new Map());
+    if (!registryPaths.has(type)) registryPaths.set(type, new Map());
+    const registry = registries.get(type);
+    const pathIndex = registryPaths.get(type);
     for (const record of records) {
+      assert(!registry.has(record.id), `${type}: duplicate ${record.id}`);
+      registry.set(record.id, record);
+      pathIndex.set(record.id, relativePath);
       const node = nodeIndex.get(record.id);
       assert(Boolean(node), `${record.id}: missing trace node`);
       assert(
@@ -1398,7 +1409,7 @@ async function validateTrace() {
       `${node.id}: trace node has no canonical registry record`,
     );
     assert(
-      node.path === registryPaths.get(node.type),
+      node.path === registryPaths.get(node.type)?.get(node.id),
       `${node.id}: trace node points outside its canonical registry`,
     );
   }
@@ -1407,7 +1418,9 @@ async function validateTrace() {
     ["supports", ["evidence", "workflow"]],
     ["realized_by", ["workflow", "scenario"]],
     ["instantiated_by", ["scenario", "fixture"]],
+    ["motivates", ["scenario", "requirement"]],
     ["rendered_by", ["fixture", "screen"]],
+    ["implemented_by", ["requirement", "screen"]],
     ["composed_with", ["screen", "component"]],
     ["specified_by", ["component", "construction_packet"]],
   ]);
@@ -1453,7 +1466,7 @@ async function validateTrace() {
       );
     if (
       node.type !== "construction_packet" &&
-      (node.type !== "workflow" || productTraceRequired)
+      (node.type !== "component" || productTraceRequired)
     )
       assert(
         outgoing.get(node.id).length > 0,
@@ -1465,7 +1478,7 @@ async function validateTrace() {
     "evidence",
     "workflow",
     "scenario",
-    "fixture",
+    "requirement",
     "screen",
     "component",
     "construction_packet",
@@ -1503,6 +1516,7 @@ async function validateTrace() {
   const workflows = registries.get("workflow");
   const scenarios = registries.get("scenario");
   const fixtures = registries.get("fixture");
+  const requirements = registries.get("requirement");
   const screens = registries.get("screen");
   const components = registries.get("component");
   const packets = registries.get("construction_packet");
@@ -1551,26 +1565,49 @@ async function validateTrace() {
       );
     for (const workflowId of scenario.workflow_ids)
       requireEdge("realized_by", workflowId, scenario.id, scenario.id);
+    assertReferenceList(
+      scenario.synthetic_fixture_refs,
+      fixtures,
+      `${scenario.id}.synthetic_fixture_refs`,
+    );
+    for (const fixtureId of scenario.synthetic_fixture_refs)
+      requireEdge("instantiated_by", scenario.id, fixtureId, scenario.id);
+    assertReferenceList(
+      scenario.requirement_ids,
+      requirements,
+      `${scenario.id}.requirement_ids`,
+    );
+    for (const requirementId of scenario.requirement_ids)
+      requireEdge("motivates", scenario.id, requirementId, scenario.id);
   }
 
-  for (const fixture of fixtures.values()) {
+  for (const fixture of fixtures.values())
+    if (fixture.workflow_id)
+      assert(
+        workflows.has(fixture.workflow_id),
+        `${fixture.id}: unknown workflow ${fixture.workflow_id}`,
+      );
+
+  for (const requirement of requirements.values()) {
     assertReferenceList(
-      fixture.scenario_ids,
-      scenarios,
-      `${fixture.id}.scenario_ids`,
+      requirement.workflow_ids,
+      workflows,
+      `${requirement.id}.workflow_ids`,
     );
-    for (const workOrder of fixture.work_orders) {
-      assert(
-        workflows.has(workOrder.workflow_id),
-        `${fixture.id}/${workOrder.id}: unknown workflow ${workOrder.workflow_id}`,
-      );
-      assert(
-        fixture.scenario_ids.includes(workOrder.scenario_id),
-        `${fixture.id}/${workOrder.id}: scenario is outside fixture coverage`,
-      );
-    }
-    for (const scenarioId of fixture.scenario_ids)
-      requireEdge("instantiated_by", scenarioId, fixture.id, fixture.id);
+    assertReferenceList(
+      requirement.scenario_ids,
+      scenarios,
+      `${requirement.id}.scenario_ids`,
+    );
+    assertReferenceList(
+      requirement.screen_ids,
+      screens,
+      `${requirement.id}.screen_ids`,
+    );
+    for (const scenarioId of requirement.scenario_ids)
+      requireEdge("motivates", scenarioId, requirement.id, requirement.id);
+    for (const screenId of requirement.screen_ids)
+      requireEdge("implemented_by", requirement.id, screenId, requirement.id);
   }
 
   for (const screen of screens.values()) {
@@ -1594,6 +1631,11 @@ async function validateTrace() {
       components,
       `${screen.id}.component_ids`,
     );
+    assertReferenceList(
+      screen.requirement_ids,
+      requirements,
+      `${screen.id}.requirement_ids`,
+    );
     const screenStateIds = new Set(
       screen.states.map((screenState) => screenState.id),
     );
@@ -1611,43 +1653,30 @@ async function validateTrace() {
       (candidate) => candidate.transition,
     )) {
       assert(
-        screenStateIds.has(action.transition.from),
-        `${screen.id}/${action.id}: from state is not represented by the screen`,
-      );
-      assert(
-        screenStateIds.has(action.transition.to),
-        `${screen.id}/${action.id}: to state is not represented by the screen`,
-      );
-      assert(
         supportedTransitions.has(transitionKey(action.transition)),
         `${screen.id}/${action.id}: transition is not defined by a referenced workflow`,
       );
     }
+    for (const requirementId of screen.requirement_ids)
+      requireEdge("implemented_by", requirementId, screen.id, screen.id);
     for (const fixtureId of screen.fixture_ids)
       requireEdge("rendered_by", fixtureId, screen.id, screen.id);
   }
 
   for (const component of components.values()) {
     assertReferenceList(
-      component.workflow_ids,
-      workflows,
-      `${component.id}.workflow_ids`,
-    );
-    assertReferenceList(
-      component.scenario_ids,
-      scenarios,
-      `${component.id}.scenario_ids`,
-    );
-    assertReferenceList(
       component.screen_ids,
       screens,
       `${component.id}.screen_ids`,
     );
-    await access(absolute(component.code_path));
     for (const screenId of component.screen_ids)
       requireEdge("composed_with", screenId, component.id, component.id);
   }
 
+  const legacyScreens = byId(
+    (await readJson("screens/walking-slice.json")).screens,
+    "legacy walking-slice screen",
+  );
   for (const packet of packets.values()) {
     assertReferenceList(
       packet.workflow_ids,
@@ -1672,7 +1701,9 @@ async function validateTrace() {
     );
     const actionIds = new Set(
       packet.screen_ids.flatMap((screenId) =>
-        screens.get(screenId).actions.map((action) => action.id),
+        (legacyScreens.get(screenId) ?? screens.get(screenId)).actions.map(
+          (action) => action.id,
+        ),
       ),
     );
     for (const interaction of packet.interaction_contract)

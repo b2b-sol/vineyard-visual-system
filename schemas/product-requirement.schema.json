@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/product-requirement.schema.json",
+  "title": "Traceable product requirement",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "kind",
+    "priority",
+    "statement",
+    "workflow_ids",
+    "scenario_ids",
+    "role_ids",
+    "record_ids",
+    "decision_ids",
+    "transition_ids",
+    "screen_ids",
+    "acceptance_criteria",
+    "classification",
+    "status"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^REQ-[0-9]{3}$" },
+    "title": { "type": "string", "minLength": 8 },
+    "kind": {
+      "enum": [
+        "decision_support",
+        "workflow_action",
+        "information_integrity",
+        "exception_recovery",
+        "audit_history",
+        "offline_sync",
+        "cross_organization",
+        "compliance_control"
+      ]
+    },
+    "priority": { "enum": ["P0", "P1", "P2"] },
+    "statement": { "type": "string", "minLength": 40 },
+    "workflow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^WF-[0-9]{3}$" }
+    },
+    "scenario_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^SCN-[0-9]{3}-[0-9]{2}$" }
+    },
+    "role_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^ROLE-[A-Z0-9-]+$" }
+    },
+    "record_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^REC-[0-9]{3}$" }
+    },
+    "decision_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^DEC-[0-9]{3}$" }
+    },
+    "transition_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$" }
+    },
+    "screen_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^SCR-[0-9]{3}$" }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 15 }
+    },
+    "classification": { "const": "product_decision" },
+    "status": { "enum": ["approved", "superseded"] }
+  },
+  "additionalProperties": false
+}

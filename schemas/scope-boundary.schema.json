@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/scope-boundary.schema.json",
+  "title": "Product scope boundary",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "objective",
+    "included",
+    "excluded",
+    "integration_seams"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "objective": { "type": "string", "minLength": 40 },
+    "included": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 15 }
+    },
+    "excluded": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 15 }
+    },
+    "integration_seams": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["system", "direction", "contract"],
+        "properties": {
+          "system": { "type": "string", "minLength": 3 },
+          "direction": { "enum": ["inbound", "outbound", "bidirectional"] },
+          "contract": { "type": "string", "minLength": 15 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

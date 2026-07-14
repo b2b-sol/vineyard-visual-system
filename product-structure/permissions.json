@@ -1,0 +1,3539 @@
+{
+  "schema_version": "1.0",
+  "default_effect": "deny",
+  "resolution_dimensions": [
+    "role",
+    "organization_relationship",
+    "scope",
+    "record_state",
+    "transition_owner",
+    "delegation",
+    "sensitivity",
+    "effective_time"
+  ],
+  "rules": [
+    {
+      "id": "PERM-001",
+      "effect": "allow",
+      "action_kind": "inspect",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FIELD-CREW",
+        "ROLE-CONTRACTOR",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "Read access is limited to records intersecting the actor's effective organization, contract, property, block, or assigned work scope.",
+      "record_state_rule": "Current and historical versions are visible; sensitivity filters may redact personnel or commercial fields.",
+      "delegation_rule": "Read delegation may widen managed scope only through an attributable, time-bounded assignment.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "effective role assignment",
+        "resolved scope identity"
+      ],
+      "audit_event": "permission.wf001.inspect",
+      "denial_copy": "This record is outside your effective organization, contract, or delegated scope.",
+      "workflow_ids": ["WF-001"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-002",
+      "effect": "allow",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-001-001",
+        "TRN-WF-001-002",
+        "TRN-WF-001-003",
+        "TRN-WF-001-004",
+        "TRN-WF-001-005",
+        "TRN-WF-001-006",
+        "TRN-WF-001-007",
+        "TRN-WF-001-008",
+        "TRN-WF-001-009",
+        "TRN-WF-001-013",
+        "TRN-WF-001-015",
+        "TRN-WF-001-016",
+        "TRN-WF-001-017",
+        "TRN-WF-001-018",
+        "TRN-WF-001-019",
+        "TRN-WF-001-020"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-001-001",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-002",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-003",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-001-004",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-005",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-006",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-007",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-008",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-001-009",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-013",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-015",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-001-016",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-017",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-018",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-019",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-020",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf001.advance",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-001"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-003",
+      "effect": "allow",
+      "action_kind": "resolve",
+      "transition_ids": ["TRN-WF-001-011", "TRN-WF-001-012"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-001-011",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-001-012",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf001.resolve",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-001"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-004",
+      "effect": "allow",
+      "action_kind": "correct",
+      "transition_ids": ["TRN-WF-001-014"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-001-014",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-FOREMAN"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf001.correct",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-001"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-005",
+      "effect": "allow",
+      "action_kind": "supersede",
+      "transition_ids": ["TRN-WF-001-010"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-001-010",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf001.supersede",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-001"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-006",
+      "effect": "deny",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-001-001",
+        "TRN-WF-001-002",
+        "TRN-WF-001-003",
+        "TRN-WF-001-004",
+        "TRN-WF-001-005",
+        "TRN-WF-001-006",
+        "TRN-WF-001-007",
+        "TRN-WF-001-008",
+        "TRN-WF-001-009",
+        "TRN-WF-001-010",
+        "TRN-WF-001-011",
+        "TRN-WF-001-012",
+        "TRN-WF-001-013",
+        "TRN-WF-001-014",
+        "TRN-WF-001-015",
+        "TRN-WF-001-016",
+        "TRN-WF-001-017",
+        "TRN-WF-001-018",
+        "TRN-WF-001-019",
+        "TRN-WF-001-020"
+      ],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FIELD-CREW",
+        "ROLE-CONTRACTOR",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "This fallback applies whenever no exact allow grant resolves every contextual authorization dimension.",
+      "record_state_rule": "Unknown, stale, conflicting, superseded, or out-of-sequence state prevents consequential mutation.",
+      "delegation_rule": "No inferred, expired, transitive, or cross-organization delegation can override default denial.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "denial reason",
+        "missing authorization dimensions"
+      ],
+      "audit_event": "permission.wf001.deny",
+      "denial_copy": "Action denied by default because one or more authority, scope, state, delegation, sensitivity, or time conditions did not resolve.",
+      "workflow_ids": ["WF-001"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-007",
+      "effect": "allow",
+      "action_kind": "inspect",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-SCOUT",
+        "ROLE-VITICULTURIST",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-FOREMAN",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-REGULATOR",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "Read access is limited to records intersecting the actor's effective organization, contract, property, block, or assigned work scope.",
+      "record_state_rule": "Current and historical versions are visible; sensitivity filters may redact personnel or commercial fields.",
+      "delegation_rule": "Read delegation may widen managed scope only through an attributable, time-bounded assignment.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "effective role assignment",
+        "resolved scope identity"
+      ],
+      "audit_event": "permission.wf002.inspect",
+      "denial_copy": "This record is outside your effective organization, contract, or delegated scope.",
+      "workflow_ids": ["WF-002"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-008",
+      "effect": "allow",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-002-001",
+        "TRN-WF-002-002",
+        "TRN-WF-002-003",
+        "TRN-WF-002-004",
+        "TRN-WF-002-005",
+        "TRN-WF-002-006",
+        "TRN-WF-002-007",
+        "TRN-WF-002-008",
+        "TRN-WF-002-009",
+        "TRN-WF-002-010",
+        "TRN-WF-002-011",
+        "TRN-WF-002-012",
+        "TRN-WF-002-013",
+        "TRN-WF-002-014",
+        "TRN-WF-002-015",
+        "TRN-WF-002-016",
+        "TRN-WF-002-017",
+        "TRN-WF-002-018",
+        "TRN-WF-002-021",
+        "TRN-WF-002-022",
+        "TRN-WF-002-023",
+        "TRN-WF-002-024",
+        "TRN-WF-002-025",
+        "TRN-WF-002-026"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-002-001",
+          "role_ids": ["ROLE-SCOUT"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-002",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-003",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-002-004",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-005",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-002-006",
+          "role_ids": ["ROLE-PESTICIDE-HANDLER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-007",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-008",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-002-009",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-002-010",
+          "role_ids": ["ROLE-SCOUT"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-011",
+          "role_ids": ["ROLE-SCOUT"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-012",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-013",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-014",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-015",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-016",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-002-017",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-018",
+          "role_ids": ["ROLE-SCOUT"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-002-021",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-022",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-023",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-024",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-025",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-026",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": [
+        "ROLE-SCOUT",
+        "ROLE-VITICULTURIST",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-FOREMAN",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf002.advance",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-002"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-009",
+      "effect": "allow",
+      "action_kind": "resolve",
+      "transition_ids": ["TRN-WF-002-019", "TRN-WF-002-020"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-002-019",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-002-020",
+          "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-CROP-PROTECTION-LEAD"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf002.resolve",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-002"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-010",
+      "effect": "allow",
+      "action_kind": "correct",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-SCOUT",
+        "ROLE-VITICULTURIST",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-FOREMAN",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-REGULATOR",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf002.correct",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-002"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-011",
+      "effect": "allow",
+      "action_kind": "supersede",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-SCOUT",
+        "ROLE-VITICULTURIST",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-FOREMAN",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-REGULATOR",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf002.supersede",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-002"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-012",
+      "effect": "deny",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-002-001",
+        "TRN-WF-002-002",
+        "TRN-WF-002-003",
+        "TRN-WF-002-004",
+        "TRN-WF-002-005",
+        "TRN-WF-002-006",
+        "TRN-WF-002-007",
+        "TRN-WF-002-008",
+        "TRN-WF-002-009",
+        "TRN-WF-002-010",
+        "TRN-WF-002-011",
+        "TRN-WF-002-012",
+        "TRN-WF-002-013",
+        "TRN-WF-002-014",
+        "TRN-WF-002-015",
+        "TRN-WF-002-016",
+        "TRN-WF-002-017",
+        "TRN-WF-002-018",
+        "TRN-WF-002-019",
+        "TRN-WF-002-020",
+        "TRN-WF-002-021",
+        "TRN-WF-002-022",
+        "TRN-WF-002-023",
+        "TRN-WF-002-024",
+        "TRN-WF-002-025",
+        "TRN-WF-002-026"
+      ],
+      "grants": [],
+      "role_ids": [
+        "ROLE-SCOUT",
+        "ROLE-VITICULTURIST",
+        "ROLE-CROP-PROTECTION-LEAD",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-FOREMAN",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-REGULATOR",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "This fallback applies whenever no exact allow grant resolves every contextual authorization dimension.",
+      "record_state_rule": "Unknown, stale, conflicting, superseded, or out-of-sequence state prevents consequential mutation.",
+      "delegation_rule": "No inferred, expired, transitive, or cross-organization delegation can override default denial.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "denial reason",
+        "missing authorization dimensions"
+      ],
+      "audit_event": "permission.wf002.deny",
+      "denial_copy": "Action denied by default because one or more authority, scope, state, delegation, sensitivity, or time conditions did not resolve.",
+      "workflow_ids": ["WF-002"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-013",
+      "effect": "allow",
+      "action_kind": "inspect",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-IRRIGATOR",
+        "ROLE-LAB",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "Read access is limited to records intersecting the actor's effective organization, contract, property, block, or assigned work scope.",
+      "record_state_rule": "Current and historical versions are visible; sensitivity filters may redact personnel or commercial fields.",
+      "delegation_rule": "Read delegation may widen managed scope only through an attributable, time-bounded assignment.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "effective role assignment",
+        "resolved scope identity"
+      ],
+      "audit_event": "permission.wf003.inspect",
+      "denial_copy": "This record is outside your effective organization, contract, or delegated scope.",
+      "workflow_ids": ["WF-003"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-014",
+      "effect": "allow",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-003-001",
+        "TRN-WF-003-002",
+        "TRN-WF-003-003",
+        "TRN-WF-003-004",
+        "TRN-WF-003-005",
+        "TRN-WF-003-006",
+        "TRN-WF-003-007",
+        "TRN-WF-003-010",
+        "TRN-WF-003-012",
+        "TRN-WF-003-013",
+        "TRN-WF-003-014",
+        "TRN-WF-003-015",
+        "TRN-WF-003-016",
+        "TRN-WF-003-017",
+        "TRN-WF-003-018"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-003-001",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-002",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-003",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-003-004",
+          "role_ids": ["ROLE-IRRIGATION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-005",
+          "role_ids": ["ROLE-IRRIGATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-006",
+          "role_ids": ["ROLE-IRRIGATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-007",
+          "role_ids": ["ROLE-IRRIGATION-LEAD"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-003-010",
+          "role_ids": ["ROLE-IRRIGATION-LEAD"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-003-012",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-003-013",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-014",
+          "role_ids": ["ROLE-IRRIGATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-015",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-016",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-017",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-018",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-IRRIGATOR"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf003.advance",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-003"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-015",
+      "effect": "allow",
+      "action_kind": "resolve",
+      "transition_ids": ["TRN-WF-003-008", "TRN-WF-003-009"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-003-008",
+          "role_ids": ["ROLE-IRRIGATION-LEAD"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-003-009",
+          "role_ids": ["ROLE-IRRIGATION-LEAD"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-IRRIGATION-LEAD"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf003.resolve",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-003"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-016",
+      "effect": "allow",
+      "action_kind": "correct",
+      "transition_ids": ["TRN-WF-003-011"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-003-011",
+          "role_ids": ["ROLE-IRRIGATION-LEAD"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-IRRIGATION-LEAD"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf003.correct",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-003"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-017",
+      "effect": "allow",
+      "action_kind": "supersede",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-IRRIGATOR",
+        "ROLE-LAB",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf003.supersede",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-003"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-018",
+      "effect": "deny",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-003-001",
+        "TRN-WF-003-002",
+        "TRN-WF-003-003",
+        "TRN-WF-003-004",
+        "TRN-WF-003-005",
+        "TRN-WF-003-006",
+        "TRN-WF-003-007",
+        "TRN-WF-003-008",
+        "TRN-WF-003-009",
+        "TRN-WF-003-010",
+        "TRN-WF-003-011",
+        "TRN-WF-003-012",
+        "TRN-WF-003-013",
+        "TRN-WF-003-014",
+        "TRN-WF-003-015",
+        "TRN-WF-003-016",
+        "TRN-WF-003-017",
+        "TRN-WF-003-018"
+      ],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-IRRIGATOR",
+        "ROLE-LAB",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "This fallback applies whenever no exact allow grant resolves every contextual authorization dimension.",
+      "record_state_rule": "Unknown, stale, conflicting, superseded, or out-of-sequence state prevents consequential mutation.",
+      "delegation_rule": "No inferred, expired, transitive, or cross-organization delegation can override default denial.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "denial reason",
+        "missing authorization dimensions"
+      ],
+      "audit_event": "permission.wf003.deny",
+      "denial_copy": "Action denied by default because one or more authority, scope, state, delegation, sensitivity, or time conditions did not resolve.",
+      "workflow_ids": ["WF-003"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-019",
+      "effect": "allow",
+      "action_kind": "inspect",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-WINEMAKER",
+        "ROLE-FINANCE",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "Read access is limited to records intersecting the actor's effective organization, contract, property, block, or assigned work scope.",
+      "record_state_rule": "Current and historical versions are visible; sensitivity filters may redact personnel or commercial fields.",
+      "delegation_rule": "Read delegation may widen managed scope only through an attributable, time-bounded assignment.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "effective role assignment",
+        "resolved scope identity"
+      ],
+      "audit_event": "permission.wf004.inspect",
+      "denial_copy": "This record is outside your effective organization, contract, or delegated scope.",
+      "workflow_ids": ["WF-004"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-020",
+      "effect": "allow",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-004-001",
+        "TRN-WF-004-002",
+        "TRN-WF-004-003",
+        "TRN-WF-004-004",
+        "TRN-WF-004-005",
+        "TRN-WF-004-006",
+        "TRN-WF-004-007",
+        "TRN-WF-004-008",
+        "TRN-WF-004-010",
+        "TRN-WF-004-012",
+        "TRN-WF-004-014",
+        "TRN-WF-004-015",
+        "TRN-WF-004-016",
+        "TRN-WF-004-017",
+        "TRN-WF-004-018",
+        "TRN-WF-004-019"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-004-001",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-002",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-003",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-004-004",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-005",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-006",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-004-007",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-008",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-010",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-012",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-014",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-015",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-016",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-017",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-018",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-019",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf004.advance",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-004"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-021",
+      "effect": "allow",
+      "action_kind": "resolve",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-WINEMAKER",
+        "ROLE-FINANCE",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf004.resolve",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-004"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-022",
+      "effect": "allow",
+      "action_kind": "correct",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-WINEMAKER",
+        "ROLE-FINANCE",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf004.correct",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-004"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-023",
+      "effect": "allow",
+      "action_kind": "supersede",
+      "transition_ids": ["TRN-WF-004-009", "TRN-WF-004-011", "TRN-WF-004-013"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-004-009",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-011",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-004-013",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf004.supersede",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-004"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-024",
+      "effect": "deny",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-004-001",
+        "TRN-WF-004-002",
+        "TRN-WF-004-003",
+        "TRN-WF-004-004",
+        "TRN-WF-004-005",
+        "TRN-WF-004-006",
+        "TRN-WF-004-007",
+        "TRN-WF-004-008",
+        "TRN-WF-004-009",
+        "TRN-WF-004-010",
+        "TRN-WF-004-011",
+        "TRN-WF-004-012",
+        "TRN-WF-004-013",
+        "TRN-WF-004-014",
+        "TRN-WF-004-015",
+        "TRN-WF-004-016",
+        "TRN-WF-004-017",
+        "TRN-WF-004-018",
+        "TRN-WF-004-019"
+      ],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-WINEMAKER",
+        "ROLE-FINANCE",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "This fallback applies whenever no exact allow grant resolves every contextual authorization dimension.",
+      "record_state_rule": "Unknown, stale, conflicting, superseded, or out-of-sequence state prevents consequential mutation.",
+      "delegation_rule": "No inferred, expired, transitive, or cross-organization delegation can override default denial.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "denial reason",
+        "missing authorization dimensions"
+      ],
+      "audit_event": "permission.wf004.deny",
+      "denial_copy": "Action denied by default because one or more authority, scope, state, delegation, sensitivity, or time conditions did not resolve.",
+      "workflow_ids": ["WF-004"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-025",
+      "effect": "allow",
+      "action_kind": "inspect",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-LAB",
+        "ROLE-WINEMAKER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "scope_rule": "Read access is limited to records intersecting the actor's effective organization, contract, property, block, or assigned work scope.",
+      "record_state_rule": "Current and historical versions are visible; sensitivity filters may redact personnel or commercial fields.",
+      "delegation_rule": "Read delegation may widen managed scope only through an attributable, time-bounded assignment.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "effective role assignment",
+        "resolved scope identity"
+      ],
+      "audit_event": "permission.wf005.inspect",
+      "denial_copy": "This record is outside your effective organization, contract, or delegated scope.",
+      "workflow_ids": ["WF-005"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-026",
+      "effect": "allow",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-005-001",
+        "TRN-WF-005-002",
+        "TRN-WF-005-003",
+        "TRN-WF-005-004",
+        "TRN-WF-005-005",
+        "TRN-WF-005-006",
+        "TRN-WF-005-007",
+        "TRN-WF-005-008",
+        "TRN-WF-005-009",
+        "TRN-WF-005-010",
+        "TRN-WF-005-011",
+        "TRN-WF-005-012",
+        "TRN-WF-005-013",
+        "TRN-WF-005-014",
+        "TRN-WF-005-016",
+        "TRN-WF-005-017",
+        "TRN-WF-005-018",
+        "TRN-WF-005-019",
+        "TRN-WF-005-020",
+        "TRN-WF-005-021"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-005-001",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-002",
+          "role_ids": ["ROLE-LAB"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-003",
+          "role_ids": ["ROLE-LAB"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-004",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-005",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-006",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-005-007",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-008",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-009",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-010",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-011",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-012",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-013",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-005-014",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-016",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-017",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-018",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-019",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-020",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-005-021",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-LAB",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf005.advance",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-005"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-027",
+      "effect": "allow",
+      "action_kind": "resolve",
+      "transition_ids": ["TRN-WF-005-015"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-005-015",
+          "role_ids": ["ROLE-VITICULTURIST"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf005.resolve",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-005"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-028",
+      "effect": "allow",
+      "action_kind": "correct",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-LAB",
+        "ROLE-WINEMAKER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf005.correct",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-005"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-029",
+      "effect": "allow",
+      "action_kind": "supersede",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-LAB",
+        "ROLE-WINEMAKER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf005.supersede",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-005"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-030",
+      "effect": "deny",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-005-001",
+        "TRN-WF-005-002",
+        "TRN-WF-005-003",
+        "TRN-WF-005-004",
+        "TRN-WF-005-005",
+        "TRN-WF-005-006",
+        "TRN-WF-005-007",
+        "TRN-WF-005-008",
+        "TRN-WF-005-009",
+        "TRN-WF-005-010",
+        "TRN-WF-005-011",
+        "TRN-WF-005-012",
+        "TRN-WF-005-013",
+        "TRN-WF-005-014",
+        "TRN-WF-005-015",
+        "TRN-WF-005-016",
+        "TRN-WF-005-017",
+        "TRN-WF-005-018",
+        "TRN-WF-005-019",
+        "TRN-WF-005-020",
+        "TRN-WF-005-021"
+      ],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-LAB",
+        "ROLE-WINEMAKER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "scope_rule": "This fallback applies whenever no exact allow grant resolves every contextual authorization dimension.",
+      "record_state_rule": "Unknown, stale, conflicting, superseded, or out-of-sequence state prevents consequential mutation.",
+      "delegation_rule": "No inferred, expired, transitive, or cross-organization delegation can override default denial.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "denial reason",
+        "missing authorization dimensions"
+      ],
+      "audit_event": "permission.wf005.deny",
+      "denial_copy": "Action denied by default because one or more authority, scope, state, delegation, sensitivity, or time conditions did not resolve.",
+      "workflow_ids": ["WF-005"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-031",
+      "effect": "allow",
+      "action_kind": "inspect",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-WINEMAKER",
+        "ROLE-FINANCE",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "Read access is limited to records intersecting the actor's effective organization, contract, property, block, or assigned work scope.",
+      "record_state_rule": "Current and historical versions are visible; sensitivity filters may redact personnel or commercial fields.",
+      "delegation_rule": "Read delegation may widen managed scope only through an attributable, time-bounded assignment.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "effective role assignment",
+        "resolved scope identity"
+      ],
+      "audit_event": "permission.wf006.inspect",
+      "denial_copy": "This record is outside your effective organization, contract, or delegated scope.",
+      "workflow_ids": ["WF-006"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-032",
+      "effect": "allow",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-006-001",
+        "TRN-WF-006-002",
+        "TRN-WF-006-003",
+        "TRN-WF-006-004",
+        "TRN-WF-006-005",
+        "TRN-WF-006-006",
+        "TRN-WF-006-007",
+        "TRN-WF-006-008",
+        "TRN-WF-006-009",
+        "TRN-WF-006-010",
+        "TRN-WF-006-011",
+        "TRN-WF-006-012",
+        "TRN-WF-006-013",
+        "TRN-WF-006-014",
+        "TRN-WF-006-015",
+        "TRN-WF-006-016",
+        "TRN-WF-006-017",
+        "TRN-WF-006-022",
+        "TRN-WF-006-023",
+        "TRN-WF-006-024",
+        "TRN-WF-006-025",
+        "TRN-WF-006-026",
+        "TRN-WF-006-027",
+        "TRN-WF-006-028",
+        "TRN-WF-006-029",
+        "TRN-WF-006-030"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-006-001",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-002",
+          "role_ids": ["ROLE-HARVEST-CREW-LEADER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-003",
+          "role_ids": ["ROLE-TRANSPORTATION"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-004",
+          "role_ids": ["ROLE-WINERY-INTAKE"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-005",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-006",
+          "role_ids": ["ROLE-WINERY-INTAKE"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-007",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-008",
+          "role_ids": ["ROLE-FINANCE"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-009",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-010",
+          "role_ids": ["ROLE-TRANSPORTATION"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-011",
+          "role_ids": ["ROLE-WINERY-INTAKE"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-012",
+          "role_ids": ["ROLE-WINERY-INTAKE"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-013",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-014",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-015",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-016",
+          "role_ids": ["ROLE-WINERY-INTAKE"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-017",
+          "role_ids": ["ROLE-WINERY-INTAKE"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-022",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-006-023",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-024",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-025",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-026",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-027",
+          "role_ids": ["ROLE-WINERY-INTAKE"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-028",
+          "role_ids": ["ROLE-WINEMAKER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-029",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-030",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-WINEMAKER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-FINANCE"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "commercial",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf006.advance",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-006"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-033",
+      "effect": "allow",
+      "action_kind": "resolve",
+      "transition_ids": ["TRN-WF-006-018", "TRN-WF-006-019"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-006-018",
+          "role_ids": ["ROLE-HARVEST-CREW-LEADER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-019",
+          "role_ids": ["ROLE-TRANSPORTATION"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-HARVEST-CREW-LEADER", "ROLE-TRANSPORTATION"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "commercial",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf006.resolve",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-006"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-034",
+      "effect": "allow",
+      "action_kind": "correct",
+      "transition_ids": ["TRN-WF-006-020", "TRN-WF-006-021"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-006-020",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-006-021",
+          "role_ids": ["ROLE-WINERY-INTAKE"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-WINERY-INTAKE"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "commercial",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf006.correct",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-006"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-035",
+      "effect": "allow",
+      "action_kind": "supersede",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-WINEMAKER",
+        "ROLE-FINANCE",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "commercial",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf006.supersede",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-006"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-036",
+      "effect": "deny",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-006-001",
+        "TRN-WF-006-002",
+        "TRN-WF-006-003",
+        "TRN-WF-006-004",
+        "TRN-WF-006-005",
+        "TRN-WF-006-006",
+        "TRN-WF-006-007",
+        "TRN-WF-006-008",
+        "TRN-WF-006-009",
+        "TRN-WF-006-010",
+        "TRN-WF-006-011",
+        "TRN-WF-006-012",
+        "TRN-WF-006-013",
+        "TRN-WF-006-014",
+        "TRN-WF-006-015",
+        "TRN-WF-006-016",
+        "TRN-WF-006-017",
+        "TRN-WF-006-018",
+        "TRN-WF-006-019",
+        "TRN-WF-006-020",
+        "TRN-WF-006-021",
+        "TRN-WF-006-022",
+        "TRN-WF-006-023",
+        "TRN-WF-006-024",
+        "TRN-WF-006-025",
+        "TRN-WF-006-026",
+        "TRN-WF-006-027",
+        "TRN-WF-006-028",
+        "TRN-WF-006-029",
+        "TRN-WF-006-030"
+      ],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-WINEMAKER",
+        "ROLE-FINANCE",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "This fallback applies whenever no exact allow grant resolves every contextual authorization dimension.",
+      "record_state_rule": "Unknown, stale, conflicting, superseded, or out-of-sequence state prevents consequential mutation.",
+      "delegation_rule": "No inferred, expired, transitive, or cross-organization delegation can override default denial.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "denial reason",
+        "missing authorization dimensions"
+      ],
+      "audit_event": "permission.wf006.deny",
+      "denial_copy": "Action denied by default because one or more authority, scope, state, delegation, sensitivity, or time conditions did not resolve.",
+      "workflow_ids": ["WF-006"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-037",
+      "effect": "allow",
+      "action_kind": "inspect",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-FIELD-CREW",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "Read access is limited to records intersecting the actor's effective organization, contract, property, block, or assigned work scope.",
+      "record_state_rule": "Current and historical versions are visible; sensitivity filters may redact personnel or commercial fields.",
+      "delegation_rule": "Read delegation may widen managed scope only through an attributable, time-bounded assignment.",
+      "sensitivity": "personnel",
+      "evidence_required": [
+        "effective role assignment",
+        "resolved scope identity"
+      ],
+      "audit_event": "permission.wf007.inspect",
+      "denial_copy": "This record is outside your effective organization, contract, or delegated scope.",
+      "workflow_ids": ["WF-007"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-038",
+      "effect": "allow",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-007-001",
+        "TRN-WF-007-002",
+        "TRN-WF-007-003",
+        "TRN-WF-007-004",
+        "TRN-WF-007-005",
+        "TRN-WF-007-006",
+        "TRN-WF-007-007",
+        "TRN-WF-007-008",
+        "TRN-WF-007-009",
+        "TRN-WF-007-010",
+        "TRN-WF-007-011",
+        "TRN-WF-007-012",
+        "TRN-WF-007-013",
+        "TRN-WF-007-017",
+        "TRN-WF-007-018",
+        "TRN-WF-007-019",
+        "TRN-WF-007-020",
+        "TRN-WF-007-021",
+        "TRN-WF-007-022",
+        "TRN-WF-007-023",
+        "TRN-WF-007-024"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-007-001",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-002",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-003",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-004",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-005",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-007-006",
+          "role_ids": ["ROLE-PAYROLL"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-007-007",
+          "role_ids": ["ROLE-FINANCE"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-007-008",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-009",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-010",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-011",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-012",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-013",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-017",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-007-018",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-019",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-020",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-021",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-022",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-023",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-024",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf007.advance",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-007"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-039",
+      "effect": "allow",
+      "action_kind": "resolve",
+      "transition_ids": ["TRN-WF-007-014", "TRN-WF-007-015"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-007-014",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-007-015",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-FOREMAN"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf007.resolve",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-007"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-040",
+      "effect": "allow",
+      "action_kind": "correct",
+      "transition_ids": ["TRN-WF-007-016"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-007-016",
+          "role_ids": ["ROLE-PAYROLL"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-PAYROLL"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf007.correct",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-007"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-041",
+      "effect": "allow",
+      "action_kind": "supersede",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-FIELD-CREW",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf007.supersede",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-007"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-042",
+      "effect": "deny",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-007-001",
+        "TRN-WF-007-002",
+        "TRN-WF-007-003",
+        "TRN-WF-007-004",
+        "TRN-WF-007-005",
+        "TRN-WF-007-006",
+        "TRN-WF-007-007",
+        "TRN-WF-007-008",
+        "TRN-WF-007-009",
+        "TRN-WF-007-010",
+        "TRN-WF-007-011",
+        "TRN-WF-007-012",
+        "TRN-WF-007-013",
+        "TRN-WF-007-014",
+        "TRN-WF-007-015",
+        "TRN-WF-007-016",
+        "TRN-WF-007-017",
+        "TRN-WF-007-018",
+        "TRN-WF-007-019",
+        "TRN-WF-007-020",
+        "TRN-WF-007-021",
+        "TRN-WF-007-022",
+        "TRN-WF-007-023",
+        "TRN-WF-007-024"
+      ],
+      "grants": [],
+      "role_ids": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
+        "ROLE-FIELD-CREW",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "This fallback applies whenever no exact allow grant resolves every contextual authorization dimension.",
+      "record_state_rule": "Unknown, stale, conflicting, superseded, or out-of-sequence state prevents consequential mutation.",
+      "delegation_rule": "No inferred, expired, transitive, or cross-organization delegation can override default denial.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "denial reason",
+        "missing authorization dimensions"
+      ],
+      "audit_event": "permission.wf007.deny",
+      "denial_copy": "Action denied by default because one or more authority, scope, state, delegation, sensitivity, or time conditions did not resolve.",
+      "workflow_ids": ["WF-007"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-043",
+      "effect": "allow",
+      "action_kind": "inspect",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PURCHASING",
+        "ROLE-FOREMAN",
+        "ROLE-MECHANIC",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-FINANCE",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "Read access is limited to records intersecting the actor's effective organization, contract, property, block, or assigned work scope.",
+      "record_state_rule": "Current and historical versions are visible; sensitivity filters may redact personnel or commercial fields.",
+      "delegation_rule": "Read delegation may widen managed scope only through an attributable, time-bounded assignment.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "effective role assignment",
+        "resolved scope identity"
+      ],
+      "audit_event": "permission.wf008.inspect",
+      "denial_copy": "This record is outside your effective organization, contract, or delegated scope.",
+      "workflow_ids": ["WF-008"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-044",
+      "effect": "allow",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-008-001",
+        "TRN-WF-008-002",
+        "TRN-WF-008-003",
+        "TRN-WF-008-004",
+        "TRN-WF-008-005",
+        "TRN-WF-008-006",
+        "TRN-WF-008-007",
+        "TRN-WF-008-008",
+        "TRN-WF-008-009",
+        "TRN-WF-008-010",
+        "TRN-WF-008-011",
+        "TRN-WF-008-012",
+        "TRN-WF-008-013",
+        "TRN-WF-008-014",
+        "TRN-WF-008-015",
+        "TRN-WF-008-018",
+        "TRN-WF-008-020",
+        "TRN-WF-008-021",
+        "TRN-WF-008-022",
+        "TRN-WF-008-023",
+        "TRN-WF-008-024",
+        "TRN-WF-008-025",
+        "TRN-WF-008-026"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-008-001",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-002",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-003",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-008-004",
+          "role_ids": ["ROLE-PURCHASING"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-005",
+          "role_ids": ["ROLE-PURCHASING"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-006",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-007",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-008-008",
+          "role_ids": ["ROLE-FINANCE"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-008-009",
+          "role_ids": ["ROLE-PURCHASING"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-010",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-008-011",
+          "role_ids": ["ROLE-EQUIPMENT-OPERATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-012",
+          "role_ids": ["ROLE-EQUIPMENT-OPERATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-013",
+          "role_ids": ["ROLE-MECHANIC"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-014",
+          "role_ids": ["ROLE-MECHANIC"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-015",
+          "role_ids": ["ROLE-MECHANIC"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-008-018",
+          "role_ids": ["ROLE-PURCHASING"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-020",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-021",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-022",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-023",
+          "role_ids": ["ROLE-FOREMAN"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-024",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-025",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-026",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PURCHASING",
+        "ROLE-FOREMAN",
+        "ROLE-FINANCE",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-MECHANIC",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf008.advance",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-008"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-045",
+      "effect": "allow",
+      "action_kind": "resolve",
+      "transition_ids": ["TRN-WF-008-016", "TRN-WF-008-017"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-008-016",
+          "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-008-017",
+          "role_ids": ["ROLE-PURCHASING"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR", "ROLE-PURCHASING"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf008.resolve",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-008"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-046",
+      "effect": "allow",
+      "action_kind": "correct",
+      "transition_ids": ["TRN-WF-008-019"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-008-019",
+          "role_ids": ["ROLE-PURCHASING"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-PURCHASING"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf008.correct",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-008"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-047",
+      "effect": "allow",
+      "action_kind": "supersede",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PURCHASING",
+        "ROLE-FOREMAN",
+        "ROLE-MECHANIC",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-FINANCE",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf008.supersede",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-008"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-048",
+      "effect": "deny",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-008-001",
+        "TRN-WF-008-002",
+        "TRN-WF-008-003",
+        "TRN-WF-008-004",
+        "TRN-WF-008-005",
+        "TRN-WF-008-006",
+        "TRN-WF-008-007",
+        "TRN-WF-008-008",
+        "TRN-WF-008-009",
+        "TRN-WF-008-010",
+        "TRN-WF-008-011",
+        "TRN-WF-008-012",
+        "TRN-WF-008-013",
+        "TRN-WF-008-014",
+        "TRN-WF-008-015",
+        "TRN-WF-008-016",
+        "TRN-WF-008-017",
+        "TRN-WF-008-018",
+        "TRN-WF-008-019",
+        "TRN-WF-008-020",
+        "TRN-WF-008-021",
+        "TRN-WF-008-022",
+        "TRN-WF-008-023",
+        "TRN-WF-008-024",
+        "TRN-WF-008-025",
+        "TRN-WF-008-026"
+      ],
+      "grants": [],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PURCHASING",
+        "ROLE-FOREMAN",
+        "ROLE-MECHANIC",
+        "ROLE-EQUIPMENT-OPERATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-FINANCE",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "scope_rule": "This fallback applies whenever no exact allow grant resolves every contextual authorization dimension.",
+      "record_state_rule": "Unknown, stale, conflicting, superseded, or out-of-sequence state prevents consequential mutation.",
+      "delegation_rule": "No inferred, expired, transitive, or cross-organization delegation can override default denial.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "denial reason",
+        "missing authorization dimensions"
+      ],
+      "audit_event": "permission.wf008.deny",
+      "denial_copy": "Action denied by default because one or more authority, scope, state, delegation, sensitivity, or time conditions did not resolve.",
+      "workflow_ids": ["WF-008"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-049",
+      "effect": "allow",
+      "action_kind": "inspect",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-FINANCE",
+        "ROLE-TRANSPORTATION",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "scope_rule": "Read access is limited to records intersecting the actor's effective organization, contract, property, block, or assigned work scope.",
+      "record_state_rule": "Current and historical versions are visible; sensitivity filters may redact personnel or commercial fields.",
+      "delegation_rule": "Read delegation may widen managed scope only through an attributable, time-bounded assignment.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "effective role assignment",
+        "resolved scope identity"
+      ],
+      "audit_event": "permission.wf009.inspect",
+      "denial_copy": "This record is outside your effective organization, contract, or delegated scope.",
+      "workflow_ids": ["WF-009"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-050",
+      "effect": "allow",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-009-001",
+        "TRN-WF-009-002",
+        "TRN-WF-009-003",
+        "TRN-WF-009-004",
+        "TRN-WF-009-005",
+        "TRN-WF-009-006",
+        "TRN-WF-009-008",
+        "TRN-WF-009-009",
+        "TRN-WF-009-010",
+        "TRN-WF-009-011",
+        "TRN-WF-009-012",
+        "TRN-WF-009-013",
+        "TRN-WF-009-014",
+        "TRN-WF-009-018",
+        "TRN-WF-009-019",
+        "TRN-WF-009-021",
+        "TRN-WF-009-022",
+        "TRN-WF-009-023",
+        "TRN-WF-009-024",
+        "TRN-WF-009-025",
+        "TRN-WF-009-026"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-009-001",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-002",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-009-003",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-009-004",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-005",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-006",
+          "role_ids": ["ROLE-FINANCE"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-009-008",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-009",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-009-010",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-011",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-012",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-009-013",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-014",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-009-018",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-009-019",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-021",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-022",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-023",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-024",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-025",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-026",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-FINANCE",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "commercial",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf009.advance",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-009"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-051",
+      "effect": "allow",
+      "action_kind": "resolve",
+      "transition_ids": ["TRN-WF-009-016", "TRN-WF-009-017"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-009-016",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-017",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "commercial",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf009.resolve",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-009"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-052",
+      "effect": "allow",
+      "action_kind": "correct",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-FINANCE",
+        "ROLE-TRANSPORTATION",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "commercial",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf009.correct",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-009"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-053",
+      "effect": "allow",
+      "action_kind": "supersede",
+      "transition_ids": ["TRN-WF-009-007", "TRN-WF-009-015", "TRN-WF-009-020"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-009-007",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-015",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-009-020",
+          "role_ids": ["ROLE-GROWER-RELATIONS"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "commercial",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf009.supersede",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-009"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-054",
+      "effect": "deny",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-009-001",
+        "TRN-WF-009-002",
+        "TRN-WF-009-003",
+        "TRN-WF-009-004",
+        "TRN-WF-009-005",
+        "TRN-WF-009-006",
+        "TRN-WF-009-007",
+        "TRN-WF-009-008",
+        "TRN-WF-009-009",
+        "TRN-WF-009-010",
+        "TRN-WF-009-011",
+        "TRN-WF-009-012",
+        "TRN-WF-009-013",
+        "TRN-WF-009-014",
+        "TRN-WF-009-015",
+        "TRN-WF-009-016",
+        "TRN-WF-009-017",
+        "TRN-WF-009-018",
+        "TRN-WF-009-019",
+        "TRN-WF-009-020",
+        "TRN-WF-009-021",
+        "TRN-WF-009-022",
+        "TRN-WF-009-023",
+        "TRN-WF-009-024",
+        "TRN-WF-009-025",
+        "TRN-WF-009-026"
+      ],
+      "grants": [],
+      "role_ids": [
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-CONTRACT-GROWER",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-FINANCE",
+        "ROLE-TRANSPORTATION",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "scope_rule": "This fallback applies whenever no exact allow grant resolves every contextual authorization dimension.",
+      "record_state_rule": "Unknown, stale, conflicting, superseded, or out-of-sequence state prevents consequential mutation.",
+      "delegation_rule": "No inferred, expired, transitive, or cross-organization delegation can override default denial.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "denial reason",
+        "missing authorization dimensions"
+      ],
+      "audit_event": "permission.wf009.deny",
+      "denial_copy": "Action denied by default because one or more authority, scope, state, delegation, sensitivity, or time conditions did not resolve.",
+      "workflow_ids": ["WF-009"],
+      "organization_relationships": [
+        "same_organization",
+        "contract_grower",
+        "buyer_winery"
+      ],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-055",
+      "effect": "allow",
+      "action_kind": "inspect",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-CERTIFIER",
+        "ROLE-AUDITOR",
+        "ROLE-REGULATOR",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "scope_rule": "Read access is limited to records intersecting the actor's effective organization, contract, property, block, or assigned work scope.",
+      "record_state_rule": "Current and historical versions are visible; sensitivity filters may redact personnel or commercial fields.",
+      "delegation_rule": "Read delegation may widen managed scope only through an attributable, time-bounded assignment.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "effective role assignment",
+        "resolved scope identity"
+      ],
+      "audit_event": "permission.wf010.inspect",
+      "denial_copy": "This record is outside your effective organization, contract, or delegated scope.",
+      "workflow_ids": ["WF-010"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-056",
+      "effect": "allow",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-010-001",
+        "TRN-WF-010-002",
+        "TRN-WF-010-003",
+        "TRN-WF-010-004",
+        "TRN-WF-010-005",
+        "TRN-WF-010-006",
+        "TRN-WF-010-007",
+        "TRN-WF-010-009",
+        "TRN-WF-010-011",
+        "TRN-WF-010-012",
+        "TRN-WF-010-015",
+        "TRN-WF-010-016",
+        "TRN-WF-010-017",
+        "TRN-WF-010-020",
+        "TRN-WF-010-021",
+        "TRN-WF-010-022",
+        "TRN-WF-010-023",
+        "TRN-WF-010-024",
+        "TRN-WF-010-025"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-010-001",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-002",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-003",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-010-004",
+          "role_ids": ["ROLE-VINEYARD-MANAGER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-010-005",
+          "role_ids": ["ROLE-AUDITOR"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-010-006",
+          "role_ids": ["ROLE-AUDITOR"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-010-007",
+          "role_ids": ["ROLE-CERTIFIER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-010-009",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-011",
+          "role_ids": ["ROLE-AUDITOR"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-010-012",
+          "role_ids": ["ROLE-CERTIFIER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-010-015",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-016",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-017",
+          "role_ids": ["ROLE-CERTIFIER"],
+          "delegation": "forbidden"
+        },
+        {
+          "transition_id": "TRN-WF-010-020",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-021",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-022",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-023",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-024",
+          "role_ids": ["ROLE-AUDITOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-025",
+          "role_ids": ["ROLE-AUDITOR"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf010.advance",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-010"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-057",
+      "effect": "allow",
+      "action_kind": "resolve",
+      "transition_ids": [],
+      "grants": [],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-CERTIFIER",
+        "ROLE-AUDITOR",
+        "ROLE-REGULATOR",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The current server state and source record versions must match the exact transition precondition.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope"
+      ],
+      "audit_event": "permission.wf010.resolve",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-010"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-058",
+      "effect": "allow",
+      "action_kind": "correct",
+      "transition_ids": [
+        "TRN-WF-010-010",
+        "TRN-WF-010-013",
+        "TRN-WF-010-014",
+        "TRN-WF-010-018"
+      ],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-010-010",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-013",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-014",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-018",
+          "role_ids": ["ROLE-CERTIFIER"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-CERTIFIER"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf010.correct",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-010"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-059",
+      "effect": "allow",
+      "action_kind": "supersede",
+      "transition_ids": ["TRN-WF-010-008", "TRN-WF-010-019"],
+      "grants": [
+        {
+          "transition_id": "TRN-WF-010-008",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        },
+        {
+          "transition_id": "TRN-WF-010-019",
+          "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+          "delegation": "explicit_assignment"
+        }
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+      "scope_rule": "The actor must own the exact transition or hold an explicit effective assignment for the affected operational scope.",
+      "record_state_rule": "The accepted action creates an attributable successor and preserves reciprocal predecessor lineage.",
+      "delegation_rule": "Delegation is evaluated per transition grant and never inferred from broad workflow visibility or edit access.",
+      "sensitivity": "regulated",
+      "evidence_required": [
+        "current state",
+        "transition owner",
+        "record version",
+        "effective scope",
+        "correction reason",
+        "successor version"
+      ],
+      "audit_event": "permission.wf010.supersede",
+      "denial_copy": "The exact transition grant, current state, effective scope, or required evidence did not resolve; request accountable review.",
+      "workflow_ids": ["WF-010"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    },
+    {
+      "id": "PERM-060",
+      "effect": "deny",
+      "action_kind": "advance",
+      "transition_ids": [
+        "TRN-WF-010-001",
+        "TRN-WF-010-002",
+        "TRN-WF-010-003",
+        "TRN-WF-010-004",
+        "TRN-WF-010-005",
+        "TRN-WF-010-006",
+        "TRN-WF-010-007",
+        "TRN-WF-010-008",
+        "TRN-WF-010-009",
+        "TRN-WF-010-010",
+        "TRN-WF-010-011",
+        "TRN-WF-010-012",
+        "TRN-WF-010-013",
+        "TRN-WF-010-014",
+        "TRN-WF-010-015",
+        "TRN-WF-010-016",
+        "TRN-WF-010-017",
+        "TRN-WF-010-018",
+        "TRN-WF-010-019",
+        "TRN-WF-010-020",
+        "TRN-WF-010-021",
+        "TRN-WF-010-022",
+        "TRN-WF-010-023",
+        "TRN-WF-010-024",
+        "TRN-WF-010-025"
+      ],
+      "grants": [],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN",
+        "ROLE-PESTICIDE-HANDLER",
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-CONTRACTOR",
+        "ROLE-CERTIFIER",
+        "ROLE-AUDITOR",
+        "ROLE-REGULATOR",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-OWNER-GENERAL-MANAGER"
+      ],
+      "scope_rule": "This fallback applies whenever no exact allow grant resolves every contextual authorization dimension.",
+      "record_state_rule": "Unknown, stale, conflicting, superseded, or out-of-sequence state prevents consequential mutation.",
+      "delegation_rule": "No inferred, expired, transitive, or cross-organization delegation can override default denial.",
+      "sensitivity": "operational",
+      "evidence_required": [
+        "denial reason",
+        "missing authorization dimensions"
+      ],
+      "audit_event": "permission.wf010.deny",
+      "denial_copy": "Action denied by default because one or more authority, scope, state, delegation, sensitivity, or time conditions did not resolve.",
+      "workflow_ids": ["WF-010"],
+      "organization_relationships": ["same_organization"],
+      "effective_time_rule": "Role assignment, delegation, contract, and managed scope must all be effective when the action occurs."
+    }
+  ]
+}

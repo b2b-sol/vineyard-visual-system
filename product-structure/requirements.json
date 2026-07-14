@@ -1,0 +1,3153 @@
+{
+  "schema_version": "1.0",
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "title": "WF-001: Make accountable decisions from current evidence",
+      "kind": "decision_support",
+      "priority": "P0",
+      "statement": "Present the current evidence, missing information, authority, and viable outcomes before an accountable actor commits the next workflow state. In seasonal planning, dispatch, execution, and verification, this contract applies to observed → planned.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": ["SCN-001-01", "SCN-001-05", "SCN-001-07", "SCN-900-05"],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-001", "REC-002", "REC-005", "REC-003"],
+      "decision_ids": ["DEC-001"],
+      "transition_ids": ["TRN-WF-001-002"],
+      "screen_ids": ["SCR-001"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-001-002 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-002",
+      "title": "WF-001: Advance only valid canonical transitions",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Offer only canonical state transitions that are valid from the current state and explain why unavailable actions are denied or require escalation. In seasonal planning, dispatch, execution, and verification, this contract applies to entry → observed and approved → assigned and assigned → acknowledged.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": [
+        "SCN-001-01",
+        "SCN-001-02",
+        "SCN-001-05",
+        "SCN-001-06",
+        "SCN-001-07",
+        "SCN-900-05"
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN"
+      ],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-001-001", "TRN-WF-001-004", "TRN-WF-001-005"],
+      "screen_ids": ["SCR-001", "SCR-002"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-001-001 and TRN-WF-001-004 and TRN-WF-001-005 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-003",
+      "title": "WF-001: Resolve stable scope and record identity",
+      "kind": "information_integrity",
+      "priority": "P0",
+      "statement": "Resolve organization, property, block, contract, record version, effective time, and source identity before evidence is used for action. In seasonal planning, dispatch, execution, and verification, this contract applies to entry → observed.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": ["SCN-001-01", "SCN-001-05", "SCN-001-07", "SCN-900-05"],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-001-001"],
+      "screen_ids": ["SCR-001"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-001-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-004",
+      "title": "WF-001: Contain exceptions without losing completed work",
+      "kind": "exception_recovery",
+      "priority": "P0",
+      "statement": "Preserve safe partial results, record the affected scope and accountable owner, and expose a bounded recovery path without rewriting prior events. In seasonal planning, dispatch, execution, and verification, this contract applies to blocked → assigned and in_progress → blocked and in_progress → partially_completed and completed → correction_required.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": ["SCN-001-02", "SCN-001-03", "SCN-001-04", "SCN-900-05"],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN"
+      ],
+      "record_ids": [
+        "REC-003",
+        "REC-005",
+        "REC-001",
+        "REC-002",
+        "REC-004",
+        "REC-006",
+        "REC-007"
+      ],
+      "decision_ids": ["DEC-001", "DEC-002", "DEC-003"],
+      "transition_ids": [
+        "TRN-WF-001-011",
+        "TRN-WF-001-017",
+        "TRN-WF-001-019",
+        "TRN-WF-001-020"
+      ],
+      "screen_ids": ["SCR-004", "SCR-005", "SCR-006"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-001-011 and TRN-WF-001-017 and TRN-WF-001-019 and TRN-WF-001-020 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-005",
+      "title": "WF-001: Inspect attributable append-only history",
+      "kind": "audit_history",
+      "priority": "P1",
+      "statement": "Show actor, assignment, organization, occurred time, captured time, state, reason, and record versions for every material workflow event. In seasonal planning, dispatch, execution, and verification, this contract applies to completed → verified.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": [
+        "SCN-001-02",
+        "SCN-001-03",
+        "SCN-001-06",
+        "SCN-001-07",
+        "SCN-900-05"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-001-008"],
+      "screen_ids": ["SCR-003"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-001-008 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-006",
+      "title": "WF-001: Capture field evidence through connectivity loss",
+      "kind": "offline_sync",
+      "priority": "P0",
+      "statement": "Journal permitted field actions locally with idempotency keys, disclose sync status, and reconcile conflicts without silent last-write-wins behavior. In seasonal planning, dispatch, execution, and verification, this contract applies to entry → observed and acknowledged → in_progress.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": [
+        "SCN-001-01",
+        "SCN-001-02",
+        "SCN-001-03",
+        "SCN-001-05",
+        "SCN-001-06",
+        "SCN-001-07",
+        "SCN-900-05"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-FOREMAN"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-001-001", "TRN-WF-001-006"],
+      "screen_ids": ["SCR-001", "SCR-003"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-001-001 and TRN-WF-001-006 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-007",
+      "title": "WF-001: Respect cross-organization authority boundaries",
+      "kind": "cross_organization",
+      "priority": "P1",
+      "statement": "Derive visibility and action authority from the active contract, organization relationship, delegated scope, sensitivity, and effective time. In seasonal planning, dispatch, execution, and verification, this contract applies to entry → observed.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": ["SCN-001-01", "SCN-001-05", "SCN-001-07", "SCN-900-05"],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-001-001"],
+      "screen_ids": ["SCR-001"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-001-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-008",
+      "title": "WF-001: Keep regulated evidence defensible",
+      "kind": "compliance_control",
+      "priority": "P0",
+      "statement": "Require applicable evidence, restrictions, attribution, version lineage, and approval before a regulated or certification-sensitive state advances. In seasonal planning, dispatch, execution, and verification, this contract applies to planned → approved.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": ["SCN-001-01", "SCN-001-05", "SCN-001-07", "SCN-900-05"],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-001", "REC-003", "REC-005"],
+      "decision_ids": ["DEC-002"],
+      "transition_ids": ["TRN-WF-001-003"],
+      "screen_ids": ["SCR-001"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-001-003 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-009",
+      "title": "WF-001: Correct records through explicit supersession",
+      "kind": "information_integrity",
+      "priority": "P1",
+      "statement": "Create an attributable successor with a correction reason and downstream-impact review while preserving the original record and references. In seasonal planning, dispatch, execution, and verification, this contract applies to correction_required → corrected.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": ["SCN-001-04"],
+      "role_ids": ["ROLE-FOREMAN"],
+      "record_ids": ["REC-004", "REC-006", "REC-003", "REC-005", "REC-007"],
+      "decision_ids": ["DEC-003"],
+      "transition_ids": ["TRN-WF-001-014"],
+      "screen_ids": ["SCR-005"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-001-014 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-010",
+      "title": "WF-001: Close work with evidence and accountable verification",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Separate reported completion from verification, reconciliation, settlement, certification, or other accountable terminal disposition. In seasonal planning, dispatch, execution, and verification, this contract applies to in_progress → completed and partially_completed → completed and corrected → verified.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": [
+        "SCN-001-02",
+        "SCN-001-03",
+        "SCN-001-04",
+        "SCN-001-06",
+        "SCN-001-07",
+        "SCN-900-05"
+      ],
+      "role_ids": ["ROLE-FOREMAN", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-003", "REC-004", "REC-006", "REC-005", "REC-007"],
+      "decision_ids": ["DEC-003"],
+      "transition_ids": ["TRN-WF-001-007", "TRN-WF-001-013", "TRN-WF-001-015"],
+      "screen_ids": ["SCR-003", "SCR-004", "SCR-005"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-001-007 and TRN-WF-001-013 and TRN-WF-001-015 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-011",
+      "title": "WF-002: Make accountable decisions from current evidence",
+      "kind": "decision_support",
+      "priority": "P0",
+      "statement": "Present the current evidence, missing information, authority, and viable outcomes before an accountable actor commits the next workflow state. In scouting, recommendation, crop protection, and application records, this contract applies to treatment_recommended → approved and observation_recorded → treatment_recommended.",
+      "workflow_ids": ["WF-002"],
+      "scenario_ids": ["SCN-002-01", "SCN-002-02", "SCN-002-05", "SCN-002-06"],
+      "role_ids": ["ROLE-CROP-PROTECTION-LEAD", "ROLE-VITICULTURIST"],
+      "record_ids": [
+        "REC-009",
+        "REC-010",
+        "REC-013",
+        "REC-011",
+        "REC-014",
+        "REC-012",
+        "REC-008",
+        "REC-017"
+      ],
+      "decision_ids": ["DEC-012", "DEC-013", "DEC-011"],
+      "transition_ids": ["TRN-WF-002-003", "TRN-WF-002-002"],
+      "screen_ids": ["SCR-007"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-002-003 and TRN-WF-002-002 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-012",
+      "title": "WF-002: Advance only valid canonical transitions",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Offer only canonical state transitions that are valid from the current state and explain why unavailable actions are denied or require escalation. In scouting, recommendation, crop protection, and application records, this contract applies to entry → observation_recorded.",
+      "workflow_ids": ["WF-002"],
+      "scenario_ids": ["SCN-002-01", "SCN-002-05", "SCN-002-06"],
+      "role_ids": ["ROLE-SCOUT"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-002-001"],
+      "screen_ids": ["SCR-007"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-002-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-013",
+      "title": "WF-002: Resolve stable scope and record identity",
+      "kind": "information_integrity",
+      "priority": "P0",
+      "statement": "Resolve organization, property, block, contract, record version, effective time, and source identity before evidence is used for action. In scouting, recommendation, crop protection, and application records, this contract applies to entry → observation_recorded.",
+      "workflow_ids": ["WF-002"],
+      "scenario_ids": ["SCN-002-01", "SCN-002-05", "SCN-002-06"],
+      "role_ids": ["ROLE-SCOUT"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-002-001"],
+      "screen_ids": ["SCR-007"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-002-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-014",
+      "title": "WF-002: Contain exceptions without losing completed work",
+      "kind": "exception_recovery",
+      "priority": "P0",
+      "statement": "Preserve safe partial results, record the affected scope and accountable owner, and expose a bounded recovery path without rewriting prior events. In scouting, recommendation, crop protection, and application records, this contract applies to preflight_check → cancelled and preflight_check → cancelled.",
+      "workflow_ids": ["WF-002"],
+      "scenario_ids": ["SCN-002-05", "SCN-002-06"],
+      "role_ids": ["ROLE-CROP-PROTECTION-LEAD"],
+      "record_ids": [
+        "REC-010",
+        "REC-011",
+        "REC-013",
+        "REC-014",
+        "REC-012",
+        "REC-009"
+      ],
+      "decision_ids": ["DEC-013", "DEC-012"],
+      "transition_ids": ["TRN-WF-002-021", "TRN-WF-002-024"],
+      "screen_ids": ["SCR-011", "SCR-012"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-002-021 and TRN-WF-002-024 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-015",
+      "title": "WF-002: Inspect attributable append-only history",
+      "kind": "audit_history",
+      "priority": "P1",
+      "statement": "Show actor, assignment, organization, occurred time, captured time, state, reason, and record versions for every material workflow event. In scouting, recommendation, crop protection, and application records, this contract applies to corrected → reported.",
+      "workflow_ids": ["WF-002"],
+      "scenario_ids": ["SCN-002-07"],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": ["REC-015", "REC-016", "REC-012", "REC-013", "REC-014"],
+      "decision_ids": ["DEC-015"],
+      "transition_ids": ["TRN-WF-002-019"],
+      "screen_ids": ["SCR-011"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-002-019 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-016",
+      "title": "WF-002: Capture field evidence through connectivity loss",
+      "kind": "offline_sync",
+      "priority": "P0",
+      "statement": "Journal permitted field actions locally with idempotency keys, disclose sync status, and reconcile conflicts without silent last-write-wins behavior. In scouting, recommendation, crop protection, and application records, this contract applies to entry → observation_recorded and scheduled → applied.",
+      "workflow_ids": ["WF-002"],
+      "scenario_ids": ["SCN-002-01", "SCN-002-03", "SCN-002-05", "SCN-002-06"],
+      "role_ids": ["ROLE-SCOUT", "ROLE-PESTICIDE-HANDLER"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-002-001", "TRN-WF-002-006"],
+      "screen_ids": ["SCR-007", "SCR-009"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-002-001 and TRN-WF-002-006 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-017",
+      "title": "WF-002: Respect cross-organization authority boundaries",
+      "kind": "cross_organization",
+      "priority": "P1",
+      "statement": "Derive visibility and action authority from the active contract, organization relationship, delegated scope, sensitivity, and effective time. In scouting, recommendation, crop protection, and application records, this contract applies to posted → reported.",
+      "workflow_ids": ["WF-002"],
+      "scenario_ids": ["SCN-002-03", "SCN-002-04", "SCN-002-07"],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": ["REC-012", "REC-013", "REC-014", "REC-015", "REC-016"],
+      "decision_ids": ["DEC-015"],
+      "transition_ids": ["TRN-WF-002-008"],
+      "screen_ids": ["SCR-010"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-002-008 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-018",
+      "title": "WF-002: Keep regulated evidence defensible",
+      "kind": "compliance_control",
+      "priority": "P0",
+      "statement": "Require applicable evidence, restrictions, attribution, version lineage, and approval before a regulated or certification-sensitive state advances. In scouting, recommendation, crop protection, and application records, this contract applies to preflight_check → scheduled and approved → preflight_check and reported → effective.",
+      "workflow_ids": ["WF-002"],
+      "scenario_ids": [
+        "SCN-002-02",
+        "SCN-002-04",
+        "SCN-002-05",
+        "SCN-002-06",
+        "SCN-002-07"
+      ],
+      "role_ids": ["ROLE-CROP-PROTECTION-LEAD", "ROLE-VITICULTURIST"],
+      "record_ids": [
+        "REC-010",
+        "REC-011",
+        "REC-013",
+        "REC-014",
+        "REC-012",
+        "REC-009",
+        "REC-017"
+      ],
+      "decision_ids": ["DEC-013", "DEC-012", "DEC-014"],
+      "transition_ids": ["TRN-WF-002-005", "TRN-WF-002-004", "TRN-WF-002-009"],
+      "screen_ids": ["SCR-008", "SCR-010"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-002-005 and TRN-WF-002-004 and TRN-WF-002-009 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-019",
+      "title": "WF-002: Correct records through explicit supersession",
+      "kind": "information_integrity",
+      "priority": "P1",
+      "statement": "Create an attributable successor with a correction reason and downstream-impact review while preserving the original record and references. In scouting, recommendation, crop protection, and application records, this contract applies to corrected → reported.",
+      "workflow_ids": ["WF-002"],
+      "scenario_ids": ["SCN-002-07"],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": ["REC-015", "REC-016", "REC-012", "REC-013", "REC-014"],
+      "decision_ids": ["DEC-015"],
+      "transition_ids": ["TRN-WF-002-019"],
+      "screen_ids": ["SCR-011"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-002-019 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-020",
+      "title": "WF-002: Close work with evidence and accountable verification",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Separate reported completion from verification, reconciliation, settlement, certification, or other accountable terminal disposition. In scouting, recommendation, crop protection, and application records, this contract applies to reported → corrected and applied → posted.",
+      "workflow_ids": ["WF-002"],
+      "scenario_ids": ["SCN-002-03", "SCN-002-07"],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-FOREMAN"],
+      "record_ids": ["REC-012", "REC-013", "REC-014", "REC-015", "REC-016"],
+      "decision_ids": ["DEC-015"],
+      "transition_ids": ["TRN-WF-002-025", "TRN-WF-002-007"],
+      "screen_ids": ["SCR-012", "SCR-009"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-002-025 and TRN-WF-002-007 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-021",
+      "title": "WF-003: Make accountable decisions from current evidence",
+      "kind": "decision_support",
+      "priority": "P0",
+      "statement": "Present the current evidence, missing information, authority, and viable outcomes before an accountable actor commits the next workflow state. In irrigation scheduling, fertility adjustment, and delivery verification, this contract applies to condition_observed → adjustment_recommended.",
+      "workflow_ids": ["WF-003"],
+      "scenario_ids": [
+        "SCN-003-01",
+        "SCN-003-02",
+        "SCN-003-04",
+        "SCN-003-05",
+        "SCN-003-06",
+        "SCN-003-07"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "record_ids": ["REC-018", "REC-019", "REC-020", "REC-022", "REC-023"],
+      "decision_ids": ["DEC-021"],
+      "transition_ids": ["TRN-WF-003-002"],
+      "screen_ids": ["SCR-013"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-003-002 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-022",
+      "title": "WF-003: Advance only valid canonical transitions",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Offer only canonical state transitions that are valid from the current state and explain why unavailable actions are denied or require escalation. In irrigation scheduling, fertility adjustment, and delivery verification, this contract applies to entry → condition_observed and approved → assigned.",
+      "workflow_ids": ["WF-003"],
+      "scenario_ids": [
+        "SCN-003-01",
+        "SCN-003-02",
+        "SCN-003-03",
+        "SCN-003-04",
+        "SCN-003-05",
+        "SCN-003-06",
+        "SCN-003-07"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-IRRIGATION-LEAD"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-003-001", "TRN-WF-003-004"],
+      "screen_ids": ["SCR-013", "SCR-014"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-003-001 and TRN-WF-003-004 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-023",
+      "title": "WF-003: Resolve stable scope and record identity",
+      "kind": "information_integrity",
+      "priority": "P0",
+      "statement": "Resolve organization, property, block, contract, record version, effective time, and source identity before evidence is used for action. In irrigation scheduling, fertility adjustment, and delivery verification, this contract applies to entry → condition_observed.",
+      "workflow_ids": ["WF-003"],
+      "scenario_ids": [
+        "SCN-003-01",
+        "SCN-003-02",
+        "SCN-003-04",
+        "SCN-003-05",
+        "SCN-003-06",
+        "SCN-003-07"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-003-001"],
+      "screen_ids": ["SCR-013"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-003-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-024",
+      "title": "WF-003: Contain exceptions without losing completed work",
+      "kind": "exception_recovery",
+      "priority": "P0",
+      "statement": "Preserve safe partial results, record the affected scope and accountable owner, and expose a bounded recovery path without rewriting prior events. In irrigation scheduling, fertility adjustment, and delivery verification, this contract applies to delivery_interrupted → assigned and delivering → delivery_interrupted.",
+      "workflow_ids": ["WF-003"],
+      "scenario_ids": ["SCN-003-04"],
+      "role_ids": [
+        "ROLE-IRRIGATION-LEAD",
+        "ROLE-VITICULTURIST",
+        "ROLE-IRRIGATOR"
+      ],
+      "record_ids": [
+        "REC-022",
+        "REC-023",
+        "REC-025",
+        "REC-018",
+        "REC-019",
+        "REC-020",
+        "REC-026"
+      ],
+      "decision_ids": ["DEC-021", "DEC-023"],
+      "transition_ids": ["TRN-WF-003-008", "TRN-WF-003-013"],
+      "screen_ids": ["SCR-017"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-003-008 and TRN-WF-003-013 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-025",
+      "title": "WF-003: Inspect attributable append-only history",
+      "kind": "audit_history",
+      "priority": "P1",
+      "statement": "Show actor, assignment, organization, occurred time, captured time, state, reason, and record versions for every material workflow event. In irrigation scheduling, fertility adjustment, and delivery verification, this contract applies to delivered → verified.",
+      "workflow_ids": ["WF-003"],
+      "scenario_ids": ["SCN-003-03", "SCN-003-04", "SCN-003-07"],
+      "role_ids": ["ROLE-IRRIGATION-LEAD"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-003-007"],
+      "screen_ids": ["SCR-016"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-003-007 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-026",
+      "title": "WF-003: Capture field evidence through connectivity loss",
+      "kind": "offline_sync",
+      "priority": "P0",
+      "statement": "Journal permitted field actions locally with idempotency keys, disclose sync status, and reconcile conflicts without silent last-write-wins behavior. In irrigation scheduling, fertility adjustment, and delivery verification, this contract applies to entry → condition_observed and assigned → delivering.",
+      "workflow_ids": ["WF-003"],
+      "scenario_ids": [
+        "SCN-003-01",
+        "SCN-003-02",
+        "SCN-003-03",
+        "SCN-003-04",
+        "SCN-003-05",
+        "SCN-003-06",
+        "SCN-003-07"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-IRRIGATOR"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-003-001", "TRN-WF-003-005"],
+      "screen_ids": ["SCR-013", "SCR-015"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-003-001 and TRN-WF-003-005 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-027",
+      "title": "WF-003: Respect cross-organization authority boundaries",
+      "kind": "cross_organization",
+      "priority": "P1",
+      "statement": "Derive visibility and action authority from the active contract, organization relationship, delegated scope, sensitivity, and effective time. In irrigation scheduling, fertility adjustment, and delivery verification, this contract applies to entry → condition_observed.",
+      "workflow_ids": ["WF-003"],
+      "scenario_ids": [
+        "SCN-003-01",
+        "SCN-003-02",
+        "SCN-003-04",
+        "SCN-003-05",
+        "SCN-003-06",
+        "SCN-003-07"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-003-001"],
+      "screen_ids": ["SCR-013"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-003-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-028",
+      "title": "WF-003: Keep regulated evidence defensible",
+      "kind": "compliance_control",
+      "priority": "P0",
+      "statement": "Require applicable evidence, restrictions, attribution, version lineage, and approval before a regulated or certification-sensitive state advances. In irrigation scheduling, fertility adjustment, and delivery verification, this contract applies to adjustment_recommended → approved.",
+      "workflow_ids": ["WF-003"],
+      "scenario_ids": ["SCN-003-02", "SCN-003-04", "SCN-003-06", "SCN-003-07"],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-018", "REC-019", "REC-021", "REC-022", "REC-024"],
+      "decision_ids": ["DEC-024"],
+      "transition_ids": ["TRN-WF-003-003"],
+      "screen_ids": ["SCR-014"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-003-003 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-029",
+      "title": "WF-003: Correct records through explicit supersession",
+      "kind": "information_integrity",
+      "priority": "P1",
+      "statement": "Create an attributable successor with a correction reason and downstream-impact review while preserving the original record and references. In irrigation scheduling, fertility adjustment, and delivery verification, this contract applies to adjustment_recommended → superseded.",
+      "workflow_ids": ["WF-003"],
+      "scenario_ids": ["SCN-003-05"],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-018", "REC-021", "REC-024", "REC-019", "REC-022"],
+      "decision_ids": ["DEC-022", "DEC-024"],
+      "transition_ids": ["TRN-WF-003-017"],
+      "screen_ids": ["SCR-018"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-003-017 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-030",
+      "title": "WF-003: Close work with evidence and accountable verification",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Separate reported completion from verification, reconciliation, settlement, certification, or other accountable terminal disposition. In irrigation scheduling, fertility adjustment, and delivery verification, this contract applies to delivered → verified and delivering → delivered.",
+      "workflow_ids": ["WF-003"],
+      "scenario_ids": ["SCN-003-03", "SCN-003-04", "SCN-003-07"],
+      "role_ids": ["ROLE-IRRIGATION-LEAD", "ROLE-IRRIGATOR"],
+      "record_ids": ["REC-022", "REC-023", "REC-025", "REC-026"],
+      "decision_ids": ["DEC-023"],
+      "transition_ids": ["TRN-WF-003-007", "TRN-WF-003-006"],
+      "screen_ids": ["SCR-016"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-003-007 and TRN-WF-003-006 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-031",
+      "title": "WF-004: Make accountable decisions from current evidence",
+      "kind": "decision_support",
+      "priority": "P0",
+      "statement": "Present the current evidence, missing information, authority, and viable outcomes before an accountable actor commits the next workflow state. In crop estimation and forecast revision, this contract applies to calculated → reviewed and sampled → calculated.",
+      "workflow_ids": ["WF-004"],
+      "scenario_ids": [
+        "SCN-004-01",
+        "SCN-004-02",
+        "SCN-004-04",
+        "SCN-004-05",
+        "SCN-004-06",
+        "SCN-004-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-VITICULTURIST"],
+      "record_ids": [
+        "REC-029",
+        "REC-030",
+        "REC-031",
+        "REC-032",
+        "REC-027",
+        "REC-028"
+      ],
+      "decision_ids": ["DEC-032", "DEC-031"],
+      "transition_ids": ["TRN-WF-004-003", "TRN-WF-004-002"],
+      "screen_ids": ["SCR-020", "SCR-019"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-004-003 and TRN-WF-004-002 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-032",
+      "title": "WF-004: Advance only valid canonical transitions",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Offer only canonical state transitions that are valid from the current state and explain why unavailable actions are denied or require escalation. In crop estimation and forecast revision, this contract applies to entry → sampled.",
+      "workflow_ids": ["WF-004"],
+      "scenario_ids": [
+        "SCN-004-01",
+        "SCN-004-04",
+        "SCN-004-05",
+        "SCN-004-06",
+        "SCN-004-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-004-001"],
+      "screen_ids": ["SCR-019"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-004-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-033",
+      "title": "WF-004: Resolve stable scope and record identity",
+      "kind": "information_integrity",
+      "priority": "P0",
+      "statement": "Resolve organization, property, block, contract, record version, effective time, and source identity before evidence is used for action. In crop estimation and forecast revision, this contract applies to entry → sampled.",
+      "workflow_ids": ["WF-004"],
+      "scenario_ids": [
+        "SCN-004-01",
+        "SCN-004-04",
+        "SCN-004-05",
+        "SCN-004-06",
+        "SCN-004-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-004-001"],
+      "screen_ids": ["SCR-019"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-004-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-034",
+      "title": "WF-004: Contain exceptions without losing completed work",
+      "kind": "exception_recovery",
+      "priority": "P0",
+      "statement": "Preserve safe partial results, record the affected scope and accountable owner, and expose a bounded recovery path without rewriting prior events. In crop estimation and forecast revision, this contract applies to published → revision_due and actualized → revision_due.",
+      "workflow_ids": ["WF-004"],
+      "scenario_ids": ["SCN-004-04", "SCN-004-05", "SCN-900-01", "SCN-900-02"],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "record_ids": [
+        "REC-028",
+        "REC-029",
+        "REC-030",
+        "REC-033",
+        "REC-032",
+        "REC-034"
+      ],
+      "decision_ids": ["DEC-033"],
+      "transition_ids": ["TRN-WF-004-017", "TRN-WF-004-019"],
+      "screen_ids": ["SCR-023", "SCR-024"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-004-017 and TRN-WF-004-019 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-035",
+      "title": "WF-004: Inspect attributable append-only history",
+      "kind": "audit_history",
+      "priority": "P1",
+      "statement": "Show actor, assignment, organization, occurred time, captured time, state, reason, and record versions for every material workflow event. In crop estimation and forecast revision, this contract applies to actualized → reconciled.",
+      "workflow_ids": ["WF-004"],
+      "scenario_ids": [
+        "SCN-004-03",
+        "SCN-004-04",
+        "SCN-004-05",
+        "SCN-004-06",
+        "SCN-004-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-029", "REC-033", "REC-034"],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-004-006"],
+      "screen_ids": ["SCR-022"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-004-006 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-036",
+      "title": "WF-004: Capture field evidence through connectivity loss",
+      "kind": "offline_sync",
+      "priority": "P0",
+      "statement": "Journal permitted field actions locally with idempotency keys, disclose sync status, and reconcile conflicts without silent last-write-wins behavior. In crop estimation and forecast revision, this contract applies to entry → sampled.",
+      "workflow_ids": ["WF-004"],
+      "scenario_ids": [
+        "SCN-004-01",
+        "SCN-004-04",
+        "SCN-004-05",
+        "SCN-004-06",
+        "SCN-004-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-004-001"],
+      "screen_ids": ["SCR-019"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-004-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-037",
+      "title": "WF-004: Respect cross-organization authority boundaries",
+      "kind": "cross_organization",
+      "priority": "P1",
+      "statement": "Derive visibility and action authority from the active contract, organization relationship, delegated scope, sensitivity, and effective time. In crop estimation and forecast revision, this contract applies to reviewed → published and published → actualized.",
+      "workflow_ids": ["WF-004"],
+      "scenario_ids": [
+        "SCN-004-02",
+        "SCN-004-03",
+        "SCN-004-04",
+        "SCN-004-05",
+        "SCN-004-06",
+        "SCN-004-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-029", "REC-033"],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-004-004", "TRN-WF-004-005"],
+      "screen_ids": ["SCR-021"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-004-004 and TRN-WF-004-005 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-038",
+      "title": "WF-004: Keep regulated evidence defensible",
+      "kind": "compliance_control",
+      "priority": "P0",
+      "statement": "Require applicable evidence, restrictions, attribution, version lineage, and approval before a regulated or certification-sensitive state advances. In crop estimation and forecast revision, this contract applies to calculated → reviewed.",
+      "workflow_ids": ["WF-004"],
+      "scenario_ids": [
+        "SCN-004-02",
+        "SCN-004-04",
+        "SCN-004-05",
+        "SCN-004-06",
+        "SCN-004-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-029", "REC-030", "REC-031", "REC-032"],
+      "decision_ids": ["DEC-032"],
+      "transition_ids": ["TRN-WF-004-003"],
+      "screen_ids": ["SCR-020"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-004-003 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-039",
+      "title": "WF-004: Correct records through explicit supersession",
+      "kind": "information_integrity",
+      "priority": "P1",
+      "statement": "Create an attributable successor with a correction reason and downstream-impact review while preserving the original record and references. In crop estimation and forecast revision, this contract applies to revision_due → sampled.",
+      "workflow_ids": ["WF-004"],
+      "scenario_ids": ["SCN-004-04", "SCN-004-05", "SCN-900-01", "SCN-900-02"],
+      "role_ids": ["ROLE-VITICULTURIST"],
+      "record_ids": [
+        "REC-027",
+        "REC-030",
+        "REC-028",
+        "REC-029",
+        "REC-033",
+        "REC-032",
+        "REC-034"
+      ],
+      "decision_ids": ["DEC-033"],
+      "transition_ids": ["TRN-WF-004-010"],
+      "screen_ids": ["SCR-023"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-004-010 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-040",
+      "title": "WF-004: Close work with evidence and accountable verification",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Separate reported completion from verification, reconciliation, settlement, certification, or other accountable terminal disposition. In crop estimation and forecast revision, this contract applies to actualized → reconciled.",
+      "workflow_ids": ["WF-004"],
+      "scenario_ids": [
+        "SCN-004-03",
+        "SCN-004-04",
+        "SCN-004-05",
+        "SCN-004-06",
+        "SCN-004-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-029", "REC-033", "REC-034"],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-004-006"],
+      "screen_ids": ["SCR-022"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-004-006 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-041",
+      "title": "WF-005: Make accountable decisions from current evidence",
+      "kind": "decision_support",
+      "priority": "P0",
+      "statement": "Present the current evidence, missing information, authority, and viable outcomes before an accountable actor commits the next workflow state. In maturity sampling, winery communication, and pick decision, this contract applies to result_available → readiness_assessed and negotiating → authorized.",
+      "workflow_ids": ["WF-005"],
+      "scenario_ids": [
+        "SCN-005-02",
+        "SCN-005-05",
+        "SCN-005-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": [
+        "ROLE-VITICULTURIST",
+        "ROLE-WINEMAKER",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "record_ids": [
+        "REC-027",
+        "REC-035",
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "REC-039",
+        "REC-040",
+        "REC-080",
+        "REC-041",
+        "REC-042"
+      ],
+      "decision_ids": ["DEC-041", "DEC-042", "DEC-043", "DEC-044"],
+      "transition_ids": ["TRN-WF-005-004", "TRN-WF-005-013"],
+      "screen_ids": ["SCR-026", "SCR-029"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-005-004 and TRN-WF-005-013 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-042",
+      "title": "WF-005: Advance only valid canonical transitions",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Offer only canonical state transitions that are valid from the current state and explain why unavailable actions are denied or require escalation. In maturity sampling, winery communication, and pick decision, this contract applies to entry → sample_collected and sample_collected → lab_pending and more_sampling_required → sampling_due.",
+      "workflow_ids": ["WF-005"],
+      "scenario_ids": [
+        "SCN-005-01",
+        "SCN-005-04",
+        "SCN-005-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-LAB", "ROLE-VITICULTURIST"],
+      "record_ids": ["REC-038", "REC-027"],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-005-001", "TRN-WF-005-002", "TRN-WF-005-011"],
+      "screen_ids": ["SCR-025", "SCR-028"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-005-001 and TRN-WF-005-002 and TRN-WF-005-011 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-043",
+      "title": "WF-005: Resolve stable scope and record identity",
+      "kind": "information_integrity",
+      "priority": "P0",
+      "statement": "Resolve organization, property, block, contract, record version, effective time, and source identity before evidence is used for action. In maturity sampling, winery communication, and pick decision, this contract applies to entry → sample_collected.",
+      "workflow_ids": ["WF-005"],
+      "scenario_ids": [
+        "SCN-005-01",
+        "SCN-005-04",
+        "SCN-005-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-005-001"],
+      "screen_ids": ["SCR-025"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-005-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-044",
+      "title": "WF-005: Contain exceptions without losing completed work",
+      "kind": "exception_recovery",
+      "priority": "P0",
+      "statement": "Preserve safe partial results, record the affected scope and accountable owner, and expose a bounded recovery path without rewriting prior events. In maturity sampling, winery communication, and pick decision, this contract applies to lab_pending → more_sampling_required and result_available → negotiating.",
+      "workflow_ids": ["WF-005"],
+      "scenario_ids": ["SCN-005-04", "SCN-005-05", "SCN-900-01"],
+      "role_ids": ["ROLE-VITICULTURIST", "ROLE-GROWER-RELATIONS"],
+      "record_ids": [
+        "REC-027",
+        "REC-035",
+        "REC-036",
+        "REC-037",
+        "REC-038",
+        "REC-039",
+        "REC-040",
+        "REC-080",
+        "REC-041"
+      ],
+      "decision_ids": ["DEC-041", "DEC-043"],
+      "transition_ids": ["TRN-WF-005-016", "TRN-WF-005-018"],
+      "screen_ids": ["SCR-029", "SCR-030"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-005-016 and TRN-WF-005-018 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-045",
+      "title": "WF-005: Inspect attributable append-only history",
+      "kind": "audit_history",
+      "priority": "P1",
+      "statement": "Show actor, assignment, organization, occurred time, captured time, state, reason, and record versions for every material workflow event. In maturity sampling, winery communication, and pick decision, this contract applies to authorized → scheduled.",
+      "workflow_ids": ["WF-005"],
+      "scenario_ids": [
+        "SCN-005-03",
+        "SCN-005-05",
+        "SCN-005-07",
+        "SCN-900-01",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-005-007"],
+      "screen_ids": ["SCR-027"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-005-007 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-046",
+      "title": "WF-005: Capture field evidence through connectivity loss",
+      "kind": "offline_sync",
+      "priority": "P0",
+      "statement": "Journal permitted field actions locally with idempotency keys, disclose sync status, and reconcile conflicts without silent last-write-wins behavior. In maturity sampling, winery communication, and pick decision, this contract applies to entry → sample_collected and sampling_due → sample_collected.",
+      "workflow_ids": ["WF-005"],
+      "scenario_ids": [
+        "SCN-005-01",
+        "SCN-005-04",
+        "SCN-005-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-VITICULTURIST"],
+      "record_ids": ["REC-027", "REC-035", "REC-036"],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-005-001", "TRN-WF-005-009"],
+      "screen_ids": ["SCR-025", "SCR-028"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-005-001 and TRN-WF-005-009 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-047",
+      "title": "WF-005: Respect cross-organization authority boundaries",
+      "kind": "cross_organization",
+      "priority": "P1",
+      "statement": "Derive visibility and action authority from the active contract, organization relationship, delegated scope, sensitivity, and effective time. In maturity sampling, winery communication, and pick decision, this contract applies to entry → sample_collected and readiness_assessed → pick_proposed.",
+      "workflow_ids": ["WF-005"],
+      "scenario_ids": [
+        "SCN-005-01",
+        "SCN-005-02",
+        "SCN-005-03",
+        "SCN-005-04",
+        "SCN-005-06",
+        "SCN-005-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-005-001", "TRN-WF-005-005"],
+      "screen_ids": ["SCR-025", "SCR-026"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-005-001 and TRN-WF-005-005 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-048",
+      "title": "WF-005: Keep regulated evidence defensible",
+      "kind": "compliance_control",
+      "priority": "P0",
+      "statement": "Require applicable evidence, restrictions, attribution, version lineage, and approval before a regulated or certification-sensitive state advances. In maturity sampling, winery communication, and pick decision, this contract applies to pick_proposed → authorized.",
+      "workflow_ids": ["WF-005"],
+      "scenario_ids": [
+        "SCN-005-03",
+        "SCN-005-06",
+        "SCN-005-07",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-WINEMAKER", "ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-039", "REC-040", "REC-080", "REC-041", "REC-042"],
+      "decision_ids": ["DEC-043", "DEC-044"],
+      "transition_ids": ["TRN-WF-005-006"],
+      "screen_ids": ["SCR-027"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-005-006 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-049",
+      "title": "WF-005: Correct records through explicit supersession",
+      "kind": "information_integrity",
+      "priority": "P1",
+      "statement": "Create an attributable successor with a correction reason and downstream-impact review while preserving the original record and references. In maturity sampling, winery communication, and pick decision, this contract applies to authorized → superseded.",
+      "workflow_ids": ["WF-005"],
+      "scenario_ids": ["SCN-005-06", "SCN-900-02"],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-WINEMAKER"],
+      "record_ids": ["REC-039", "REC-040", "REC-080", "REC-041", "REC-042"],
+      "decision_ids": ["DEC-043", "DEC-044"],
+      "transition_ids": ["TRN-WF-005-021"],
+      "screen_ids": ["SCR-030"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-005-021 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-050",
+      "title": "WF-005: Close work with evidence and accountable verification",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Separate reported completion from verification, reconciliation, settlement, certification, or other accountable terminal disposition. In maturity sampling, winery communication, and pick decision, this contract applies to authorized → scheduled and lab_pending → result_available.",
+      "workflow_ids": ["WF-005"],
+      "scenario_ids": [
+        "SCN-005-01",
+        "SCN-005-02",
+        "SCN-005-03",
+        "SCN-005-04",
+        "SCN-005-05",
+        "SCN-005-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER", "ROLE-LAB"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-005-007", "TRN-WF-005-003"],
+      "screen_ids": ["SCR-027", "SCR-025"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-005-007 and TRN-WF-005-003 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-051",
+      "title": "WF-006: Make accountable decisions from current evidence",
+      "kind": "decision_support",
+      "priority": "P0",
+      "statement": "Present the current evidence, missing information, authority, and viable outcomes before an accountable actor commits the next workflow state. In harvest planning, execution, loads, intake, quality, and reconciliation, this contract applies to weighed → accepted and entry → authorized.",
+      "workflow_ids": ["WF-006"],
+      "scenario_ids": [
+        "SCN-006-01",
+        "SCN-006-02",
+        "SCN-006-03",
+        "SCN-006-04",
+        "SCN-006-05",
+        "SCN-006-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-08",
+        "SCN-900-09",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-WINEMAKER", "ROLE-VINEYARD-MANAGER"],
+      "record_ids": [
+        "REC-045",
+        "REC-047",
+        "REC-048",
+        "REC-080",
+        "REC-049",
+        "REC-041",
+        "REC-043",
+        "REC-044"
+      ],
+      "decision_ids": ["DEC-053", "DEC-051"],
+      "transition_ids": ["TRN-WF-006-005", "TRN-WF-006-009"],
+      "screen_ids": ["SCR-032", "SCR-033"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-006-005 and TRN-WF-006-009 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-052",
+      "title": "WF-006: Advance only valid canonical transitions",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Offer only canonical state transitions that are valid from the current state and explain why unavailable actions are denied or require escalation. In harvest planning, execution, loads, intake, quality, and reconciliation, this contract applies to authorized → staged.",
+      "workflow_ids": ["WF-006"],
+      "scenario_ids": [
+        "SCN-006-01",
+        "SCN-006-02",
+        "SCN-006-03",
+        "SCN-006-04",
+        "SCN-006-05",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-08",
+        "SCN-900-09",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "record_ids": ["REC-041", "REC-043", "REC-044", "REC-080"],
+      "decision_ids": ["DEC-051"],
+      "transition_ids": ["TRN-WF-006-001"],
+      "screen_ids": ["SCR-031"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-006-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-053",
+      "title": "WF-006: Resolve stable scope and record identity",
+      "kind": "information_integrity",
+      "priority": "P0",
+      "statement": "Resolve organization, property, block, contract, record version, effective time, and source identity before evidence is used for action. In harvest planning, execution, loads, intake, quality, and reconciliation, this contract applies to arrived → weighed.",
+      "workflow_ids": ["WF-006"],
+      "scenario_ids": [
+        "SCN-006-01",
+        "SCN-006-02",
+        "SCN-006-04",
+        "SCN-006-05",
+        "SCN-006-07",
+        "SCN-900-01",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-09",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-WINERY-INTAKE"],
+      "record_ids": ["REC-041", "REC-045", "REC-046", "REC-047", "REC-050"],
+      "decision_ids": ["DEC-052"],
+      "transition_ids": ["TRN-WF-006-004"],
+      "screen_ids": ["SCR-032"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-006-004 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-054",
+      "title": "WF-006: Contain exceptions without losing completed work",
+      "kind": "exception_recovery",
+      "priority": "P0",
+      "statement": "Preserve safe partial results, record the affected scope and accountable owner, and expose a bounded recovery path without rewriting prior events. In harvest planning, execution, loads, intake, quality, and reconciliation, this contract applies to delayed → harvesting and delayed → in_transit and harvesting → delayed and in_transit → delayed and arrived → disputed and quality_pending → rejected and entered → correction_required.",
+      "workflow_ids": ["WF-006"],
+      "scenario_ids": [
+        "SCN-006-02",
+        "SCN-006-03",
+        "SCN-006-04",
+        "SCN-006-05",
+        "SCN-006-06",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-08",
+        "SCN-900-10"
+      ],
+      "role_ids": [
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-TRANSPORTATION",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-WINEMAKER",
+        "ROLE-GROWER-RELATIONS"
+      ],
+      "record_ids": [
+        "REC-043",
+        "REC-045",
+        "REC-046",
+        "REC-041",
+        "REC-044",
+        "REC-080",
+        "REC-047",
+        "REC-049",
+        "REC-050",
+        "REC-051",
+        "REC-048"
+      ],
+      "decision_ids": ["DEC-051", "DEC-052", "DEC-054", "DEC-053"],
+      "transition_ids": [
+        "TRN-WF-006-018",
+        "TRN-WF-006-019",
+        "TRN-WF-006-024",
+        "TRN-WF-006-025",
+        "TRN-WF-006-027",
+        "TRN-WF-006-028",
+        "TRN-WF-006-029"
+      ],
+      "screen_ids": ["SCR-035", "SCR-037", "SCR-038"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-006-018 and TRN-WF-006-019 and TRN-WF-006-024 and TRN-WF-006-025 and TRN-WF-006-027 and TRN-WF-006-028 and TRN-WF-006-029 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-055",
+      "title": "WF-006: Inspect attributable append-only history",
+      "kind": "audit_history",
+      "priority": "P1",
+      "statement": "Show actor, assignment, organization, occurred time, captured time, state, reason, and record versions for every material workflow event. In harvest planning, execution, loads, intake, quality, and reconciliation, this contract applies to reconciled → settled.",
+      "workflow_ids": ["WF-006"],
+      "scenario_ids": [
+        "SCN-006-01",
+        "SCN-006-02",
+        "SCN-006-03",
+        "SCN-006-04",
+        "SCN-006-05",
+        "SCN-006-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-08",
+        "SCN-900-09",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-FINANCE"],
+      "record_ids": ["REC-049", "REC-050", "REC-052", "REC-053", "REC-080"],
+      "decision_ids": ["DEC-055"],
+      "transition_ids": ["TRN-WF-006-008"],
+      "screen_ids": ["SCR-033"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-006-008 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-056",
+      "title": "WF-006: Capture field evidence through connectivity loss",
+      "kind": "offline_sync",
+      "priority": "P0",
+      "statement": "Journal permitted field actions locally with idempotency keys, disclose sync status, and reconcile conflicts without silent last-write-wins behavior. In harvest planning, execution, loads, intake, quality, and reconciliation, this contract applies to staged → load_created.",
+      "workflow_ids": ["WF-006"],
+      "scenario_ids": [
+        "SCN-006-01",
+        "SCN-006-02",
+        "SCN-006-03",
+        "SCN-006-04",
+        "SCN-006-05",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-08",
+        "SCN-900-09",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-HARVEST-CREW-LEADER"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-006-002"],
+      "screen_ids": ["SCR-031"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-006-002 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-057",
+      "title": "WF-006: Respect cross-organization authority boundaries",
+      "kind": "cross_organization",
+      "priority": "P1",
+      "statement": "Derive visibility and action authority from the active contract, organization relationship, delegated scope, sensitivity, and effective time. In harvest planning, execution, loads, intake, quality, and reconciliation, this contract applies to load_created → arrived and accepted → entered and entered → reconciled and load_created → in_transit and in_transit → arrived and weighed → quality_pending and rejected → entered and corrected → reconciled.",
+      "workflow_ids": ["WF-006"],
+      "scenario_ids": [
+        "SCN-006-01",
+        "SCN-006-02",
+        "SCN-006-03",
+        "SCN-006-04",
+        "SCN-006-05",
+        "SCN-006-06",
+        "SCN-006-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-08",
+        "SCN-900-09",
+        "SCN-900-10"
+      ],
+      "role_ids": [
+        "ROLE-TRANSPORTATION",
+        "ROLE-WINERY-INTAKE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-FINANCE"
+      ],
+      "record_ids": [
+        "REC-045",
+        "REC-046",
+        "REC-050",
+        "REC-047",
+        "REC-048",
+        "REC-049",
+        "REC-051",
+        "REC-080",
+        "REC-052",
+        "REC-053"
+      ],
+      "decision_ids": ["DEC-054", "DEC-055"],
+      "transition_ids": [
+        "TRN-WF-006-003",
+        "TRN-WF-006-006",
+        "TRN-WF-006-007",
+        "TRN-WF-006-010",
+        "TRN-WF-006-011",
+        "TRN-WF-006-012",
+        "TRN-WF-006-017",
+        "TRN-WF-006-022"
+      ],
+      "screen_ids": [
+        "SCR-031",
+        "SCR-032",
+        "SCR-033",
+        "SCR-034",
+        "SCR-035",
+        "SCR-036"
+      ],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-006-003 and TRN-WF-006-006 and TRN-WF-006-007 and TRN-WF-006-010 and TRN-WF-006-011 and TRN-WF-006-012 and TRN-WF-006-017 and TRN-WF-006-022 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-058",
+      "title": "WF-006: Keep regulated evidence defensible",
+      "kind": "compliance_control",
+      "priority": "P0",
+      "statement": "Require applicable evidence, restrictions, attribution, version lineage, and approval before a regulated or certification-sensitive state advances. In harvest planning, execution, loads, intake, quality, and reconciliation, this contract applies to weighed → accepted.",
+      "workflow_ids": ["WF-006"],
+      "scenario_ids": [
+        "SCN-006-01",
+        "SCN-006-02",
+        "SCN-006-05",
+        "SCN-006-07",
+        "SCN-900-01",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-09"
+      ],
+      "role_ids": ["ROLE-WINEMAKER"],
+      "record_ids": ["REC-045", "REC-047", "REC-048", "REC-080", "REC-049"],
+      "decision_ids": ["DEC-053"],
+      "transition_ids": ["TRN-WF-006-005"],
+      "screen_ids": ["SCR-032"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-006-005 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-059",
+      "title": "WF-006: Correct records through explicit supersession",
+      "kind": "information_integrity",
+      "priority": "P1",
+      "statement": "Create an attributable successor with a correction reason and downstream-impact review while preserving the original record and references. In harvest planning, execution, loads, intake, quality, and reconciliation, this contract applies to disputed → correction_required and correction_required → corrected.",
+      "workflow_ids": ["WF-006"],
+      "scenario_ids": [
+        "SCN-006-03",
+        "SCN-006-05",
+        "SCN-006-06",
+        "SCN-900-02",
+        "SCN-900-04",
+        "SCN-900-08"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-WINERY-INTAKE"],
+      "record_ids": ["REC-045", "REC-047", "REC-049", "REC-050", "REC-051"],
+      "decision_ids": ["DEC-054"],
+      "transition_ids": ["TRN-WF-006-020", "TRN-WF-006-021"],
+      "screen_ids": ["SCR-036"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-006-020 and TRN-WF-006-021 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-060",
+      "title": "WF-006: Close work with evidence and accountable verification",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Separate reported completion from verification, reconciliation, settlement, certification, or other accountable terminal disposition. In harvest planning, execution, loads, intake, quality, and reconciliation, this contract applies to reconciled → settled.",
+      "workflow_ids": ["WF-006"],
+      "scenario_ids": [
+        "SCN-006-01",
+        "SCN-006-02",
+        "SCN-006-03",
+        "SCN-006-04",
+        "SCN-006-05",
+        "SCN-006-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-08",
+        "SCN-900-09",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-FINANCE"],
+      "record_ids": ["REC-049", "REC-050", "REC-052", "REC-053", "REC-080"],
+      "decision_ids": ["DEC-055"],
+      "transition_ids": ["TRN-WF-006-008"],
+      "screen_ids": ["SCR-033"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-006-008 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-061",
+      "title": "WF-007: Make accountable decisions from current evidence",
+      "kind": "decision_support",
+      "priority": "P0",
+      "statement": "Present the current evidence, missing information, authority, and viable outcomes before an accountable actor commits the next workflow state. In crew scheduling, attendance, time, payroll, and cost allocation, this contract applies to exception_flagged → corrected.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
+      "role_ids": ["ROLE-PAYROLL"],
+      "record_ids": ["REC-051", "REC-059", "REC-062", "REC-063"],
+      "decision_ids": ["DEC-064"],
+      "transition_ids": ["TRN-WF-007-016"],
+      "screen_ids": ["SCR-043"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-007-016 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-062",
+      "title": "WF-007: Advance only valid canonical transitions",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Offer only canonical state transitions that are valid from the current state and explain why unavailable actions are denied or require escalation. In crew scheduling, attendance, time, payroll, and cost allocation, this contract applies to entry → crew_scheduled and crew_scheduled → briefed.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-02",
+        "SCN-007-03",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-07",
+        "SCN-900-09"
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR", "ROLE-FOREMAN"],
+      "record_ids": ["REC-003", "REC-054", "REC-055", "REC-056"],
+      "decision_ids": ["DEC-061"],
+      "transition_ids": ["TRN-WF-007-001", "TRN-WF-007-002"],
+      "screen_ids": ["SCR-039"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-007-001 and TRN-WF-007-002 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-063",
+      "title": "WF-007: Resolve stable scope and record identity",
+      "kind": "information_integrity",
+      "priority": "P0",
+      "statement": "Resolve organization, property, block, contract, record version, effective time, and source identity before evidence is used for action. In crew scheduling, attendance, time, payroll, and cost allocation, this contract applies to entry → crew_scheduled.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-02",
+        "SCN-007-03",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-07",
+        "SCN-900-09"
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+      "record_ids": ["REC-003", "REC-054", "REC-055"],
+      "decision_ids": ["DEC-061"],
+      "transition_ids": ["TRN-WF-007-001"],
+      "screen_ids": ["SCR-039"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-007-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-064",
+      "title": "WF-007: Contain exceptions without losing completed work",
+      "kind": "exception_recovery",
+      "priority": "P0",
+      "statement": "Preserve safe partial results, record the affected scope and accountable owner, and expose a bounded recovery path without rewriting prior events. In crew scheduling, attendance, time, payroll, and cost allocation, this contract applies to exception_flagged → corrected and paused → briefed and crew_scheduled → exception_flagged and working → paused.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-02",
+        "SCN-007-03",
+        "SCN-007-04",
+        "SCN-900-05",
+        "SCN-900-07"
+      ],
+      "role_ids": [
+        "ROLE-PAYROLL",
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR"
+      ],
+      "record_ids": [
+        "REC-051",
+        "REC-059",
+        "REC-062",
+        "REC-063",
+        "REC-056",
+        "REC-058",
+        "REC-003",
+        "REC-057",
+        "REC-054",
+        "REC-055"
+      ],
+      "decision_ids": ["DEC-064", "DEC-062", "DEC-061"],
+      "transition_ids": [
+        "TRN-WF-007-016",
+        "TRN-WF-007-014",
+        "TRN-WF-007-018",
+        "TRN-WF-007-020"
+      ],
+      "screen_ids": ["SCR-043", "SCR-044", "SCR-045"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-007-016 and TRN-WF-007-014 and TRN-WF-007-018 and TRN-WF-007-020 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-065",
+      "title": "WF-007: Inspect attributable append-only history",
+      "kind": "audit_history",
+      "priority": "P1",
+      "statement": "Show actor, assignment, organization, occurred time, captured time, state, reason, and record versions for every material workflow event. In crew scheduling, attendance, time, payroll, and cost allocation, this contract applies to time_submitted → supervisor_verified.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-03",
+        "SCN-007-05",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-09"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "record_ids": [
+        "REC-057",
+        "REC-058",
+        "REC-059",
+        "REC-060",
+        "REC-061",
+        "REC-062"
+      ],
+      "decision_ids": ["DEC-063"],
+      "transition_ids": ["TRN-WF-007-005"],
+      "screen_ids": ["SCR-041"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-007-005 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-066",
+      "title": "WF-007: Capture field evidence through connectivity loss",
+      "kind": "offline_sync",
+      "priority": "P0",
+      "statement": "Journal permitted field actions locally with idempotency keys, disclose sync status, and reconcile conflicts without silent last-write-wins behavior. In crew scheduling, attendance, time, payroll, and cost allocation, this contract applies to briefed → working.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-03",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-09"
+      ],
+      "role_ids": ["ROLE-FOREMAN"],
+      "record_ids": ["REC-003", "REC-056", "REC-057", "REC-058"],
+      "decision_ids": ["DEC-062"],
+      "transition_ids": ["TRN-WF-007-003"],
+      "screen_ids": ["SCR-040"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-007-003 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-067",
+      "title": "WF-007: Respect cross-organization authority boundaries",
+      "kind": "cross_organization",
+      "priority": "P1",
+      "statement": "Derive visibility and action authority from the active contract, organization relationship, delegated scope, sensitivity, and effective time. In crew scheduling, attendance, time, payroll, and cost allocation, this contract applies to entry → crew_scheduled.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-02",
+        "SCN-007-03",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-07",
+        "SCN-900-09"
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+      "record_ids": ["REC-003", "REC-054", "REC-055"],
+      "decision_ids": ["DEC-061"],
+      "transition_ids": ["TRN-WF-007-001"],
+      "screen_ids": ["SCR-039"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-007-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-068",
+      "title": "WF-007: Keep regulated evidence defensible",
+      "kind": "compliance_control",
+      "priority": "P0",
+      "statement": "Require applicable evidence, restrictions, attribution, version lineage, and approval before a regulated or certification-sensitive state advances. In crew scheduling, attendance, time, payroll, and cost allocation, this contract applies to time_submitted → supervisor_verified.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-03",
+        "SCN-007-05",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-09"
+      ],
+      "role_ids": ["ROLE-VINEYARD-MANAGER"],
+      "record_ids": [
+        "REC-057",
+        "REC-058",
+        "REC-059",
+        "REC-060",
+        "REC-061",
+        "REC-062"
+      ],
+      "decision_ids": ["DEC-063"],
+      "transition_ids": ["TRN-WF-007-005"],
+      "screen_ids": ["SCR-041"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-007-005 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-069",
+      "title": "WF-007: Correct records through explicit supersession",
+      "kind": "information_integrity",
+      "priority": "P1",
+      "statement": "Create an attributable successor with a correction reason and downstream-impact review while preserving the original record and references. In crew scheduling, attendance, time, payroll, and cost allocation, this contract applies to exception_flagged → corrected.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": ["SCN-007-02", "SCN-007-04", "SCN-900-07"],
+      "role_ids": ["ROLE-PAYROLL"],
+      "record_ids": ["REC-051", "REC-059", "REC-062", "REC-063"],
+      "decision_ids": ["DEC-064"],
+      "transition_ids": ["TRN-WF-007-016"],
+      "screen_ids": ["SCR-043"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-007-016 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-070",
+      "title": "WF-007: Close work with evidence and accountable verification",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Separate reported completion from verification, reconciliation, settlement, certification, or other accountable terminal disposition. In crew scheduling, attendance, time, payroll, and cost allocation, this contract applies to payroll_accepted → cost_allocated and working → time_submitted and supervisor_verified → payroll_accepted and corrected → supervisor_verified.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-02",
+        "SCN-007-03",
+        "SCN-007-04",
+        "SCN-007-05",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-07",
+        "SCN-900-09"
+      ],
+      "role_ids": [
+        "ROLE-FINANCE",
+        "ROLE-FOREMAN",
+        "ROLE-PAYROLL",
+        "ROLE-VINEYARD-MANAGER"
+      ],
+      "record_ids": [
+        "REC-059",
+        "REC-060",
+        "REC-063",
+        "REC-057",
+        "REC-058",
+        "REC-051",
+        "REC-062",
+        "REC-061"
+      ],
+      "decision_ids": ["DEC-064", "DEC-063"],
+      "transition_ids": [
+        "TRN-WF-007-007",
+        "TRN-WF-007-004",
+        "TRN-WF-007-006",
+        "TRN-WF-007-017"
+      ],
+      "screen_ids": ["SCR-042", "SCR-040", "SCR-041", "SCR-044"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-007-007 and TRN-WF-007-004 and TRN-WF-007-006 and TRN-WF-007-017 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-071",
+      "title": "WF-008: Make accountable decisions from current evidence",
+      "kind": "decision_support",
+      "priority": "P0",
+      "statement": "Present the current evidence, missing information, authority, and viable outcomes before an accountable actor commits the next workflow state. In materials, purchasing, equipment readiness, and repair, this contract applies to demand_identified → availability_checked and availability_checked → approved and purchase_requested → approved and substitution_pending → purchase_requested.",
+      "workflow_ids": ["WF-008"],
+      "scenario_ids": [
+        "SCN-008-01",
+        "SCN-008-02",
+        "SCN-008-03",
+        "SCN-008-04",
+        "SCN-008-05",
+        "SCN-008-07"
+      ],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-PURCHASING",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "record_ids": [
+        "REC-064",
+        "REC-065",
+        "REC-066",
+        "REC-067",
+        "REC-070",
+        "REC-071",
+        "REC-068",
+        "REC-069"
+      ],
+      "decision_ids": ["DEC-071", "DEC-072", "DEC-073"],
+      "transition_ids": [
+        "TRN-WF-008-002",
+        "TRN-WF-008-003",
+        "TRN-WF-008-010",
+        "TRN-WF-008-018"
+      ],
+      "screen_ids": ["SCR-046", "SCR-049", "SCR-051"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-008-002 and TRN-WF-008-003 and TRN-WF-008-010 and TRN-WF-008-018 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-072",
+      "title": "WF-008: Advance only valid canonical transitions",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Offer only canonical state transitions that are valid from the current state and explain why unavailable actions are denied or require escalation. In materials, purchasing, equipment readiness, and repair, this contract applies to entry → demand_identified and approved → ordered and received → staged and failure_reported → repair_open.",
+      "workflow_ids": ["WF-008"],
+      "scenario_ids": [
+        "SCN-008-01",
+        "SCN-008-02",
+        "SCN-008-03",
+        "SCN-008-04",
+        "SCN-008-05",
+        "SCN-008-06",
+        "SCN-008-07"
+      ],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-PURCHASING",
+        "ROLE-MECHANIC"
+      ],
+      "record_ids": ["REC-072", "REC-073"],
+      "decision_ids": [],
+      "transition_ids": [
+        "TRN-WF-008-001",
+        "TRN-WF-008-004",
+        "TRN-WF-008-006",
+        "TRN-WF-008-013"
+      ],
+      "screen_ids": ["SCR-046", "SCR-047", "SCR-049"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-008-001 and TRN-WF-008-004 and TRN-WF-008-006 and TRN-WF-008-013 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-073",
+      "title": "WF-008: Resolve stable scope and record identity",
+      "kind": "information_integrity",
+      "priority": "P0",
+      "statement": "Resolve organization, property, block, contract, record version, effective time, and source identity before evidence is used for action. In materials, purchasing, equipment readiness, and repair, this contract applies to entry → demand_identified.",
+      "workflow_ids": ["WF-008"],
+      "scenario_ids": [
+        "SCN-008-01",
+        "SCN-008-02",
+        "SCN-008-03",
+        "SCN-008-04",
+        "SCN-008-05",
+        "SCN-008-07"
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-008-001"],
+      "screen_ids": ["SCR-046"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-008-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-074",
+      "title": "WF-008: Contain exceptions without losing completed work",
+      "kind": "exception_recovery",
+      "priority": "P0",
+      "statement": "Preserve safe partial results, record the affected scope and accountable owner, and expose a bounded recovery path without rewriting prior events. In materials, purchasing, equipment readiness, and repair, this contract applies to unavailable → substitution_pending and verified_ready → ready and availability_checked → unavailable and in_use → failure_reported.",
+      "workflow_ids": ["WF-008"],
+      "scenario_ids": ["SCN-008-02", "SCN-008-03", "SCN-008-04", "SCN-008-06"],
+      "role_ids": [
+        "ROLE-PURCHASING",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN"
+      ],
+      "record_ids": [
+        "REC-065",
+        "REC-067",
+        "REC-075",
+        "REC-066",
+        "REC-064",
+        "REC-071",
+        "REC-072",
+        "REC-073",
+        "REC-074"
+      ],
+      "decision_ids": ["DEC-071", "DEC-074"],
+      "transition_ids": [
+        "TRN-WF-008-017",
+        "TRN-WF-008-016",
+        "TRN-WF-008-020",
+        "TRN-WF-008-023"
+      ],
+      "screen_ids": ["SCR-051", "SCR-052"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-008-017 and TRN-WF-008-016 and TRN-WF-008-020 and TRN-WF-008-023 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-075",
+      "title": "WF-008: Inspect attributable append-only history",
+      "kind": "audit_history",
+      "priority": "P1",
+      "statement": "Show actor, assignment, organization, occurred time, captured time, state, reason, and record versions for every material workflow event. In materials, purchasing, equipment readiness, and repair, this contract applies to ready → cost_reconciled.",
+      "workflow_ids": ["WF-008"],
+      "scenario_ids": [
+        "SCN-008-01",
+        "SCN-008-02",
+        "SCN-008-03",
+        "SCN-008-06",
+        "SCN-008-07"
+      ],
+      "role_ids": ["ROLE-FINANCE"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-008-008"],
+      "screen_ids": ["SCR-048"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-008-008 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-076",
+      "title": "WF-008: Capture field evidence through connectivity loss",
+      "kind": "offline_sync",
+      "priority": "P0",
+      "statement": "Journal permitted field actions locally with idempotency keys, disclose sync status, and reconcile conflicts without silent last-write-wins behavior. In materials, purchasing, equipment readiness, and repair, this contract applies to entry → demand_identified and ready → in_use.",
+      "workflow_ids": ["WF-008"],
+      "scenario_ids": [
+        "SCN-008-01",
+        "SCN-008-02",
+        "SCN-008-03",
+        "SCN-008-04",
+        "SCN-008-05",
+        "SCN-008-06",
+        "SCN-008-07"
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR", "ROLE-EQUIPMENT-OPERATOR"],
+      "record_ids": ["REC-066", "REC-071"],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-008-001", "TRN-WF-008-011"],
+      "screen_ids": ["SCR-046", "SCR-049"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-008-001 and TRN-WF-008-011 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-077",
+      "title": "WF-008: Respect cross-organization authority boundaries",
+      "kind": "cross_organization",
+      "priority": "P1",
+      "statement": "Derive visibility and action authority from the active contract, organization relationship, delegated scope, sensitivity, and effective time. In materials, purchasing, equipment readiness, and repair, this contract applies to entry → demand_identified.",
+      "workflow_ids": ["WF-008"],
+      "scenario_ids": [
+        "SCN-008-01",
+        "SCN-008-02",
+        "SCN-008-03",
+        "SCN-008-04",
+        "SCN-008-05",
+        "SCN-008-07"
+      ],
+      "role_ids": ["ROLE-OPERATIONS-COORDINATOR"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-008-001"],
+      "screen_ids": ["SCR-046"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-008-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-078",
+      "title": "WF-008: Keep regulated evidence defensible",
+      "kind": "compliance_control",
+      "priority": "P0",
+      "statement": "Require applicable evidence, restrictions, attribution, version lineage, and approval before a regulated or certification-sensitive state advances. In materials, purchasing, equipment readiness, and repair, this contract applies to staged → ready.",
+      "workflow_ids": ["WF-008"],
+      "scenario_ids": ["SCN-008-01", "SCN-008-02", "SCN-008-03", "SCN-008-07"],
+      "role_ids": ["ROLE-FOREMAN"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-008-007"],
+      "screen_ids": ["SCR-048"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-008-007 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-079",
+      "title": "WF-008: Preserve authoritative record versions",
+      "kind": "information_integrity",
+      "priority": "P1",
+      "statement": "Capture the exact source, actor, effective time, and base version for new evidence so a later correction can create an attributable successor without mutating history. In materials, purchasing, equipment readiness, and repair, this contract applies to demand_identified → availability_checked.",
+      "workflow_ids": ["WF-008"],
+      "scenario_ids": [
+        "SCN-008-01",
+        "SCN-008-02",
+        "SCN-008-03",
+        "SCN-008-04",
+        "SCN-008-05",
+        "SCN-008-07"
+      ],
+      "role_ids": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-COMPLIANCE-COORDINATOR"
+      ],
+      "record_ids": [
+        "REC-064",
+        "REC-065",
+        "REC-066",
+        "REC-067",
+        "REC-070",
+        "REC-071",
+        "REC-068",
+        "REC-069"
+      ],
+      "decision_ids": ["DEC-071", "DEC-072"],
+      "transition_ids": ["TRN-WF-008-002"],
+      "screen_ids": ["SCR-046"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-008-002 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-080",
+      "title": "WF-008: Close work with evidence and accountable verification",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Separate reported completion from verification, reconciliation, settlement, certification, or other accountable terminal disposition. In materials, purchasing, equipment readiness, and repair, this contract applies to ready → cost_reconciled and ordered → received and repair_open → repaired and repaired → verified_ready.",
+      "workflow_ids": ["WF-008"],
+      "scenario_ids": [
+        "SCN-008-01",
+        "SCN-008-02",
+        "SCN-008-03",
+        "SCN-008-06",
+        "SCN-008-07"
+      ],
+      "role_ids": [
+        "ROLE-FINANCE",
+        "ROLE-PURCHASING",
+        "ROLE-MECHANIC",
+        "ROLE-FOREMAN"
+      ],
+      "record_ids": ["REC-073", "REC-074", "REC-066", "REC-072", "REC-075"],
+      "decision_ids": ["DEC-074"],
+      "transition_ids": [
+        "TRN-WF-008-008",
+        "TRN-WF-008-005",
+        "TRN-WF-008-014",
+        "TRN-WF-008-015"
+      ],
+      "screen_ids": ["SCR-048", "SCR-047", "SCR-050"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-008-008 and TRN-WF-008-005 and TRN-WF-008-014 and TRN-WF-008-015 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-081",
+      "title": "WF-009: Make accountable decisions from current evidence",
+      "kind": "decision_support",
+      "priority": "P0",
+      "statement": "Present the current evidence, missing information, authority, and viable outcomes before an accountable actor commits the next workflow state. In grower onboarding, contract-fruit coordination, and relationship history, this contract applies to due_diligence → active.",
+      "workflow_ids": ["WF-009"],
+      "scenario_ids": [
+        "SCN-009-01",
+        "SCN-009-02",
+        "SCN-009-04",
+        "SCN-009-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-04",
+        "SCN-900-06"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-077", "REC-080", "REC-081", "REC-085"],
+      "decision_ids": ["DEC-083"],
+      "transition_ids": ["TRN-WF-009-003"],
+      "screen_ids": ["SCR-054"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-009-003 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-082",
+      "title": "WF-009: Advance only valid canonical transitions",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Offer only canonical state transitions that are valid from the current state and explain why unavailable actions are denied or require escalation. In grower onboarding, contract-fruit coordination, and relationship history, this contract applies to entry → identity_matching.",
+      "workflow_ids": ["WF-009"],
+      "scenario_ids": [
+        "SCN-009-01",
+        "SCN-009-02",
+        "SCN-009-03",
+        "SCN-009-04",
+        "SCN-009-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-076", "REC-077", "REC-078", "REC-079"],
+      "decision_ids": ["DEC-081"],
+      "transition_ids": ["TRN-WF-009-001"],
+      "screen_ids": ["SCR-053"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-009-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-083",
+      "title": "WF-009: Resolve stable scope and record identity",
+      "kind": "information_integrity",
+      "priority": "P0",
+      "statement": "Resolve organization, property, block, contract, record version, effective time, and source identity before evidence is used for action. In grower onboarding, contract-fruit coordination, and relationship history, this contract applies to entry → identity_matching.",
+      "workflow_ids": ["WF-009"],
+      "scenario_ids": [
+        "SCN-009-01",
+        "SCN-009-02",
+        "SCN-009-03",
+        "SCN-009-04",
+        "SCN-009-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-076", "REC-077", "REC-078", "REC-079"],
+      "decision_ids": ["DEC-081"],
+      "transition_ids": ["TRN-WF-009-001"],
+      "screen_ids": ["SCR-053"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-009-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-084",
+      "title": "WF-009: Contain exceptions without losing completed work",
+      "kind": "exception_recovery",
+      "priority": "P0",
+      "statement": "Preserve safe partial results, record the affected scope and accountable owner, and expose a bounded recovery path without rewriting prior events. In grower onboarding, contract-fruit coordination, and relationship history, this contract applies to disputed → corrective_action and identity_matching → disputed and fulfilled → disputed.",
+      "workflow_ids": ["WF-009"],
+      "scenario_ids": [
+        "SCN-009-02",
+        "SCN-009-03",
+        "SCN-009-06",
+        "SCN-900-01",
+        "SCN-900-03",
+        "SCN-900-06",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "record_ids": [
+        "REC-085",
+        "REC-087",
+        "REC-088",
+        "REC-083",
+        "REC-084",
+        "REC-086",
+        "REC-076",
+        "REC-077",
+        "REC-078",
+        "REC-079"
+      ],
+      "decision_ids": ["DEC-084", "DEC-081"],
+      "transition_ids": ["TRN-WF-009-017", "TRN-WF-009-021", "TRN-WF-009-026"],
+      "screen_ids": ["SCR-057", "SCR-058", "SCR-059"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-009-017 and TRN-WF-009-021 and TRN-WF-009-026 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-085",
+      "title": "WF-009: Inspect attributable append-only history",
+      "kind": "audit_history",
+      "priority": "P1",
+      "statement": "Show actor, assignment, organization, occurred time, captured time, state, reason, and record versions for every material workflow event. In grower onboarding, contract-fruit coordination, and relationship history, this contract applies to identity_matching → due_diligence.",
+      "workflow_ids": ["WF-009"],
+      "scenario_ids": [
+        "SCN-009-01",
+        "SCN-009-02",
+        "SCN-009-04",
+        "SCN-009-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-04",
+        "SCN-900-06"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": ["REC-076", "REC-078", "REC-080", "REC-081", "REC-082"],
+      "decision_ids": ["DEC-082"],
+      "transition_ids": ["TRN-WF-009-002"],
+      "screen_ids": ["SCR-053"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-009-002 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-086",
+      "title": "WF-009: Capture field evidence through connectivity loss",
+      "kind": "offline_sync",
+      "priority": "P0",
+      "statement": "Journal permitted field actions locally with idempotency keys, disclose sync status, and reconcile conflicts without silent last-write-wins behavior. In grower onboarding, contract-fruit coordination, and relationship history, this contract applies to entry → identity_matching.",
+      "workflow_ids": ["WF-009"],
+      "scenario_ids": [
+        "SCN-009-01",
+        "SCN-009-02",
+        "SCN-009-03",
+        "SCN-009-04",
+        "SCN-009-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "record_ids": ["REC-076", "REC-077", "REC-078", "REC-079"],
+      "decision_ids": ["DEC-081"],
+      "transition_ids": ["TRN-WF-009-001"],
+      "screen_ids": ["SCR-053"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-009-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-087",
+      "title": "WF-009: Respect cross-organization authority boundaries",
+      "kind": "cross_organization",
+      "priority": "P1",
+      "statement": "Derive visibility and action authority from the active contract, organization relationship, delegated scope, sensitivity, and effective time. In grower onboarding, contract-fruit coordination, and relationship history, this contract applies to entry → identity_matching and active → aligned and aligned → fulfilled and corrective_action → aligned.",
+      "workflow_ids": ["WF-009"],
+      "scenario_ids": [
+        "SCN-009-01",
+        "SCN-009-02",
+        "SCN-009-03",
+        "SCN-009-04",
+        "SCN-009-05",
+        "SCN-009-06",
+        "SCN-009-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "record_ids": [
+        "REC-076",
+        "REC-077",
+        "REC-078",
+        "REC-079",
+        "REC-083",
+        "REC-084",
+        "REC-085",
+        "REC-086",
+        "REC-087",
+        "REC-088"
+      ],
+      "decision_ids": ["DEC-081", "DEC-084"],
+      "transition_ids": [
+        "TRN-WF-009-001",
+        "TRN-WF-009-004",
+        "TRN-WF-009-005",
+        "TRN-WF-009-018"
+      ],
+      "screen_ids": ["SCR-053", "SCR-054", "SCR-055", "SCR-058"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-009-001 and TRN-WF-009-004 and TRN-WF-009-005 and TRN-WF-009-018 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-088",
+      "title": "WF-009: Keep regulated evidence defensible",
+      "kind": "compliance_control",
+      "priority": "P0",
+      "statement": "Require applicable evidence, restrictions, attribution, version lineage, and approval before a regulated or certification-sensitive state advances. In grower onboarding, contract-fruit coordination, and relationship history, this contract applies to identity_matching → due_diligence.",
+      "workflow_ids": ["WF-009"],
+      "scenario_ids": [
+        "SCN-009-01",
+        "SCN-009-02",
+        "SCN-009-04",
+        "SCN-009-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-04",
+        "SCN-900-06"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS", "ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": ["REC-076", "REC-078", "REC-080", "REC-081", "REC-082"],
+      "decision_ids": ["DEC-082"],
+      "transition_ids": ["TRN-WF-009-002"],
+      "screen_ids": ["SCR-053"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-009-002 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-089",
+      "title": "WF-009: Correct records through explicit supersession",
+      "kind": "information_integrity",
+      "priority": "P1",
+      "statement": "Create an attributable successor with a correction reason and downstream-impact review while preserving the original record and references. In grower onboarding, contract-fruit coordination, and relationship history, this contract applies to settled → historical.",
+      "workflow_ids": ["WF-009"],
+      "scenario_ids": [
+        "SCN-009-01",
+        "SCN-009-02",
+        "SCN-009-03",
+        "SCN-009-05",
+        "SCN-009-06",
+        "SCN-009-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-GROWER-RELATIONS"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-009-007"],
+      "screen_ids": ["SCR-056"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-009-007 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-090",
+      "title": "WF-009: Close work with evidence and accountable verification",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Separate reported completion from verification, reconciliation, settlement, certification, or other accountable terminal disposition. In grower onboarding, contract-fruit coordination, and relationship history, this contract applies to fulfilled → settled.",
+      "workflow_ids": ["WF-009"],
+      "scenario_ids": [
+        "SCN-009-01",
+        "SCN-009-02",
+        "SCN-009-03",
+        "SCN-009-05",
+        "SCN-009-06",
+        "SCN-009-07",
+        "SCN-900-01",
+        "SCN-900-02",
+        "SCN-900-03",
+        "SCN-900-04",
+        "SCN-900-06",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-FINANCE"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-009-006"],
+      "screen_ids": ["SCR-056"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-009-006 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-091",
+      "title": "WF-010: Make accountable decisions from current evidence",
+      "kind": "decision_support",
+      "priority": "P0",
+      "statement": "Present the current evidence, missing information, authority, and viable outcomes before an accountable actor commits the next workflow state. In certification, audit preparation, corrective action, and evidence, this contract applies to under_review → noncompliant.",
+      "workflow_ids": ["WF-010"],
+      "scenario_ids": ["SCN-010-03", "SCN-010-07", "SCN-900-08"],
+      "role_ids": ["ROLE-AUDITOR", "ROLE-CERTIFIER"],
+      "record_ids": ["REC-101", "REC-102", "REC-086", "REC-103"],
+      "decision_ids": ["DEC-093", "DEC-094"],
+      "transition_ids": ["TRN-WF-010-024"],
+      "screen_ids": ["SCR-067"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-010-024 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-092",
+      "title": "WF-010: Advance only valid canonical transitions",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Offer only canonical state transitions that are valid from the current state and explain why unavailable actions are denied or require escalation. In certification, audit preparation, corrective action, and evidence, this contract applies to requirements_mapped → evidence_collecting.",
+      "workflow_ids": ["WF-010"],
+      "scenario_ids": [
+        "SCN-010-01",
+        "SCN-010-02",
+        "SCN-010-03",
+        "SCN-010-04",
+        "SCN-010-05",
+        "SCN-900-07",
+        "SCN-900-08",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-010-002"],
+      "screen_ids": ["SCR-060"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-010-002 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-093",
+      "title": "WF-010: Resolve stable scope and record identity",
+      "kind": "information_integrity",
+      "priority": "P0",
+      "statement": "Resolve organization, property, block, contract, record version, effective time, and source identity before evidence is used for action. In certification, audit preparation, corrective action, and evidence, this contract applies to entry → requirements_mapped.",
+      "workflow_ids": ["WF-010"],
+      "scenario_ids": [
+        "SCN-010-01",
+        "SCN-010-02",
+        "SCN-010-03",
+        "SCN-010-04",
+        "SCN-010-05",
+        "SCN-900-07",
+        "SCN-900-08",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": ["REC-080", "REC-082", "REC-089", "REC-090"],
+      "decision_ids": ["DEC-091"],
+      "transition_ids": ["TRN-WF-010-001"],
+      "screen_ids": ["SCR-060"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-010-001 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-094",
+      "title": "WF-010: Contain exceptions without losing completed work",
+      "kind": "exception_recovery",
+      "priority": "P0",
+      "statement": "Preserve safe partial results, record the affected scope and accountable owner, and expose a bounded recovery path without rewriting prior events. In certification, audit preparation, corrective action, and evidence, this contract applies to gap_identified → corrective_action_open and evidence_collecting → gap_identified and under_review → certification_withheld.",
+      "workflow_ids": ["WF-010"],
+      "scenario_ids": ["SCN-010-02", "SCN-010-04", "SCN-900-07", "SCN-900-10"],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER"
+      ],
+      "record_ids": [
+        "REC-102",
+        "REC-090",
+        "REC-091",
+        "REC-092",
+        "REC-093",
+        "REC-094",
+        "REC-095",
+        "REC-096",
+        "REC-097",
+        "REC-098",
+        "REC-099",
+        "REC-100",
+        "REC-101",
+        "REC-086",
+        "REC-080",
+        "REC-082",
+        "REC-089",
+        "REC-103"
+      ],
+      "decision_ids": ["DEC-092", "DEC-091", "DEC-093", "DEC-094"],
+      "transition_ids": ["TRN-WF-010-010", "TRN-WF-010-020", "TRN-WF-010-025"],
+      "screen_ids": ["SCR-063", "SCR-066", "SCR-067"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-010-010 and TRN-WF-010-020 and TRN-WF-010-025 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-095",
+      "title": "WF-010: Inspect attributable append-only history",
+      "kind": "audit_history",
+      "priority": "P1",
+      "statement": "Show actor, assignment, organization, occurred time, captured time, state, reason, and record versions for every material workflow event. In certification, audit preparation, corrective action, and evidence, this contract applies to certified → archived.",
+      "workflow_ids": ["WF-010"],
+      "scenario_ids": [
+        "SCN-010-01",
+        "SCN-010-02",
+        "SCN-010-03",
+        "SCN-010-04",
+        "SCN-010-06",
+        "SCN-010-07",
+        "SCN-900-07",
+        "SCN-900-08",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-010-008"],
+      "screen_ids": ["SCR-063"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-010-008 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-096",
+      "title": "WF-010: Capture field evidence through connectivity loss",
+      "kind": "offline_sync",
+      "priority": "P0",
+      "statement": "Journal permitted field actions locally with idempotency keys, disclose sync status, and reconcile conflicts without silent last-write-wins behavior. In certification, audit preparation, corrective action, and evidence, this contract applies to corrective_action_open → remediation_in_progress.",
+      "workflow_ids": ["WF-010"],
+      "scenario_ids": [
+        "SCN-010-02",
+        "SCN-010-03",
+        "SCN-010-04",
+        "SCN-010-07",
+        "SCN-900-07",
+        "SCN-900-08",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR", "ROLE-CERTIFIER"],
+      "record_ids": ["REC-086", "REC-102", "REC-101", "REC-103"],
+      "decision_ids": ["DEC-094"],
+      "transition_ids": ["TRN-WF-010-015"],
+      "screen_ids": ["SCR-065"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-010-015 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-097",
+      "title": "WF-010: Respect cross-organization authority boundaries",
+      "kind": "cross_organization",
+      "priority": "P1",
+      "statement": "Derive visibility and action authority from the active contract, organization relationship, delegated scope, sensitivity, and effective time. In certification, audit preparation, corrective action, and evidence, this contract applies to submitted → under_review and under_review → compliant and compliant → certified.",
+      "workflow_ids": ["WF-010"],
+      "scenario_ids": [
+        "SCN-010-01",
+        "SCN-010-02",
+        "SCN-010-03",
+        "SCN-010-04",
+        "SCN-010-06",
+        "SCN-010-07",
+        "SCN-900-07",
+        "SCN-900-08",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-AUDITOR", "ROLE-CERTIFIER"],
+      "record_ids": ["REC-101", "REC-102", "REC-103"],
+      "decision_ids": ["DEC-093"],
+      "transition_ids": ["TRN-WF-010-005", "TRN-WF-010-006", "TRN-WF-010-007"],
+      "screen_ids": ["SCR-061", "SCR-062"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-010-005 and TRN-WF-010-006 and TRN-WF-010-007 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-098",
+      "title": "WF-010: Keep regulated evidence defensible",
+      "kind": "compliance_control",
+      "priority": "P0",
+      "statement": "Require applicable evidence, restrictions, attribution, version lineage, and approval before a regulated or certification-sensitive state advances. In certification, audit preparation, corrective action, and evidence, this contract applies to evidence_collecting → package_prepared and package_prepared → submitted and remediation_in_progress → evidence_resubmitted and evidence_resubmitted → compliant.",
+      "workflow_ids": ["WF-010"],
+      "scenario_ids": [
+        "SCN-010-01",
+        "SCN-010-02",
+        "SCN-010-03",
+        "SCN-010-04",
+        "SCN-010-05",
+        "SCN-010-07",
+        "SCN-900-07",
+        "SCN-900-08",
+        "SCN-900-10"
+      ],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-CERTIFIER"
+      ],
+      "record_ids": [
+        "REC-090",
+        "REC-091",
+        "REC-092",
+        "REC-093",
+        "REC-094",
+        "REC-095",
+        "REC-096",
+        "REC-097",
+        "REC-098",
+        "REC-099",
+        "REC-100",
+        "REC-101",
+        "REC-086",
+        "REC-102",
+        "REC-103"
+      ],
+      "decision_ids": ["DEC-092", "DEC-094"],
+      "transition_ids": [
+        "TRN-WF-010-003",
+        "TRN-WF-010-004",
+        "TRN-WF-010-016",
+        "TRN-WF-010-017"
+      ],
+      "screen_ids": ["SCR-060", "SCR-061", "SCR-065", "SCR-066"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-010-003 and TRN-WF-010-004 and TRN-WF-010-016 and TRN-WF-010-017 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-099",
+      "title": "WF-010: Correct records through explicit supersession",
+      "kind": "information_integrity",
+      "priority": "P1",
+      "statement": "Create an attributable successor with a correction reason and downstream-impact review while preserving the original record and references. In certification, audit preparation, corrective action, and evidence, this contract applies to gap_identified → corrective_action_open and noncompliant → corrective_action_open and certification_withheld → corrective_action_open.",
+      "workflow_ids": ["WF-010"],
+      "scenario_ids": [
+        "SCN-010-02",
+        "SCN-010-03",
+        "SCN-010-04",
+        "SCN-010-07",
+        "SCN-900-07",
+        "SCN-900-08",
+        "SCN-900-10"
+      ],
+      "role_ids": [
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER"
+      ],
+      "record_ids": [
+        "REC-102",
+        "REC-090",
+        "REC-091",
+        "REC-092",
+        "REC-093",
+        "REC-094",
+        "REC-095",
+        "REC-096",
+        "REC-097",
+        "REC-098",
+        "REC-099",
+        "REC-100",
+        "REC-101",
+        "REC-086",
+        "REC-103"
+      ],
+      "decision_ids": ["DEC-092", "DEC-093", "DEC-094"],
+      "transition_ids": ["TRN-WF-010-010", "TRN-WF-010-013", "TRN-WF-010-014"],
+      "screen_ids": ["SCR-063", "SCR-064"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-010-010 and TRN-WF-010-013 and TRN-WF-010-014 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    },
+    {
+      "id": "REQ-100",
+      "title": "WF-010: Close work with evidence and accountable verification",
+      "kind": "workflow_action",
+      "priority": "P0",
+      "statement": "Separate reported completion from verification, reconciliation, settlement, certification, or other accountable terminal disposition. In certification, audit preparation, corrective action, and evidence, this contract applies to certified → archived.",
+      "workflow_ids": ["WF-010"],
+      "scenario_ids": [
+        "SCN-010-01",
+        "SCN-010-02",
+        "SCN-010-03",
+        "SCN-010-04",
+        "SCN-010-06",
+        "SCN-010-07",
+        "SCN-900-07",
+        "SCN-900-08",
+        "SCN-900-10"
+      ],
+      "role_ids": ["ROLE-COMPLIANCE-COORDINATOR"],
+      "record_ids": [],
+      "decision_ids": [],
+      "transition_ids": ["TRN-WF-010-008"],
+      "screen_ids": ["SCR-063"],
+      "acceptance_criteria": [
+        "Given a referenced full-season fixture, the interface resolves TRN-WF-010-008 without inventing an unsupported state change.",
+        "The actor, authority, record inputs, generated evidence, effective time, and immutable audit consequence remain inspectable before and after the action.",
+        "A denied, offline, stale, corrected, or conflicting attempt receives an explicit recovery path and never silently overwrites canonical history."
+      ],
+      "classification": "product_decision",
+      "status": "approved"
+    }
+  ]
+}
