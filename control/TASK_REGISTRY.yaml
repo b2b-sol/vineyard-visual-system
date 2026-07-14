@@ -388,7 +388,7 @@ tasks:
   - id: WAVE-001
     title: Deliver plan, dispatch, crew, verification, time, and cost wave
     phase: production_wave
-    status: in_progress
+    status: complete
     depends_on: [VIS-FND-001]
     artifacts:
       [
@@ -419,13 +419,15 @@ tasks:
     owner: parent_agent
     branch: codex/wave-001
     started_at: "2026-07-13T22:49:42.4994248-07:00"
+    completed_at: "2026-07-14T08:00:15Z"
+    commit: b1ac9153720bc01ebfbf6e04d0c210108327f09e
     reviewers:
       [wave1_operational_critic, wave1_visual_a11y_critic, parent_agent]
-    notes: Accepted after two independent re-review passes; 13 screens, 64 review states, 22 current captures, three active construction packets, complete task replays, and the full verifier pass with no unresolved findings. Integration remains in progress until the protected squash merge produces the target-branch commit used for durable completion provenance.
+    notes: Accepted after two independent re-review passes; 13 screens, 64 review states, 22 current captures, three active construction packets, complete task replays, and the full verifier pass with no unresolved findings. Delivered through protected PR 11 and the merge queue at b1ac9153720bc01ebfbf6e04d0c210108327f09e; this follow-up reconciles durable target-branch provenance.
   - id: WAVE-002
     title: Deliver scouting, protection, irrigation, and fertility wave
     phase: production_wave
-    status: planned
+    status: ready
     depends_on: [WAVE-001]
     artifacts:
       [
