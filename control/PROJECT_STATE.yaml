@@ -1,6 +1,6 @@
 packet_version: 1.0.0
-updated_at: "2026-07-14T00:41:34.0006539-07:00"
-state: production_wave_ready
+updated_at: "2026-07-14T00:52:53.0161431-07:00"
+state: production_wave_integration
 repository: b2b-sol/vineyard-visual-system
 visibility: public
 execution_identity: tiklebot
@@ -9,8 +9,8 @@ repository_permission: admin
 bot_auth_verified_at: "2026-07-13T20:52:59.4714367-07:00"
 preferred_parent_model: gpt-5.6-sol
 current_phase: production_wave
-next_task: WAVE-002 deliver scouting, protection, irrigation, and fertility wave
-last_completed_task: WAVE-001
+next_task: WAVE-001 integrate the accepted wave through the protected squash merge queue
+last_completed_task: VIS-FND-001
 owner_bootstrap_complete: true
 bot_auth_verified: true
 packet_review_complete: true
@@ -66,12 +66,10 @@ visual_foundation_metrics:
   unresolved_p0: 0
   unresolved_p1: 0
   unresolved_p2: 0
-active_wave: null
+active_wave: WAVE-001
 next_wave: WAVE-002
-active_wave_plan: null
-last_wave: WAVE-001
-last_wave_commit: ef6fc3e3abeb82f93050c506efc80ff2ebf38980
-last_wave_review:
+active_wave_plan: control/WAVE-001_PLAN.md
+active_wave_review:
   status: passed
   screens: 13
   public_components: 27

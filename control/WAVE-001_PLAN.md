@@ -1,6 +1,6 @@
 # WAVE-001 Delivery Contract
 
-Status: accepted on 2026-07-14. This wave closes infrastructure expansion; subsequent work follows `control/WAVE-002_EXECUTION_ADJUSTMENT.md`.
+Status: accepted on 2026-07-14 and awaiting protected squash integration. This wave closes infrastructure expansion; subsequent work follows `control/WAVE-002_EXECUTION_ADJUSTMENT.md`.
 
 ## Purpose
 
