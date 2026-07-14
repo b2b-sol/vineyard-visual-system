@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "evaluated_at": "2026-07-13T22:20:00.3287136-07:00",
+  "evaluated_at": "2026-07-13T22:37:56.4061053-07:00",
   "gates": [
     {
       "id": "G0",
@@ -107,7 +107,7 @@
     },
     {
       "id": "G7",
-      "status": "in_progress",
+      "status": "passed",
       "checks": [
         "Three materially distinct lighthouse directions scored against invariant content",
         "Selected thesis clears total and every criterion floor with no hard rejection",
@@ -130,7 +130,7 @@
         "validation/visual-direction-renders",
         "validation/visual-direction-review.md"
       ],
-      "commit_sha": null
+      "commit_sha": "d7429d176a88ce68290d8b5ac3c61bea1483a55e"
     }
   ]
 }
