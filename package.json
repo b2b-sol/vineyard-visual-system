@@ -54,6 +54,7 @@
     "test:browser": "npm run build && playwright test",
     "test:visual-directions": "npm run build && playwright test atlas/tests/visual-directions.e2e.spec.ts",
     "test:browser:update": "playwright test --update-snapshots",
+    "capture:wave-001": "node scripts/run-wave-captures.mjs",
     "audit:repository": "node scripts/repository-audit.mjs",
     "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:all && npm run validate:workflow-model-current && npm run validate:workflow-visuals && npm run render:workflow-visuals && npm run validate:trace-current && npm run validate:data-current && npm run validate:product-current && npm run validate:tokens && npm run validate:tokens-current && npm run validate:visual-directions && npm run validate:wave-001-contracts-current && npm run validate:wave-001 && npm run test:unit && npm run build && npm run audit:repository"
   },

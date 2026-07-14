@@ -565,7 +565,7 @@ const prototypeMap = {
 };
 
 const captureSourcePaths = [
-  "production-waves/wave-001.json",
+  "scripts/generate-wave-contracts.mjs",
   "product-structure/screens.json",
   "product-structure/component-requirements.json",
   "product-structure/flows.json",
@@ -615,12 +615,20 @@ for (const [index, { screen, viewport }] of captureSpecs.entries()) {
   const basePath = `validation/wave-001-renders/primary/${id.toLowerCase()}`;
   const artifactPath = `${basePath}.png`;
   const metadataPath = `${basePath}.capture.json`;
+  const metadataPresent = await exists(metadataPath);
+  const metadata = metadataPresent ? await readJson(metadataPath) : null;
   const complete =
     (await exists(artifactPath)) &&
-    (await exists(metadataPath)) &&
-    currentCaptureDigest;
+    metadataPresent &&
+    currentCaptureDigest &&
+    metadata.source_digest === currentCaptureDigest &&
+    metadata.id === id &&
+    metadata.screen_id === screen.id &&
+    metadata.route ===
+      `/screens/${screen.id}?state=normal&fixture=${PRIMARY_FIXTURES.get(screen.id)}` &&
+    metadata.viewport?.width === viewport.width &&
+    metadata.viewport?.height === viewport.height;
   if (complete) {
-    const metadata = await readJson(metadataPath);
     const artifact = await readFile(path.join(ROOT, artifactPath));
     captures.push({
       id,

@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "wave_id": "WAVE-001",
   "source_paths": [
-    "production-waves/wave-001.json",
+    "scripts/generate-wave-contracts.mjs",
     "product-structure/screens.json",
     "product-structure/component-requirements.json",
     "product-structure/flows.json",
