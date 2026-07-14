@@ -338,21 +338,51 @@ tasks:
   - id: VIS-FND-001
     title: Select the visual thesis and establish design foundations
     phase: visual_language
-    status: planned
+    status: review
     depends_on: [PROD-001]
     artifacts:
       [
-        design-system/visual-directions,
-        design-system/tokens,
+        design-system/visual-directions/directions.json,
+        design-system/visual-directions/exploration,
+        design-system/tokens/vineyard.tokens.json,
+        design-system/tokens/vineyard.css,
+        design-system/tokens/contrast-pairs.json,
+        design-system/assets/parcel-signal.svg,
+        design-system/assets/record-lineage.svg,
+        atlas/src/pages/VisualDirectionsPage.tsx,
+        atlas/src/visual-directions.css,
+        atlas/tests/visual-directions.e2e.spec.ts,
+        validation/visual-direction-renders,
         validation/visual-direction-review.md,
       ]
     acceptance_criteria:
       [
         Three lighthouse directions are rendered and scored; the selected thesis meets accessibility and distinctiveness criteria,
       ]
-    checks: [token validation, design critic rubric]
+    checks:
+      [
+        npm run validate:tokens,
+        npm run validate:tokens-current,
+        npm run validate:visual-directions,
+        npm run verify,
+        npm run test:browser,
+        independent visual and foundation critic approval,
+      ]
     gate_ids: [G7]
     owner: visual_designer
+    branch: codex/visual-foundations
+    commit: 30ab694f6318a3a1564d6c7f9f1f682c603f850e
+    started_at: "2026-07-13T21:00:00-07:00"
+    reviewers:
+      [
+        visual_direction_critic,
+        lighthouse_architect,
+        token_system_planner,
+        visual_acceptance_critic,
+        foundation_system_critic,
+        parent_agent,
+      ]
+    notes: Canopy Signal selected at 92/100 as a token-bound sunlit fieldbook; all nine exact source-digested renders and the full browser suite pass with no unresolved P0/P1/P2. Validated artifact commit is pending protected PR integration and target-branch provenance reconciliation.
   - id: WAVE-001
     title: Deliver plan, dispatch, crew, verification, time, and cost wave
     phase: production_wave
