@@ -388,16 +388,39 @@ tasks:
   - id: WAVE-001
     title: Deliver plan, dispatch, crew, verification, time, and cost wave
     phase: production_wave
-    status: planned
+    status: in_progress
     depends_on: [VIS-FND-001]
-    artifacts: [atlas, screens, prototypes, design-system, construction-packets]
+    artifacts:
+      [
+        control/WAVE-001_PLAN.md,
+        atlas,
+        screens,
+        prototypes,
+        design-system,
+        construction-packets,
+        figma,
+        validation/WAVE-001-REVIEW.md,
+      ]
     acceptance_criteria:
       [
-        Wave loop and rendered acceptance checks pass with normal and non-ideal states,
+        Thirteen canonical screens and all declared wave states render from exact registry-backed fixtures,
+        two complete primary prototypes and the linked-evidence comparison preserve canonical authority and append-only history,
+        responsive field desktop print accessibility capture packet Figma and trace checks pass,
+        independent operational and visual critics approve with no unresolved P0 P1 or undisposed P2 findings,
       ]
-    checks: [npm run verify, browser and trace review]
+    checks:
+      [
+        npm run validate:wave-001,
+        npm run verify,
+        npm run test:browser,
+        browser accessibility capture print and trace review,
+      ]
     gate_ids: [G8]
     owner: parent_agent
+    branch: codex/wave-001
+    started_at: "2026-07-13T22:49:42.4994248-07:00"
+    reviewers:
+      [workflow_architect, system_architect, quality_architect, parent_agent]
   - id: WAVE-002
     title: Deliver scouting, protection, irrigation, and fertility wave
     phase: production_wave
