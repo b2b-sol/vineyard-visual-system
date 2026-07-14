@@ -338,7 +338,7 @@ tasks:
   - id: VIS-FND-001
     title: Select the visual thesis and establish design foundations
     phase: visual_language
-    status: review
+    status: complete
     depends_on: [PROD-001]
     artifacts:
       [
@@ -372,8 +372,9 @@ tasks:
     owner: visual_designer
     branch: codex/visual-foundations
     pull_request: 9
-    commit: 30ab694f6318a3a1564d6c7f9f1f682c603f850e
+    commit: d7429d176a88ce68290d8b5ac3c61bea1483a55e
     started_at: "2026-07-13T21:00:00-07:00"
+    completed_at: "2026-07-13T22:37:13-07:00"
     reviewers:
       [
         visual_direction_critic,
@@ -383,7 +384,7 @@ tasks:
         foundation_system_critic,
         parent_agent,
       ]
-    notes: Canopy Signal selected at 92/100 as a token-bound sunlit fieldbook; all nine exact source-digested renders and the full browser suite pass with no unresolved P0/P1/P2. G7 remains in progress until protected squash integration provides the immutable target-branch commit required by DEC-005.
+    notes: Canopy Signal selected at 92/100 as a token-bound sunlit fieldbook; all nine exact source-digested renders and the full browser suite pass with no unresolved P0/P1/P2. Delivered through protected PR 9 and the merge queue; this follow-up reconciles durable target-branch provenance.
   - id: WAVE-001
     title: Deliver plan, dispatch, crew, verification, time, and cost wave
     phase: production_wave

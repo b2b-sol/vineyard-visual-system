@@ -71,7 +71,7 @@ criteria:
     evidence: []
   - id: G7
     title: Visual system
-    status: pending
+    status: passed
     verification: three directions scored; selected thesis, tokens, components, and vineyard distinctiveness pass
     evidence:
       - design-system/visual-directions/directions.json
