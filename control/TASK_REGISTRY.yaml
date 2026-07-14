@@ -159,7 +159,7 @@ tasks:
   - id: GOV-001
     title: Configure main ruleset and prove the merge workflow
     phase: governance
-    status: in_progress
+    status: complete
     depends_on: [FACT-003]
     artifacts: [validation/governance-audit.md]
     acceptance_criteria:
@@ -173,6 +173,8 @@ tasks:
     owner: parent_agent
     branch: codex/workflow-ontology
     started_at: "2026-07-13T15:50:00-07:00"
+    commit: 1bb54af303aab53542f5ccf0796ddd63fa54b843
+    completed_at: "2026-07-13T16:56:45-07:00"
   - id: SRC-001
     title: Normalize source evidence and public bibliography
     phase: workflow_model
@@ -215,7 +217,7 @@ tasks:
   - id: WF-002
     title: Adjudicate the workflow ontology and operational visuals
     phase: workflow_model
-    status: in_progress
+    status: complete
     depends_on: [WF-001]
     artifacts:
       [
@@ -245,6 +247,8 @@ tasks:
     owner: workflow_adjudicator
     branch: codex/workflow-ontology
     started_at: "2026-07-13T15:30:00-07:00"
+    commit: 1bb54af303aab53542f5ccf0796ddd63fa54b843
+    completed_at: "2026-07-13T16:56:45-07:00"
   - id: DATA-001
     title: Create seeded operation contracts and full-season data
     phase: synthetic_data
