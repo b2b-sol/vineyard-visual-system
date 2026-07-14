@@ -1226,18 +1226,6 @@
       "status": "approved"
     },
     {
-      "id": "FIX-001",
-      "type": "fixture",
-      "title": "Carneros Ridge blocked mowing recovery",
-      "path": "data/walking-slice.json",
-      "locator": {
-        "kind": "json_id",
-        "value": "FIX-001"
-      },
-      "classification": "synthetic_fixture",
-      "status": "approved"
-    },
-    {
       "id": "FIX-002",
       "type": "fixture",
       "title": "WFI-0001 · Seasonal planning, dispatch, execution, and verification — BLK-001 season case 1",
@@ -4389,18 +4377,6 @@
       "locator": {
         "kind": "json_id",
         "value": "CMP-036"
-      },
-      "classification": "implementation_contract",
-      "status": "approved"
-    },
-    {
-      "id": "PKT-001",
-      "type": "construction_packet",
-      "title": "Morning dispatch and blocked-work redispatch",
-      "path": "construction-packets/packets.json",
-      "locator": {
-        "kind": "json_id",
-        "value": "PKT-001"
       },
       "classification": "implementation_contract",
       "status": "approved"

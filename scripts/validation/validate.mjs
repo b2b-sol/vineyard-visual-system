@@ -1399,7 +1399,6 @@ async function validateTrace() {
   const registryDefinitions = [
     ["workflow", "workflow-model/workflows.json", "workflows"],
     ["scenario", "scenarios/scenarios.json", "scenarios"],
-    ["fixture", "data/walking-slice.json", "fixtures"],
     ["fixture", "data/scenario-fixtures.json", "fixtures"],
     ["requirement", "product-structure/requirements.json", "requirements"],
     ["screen", "product-structure/screens.json", "screens"],
@@ -1708,10 +1707,6 @@ async function validateTrace() {
       requireEdge("composed_with", screenId, component.id, component.id);
   }
 
-  const legacyScreens = byId(
-    (await readJson("screens/walking-slice.json")).screens,
-    "legacy walking-slice screen",
-  );
   for (const packet of packets.values()) {
     assertReferenceList(
       packet.workflow_ids,
@@ -1736,9 +1731,7 @@ async function validateTrace() {
     );
     const actionIds = new Set(
       packet.screen_ids.flatMap((screenId) =>
-        (legacyScreens.get(screenId) ?? screens.get(screenId)).actions.map(
-          (action) => action.id,
-        ),
+        screens.get(screenId).actions.map((action) => action.id),
       ),
     );
     for (const interaction of packet.interaction_contract)

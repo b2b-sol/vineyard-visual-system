@@ -101,7 +101,6 @@ const WAVE_COMPONENT_IDS = [
 const WAVE_FLOW_IDS = ["FLW-001", "FLW-007", "FLW-015"];
 const WAVE_PACKET_IDS = ["PKT-002", "PKT-003", "PKT-004"];
 const EXPECTED_PACKET_SCREENS = new Map([
-  ["PKT-001", ["SCR-001"]],
   ["PKT-002", WAVE_SCREEN_IDS.slice(0, 6)],
   ["PKT-003", WAVE_SCREEN_IDS.slice(6, 10)],
   ["PKT-004", WAVE_SCREEN_IDS.slice(10)],
@@ -205,7 +204,6 @@ async function main() {
     workflowDocument,
     scenarioDocument,
     fullFixtureDocument,
-    legacyFixtureDocument,
     screenDocument,
     componentDocument,
     flowDocument,
@@ -213,7 +211,6 @@ async function main() {
     traceDocument,
     tokenDocument,
     stateMatrixDocument,
-    legacyScreenDocument,
   ] = await Promise.all([
     readJson("production-waves/wave-001.json"),
     readJson("construction-packets/packets.json"),
@@ -226,7 +223,6 @@ async function main() {
     readJson("workflow-model/workflows.json"),
     readJson("scenarios/scenarios.json"),
     readJson("data/scenario-fixtures.json"),
-    readJson("data/walking-slice.json"),
     readJson("product-structure/screens.json"),
     readJson("product-structure/component-requirements.json"),
     readJson("product-structure/flows.json"),
@@ -234,7 +230,6 @@ async function main() {
     readJson("control/trace-edges.json"),
     readJson("design-system/tokens/vineyard.tokens.json"),
     readJson("product-structure/state-matrix.json"),
-    readJson("screens/walking-slice.json"),
   ]);
 
   validateWith(
@@ -294,10 +289,7 @@ async function main() {
 
   const workflowIndex = indexById(workflowDocument.workflows, "workflow");
   const scenarioIndex = indexById(scenarioDocument.scenarios, "scenario");
-  const fixtureIndex = indexById(
-    [...legacyFixtureDocument.fixtures, ...fullFixtureDocument.fixtures],
-    "fixture",
-  );
+  const fixtureIndex = indexById(fullFixtureDocument.fixtures, "fixture");
   const screenIndex = indexById(screenDocument.screens, "screen");
   const componentIndex = indexById(componentDocument.components, "component");
   const flowIndex = indexById(flowDocument.flows, "flow");
@@ -307,11 +299,6 @@ async function main() {
     stateMatrixDocument.states,
     "state-matrix contract",
   );
-  const legacyScreenIndex = indexById(
-    legacyScreenDocument.screens,
-    "legacy walking-slice screen",
-  );
-
   assert(wave.id === "WAVE-001", "Wave manifest must identify WAVE-001");
   sameValues(wave.workflow_ids, ["WF-001", "WF-007"], "Wave workflows");
   sameValues(wave.screen_ids, WAVE_SCREEN_IDS, "Wave screens");
@@ -491,15 +478,8 @@ async function main() {
 
   sameValues(
     packetIndex.keys(),
-    ["PKT-001", ...WAVE_PACKET_IDS],
+    WAVE_PACKET_IDS,
     "Construction packet registry",
-  );
-  const legacyPacket = (
-    await readJson("construction-packets/walking-slice.json")
-  ).packets[0];
-  assert(
-    JSON.stringify(packetIndex.get("PKT-001")) === JSON.stringify(legacyPacket),
-    "PKT-001 differs from the preserved walking-slice packet",
   );
   const traceSemantics = new Set(
     traceDocument.edges.map(
@@ -536,10 +516,7 @@ async function main() {
     assertReferences(packet.roles, roleIndex, `${packet.id}.roles`);
     const packetActions = new Set(
       packet.screen_ids.flatMap((screenId) =>
-        (packet.id === "PKT-001"
-          ? legacyScreenIndex.get(screenId)
-          : screenIndex.get(screenId)
-        ).actions.map((action) => action.id),
+        screenIndex.get(screenId).actions.map((action) => action.id),
       ),
     );
     for (const interaction of packet.interaction_contract)

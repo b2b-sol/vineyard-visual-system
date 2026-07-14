@@ -1,6 +1,6 @@
 schema_version: "1.0"
 generated_from: control/trace-nodes.json
-artifact_count: 370
+artifact_count: 368
 artifacts:
   - id: EVD-001
     type: evidence
@@ -621,12 +621,6 @@ artifacts:
       certification as one package
     path: scenarios/scenarios.json
     locator: json_id:SCN-900-10
-    status: approved
-  - id: FIX-001
-    type: fixture
-    title: Carneros Ridge blocked mowing recovery
-    path: data/walking-slice.json
-    locator: json_id:FIX-001
     status: approved
   - id: FIX-002
     type: fixture
@@ -2264,12 +2258,6 @@ artifacts:
     title: Accessible status legend
     path: product-structure/component-requirements.json
     locator: json_id:CMP-036
-    status: approved
-  - id: PKT-001
-    type: construction_packet
-    title: Morning dispatch and blocked-work redispatch
-    path: construction-packets/packets.json
-    locator: json_id:PKT-001
     status: approved
   - id: PKT-002
     type: construction_packet

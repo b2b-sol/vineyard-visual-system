@@ -280,6 +280,8 @@ export interface ReconciliationMeasure {
 }
 
 export function deriveReconciliationMeasure(model: ScreenViewModel) {
+  if (model.modelOnly) return undefined;
+
   const payroll = model.records
     .map((record) => ({
       record,
@@ -735,9 +737,9 @@ export const statePresentation: Record<
   },
   error: {
     symbol: "!",
-    title: "Allocation does not balance",
+    title: "Model-only allocation variance",
     detail:
-      "Accepted labor total and block allocations differ; export and closeout are disabled.",
+      "This validation branch demonstrates containment for non-balancing totals; no operational variance is asserted for the context fixture.",
     tone: "critical",
   },
 };

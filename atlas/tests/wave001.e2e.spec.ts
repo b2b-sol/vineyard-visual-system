@@ -35,6 +35,15 @@ test.describe("WAVE-001 production atlas", () => {
         const screen = page.locator(`[data-screen-id="${screenId}"]`);
         await expect(screen).toHaveAttribute("data-review-state", state);
         await expect(screen.locator(".wave-state-banner")).toBeVisible();
+        if (screenId === "SCR-045" && state === "error") {
+          await expect(screen.locator(".wave-state-banner")).toContainText(
+            "Model-only allocation variance",
+          );
+          await expect(
+            screen.locator('[data-component-id="CMP-034"]'),
+          ).toContainText("no operational variance is asserted");
+          await expect(screen.getByText("Typed totals balance")).toHaveCount(0);
+        }
         expect(
           await screen
             .locator(".wave-component-grid [data-component-id]")

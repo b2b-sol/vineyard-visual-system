@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "id": "WAVE-001",
   "title": "Seasonal work and labor-to-cost operations",
-  "status": "implementation_ready",
+  "status": "complete",
   "workflow_ids": ["WF-001", "WF-007"],
   "screen_ids": [
     "SCR-001",

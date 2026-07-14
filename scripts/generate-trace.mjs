@@ -15,7 +15,6 @@ const [
   workflowDocument,
   scenarioDocument,
   fullFixtureDocument,
-  legacyFixtureDocument,
   requirementDocument,
   screenDocument,
   componentDocument,
@@ -25,7 +24,6 @@ const [
   readJson("workflow-model/workflows.json"),
   readJson("scenarios/scenarios.json"),
   readJson("data/scenario-fixtures.json"),
-  readJson("data/walking-slice.json"),
   readJson("product-structure/requirements.json"),
   readJson("product-structure/screens.json"),
   readJson("product-structure/component-requirements.json"),
@@ -35,10 +33,7 @@ const [
 const evidence = evidenceDocument.claims;
 const workflows = workflowDocument.workflows;
 const scenarios = scenarioDocument.scenarios;
-const fixtures = [
-  ...legacyFixtureDocument.fixtures,
-  ...fullFixtureDocument.fixtures,
-];
+const fixtures = fullFixtureDocument.fixtures;
 const requirements = requirementDocument.requirements;
 const screens = screenDocument.screens;
 const components = componentDocument.components;
@@ -80,10 +75,7 @@ const nodes = [
     id: fixture.id,
     type: "fixture",
     title: fixture.title,
-    path:
-      fixture.id === "FIX-001"
-        ? "data/walking-slice.json"
-        : "data/scenario-fixtures.json",
+    path: "data/scenario-fixtures.json",
     locator: { kind: "json_id", value: fixture.id },
     classification: "synthetic_fixture",
     status: "approved",
@@ -165,14 +157,6 @@ for (const scenario of scenarios) {
       `${scenario.id} provides fixture-backed operational pressure and acceptance evidence for ${requirementId}.`,
     );
 }
-for (const fixture of legacyFixtureDocument.fixtures)
-  for (const scenarioId of fixture.scenario_ids)
-    addEdge(
-      scenarioId,
-      fixture.id,
-      "instantiated_by",
-      `${fixture.id} retains the deterministic rendered walking-slice evidence for ${scenarioId} alongside the full-season scenario contract.`,
-    );
 for (const requirement of requirements)
   for (const screenId of requirement.screen_ids)
     addEdge(
@@ -197,13 +181,6 @@ for (const screen of screens) {
       `${componentId} provides a reusable semantic interaction contract needed by ${screen.id}.`,
     );
 }
-for (const fixture of legacyFixtureDocument.fixtures)
-  addEdge(
-    fixture.id,
-    "SCR-001",
-    "rendered_by",
-    `SCR-001 retains the verified rendered walking-slice state, blocker, partial progress, recovery, and completion evidence from ${fixture.id}.`,
-  );
 for (const packet of packets)
   for (const screenId of packet.screen_ids)
     addEdge(

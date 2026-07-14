@@ -258,6 +258,12 @@ describe("WAVE-001 registry-backed atlas", () => {
     expect(reconciliation?.unit).toBe("USD");
     expect(reconciliation?.sourceRecordIds).toContain("RCI-00290");
 
+    const modelOnlyError = createScreenViewModel(
+      resolveScreenState("SCR-045", "error"),
+    );
+    expect(modelOnlyError.modelOnly).toBe(true);
+    expect(deriveReconciliationMeasure(modelOnlyError)).toBeUndefined();
+
     const corrected = createScreenViewModel(
       resolveScreenState("SCR-005", "corrected"),
     );

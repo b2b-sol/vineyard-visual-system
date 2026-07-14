@@ -1,0 +1,28 @@
+{
+  "capture_version": "1.0",
+  "id": "CAP-W001-012",
+  "screen_id": "SCR-039",
+  "route": "/screens/SCR-039?state=normal&fixture=FIX-032",
+  "state": "normal",
+  "fixture_id": "FIX-032",
+  "viewport": {
+    "name": "desktop",
+    "width": 1440,
+    "height": 1024
+  },
+  "source_digest": "ba382990300d26ba7abaeb5b7b82b4bb559ef39bcbcc783825b73c1052a013ab",
+  "generated_at": "2026-07-14T07:31:56.006Z",
+  "commit_sha": "70d155821a951688c63bb92df3a61720b83bd254",
+  "geometry": {
+    "viewport_height": 1024,
+    "viewport_width": 1440,
+    "scroll_height": 3105,
+    "scroll_width": 1440,
+    "horizontal_overflow": 0,
+    "primary_action": {
+      "top": 1202.390625,
+      "bottom": 1306.390625,
+      "height": 104
+    }
+  }
+}

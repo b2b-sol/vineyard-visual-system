@@ -99,14 +99,12 @@ const [
   componentDocument,
   flowDocument,
   stateMatrixDocument,
-  legacyPacketDocument,
   tokenDocument,
 ] = await Promise.all([
   readJson("product-structure/screens.json"),
   readJson("product-structure/component-requirements.json"),
   readJson("product-structure/flows.json"),
   readJson("product-structure/state-matrix.json"),
-  readJson("construction-packets/walking-slice.json"),
   readJson("design-system/tokens/vineyard.tokens.json"),
 ]);
 const screenIndex = byId(screenDocument.screens);
@@ -333,7 +331,6 @@ function makePacket({
 const packetDocument = {
   schema_version: "1.0",
   packets: [
-    legacyPacketDocument.packets[0],
     makePacket({
       id: "PKT-002",
       title: "Seasonal plan, dispatch, field execution, and verification",
