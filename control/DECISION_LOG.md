@@ -141,3 +141,13 @@ Use `DEC-###` identifiers. Record date, context, decision, alternatives, rationa
 - Rationale: A single deterministic rendering and validation system preserves operational truth, keeps stable IDs meaningful, reduces drift across five waves, and produces editable future-Figma handoff artifacts.
 - Affected artifacts: `control/WAVE-001_PLAN.md`, atlas domain/components/screens/prototypes, product flows and fixtures, schemas, construction packets, Figma maps, trace generation, capture evidence, and wave validators.
 - Reversibility: Medium; screen recipes and private compositions can evolve while stable registry IDs and data contracts remain preserved.
+
+## DEC-015 — Freeze the foundation and measure rendered delivery
+
+- Date: 2026-07-14
+- Context: WAVE-001 proved and repaired the validator, schema, contract, traceability, orchestration, ontology, capture, and handoff foundation. Continuing to expand those surfaces would compete with the remaining workflow-visual deliverables and make the validation system a product of its own.
+- Decision: Freeze the accepted foundation as the default for WAVE-002 through release. Add infrastructure only after recording a concrete uncovered failure, why existing checks cannot cover it, and its visible product consequence. Measure progress through accepted rendered screens, complete normal-to-recovery walkthroughs, field actionability, operational context, composition variety, cross-wave consistency, and workflow coverage. Retain the vertical wave order but make each loop task- and deliverable-first.
+- Alternatives: Continue schema and graph expansion per wave; remove the validated foundation; measure progress primarily through assertion or metadata growth; reorganize all remaining workflows before producing more screens.
+- Rationale: The existing system already detects the important operational, accessibility, currentness, and trace failures. Reusing it concentrates effort on realistic connected workflows and a coherent final atlas while keeping the project recoverable.
+- Affected artifacts: `control/WAVE-002_EXECUTION_ADJUSTMENT.md`, `control/EXECUTION_PLAN.md`, persistent project state, remaining wave plans, rendered reviews, prototypes, construction packets, and final consolidation.
+- Reversibility: Medium; the freeze can be amended for a documented uncovered failure, while the deliverable-first progress model remains the default.

@@ -388,7 +388,7 @@ tasks:
   - id: WAVE-001
     title: Deliver plan, dispatch, crew, verification, time, and cost wave
     phase: production_wave
-    status: in_progress
+    status: complete
     depends_on: [VIS-FND-001]
     artifacts:
       [
@@ -419,23 +419,34 @@ tasks:
     owner: parent_agent
     branch: codex/wave-001
     started_at: "2026-07-13T22:49:42.4994248-07:00"
+    commit: ef6fc3e3abeb82f93050c506efc80ff2ebf38980
+    completed_at: "2026-07-14T00:39:33.3596587-07:00"
     reviewers:
-      [workflow_architect, system_architect, quality_architect, parent_agent]
+      [wave1_operational_critic, wave1_visual_a11y_critic, parent_agent]
+    notes: Accepted after two independent re-review passes; 13 screens, 64 review states, 22 current captures, three active construction packets, complete task replays, and the full verifier pass with no unresolved findings.
   - id: WAVE-002
     title: Deliver scouting, protection, irrigation, and fertility wave
     phase: production_wave
-    status: planned
+    status: ready
     depends_on: [WAVE-001]
-    artifacts: [atlas, screens, prototypes, design-system, construction-packets]
+    artifacts:
+      [
+        control/WAVE-002_EXECUTION_ADJUSTMENT.md,
+        atlas,
+        prototypes,
+        construction-packets,
+        figma,
+      ]
     acceptance_criteria:
       [
-        Wave loop and rendered acceptance checks pass with restrictions,
-        approvals,
-        offline,
-        blocked,
-        and correction states,
+        Complete scouting protection irrigation and fertility tasks are accepted through rendered desktop and mobile walkthroughs,
+        visible actor scope timing evidence restriction approval and connectivity context supports every consequential decision,
+        field responsibilities expose an enabled next action inside the initial viewport,
+        normal urgent blocked partial corrected offline stale conflict and recovery states are covered where operationally relevant,
+        screen compositions avoid repetitive templates while remaining consistent with the accepted Canopy Signal system,
       ]
-    checks: [npm run verify, browser and trace review]
+    checks:
+      [rendered task walkthrough, browser accessibility review, npm run verify]
     gate_ids: [G8]
     owner: parent_agent
   - id: WAVE-003

@@ -1,6 +1,6 @@
 packet_version: 1.0.0
-updated_at: "2026-07-13T22:49:42.4994248-07:00"
-state: production_wave_in_progress
+updated_at: "2026-07-14T00:41:34.0006539-07:00"
+state: production_wave_ready
 repository: b2b-sol/vineyard-visual-system
 visibility: public
 execution_identity: tiklebot
@@ -9,8 +9,8 @@ repository_permission: admin
 bot_auth_verified_at: "2026-07-13T20:52:59.4714367-07:00"
 preferred_parent_model: gpt-5.6-sol
 current_phase: production_wave
-next_task: WAVE-001 deliver plan, dispatch, crew, verification, time, and cost wave
-last_completed_task: VIS-FND-001
+next_task: WAVE-002 deliver scouting, protection, irrigation, and fertility wave
+last_completed_task: WAVE-001
 owner_bootstrap_complete: true
 bot_auth_verified: true
 packet_review_complete: true
@@ -66,10 +66,13 @@ visual_foundation_metrics:
   unresolved_p0: 0
   unresolved_p1: 0
   unresolved_p2: 0
-active_wave: WAVE-001
-active_wave_plan: control/WAVE-001_PLAN.md
-active_wave_review:
-  status: approved_for_implementation
+active_wave: null
+next_wave: WAVE-002
+active_wave_plan: null
+last_wave: WAVE-001
+last_wave_commit: ef6fc3e3abeb82f93050c506efc80ff2ebf38980
+last_wave_review:
+  status: passed
   screens: 13
   public_components: 27
   review_states: 64
@@ -77,5 +80,24 @@ active_wave_review:
   primary_prototypes: 2
   linked_evidence_prototypes: 1
   construction_packets: 3
-  planning_reviewers:
-    [workflow_architect, system_architect, quality_architect, parent_agent]
+  reviewers: [wave1_operational_critic, wave1_visual_a11y_critic, parent_agent]
+foundation_freeze:
+  status: active
+  effective_after: WAVE-001
+  decision: DEC-015
+  adjustment: control/WAVE-002_EXECUTION_ADJUSTMENT.md
+  surfaces:
+    [
+      workflow_ontology,
+      product_contracts,
+      schemas,
+      validators,
+      traceability,
+      orchestration,
+      synthetic_season,
+      tokens,
+      ci,
+      capture_pipeline,
+      figma_mapping,
+    ]
+progress_model: accepted_human_visible_artifacts_and_complete_workflow_walkthroughs

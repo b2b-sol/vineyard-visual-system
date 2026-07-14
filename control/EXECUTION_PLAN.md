@@ -27,7 +27,9 @@ Cross-cutting overlays: stable block identity; exceptions/escalation; permission
 
 ## Per-wave acceptance loop
 
-Evidence and workflow model -> scenarios and fixtures -> low fidelity -> critic -> high fidelity and states -> component extraction -> prototype and construction packets -> browser/accessibility validation -> trace audit -> integration.
+Beginning with WAVE-002, use the accepted WAVE-001 foundation without expanding it: choose the key user task -> compose the complete rendered workflow -> walk normal, exception, and recovery paths on desktop and mobile -> resolve visual and task-review findings -> package construction and Figma handoff evidence -> integrate.
+
+Rendered visual review and task-based walkthroughs are the primary quality mechanism. Machine checks confirm foundation health but do not substitute for a coherent human-visible result. The governing reset is `control/WAVE-002_EXECUTION_ADJUSTMENT.md`.
 
 ## Durable gates
 

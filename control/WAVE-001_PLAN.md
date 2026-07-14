@@ -1,5 +1,7 @@
 # WAVE-001 Delivery Contract
 
+Status: accepted on 2026-07-14. This wave closes infrastructure expansion; subsequent work follows `control/WAVE-002_EXECUTION_ADJUSTMENT.md`.
+
 ## Purpose
 
 Deliver `WF-001` seasonal planning, dispatch, execution, and verification together with `WF-007` crew scheduling, attendance, time, payroll, and cost allocation as one connected operational package. This is the first production wave and establishes the reusable production system for the remaining four waves.
