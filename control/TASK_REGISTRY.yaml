@@ -252,7 +252,7 @@ tasks:
   - id: DATA-001
     title: Create seeded operation contracts and full-season data
     phase: synthetic_data
-    status: review
+    status: complete
     depends_on: [WF-002]
     artifacts:
       [
@@ -289,7 +289,10 @@ tasks:
     gate_ids: [G4]
     owner: data_synthesizer
     branch: codex/synthetic-season
+    pull_request: 5
+    commit: 252c520f37f0dfbd43017b06dc7bbe789d1af631
     started_at: "2026-07-13T17:03:00-07:00"
+    completed_at: "2026-07-13T19:15:24-07:00"
     reviewers: [data_generator, independent_data_critic, parent_agent]
     notes: Approved with no unresolved P0/P1 findings; protected merge and target-branch provenance reconciliation remain.
   - id: PROD-001
