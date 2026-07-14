@@ -13,6 +13,7 @@ import {
   createScreenViewModel,
   formatMoment,
   statePresentation,
+  visibleComponentIds,
 } from "../data/screenViewModel";
 import { resolveScreenState } from "../data/wave001";
 import { NotFoundPage } from "./NotFoundPage";
@@ -65,6 +66,7 @@ export function ProductionScreenPage() {
   const presentation =
     statePresentation[model.reviewState] ?? statePresentation.normal;
   const stateContracts = getStateContracts(model.screen.id);
+  const visibleComponents = visibleComponentIds(model);
 
   const componentProps = {
     model,
@@ -196,6 +198,19 @@ export function ProductionScreenPage() {
           )}
         </section>
 
+        <div
+          className="wave-component-grid"
+          data-visible-component-count={visibleComponents.length}
+        >
+          {visibleComponents.map((componentId) => (
+            <PublicComponent
+              {...componentProps}
+              componentId={componentId}
+              key={componentId}
+            />
+          ))}
+        </div>
+
         <section
           aria-label="Review state and fixture controls"
           className="wave-review-controls"
@@ -269,18 +284,6 @@ export function ProductionScreenPage() {
             remains available below.
           </div>
         )}
-
-        <div className="wave-component-grid">
-          {model.componentIds
-            .filter((componentId) => componentId !== "CMP-002")
-            .map((componentId) => (
-              <PublicComponent
-                {...componentProps}
-                componentId={componentId}
-                key={componentId}
-              />
-            ))}
-        </div>
 
         <footer className="wave-screen-footer">
           <div>

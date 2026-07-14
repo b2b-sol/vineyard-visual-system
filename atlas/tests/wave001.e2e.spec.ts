@@ -33,9 +33,12 @@ test.describe("WAVE-001 production atlas", () => {
         });
         const screen = page.locator(`[data-screen-id="${screenId}"]`);
         await expect(screen).toHaveAttribute("data-review-state", state);
-        await expect(
-          screen.locator('[data-component-id="CMP-036"]'),
-        ).toBeVisible();
+        await expect(screen.locator(".wave-state-banner")).toBeVisible();
+        expect(
+          await screen
+            .locator(".wave-component-grid [data-component-id]")
+            .count(),
+        ).toBeGreaterThanOrEqual(3);
         await expect(page.locator("[data-scenario-id]").first()).toBeVisible();
         rendered += 1;
       }

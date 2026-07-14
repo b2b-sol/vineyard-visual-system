@@ -28,6 +28,57 @@ export interface ScreenViewModel extends ResolvedScreenState {
   recordLinks: ReturnType<typeof getRelatedLinks>;
 }
 
+const layoutComponentPriorities: Record<
+  ResolvedScreenState["recipe"]["layout"],
+  PublicComponentId[]
+> = {
+  brief: ["CMP-001", "CMP-008", "CMP-018", "CMP-026"],
+  plan: ["CMP-005", "CMP-008", "CMP-021", "CMP-022"],
+  dispatch: ["CMP-001", "CMP-010", "CMP-020", "CMP-021"],
+  field: ["CMP-004", "CMP-007", "CMP-020", "CMP-021"],
+  evidence: ["CMP-005", "CMP-013", "CMP-014", "CMP-034"],
+  labor: ["CMP-001", "CMP-008", "CMP-012", "CMP-020"],
+};
+
+const stateComponentPriorities: Record<string, PublicComponentId[]> = {
+  normal: ["CMP-006", "CMP-007", "CMP-036"],
+  offline: ["CMP-015", "CMP-016", "CMP-036"],
+  partial: ["CMP-012", "CMP-020", "CMP-036"],
+  urgent: ["CMP-010", "CMP-018", "CMP-019"],
+  completion: ["CMP-014", "CMP-035", "CMP-036"],
+  blocked: ["CMP-010", "CMP-011", "CMP-036"],
+  stale: ["CMP-005", "CMP-017", "CMP-036"],
+  corrected: ["CMP-013", "CMP-014", "CMP-034"],
+  historical: ["CMP-005", "CMP-014", "CMP-035"],
+  conflict: ["CMP-015", "CMP-016", "CMP-034"],
+  loading: ["CMP-005", "CMP-006", "CMP-017"],
+  empty: ["CMP-001", "CMP-006", "CMP-036"],
+  error: ["CMP-009", "CMP-010", "CMP-034"],
+};
+
+export function visibleComponentIds(model: ScreenViewModel) {
+  const declared = model.componentIds.filter(
+    (componentId) => componentId !== "CMP-002",
+  );
+  const stateIndex = Math.max(
+    0,
+    model.screen.states.findIndex((state) => state.id === model.reviewState),
+  );
+  const stateCount = Math.max(1, model.screen.states.length);
+  const stateShard = declared.filter(
+    (_, componentIndex) => componentIndex % stateCount === stateIndex,
+  );
+  const ordered = [
+    ...layoutComponentPriorities[model.recipe.layout],
+    ...(stateComponentPriorities[model.reviewState] ??
+      stateComponentPriorities.normal),
+    ...stateShard,
+  ];
+  return [...new Set(ordered)].filter((componentId) =>
+    declared.includes(componentId),
+  );
+}
+
 export function createScreenViewModel(
   resolved: ResolvedScreenState,
 ): ScreenViewModel {

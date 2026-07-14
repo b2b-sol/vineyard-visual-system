@@ -12,7 +12,10 @@ import {
   resolveScreenState,
   reviewStateCount,
 } from "../../src/data/wave001";
-import { createScreenViewModel } from "../../src/data/screenViewModel";
+import {
+  createScreenViewModel,
+  visibleComponentIds,
+} from "../../src/data/screenViewModel";
 import { publicComponentExports } from "../../src/components/production/componentRegistry";
 import { buildPrototypeSteps } from "../../src/data/prototypes";
 import { describe, expect, it } from "vitest";
@@ -67,6 +70,27 @@ describe("WAVE-001 registry-backed atlas", () => {
       );
       expect(getComponentsForScreen(screenId).map((item) => item.id)).toContain(
         "CMP-036",
+      );
+    }
+  });
+
+  it("realizes each screen contract as a focused state composition with exact union coverage", () => {
+    for (const screen of waveScreens) {
+      const realized = new Set<string>();
+      for (const state of screen.states) {
+        const model = createScreenViewModel(
+          resolveScreenState(screen.id, state.id),
+        );
+        const visible = visibleComponentIds(model);
+        expect(visible.length).toBeGreaterThanOrEqual(3);
+        expect(visible.length).toBeLessThan(model.componentIds.length);
+        for (const componentId of visible) realized.add(componentId);
+      }
+      realized.add("CMP-002");
+      expect([...realized].sort()).toEqual(
+        getComponentsForScreen(screen.id)
+          .map((component) => component.id)
+          .sort(),
       );
     }
   });
