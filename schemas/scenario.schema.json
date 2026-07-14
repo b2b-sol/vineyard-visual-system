@@ -264,6 +264,8 @@
         "record_writes",
         "decision_results",
         "exception_history_ids",
+        "connectivity_mode",
+        "sync_status",
         "handoff",
         "fixture_ref"
       ],
@@ -333,6 +335,8 @@
           "uniqueItems": true,
           "items": { "type": "string", "pattern": "^EXH-[0-9]{4}$" }
         },
+        "connectivity_mode": { "type": "string", "minLength": 2 },
+        "sync_status": { "type": "string", "minLength": 2 },
         "handoff": {
           "type": "object",
           "required": [

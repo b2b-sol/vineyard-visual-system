@@ -10,7 +10,7 @@ The canonical catalog contains **80 substantive scenarios**: 70 workflow-specifi
 | Fixture pointers             | 60 / 60   |
 | Unique season events used    | 384 / 426 |
 | Scenario categories          | 9 / 9     |
-| Offline-grounded scenarios   | 7         |
+| Offline-grounded scenarios   | 8         |
 | Exception-grounded scenarios | 43        |
 
 ## WF-001 · Seasonal planning, dispatch, execution, and verification

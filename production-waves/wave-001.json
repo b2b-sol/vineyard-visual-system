@@ -1,0 +1,1273 @@
+{
+  "schema_version": "1.0",
+  "id": "WAVE-001",
+  "title": "Seasonal work and labor-to-cost operations",
+  "status": "complete",
+  "workflow_ids": ["WF-001", "WF-007"],
+  "screen_ids": [
+    "SCR-001",
+    "SCR-002",
+    "SCR-003",
+    "SCR-004",
+    "SCR-005",
+    "SCR-006",
+    "SCR-039",
+    "SCR-040",
+    "SCR-041",
+    "SCR-042",
+    "SCR-043",
+    "SCR-044",
+    "SCR-045"
+  ],
+  "public_component_ids": [
+    "CMP-001",
+    "CMP-002",
+    "CMP-003",
+    "CMP-004",
+    "CMP-005",
+    "CMP-006",
+    "CMP-007",
+    "CMP-008",
+    "CMP-009",
+    "CMP-010",
+    "CMP-011",
+    "CMP-012",
+    "CMP-013",
+    "CMP-014",
+    "CMP-015",
+    "CMP-016",
+    "CMP-017",
+    "CMP-018",
+    "CMP-019",
+    "CMP-020",
+    "CMP-021",
+    "CMP-022",
+    "CMP-026",
+    "CMP-033",
+    "CMP-034",
+    "CMP-035",
+    "CMP-036"
+  ],
+  "flow_ids": ["FLW-001", "FLW-007", "FLW-015"],
+  "construction_packet_ids": ["PKT-002", "PKT-003", "PKT-004"],
+  "state_inventory": [
+    {
+      "screen_id": "SCR-001",
+      "route": "/screens/SCR-001",
+      "platform": "responsive",
+      "review_states": ["normal", "offline", "partial", "urgent", "completion"],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0001"]
+        },
+        {
+          "state": "offline",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0002"]
+        },
+        {
+          "state": "partial",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0003"]
+        },
+        {
+          "state": "urgent",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0004"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0005"]
+        }
+      ],
+      "fixture_ids": ["FIX-002", "FIX-005", "FIX-006", "FIX-003", "FIX-033"]
+    },
+    {
+      "screen_id": "SCR-002",
+      "route": "/screens/SCR-002",
+      "platform": "responsive",
+      "review_states": ["normal", "blocked", "partial", "completion"],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0006", "STM-0007"]
+        },
+        {
+          "state": "blocked",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0008"]
+        },
+        {
+          "state": "partial",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0009"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0010"]
+        }
+      ],
+      "fixture_ids": ["FIX-002", "FIX-005", "FIX-006", "FIX-003", "FIX-033"]
+    },
+    {
+      "screen_id": "SCR-003",
+      "route": "/screens/SCR-003",
+      "platform": "responsive",
+      "review_states": ["normal", "blocked", "stale", "partial", "completion"],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0011", "STM-0012"]
+        },
+        {
+          "state": "blocked",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0013"]
+        },
+        {
+          "state": "stale",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0014"]
+        },
+        {
+          "state": "partial",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0015"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0016"]
+        }
+      ],
+      "fixture_ids": ["FIX-002", "FIX-005", "FIX-006", "FIX-003", "FIX-033"]
+    },
+    {
+      "screen_id": "SCR-004",
+      "route": "/screens/SCR-004",
+      "platform": "responsive",
+      "review_states": [
+        "normal",
+        "blocked",
+        "stale",
+        "corrected",
+        "completion"
+      ],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0017", "STM-0018", "STM-0019", "STM-0020"]
+        },
+        {
+          "state": "blocked",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0021"]
+        },
+        {
+          "state": "stale",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0022"]
+        },
+        {
+          "state": "corrected",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0023"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0024"]
+        }
+      ],
+      "fixture_ids": [
+        "FIX-002",
+        "FIX-052",
+        "FIX-005",
+        "FIX-006",
+        "FIX-003",
+        "FIX-033"
+      ]
+    },
+    {
+      "screen_id": "SCR-005",
+      "route": "/screens/SCR-005",
+      "platform": "mobile",
+      "review_states": [
+        "normal",
+        "blocked",
+        "corrected",
+        "historical",
+        "completion"
+      ],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": [
+            "STM-0025",
+            "STM-0026",
+            "STM-0027",
+            "STM-0028",
+            "STM-0029",
+            "STM-0030",
+            "STM-0031"
+          ]
+        },
+        {
+          "state": "blocked",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0032"]
+        },
+        {
+          "state": "corrected",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0033"]
+        },
+        {
+          "state": "historical",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0034"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0035"]
+        }
+      ],
+      "fixture_ids": [
+        "FIX-002",
+        "FIX-052",
+        "FIX-003",
+        "FIX-053",
+        "FIX-004",
+        "FIX-054",
+        "FIX-005",
+        "FIX-006",
+        "FIX-033"
+      ]
+    },
+    {
+      "screen_id": "SCR-006",
+      "route": "/screens/SCR-006",
+      "platform": "responsive",
+      "review_states": [
+        "normal",
+        "stale",
+        "corrected",
+        "offline",
+        "completion"
+      ],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0036", "STM-0037", "STM-0038"]
+        },
+        {
+          "state": "stale",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0039"]
+        },
+        {
+          "state": "corrected",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0040"]
+        },
+        {
+          "state": "offline",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0041"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0042"]
+        }
+      ],
+      "fixture_ids": [
+        "FIX-002",
+        "FIX-052",
+        "FIX-003",
+        "FIX-053",
+        "FIX-004",
+        "FIX-054",
+        "FIX-005",
+        "FIX-006",
+        "FIX-033"
+      ]
+    },
+    {
+      "screen_id": "SCR-039",
+      "route": "/screens/SCR-039",
+      "platform": "responsive",
+      "review_states": [
+        "normal",
+        "blocked",
+        "urgent",
+        "historical",
+        "completion"
+      ],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0269", "STM-0270", "STM-0271"]
+        },
+        {
+          "state": "blocked",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0272"]
+        },
+        {
+          "state": "urgent",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0273"]
+        },
+        {
+          "state": "historical",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0274"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0275"]
+        }
+      ],
+      "fixture_ids": ["FIX-032", "FIX-047"]
+    },
+    {
+      "screen_id": "SCR-040",
+      "route": "/screens/SCR-040",
+      "platform": "responsive",
+      "review_states": ["normal", "urgent", "partial", "offline", "completion"],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0276", "STM-0277", "STM-0278"]
+        },
+        {
+          "state": "urgent",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0279"]
+        },
+        {
+          "state": "partial",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0280"]
+        },
+        {
+          "state": "offline",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0281"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0282"]
+        }
+      ],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ]
+    },
+    {
+      "screen_id": "SCR-041",
+      "route": "/screens/SCR-041",
+      "platform": "mobile",
+      "review_states": ["normal", "blocked", "urgent", "stale", "completion"],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0283", "STM-0284"]
+        },
+        {
+          "state": "blocked",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0285"]
+        },
+        {
+          "state": "urgent",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0286"]
+        },
+        {
+          "state": "stale",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0287"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0288"]
+        }
+      ],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ]
+    },
+    {
+      "screen_id": "SCR-042",
+      "route": "/screens/SCR-042",
+      "platform": "mobile",
+      "review_states": [
+        "normal",
+        "blocked",
+        "urgent",
+        "conflict",
+        "completion"
+      ],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": [
+            "STM-0289",
+            "STM-0290",
+            "STM-0291",
+            "STM-0292",
+            "STM-0293",
+            "STM-0294",
+            "STM-0295"
+          ]
+        },
+        {
+          "state": "blocked",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0296"]
+        },
+        {
+          "state": "urgent",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0297"]
+        },
+        {
+          "state": "conflict",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0298"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0299"]
+        }
+      ],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-031"
+      ]
+    },
+    {
+      "screen_id": "SCR-043",
+      "route": "/screens/SCR-043",
+      "platform": "desktop",
+      "review_states": ["normal", "blocked", "urgent", "loading", "completion"],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": [
+            "STM-0300",
+            "STM-0301",
+            "STM-0302",
+            "STM-0303",
+            "STM-0304"
+          ]
+        },
+        {
+          "state": "blocked",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0305"]
+        },
+        {
+          "state": "urgent",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0306"]
+        },
+        {
+          "state": "loading",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0307"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0308"]
+        }
+      ],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ]
+    },
+    {
+      "screen_id": "SCR-044",
+      "route": "/screens/SCR-044",
+      "platform": "responsive",
+      "review_states": [
+        "normal",
+        "blocked",
+        "corrected",
+        "empty",
+        "completion"
+      ],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0309", "STM-0310"]
+        },
+        {
+          "state": "blocked",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0311"]
+        },
+        {
+          "state": "corrected",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0312"]
+        },
+        {
+          "state": "empty",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0313"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0314"]
+        }
+      ],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ]
+    },
+    {
+      "screen_id": "SCR-045",
+      "route": "/screens/SCR-045",
+      "platform": "responsive",
+      "review_states": ["normal", "urgent", "partial", "error", "completion"],
+      "state_sources": [
+        {
+          "state": "normal",
+          "evidence_status": "fixture_realized",
+          "state_matrix_ids": ["STM-0315"]
+        },
+        {
+          "state": "urgent",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0316"]
+        },
+        {
+          "state": "partial",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0317"]
+        },
+        {
+          "state": "error",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0318"]
+        },
+        {
+          "state": "completion",
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0319"]
+        }
+      ],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ]
+    }
+  ],
+  "low_fidelity_strips": [
+    {
+      "screen_id": "SCR-001",
+      "sequence": 1,
+      "platform": "responsive",
+      "responsibility": "Daily operations brief supports seasonal planning, dispatch, execution, and verification by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004", "CMP-021"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-026"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-001", "CMP-007"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-012",
+            "CMP-014",
+            "CMP-015",
+            "CMP-016",
+            "CMP-017",
+            "CMP-018",
+            "CMP-019",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "offline", "partial", "urgent", "completion"]
+    },
+    {
+      "screen_id": "SCR-002",
+      "sequence": 2,
+      "platform": "responsive",
+      "responsibility": "Seasonal plan supports seasonal planning, dispatch, execution, and verification by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004", "CMP-021", "CMP-022"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-008", "CMP-026"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-007"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-012",
+            "CMP-014",
+            "CMP-015",
+            "CMP-016",
+            "CMP-017",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "blocked", "partial", "completion"]
+    },
+    {
+      "screen_id": "SCR-003",
+      "sequence": 3,
+      "platform": "responsive",
+      "responsibility": "Work plan detail supports seasonal planning, dispatch, execution, and verification by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004", "CMP-021", "CMP-022"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-008", "CMP-026"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-007", "CMP-033"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-012",
+            "CMP-013",
+            "CMP-014",
+            "CMP-016",
+            "CMP-017",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "blocked", "stale", "partial", "completion"]
+    },
+    {
+      "screen_id": "SCR-004",
+      "sequence": 4,
+      "platform": "responsive",
+      "responsibility": "Dispatch board supports seasonal planning, dispatch, execution, and verification by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004", "CMP-021"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-008", "CMP-026"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-001", "CMP-007", "CMP-020"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-010",
+            "CMP-011",
+            "CMP-012",
+            "CMP-014",
+            "CMP-015",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "blocked", "stale", "corrected", "completion"]
+    },
+    {
+      "screen_id": "SCR-005",
+      "sequence": 5,
+      "platform": "mobile",
+      "responsibility": "Field assignment supports seasonal planning, dispatch, execution, and verification by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004", "CMP-021"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-008", "CMP-009", "CMP-026"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-007", "CMP-020"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-010",
+            "CMP-012",
+            "CMP-013",
+            "CMP-014",
+            "CMP-015",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": [
+        "normal",
+        "blocked",
+        "corrected",
+        "historical",
+        "completion"
+      ]
+    },
+    {
+      "screen_id": "SCR-006",
+      "sequence": 6,
+      "platform": "responsive",
+      "responsibility": "Verification and history supports seasonal planning, dispatch, execution, and verification by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004", "CMP-021"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-008", "CMP-009", "CMP-026"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-007", "CMP-033"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-010",
+            "CMP-012",
+            "CMP-014",
+            "CMP-015",
+            "CMP-035",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "stale", "corrected", "offline", "completion"]
+    },
+    {
+      "screen_id": "SCR-039",
+      "sequence": 7,
+      "platform": "responsive",
+      "responsibility": "Labor demand supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-008"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-001", "CMP-007", "CMP-020"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-010",
+            "CMP-014",
+            "CMP-015",
+            "CMP-017",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "blocked", "urgent", "historical", "completion"]
+    },
+    {
+      "screen_id": "SCR-040",
+      "sequence": 8,
+      "platform": "responsive",
+      "responsibility": "Crew schedule supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004", "CMP-022"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-008"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-007", "CMP-020"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-010",
+            "CMP-012",
+            "CMP-014",
+            "CMP-015",
+            "CMP-017",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "urgent", "partial", "offline", "completion"]
+    },
+    {
+      "screen_id": "SCR-041",
+      "sequence": 9,
+      "platform": "mobile",
+      "responsibility": "Check-in kiosk supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-007", "CMP-020"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-010",
+            "CMP-012",
+            "CMP-014",
+            "CMP-015",
+            "CMP-017",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "blocked", "urgent", "stale", "completion"]
+    },
+    {
+      "screen_id": "SCR-042",
+      "sequence": 10,
+      "platform": "mobile",
+      "responsibility": "Crew workboard supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-008"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-001", "CMP-007", "CMP-020"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-010",
+            "CMP-011",
+            "CMP-012",
+            "CMP-014",
+            "CMP-015",
+            "CMP-017",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "blocked", "urgent", "conflict", "completion"]
+    },
+    {
+      "screen_id": "SCR-043",
+      "sequence": 11,
+      "platform": "desktop",
+      "responsibility": "Time review supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-008"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-007", "CMP-020", "CMP-033"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-010",
+            "CMP-012",
+            "CMP-014",
+            "CMP-015",
+            "CMP-017",
+            "CMP-035",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "blocked", "urgent", "loading", "completion"]
+    },
+    {
+      "screen_id": "SCR-044",
+      "sequence": 12,
+      "platform": "responsive",
+      "responsibility": "Payroll exception supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004"]
+        },
+        {
+          "id": "REG-03",
+          "kind": "decision",
+          "responsibility": "Present the evidence needed for the primary decision.",
+          "component_ids": ["CMP-008"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-007", "CMP-020"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-010",
+            "CMP-012",
+            "CMP-013",
+            "CMP-014",
+            "CMP-015",
+            "CMP-017",
+            "CMP-018",
+            "CMP-019",
+            "CMP-034",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "blocked", "corrected", "empty", "completion"]
+    },
+    {
+      "screen_id": "SCR-045",
+      "sequence": 13,
+      "platform": "responsive",
+      "responsibility": "Cost allocation supports crew scheduling, attendance, time, payroll, and cost allocation by making current scope, evidence, authority, state, and accountable next actions explicit.",
+      "ordered_regions": [
+        {
+          "id": "REG-01",
+          "kind": "context",
+          "responsibility": "Orient the actor to current work and navigation.",
+          "component_ids": ["CMP-002"]
+        },
+        {
+          "id": "REG-02",
+          "kind": "identity",
+          "responsibility": "Keep stable scope, actor, and effective time explicit.",
+          "component_ids": ["CMP-003", "CMP-004"]
+        },
+        {
+          "id": "REG-04",
+          "kind": "workflow",
+          "responsibility": "Expose accountable state and permitted next actions.",
+          "component_ids": ["CMP-007", "CMP-020"]
+        },
+        {
+          "id": "REG-05",
+          "kind": "continuity",
+          "responsibility": "Preserve status, exception, sync, notification, and record lineage.",
+          "component_ids": [
+            "CMP-005",
+            "CMP-006",
+            "CMP-010",
+            "CMP-012",
+            "CMP-014",
+            "CMP-017",
+            "CMP-034",
+            "CMP-036"
+          ]
+        }
+      ],
+      "state_slots": ["normal", "urgent", "partial", "error", "completion"]
+    }
+  ],
+  "evidence_contract": {
+    "capture_manifest": "validation/wave-001-captures.json",
+    "review_record": "validation/wave-001-review.json",
+    "figma_maps": [
+      "figma/token-map.json",
+      "figma/component-map.json",
+      "figma/screen-map.json",
+      "figma/prototype-map.json"
+    ],
+    "primary_capture_count": 22,
+    "reflow_viewport": {
+      "width": 720,
+      "height": 512,
+      "equivalent_zoom_percent": 200
+    },
+    "print_screen_ids": ["SCR-006", "SCR-043", "SCR-045"]
+  }
+}

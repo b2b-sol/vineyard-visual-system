@@ -6,11 +6,11 @@
   "source_snapshot": [
     {
       "path": "data/operation.json",
-      "sha256": "c9967efa569a843bc6dccfe9eefd8659469fc40f9730c1dc920415c0336dfb75"
+      "sha256": "7f05872e3fd8f1c93a102009b4f9eda9e497f307ff77ebaeedfedf421791a135"
     },
     {
       "path": "data/events.json",
-      "sha256": "6670ba80a161e0ecb3bdb5da2732b23ec92066aad9a5893bdc42a26364505650"
+      "sha256": "49fe0593f3e9ddaff84361b0dec50f950a13b189ad09c4e582b80a624ee06509"
     },
     {
       "path": "data/exceptions.json",
@@ -26,14 +26,14 @@
     "exception_histories": 25,
     "operational_chains": 4,
     "overlays": 9,
-    "offline_fixtures": 5,
-    "conflict_fixtures": 6,
+    "offline_fixtures": 6,
+    "conflict_fixtures": 7,
     "category_counts": {
       "blocked": 3,
-      "conflict": 6,
+      "conflict": 7,
       "correction": 10,
-      "offline_delayed": 5,
-      "routine": 36
+      "offline_delayed": 6,
+      "routine": 34
     }
   },
   "fixtures": [
@@ -2064,8 +2064,8 @@
       "title": "WFI-0032 · Crew scheduling, attendance, time, payroll, and cost allocation — BLK-002 season case 2",
       "focus_kind": "workflow_instance",
       "selection_reason": "One deterministic fixture is retained for every full-season workflow instance so scenario coverage cannot silently omit an operational case.",
-      "category": "routine",
-      "state_flags": ["exception", "historical"],
+      "category": "conflict",
+      "state_flags": ["conflict", "exception", "historical"],
       "workflow_id": "WF-007",
       "workflow_instance_id": "WFI-0032",
       "current_state": "cost_allocated",
@@ -2082,9 +2082,9 @@
         "decision_ids": ["DEC-062"],
         "exception_history_ids": ["EXH-0018"],
         "connectivity": {
-          "mode": "online",
+          "mode": "intermittent",
           "captured_offline": false,
-          "sync_status": "synced"
+          "sync_status": "resolved"
         }
       },
       "event_ids": [
@@ -2199,26 +2199,26 @@
       "title": "WFI-0034 · Crew scheduling, attendance, time, payroll, and cost allocation — BLK-010 season case 4",
       "focus_kind": "workflow_instance",
       "selection_reason": "One deterministic fixture is retained for every full-season workflow instance so scenario coverage cannot silently omit an operational case.",
-      "category": "routine",
-      "state_flags": ["historical"],
+      "category": "offline_delayed",
+      "state_flags": ["historical", "offline"],
       "workflow_id": "WF-007",
       "workflow_instance_id": "WFI-0034",
       "current_state": "cost_allocated",
       "anchor": {
-        "event_id": "EVT-00307",
-        "transition_id": "TRN-WF-007-007",
-        "from_state": "payroll_accepted",
-        "to_state": "cost_allocated",
-        "semantic_kind": "reconciliation",
-        "actor_assignment_id": "ASG-018",
-        "occurred_at": "2026-09-13T15:00:00-07:00",
-        "record_reads": ["RCI-00298", "RCI-00299", "RCI-00303"],
-        "record_writes": ["RCI-00303"],
-        "decision_ids": [],
+        "event_id": "EVT-00301",
+        "transition_id": "TRN-WF-007-001",
+        "from_state": null,
+        "to_state": "crew_scheduled",
+        "semantic_kind": "assignment",
+        "actor_assignment_id": "ASG-004",
+        "occurred_at": "2026-09-13T06:00:00-07:00",
+        "record_reads": ["RCI-00025", "RCI-00293", "RCI-00294"],
+        "record_writes": ["RCI-00293"],
+        "decision_ids": ["DEC-061"],
         "exception_history_ids": [],
         "connectivity": {
-          "mode": "online",
-          "captured_offline": false,
+          "mode": "offline",
+          "captured_offline": true,
           "sync_status": "synced"
         }
       },

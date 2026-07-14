@@ -1,6 +1,6 @@
 schema_version: "1.0"
 generated_from: control/trace-nodes.json
-artifact_count: 367
+artifact_count: 368
 artifacts:
   - id: EVD-001
     type: evidence
@@ -621,12 +621,6 @@ artifacts:
       certification as one package
     path: scenarios/scenarios.json
     locator: json_id:SCN-900-10
-    status: approved
-  - id: FIX-001
-    type: fixture
-    title: Carneros Ridge blocked mowing recovery
-    path: data/walking-slice.json
-    locator: json_id:FIX-001
     status: approved
   - id: FIX-002
     type: fixture
@@ -2060,127 +2054,127 @@ artifacts:
     title: App shell
     path: product-structure/component-requirements.json
     locator: json_id:CMP-002
-    status: review
+    status: approved
   - id: CMP-003
     type: component
     title: Role and scope switcher
     path: product-structure/component-requirements.json
     locator: json_id:CMP-003
-    status: review
+    status: approved
   - id: CMP-004
     type: component
     title: Block identity chip
     path: product-structure/component-requirements.json
     locator: json_id:CMP-004
-    status: review
+    status: approved
   - id: CMP-005
     type: component
     title: Record provenance panel
     path: product-structure/component-requirements.json
     locator: json_id:CMP-005
-    status: review
+    status: approved
   - id: CMP-006
     type: component
     title: Workflow state rail
     path: product-structure/component-requirements.json
     locator: json_id:CMP-006
-    status: review
+    status: approved
   - id: CMP-007
     type: component
     title: Transition action bar
     path: product-structure/component-requirements.json
     locator: json_id:CMP-007
-    status: review
+    status: approved
   - id: CMP-008
     type: component
     title: Decision evidence panel
     path: product-structure/component-requirements.json
     locator: json_id:CMP-008
-    status: review
+    status: approved
   - id: CMP-009
     type: component
     title: Missing information callout
     path: product-structure/component-requirements.json
     locator: json_id:CMP-009
-    status: review
+    status: approved
   - id: CMP-010
     type: component
     title: Exception card
     path: product-structure/component-requirements.json
     locator: json_id:CMP-010
-    status: review
+    status: approved
   - id: CMP-011
     type: component
     title: Recovery checklist
     path: product-structure/component-requirements.json
     locator: json_id:CMP-011
-    status: review
+    status: approved
   - id: CMP-012
     type: component
     title: Partial scope meter
     path: product-structure/component-requirements.json
     locator: json_id:CMP-012
-    status: review
+    status: approved
   - id: CMP-013
     type: component
     title: Correction lineage
     path: product-structure/component-requirements.json
     locator: json_id:CMP-013
-    status: review
+    status: approved
   - id: CMP-014
     type: component
     title: Audit timeline
     path: product-structure/component-requirements.json
     locator: json_id:CMP-014
-    status: review
+    status: approved
   - id: CMP-015
     type: component
     title: Offline queue indicator
     path: product-structure/component-requirements.json
     locator: json_id:CMP-015
-    status: review
+    status: approved
   - id: CMP-016
     type: component
     title: Sync conflict resolver
     path: product-structure/component-requirements.json
     locator: json_id:CMP-016
-    status: review
+    status: approved
   - id: CMP-017
     type: component
     title: Staleness badge
     path: product-structure/component-requirements.json
     locator: json_id:CMP-017
-    status: review
+    status: approved
   - id: CMP-018
     type: component
     title: Notification center
     path: product-structure/component-requirements.json
     locator: json_id:CMP-018
-    status: review
+    status: approved
   - id: CMP-019
     type: component
     title: Escalation clock
     path: product-structure/component-requirements.json
     locator: json_id:CMP-019
-    status: review
+    status: approved
   - id: CMP-020
     type: component
     title: Assignment roster
     path: product-structure/component-requirements.json
     locator: json_id:CMP-020
-    status: review
+    status: approved
   - id: CMP-021
     type: component
     title: Block and row selector
     path: product-structure/component-requirements.json
     locator: json_id:CMP-021
-    status: review
+    status: approved
   - id: CMP-022
     type: component
     title: Date and effective-time control
     path: product-structure/component-requirements.json
     locator: json_id:CMP-022
-    status: review
+    status: approved
   - id: CMP-023
     type: component
     title: Sample chain panel
@@ -2204,7 +2198,7 @@ artifacts:
     title: Map scope viewer
     path: product-structure/component-requirements.json
     locator: json_id:CMP-026
-    status: review
+    status: approved
   - id: CMP-027
     type: component
     title: Load identity card
@@ -2246,28 +2240,40 @@ artifacts:
     title: Approval chain
     path: product-structure/component-requirements.json
     locator: json_id:CMP-033
-    status: review
+    status: approved
   - id: CMP-034
     type: component
     title: Reconciliation comparison
     path: product-structure/component-requirements.json
     locator: json_id:CMP-034
-    status: review
+    status: approved
   - id: CMP-035
     type: component
     title: Export evidence packet
     path: product-structure/component-requirements.json
     locator: json_id:CMP-035
-    status: review
+    status: approved
   - id: CMP-036
     type: component
     title: Accessible status legend
     path: product-structure/component-requirements.json
     locator: json_id:CMP-036
-    status: review
-  - id: PKT-001
+    status: approved
+  - id: PKT-002
     type: construction_packet
-    title: Morning dispatch and blocked-work redispatch
-    path: construction-packets/walking-slice.json
-    locator: json_id:PKT-001
+    title: Seasonal plan, dispatch, field execution, and verification
+    path: construction-packets/packets.json
+    locator: json_id:PKT-002
+    status: approved
+  - id: PKT-003
+    type: construction_packet
+    title: Crew demand, schedule, check-in, and field workboard
+    path: construction-packets/packets.json
+    locator: json_id:PKT-003
+    status: approved
+  - id: PKT-004
+    type: construction_packet
+    title: Time review, payroll exception, and cost allocation
+    path: construction-packets/packets.json
+    locator: json_id:PKT-004
     status: approved

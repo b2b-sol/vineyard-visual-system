@@ -1,0 +1,1247 @@
+{
+  "schema_version": "1.0",
+  "packets": [
+    {
+      "id": "PKT-002",
+      "title": "Seasonal plan, dispatch, field execution, and verification",
+      "purpose": "Specify the complete responsive and field execution package from a daily operational brief through approved seasonal work, dispatch, acknowledgement, completion, correction, verification, and immutable history.",
+      "workflow_ids": ["WF-001"],
+      "scenario_ids": [
+        "SCN-001-01",
+        "SCN-001-05",
+        "SCN-001-07",
+        "SCN-900-05",
+        "SCN-001-02",
+        "SCN-001-06",
+        "SCN-001-03",
+        "SCN-001-04"
+      ],
+      "fixture_ids": [
+        "FIX-002",
+        "FIX-005",
+        "FIX-006",
+        "FIX-003",
+        "FIX-033",
+        "FIX-052",
+        "FIX-053",
+        "FIX-004",
+        "FIX-054"
+      ],
+      "screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "component_ids": [
+        "CMP-001",
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-016",
+        "CMP-017",
+        "CMP-018",
+        "CMP-019",
+        "CMP-021",
+        "CMP-026",
+        "CMP-036",
+        "CMP-008",
+        "CMP-022",
+        "CMP-013",
+        "CMP-033",
+        "CMP-010",
+        "CMP-011",
+        "CMP-020",
+        "CMP-009",
+        "CMP-035"
+      ],
+      "roles": [
+        "ROLE-VITICULTURIST",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FIELD-CREW",
+        "ROLE-CONTRACTOR",
+        "ROLE-COMPLIANCE-COORDINATOR",
+        "ROLE-OWNER-GENERAL-MANAGER",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "preconditions": [
+        "Every operational record resolves through stable organization, property, block, and person identifiers.",
+        "Consequential actions use current default-deny permission, transition, notification, and sync contracts.",
+        "Accepted history is append-only; corrections and supersessions retain reciprocal predecessor and successor lineage.",
+        "Fixture, scenario, state, actor, record, and event identifiers remain visible at review boundaries."
+      ],
+      "state_contract": {
+        "initial": "observed",
+        "exception": "blocked",
+        "recovery": "assigned",
+        "terminal": "verified",
+        "history_policy": "Append attributable events and reciprocal correction or supersession lineage; never overwrite an accepted observation, assignment, execution, completion, time, payroll, or allocation fact."
+      },
+      "permission_contract": [
+        {
+          "role_id": "ROLE-VITICULTURIST",
+          "may": ["Record observed", "Record planned"],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-VINEYARD-MANAGER",
+          "may": [
+            "Record cancelled",
+            "Record approved",
+            "Record superseded",
+            "Record blocked",
+            "Record verified"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-FOREMAN",
+          "may": [
+            "Record acknowledged",
+            "Record in progress",
+            "Record completed",
+            "Record corrected",
+            "Record partially completed",
+            "Record correction required"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-OPERATIONS-COORDINATOR",
+          "may": ["Record assigned", "Resolve assigned"],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-FIELD-CREW",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-CONTRACTOR",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-COMPLIANCE-COORDINATOR",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-OWNER-GENERAL-MANAGER",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-ASSISTANT-VINEYARD-MANAGER",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        }
+      ],
+      "data_contract": {
+        "required_entities": [
+          "organization",
+          "person_and_assignment",
+          "stable_block_identity",
+          "workflow_instance",
+          "state_event",
+          "record_instance",
+          "exception_history"
+        ],
+        "stable_identifiers": [
+          "organization.id",
+          "person.id",
+          "role_assignment.id",
+          "block.stable_identity",
+          "workflow_instance.id",
+          "event.id",
+          "record_instance.id"
+        ],
+        "audit_fields": [
+          "event.occurred_at",
+          "event.actor_person_id",
+          "event.role_assignment_id",
+          "event.transition_id",
+          "event.reason",
+          "event.connectivity"
+        ]
+      },
+      "interaction_contract": [
+        {
+          "action_id": "ACT-001",
+          "precondition": "The actor satisfies PERM-002 and the current state is entry.",
+          "result": "The workflow advances through TRN-WF-001-001 to observed.",
+          "audit_event": "Append workflow.observation with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-004",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-002",
+          "precondition": "The actor satisfies PERM-002 and the current state is observed.",
+          "result": "The workflow advances through TRN-WF-001-002 to planned.",
+          "audit_event": "Append workflow.recommendation with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-011",
+          "precondition": "The actor satisfies PERM-002 and the current state is planned.",
+          "result": "The workflow advances through TRN-WF-001-009 to cancelled.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-007",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-003",
+          "precondition": "The actor satisfies PERM-002 and the current state is planned.",
+          "result": "The workflow advances through TRN-WF-001-003 to approved.",
+          "audit_event": "Append workflow.approval with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-012",
+          "precondition": "The actor satisfies PERM-005 and the current state is approved.",
+          "result": "The workflow advances through TRN-WF-001-010 to superseded.",
+          "audit_event": "Append workflow.supersession with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-013",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-005",
+          "precondition": "The actor satisfies PERM-002 and the current state is approved.",
+          "result": "The workflow advances through TRN-WF-001-004 to assigned.",
+          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-014",
+          "precondition": "The actor satisfies PERM-003 and the current state is blocked.",
+          "result": "The workflow advances through TRN-WF-001-011 to assigned.",
+          "audit_event": "Append workflow.recovery with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-015",
+          "precondition": "The actor satisfies PERM-003 and the current state is partially_completed.",
+          "result": "The workflow advances through TRN-WF-001-012 to assigned.",
+          "audit_event": "Append workflow.recovery with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-020",
+          "precondition": "The actor satisfies PERM-002 and the current state is assigned.",
+          "result": "The workflow advances through TRN-WF-001-016 to blocked.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-023",
+          "precondition": "The actor satisfies PERM-002 and the current state is assigned.",
+          "result": "The workflow advances through TRN-WF-001-018 to blocked.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-017",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-006",
+          "precondition": "The actor satisfies PERM-002 and the current state is assigned.",
+          "result": "The workflow advances through TRN-WF-001-005 to acknowledged.",
+          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-008",
+          "precondition": "The actor satisfies PERM-002 and the current state is acknowledged.",
+          "result": "The workflow advances through TRN-WF-001-006 to in_progress.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-009",
+          "precondition": "The actor satisfies PERM-002 and the current state is in_progress.",
+          "result": "The workflow advances through TRN-WF-001-007 to completed.",
+          "audit_event": "Append workflow.completion with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-016",
+          "precondition": "The actor satisfies PERM-002 and the current state is partially_completed.",
+          "result": "The workflow advances through TRN-WF-001-013 to completed.",
+          "audit_event": "Append workflow.completion with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-018",
+          "precondition": "The actor satisfies PERM-004 and the current state is correction_required.",
+          "result": "The workflow advances through TRN-WF-001-014 to corrected.",
+          "audit_event": "Append workflow.correction with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-024",
+          "precondition": "The actor satisfies PERM-002 and the current state is in_progress.",
+          "result": "The workflow advances through TRN-WF-001-019 to partially_completed.",
+          "audit_event": "Append workflow.completion with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-025",
+          "precondition": "The actor satisfies PERM-002 and the current state is completed.",
+          "result": "The workflow advances through TRN-WF-001-020 to correction_required.",
+          "audit_event": "Append workflow.correction with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-022",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-010",
+          "precondition": "The actor satisfies PERM-002 and the current state is completed.",
+          "result": "The workflow advances through TRN-WF-001-008 to verified.",
+          "audit_event": "Append workflow.verification with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-019",
+          "precondition": "The actor satisfies PERM-002 and the current state is corrected.",
+          "result": "The workflow advances through TRN-WF-001-015 to verified.",
+          "audit_event": "Append workflow.verification with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-021",
+          "precondition": "The actor satisfies PERM-002 and the current state is in_progress.",
+          "result": "The workflow advances through TRN-WF-001-017 to blocked.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-026",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        }
+      ],
+      "copy_contract": {
+        "status_labels": {
+          "normal": "Normal",
+          "offline": "Offline",
+          "partial": "Partial",
+          "urgent": "Urgent",
+          "completion": "Completion",
+          "blocked": "Blocked",
+          "stale": "Stale",
+          "corrected": "Corrected",
+          "historical": "Historical"
+        },
+        "error_messages": [
+          "This action is unavailable because current authority or scope does not match the record.",
+          "The record changed elsewhere; review the newer event before retrying.",
+          "Required evidence is incomplete. Accepted facts remain unchanged.",
+          "Offline work is queued with its original actor and capture time; no server fact was overwritten."
+        ]
+      },
+      "dependencies": [
+        "Canonical product registries under product-structure/",
+        "Connected synthetic operation, events, records, and scenario fixtures under data/",
+        "Canopy Signal DTCG tokens and generated CSS",
+        "Default-deny permission, notification, and synchronization registries",
+        "Wave-001 screen, component, capture, review, and Figma manifests"
+      ],
+      "acceptance_criteria": [
+        "Every SCR-001, SCR-002, SCR-003, SCR-004, SCR-005, SCR-006 route resolves its canonical scenario, fixture, state, action, permission, transition, event, and record identifiers.",
+        "Normal, urgent, blocked, partial, corrected, historical, offline, stale, conflict, loading, empty, error, and completion states appear where allocated by the wave contract.",
+        "Every consequential action is default-deny, names its disabled reason, and appends rather than rewrites accepted history.",
+        "Desktop and field surfaces preserve the same stable identity, state, accountable owner, effective time, and lineage.",
+        "Keyboard, focus, target-size, live-region, non-color, reduced-motion, overflow, print, and axe checks pass for the packet scope.",
+        "Direct screen-to-packet trace edges resolve every PKT-002 screen without relying on an unrelated component edge."
+      ],
+      "test_cases": [
+        {
+          "id": "TEST-101",
+          "category": "normal",
+          "assertion": "The primary fixture advances only through canonical transitions with exact actor and event attribution."
+        },
+        {
+          "id": "TEST-102",
+          "category": "exception",
+          "assertion": "Blocked or urgent work preserves accepted evidence, affected scope, owner, clock, and bounded recovery."
+        },
+        {
+          "id": "TEST-103",
+          "category": "recovery",
+          "assertion": "Recovery appends a new event and retains the original exception, partial fact, or predecessor record."
+        },
+        {
+          "id": "TEST-104",
+          "category": "permission",
+          "assertion": "An actor without an explicit matching permission rule sees a disabled action and cannot mutate state."
+        },
+        {
+          "id": "TEST-105",
+          "category": "accessibility",
+          "assertion": "State, urgency, disabled reason, progress, and lineage remain understandable without color or pointer input."
+        },
+        {
+          "id": "TEST-106",
+          "category": "responsive",
+          "assertion": "Canonical desktop, mobile, 200-percent-equivalent reflow, and print targets preserve operational meaning without page overflow."
+        },
+        {
+          "id": "TEST-107",
+          "category": "data",
+          "assertion": "Rendered values resolve to connected fixture events and records rather than disconnected sample copy."
+        }
+      ],
+      "figma_mapping": {
+        "frame_name": "PKT-002 · Seasonal plan, dispatch, field execution, and verification",
+        "component_names": [
+          "vineyard/workflow/work-order-queue",
+          "vineyard/navigation/app-shell",
+          "vineyard/identity/role-and-scope-switcher",
+          "vineyard/identity/block-identity-chip",
+          "vineyard/record/record-provenance-panel",
+          "vineyard/status/workflow-state-rail",
+          "vineyard/workflow/transition-action-bar",
+          "vineyard/status/partial-scope-meter",
+          "vineyard/record/audit-timeline",
+          "vineyard/sync/offline-queue-indicator",
+          "vineyard/sync/sync-conflict-resolver",
+          "vineyard/sync/staleness-badge",
+          "vineyard/feedback/notification-center",
+          "vineyard/feedback/escalation-clock",
+          "vineyard/input/block-and-row-selector",
+          "vineyard/data-visualization/map-scope-viewer",
+          "vineyard/status/accessible-status-legend",
+          "vineyard/decision/decision-evidence-panel",
+          "vineyard/input/date-and-effective-time-control",
+          "vineyard/record/correction-lineage",
+          "vineyard/workflow/approval-chain",
+          "vineyard/exception/exception-card",
+          "vineyard/exception/recovery-checklist",
+          "vineyard/workflow/assignment-roster",
+          "vineyard/decision/missing-information-callout",
+          "vineyard/feedback/export-evidence-packet"
+        ],
+        "stable_node_key": "figma-ready:PKT-002:SCR-001+SCR-002+SCR-003+SCR-004+SCR-005+SCR-006"
+      }
+    },
+    {
+      "id": "PKT-003",
+      "title": "Crew demand, schedule, check-in, and field workboard",
+      "purpose": "Specify a connected labor planning and field package from demand and crew scheduling through attributable check-in, briefing, heat or safety pause, rebriefing, work resumption, and completion evidence.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-02",
+        "SCN-007-04",
+        "SCN-900-07",
+        "SCN-007-01",
+        "SCN-007-03",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-09",
+        "SCN-007-05"
+      ],
+      "fixture_ids": [
+        "FIX-032",
+        "FIX-047",
+        "FIX-034",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-031"
+      ],
+      "screen_ids": ["SCR-039", "SCR-040", "SCR-041", "SCR-042"],
+      "component_ids": [
+        "CMP-001",
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-020",
+        "CMP-036",
+        "CMP-012",
+        "CMP-022",
+        "CMP-011"
+      ],
+      "roles": [
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN",
+        "ROLE-FIELD-CREW",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "preconditions": [
+        "Every operational record resolves through stable organization, property, block, and person identifiers.",
+        "Consequential actions use current default-deny permission, transition, notification, and sync contracts.",
+        "Accepted history is append-only; corrections and supersessions retain reciprocal predecessor and successor lineage.",
+        "Fixture, scenario, state, actor, record, and event identifiers remain visible at review boundaries."
+      ],
+      "state_contract": {
+        "initial": "crew_scheduled",
+        "exception": "paused",
+        "recovery": "rebriefed",
+        "terminal": "work_completed",
+        "history_policy": "Append attributable events and reciprocal correction or supersession lineage; never overwrite an accepted observation, assignment, execution, completion, time, payroll, or allocation fact."
+      },
+      "permission_contract": [
+        {
+          "role_id": "ROLE-OPERATIONS-COORDINATOR",
+          "may": [
+            "Record labor demanded",
+            "Record exception flagged",
+            "Record crew scheduled"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-VINEYARD-MANAGER",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-FOREMAN",
+          "may": [
+            "Record briefed",
+            "Record checked in",
+            "Record working",
+            "Record time submitted",
+            "Record checked out",
+            "Resolve briefed",
+            "Record paused",
+            "Record reassigned"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-FIELD-CREW",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-HARVEST-CREW-LEADER",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-LABOR-CONTRACTOR",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-PAYROLL",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-FINANCE",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-ASSISTANT-VINEYARD-MANAGER",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        }
+      ],
+      "data_contract": {
+        "required_entities": [
+          "organization",
+          "person_and_assignment",
+          "stable_block_identity",
+          "workflow_instance",
+          "state_event",
+          "record_instance",
+          "exception_history"
+        ],
+        "stable_identifiers": [
+          "organization.id",
+          "person.id",
+          "role_assignment.id",
+          "block.stable_identity",
+          "workflow_instance.id",
+          "event.id",
+          "record_instance.id"
+        ],
+        "audit_fields": [
+          "event.occurred_at",
+          "event.actor_person_id",
+          "event.role_assignment_id",
+          "event.transition_id",
+          "event.reason",
+          "event.connectivity"
+        ]
+      },
+      "interaction_contract": [
+        {
+          "action_id": "ACT-181",
+          "precondition": "The actor satisfies PERM-038 and the current state is entry.",
+          "result": "The workflow advances through TRN-WF-007-008 to labor_demanded.",
+          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-195",
+          "precondition": "The actor satisfies PERM-038 and the current state is crew_scheduled.",
+          "result": "The workflow advances through TRN-WF-007-018 to exception_flagged.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-196",
+          "precondition": "The actor satisfies PERM-038 and the current state is briefed.",
+          "result": "The workflow advances through TRN-WF-007-019 to exception_flagged.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-175",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-173",
+          "precondition": "The actor satisfies PERM-038 and the current state is entry.",
+          "result": "The workflow advances through TRN-WF-007-001 to crew_scheduled.",
+          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-174",
+          "precondition": "The actor satisfies PERM-038 and the current state is crew_scheduled.",
+          "result": "The workflow advances through TRN-WF-007-002 to briefed.",
+          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-182",
+          "precondition": "The actor satisfies PERM-038 and the current state is labor_demanded.",
+          "result": "The workflow advances through TRN-WF-007-009 to crew_scheduled.",
+          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-178",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-183",
+          "precondition": "The actor satisfies PERM-038 and the current state is briefed.",
+          "result": "The workflow advances through TRN-WF-007-010 to checked_in.",
+          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-184",
+          "precondition": "The actor satisfies PERM-038 and the current state is checked_in.",
+          "result": "The workflow advances through TRN-WF-007-011 to working.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-185",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-176",
+          "precondition": "The actor satisfies PERM-038 and the current state is briefed.",
+          "result": "The workflow advances through TRN-WF-007-003 to working.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-177",
+          "precondition": "The actor satisfies PERM-038 and the current state is working.",
+          "result": "The workflow advances through TRN-WF-007-004 to time_submitted.",
+          "audit_event": "Append workflow.completion with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-187",
+          "precondition": "The actor satisfies PERM-038 and the current state is working.",
+          "result": "The workflow advances through TRN-WF-007-012 to checked_out.",
+          "audit_event": "Append workflow.completion with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-190",
+          "precondition": "The actor satisfies PERM-039 and the current state is paused.",
+          "result": "The workflow advances through TRN-WF-007-014 to briefed.",
+          "audit_event": "Append workflow.recovery with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-191",
+          "precondition": "The actor satisfies PERM-039 and the current state is reassigned.",
+          "result": "The workflow advances through TRN-WF-007-015 to briefed.",
+          "audit_event": "Append workflow.recovery with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-199",
+          "precondition": "The actor satisfies PERM-038 and the current state is working.",
+          "result": "The workflow advances through TRN-WF-007-020 to paused.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-197",
+          "precondition": "The actor satisfies PERM-038 and the current state is working.",
+          "result": "The workflow advances through TRN-WF-007-021 to reassigned.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-189",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        }
+      ],
+      "copy_contract": {
+        "status_labels": {
+          "normal": "Normal",
+          "blocked": "Blocked",
+          "urgent": "Urgent",
+          "historical": "Historical",
+          "completion": "Completion",
+          "partial": "Partial",
+          "offline": "Offline",
+          "stale": "Stale",
+          "conflict": "Conflict"
+        },
+        "error_messages": [
+          "This action is unavailable because current authority or scope does not match the record.",
+          "The record changed elsewhere; review the newer event before retrying.",
+          "Required evidence is incomplete. Accepted facts remain unchanged.",
+          "Offline work is queued with its original actor and capture time; no server fact was overwritten."
+        ]
+      },
+      "dependencies": [
+        "Canonical product registries under product-structure/",
+        "Connected synthetic operation, events, records, and scenario fixtures under data/",
+        "Canopy Signal DTCG tokens and generated CSS",
+        "Default-deny permission, notification, and synchronization registries",
+        "Wave-001 screen, component, capture, review, and Figma manifests"
+      ],
+      "acceptance_criteria": [
+        "Every SCR-039, SCR-040, SCR-041, SCR-042 route resolves its canonical scenario, fixture, state, action, permission, transition, event, and record identifiers.",
+        "Normal, urgent, blocked, partial, corrected, historical, offline, stale, conflict, loading, empty, error, and completion states appear where allocated by the wave contract.",
+        "Every consequential action is default-deny, names its disabled reason, and appends rather than rewrites accepted history.",
+        "Desktop and field surfaces preserve the same stable identity, state, accountable owner, effective time, and lineage.",
+        "Keyboard, focus, target-size, live-region, non-color, reduced-motion, overflow, print, and axe checks pass for the packet scope.",
+        "Direct screen-to-packet trace edges resolve every PKT-003 screen without relying on an unrelated component edge."
+      ],
+      "test_cases": [
+        {
+          "id": "TEST-201",
+          "category": "normal",
+          "assertion": "The primary fixture advances only through canonical transitions with exact actor and event attribution."
+        },
+        {
+          "id": "TEST-202",
+          "category": "exception",
+          "assertion": "Blocked or urgent work preserves accepted evidence, affected scope, owner, clock, and bounded recovery."
+        },
+        {
+          "id": "TEST-203",
+          "category": "recovery",
+          "assertion": "Recovery appends a new event and retains the original exception, partial fact, or predecessor record."
+        },
+        {
+          "id": "TEST-204",
+          "category": "permission",
+          "assertion": "An actor without an explicit matching permission rule sees a disabled action and cannot mutate state."
+        },
+        {
+          "id": "TEST-205",
+          "category": "accessibility",
+          "assertion": "State, urgency, disabled reason, progress, and lineage remain understandable without color or pointer input."
+        },
+        {
+          "id": "TEST-206",
+          "category": "responsive",
+          "assertion": "Canonical desktop, mobile, 200-percent-equivalent reflow, and print targets preserve operational meaning without page overflow."
+        },
+        {
+          "id": "TEST-207",
+          "category": "data",
+          "assertion": "Rendered values resolve to connected fixture events and records rather than disconnected sample copy."
+        }
+      ],
+      "figma_mapping": {
+        "frame_name": "PKT-003 · Crew demand, schedule, check-in, and field workboard",
+        "component_names": [
+          "vineyard/workflow/work-order-queue",
+          "vineyard/navigation/app-shell",
+          "vineyard/identity/role-and-scope-switcher",
+          "vineyard/identity/block-identity-chip",
+          "vineyard/record/record-provenance-panel",
+          "vineyard/status/workflow-state-rail",
+          "vineyard/workflow/transition-action-bar",
+          "vineyard/decision/decision-evidence-panel",
+          "vineyard/exception/exception-card",
+          "vineyard/record/audit-timeline",
+          "vineyard/sync/offline-queue-indicator",
+          "vineyard/sync/staleness-badge",
+          "vineyard/workflow/assignment-roster",
+          "vineyard/status/accessible-status-legend",
+          "vineyard/status/partial-scope-meter",
+          "vineyard/input/date-and-effective-time-control",
+          "vineyard/exception/recovery-checklist"
+        ],
+        "stable_node_key": "figma-ready:PKT-003:SCR-039+SCR-040+SCR-041+SCR-042"
+      }
+    },
+    {
+      "id": "PKT-004",
+      "title": "Time review, payroll exception, and cost allocation",
+      "purpose": "Specify supervisory review of attributable crew time, append-only payroll correction, cross-organization authority, and final cost allocation without flattening the connected field-work evidence.",
+      "workflow_ids": ["WF-007"],
+      "scenario_ids": [
+        "SCN-007-01",
+        "SCN-007-02",
+        "SCN-007-03",
+        "SCN-007-04",
+        "SCN-007-05",
+        "SCN-007-06",
+        "SCN-007-07",
+        "SCN-900-05",
+        "SCN-900-07",
+        "SCN-900-09"
+      ],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ],
+      "screen_ids": ["SCR-043", "SCR-044", "SCR-045"],
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-020",
+        "CMP-033",
+        "CMP-035",
+        "CMP-036",
+        "CMP-013",
+        "CMP-018",
+        "CMP-019",
+        "CMP-034"
+      ],
+      "roles": [
+        "ROLE-VINEYARD-MANAGER",
+        "ROLE-FOREMAN",
+        "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FIELD-CREW",
+        "ROLE-HARVEST-CREW-LEADER",
+        "ROLE-LABOR-CONTRACTOR",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE",
+        "ROLE-ASSISTANT-VINEYARD-MANAGER"
+      ],
+      "preconditions": [
+        "Every operational record resolves through stable organization, property, block, and person identifiers.",
+        "Consequential actions use current default-deny permission, transition, notification, and sync contracts.",
+        "Accepted history is append-only; corrections and supersessions retain reciprocal predecessor and successor lineage.",
+        "Fixture, scenario, state, actor, record, and event identifiers remain visible at review boundaries."
+      ],
+      "state_contract": {
+        "initial": "time_submitted",
+        "exception": "payroll_exception",
+        "recovery": "corrected",
+        "terminal": "cost_allocated",
+        "history_policy": "Append attributable events and reciprocal correction or supersession lineage; never overwrite an accepted observation, assignment, execution, completion, time, payroll, or allocation fact."
+      },
+      "permission_contract": [
+        {
+          "role_id": "ROLE-VINEYARD-MANAGER",
+          "may": ["Record supervisor verified", "Record exception flagged"],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-FOREMAN",
+          "may": ["Record time submitted"],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-OPERATIONS-COORDINATOR",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-FIELD-CREW",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-HARVEST-CREW-LEADER",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-LABOR-CONTRACTOR",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-PAYROLL",
+          "may": ["Record payroll accepted", "Record corrected"],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-FINANCE",
+          "may": ["Record cost allocated"],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        },
+        {
+          "role_id": "ROLE-ASSISTANT-VINEYARD-MANAGER",
+          "may": [
+            "Inspect attributable records and workflow history within assigned scope"
+          ],
+          "may_not": [
+            "Exercise an action without an explicit permission rule and matching scope",
+            "Erase accepted history or act as another person"
+          ]
+        }
+      ],
+      "data_contract": {
+        "required_entities": [
+          "organization",
+          "person_and_assignment",
+          "stable_block_identity",
+          "workflow_instance",
+          "state_event",
+          "record_instance",
+          "exception_history"
+        ],
+        "stable_identifiers": [
+          "organization.id",
+          "person.id",
+          "role_assignment.id",
+          "block.stable_identity",
+          "workflow_instance.id",
+          "event.id",
+          "record_instance.id"
+        ],
+        "audit_fields": [
+          "event.occurred_at",
+          "event.actor_person_id",
+          "event.role_assignment_id",
+          "event.transition_id",
+          "event.reason",
+          "event.connectivity"
+        ]
+      },
+      "interaction_contract": [
+        {
+          "action_id": "ACT-179",
+          "precondition": "The actor satisfies PERM-038 and the current state is time_submitted.",
+          "result": "The workflow advances through TRN-WF-007-005 to supervisor_verified.",
+          "audit_event": "Append workflow.verification with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-188",
+          "precondition": "The actor satisfies PERM-038 and the current state is checked_out.",
+          "result": "The workflow advances through TRN-WF-007-013 to time_submitted.",
+          "audit_event": "Append workflow.completion with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-194",
+          "precondition": "The actor satisfies PERM-038 and the current state is corrected.",
+          "result": "The workflow advances through TRN-WF-007-017 to supervisor_verified.",
+          "audit_event": "Append workflow.verification with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-200",
+          "precondition": "The actor satisfies PERM-038 and the current state is time_submitted.",
+          "result": "The workflow advances through TRN-WF-007-022 to exception_flagged.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-202",
+          "precondition": "The actor satisfies PERM-038 and the current state is time_submitted.",
+          "result": "The workflow advances through TRN-WF-007-024 to exception_flagged.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-193",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-180",
+          "precondition": "The actor satisfies PERM-038 and the current state is supervisor_verified.",
+          "result": "The workflow advances through TRN-WF-007-006 to payroll_accepted.",
+          "audit_event": "Append workflow.reconciliation with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-192",
+          "precondition": "The actor satisfies PERM-040 and the current state is exception_flagged.",
+          "result": "The workflow advances through TRN-WF-007-016 to corrected.",
+          "audit_event": "Append workflow.correction with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-201",
+          "precondition": "The actor satisfies PERM-038 and the current state is supervisor_verified.",
+          "result": "The workflow advances through TRN-WF-007-023 to exception_flagged.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-198",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-186",
+          "precondition": "The actor satisfies PERM-038 and the current state is payroll_accepted.",
+          "result": "The workflow advances through TRN-WF-007-007 to cost_allocated.",
+          "audit_event": "Append workflow.reconciliation with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-203",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        }
+      ],
+      "copy_contract": {
+        "status_labels": {
+          "normal": "Normal",
+          "blocked": "Blocked",
+          "urgent": "Urgent",
+          "loading": "Loading",
+          "completion": "Completion",
+          "corrected": "Corrected",
+          "empty": "Empty",
+          "partial": "Partial",
+          "error": "Error"
+        },
+        "error_messages": [
+          "This action is unavailable because current authority or scope does not match the record.",
+          "The record changed elsewhere; review the newer event before retrying.",
+          "Required evidence is incomplete. Accepted facts remain unchanged.",
+          "Offline work is queued with its original actor and capture time; no server fact was overwritten."
+        ]
+      },
+      "dependencies": [
+        "Canonical product registries under product-structure/",
+        "Connected synthetic operation, events, records, and scenario fixtures under data/",
+        "Canopy Signal DTCG tokens and generated CSS",
+        "Default-deny permission, notification, and synchronization registries",
+        "Wave-001 screen, component, capture, review, and Figma manifests"
+      ],
+      "acceptance_criteria": [
+        "Every SCR-043, SCR-044, SCR-045 route resolves its canonical scenario, fixture, state, action, permission, transition, event, and record identifiers.",
+        "Normal, urgent, blocked, partial, corrected, historical, offline, stale, conflict, loading, empty, error, and completion states appear where allocated by the wave contract.",
+        "Every consequential action is default-deny, names its disabled reason, and appends rather than rewrites accepted history.",
+        "Desktop and field surfaces preserve the same stable identity, state, accountable owner, effective time, and lineage.",
+        "Keyboard, focus, target-size, live-region, non-color, reduced-motion, overflow, print, and axe checks pass for the packet scope.",
+        "Direct screen-to-packet trace edges resolve every PKT-004 screen without relying on an unrelated component edge."
+      ],
+      "test_cases": [
+        {
+          "id": "TEST-301",
+          "category": "normal",
+          "assertion": "The primary fixture advances only through canonical transitions with exact actor and event attribution."
+        },
+        {
+          "id": "TEST-302",
+          "category": "exception",
+          "assertion": "Blocked or urgent work preserves accepted evidence, affected scope, owner, clock, and bounded recovery."
+        },
+        {
+          "id": "TEST-303",
+          "category": "recovery",
+          "assertion": "Recovery appends a new event and retains the original exception, partial fact, or predecessor record."
+        },
+        {
+          "id": "TEST-304",
+          "category": "permission",
+          "assertion": "An actor without an explicit matching permission rule sees a disabled action and cannot mutate state."
+        },
+        {
+          "id": "TEST-305",
+          "category": "accessibility",
+          "assertion": "State, urgency, disabled reason, progress, and lineage remain understandable without color or pointer input."
+        },
+        {
+          "id": "TEST-306",
+          "category": "responsive",
+          "assertion": "Canonical desktop, mobile, 200-percent-equivalent reflow, and print targets preserve operational meaning without page overflow."
+        },
+        {
+          "id": "TEST-307",
+          "category": "data",
+          "assertion": "Rendered values resolve to connected fixture events and records rather than disconnected sample copy."
+        }
+      ],
+      "figma_mapping": {
+        "frame_name": "PKT-004 · Time review, payroll exception, and cost allocation",
+        "component_names": [
+          "vineyard/navigation/app-shell",
+          "vineyard/identity/role-and-scope-switcher",
+          "vineyard/identity/block-identity-chip",
+          "vineyard/record/record-provenance-panel",
+          "vineyard/status/workflow-state-rail",
+          "vineyard/workflow/transition-action-bar",
+          "vineyard/decision/decision-evidence-panel",
+          "vineyard/exception/exception-card",
+          "vineyard/status/partial-scope-meter",
+          "vineyard/record/audit-timeline",
+          "vineyard/sync/offline-queue-indicator",
+          "vineyard/sync/staleness-badge",
+          "vineyard/workflow/assignment-roster",
+          "vineyard/workflow/approval-chain",
+          "vineyard/feedback/export-evidence-packet",
+          "vineyard/status/accessible-status-legend",
+          "vineyard/record/correction-lineage",
+          "vineyard/feedback/notification-center",
+          "vineyard/feedback/escalation-clock",
+          "vineyard/record/reconciliation-comparison"
+        ],
+        "stable_node_key": "figma-ready:PKT-004:SCR-043+SCR-044+SCR-045"
+      }
+    }
+  ]
+}

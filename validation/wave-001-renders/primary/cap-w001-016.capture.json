@@ -1,0 +1,28 @@
+{
+  "capture_version": "1.0",
+  "id": "CAP-W001-016",
+  "screen_id": "SCR-041",
+  "route": "/screens/SCR-041?state=normal&fixture=FIX-033",
+  "state": "normal",
+  "fixture_id": "FIX-033",
+  "viewport": {
+    "name": "mobile",
+    "width": 390,
+    "height": 844
+  },
+  "source_digest": "ba382990300d26ba7abaeb5b7b82b4bb559ef39bcbcc783825b73c1052a013ab",
+  "generated_at": "2026-07-14T07:32:09.452Z",
+  "commit_sha": "70d155821a951688c63bb92df3a61720b83bd254",
+  "geometry": {
+    "viewport_height": 844,
+    "viewport_width": 390,
+    "scroll_height": 3834,
+    "scroll_width": 390,
+    "horizontal_overflow": 0,
+    "primary_action": {
+      "top": 757.640625,
+      "bottom": 842.625,
+      "height": 84.984375
+    }
+  }
+}

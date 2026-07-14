@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "map_type": "prototypes",
+  "prototypes": [
+    {
+      "artifact_type": "prototype",
+      "id": "FLW-001",
+      "figma_name": "FLW-001 · End-to-end estate seasonal work package: exact operational interaction flow",
+      "stable_key": "figma-ready:FLW-001",
+      "code_path": "atlas/src/pages/PrototypePage.tsx",
+      "export_name": "PrototypePage",
+      "status": "implemented",
+      "source_sha256": "62397874ecdc407a3a324e413a4a58f513f741261d5fdd8a0120e2f0ec3ce09b",
+      "route": "/prototypes/FLW-001",
+      "screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
+      "sequence_source": "product-structure/flows.json",
+      "flow_kind": "ordered_narrative",
+      "workflow_ids": ["WF-001"],
+      "fixture_ids": ["FIX-006"],
+      "event_ids": [
+        "EVT-00384",
+        "EVT-00386",
+        "EVT-00388",
+        "EVT-00391",
+        "EVT-00393",
+        "EVT-00395",
+        "EVT-00397",
+        "EVT-00400"
+      ],
+      "record_link_ids": []
+    },
+    {
+      "artifact_type": "prototype",
+      "id": "FLW-007",
+      "figma_name": "FLW-007 · Pause field labor for heat or safety and resume after re-briefing: exact operational interaction flow",
+      "stable_key": "figma-ready:FLW-007",
+      "code_path": "atlas/src/pages/PrototypePage.tsx",
+      "export_name": "PrototypePage",
+      "status": "implemented",
+      "source_sha256": "62397874ecdc407a3a324e413a4a58f513f741261d5fdd8a0120e2f0ec3ce09b",
+      "route": "/prototypes/FLW-007",
+      "screen_ids": ["SCR-040", "SCR-042", "SCR-043", "SCR-044", "SCR-045"],
+      "sequence_source": "product-structure/flows.json",
+      "flow_kind": "ordered_narrative",
+      "workflow_ids": ["WF-007"],
+      "fixture_ids": ["FIX-033"],
+      "event_ids": [
+        "EVT-00097",
+        "EVT-00098",
+        "EVT-00099",
+        "EVT-00100",
+        "EVT-00101",
+        "EVT-00102",
+        "EVT-00103",
+        "EVT-00104",
+        "EVT-00105",
+        "EVT-00106"
+      ],
+      "record_link_ids": ["LNK-00049"]
+    },
+    {
+      "artifact_type": "prototype",
+      "id": "FLW-015",
+      "figma_name": "FLW-015 · Heat-paused field work flows into crew time, payroll, and cost allocation: linked-evidence comparison",
+      "stable_key": "figma-ready:FLW-015",
+      "code_path": "atlas/src/pages/PrototypePage.tsx",
+      "export_name": "PrototypePage",
+      "status": "implemented",
+      "source_sha256": "62397874ecdc407a3a324e413a4a58f513f741261d5fdd8a0120e2f0ec3ce09b",
+      "route": "/prototypes/FLW-015",
+      "screen_ids": ["SCR-001", "SCR-040", "SCR-005", "SCR-006", "SCR-045"],
+      "sequence_source": "product-structure/flows.json",
+      "flow_kind": "linked_evidence_comparison",
+      "workflow_ids": ["WF-001", "WF-007"],
+      "fixture_ids": ["FIX-003", "FIX-033"],
+      "event_ids": [
+        "EVT-00050",
+        "EVT-00097",
+        "EVT-00062",
+        "EVT-00063",
+        "EVT-00064",
+        "EVT-00106"
+      ],
+      "record_link_ids": ["LNK-00049", "LNK-00053", "LNK-00057", "LNK-00061"]
+    }
+  ]
+}

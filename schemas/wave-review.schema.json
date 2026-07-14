@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/wave-review.schema.json",
+  "title": "Independent wave review record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "wave_id",
+    "status",
+    "critics",
+    "findings",
+    "acceptance"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "wave_id": { "type": "string", "pattern": "^WAVE-[0-9]{3}$" },
+    "status": { "enum": ["pending", "in_review", "passed"] },
+    "critics": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["discipline", "status", "reviewer", "completed_at"],
+        "properties": {
+          "discipline": {
+            "enum": ["operational_ux", "visual_component_accessibility"]
+          },
+          "status": { "enum": ["pending", "passed"] },
+          "reviewer": { "type": ["string", "null"], "minLength": 3 },
+          "completed_at": { "type": ["string", "null"], "format": "date-time" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "severity", "status", "summary", "disposition"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^W001-FND-[0-9]{3}$" },
+          "severity": { "enum": ["P0", "P1", "P2", "P3"] },
+          "status": { "enum": ["open", "resolved"] },
+          "summary": { "type": "string", "minLength": 8 },
+          "disposition": { "type": ["string", "null"], "minLength": 8 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "required": ["status", "accepted_by", "accepted_at", "evidence_paths"],
+      "properties": {
+        "status": { "enum": ["pending", "passed"] },
+        "accepted_by": { "type": ["string", "null"], "minLength": 3 },
+        "accepted_at": { "type": ["string", "null"], "format": "date-time" },
+        "evidence_paths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3 }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

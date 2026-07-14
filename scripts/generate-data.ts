@@ -693,9 +693,8 @@ const RECORD_FAMILY_GROUPS: Record<string, string[]> = {
       " ",
     ),
   commercial_reconciliation:
-    "REC-026 REC-047 REC-052 REC-053 REC-062 REC-063 REC-087 REC-088".split(
-      " ",
-    ),
+    "REC-026 REC-047 REC-052 REC-053 REC-063 REC-087 REC-088".split(" "),
+  labor_payroll_exception: ["REC-062"],
   labor_roster: ["REC-054"],
   inventory_receipt: ["REC-065", "REC-070"],
   corrective_finding: ["REC-086", "REC-102"],
@@ -2070,11 +2069,13 @@ async function main(): Promise<void> {
     "WF-002:2",
     "WF-003:3",
     "WF-005:1",
+    "WF-007:4",
     "WF-008:1",
   ]);
   const conflictResolutionPlans = new Set([
     "WF-002:3",
     "WF-006:2",
+    "WF-007:2",
     "WF-008:2",
     "WF-009:1",
     "WF-010:1",
@@ -2118,8 +2119,13 @@ async function main(): Promise<void> {
       const isConflictCase =
         conflictResolutionPlans.has(planCaseKey) &&
         transitionIndex === plan.exceptionTransitionIndex;
+      const offlineDelayMinutes = plan.workflow.id === "WF-007" ? 5 : 480;
       const recordedAt = isOfflineCase
-        ? sourceTimestamp(plan.month, plan.day, occurredMinuteOffset + 480)
+        ? sourceTimestamp(
+            plan.month,
+            plan.day,
+            occurredMinuteOffset + offlineDelayMinutes,
+          )
         : sourceTimestamp(plan.month, plan.day, occurredMinuteOffset + 5);
       const assignment = requireValue(
         assignmentByRole.get(transition.owner),
@@ -2363,11 +2369,13 @@ async function main(): Promise<void> {
           ? "/facts/domain_details/entered_delivery_tons/value"
           : primaryPlan.exceptionId && record.id === "REC-059"
             ? "/facts/domain_details/payable_time/value"
-            : primaryPlan.exceptionId && record.id === "REC-063"
-              ? "/facts/domain_details/allocated_cost/amount"
-              : primaryPlan.exceptionId && record.id === "REC-101"
-                ? "/facts/domain_details/evidence_completeness/value"
-                : undefined;
+            : primaryPlan.exceptionId === "EXC-037" && record.id === "REC-062"
+              ? "/facts/domain_details/corrected_hours/value"
+              : primaryPlan.exceptionId && record.id === "REC-063"
+                ? "/facts/domain_details/allocated_cost/amount"
+                : primaryPlan.exceptionId && record.id === "REC-101"
+                  ? "/facts/domain_details/evidence_completeness/value"
+                  : undefined;
     const corrected = Boolean(correctionFieldPath);
     const contractIds = unique(plans.flatMap((plan) => contractsForPlan(plan)));
     const planIds = new Set(plans.map((plan) => plan.id));
@@ -2456,6 +2464,34 @@ async function main(): Promise<void> {
     }
     const family = recordFamily(record.id);
     const ledger = ledgerForPlan(primaryPlan);
+    const fieldCrewAssignment = requireValue(
+      assignmentByRole.get("ROLE-FIELD-CREW"),
+      `${record.id}: field crew assignment`,
+    );
+    const payrollAssignment = requireValue(
+      assignmentByRole.get("ROLE-PAYROLL"),
+      `${record.id}: payroll assignment`,
+    );
+    const supervisorAssignment = requireValue(
+      assignmentByRole.get("ROLE-VINEYARD-MANAGER"),
+      `${record.id}: supervisor assignment`,
+    );
+    const payrollVarianceHours =
+      primaryPlan.exceptionId === "EXC-037" ? 1.25 : 0;
+    const submittedPayrollHours = Number(
+      (ledger.payableHours + payrollVarianceHours).toFixed(2),
+    );
+    const correctedPayrollHours = ledger.payableHours;
+    const hourlyRate = 28 + primaryPlan.instanceNumber;
+    const laborHours = (value: number): JsonObject => ({
+      value,
+      unit_id: "UNT-007",
+      qualifier: "exact",
+    });
+    const laborMoney = (amount: number): JsonObject => ({
+      amount,
+      currency: "USD",
+    });
     const familyDetails: Record<string, JsonObject> = {
       planning_recommendation: {
         priority: primaryPlan.exceptionId ? "urgent" : "planned",
@@ -2574,6 +2610,67 @@ async function main(): Promise<void> {
         reconciliation_status: primaryPlan.exceptionId
           ? "corrected"
           : "settled",
+      },
+      labor_payroll_exception: {
+        worker: {
+          entity_type: "person",
+          entity_id: String(fieldCrewAssignment.person_id),
+        },
+        assignment: {
+          entity_type: "assignment",
+          entity_id: String(fieldCrewAssignment.id),
+        },
+        workflow_instance: {
+          entity_type: "workflow_instance",
+          entity_id: primaryPlan.id,
+        },
+        submitted_hours: laborHours(submittedPayrollHours),
+        corrected_hours: laborHours(correctedPayrollHours),
+        variance_hours: laborHours(payrollVarianceHours),
+        rate_basis: {
+          kind: "hourly",
+          hourly_rate: laborMoney(hourlyRate),
+          time_unit_id: "UNT-007",
+        },
+        exception_reason:
+          primaryPlan.exceptionId === "EXC-037"
+            ? "Worker absence created a crew-short time variance requiring an attributable payroll correction."
+            : "No payroll variance remained after supervisor verification.",
+        exception_id: primaryPlan.exceptionId === "EXC-037" ? "EXC-037" : null,
+        amount_owed: laborMoney(
+          Number((correctedPayrollHours * hourlyRate).toFixed(2)),
+        ),
+        authority: {
+          payroll_assignment: {
+            entity_type: "assignment",
+            entity_id: String(payrollAssignment.id),
+          },
+          supervisor_assignment: {
+            entity_type: "assignment",
+            entity_id: String(supervisorAssignment.id),
+          },
+          decision_id: "DEC-064",
+          authority_status: corrected
+            ? "correction_authorized"
+            : "verified_for_acceptance",
+        },
+        lineage: {
+          record: { entity_type: "record_instance", entity_id: id },
+          source_event_ids: associatedEvents.map((event) => String(event.id)),
+          base_version: 1,
+          current_version: corrected ? 2 : 1,
+          lineage_status: corrected
+            ? "successor_retains_submitted_hours"
+            : "submitted_hours_accepted_without_correction",
+        },
+        resolution: {
+          resolution_status: corrected ? "corrected" : "accepted",
+          resolved_hours: laborHours(correctedPayrollHours),
+          resolved_amount: laborMoney(
+            Number((correctedPayrollHours * hourlyRate).toFixed(2)),
+          ),
+          original_submission_retained: true,
+        },
       },
       labor_roster: {
         attendance: {

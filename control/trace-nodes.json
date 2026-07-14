@@ -1226,18 +1226,6 @@
       "status": "approved"
     },
     {
-      "id": "FIX-001",
-      "type": "fixture",
-      "title": "Carneros Ridge blocked mowing recovery",
-      "path": "data/walking-slice.json",
-      "locator": {
-        "kind": "json_id",
-        "value": "FIX-001"
-      },
-      "classification": "synthetic_fixture",
-      "status": "approved"
-    },
-    {
       "id": "FIX-002",
       "type": "fixture",
       "title": "WFI-0001 · Seasonal planning, dispatch, execution, and verification — BLK-001 season case 1",
@@ -3983,7 +3971,7 @@
         "value": "CMP-002"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-003",
@@ -3995,7 +3983,7 @@
         "value": "CMP-003"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-004",
@@ -4007,7 +3995,7 @@
         "value": "CMP-004"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-005",
@@ -4019,7 +4007,7 @@
         "value": "CMP-005"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-006",
@@ -4031,7 +4019,7 @@
         "value": "CMP-006"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-007",
@@ -4043,7 +4031,7 @@
         "value": "CMP-007"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-008",
@@ -4055,7 +4043,7 @@
         "value": "CMP-008"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-009",
@@ -4067,7 +4055,7 @@
         "value": "CMP-009"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-010",
@@ -4079,7 +4067,7 @@
         "value": "CMP-010"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-011",
@@ -4091,7 +4079,7 @@
         "value": "CMP-011"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-012",
@@ -4103,7 +4091,7 @@
         "value": "CMP-012"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-013",
@@ -4115,7 +4103,7 @@
         "value": "CMP-013"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-014",
@@ -4127,7 +4115,7 @@
         "value": "CMP-014"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-015",
@@ -4139,7 +4127,7 @@
         "value": "CMP-015"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-016",
@@ -4151,7 +4139,7 @@
         "value": "CMP-016"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-017",
@@ -4163,7 +4151,7 @@
         "value": "CMP-017"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-018",
@@ -4175,7 +4163,7 @@
         "value": "CMP-018"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-019",
@@ -4187,7 +4175,7 @@
         "value": "CMP-019"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-020",
@@ -4199,7 +4187,7 @@
         "value": "CMP-020"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-021",
@@ -4211,7 +4199,7 @@
         "value": "CMP-021"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-022",
@@ -4223,7 +4211,7 @@
         "value": "CMP-022"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-023",
@@ -4271,7 +4259,7 @@
         "value": "CMP-026"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-027",
@@ -4355,7 +4343,7 @@
         "value": "CMP-033"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-034",
@@ -4367,7 +4355,7 @@
         "value": "CMP-034"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-035",
@@ -4379,7 +4367,7 @@
         "value": "CMP-035"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
       "id": "CMP-036",
@@ -4391,16 +4379,40 @@
         "value": "CMP-036"
       },
       "classification": "implementation_contract",
-      "status": "review"
+      "status": "approved"
     },
     {
-      "id": "PKT-001",
+      "id": "PKT-002",
       "type": "construction_packet",
-      "title": "Morning dispatch and blocked-work redispatch",
-      "path": "construction-packets/walking-slice.json",
+      "title": "Seasonal plan, dispatch, field execution, and verification",
+      "path": "construction-packets/packets.json",
       "locator": {
         "kind": "json_id",
-        "value": "PKT-001"
+        "value": "PKT-002"
+      },
+      "classification": "implementation_contract",
+      "status": "approved"
+    },
+    {
+      "id": "PKT-003",
+      "type": "construction_packet",
+      "title": "Crew demand, schedule, check-in, and field workboard",
+      "path": "construction-packets/packets.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "PKT-003"
+      },
+      "classification": "implementation_contract",
+      "status": "approved"
+    },
+    {
+      "id": "PKT-004",
+      "type": "construction_packet",
+      "title": "Time review, payroll exception, and cost allocation",
+      "path": "construction-packets/packets.json",
+      "locator": {
+        "kind": "json_id",
+        "value": "PKT-004"
       },
       "classification": "implementation_contract",
       "status": "approved"

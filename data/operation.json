@@ -24767,16 +24767,16 @@
       "block_ids": ["BLK-001"],
       "organization_ids": ["ORG-001"],
       "title": "Payroll exception — 2026 synthetic season",
-      "lifecycle_state": "settled",
+      "lifecycle_state": "corrected",
       "effective_at": "2026-01-04T09:00:00-08:00",
       "recorded_at": "2026-01-04T09:00:00-08:00",
       "owner_assignment_id": "ASG-023",
       "facts": {
-        "domain_kind": "commercial_reconciliation",
+        "domain_kind": "labor_payroll_exception",
         "record_instance_key": "REC-062:WFI-0031",
         "canonical_record_name": "Payroll exception",
         "season_year": 2026,
-        "state_result": "settled",
+        "state_result": "corrected",
         "operational_subject": {
           "entity_type": "block",
           "entity_id": "BLK-001"
@@ -24785,26 +24785,67 @@
           { "entity_type": "workflow_instance", "entity_id": "WFI-0031" }
         ],
         "domain_details": {
-          "load_id": "LOAD-001-01",
-          "gross_weight": {
-            "value": 19775,
-            "unit_id": "UNT-018",
+          "worker": { "entity_type": "person", "entity_id": "PER-005" },
+          "assignment": { "entity_type": "assignment", "entity_id": "ASG-005" },
+          "workflow_instance": {
+            "entity_type": "workflow_instance",
+            "entity_id": "WFI-0031"
+          },
+          "submitted_hours": {
+            "value": 9.5,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "tare_weight": {
-            "value": 2995,
-            "unit_id": "UNT-018",
+          "corrected_hours": {
+            "value": 8.25,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "net_weight": {
-            "value": 16780,
-            "unit_id": "UNT-018",
+          "variance_hours": {
+            "value": 1.25,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "settlement_gross": { "amount": 23911.5, "currency": "USD" },
-          "settlement_adjustments": { "amount": 0, "currency": "USD" },
-          "settlement_net": { "amount": 23911.5, "currency": "USD" },
-          "reconciliation_status": "corrected"
+          "rate_basis": {
+            "kind": "hourly",
+            "hourly_rate": { "amount": 29, "currency": "USD" },
+            "time_unit_id": "UNT-007"
+          },
+          "exception_reason": "Worker absence created a crew-short time variance requiring an attributable payroll correction.",
+          "exception_id": "EXC-037",
+          "amount_owed": { "amount": 239.25, "currency": "USD" },
+          "authority": {
+            "payroll_assignment": {
+              "entity_type": "assignment",
+              "entity_id": "ASG-023"
+            },
+            "supervisor_assignment": {
+              "entity_type": "assignment",
+              "entity_id": "ASG-001"
+            },
+            "decision_id": "DEC-064",
+            "authority_status": "correction_authorized"
+          },
+          "lineage": {
+            "record": {
+              "entity_type": "record_instance",
+              "entity_id": "RCI-00265"
+            },
+            "source_event_ids": ["EVT-00003", "EVT-00004", "EVT-00005"],
+            "base_version": 1,
+            "current_version": 2,
+            "lineage_status": "successor_retains_submitted_hours"
+          },
+          "resolution": {
+            "resolution_status": "corrected",
+            "resolved_hours": {
+              "value": 8.25,
+              "unit_id": "UNT-007",
+              "qualifier": "exact"
+            },
+            "resolved_amount": { "amount": 239.25, "currency": "USD" },
+            "original_submission_retained": true
+          }
         },
         "workflow_metrics": {
           "payable_time": {
@@ -24822,7 +24863,12 @@
         },
         "contract_subjects": [
           { "entity_type": "contract", "entity_id": "CON-003" }
-        ]
+        ],
+        "correction_delta": {
+          "field_path": "/facts/domain_details/corrected_hours/value",
+          "before": "source value disputed, incomplete, or mis-entered",
+          "after": "attributed corrected value in the current version"
+        }
       },
       "provenance": {
         "source_type": "synthetic_generator",
@@ -24834,11 +24880,23 @@
         "captured_by_person_id": "PER-023"
       },
       "version": {
-        "number": 1,
+        "number": 2,
         "recorded_at": "2026-01-04T12:05:00-08:00",
-        "recorded_by_person_id": "PER-023"
+        "recorded_by_person_id": "PER-023",
+        "previous_version": 1,
+        "change_reason": "Attributable synthetic correction retained the original record version."
       },
-      "corrections": [],
+      "corrections": [
+        {
+          "id": "COR-00265",
+          "corrected_at": "2026-01-04T12:05:00-08:00",
+          "corrected_by_person_id": "PER-023",
+          "reason": "Corrected a substantive operational value while retaining the original version and attribution.",
+          "field_paths": ["/facts/domain_details/corrected_hours/value"],
+          "from_version": 1,
+          "to_version": 2
+        }
+      ],
       "link_ids": [],
       "contract_ids": ["CON-003"],
       "source_event_id": "EVT-00003"
@@ -25855,7 +25913,7 @@
       "recorded_at": "2026-05-07T16:30:00-07:00",
       "owner_assignment_id": "ASG-023",
       "facts": {
-        "domain_kind": "commercial_reconciliation",
+        "domain_kind": "labor_payroll_exception",
         "record_instance_key": "REC-062:WFI-0032",
         "canonical_record_name": "Payroll exception",
         "season_year": 2026,
@@ -25868,26 +25926,67 @@
           { "entity_type": "workflow_instance", "entity_id": "WFI-0032" }
         ],
         "domain_details": {
-          "load_id": "LOAD-002-02",
-          "gross_weight": {
-            "value": 21050,
-            "unit_id": "UNT-018",
+          "worker": { "entity_type": "person", "entity_id": "PER-005" },
+          "assignment": { "entity_type": "assignment", "entity_id": "ASG-005" },
+          "workflow_instance": {
+            "entity_type": "workflow_instance",
+            "entity_id": "WFI-0032"
+          },
+          "submitted_hours": {
+            "value": 8.5,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "tare_weight": {
-            "value": 3040,
-            "unit_id": "UNT-018",
+          "corrected_hours": {
+            "value": 8.5,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "net_weight": {
-            "value": 18010,
-            "unit_id": "UNT-018",
+          "variance_hours": {
+            "value": 0,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "settlement_gross": { "amount": 25664.25, "currency": "USD" },
-          "settlement_adjustments": { "amount": 0, "currency": "USD" },
-          "settlement_net": { "amount": 25664.25, "currency": "USD" },
-          "reconciliation_status": "corrected"
+          "rate_basis": {
+            "kind": "hourly",
+            "hourly_rate": { "amount": 30, "currency": "USD" },
+            "time_unit_id": "UNT-007"
+          },
+          "exception_reason": "No payroll variance remained after supervisor verification.",
+          "exception_id": null,
+          "amount_owed": { "amount": 255, "currency": "USD" },
+          "authority": {
+            "payroll_assignment": {
+              "entity_type": "assignment",
+              "entity_id": "ASG-023"
+            },
+            "supervisor_assignment": {
+              "entity_type": "assignment",
+              "entity_id": "ASG-001"
+            },
+            "decision_id": "DEC-064",
+            "authority_status": "verified_for_acceptance"
+          },
+          "lineage": {
+            "record": {
+              "entity_type": "record_instance",
+              "entity_id": "RCI-00279"
+            },
+            "source_event_ids": ["EVT-00104", "EVT-00105"],
+            "base_version": 1,
+            "current_version": 1,
+            "lineage_status": "submitted_hours_accepted_without_correction"
+          },
+          "resolution": {
+            "resolution_status": "accepted",
+            "resolved_hours": {
+              "value": 8.5,
+              "unit_id": "UNT-007",
+              "qualifier": "exact"
+            },
+            "resolved_amount": { "amount": 255, "currency": "USD" },
+            "original_submission_retained": true
+          }
         },
         "workflow_metrics": {
           "payable_time": {
@@ -26688,7 +26787,7 @@
       "recorded_at": "2026-08-10T12:00:00-07:00",
       "owner_assignment_id": "ASG-023",
       "facts": {
-        "domain_kind": "commercial_reconciliation",
+        "domain_kind": "labor_payroll_exception",
         "record_instance_key": "REC-062:WFI-0033",
         "canonical_record_name": "Payroll exception",
         "season_year": 2026,
@@ -26701,26 +26800,67 @@
           { "entity_type": "workflow_instance", "entity_id": "WFI-0033" }
         ],
         "domain_details": {
-          "load_id": "LOAD-009-03",
-          "gross_weight": {
-            "value": 22325,
-            "unit_id": "UNT-018",
+          "worker": { "entity_type": "person", "entity_id": "PER-005" },
+          "assignment": { "entity_type": "assignment", "entity_id": "ASG-005" },
+          "workflow_instance": {
+            "entity_type": "workflow_instance",
+            "entity_id": "WFI-0033"
+          },
+          "submitted_hours": {
+            "value": 8.75,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "tare_weight": {
-            "value": 3085,
-            "unit_id": "UNT-018",
+          "corrected_hours": {
+            "value": 8.75,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "net_weight": {
-            "value": 19240,
-            "unit_id": "UNT-018",
+          "variance_hours": {
+            "value": 0,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "settlement_gross": { "amount": 27417, "currency": "USD" },
-          "settlement_adjustments": { "amount": -1250, "currency": "USD" },
-          "settlement_net": { "amount": 26167, "currency": "USD" },
-          "reconciliation_status": "settled"
+          "rate_basis": {
+            "kind": "hourly",
+            "hourly_rate": { "amount": 31, "currency": "USD" },
+            "time_unit_id": "UNT-007"
+          },
+          "exception_reason": "No payroll variance remained after supervisor verification.",
+          "exception_id": null,
+          "amount_owed": { "amount": 271.25, "currency": "USD" },
+          "authority": {
+            "payroll_assignment": {
+              "entity_type": "assignment",
+              "entity_id": "ASG-023"
+            },
+            "supervisor_assignment": {
+              "entity_type": "assignment",
+              "entity_id": "ASG-001"
+            },
+            "decision_id": "DEC-064",
+            "authority_status": "verified_for_acceptance"
+          },
+          "lineage": {
+            "record": {
+              "entity_type": "record_instance",
+              "entity_id": "RCI-00290"
+            },
+            "source_event_ids": ["EVT-00236", "EVT-00237"],
+            "base_version": 1,
+            "current_version": 1,
+            "lineage_status": "submitted_hours_accepted_without_correction"
+          },
+          "resolution": {
+            "resolution_status": "accepted",
+            "resolved_hours": {
+              "value": 8.75,
+              "unit_id": "UNT-007",
+              "qualifier": "exact"
+            },
+            "resolved_amount": { "amount": 271.25, "currency": "USD" },
+            "original_submission_retained": true
+          }
         },
         "workflow_metrics": {
           "payable_time": {
@@ -27507,7 +27647,7 @@
       "recorded_at": "2026-09-13T12:00:00-07:00",
       "owner_assignment_id": "ASG-023",
       "facts": {
-        "domain_kind": "commercial_reconciliation",
+        "domain_kind": "labor_payroll_exception",
         "record_instance_key": "REC-062:WFI-0034",
         "canonical_record_name": "Payroll exception",
         "season_year": 2026,
@@ -27520,26 +27660,67 @@
           { "entity_type": "workflow_instance", "entity_id": "WFI-0034" }
         ],
         "domain_details": {
-          "load_id": "LOAD-010-04",
-          "gross_weight": {
-            "value": 23600,
-            "unit_id": "UNT-018",
+          "worker": { "entity_type": "person", "entity_id": "PER-005" },
+          "assignment": { "entity_type": "assignment", "entity_id": "ASG-005" },
+          "workflow_instance": {
+            "entity_type": "workflow_instance",
+            "entity_id": "WFI-0034"
+          },
+          "submitted_hours": {
+            "value": 9,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "tare_weight": {
-            "value": 3130,
-            "unit_id": "UNT-018",
+          "corrected_hours": {
+            "value": 9,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "net_weight": {
-            "value": 20470,
-            "unit_id": "UNT-018",
+          "variance_hours": {
+            "value": 0,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "settlement_gross": { "amount": 29169.75, "currency": "USD" },
-          "settlement_adjustments": { "amount": -850, "currency": "USD" },
-          "settlement_net": { "amount": 28319.75, "currency": "USD" },
-          "reconciliation_status": "settled"
+          "rate_basis": {
+            "kind": "hourly",
+            "hourly_rate": { "amount": 32, "currency": "USD" },
+            "time_unit_id": "UNT-007"
+          },
+          "exception_reason": "No payroll variance remained after supervisor verification.",
+          "exception_id": null,
+          "amount_owed": { "amount": 288, "currency": "USD" },
+          "authority": {
+            "payroll_assignment": {
+              "entity_type": "assignment",
+              "entity_id": "ASG-023"
+            },
+            "supervisor_assignment": {
+              "entity_type": "assignment",
+              "entity_id": "ASG-001"
+            },
+            "decision_id": "DEC-064",
+            "authority_status": "verified_for_acceptance"
+          },
+          "lineage": {
+            "record": {
+              "entity_type": "record_instance",
+              "entity_id": "RCI-00301"
+            },
+            "source_event_ids": ["EVT-00305", "EVT-00306"],
+            "base_version": 1,
+            "current_version": 1,
+            "lineage_status": "submitted_hours_accepted_without_correction"
+          },
+          "resolution": {
+            "resolution_status": "accepted",
+            "resolved_hours": {
+              "value": 9,
+              "unit_id": "UNT-007",
+              "qualifier": "exact"
+            },
+            "resolved_amount": { "amount": 288, "currency": "USD" },
+            "original_submission_retained": true
+          }
         },
         "workflow_metrics": {
           "payable_time": {
@@ -28318,7 +28499,7 @@
       "recorded_at": "2026-12-16T12:00:00-08:00",
       "owner_assignment_id": "ASG-023",
       "facts": {
-        "domain_kind": "commercial_reconciliation",
+        "domain_kind": "labor_payroll_exception",
         "record_instance_key": "REC-062:WFI-0035",
         "canonical_record_name": "Payroll exception",
         "season_year": 2026,
@@ -28331,26 +28512,67 @@
           { "entity_type": "workflow_instance", "entity_id": "WFI-0035" }
         ],
         "domain_details": {
-          "load_id": "LOAD-005-05",
-          "gross_weight": {
-            "value": 24875,
-            "unit_id": "UNT-018",
+          "worker": { "entity_type": "person", "entity_id": "PER-005" },
+          "assignment": { "entity_type": "assignment", "entity_id": "ASG-005" },
+          "workflow_instance": {
+            "entity_type": "workflow_instance",
+            "entity_id": "WFI-0035"
+          },
+          "submitted_hours": {
+            "value": 9.25,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "tare_weight": {
-            "value": 3175,
-            "unit_id": "UNT-018",
+          "corrected_hours": {
+            "value": 9.25,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "net_weight": {
-            "value": 21700,
-            "unit_id": "UNT-018",
+          "variance_hours": {
+            "value": 0,
+            "unit_id": "UNT-007",
             "qualifier": "exact"
           },
-          "settlement_gross": { "amount": 30922.5, "currency": "USD" },
-          "settlement_adjustments": { "amount": 0, "currency": "USD" },
-          "settlement_net": { "amount": 30922.5, "currency": "USD" },
-          "reconciliation_status": "settled"
+          "rate_basis": {
+            "kind": "hourly",
+            "hourly_rate": { "amount": 33, "currency": "USD" },
+            "time_unit_id": "UNT-007"
+          },
+          "exception_reason": "No payroll variance remained after supervisor verification.",
+          "exception_id": null,
+          "amount_owed": { "amount": 305.25, "currency": "USD" },
+          "authority": {
+            "payroll_assignment": {
+              "entity_type": "assignment",
+              "entity_id": "ASG-023"
+            },
+            "supervisor_assignment": {
+              "entity_type": "assignment",
+              "entity_id": "ASG-001"
+            },
+            "decision_id": "DEC-064",
+            "authority_status": "verified_for_acceptance"
+          },
+          "lineage": {
+            "record": {
+              "entity_type": "record_instance",
+              "entity_id": "RCI-00312"
+            },
+            "source_event_ids": ["EVT-00411", "EVT-00413"],
+            "base_version": 1,
+            "current_version": 1,
+            "lineage_status": "submitted_hours_accepted_without_correction"
+          },
+          "resolution": {
+            "resolution_status": "accepted",
+            "resolved_hours": {
+              "value": 9.25,
+              "unit_id": "UNT-007",
+              "qualifier": "exact"
+            },
+            "resolved_amount": { "amount": 305.25, "currency": "USD" },
+            "original_submission_retained": true
+          }
         },
         "workflow_metrics": {
           "payable_time": {

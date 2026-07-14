@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0",
+  "wave_id": "WAVE-001",
+  "status": "passed",
+  "critics": [
+    {
+      "discipline": "operational_ux",
+      "status": "passed",
+      "reviewer": "wave1_operational_critic",
+      "completed_at": "2026-07-14T00:39:33.3596587-07:00"
+    },
+    {
+      "discipline": "visual_component_accessibility",
+      "status": "passed",
+      "reviewer": "wave1_visual_a11y_critic",
+      "completed_at": "2026-07-14T00:39:33.3596587-07:00"
+    }
+  ],
+  "findings": [
+    {
+      "id": "W001-FND-001",
+      "severity": "P1",
+      "status": "resolved",
+      "summary": "Consequential actions were not resolved from exact grants and operating context",
+      "disposition": "The default-deny resolver now requires exact transition grants, active assignment, effective time, scope, organization, canonical state, declared availability, preconditions, record evidence, and synchronization policy; exhaustive positive and negative tests pass."
+    },
+    {
+      "id": "W001-FND-002",
+      "severity": "P1",
+      "status": "resolved",
+      "summary": "Review states could inherit mismatched fixture or event evidence",
+      "disposition": "Every named state resolves one exact state contract; incompatible fixture overrides are rejected, operational branches resolve exact scenario and event evidence, and model-only branches assert neither."
+    },
+    {
+      "id": "W001-FND-003",
+      "severity": "P1",
+      "status": "resolved",
+      "summary": "The plan-to-verification narrative compressed distinct responsibilities",
+      "disposition": "WF-001 now traverses SCR-001 through SCR-006 with eight exact append-only events and explicit responsibility allocation across planning, approval, dispatch, field reporting, and verification."
+    },
+    {
+      "id": "W001-FND-004",
+      "severity": "P2",
+      "status": "resolved",
+      "summary": "Visible operational metrics included unsupported inferred values",
+      "disposition": "Partial, progress, lineage, timing, area, and reconciliation values now derive only from typed fixture records; absent evidence renders an explicit pending or no-evidence state."
+    },
+    {
+      "id": "W001-FND-005",
+      "severity": "P1",
+      "status": "resolved",
+      "summary": "The payroll correction record mixed labor and harvest settlement semantics",
+      "disposition": "REC-062 now contains labor-specific worker, assignment, submitted and corrected hours, variance, rate, amount owed, authority, lineage, and resolution facts; validators reject load, weight, fruit, and settlement fields."
+    },
+    {
+      "id": "W001-FND-006",
+      "severity": "P1",
+      "status": "resolved",
+      "summary": "Clickable prototypes did not prove exact append-only operating boundaries",
+      "disposition": "Prototype replay now validates exact actor, state, evidence, base version, synchronization mode, idempotency, and append-only behavior, including wrong-actor, stale-base, offline, and conflict rejection tests."
+    },
+    {
+      "id": "W001-FND-007",
+      "severity": "P2",
+      "status": "resolved",
+      "summary": "Scenario fallback could imply operational evidence that was not present",
+      "disposition": "Scenario fallback was removed; model-only states expose context-only fixtures while leaving scenario and operational event identifiers empty."
+    },
+    {
+      "id": "W001-FND-008",
+      "severity": "P1",
+      "status": "resolved",
+      "summary": "Initial field viewports did not reliably expose an enabled next action",
+      "disposition": "SCR-005, SCR-041, and SCR-042 now show complete enabled controls inside the initial 390 by 844 viewport, verified with fresh-page geometry checks and refreshed captures."
+    },
+    {
+      "id": "W001-FND-009",
+      "severity": "P1",
+      "status": "resolved",
+      "summary": "Accessibility evidence did not exhaustively cover every required state",
+      "disposition": "All 64 review states now run automated WCAG A and AA checks with zero violations; keyboard, focus, live-region, non-color, reduced-motion, and target-size behavior is covered."
+    },
+    {
+      "id": "W001-FND-010",
+      "severity": "P2",
+      "status": "resolved",
+      "summary": "Focus treatment and mobile navigation needed stronger outdoor affordance",
+      "disposition": "Semantic focus tokens, a dual-ring focus treatment, start-aligned mobile shell, and a 52-pixel menu control now preserve visible keyboard and touch affordance."
+    },
+    {
+      "id": "W001-FND-011",
+      "severity": "P2",
+      "status": "resolved",
+      "summary": "Responsive reflow and print responsibilities lacked durable evidence",
+      "disposition": "The suite now captures 720 by 512 reflow for responsive and desktop routes and print PDFs for verification, time review, cost allocation, and evidence export."
+    },
+    {
+      "id": "W001-FND-012",
+      "severity": "P2",
+      "status": "resolved",
+      "summary": "Figma handoff maps omitted required conditional metadata",
+      "disposition": "The Figma entry schema declares every conditionally required property, and token, component, screen, and prototype maps include unique stable identifiers, implementation exports, semantic metadata, and current source digests."
+    },
+    {
+      "id": "W001-FND-013",
+      "severity": "P1",
+      "status": "resolved",
+      "summary": "The model-only cost allocation error state contradicted its context totals",
+      "disposition": "Model-only reconciliation now derives no operational measure, the banner identifies a hypothetical containment branch, the component states that no operational variance is asserted, and rendered tests reject the balanced-total claim."
+    },
+    {
+      "id": "W001-FND-014",
+      "severity": "P2",
+      "status": "resolved",
+      "summary": "The legacy PKT-001 packet reused current action IDs with obsolete meanings",
+      "disposition": "PKT-001 remains only as a standalone factory regression artifact and is excluded from the active packet registry, trace graph, master manifest, and WAVE-001 approved construction coverage."
+    }
+  ],
+  "acceptance": {
+    "status": "passed",
+    "accepted_by": "parent_agent",
+    "accepted_at": "2026-07-14T00:39:33.3596587-07:00",
+    "evidence_paths": [
+      "validation/wave-001-renders/primary",
+      "validation/wave-001-captures.json",
+      "atlas/tests/wave001.e2e.spec.ts",
+      "atlas/tests/wave001-capture.e2e.spec.ts",
+      "atlas/tests/unit/wave001-atlas.test.ts",
+      "construction-packets/packets.json",
+      "figma/component-map.json",
+      "figma/screen-map.json",
+      "figma/prototype-map.json"
+    ]
+  }
+}

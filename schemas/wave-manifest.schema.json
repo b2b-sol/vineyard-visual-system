@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/wave-manifest.schema.json",
+  "title": "Production-wave delivery contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "status",
+    "workflow_ids",
+    "screen_ids",
+    "public_component_ids",
+    "flow_ids",
+    "construction_packet_ids",
+    "state_inventory",
+    "low_fidelity_strips",
+    "evidence_contract"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "id": { "type": "string", "pattern": "^WAVE-[0-9]{3}$" },
+    "title": { "type": "string", "minLength": 12 },
+    "status": {
+      "enum": ["contract_ready", "implementation_ready", "review", "complete"]
+    },
+    "workflow_ids": { "$ref": "#/$defs/workflowIds" },
+    "screen_ids": { "$ref": "#/$defs/screenIds" },
+    "public_component_ids": { "$ref": "#/$defs/componentIds" },
+    "flow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^FLW-[0-9]{3}$" }
+    },
+    "construction_packet_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^PKT-[0-9]{3}$" }
+    },
+    "state_inventory": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "screen_id",
+          "route",
+          "platform",
+          "review_states",
+          "state_sources",
+          "fixture_ids"
+        ],
+        "properties": {
+          "screen_id": { "type": "string", "pattern": "^SCR-[0-9]{3}$" },
+          "route": { "type": "string", "pattern": "^/screens/SCR-[0-9]{3}$" },
+          "platform": {
+            "enum": ["mobile", "desktop", "responsive"]
+          },
+          "review_states": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+          },
+          "state_sources": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": ["state", "evidence_status", "state_matrix_ids"],
+              "properties": {
+                "state": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]*$"
+                },
+                "evidence_status": {
+                  "enum": ["fixture_realized", "model_only"]
+                },
+                "state_matrix_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": { "type": "string", "pattern": "^STM-[0-9]{4}$" }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "fixture_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^FIX-[0-9]{3}$" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "low_fidelity_strips": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "screen_id",
+          "sequence",
+          "platform",
+          "responsibility",
+          "ordered_regions",
+          "state_slots"
+        ],
+        "properties": {
+          "screen_id": { "type": "string", "pattern": "^SCR-[0-9]{3}$" },
+          "sequence": { "type": "integer", "minimum": 1 },
+          "platform": {
+            "enum": ["mobile", "desktop", "responsive"]
+          },
+          "responsibility": { "type": "string", "minLength": 20 },
+          "ordered_regions": {
+            "type": "array",
+            "minItems": 3,
+            "items": {
+              "type": "object",
+              "required": ["id", "kind", "responsibility", "component_ids"],
+              "properties": {
+                "id": { "type": "string", "pattern": "^REG-[0-9]{2}$" },
+                "kind": {
+                  "enum": [
+                    "context",
+                    "identity",
+                    "decision",
+                    "workflow",
+                    "evidence",
+                    "action",
+                    "continuity"
+                  ]
+                },
+                "responsibility": { "type": "string", "minLength": 12 },
+                "component_ids": { "$ref": "#/$defs/componentIds" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "state_slots": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence_contract": {
+      "type": "object",
+      "required": [
+        "capture_manifest",
+        "review_record",
+        "figma_maps",
+        "primary_capture_count",
+        "reflow_viewport",
+        "print_screen_ids"
+      ],
+      "properties": {
+        "capture_manifest": { "type": "string", "pattern": "^validation/" },
+        "review_record": { "type": "string", "pattern": "^validation/" },
+        "figma_maps": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^figma/" }
+        },
+        "primary_capture_count": { "const": 22 },
+        "reflow_viewport": {
+          "type": "object",
+          "required": ["width", "height", "equivalent_zoom_percent"],
+          "properties": {
+            "width": { "const": 720 },
+            "height": { "const": 512 },
+            "equivalent_zoom_percent": { "const": 200 }
+          },
+          "additionalProperties": false
+        },
+        "print_screen_ids": { "$ref": "#/$defs/screenIds" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "workflowIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^WF-[0-9]{3}$" }
+    },
+    "screenIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^SCR-[0-9]{3}$" }
+    },
+    "componentIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^CMP-[0-9]{3}$" }
+    }
+  },
+  "additionalProperties": false
+}

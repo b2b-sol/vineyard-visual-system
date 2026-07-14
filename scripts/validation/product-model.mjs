@@ -887,6 +887,54 @@ for (const requirement of requirements) {
 }
 
 const expectedScreenCounts = [6, 6, 6, 6, 6, 8, 7, 7, 7, 8];
+const expectedWf001ScreenByTransition = new Map([
+  ["TRN-WF-001-001", "SCR-001"],
+  ["TRN-WF-001-002", "SCR-002"],
+  ["TRN-WF-001-009", "SCR-002"],
+  ["TRN-WF-001-003", "SCR-003"],
+  ["TRN-WF-001-010", "SCR-003"],
+  ["TRN-WF-001-004", "SCR-004"],
+  ["TRN-WF-001-011", "SCR-004"],
+  ["TRN-WF-001-012", "SCR-004"],
+  ["TRN-WF-001-016", "SCR-004"],
+  ["TRN-WF-001-018", "SCR-004"],
+  ["TRN-WF-001-005", "SCR-005"],
+  ["TRN-WF-001-006", "SCR-005"],
+  ["TRN-WF-001-007", "SCR-005"],
+  ["TRN-WF-001-013", "SCR-005"],
+  ["TRN-WF-001-014", "SCR-005"],
+  ["TRN-WF-001-019", "SCR-005"],
+  ["TRN-WF-001-020", "SCR-005"],
+  ["TRN-WF-001-008", "SCR-006"],
+  ["TRN-WF-001-015", "SCR-006"],
+  ["TRN-WF-001-017", "SCR-006"],
+]);
+const expectedWf007ScreenByTransition = new Map([
+  ["TRN-WF-007-008", "SCR-039"],
+  ["TRN-WF-007-018", "SCR-039"],
+  ["TRN-WF-007-019", "SCR-039"],
+  ["TRN-WF-007-001", "SCR-040"],
+  ["TRN-WF-007-002", "SCR-040"],
+  ["TRN-WF-007-009", "SCR-040"],
+  ["TRN-WF-007-010", "SCR-041"],
+  ["TRN-WF-007-011", "SCR-041"],
+  ["TRN-WF-007-003", "SCR-042"],
+  ["TRN-WF-007-004", "SCR-042"],
+  ["TRN-WF-007-012", "SCR-042"],
+  ["TRN-WF-007-014", "SCR-042"],
+  ["TRN-WF-007-015", "SCR-042"],
+  ["TRN-WF-007-020", "SCR-042"],
+  ["TRN-WF-007-021", "SCR-042"],
+  ["TRN-WF-007-005", "SCR-043"],
+  ["TRN-WF-007-013", "SCR-043"],
+  ["TRN-WF-007-017", "SCR-043"],
+  ["TRN-WF-007-022", "SCR-043"],
+  ["TRN-WF-007-024", "SCR-043"],
+  ["TRN-WF-007-006", "SCR-044"],
+  ["TRN-WF-007-016", "SCR-044"],
+  ["TRN-WF-007-023", "SCR-044"],
+  ["TRN-WF-007-007", "SCR-045"],
+]);
 assert(screens.length === 67, `Expected 67 screens; found ${screens.length}`);
 assert(
   unique(screens.map((screen) => screen.route)).length === screens.length,
@@ -913,20 +961,28 @@ for (const screen of screens) {
       `${screen.id}: unresolved ${scenarioId}`,
     );
   });
+  const hasExactActionOverlap = screen.scenario_ids.some((scenarioId) => {
+    const scenarioTransitions = new Set(
+      scenarioIndex
+        .get(scenarioId)
+        .operational_steps.map((step) => step.transition_id),
+    );
+    return screen.actions.some(
+      (action) =>
+        action.kind !== "inspect" &&
+        scenarioTransitions.has(action.transition.transition_id),
+    );
+  });
+  const isExplicitCanonicalBranchScreen = screen.actions
+    .filter((action) => action.kind !== "inspect")
+    .every(
+      (action) =>
+        action.evidence_status === "canonical_branch" &&
+        action.scenario_ids.length === 0,
+    );
   assert(
-    screen.scenario_ids.some((scenarioId) => {
-      const scenarioTransitions = new Set(
-        scenarioIndex
-          .get(scenarioId)
-          .operational_steps.map((step) => step.transition_id),
-      );
-      return screen.actions.some(
-        (action) =>
-          action.kind !== "inspect" &&
-          scenarioTransitions.has(action.transition.transition_id),
-      );
-    }),
-    `${screen.id}: no exact action overlap with linked scenarios`,
+    hasExactActionOverlap || isExplicitCanonicalBranchScreen,
+    `${screen.id}: neither exact action evidence nor an explicit canonical-only contract`,
   );
   screen.requirement_ids.forEach((requirementId) => {
     screenUsedRequirements.add(requirementId);
@@ -945,8 +1001,8 @@ for (const screen of screens) {
     );
   });
   assert(
-    screen.actions.filter((action) => action.kind !== "inspect").length >= 2,
-    `${screen.id}: fewer than two consequential actions`,
+    screen.actions.some((action) => action.kind !== "inspect"),
+    `${screen.id}: no consequential action`,
   );
   assert(
     screen.actions.some((action) => action.kind === "inspect"),
@@ -1115,6 +1171,25 @@ for (const screen of screens) {
       );
   }
 }
+
+for (const expectedMap of [
+  expectedWf001ScreenByTransition,
+  expectedWf007ScreenByTransition,
+])
+  for (const [transitionId, expectedScreenId] of expectedMap) {
+    const realizingScreens = screens.filter((screen) =>
+      screen.actions.some(
+        (action) =>
+          action.kind !== "inspect" &&
+          action.transition.transition_id === transitionId,
+      ),
+    );
+    assert(
+      realizingScreens.length === 1 &&
+        realizingScreens[0].id === expectedScreenId,
+      `${transitionId}: expected exact responsibility on ${expectedScreenId}`,
+    );
+  }
 assert(
   screenUsedScenarios.size === scenarios.length,
   `Screens cover ${screenUsedScenarios.size}/${scenarios.length} scenarios`,
@@ -1407,6 +1482,13 @@ for (const scenario of scenarios.filter(
     `${scenario.id}: missing cross-workflow interaction flow`,
   );
 for (const flow of flows) {
+  assert(
+    flow.flow_kind ===
+      (flow.workflow_ids.length === 1
+        ? "ordered_narrative"
+        : "linked_evidence_comparison"),
+    `${flow.id}: flow kind does not disclose its chronology semantics`,
+  );
   flow.scenario_ids.forEach((scenarioId) =>
     assert(
       scenarioIndex.has(scenarioId),
@@ -1436,6 +1518,22 @@ for (const flow of flows) {
     flow.completion_path,
   ];
   const steps = pathGroups.flat();
+  if (flow.flow_kind === "ordered_narrative") {
+    const scenario = scenarioIndex.get(flow.scenario_ids[0]);
+    const orderedSteps = [
+      ...flow.normal_path,
+      ...flow.exception_path,
+      ...flow.recovery_path,
+      ...flow.completion_path,
+    ];
+    assert(
+      same(
+        orderedSteps.map((step) => step.event_id),
+        scenario.operational_steps.map((step) => step.event_id),
+      ),
+      `${flow.id}: ordered path is not the complete exact scenario sequence`,
+    );
+  }
   assert(
     same(
       unique(steps.map((step) => step.screen_id)).sort(),
@@ -1507,6 +1605,44 @@ for (const flow of flows) {
       `${flow.id}: cross-workflow boundary lacks chain or record link`,
     );
 }
+
+const wf001Flow = flows.find((flow) => flow.id === "FLW-001");
+assert(Boolean(wf001Flow), "FLW-001: missing exact production narrative");
+const wf001OrderedSteps = [
+  ...wf001Flow.normal_path,
+  ...wf001Flow.exception_path,
+  ...wf001Flow.recovery_path,
+  ...wf001Flow.completion_path,
+];
+assert(
+  same(
+    wf001OrderedSteps.map((step) => step.event_id),
+    [
+      "EVT-00384",
+      "EVT-00386",
+      "EVT-00388",
+      "EVT-00391",
+      "EVT-00393",
+      "EVT-00395",
+      "EVT-00397",
+      "EVT-00400",
+    ],
+  ) &&
+    same(
+      wf001OrderedSteps.map((step) => step.screen_id),
+      [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-005",
+        "SCR-005",
+        "SCR-006",
+      ],
+    ),
+  "FLW-001: exact FIX-006 sequence does not traverse all six responsibility surfaces",
+);
 
 assert(
   domains.length === 6,

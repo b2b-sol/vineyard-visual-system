@@ -1,6 +1,6 @@
 packet_version: 1.0.0
-updated_at: "2026-07-13T22:37:56.4061053-07:00"
-state: production_wave_ready
+updated_at: "2026-07-14T00:52:53.0161431-07:00"
+state: production_wave_integration
 repository: b2b-sol/vineyard-visual-system
 visibility: public
 execution_identity: tiklebot
@@ -9,7 +9,7 @@ repository_permission: admin
 bot_auth_verified_at: "2026-07-13T20:52:59.4714367-07:00"
 preferred_parent_model: gpt-5.6-sol
 current_phase: production_wave
-next_task: WAVE-001 deliver plan, dispatch, crew, verification, time, and cost wave
+next_task: WAVE-001 integrate the accepted wave through the protected squash merge queue
 last_completed_task: VIS-FND-001
 owner_bootstrap_complete: true
 bot_auth_verified: true
@@ -17,7 +17,7 @@ packet_review_complete: true
 execution_strategy: vertical_workflow_waves
 repository_initialized: true
 initial_commit: 6518668b2e898d488134bc77881fd75263d44490
-active_branch: codex/visual-foundations-provenance
+active_branch: codex/wave-001
 factory_operational: true
 definition_of_done_passed: false
 pages_url: https://b2b-sol.github.io/vineyard-visual-system/
@@ -66,3 +66,36 @@ visual_foundation_metrics:
   unresolved_p0: 0
   unresolved_p1: 0
   unresolved_p2: 0
+active_wave: WAVE-001
+next_wave: WAVE-002
+active_wave_plan: control/WAVE-001_PLAN.md
+active_wave_review:
+  status: passed
+  screens: 13
+  public_components: 27
+  review_states: 64
+  primary_captures: 22
+  primary_prototypes: 2
+  linked_evidence_prototypes: 1
+  construction_packets: 3
+  reviewers: [wave1_operational_critic, wave1_visual_a11y_critic, parent_agent]
+foundation_freeze:
+  status: active
+  effective_after: WAVE-001
+  decision: DEC-015
+  adjustment: control/WAVE-002_EXECUTION_ADJUSTMENT.md
+  surfaces:
+    [
+      workflow_ontology,
+      product_contracts,
+      schemas,
+      validators,
+      traceability,
+      orchestration,
+      synthetic_season,
+      tokens,
+      ci,
+      capture_pipeline,
+      figma_mapping,
+    ]
+progress_model: accepted_human_visible_artifacts_and_complete_workflow_walkthroughs

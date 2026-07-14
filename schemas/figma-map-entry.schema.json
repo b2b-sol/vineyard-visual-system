@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/figma-map-entry.schema.json",
+  "title": "Figma code-to-design artifact mapping",
+  "type": "object",
+  "required": [
+    "artifact_type",
+    "id",
+    "figma_name",
+    "stable_key",
+    "code_path",
+    "export_name",
+    "status",
+    "source_sha256"
+  ],
+  "properties": {
+    "artifact_type": { "enum": ["component", "screen", "prototype"] },
+    "id": { "type": "string", "pattern": "^(CMP|SCR|FLW)-[0-9]{3}$" },
+    "figma_name": { "type": "string", "minLength": 3 },
+    "stable_key": { "type": "string", "pattern": "^figma-ready:" },
+    "code_path": { "type": "string", "pattern": "^atlas/src/" },
+    "export_name": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9]*$" },
+    "status": { "enum": ["pending", "implemented"] },
+    "source_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "figma_key": { "type": "string", "pattern": "^vineyard/" },
+    "category": {
+      "enum": [
+        "workflow",
+        "navigation",
+        "identity",
+        "record",
+        "status",
+        "decision",
+        "exception",
+        "sync",
+        "feedback",
+        "input",
+        "data_visualization"
+      ]
+    },
+    "purpose": { "type": "string", "minLength": 16 },
+    "variants": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 3 }
+    },
+    "density_modes": {
+      "type": "array",
+      "const": ["compact", "comfortable", "field"]
+    },
+    "token_dependencies": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^(ref|sys|component)\\." }
+    },
+    "content_limits": { "type": "string", "minLength": 24 },
+    "auto_layout": {
+      "type": "object",
+      "required": ["direction", "gap_token", "padding_token", "resizing"],
+      "properties": {
+        "direction": { "enum": ["horizontal", "vertical"] },
+        "gap_token": { "type": "string", "pattern": "^ref\\.space\\." },
+        "padding_token": { "type": "string", "pattern": "^ref\\.space\\." },
+        "resizing": { "enum": ["fill_container", "hug_contents"] }
+      },
+      "additionalProperties": false
+    },
+    "accessibility_notes": { "type": "string", "minLength": 24 },
+    "responsive_behavior": { "type": "string", "minLength": 24 },
+    "screen_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^SCR-[0-9]{3}$" }
+    },
+    "route": {
+      "type": "string",
+      "pattern": "^/(screens/SCR|prototypes/FLW)-[0-9]{3}$"
+    },
+    "platform": { "enum": ["desktop", "mobile", "responsive"] },
+    "workflow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^WF-[0-9]{3}$" }
+    },
+    "fixture_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^FIX-[0-9]{3}$" }
+    },
+    "component_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^CMP-[0-9]{3}$" }
+    },
+    "figma_frame_name": { "type": "string", "minLength": 8 },
+    "layout_regions": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["context", "identity", "decision", "workflow", "continuity"]
+      }
+    },
+    "states": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+    },
+    "sequence_source": {
+      "type": "string",
+      "const": "product-structure/flows.json"
+    },
+    "flow_kind": {
+      "enum": ["ordered_narrative", "linked_evidence_comparison"]
+    },
+    "event_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^EVT-[0-9]{5}$" }
+    },
+    "record_link_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^LNK-[0-9]{5}$" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "implemented" } } },
+      "then": { "properties": { "source_sha256": { "type": "string" } } }
+    },
+    {
+      "if": { "properties": { "artifact_type": { "const": "component" } } },
+      "then": {
+        "required": [
+          "figma_key",
+          "screen_ids",
+          "category",
+          "purpose",
+          "variants",
+          "states",
+          "density_modes",
+          "token_dependencies",
+          "content_limits",
+          "auto_layout",
+          "accessibility_notes",
+          "responsive_behavior"
+        ],
+        "properties": {
+          "figma_key": {},
+          "screen_ids": {},
+          "category": {},
+          "purpose": {},
+          "variants": {},
+          "states": {},
+          "density_modes": {},
+          "token_dependencies": {},
+          "content_limits": {},
+          "auto_layout": {},
+          "accessibility_notes": {},
+          "responsive_behavior": {}
+        }
+      }
+    },
+    {
+      "if": { "properties": { "artifact_type": { "const": "screen" } } },
+      "then": {
+        "required": [
+          "route",
+          "states",
+          "platform",
+          "workflow_ids",
+          "fixture_ids",
+          "component_ids",
+          "figma_frame_name",
+          "layout_regions"
+        ],
+        "properties": {
+          "route": {},
+          "states": {},
+          "platform": {},
+          "workflow_ids": {},
+          "fixture_ids": {},
+          "component_ids": {},
+          "figma_frame_name": {},
+          "layout_regions": {}
+        }
+      }
+    },
+    {
+      "if": { "properties": { "artifact_type": { "const": "prototype" } } },
+      "then": {
+        "required": [
+          "route",
+          "screen_ids",
+          "sequence_source",
+          "flow_kind",
+          "workflow_ids",
+          "fixture_ids",
+          "event_ids",
+          "record_link_ids"
+        ],
+        "properties": {
+          "route": {},
+          "screen_ids": {},
+          "sequence_source": {},
+          "flow_kind": {},
+          "workflow_ids": {},
+          "fixture_ids": {},
+          "event_ids": {},
+          "record_link_ids": {}
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

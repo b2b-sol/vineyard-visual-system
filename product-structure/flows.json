@@ -4,12 +4,13 @@
     {
       "id": "FLW-001",
       "title": "End-to-end estate seasonal work package: exact operational interaction flow",
+      "flow_kind": "ordered_narrative",
       "workflow_ids": ["WF-001"],
       "scenario_ids": ["SCN-001-07"],
       "fixture_ids": ["FIX-006"],
       "operational_chain_ids": [],
       "record_link_ids": [],
-      "platforms": ["responsive"],
+      "platforms": ["responsive", "mobile"],
       "entry_points": [
         {
           "screen_id": "SCR-001",
@@ -38,7 +39,7 @@
           "outcome": "EVT-00384 records entry → observed"
         },
         {
-          "screen_id": "SCR-001",
+          "screen_id": "SCR-002",
           "action_id": "ACT-002",
           "actor_role_id": "ROLE-VITICULTURIST",
           "scenario_id": "SCN-001-07",
@@ -55,7 +56,7 @@
           "outcome": "EVT-00386 records observed → planned"
         },
         {
-          "screen_id": "SCR-001",
+          "screen_id": "SCR-003",
           "action_id": "ACT-003",
           "actor_role_id": "ROLE-VINEYARD-MANAGER",
           "scenario_id": "SCN-001-07",
@@ -65,11 +66,21 @@
           "record_instance_ids": ["RCI-00029", "RCI-00032", "RCI-00031"],
           "intent": "Perform TRN-WF-001-003 from the current canonical state",
           "outcome": "EVT-00388 records planned → approved"
-        }
-      ],
-      "exception_path": [
+        },
         {
-          "screen_id": "SCR-002",
+          "screen_id": "SCR-004",
+          "action_id": "ACT-005",
+          "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
+          "scenario_id": "SCN-001-07",
+          "fixture_id": "FIX-006",
+          "event_id": "EVT-00391",
+          "transition_id": "TRN-WF-001-004",
+          "record_instance_ids": [],
+          "intent": "Perform TRN-WF-001-004 from the current canonical state",
+          "outcome": "EVT-00391 records approved → assigned"
+        },
+        {
+          "screen_id": "SCR-005",
           "action_id": "ACT-006",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-001-07",
@@ -77,13 +88,11 @@
           "event_id": "EVT-00393",
           "transition_id": "TRN-WF-001-005",
           "record_instance_ids": [],
-          "intent": "Contain the exact non-ideal state and preserve accepted evidence",
-          "outcome": "EVT-00393 remains attributable and bounded"
-        }
-      ],
-      "recovery_path": [
+          "intent": "Perform TRN-WF-001-005 from the current canonical state",
+          "outcome": "EVT-00393 records assigned → acknowledged"
+        },
         {
-          "screen_id": "SCR-003",
+          "screen_id": "SCR-005",
           "action_id": "ACT-008",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-001-07",
@@ -91,13 +100,33 @@
           "event_id": "EVT-00395",
           "transition_id": "TRN-WF-001-006",
           "record_instance_ids": [],
-          "intent": "Apply the next exact recovery or accountable disposition",
-          "outcome": "EVT-00395 advances only through TRN-WF-001-006"
+          "intent": "Perform TRN-WF-001-006 from the current canonical state",
+          "outcome": "EVT-00395 records acknowledged → in_progress"
+        },
+        {
+          "screen_id": "SCR-005",
+          "action_id": "ACT-009",
+          "actor_role_id": "ROLE-FOREMAN",
+          "scenario_id": "SCN-001-07",
+          "fixture_id": "FIX-006",
+          "event_id": "EVT-00397",
+          "transition_id": "TRN-WF-001-007",
+          "record_instance_ids": [
+            "RCI-00032",
+            "RCI-00033",
+            "RCI-00034",
+            "RCI-00031",
+            "RCI-00035"
+          ],
+          "intent": "Perform TRN-WF-001-007 from the current canonical state",
+          "outcome": "EVT-00397 records in_progress → completed"
         }
       ],
+      "exception_path": [],
+      "recovery_path": [],
       "completion_path": [
         {
-          "screen_id": "SCR-003",
+          "screen_id": "SCR-006",
           "action_id": "ACT-010",
           "actor_role_id": "ROLE-VINEYARD-MANAGER",
           "scenario_id": "SCN-001-07",
@@ -105,16 +134,23 @@
           "event_id": "EVT-00400",
           "transition_id": "TRN-WF-001-008",
           "record_instance_ids": [],
-          "intent": "Confirm terminal evidence and immutable lineage",
-          "outcome": "EVT-00400 records the scenario terminal verified"
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00400 records completed → verified"
         }
       ],
-      "screen_ids": ["SCR-001", "SCR-002", "SCR-003"],
+      "screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
       "handoff_role_ids": [
         "ROLE-VITICULTURIST",
         "ROLE-VINEYARD-MANAGER",
-        "ROLE-FOREMAN",
         "ROLE-OPERATIONS-COORDINATOR",
+        "ROLE-FOREMAN",
         "ROLE-FIELD-CREW",
         "ROLE-CONTRACTOR",
         "ROLE-COMPLIANCE-COORDINATOR",
@@ -126,12 +162,13 @@
     {
       "id": "FLW-002",
       "title": "Wind cancels an otherwise approved application: exact operational interaction flow",
+      "flow_kind": "ordered_narrative",
       "workflow_ids": ["WF-002"],
       "scenario_ids": ["SCN-002-05"],
       "fixture_ids": ["FIX-007", "FIX-055"],
       "operational_chain_ids": [],
       "record_link_ids": [],
-      "platforms": ["responsive"],
+      "platforms": ["responsive", "mobile"],
       "entry_points": [
         {
           "screen_id": "SCR-007",
@@ -189,6 +226,23 @@
           ],
           "intent": "Perform TRN-WF-002-003 from the current canonical state",
           "outcome": "EVT-00033 records treatment_recommended → approved"
+        },
+        {
+          "screen_id": "SCR-008",
+          "action_id": "ACT-031",
+          "actor_role_id": "ROLE-CROP-PROTECTION-LEAD",
+          "scenario_id": "SCN-002-05",
+          "fixture_id": "FIX-007",
+          "event_id": "EVT-00034",
+          "transition_id": "TRN-WF-002-004",
+          "record_instance_ids": [
+            "RCI-00038",
+            "RCI-00039",
+            "RCI-00040",
+            "RCI-00043"
+          ],
+          "intent": "Perform TRN-WF-002-004 from the current canonical state",
+          "outcome": "EVT-00034 records approved → preflight_check"
         }
       ],
       "exception_path": [
@@ -211,47 +265,9 @@
           "outcome": "EVT-00035 remains attributable and bounded"
         }
       ],
-      "recovery_path": [
-        {
-          "screen_id": "SCR-011",
-          "action_id": "ACT-051",
-          "actor_role_id": "ROLE-CROP-PROTECTION-LEAD",
-          "scenario_id": "SCN-002-05",
-          "fixture_id": "FIX-007",
-          "event_id": "EVT-00035",
-          "transition_id": "TRN-WF-002-021",
-          "record_instance_ids": [
-            "RCI-00039",
-            "RCI-00041",
-            "RCI-00040",
-            "RCI-00042",
-            "RCI-00043"
-          ],
-          "intent": "Apply the next exact recovery or accountable disposition",
-          "outcome": "EVT-00035 advances only through TRN-WF-002-021"
-        }
-      ],
-      "completion_path": [
-        {
-          "screen_id": "SCR-011",
-          "action_id": "ACT-051",
-          "actor_role_id": "ROLE-CROP-PROTECTION-LEAD",
-          "scenario_id": "SCN-002-05",
-          "fixture_id": "FIX-007",
-          "event_id": "EVT-00035",
-          "transition_id": "TRN-WF-002-021",
-          "record_instance_ids": [
-            "RCI-00039",
-            "RCI-00041",
-            "RCI-00040",
-            "RCI-00042",
-            "RCI-00043"
-          ],
-          "intent": "Confirm terminal evidence and immutable lineage",
-          "outcome": "EVT-00035 records the scenario terminal cancelled"
-        }
-      ],
-      "screen_ids": ["SCR-007", "SCR-011"],
+      "recovery_path": [],
+      "completion_path": [],
+      "screen_ids": ["SCR-007", "SCR-008", "SCR-011"],
       "handoff_role_ids": [
         "ROLE-SCOUT",
         "ROLE-VITICULTURIST",
@@ -268,12 +284,13 @@
     {
       "id": "FLW-003",
       "title": "System malfunction interrupts and restarts irrigation: exact operational interaction flow",
+      "flow_kind": "ordered_narrative",
       "workflow_ids": ["WF-003"],
       "scenario_ids": ["SCN-003-04"],
       "fixture_ids": ["FIX-012", "FIX-058"],
       "operational_chain_ids": [],
       "record_link_ids": [],
-      "platforms": ["responsive", "mobile"],
+      "platforms": ["responsive", "desktop", "mobile"],
       "entry_points": [
         {
           "screen_id": "SCR-013",
@@ -336,6 +353,30 @@
           ],
           "intent": "Perform TRN-WF-003-003 from the current canonical state",
           "outcome": "EVT-00046 records adjustment_recommended → approved"
+        },
+        {
+          "screen_id": "SCR-014",
+          "action_id": "ACT-063",
+          "actor_role_id": "ROLE-IRRIGATION-LEAD",
+          "scenario_id": "SCN-003-04",
+          "fixture_id": "FIX-012",
+          "event_id": "EVT-00047",
+          "transition_id": "TRN-WF-003-004",
+          "record_instance_ids": [],
+          "intent": "Perform TRN-WF-003-004 from the current canonical state",
+          "outcome": "EVT-00047 records approved → assigned"
+        },
+        {
+          "screen_id": "SCR-015",
+          "action_id": "ACT-065",
+          "actor_role_id": "ROLE-IRRIGATOR",
+          "scenario_id": "SCN-003-04",
+          "fixture_id": "FIX-012",
+          "event_id": "EVT-00048",
+          "transition_id": "TRN-WF-003-005",
+          "record_instance_ids": [],
+          "intent": "Perform TRN-WF-003-005 from the current canonical state",
+          "outcome": "EVT-00048 records assigned → delivering"
         }
       ],
       "exception_path": [
@@ -370,11 +411,40 @@
           "event_id": "EVT-00051",
           "transition_id": "TRN-WF-003-008",
           "record_instance_ids": ["RCI-00085", "RCI-00086", "RCI-00089"],
-          "intent": "Apply the next exact recovery or accountable disposition",
+          "intent": "Apply the exact recovery without rewriting accepted evidence",
           "outcome": "EVT-00051 advances only through TRN-WF-003-008"
         }
       ],
       "completion_path": [
+        {
+          "screen_id": "SCR-015",
+          "action_id": "ACT-065",
+          "actor_role_id": "ROLE-IRRIGATOR",
+          "scenario_id": "SCN-003-04",
+          "fixture_id": "FIX-012",
+          "event_id": "EVT-00054",
+          "transition_id": "TRN-WF-003-005",
+          "record_instance_ids": [],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00054 records assigned → delivering"
+        },
+        {
+          "screen_id": "SCR-016",
+          "action_id": "ACT-068",
+          "actor_role_id": "ROLE-IRRIGATOR",
+          "scenario_id": "SCN-003-04",
+          "fixture_id": "FIX-012",
+          "event_id": "EVT-00056",
+          "transition_id": "TRN-WF-003-006",
+          "record_instance_ids": [
+            "RCI-00085",
+            "RCI-00086",
+            "RCI-00089",
+            "RCI-00090"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00056 records delivering → delivered"
+        },
         {
           "screen_id": "SCR-016",
           "action_id": "ACT-069",
@@ -384,11 +454,11 @@
           "event_id": "EVT-00058",
           "transition_id": "TRN-WF-003-007",
           "record_instance_ids": [],
-          "intent": "Confirm terminal evidence and immutable lineage",
-          "outcome": "EVT-00058 records the scenario terminal verified"
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00058 records delivered → verified"
         }
       ],
-      "screen_ids": ["SCR-013", "SCR-014", "SCR-017", "SCR-016"],
+      "screen_ids": ["SCR-013", "SCR-014", "SCR-015", "SCR-017", "SCR-016"],
       "handoff_role_ids": [
         "ROLE-VITICULTURIST",
         "ROLE-VINEYARD-MANAGER",
@@ -403,12 +473,13 @@
     {
       "id": "FLW-004",
       "title": "Harvest actual divergence reopens and reconciles forecast: exact operational interaction flow",
+      "flow_kind": "ordered_narrative",
       "workflow_ids": ["WF-004"],
       "scenario_ids": ["SCN-004-05"],
       "fixture_ids": ["FIX-018", "FIX-061"],
       "operational_chain_ids": ["CHN-002"],
       "record_link_ids": ["LNK-00013"],
-      "platforms": ["desktop", "responsive"],
+      "platforms": ["desktop", "responsive", "mobile"],
       "entry_points": [
         {
           "screen_id": "SCR-019",
@@ -464,6 +535,30 @@
           ],
           "intent": "Perform TRN-WF-004-003 from the current canonical state",
           "outcome": "EVT-00202 records calculated → reviewed"
+        },
+        {
+          "screen_id": "SCR-021",
+          "action_id": "ACT-089",
+          "actor_role_id": "ROLE-GROWER-RELATIONS",
+          "scenario_id": "SCN-004-05",
+          "fixture_id": "FIX-018",
+          "event_id": "EVT-00209",
+          "transition_id": "TRN-WF-004-004",
+          "record_instance_ids": [],
+          "intent": "Perform TRN-WF-004-004 from the current canonical state",
+          "outcome": "EVT-00209 records reviewed → published"
+        },
+        {
+          "screen_id": "SCR-021",
+          "action_id": "ACT-090",
+          "actor_role_id": "ROLE-GROWER-RELATIONS",
+          "scenario_id": "SCN-004-05",
+          "fixture_id": "FIX-018",
+          "event_id": "EVT-00275",
+          "transition_id": "TRN-WF-004-005",
+          "record_instance_ids": ["RCI-00135", "RCI-00139"],
+          "intent": "Perform TRN-WF-004-005 from the current canonical state",
+          "outcome": "EVT-00275 records published → actualized"
         }
       ],
       "exception_path": [
@@ -487,7 +582,8 @@
           "outcome": "EVT-00308 remains attributable and bounded"
         }
       ],
-      "recovery_path": [
+      "recovery_path": [],
+      "completion_path": [
         {
           "screen_id": "SCR-023",
           "action_id": "ACT-099",
@@ -505,11 +601,62 @@
             "RCI-00138",
             "RCI-00140"
           ],
-          "intent": "Apply the next exact recovery or accountable disposition",
-          "outcome": "EVT-00321 advances only through TRN-WF-004-010"
-        }
-      ],
-      "completion_path": [
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00321 records revision_due → sampled"
+        },
+        {
+          "screen_id": "SCR-019",
+          "action_id": "ACT-084",
+          "actor_role_id": "ROLE-VITICULTURIST",
+          "scenario_id": "SCN-004-05",
+          "fixture_id": "FIX-018",
+          "event_id": "EVT-00330",
+          "transition_id": "TRN-WF-004-002",
+          "record_instance_ids": ["RCI-00133", "RCI-00134", "RCI-00135"],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00330 records sampled → calculated"
+        },
+        {
+          "screen_id": "SCR-020",
+          "action_id": "ACT-086",
+          "actor_role_id": "ROLE-VINEYARD-MANAGER",
+          "scenario_id": "SCN-004-05",
+          "fixture_id": "FIX-018",
+          "event_id": "EVT-00332",
+          "transition_id": "TRN-WF-004-003",
+          "record_instance_ids": [
+            "RCI-00135",
+            "RCI-00136",
+            "RCI-00137",
+            "RCI-00138"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00332 records calculated → reviewed"
+        },
+        {
+          "screen_id": "SCR-021",
+          "action_id": "ACT-089",
+          "actor_role_id": "ROLE-GROWER-RELATIONS",
+          "scenario_id": "SCN-004-05",
+          "fixture_id": "FIX-018",
+          "event_id": "EVT-00337",
+          "transition_id": "TRN-WF-004-004",
+          "record_instance_ids": [],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00337 records reviewed → published"
+        },
+        {
+          "screen_id": "SCR-021",
+          "action_id": "ACT-090",
+          "actor_role_id": "ROLE-GROWER-RELATIONS",
+          "scenario_id": "SCN-004-05",
+          "fixture_id": "FIX-018",
+          "event_id": "EVT-00367",
+          "transition_id": "TRN-WF-004-005",
+          "record_instance_ids": ["RCI-00135", "RCI-00139"],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00367 records published → actualized"
+        },
         {
           "screen_id": "SCR-022",
           "action_id": "ACT-094",
@@ -519,11 +666,18 @@
           "event_id": "EVT-00373",
           "transition_id": "TRN-WF-004-006",
           "record_instance_ids": ["RCI-00135", "RCI-00139", "RCI-00140"],
-          "intent": "Confirm terminal evidence and immutable lineage",
-          "outcome": "EVT-00373 records the scenario terminal reconciled"
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00373 records actualized → reconciled"
         }
       ],
-      "screen_ids": ["SCR-019", "SCR-020", "SCR-024", "SCR-023", "SCR-022"],
+      "screen_ids": [
+        "SCR-019",
+        "SCR-020",
+        "SCR-021",
+        "SCR-024",
+        "SCR-023",
+        "SCR-022"
+      ],
       "handoff_role_ids": [
         "ROLE-VITICULTURIST",
         "ROLE-VINEYARD-MANAGER",
@@ -539,6 +693,7 @@
     {
       "id": "FLW-005",
       "title": "Late offline sample triggers a complete resampling cycle: exact operational interaction flow",
+      "flow_kind": "ordered_narrative",
       "workflow_ids": ["WF-005"],
       "scenario_ids": ["SCN-005-04"],
       "fixture_ids": ["FIX-022"],
@@ -583,24 +738,6 @@
           "record_instance_ids": [],
           "intent": "Perform TRN-WF-005-002 from the current canonical state",
           "outcome": "EVT-00150 records sample_collected → lab_pending"
-        },
-        {
-          "screen_id": "SCR-029",
-          "action_id": "ACT-127",
-          "actor_role_id": "ROLE-VITICULTURIST",
-          "scenario_id": "SCN-005-04",
-          "fixture_id": "FIX-022",
-          "event_id": "EVT-00152",
-          "transition_id": "TRN-WF-005-016",
-          "record_instance_ids": [
-            "RCI-00125",
-            "RCI-00165",
-            "RCI-00166",
-            "RCI-00167",
-            "RCI-00168"
-          ],
-          "intent": "Perform TRN-WF-005-016 from the current canonical state",
-          "outcome": "EVT-00152 records lab_pending → more_sampling_required"
         }
       ],
       "exception_path": [
@@ -623,7 +760,8 @@
           "outcome": "EVT-00152 remains attributable and bounded"
         }
       ],
-      "recovery_path": [
+      "recovery_path": [],
+      "completion_path": [
         {
           "screen_id": "SCR-028",
           "action_id": "ACT-121",
@@ -633,11 +771,33 @@
           "event_id": "EVT-00155",
           "transition_id": "TRN-WF-005-011",
           "record_instance_ids": ["RCI-00168", "RCI-00125"],
-          "intent": "Apply the next exact recovery or accountable disposition",
-          "outcome": "EVT-00155 advances only through TRN-WF-005-011"
-        }
-      ],
-      "completion_path": [
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00155 records more_sampling_required → sampling_due"
+        },
+        {
+          "screen_id": "SCR-028",
+          "action_id": "ACT-120",
+          "actor_role_id": "ROLE-VITICULTURIST",
+          "scenario_id": "SCN-005-04",
+          "fixture_id": "FIX-022",
+          "event_id": "EVT-00161",
+          "transition_id": "TRN-WF-005-009",
+          "record_instance_ids": ["RCI-00125", "RCI-00165", "RCI-00166"],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00161 records sampling_due → sample_collected"
+        },
+        {
+          "screen_id": "SCR-025",
+          "action_id": "ACT-109",
+          "actor_role_id": "ROLE-LAB",
+          "scenario_id": "SCN-005-04",
+          "fixture_id": "FIX-022",
+          "event_id": "EVT-00174",
+          "transition_id": "TRN-WF-005-002",
+          "record_instance_ids": [],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00174 records sample_collected → lab_pending"
+        },
         {
           "screen_id": "SCR-025",
           "action_id": "ACT-110",
@@ -647,8 +807,8 @@
           "event_id": "EVT-00186",
           "transition_id": "TRN-WF-005-003",
           "record_instance_ids": [],
-          "intent": "Confirm terminal evidence and immutable lineage",
-          "outcome": "EVT-00186 records the scenario terminal result_available"
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00186 records lab_pending → result_available"
         }
       ],
       "screen_ids": ["SCR-025", "SCR-029", "SCR-028"],
@@ -666,6 +826,7 @@
     {
       "id": "FLW-006",
       "title": "Replan harvest through missed slot and winery-capacity delay: exact operational interaction flow",
+      "flow_kind": "ordered_narrative",
       "workflow_ids": ["WF-006"],
       "scenario_ids": ["SCN-006-02"],
       "fixture_ids": ["FIX-027"],
@@ -682,7 +843,7 @@
         "LNK-00115",
         "LNK-00124"
       ],
-      "platforms": ["responsive", "desktop"],
+      "platforms": ["responsive", "mobile", "desktop"],
       "entry_points": [
         {
           "screen_id": "SCR-033",
@@ -748,6 +909,18 @@
           "record_instance_ids": [],
           "intent": "Perform TRN-WF-006-002 from the current canonical state",
           "outcome": "EVT-00217 records staged → load_created"
+        },
+        {
+          "screen_id": "SCR-034",
+          "action_id": "ACT-147",
+          "actor_role_id": "ROLE-TRANSPORTATION",
+          "scenario_id": "SCN-006-02",
+          "fixture_id": "FIX-027",
+          "event_id": "EVT-00218",
+          "transition_id": "TRN-WF-006-010",
+          "record_instance_ids": ["RCI-00212", "RCI-00213"],
+          "intent": "Perform TRN-WF-006-010 from the current canonical state",
+          "outcome": "EVT-00218 records load_created → in_transit"
         }
       ],
       "exception_path": [
@@ -779,11 +952,112 @@
           "event_id": "EVT-00220",
           "transition_id": "TRN-WF-006-018",
           "record_instance_ids": ["RCI-00210"],
-          "intent": "Apply the next exact recovery or accountable disposition",
+          "intent": "Apply the exact recovery without rewriting accepted evidence",
           "outcome": "EVT-00220 advances only through TRN-WF-006-018"
         }
       ],
       "completion_path": [
+        {
+          "screen_id": "SCR-037",
+          "action_id": "ACT-164",
+          "actor_role_id": "ROLE-VINEYARD-MANAGER",
+          "scenario_id": "SCN-006-02",
+          "fixture_id": "FIX-027",
+          "event_id": "EVT-00221",
+          "transition_id": "TRN-WF-006-024",
+          "record_instance_ids": [
+            "RCI-00172",
+            "RCI-00210",
+            "RCI-00211",
+            "RCI-00171"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00221 records harvesting → delayed"
+        },
+        {
+          "screen_id": "SCR-035",
+          "action_id": "ACT-157",
+          "actor_role_id": "ROLE-TRANSPORTATION",
+          "scenario_id": "SCN-006-02",
+          "fixture_id": "FIX-027",
+          "event_id": "EVT-00222",
+          "transition_id": "TRN-WF-006-019",
+          "record_instance_ids": ["RCI-00212", "RCI-00213"],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00222 records delayed → in_transit"
+        },
+        {
+          "screen_id": "SCR-034",
+          "action_id": "ACT-148",
+          "actor_role_id": "ROLE-WINERY-INTAKE",
+          "scenario_id": "SCN-006-02",
+          "fixture_id": "FIX-027",
+          "event_id": "EVT-00223",
+          "transition_id": "TRN-WF-006-011",
+          "record_instance_ids": ["RCI-00212", "RCI-00213", "RCI-00214"],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00223 records in_transit → arrived"
+        },
+        {
+          "screen_id": "SCR-032",
+          "action_id": "ACT-139",
+          "actor_role_id": "ROLE-WINERY-INTAKE",
+          "scenario_id": "SCN-006-02",
+          "fixture_id": "FIX-027",
+          "event_id": "EVT-00224",
+          "transition_id": "TRN-WF-006-004",
+          "record_instance_ids": [
+            "RCI-00172",
+            "RCI-00212",
+            "RCI-00213",
+            "RCI-00215",
+            "RCI-00214"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00224 records arrived → weighed"
+        },
+        {
+          "screen_id": "SCR-032",
+          "action_id": "ACT-140",
+          "actor_role_id": "ROLE-WINEMAKER",
+          "scenario_id": "SCN-006-02",
+          "fixture_id": "FIX-027",
+          "event_id": "EVT-00225",
+          "transition_id": "TRN-WF-006-005",
+          "record_instance_ids": [
+            "RCI-00212",
+            "RCI-00215",
+            "RCI-00216",
+            "RCI-00171",
+            "RCI-00217"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00225 records weighed → accepted"
+        },
+        {
+          "screen_id": "SCR-032",
+          "action_id": "ACT-141",
+          "actor_role_id": "ROLE-WINERY-INTAKE",
+          "scenario_id": "SCN-006-02",
+          "fixture_id": "FIX-027",
+          "event_id": "EVT-00226",
+          "transition_id": "TRN-WF-006-006",
+          "record_instance_ids": [],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00226 records accepted → entered"
+        },
+        {
+          "screen_id": "SCR-033",
+          "action_id": "ACT-143",
+          "actor_role_id": "ROLE-GROWER-RELATIONS",
+          "scenario_id": "SCN-006-02",
+          "fixture_id": "FIX-027",
+          "event_id": "EVT-00227",
+          "transition_id": "TRN-WF-006-007",
+          "record_instance_ids": [],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00227 records entered → reconciled"
+        },
         {
           "screen_id": "SCR-033",
           "action_id": "ACT-144",
@@ -799,20 +1073,27 @@
             "RCI-00219",
             "RCI-00171"
           ],
-          "intent": "Confirm terminal evidence and immutable lineage",
-          "outcome": "EVT-00228 records the scenario terminal settled"
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00228 records reconciled → settled"
         }
       ],
-      "screen_ids": ["SCR-033", "SCR-031", "SCR-037", "SCR-035"],
+      "screen_ids": [
+        "SCR-033",
+        "SCR-031",
+        "SCR-034",
+        "SCR-037",
+        "SCR-035",
+        "SCR-032"
+      ],
       "handoff_role_ids": [
         "ROLE-WINEMAKER",
         "ROLE-VINEYARD-MANAGER",
         "ROLE-HARVEST-CREW-LEADER",
-        "ROLE-FINANCE",
-        "ROLE-GROWER-RELATIONS",
-        "ROLE-CONTRACT-GROWER",
         "ROLE-TRANSPORTATION",
         "ROLE-WINERY-INTAKE",
+        "ROLE-GROWER-RELATIONS",
+        "ROLE-FINANCE",
+        "ROLE-CONTRACT-GROWER",
         "ROLE-OWNER-GENERAL-MANAGER",
         "ROLE-ASSISTANT-VINEYARD-MANAGER"
       ],
@@ -821,15 +1102,16 @@
     {
       "id": "FLW-007",
       "title": "Pause field labor for heat or safety and resume after re-briefing: exact operational interaction flow",
+      "flow_kind": "ordered_narrative",
       "workflow_ids": ["WF-007"],
       "scenario_ids": ["SCN-007-03"],
       "fixture_ids": ["FIX-033"],
       "operational_chain_ids": [],
       "record_link_ids": ["LNK-00049"],
-      "platforms": ["responsive", "desktop", "mobile"],
+      "platforms": ["responsive", "mobile", "desktop"],
       "entry_points": [
         {
-          "screen_id": "SCR-039",
+          "screen_id": "SCR-040",
           "action_id": "ACT-173",
           "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
           "scenario_id": "SCN-007-03",
@@ -843,7 +1125,7 @@
       ],
       "normal_path": [
         {
-          "screen_id": "SCR-039",
+          "screen_id": "SCR-040",
           "action_id": "ACT-173",
           "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
           "scenario_id": "SCN-007-03",
@@ -855,7 +1137,7 @@
           "outcome": "EVT-00097 records entry → crew_scheduled"
         },
         {
-          "screen_id": "SCR-039",
+          "screen_id": "SCR-040",
           "action_id": "ACT-174",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-007-03",
@@ -872,7 +1154,7 @@
           "outcome": "EVT-00098 records crew_scheduled → briefed"
         },
         {
-          "screen_id": "SCR-040",
+          "screen_id": "SCR-042",
           "action_id": "ACT-176",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-007-03",
@@ -891,7 +1173,7 @@
       ],
       "exception_path": [
         {
-          "screen_id": "SCR-045",
+          "screen_id": "SCR-042",
           "action_id": "ACT-199",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-007-03",
@@ -910,7 +1192,7 @@
       ],
       "recovery_path": [
         {
-          "screen_id": "SCR-043",
+          "screen_id": "SCR-042",
           "action_id": "ACT-190",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-007-03",
@@ -923,13 +1205,83 @@
             "RCI-00011",
             "RCI-00274"
           ],
-          "intent": "Apply the next exact recovery or accountable disposition",
+          "intent": "Apply the exact recovery without rewriting accepted evidence",
           "outcome": "EVT-00101 advances only through TRN-WF-007-014"
         }
       ],
       "completion_path": [
         {
           "screen_id": "SCR-042",
+          "action_id": "ACT-176",
+          "actor_role_id": "ROLE-FOREMAN",
+          "scenario_id": "SCN-007-03",
+          "fixture_id": "FIX-033",
+          "event_id": "EVT-00102",
+          "transition_id": "TRN-WF-007-003",
+          "record_instance_ids": [
+            "RCI-00011",
+            "RCI-00273",
+            "RCI-00274",
+            "RCI-00275"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00102 records briefed → working"
+        },
+        {
+          "screen_id": "SCR-042",
+          "action_id": "ACT-177",
+          "actor_role_id": "ROLE-FOREMAN",
+          "scenario_id": "SCN-007-03",
+          "fixture_id": "FIX-033",
+          "event_id": "EVT-00103",
+          "transition_id": "TRN-WF-007-004",
+          "record_instance_ids": [
+            "RCI-00274",
+            "RCI-00275",
+            "RCI-00276",
+            "RCI-00277"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00103 records working → time_submitted"
+        },
+        {
+          "screen_id": "SCR-043",
+          "action_id": "ACT-179",
+          "actor_role_id": "ROLE-VINEYARD-MANAGER",
+          "scenario_id": "SCN-007-03",
+          "fixture_id": "FIX-033",
+          "event_id": "EVT-00104",
+          "transition_id": "TRN-WF-007-005",
+          "record_instance_ids": [
+            "RCI-00274",
+            "RCI-00275",
+            "RCI-00276",
+            "RCI-00277",
+            "RCI-00278",
+            "RCI-00279"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00104 records time_submitted → supervisor_verified"
+        },
+        {
+          "screen_id": "SCR-044",
+          "action_id": "ACT-180",
+          "actor_role_id": "ROLE-PAYROLL",
+          "scenario_id": "SCN-007-03",
+          "fixture_id": "FIX-033",
+          "event_id": "EVT-00105",
+          "transition_id": "TRN-WF-007-006",
+          "record_instance_ids": [
+            "RCI-00280",
+            "RCI-00276",
+            "RCI-00279",
+            "RCI-00281"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00105 records supervisor_verified → payroll_accepted"
+        },
+        {
+          "screen_id": "SCR-045",
           "action_id": "ACT-186",
           "actor_role_id": "ROLE-FINANCE",
           "scenario_id": "SCN-007-03",
@@ -937,20 +1289,20 @@
           "event_id": "EVT-00106",
           "transition_id": "TRN-WF-007-007",
           "record_instance_ids": ["RCI-00276", "RCI-00277", "RCI-00281"],
-          "intent": "Confirm terminal evidence and immutable lineage",
-          "outcome": "EVT-00106 records the scenario terminal cost_allocated"
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00106 records payroll_accepted → cost_allocated"
         }
       ],
-      "screen_ids": ["SCR-039", "SCR-040", "SCR-045", "SCR-043", "SCR-042"],
+      "screen_ids": ["SCR-040", "SCR-042", "SCR-043", "SCR-044", "SCR-045"],
       "handoff_role_ids": [
         "ROLE-OPERATIONS-COORDINATOR",
         "ROLE-FOREMAN",
-        "ROLE-FINANCE",
         "ROLE-VINEYARD-MANAGER",
+        "ROLE-PAYROLL",
+        "ROLE-FINANCE",
         "ROLE-FIELD-CREW",
         "ROLE-HARVEST-CREW-LEADER",
         "ROLE-LABOR-CONTRACTOR",
-        "ROLE-PAYROLL",
         "ROLE-ASSISTANT-VINEYARD-MANAGER"
       ],
       "offline_behavior": "Each step uses its action's canonical SYNC class; field capture may journal locally, while commitments and terminal authority require current server acceptance."
@@ -958,12 +1310,13 @@
     {
       "id": "FLW-008",
       "title": "Isolate, repair, and return failed equipment during a narrow work window: exact operational interaction flow",
+      "flow_kind": "ordered_narrative",
       "workflow_ids": ["WF-008"],
       "scenario_ids": ["SCN-008-03"],
       "fixture_ids": ["FIX-038"],
       "operational_chain_ids": [],
       "record_link_ids": [],
-      "platforms": ["responsive", "desktop", "mobile"],
+      "platforms": ["responsive", "mobile", "desktop"],
       "entry_points": [
         {
           "screen_id": "SCR-046",
@@ -1028,6 +1381,66 @@
           ],
           "intent": "Perform TRN-WF-008-003 from the current canonical state",
           "outcome": "EVT-00083 records availability_checked → approved"
+        },
+        {
+          "screen_id": "SCR-047",
+          "action_id": "ACT-208",
+          "actor_role_id": "ROLE-PURCHASING",
+          "scenario_id": "SCN-008-03",
+          "fixture_id": "FIX-038",
+          "event_id": "EVT-00085",
+          "transition_id": "TRN-WF-008-004",
+          "record_instance_ids": [],
+          "intent": "Perform TRN-WF-008-004 from the current canonical state",
+          "outcome": "EVT-00085 records approved → ordered"
+        },
+        {
+          "screen_id": "SCR-047",
+          "action_id": "ACT-209",
+          "actor_role_id": "ROLE-PURCHASING",
+          "scenario_id": "SCN-008-03",
+          "fixture_id": "FIX-038",
+          "event_id": "EVT-00087",
+          "transition_id": "TRN-WF-008-005",
+          "record_instance_ids": [],
+          "intent": "Perform TRN-WF-008-005 from the current canonical state",
+          "outcome": "EVT-00087 records ordered → received"
+        },
+        {
+          "screen_id": "SCR-047",
+          "action_id": "ACT-210",
+          "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
+          "scenario_id": "SCN-008-03",
+          "fixture_id": "FIX-038",
+          "event_id": "EVT-00088",
+          "transition_id": "TRN-WF-008-006",
+          "record_instance_ids": [],
+          "intent": "Perform TRN-WF-008-006 from the current canonical state",
+          "outcome": "EVT-00088 records received → staged"
+        },
+        {
+          "screen_id": "SCR-048",
+          "action_id": "ACT-212",
+          "actor_role_id": "ROLE-FOREMAN",
+          "scenario_id": "SCN-008-03",
+          "fixture_id": "FIX-038",
+          "event_id": "EVT-00089",
+          "transition_id": "TRN-WF-008-007",
+          "record_instance_ids": [],
+          "intent": "Perform TRN-WF-008-007 from the current canonical state",
+          "outcome": "EVT-00089 records staged → ready"
+        },
+        {
+          "screen_id": "SCR-049",
+          "action_id": "ACT-218",
+          "actor_role_id": "ROLE-EQUIPMENT-OPERATOR",
+          "scenario_id": "SCN-008-03",
+          "fixture_id": "FIX-038",
+          "event_id": "EVT-00090",
+          "transition_id": "TRN-WF-008-011",
+          "record_instance_ids": ["RCI-00325", "RCI-00328"],
+          "intent": "Perform TRN-WF-008-011 from the current canonical state",
+          "outcome": "EVT-00090 records ready → in_use"
         }
       ],
       "exception_path": [
@@ -1048,9 +1461,7 @@
           ],
           "intent": "Contain the exact non-ideal state and preserve accepted evidence",
           "outcome": "EVT-00091 remains attributable and bounded"
-        }
-      ],
-      "recovery_path": [
+        },
         {
           "screen_id": "SCR-049",
           "action_id": "ACT-219",
@@ -1060,8 +1471,52 @@
           "event_id": "EVT-00092",
           "transition_id": "TRN-WF-008-013",
           "record_instance_ids": ["RCI-00331", "RCI-00332"],
-          "intent": "Apply the next exact recovery or accountable disposition",
-          "outcome": "EVT-00092 advances only through TRN-WF-008-013"
+          "intent": "Contain the exact non-ideal state and preserve accepted evidence",
+          "outcome": "EVT-00092 remains attributable and bounded"
+        },
+        {
+          "screen_id": "SCR-050",
+          "action_id": "ACT-221",
+          "actor_role_id": "ROLE-MECHANIC",
+          "scenario_id": "SCN-008-03",
+          "fixture_id": "FIX-038",
+          "event_id": "EVT-00093",
+          "transition_id": "TRN-WF-008-014",
+          "record_instance_ids": ["RCI-00332", "RCI-00333"],
+          "intent": "Contain the exact non-ideal state and preserve accepted evidence",
+          "outcome": "EVT-00093 remains attributable and bounded"
+        },
+        {
+          "screen_id": "SCR-050",
+          "action_id": "ACT-222",
+          "actor_role_id": "ROLE-MECHANIC",
+          "scenario_id": "SCN-008-03",
+          "fixture_id": "FIX-038",
+          "event_id": "EVT-00094",
+          "transition_id": "TRN-WF-008-015",
+          "record_instance_ids": [
+            "RCI-00332",
+            "RCI-00333",
+            "RCI-00325",
+            "RCI-00331",
+            "RCI-00334"
+          ],
+          "intent": "Contain the exact non-ideal state and preserve accepted evidence",
+          "outcome": "EVT-00094 remains attributable and bounded"
+        }
+      ],
+      "recovery_path": [
+        {
+          "screen_id": "SCR-051",
+          "action_id": "ACT-225",
+          "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
+          "scenario_id": "SCN-008-03",
+          "fixture_id": "FIX-038",
+          "event_id": "EVT-00095",
+          "transition_id": "TRN-WF-008-016",
+          "record_instance_ids": ["RCI-00334", "RCI-00325"],
+          "intent": "Apply the exact recovery without rewriting accepted evidence",
+          "outcome": "EVT-00095 advances only through TRN-WF-008-016"
         }
       ],
       "completion_path": [
@@ -1074,19 +1529,27 @@
           "event_id": "EVT-00096",
           "transition_id": "TRN-WF-008-008",
           "record_instance_ids": [],
-          "intent": "Confirm terminal evidence and immutable lineage",
-          "outcome": "EVT-00096 records the scenario terminal cost_reconciled"
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00096 records ready → cost_reconciled"
         }
       ],
-      "screen_ids": ["SCR-046", "SCR-052", "SCR-049", "SCR-048"],
+      "screen_ids": [
+        "SCR-046",
+        "SCR-047",
+        "SCR-048",
+        "SCR-049",
+        "SCR-052",
+        "SCR-050",
+        "SCR-051"
+      ],
       "handoff_role_ids": [
         "ROLE-OPERATIONS-COORDINATOR",
         "ROLE-VINEYARD-MANAGER",
+        "ROLE-PURCHASING",
         "ROLE-FOREMAN",
+        "ROLE-EQUIPMENT-OPERATOR",
         "ROLE-MECHANIC",
         "ROLE-FINANCE",
-        "ROLE-PURCHASING",
-        "ROLE-EQUIPMENT-OPERATOR",
         "ROLE-CONTRACTOR",
         "ROLE-COMPLIANCE-COORDINATOR",
         "ROLE-OWNER-GENERAL-MANAGER",
@@ -1097,6 +1560,7 @@
     {
       "id": "FLW-009",
       "title": "Resolve a delivery or payment dispute and restore aligned terms: exact operational interaction flow",
+      "flow_kind": "ordered_narrative",
       "workflow_ids": ["WF-009"],
       "scenario_ids": ["SCN-009-02"],
       "fixture_ids": ["FIX-042"],
@@ -1174,6 +1638,37 @@
           ],
           "intent": "Perform TRN-WF-009-003 from the current canonical state",
           "outcome": "EVT-00286 records due_diligence → active"
+        },
+        {
+          "screen_id": "SCR-054",
+          "action_id": "ACT-241",
+          "actor_role_id": "ROLE-GROWER-RELATIONS",
+          "scenario_id": "SCN-009-02",
+          "fixture_id": "FIX-042",
+          "event_id": "EVT-00289",
+          "transition_id": "TRN-WF-009-004",
+          "record_instance_ids": [
+            "RCI-00366",
+            "RCI-00367",
+            "RCI-00365",
+            "RCI-00368",
+            "RCI-00369",
+            "RCI-00370"
+          ],
+          "intent": "Perform TRN-WF-009-004 from the current canonical state",
+          "outcome": "EVT-00289 records active → aligned"
+        },
+        {
+          "screen_id": "SCR-055",
+          "action_id": "ACT-244",
+          "actor_role_id": "ROLE-GROWER-RELATIONS",
+          "scenario_id": "SCN-009-02",
+          "fixture_id": "FIX-042",
+          "event_id": "EVT-00299",
+          "transition_id": "TRN-WF-009-005",
+          "record_instance_ids": [],
+          "intent": "Perform TRN-WF-009-005 from the current canonical state",
+          "outcome": "EVT-00299 records aligned → fulfilled"
         }
       ],
       "exception_path": [
@@ -1214,11 +1709,54 @@
             "RCI-00367",
             "RCI-00368"
           ],
-          "intent": "Apply the next exact recovery or accountable disposition",
+          "intent": "Apply the exact recovery without rewriting accepted evidence",
           "outcome": "EVT-00313 advances only through TRN-WF-009-017"
         }
       ],
       "completion_path": [
+        {
+          "screen_id": "SCR-058",
+          "action_id": "ACT-260",
+          "actor_role_id": "ROLE-GROWER-RELATIONS",
+          "scenario_id": "SCN-009-02",
+          "fixture_id": "FIX-042",
+          "event_id": "EVT-00317",
+          "transition_id": "TRN-WF-009-018",
+          "record_instance_ids": [
+            "RCI-00368",
+            "RCI-00369",
+            "RCI-00366",
+            "RCI-00367",
+            "RCI-00365",
+            "RCI-00370"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00317 records corrective_action → aligned"
+        },
+        {
+          "screen_id": "SCR-055",
+          "action_id": "ACT-244",
+          "actor_role_id": "ROLE-GROWER-RELATIONS",
+          "scenario_id": "SCN-009-02",
+          "fixture_id": "FIX-042",
+          "event_id": "EVT-00320",
+          "transition_id": "TRN-WF-009-005",
+          "record_instance_ids": [],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00320 records aligned → fulfilled"
+        },
+        {
+          "screen_id": "SCR-056",
+          "action_id": "ACT-250",
+          "actor_role_id": "ROLE-FINANCE",
+          "scenario_id": "SCN-009-02",
+          "fixture_id": "FIX-042",
+          "event_id": "EVT-00324",
+          "transition_id": "TRN-WF-009-006",
+          "record_instance_ids": [],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00324 records fulfilled → settled"
+        },
         {
           "screen_id": "SCR-056",
           "action_id": "ACT-251",
@@ -1228,20 +1766,28 @@
           "event_id": "EVT-00327",
           "transition_id": "TRN-WF-009-007",
           "record_instance_ids": [],
-          "intent": "Confirm terminal evidence and immutable lineage",
-          "outcome": "EVT-00327 records the scenario terminal historical"
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00327 records settled → historical"
         }
       ],
-      "screen_ids": ["SCR-053", "SCR-054", "SCR-059", "SCR-057", "SCR-056"],
+      "screen_ids": [
+        "SCR-053",
+        "SCR-054",
+        "SCR-055",
+        "SCR-059",
+        "SCR-057",
+        "SCR-058",
+        "SCR-056"
+      ],
       "handoff_role_ids": [
         "ROLE-GROWER-RELATIONS",
+        "ROLE-FINANCE",
         "ROLE-CONTRACT-GROWER",
         "ROLE-VINEYARD-MANAGER",
         "ROLE-VITICULTURIST",
         "ROLE-WINEMAKER",
         "ROLE-WINERY-INTAKE",
         "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-FINANCE",
         "ROLE-TRANSPORTATION",
         "ROLE-OWNER-GENERAL-MANAGER"
       ],
@@ -1250,6 +1796,7 @@
     {
       "id": "FLW-010",
       "title": "Correct noncompliance discovered during audit: exact operational interaction flow",
+      "flow_kind": "ordered_narrative",
       "workflow_ids": ["WF-010"],
       "scenario_ids": ["SCN-010-03"],
       "fixture_ids": ["FIX-048"],
@@ -1329,6 +1876,30 @@
           ],
           "intent": "Perform TRN-WF-010-003 from the current canonical state",
           "outcome": "EVT-00065 records evidence_collecting → package_prepared"
+        },
+        {
+          "screen_id": "SCR-061",
+          "action_id": "ACT-274",
+          "actor_role_id": "ROLE-VINEYARD-MANAGER",
+          "scenario_id": "SCN-010-03",
+          "fixture_id": "FIX-048",
+          "event_id": "EVT-00066",
+          "transition_id": "TRN-WF-010-004",
+          "record_instance_ids": [],
+          "intent": "Perform TRN-WF-010-004 from the current canonical state",
+          "outcome": "EVT-00066 records package_prepared → submitted"
+        },
+        {
+          "screen_id": "SCR-061",
+          "action_id": "ACT-275",
+          "actor_role_id": "ROLE-AUDITOR",
+          "scenario_id": "SCN-010-03",
+          "fixture_id": "FIX-048",
+          "event_id": "EVT-00067",
+          "transition_id": "TRN-WF-010-005",
+          "record_instance_ids": ["RCI-00447", "RCI-00448", "RCI-00449"],
+          "intent": "Perform TRN-WF-010-005 from the current canonical state",
+          "outcome": "EVT-00067 records submitted → under_review"
         }
       ],
       "exception_path": [
@@ -1365,11 +1936,74 @@
             "RCI-00447",
             "RCI-00450"
           ],
-          "intent": "Apply the next exact recovery or accountable disposition",
+          "intent": "Apply the exact recovery without rewriting accepted evidence",
           "outcome": "EVT-00069 advances only through TRN-WF-010-013"
         }
       ],
       "completion_path": [
+        {
+          "screen_id": "SCR-065",
+          "action_id": "ACT-289",
+          "actor_role_id": "ROLE-COMPLIANCE-COORDINATOR",
+          "scenario_id": "SCN-010-03",
+          "fixture_id": "FIX-048",
+          "event_id": "EVT-00070",
+          "transition_id": "TRN-WF-010-015",
+          "record_instance_ids": [
+            "RCI-00450",
+            "RCI-00448",
+            "RCI-00447",
+            "RCI-00449"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00070 records corrective_action_open → remediation_in_progress"
+        },
+        {
+          "screen_id": "SCR-065",
+          "action_id": "ACT-290",
+          "actor_role_id": "ROLE-COMPLIANCE-COORDINATOR",
+          "scenario_id": "SCN-010-03",
+          "fixture_id": "FIX-048",
+          "event_id": "EVT-00071",
+          "transition_id": "TRN-WF-010-016",
+          "record_instance_ids": [
+            "RCI-00450",
+            "RCI-00448",
+            "RCI-00447",
+            "RCI-00449"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00071 records remediation_in_progress → evidence_resubmitted"
+        },
+        {
+          "screen_id": "SCR-066",
+          "action_id": "ACT-294",
+          "actor_role_id": "ROLE-CERTIFIER",
+          "scenario_id": "SCN-010-03",
+          "fixture_id": "FIX-048",
+          "event_id": "EVT-00072",
+          "transition_id": "TRN-WF-010-017",
+          "record_instance_ids": [
+            "RCI-00450",
+            "RCI-00447",
+            "RCI-00448",
+            "RCI-00449"
+          ],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00072 records evidence_resubmitted → compliant"
+        },
+        {
+          "screen_id": "SCR-062",
+          "action_id": "ACT-278",
+          "actor_role_id": "ROLE-CERTIFIER",
+          "scenario_id": "SCN-010-03",
+          "fixture_id": "FIX-048",
+          "event_id": "EVT-00073",
+          "transition_id": "TRN-WF-010-007",
+          "record_instance_ids": [],
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00073 records compliant → certified"
+        },
         {
           "screen_id": "SCR-063",
           "action_id": "ACT-281",
@@ -1379,21 +2013,30 @@
           "event_id": "EVT-00074",
           "transition_id": "TRN-WF-010-008",
           "record_instance_ids": [],
-          "intent": "Confirm terminal evidence and immutable lineage",
-          "outcome": "EVT-00074 records the scenario terminal archived"
+          "intent": "Continue the accountable path and confirm terminal evidence",
+          "outcome": "EVT-00074 records certified → archived"
         }
       ],
-      "screen_ids": ["SCR-060", "SCR-067", "SCR-064", "SCR-063"],
+      "screen_ids": [
+        "SCR-060",
+        "SCR-061",
+        "SCR-067",
+        "SCR-064",
+        "SCR-065",
+        "SCR-066",
+        "SCR-062",
+        "SCR-063"
+      ],
       "handoff_role_ids": [
         "ROLE-COMPLIANCE-COORDINATOR",
-        "ROLE-AUDITOR",
         "ROLE-VINEYARD-MANAGER",
+        "ROLE-AUDITOR",
+        "ROLE-CERTIFIER",
         "ROLE-FOREMAN",
         "ROLE-PESTICIDE-HANDLER",
         "ROLE-IRRIGATION-LEAD",
         "ROLE-OPERATIONS-COORDINATOR",
         "ROLE-CONTRACTOR",
-        "ROLE-CERTIFIER",
         "ROLE-REGULATOR",
         "ROLE-GROWER-RELATIONS",
         "ROLE-OWNER-GENERAL-MANAGER"
@@ -1402,7 +2045,8 @@
     },
     {
       "id": "FLW-011",
-      "title": "Estate forecast revision survives late sampling and harvest delay to settlement: linked multi-path evidence flow",
+      "title": "Estate forecast revision survives late sampling and harvest delay to settlement: linked-evidence comparison",
+      "flow_kind": "linked_evidence_comparison",
       "workflow_ids": ["WF-004", "WF-005", "WF-006", "WF-009"],
       "scenario_ids": ["SCN-900-01"],
       "fixture_ids": ["FIX-017", "FIX-022", "FIX-027", "FIX-042"],
@@ -1628,7 +2272,8 @@
     },
     {
       "id": "FLW-012",
-      "title": "Estate actual divergence and superseded pick recover through load correction: linked multi-path evidence flow",
+      "title": "Estate actual divergence and superseded pick recover through load correction: linked-evidence comparison",
+      "flow_kind": "linked_evidence_comparison",
       "workflow_ids": ["WF-004", "WF-005", "WF-006", "WF-009"],
       "scenario_ids": ["SCN-900-02"],
       "fixture_ids": ["FIX-018", "FIX-023", "FIX-028", "FIX-043"],
@@ -1864,7 +2509,8 @@
     },
     {
       "id": "FLW-013",
-      "title": "Contract fruit survives quality rejection and block-alias dispute: linked multi-path evidence flow",
+      "title": "Contract fruit survives quality rejection and block-alias dispute: linked-evidence comparison",
+      "flow_kind": "linked_evidence_comparison",
       "workflow_ids": ["WF-004", "WF-005", "WF-006", "WF-009"],
       "scenario_ids": ["SCN-900-03"],
       "fixture_ids": ["FIX-019", "FIX-024", "FIX-029", "FIX-044"],
@@ -2086,7 +2732,8 @@
     },
     {
       "id": "FLW-014",
-      "title": "Contract pick reaches settlement through corrected weigh ticket: linked multi-path evidence flow",
+      "title": "Contract pick reaches settlement through corrected weigh ticket: linked-evidence comparison",
+      "flow_kind": "linked_evidence_comparison",
       "workflow_ids": ["WF-004", "WF-005", "WF-006", "WF-009"],
       "scenario_ids": ["SCN-900-04"],
       "fixture_ids": ["FIX-020", "FIX-025", "FIX-030", "FIX-045"],
@@ -2316,7 +2963,8 @@
     },
     {
       "id": "FLW-015",
-      "title": "Heat-paused field work flows into crew time, payroll, and cost allocation: linked multi-path evidence flow",
+      "title": "Heat-paused field work flows into crew time, payroll, and cost allocation: linked-evidence comparison",
+      "flow_kind": "linked_evidence_comparison",
       "workflow_ids": ["WF-001", "WF-007"],
       "scenario_ids": ["SCN-900-05"],
       "fixture_ids": ["FIX-003", "FIX-033"],
@@ -2351,7 +2999,7 @@
           "outcome": "EVT-00050 begins a path connected only by the declared record links or operational chain"
         },
         {
-          "screen_id": "SCR-039",
+          "screen_id": "SCR-040",
           "action_id": "ACT-173",
           "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
           "scenario_id": "SCN-900-05",
@@ -2365,7 +3013,7 @@
       ],
       "exception_path": [
         {
-          "screen_id": "SCR-006",
+          "screen_id": "SCR-005",
           "action_id": "ACT-024",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-900-05",
@@ -2385,7 +3033,7 @@
       ],
       "recovery_path": [
         {
-          "screen_id": "SCR-004",
+          "screen_id": "SCR-005",
           "action_id": "ACT-016",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-900-05",
@@ -2405,7 +3053,7 @@
       ],
       "completion_path": [
         {
-          "screen_id": "SCR-003",
+          "screen_id": "SCR-006",
           "action_id": "ACT-010",
           "actor_role_id": "ROLE-VINEYARD-MANAGER",
           "scenario_id": "SCN-900-05",
@@ -2417,7 +3065,7 @@
           "outcome": "EVT-00064 satisfies WFI-0002 without flattening chronology"
         },
         {
-          "screen_id": "SCR-042",
+          "screen_id": "SCR-045",
           "action_id": "ACT-186",
           "actor_role_id": "ROLE-FINANCE",
           "scenario_id": "SCN-900-05",
@@ -2429,14 +3077,7 @@
           "outcome": "EVT-00106 satisfies WFI-0032 without flattening chronology"
         }
       ],
-      "screen_ids": [
-        "SCR-001",
-        "SCR-039",
-        "SCR-006",
-        "SCR-004",
-        "SCR-003",
-        "SCR-042"
-      ],
+      "screen_ids": ["SCR-001", "SCR-040", "SCR-005", "SCR-006", "SCR-045"],
       "handoff_role_ids": [
         "ROLE-VITICULTURIST",
         "ROLE-OPERATIONS-COORDINATOR",
@@ -2449,7 +3090,8 @@
     },
     {
       "id": "FLW-016",
-      "title": "Trace an accepted harvest load into grower settlement history: linked multi-path evidence flow",
+      "title": "Trace an accepted harvest load into grower settlement history: linked-evidence comparison",
+      "flow_kind": "linked_evidence_comparison",
       "workflow_ids": ["WF-006", "WF-009"],
       "scenario_ids": ["SCN-900-06"],
       "fixture_ids": ["FIX-027", "FIX-042"],
@@ -2604,7 +3246,8 @@
     },
     {
       "id": "FLW-017",
-      "title": "Use corrected labor time as certification audit evidence: linked multi-path evidence flow",
+      "title": "Use corrected labor time as certification audit evidence: linked-evidence comparison",
+      "flow_kind": "linked_evidence_comparison",
       "workflow_ids": ["WF-007", "WF-010"],
       "scenario_ids": ["SCN-900-07"],
       "fixture_ids": ["FIX-032", "FIX-047"],
@@ -2616,10 +3259,10 @@
         "LNK-00170",
         "LNK-00175"
       ],
-      "platforms": ["responsive", "desktop", "mobile"],
+      "platforms": ["responsive", "desktop"],
       "entry_points": [
         {
-          "screen_id": "SCR-039",
+          "screen_id": "SCR-040",
           "action_id": "ACT-173",
           "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
           "scenario_id": "SCN-900-07",
@@ -2633,7 +3276,7 @@
       ],
       "normal_path": [
         {
-          "screen_id": "SCR-039",
+          "screen_id": "SCR-040",
           "action_id": "ACT-173",
           "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
           "scenario_id": "SCN-900-07",
@@ -2664,7 +3307,7 @@
       ],
       "exception_path": [
         {
-          "screen_id": "SCR-044",
+          "screen_id": "SCR-039",
           "action_id": "ACT-195",
           "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
           "scenario_id": "SCN-900-07",
@@ -2678,7 +3321,7 @@
       ],
       "recovery_path": [
         {
-          "screen_id": "SCR-043",
+          "screen_id": "SCR-044",
           "action_id": "ACT-192",
           "actor_role_id": "ROLE-PAYROLL",
           "scenario_id": "SCN-900-07",
@@ -2697,7 +3340,7 @@
       ],
       "completion_path": [
         {
-          "screen_id": "SCR-042",
+          "screen_id": "SCR-045",
           "action_id": "ACT-186",
           "actor_role_id": "ROLE-FINANCE",
           "scenario_id": "SCN-900-07",
@@ -2722,11 +3365,11 @@
         }
       ],
       "screen_ids": [
-        "SCR-039",
+        "SCR-040",
         "SCR-060",
+        "SCR-039",
         "SCR-044",
-        "SCR-043",
-        "SCR-042",
+        "SCR-045",
         "SCR-063"
       ],
       "handoff_role_ids": [
@@ -2741,7 +3384,8 @@
     },
     {
       "id": "FLW-018",
-      "title": "Carry a wrong-load correction into audit-finding closure: linked multi-path evidence flow",
+      "title": "Carry a wrong-load correction into audit-finding closure: linked-evidence comparison",
+      "flow_kind": "linked_evidence_comparison",
       "workflow_ids": ["WF-006", "WF-010"],
       "scenario_ids": ["SCN-900-08"],
       "fixture_ids": ["FIX-028", "FIX-048"],
@@ -2910,7 +3554,8 @@
     },
     {
       "id": "FLW-019",
-      "title": "Reconcile harvest delivery with crew time, task quantity, and allocation: linked multi-path evidence flow",
+      "title": "Reconcile harvest delivery with crew time, task quantity, and allocation: linked-evidence comparison",
+      "flow_kind": "linked_evidence_comparison",
       "workflow_ids": ["WF-006", "WF-007"],
       "scenario_ids": ["SCN-900-09"],
       "fixture_ids": ["FIX-031", "FIX-036"],
@@ -2934,7 +3579,7 @@
         "LNK-00136",
         "LNK-00137"
       ],
-      "platforms": ["responsive", "mobile"],
+      "platforms": ["responsive"],
       "entry_points": [
         {
           "screen_id": "SCR-033",
@@ -2973,7 +3618,7 @@
           "outcome": "EVT-00355 begins a path connected only by the declared record links or operational chain"
         },
         {
-          "screen_id": "SCR-039",
+          "screen_id": "SCR-040",
           "action_id": "ACT-173",
           "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
           "scenario_id": "SCN-900-09",
@@ -3007,7 +3652,7 @@
       ],
       "recovery_path": [
         {
-          "screen_id": "SCR-039",
+          "screen_id": "SCR-040",
           "action_id": "ACT-173",
           "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
           "scenario_id": "SCN-900-09",
@@ -3039,7 +3684,7 @@
           "outcome": "EVT-00364 satisfies WFI-0030 without flattening chronology"
         },
         {
-          "screen_id": "SCR-042",
+          "screen_id": "SCR-045",
           "action_id": "ACT-186",
           "actor_role_id": "ROLE-FINANCE",
           "scenario_id": "SCN-900-09",
@@ -3051,7 +3696,7 @@
           "outcome": "EVT-00414 satisfies WFI-0035 without flattening chronology"
         }
       ],
-      "screen_ids": ["SCR-033", "SCR-039", "SCR-042"],
+      "screen_ids": ["SCR-033", "SCR-040", "SCR-045"],
       "handoff_role_ids": [
         "ROLE-WINEMAKER",
         "ROLE-OPERATIONS-COORDINATOR",
@@ -3068,7 +3713,8 @@
     },
     {
       "id": "FLW-020",
-      "title": "Resolve contract-block alias, rejected delivery, and withheld certification as one package: linked multi-path evidence flow",
+      "title": "Resolve contract-block alias, rejected delivery, and withheld certification as one package: linked-evidence comparison",
+      "flow_kind": "linked_evidence_comparison",
       "workflow_ids": ["WF-006", "WF-009", "WF-010"],
       "scenario_ids": ["SCN-900-10"],
       "fixture_ids": ["FIX-029", "FIX-044", "FIX-049"],

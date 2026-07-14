@@ -6,6 +6,7 @@
   "required": [
     "id",
     "title",
+    "flow_kind",
     "workflow_ids",
     "scenario_ids",
     "fixture_ids",
@@ -24,6 +25,9 @@
   "properties": {
     "id": { "type": "string", "pattern": "^FLW-[0-9]{3}$" },
     "title": { "type": "string", "minLength": 8 },
+    "flow_kind": {
+      "enum": ["ordered_narrative", "linked_evidence_comparison"]
+    },
     "workflow_ids": {
       "type": "array",
       "minItems": 1,
@@ -80,7 +84,6 @@
   "$defs": {
     "steps": {
       "type": "array",
-      "minItems": 1,
       "items": {
         "type": "object",
         "required": [

@@ -1091,6 +1091,14 @@ async function validateSchemas() {
       "packets",
       "construction-packet.schema.json",
     ],
+    [
+      "construction-packets/packets.json",
+      "packets",
+      "construction-packet.schema.json",
+    ],
+    ["figma/component-map.json", "components", "figma-map-entry.schema.json"],
+    ["figma/screen-map.json", "screens", "figma-map-entry.schema.json"],
+    ["figma/prototype-map.json", "prototypes", "figma-map-entry.schema.json"],
     ["control/trace-nodes.json", "nodes", "trace-node.schema.json"],
     ["control/trace-edges.json", "edges", "trace-edge.schema.json"],
   ];
@@ -1187,6 +1195,36 @@ async function validateSchemas() {
     "dod-matrix.schema.json",
     await readYaml("control/DOD_MATRIX.yaml"),
     "control/DOD_MATRIX.yaml",
+  );
+  validateRecord(
+    ajv,
+    "wave-manifest.schema.json",
+    await readJson("production-waves/wave-001.json"),
+    "production-waves/wave-001.json",
+  );
+  validateRecord(
+    ajv,
+    "construction-packet-registry.schema.json",
+    await readJson("construction-packets/packets.json"),
+    "construction-packets/packets.json",
+  );
+  validateRecord(
+    ajv,
+    "figma-token-map.schema.json",
+    await readJson("figma/token-map.json"),
+    "figma/token-map.json",
+  );
+  validateRecord(
+    ajv,
+    "wave-capture-manifest.schema.json",
+    await readJson("validation/wave-001-captures.json"),
+    "validation/wave-001-captures.json",
+  );
+  validateRecord(
+    ajv,
+    "wave-review.schema.json",
+    await readJson("validation/wave-001-review.json"),
+    "validation/wave-001-review.json",
   );
 
   const ontologySummary = await validateCanonicalOntology();
@@ -1361,7 +1399,6 @@ async function validateTrace() {
   const registryDefinitions = [
     ["workflow", "workflow-model/workflows.json", "workflows"],
     ["scenario", "scenarios/scenarios.json", "scenarios"],
-    ["fixture", "data/walking-slice.json", "fixtures"],
     ["fixture", "data/scenario-fixtures.json", "fixtures"],
     ["requirement", "product-structure/requirements.json", "requirements"],
     ["screen", "product-structure/screens.json", "screens"],
@@ -1370,11 +1407,7 @@ async function validateTrace() {
       "product-structure/component-requirements.json",
       "components",
     ],
-    [
-      "construction_packet",
-      "construction-packets/walking-slice.json",
-      "packets",
-    ],
+    ["construction_packet", "construction-packets/packets.json", "packets"],
   ];
   const registries = new Map();
   const registryPaths = new Map();
@@ -1422,6 +1455,7 @@ async function validateTrace() {
     ["rendered_by", ["fixture", "screen"]],
     ["implemented_by", ["requirement", "screen"]],
     ["composed_with", ["screen", "component"]],
+    ["documented_in", ["screen", "construction_packet"]],
     ["specified_by", ["component", "construction_packet"]],
   ]);
   const incoming = new Map(nodeDocument.nodes.map((node) => [node.id, 0]));
@@ -1673,10 +1707,6 @@ async function validateTrace() {
       requireEdge("composed_with", screenId, component.id, component.id);
   }
 
-  const legacyScreens = byId(
-    (await readJson("screens/walking-slice.json")).screens,
-    "legacy walking-slice screen",
-  );
   for (const packet of packets.values()) {
     assertReferenceList(
       packet.workflow_ids,
@@ -1701,9 +1731,7 @@ async function validateTrace() {
     );
     const actionIds = new Set(
       packet.screen_ids.flatMap((screenId) =>
-        (legacyScreens.get(screenId) ?? screens.get(screenId)).actions.map(
-          (action) => action.id,
-        ),
+        screens.get(screenId).actions.map((action) => action.id),
       ),
     );
     for (const interaction of packet.interaction_contract)
@@ -1713,6 +1741,8 @@ async function validateTrace() {
       );
     for (const componentId of packet.component_ids)
       requireEdge("specified_by", componentId, packet.id, packet.id);
+    for (const screenId of packet.screen_ids)
+      requireEdge("documented_in", screenId, packet.id, packet.id);
   }
 
   const manifest = await readYaml("control/MASTER_MANIFEST.yaml");
