@@ -371,6 +371,7 @@ tasks:
     gate_ids: [G7]
     owner: visual_designer
     branch: codex/visual-foundations
+    pull_request: 9
     commit: 30ab694f6318a3a1564d6c7f9f1f682c603f850e
     started_at: "2026-07-13T21:00:00-07:00"
     reviewers:
