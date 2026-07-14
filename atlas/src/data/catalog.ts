@@ -97,13 +97,14 @@ export const sections: AtlasSection[] = [
     title: "Ten priority workflow families",
     summary:
       "Complete workflow packages connect business purpose, sequence, approvals, records, exceptions, product intervention, and review evidence.",
-    count: "1 live · 9 registered",
+    count: "2 live · 8 registered",
     readiness: "live",
     items: [
       {
         label: "Seasonal planning, dispatch, execution + verification",
-        meta: "Live walking slice",
+        meta: "13-screen production package",
       },
+      { label: "Crew, time, payroll + cost", meta: "Live production package" },
       { label: "Scouting → application", meta: "Registered family" },
       { label: "Harvest → reconciliation", meta: "Registered family" },
     ],
@@ -190,12 +191,12 @@ export const sections: AtlasSection[] = [
     title: "Screens exist to advance or inspect state",
     summary:
       "Each registered composition traces to scenarios, workflows, records, permissions, and consequential actions.",
-    count: "Walking slice live",
+    count: "13 live screens",
     readiness: "live",
     items: [
-      { label: "Dispatch board", meta: "Desktop supervisory surface" },
-      { label: "Work order detail", meta: "Responsive shared record" },
-      { label: "Crew brief", meta: "Mobile field surface" },
+      { label: "Daily operations brief", meta: "Responsive · SCR-001" },
+      { label: "Crew workboard", meta: "Mobile · SCR-042" },
+      { label: "Cost allocation", meta: "Responsive · SCR-045" },
     ],
   },
   {
@@ -205,7 +206,7 @@ export const sections: AtlasSection[] = [
     title: "Product actions follow operational transitions",
     summary:
       "Flow strips show the handoff from planning through assignment, execution, reported completion, verification, and correction.",
-    count: "1 live flow",
+    count: "3 live flows",
     readiness: "live",
     items: [
       { label: "Plan → assign", meta: "Desktop manager" },
@@ -235,7 +236,7 @@ export const sections: AtlasSection[] = [
     title: "A field-aware operational visual language",
     summary:
       "High-fidelity screens use one semantic token system and retain usable density, contrast, touch targets, and print behavior.",
-    count: "Walking slice live",
+    count: "13 live compositions",
     readiness: "live",
     items: [
       { label: "Manager dispatch board", meta: "Desktop · 1440" },
@@ -250,7 +251,7 @@ export const sections: AtlasSection[] = [
     title: "Clickable workflow packages",
     summary:
       "Prototype routes demonstrate state transitions and exceptions with connected data rather than disconnected screen jumps.",
-    count: "1 live path",
+    count: "3 live paths",
     readiness: "live",
     items: [
       { label: "Plan → verify", meta: "Walking slice available" },
@@ -295,7 +296,7 @@ export const sections: AtlasSection[] = [
     title: "Reusable operational component families",
     summary:
       "Status, work order, block identity, queue, metric, exception, audit, and workflow-progress patterns drive the walking slice.",
-    count: "8 live families",
+    count: "27 live contracts",
     readiness: "live",
     items: [
       { label: "Status signal", meta: "Icon + label + semantics" },
@@ -370,7 +371,7 @@ export const sections: AtlasSection[] = [
     title: "Buildable slices with no rediscovery required",
     summary:
       "Each packet binds workflows, scenarios, screens, states, permissions, data, copy, assets, acceptance conditions, and exclusions.",
-    count: "Packet registry",
+    count: "4 buildable packets",
     readiness: "registered",
     items: [
       { label: "Planning + dispatch", meta: "Walking-slice source" },

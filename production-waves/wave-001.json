@@ -60,27 +60,27 @@
         {
           "state": "normal",
           "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0001", "STM-0002", "STM-0003"]
+          "state_matrix_ids": ["STM-0001"]
         },
         {
           "state": "offline",
           "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0004"]
+          "state_matrix_ids": ["STM-0002"]
         },
         {
           "state": "partial",
-          "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0005"]
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0003"]
         },
         {
           "state": "urgent",
           "evidence_status": "model_only",
-          "state_matrix_ids": ["STM-0006"]
+          "state_matrix_ids": ["STM-0004"]
         },
         {
           "state": "completion",
           "evidence_status": "model_only",
-          "state_matrix_ids": ["STM-0007"]
+          "state_matrix_ids": ["STM-0005"]
         }
       ],
       "fixture_ids": ["FIX-002", "FIX-005", "FIX-006", "FIX-003", "FIX-033"]
@@ -94,32 +94,25 @@
         {
           "state": "normal",
           "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0008", "STM-0009"]
+          "state_matrix_ids": ["STM-0006", "STM-0007"]
         },
         {
           "state": "blocked",
-          "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0010"]
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0008"]
         },
         {
           "state": "partial",
-          "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0011"]
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0009"]
         },
         {
           "state": "completion",
           "evidence_status": "model_only",
-          "state_matrix_ids": ["STM-0012"]
+          "state_matrix_ids": ["STM-0010"]
         }
       ],
-      "fixture_ids": [
-        "FIX-002",
-        "FIX-052",
-        "FIX-005",
-        "FIX-006",
-        "FIX-003",
-        "FIX-033"
-      ]
+      "fixture_ids": ["FIX-002", "FIX-005", "FIX-006", "FIX-003", "FIX-033"]
     },
     {
       "screen_id": "SCR-003",
@@ -130,46 +123,30 @@
         {
           "state": "normal",
           "evidence_status": "fixture_realized",
-          "state_matrix_ids": [
-            "STM-0013",
-            "STM-0014",
-            "STM-0015",
-            "STM-0016",
-            "STM-0017"
-          ]
+          "state_matrix_ids": ["STM-0011", "STM-0012"]
         },
         {
           "state": "blocked",
-          "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0018"]
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0013"]
         },
         {
           "state": "stale",
-          "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0019"]
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0014"]
         },
         {
           "state": "partial",
-          "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0020"]
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0015"]
         },
         {
           "state": "completion",
           "evidence_status": "model_only",
-          "state_matrix_ids": ["STM-0021"]
+          "state_matrix_ids": ["STM-0016"]
         }
       ],
-      "fixture_ids": [
-        "FIX-002",
-        "FIX-052",
-        "FIX-003",
-        "FIX-053",
-        "FIX-004",
-        "FIX-054",
-        "FIX-005",
-        "FIX-006",
-        "FIX-033"
-      ]
+      "fixture_ids": ["FIX-002", "FIX-005", "FIX-006", "FIX-003", "FIX-033"]
     },
     {
       "screen_id": "SCR-004",
@@ -186,30 +163,37 @@
         {
           "state": "normal",
           "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0022", "STM-0023"]
+          "state_matrix_ids": ["STM-0017", "STM-0018", "STM-0019", "STM-0020"]
         },
         {
           "state": "blocked",
-          "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0024"]
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0021"]
         },
         {
           "state": "stale",
-          "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0025"]
+          "evidence_status": "model_only",
+          "state_matrix_ids": ["STM-0022"]
         },
         {
           "state": "corrected",
           "evidence_status": "model_only",
-          "state_matrix_ids": ["STM-0026"]
+          "state_matrix_ids": ["STM-0023"]
         },
         {
           "state": "completion",
           "evidence_status": "model_only",
-          "state_matrix_ids": ["STM-0027"]
+          "state_matrix_ids": ["STM-0024"]
         }
       ],
-      "fixture_ids": ["FIX-002", "FIX-052", "FIX-003", "FIX-053", "FIX-033"]
+      "fixture_ids": [
+        "FIX-002",
+        "FIX-052",
+        "FIX-005",
+        "FIX-006",
+        "FIX-003",
+        "FIX-033"
+      ]
     },
     {
       "screen_id": "SCR-005",
@@ -226,11 +210,19 @@
         {
           "state": "normal",
           "evidence_status": "fixture_realized",
-          "state_matrix_ids": ["STM-0028", "STM-0029", "STM-0030", "STM-0031"]
+          "state_matrix_ids": [
+            "STM-0025",
+            "STM-0026",
+            "STM-0027",
+            "STM-0028",
+            "STM-0029",
+            "STM-0030",
+            "STM-0031"
+          ]
         },
         {
           "state": "blocked",
-          "evidence_status": "fixture_realized",
+          "evidence_status": "model_only",
           "state_matrix_ids": ["STM-0032"]
         },
         {
@@ -249,7 +241,17 @@
           "state_matrix_ids": ["STM-0035"]
         }
       ],
-      "fixture_ids": ["FIX-002", "FIX-052", "FIX-004", "FIX-054"]
+      "fixture_ids": [
+        "FIX-002",
+        "FIX-052",
+        "FIX-003",
+        "FIX-053",
+        "FIX-004",
+        "FIX-054",
+        "FIX-005",
+        "FIX-006",
+        "FIX-033"
+      ]
     },
     {
       "screen_id": "SCR-006",
@@ -270,7 +272,7 @@
         },
         {
           "state": "stale",
-          "evidence_status": "fixture_realized",
+          "evidence_status": "model_only",
           "state_matrix_ids": ["STM-0039"]
         },
         {
@@ -289,7 +291,17 @@
           "state_matrix_ids": ["STM-0042"]
         }
       ],
-      "fixture_ids": ["FIX-003", "FIX-053", "FIX-004", "FIX-054", "FIX-033"]
+      "fixture_ids": [
+        "FIX-002",
+        "FIX-052",
+        "FIX-003",
+        "FIX-053",
+        "FIX-004",
+        "FIX-054",
+        "FIX-005",
+        "FIX-006",
+        "FIX-033"
+      ]
     },
     {
       "screen_id": "SCR-039",
@@ -320,7 +332,7 @@
         },
         {
           "state": "historical",
-          "evidence_status": "fixture_realized",
+          "evidence_status": "model_only",
           "state_matrix_ids": ["STM-0274"]
         },
         {
@@ -344,12 +356,12 @@
         },
         {
           "state": "urgent",
-          "evidence_status": "fixture_realized",
+          "evidence_status": "model_only",
           "state_matrix_ids": ["STM-0279"]
         },
         {
           "state": "partial",
-          "evidence_status": "fixture_realized",
+          "evidence_status": "model_only",
           "state_matrix_ids": ["STM-0280"]
         },
         {
@@ -491,12 +503,12 @@
         },
         {
           "state": "blocked",
-          "evidence_status": "fixture_realized",
+          "evidence_status": "model_only",
           "state_matrix_ids": ["STM-0305"]
         },
         {
           "state": "urgent",
-          "evidence_status": "fixture_realized",
+          "evidence_status": "model_only",
           "state_matrix_ids": ["STM-0306"]
         },
         {
@@ -540,7 +552,7 @@
         },
         {
           "state": "blocked",
-          "evidence_status": "fixture_realized",
+          "evidence_status": "model_only",
           "state_matrix_ids": ["STM-0311"]
         },
         {
@@ -583,12 +595,12 @@
         },
         {
           "state": "urgent",
-          "evidence_status": "fixture_realized",
+          "evidence_status": "model_only",
           "state_matrix_ids": ["STM-0316"]
         },
         {
           "state": "partial",
-          "evidence_status": "fixture_realized",
+          "evidence_status": "model_only",
           "state_matrix_ids": ["STM-0317"]
         },
         {
@@ -637,13 +649,13 @@
           "id": "REG-03",
           "kind": "decision",
           "responsibility": "Present the evidence needed for the primary decision.",
-          "component_ids": ["CMP-008", "CMP-026"]
+          "component_ids": ["CMP-026"]
         },
         {
           "id": "REG-04",
           "kind": "workflow",
           "responsibility": "Expose accountable state and permitted next actions.",
-          "component_ids": ["CMP-001", "CMP-007", "CMP-033"]
+          "component_ids": ["CMP-001", "CMP-007"]
         },
         {
           "id": "REG-05",
@@ -687,7 +699,7 @@
           "id": "REG-03",
           "kind": "decision",
           "responsibility": "Present the evidence needed for the primary decision.",
-          "component_ids": ["CMP-026"]
+          "component_ids": ["CMP-008", "CMP-026"]
         },
         {
           "id": "REG-04",
@@ -702,10 +714,11 @@
           "component_ids": [
             "CMP-005",
             "CMP-006",
-            "CMP-010",
             "CMP-012",
             "CMP-014",
             "CMP-015",
+            "CMP-016",
+            "CMP-017",
             "CMP-036"
           ]
         }
@@ -734,7 +747,7 @@
           "id": "REG-03",
           "kind": "decision",
           "responsibility": "Present the evidence needed for the primary decision.",
-          "component_ids": ["CMP-008", "CMP-009", "CMP-026"]
+          "component_ids": ["CMP-008", "CMP-026"]
         },
         {
           "id": "REG-04",
@@ -749,11 +762,11 @@
           "component_ids": [
             "CMP-005",
             "CMP-006",
-            "CMP-010",
             "CMP-012",
             "CMP-013",
             "CMP-014",
-            "CMP-015",
+            "CMP-016",
+            "CMP-017",
             "CMP-036"
           ]
         }
@@ -782,7 +795,7 @@
           "id": "REG-03",
           "kind": "decision",
           "responsibility": "Present the evidence needed for the primary decision.",
-          "component_ids": ["CMP-008", "CMP-009", "CMP-026"]
+          "component_ids": ["CMP-008", "CMP-026"]
         },
         {
           "id": "REG-04",
@@ -830,13 +843,13 @@
           "id": "REG-03",
           "kind": "decision",
           "responsibility": "Present the evidence needed for the primary decision.",
-          "component_ids": ["CMP-008", "CMP-026"]
+          "component_ids": ["CMP-008", "CMP-009", "CMP-026"]
         },
         {
           "id": "REG-04",
           "kind": "workflow",
           "responsibility": "Expose accountable state and permitted next actions.",
-          "component_ids": ["CMP-007", "CMP-020", "CMP-033"]
+          "component_ids": ["CMP-007", "CMP-020"]
         },
         {
           "id": "REG-05",
@@ -846,6 +859,7 @@
             "CMP-005",
             "CMP-006",
             "CMP-010",
+            "CMP-012",
             "CMP-013",
             "CMP-014",
             "CMP-015",
@@ -889,7 +903,7 @@
           "id": "REG-04",
           "kind": "workflow",
           "responsibility": "Expose accountable state and permitted next actions.",
-          "component_ids": ["CMP-007"]
+          "component_ids": ["CMP-007", "CMP-033"]
         },
         {
           "id": "REG-05",
@@ -898,8 +912,8 @@
           "component_ids": [
             "CMP-005",
             "CMP-006",
+            "CMP-010",
             "CMP-012",
-            "CMP-013",
             "CMP-014",
             "CMP-015",
             "CMP-035",

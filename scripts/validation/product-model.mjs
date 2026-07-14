@@ -887,6 +887,28 @@ for (const requirement of requirements) {
 }
 
 const expectedScreenCounts = [6, 6, 6, 6, 6, 8, 7, 7, 7, 8];
+const expectedWf001ScreenByTransition = new Map([
+  ["TRN-WF-001-001", "SCR-001"],
+  ["TRN-WF-001-002", "SCR-002"],
+  ["TRN-WF-001-009", "SCR-002"],
+  ["TRN-WF-001-003", "SCR-003"],
+  ["TRN-WF-001-010", "SCR-003"],
+  ["TRN-WF-001-004", "SCR-004"],
+  ["TRN-WF-001-011", "SCR-004"],
+  ["TRN-WF-001-012", "SCR-004"],
+  ["TRN-WF-001-016", "SCR-004"],
+  ["TRN-WF-001-018", "SCR-004"],
+  ["TRN-WF-001-005", "SCR-005"],
+  ["TRN-WF-001-006", "SCR-005"],
+  ["TRN-WF-001-007", "SCR-005"],
+  ["TRN-WF-001-013", "SCR-005"],
+  ["TRN-WF-001-014", "SCR-005"],
+  ["TRN-WF-001-019", "SCR-005"],
+  ["TRN-WF-001-020", "SCR-005"],
+  ["TRN-WF-001-008", "SCR-006"],
+  ["TRN-WF-001-015", "SCR-006"],
+  ["TRN-WF-001-017", "SCR-006"],
+]);
 const expectedWf007ScreenByTransition = new Map([
   ["TRN-WF-007-008", "SCR-039"],
   ["TRN-WF-007-018", "SCR-039"],
@@ -1150,23 +1172,24 @@ for (const screen of screens) {
   }
 }
 
-for (const [
-  transitionId,
-  expectedScreenId,
-] of expectedWf007ScreenByTransition) {
-  const realizingScreens = screens.filter((screen) =>
-    screen.actions.some(
-      (action) =>
-        action.kind !== "inspect" &&
-        action.transition.transition_id === transitionId,
-    ),
-  );
-  assert(
-    realizingScreens.length === 1 &&
-      realizingScreens[0].id === expectedScreenId,
-    `${transitionId}: expected exact responsibility on ${expectedScreenId}`,
-  );
-}
+for (const expectedMap of [
+  expectedWf001ScreenByTransition,
+  expectedWf007ScreenByTransition,
+])
+  for (const [transitionId, expectedScreenId] of expectedMap) {
+    const realizingScreens = screens.filter((screen) =>
+      screen.actions.some(
+        (action) =>
+          action.kind !== "inspect" &&
+          action.transition.transition_id === transitionId,
+      ),
+    );
+    assert(
+      realizingScreens.length === 1 &&
+        realizingScreens[0].id === expectedScreenId,
+      `${transitionId}: expected exact responsibility on ${expectedScreenId}`,
+    );
+  }
 assert(
   screenUsedScenarios.size === scenarios.length,
   `Screens cover ${screenUsedScenarios.size}/${scenarios.length} scenarios`,
@@ -1582,6 +1605,44 @@ for (const flow of flows) {
       `${flow.id}: cross-workflow boundary lacks chain or record link`,
     );
 }
+
+const wf001Flow = flows.find((flow) => flow.id === "FLW-001");
+assert(Boolean(wf001Flow), "FLW-001: missing exact production narrative");
+const wf001OrderedSteps = [
+  ...wf001Flow.normal_path,
+  ...wf001Flow.exception_path,
+  ...wf001Flow.recovery_path,
+  ...wf001Flow.completion_path,
+];
+assert(
+  same(
+    wf001OrderedSteps.map((step) => step.event_id),
+    [
+      "EVT-00384",
+      "EVT-00386",
+      "EVT-00388",
+      "EVT-00391",
+      "EVT-00393",
+      "EVT-00395",
+      "EVT-00397",
+      "EVT-00400",
+    ],
+  ) &&
+    same(
+      wf001OrderedSteps.map((step) => step.screen_id),
+      [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-005",
+        "SCR-005",
+        "SCR-006",
+      ],
+    ),
+  "FLW-001: exact FIX-006 sequence does not traverse all six responsibility surfaces",
+);
 
 assert(
   domains.length === 6,

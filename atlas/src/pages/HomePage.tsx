@@ -32,8 +32,8 @@ export function HomePage() {
             information.
           </p>
           <div className="hero-actions">
-            <Link className="button button-primary" to="/workflows/WF-001">
-              Enter planning + dispatch <Icon name="chevron" />
+            <Link className="button button-primary" to="/screens/SCR-001">
+              Enter daily operations brief <Icon name="chevron" />
             </Link>
             <Link
               className="button button-secondary"
@@ -110,11 +110,11 @@ export function HomePage() {
       >
         <div className="section-heading-row home-section-heading">
           <div>
-            <p className="kicker">Factory walking slice</p>
-            <h2 id="live-foundation-title">Rendered foundation</h2>
+            <p className="kicker">Production wave 001</p>
+            <h2 id="live-foundation-title">Plan-to-cost operating package</h2>
           </div>
           <Link to="/validation">
-            How this will be validated <Icon name="chevron" />
+            Review validation evidence <Icon name="chevron" />
           </Link>
         </div>
         <div className="live-grid">

@@ -4,8 +4,11 @@ import {
   canRolePerform,
   componentName,
   decisionsFor,
+  derivePartialMeasure,
+  deriveReconciliationMeasure,
   formatMoment,
   getActionTrace,
+  getCorrectionLineage,
   notificationFor,
   recordName,
   statePresentation,
@@ -129,7 +132,7 @@ export function OperationalAppShell({
       data-platform={model.screen.platform}
       data-fixture-id={model.fixture.id}
       data-review-state={model.reviewState}
-      data-scenario-id={model.scenario.id}
+      data-scenario-id={model.scenario?.id}
       data-screen-id={model.screen.id}
       data-state-contract-id={model.stateContract?.id}
       data-workflow-id={model.screen.workflow_ids[0]}
@@ -137,6 +140,7 @@ export function OperationalAppShell({
       <div
         className="wave-shell-context"
         aria-label="Current operating context"
+        tabIndex={0}
       >
         <span>Northstar synthetic season · 2026</span>
         <span>{model.identity.property?.name ?? "Stable vineyard scope"}</span>
@@ -252,12 +256,16 @@ export function WorkflowStateRail(props: ProductionComponentProps) {
 
 export function TransitionActionBar(props: ProductionComponentProps) {
   const { model, activeRoleId, onAction, actionMessage } = props;
+  const orderedActions = [...model.screen.actions].sort(
+    (left, right) =>
+      Number(canRolePerform(right, activeRoleId, model)) -
+      Number(canRolePerform(left, activeRoleId, model)),
+  );
   return (
     <ComponentFrame {...props} componentId="CMP-007" className="wave-span-2">
       <div className="wave-action-grid">
-        {model.screen.actions.map((action) => {
-          const allowed =
-            action.kind === "inspect" || canRolePerform(action, activeRoleId);
+        {orderedActions.map((action) => {
+          const allowed = canRolePerform(action, activeRoleId, model);
           return (
             <div className="wave-action-cell" key={action.id}>
               <button
@@ -273,7 +281,7 @@ export function TransitionActionBar(props: ProductionComponentProps) {
                 <strong>{action.label}</strong>
                 <small>{action.transition?.to ?? "immutable history"}</small>
               </button>
-              <p>{actionExplanation(action, activeRoleId)}</p>
+              <p>{actionExplanation(action, activeRoleId, model)}</p>
             </div>
           );
         })}
@@ -351,7 +359,7 @@ export function ExceptionCard(props: ProductionComponentProps) {
           <p>{presentation.detail}</p>
           <small>
             Owner · {model.actors[0]?.personName} ·{" "}
-            {model.fixture.anchor.transition_id}
+            {model.activeEvent?.transition_id ?? "model-only state"}
           </small>
         </div>
       </div>
@@ -382,56 +390,87 @@ export function RecoveryChecklist(props: ProductionComponentProps) {
 
 export function PartialScopeMeter(props: ProductionComponentProps) {
   const { model } = props;
-  const total = model.identity.block?.area.value ?? 1;
-  const fraction = model.reviewState === "partial" ? 0.62 : 1;
-  const complete = total * fraction;
+  const measure = derivePartialMeasure(model);
+  const fraction = measure
+    ? Math.max(0, Math.min(1, measure.accepted / measure.total))
+    : 0;
   return (
     <ComponentFrame {...props} componentId="CMP-012">
-      <div className="wave-meter-copy">
-        <span>Accepted scope</span>
-        <strong>
-          {complete.toFixed(1)} <small>/ {total.toFixed(1)} ac</small>
-        </strong>
-      </div>
-      <div
-        aria-label={`${Math.round(fraction * 100)} percent of scope accepted`}
-        aria-valuemax={100}
-        aria-valuemin={0}
-        aria-valuenow={Math.round(fraction * 100)}
-        className="wave-meter"
-        role="progressbar"
-      >
-        <span style={{ width: `${fraction * 100}%` }} />
-      </div>
-      <p className="wave-supporting-copy">
-        Unfinished scope remains separately attributable; accepted acreage is
-        never discarded.
-      </p>
+      {measure ? (
+        <>
+          <div className="wave-meter-copy">
+            <span>{measure.label}</span>
+            <strong>
+              {measure.accepted.toFixed(1)}{" "}
+              <small>
+                / {measure.total.toFixed(1)} {measure.unit}
+              </small>
+            </strong>
+          </div>
+          <div
+            aria-label={`${Math.round(fraction * 100)} percent of ${measure.label.toLowerCase()} accepted`}
+            aria-valuemax={100}
+            aria-valuemin={0}
+            aria-valuenow={Math.round(fraction * 100)}
+            className="wave-meter"
+            role="progressbar"
+          >
+            <span style={{ width: `${fraction * 100}%` }} />
+          </div>
+          <p className="wave-supporting-copy">
+            Source {measure.sourceRecordIds.join(", ")}; unfinished scope stays
+            separately attributable.
+          </p>
+        </>
+      ) : (
+        <p className="wave-empty-copy">
+          No typed partial quantity resolves for this state. No percentage is
+          inferred.
+        </p>
+      )}
     </ComponentFrame>
   );
 }
 
 export function CorrectionLineage(props: ProductionComponentProps) {
   const { model } = props;
-  const records = model.records.slice(-3);
+  const lineage = getCorrectionLineage(model);
   return (
     <ComponentFrame {...props} componentId="CMP-013">
-      <ol className="wave-lineage">
-        {records.map((record, index) => (
-          <li key={record.id} data-record-id={record.id}>
-            <span>v{index + 1}</span>
-            <div>
-              <strong>{record.title}</strong>
-              <small>
-                {record.id} ·{" "}
-                {index === records.length - 1
-                  ? "current successor"
-                  : "preserved predecessor"}
-              </small>
-            </div>
-          </li>
-        ))}
-      </ol>
+      {lineage.length ? (
+        <ol className="wave-lineage">
+          {lineage.flatMap((entry) => [
+            <li
+              data-record-id={entry.predecessor!.id}
+              key={`${entry.linkId}-predecessor`}
+            >
+              <span>v1</span>
+              <div>
+                <strong>{entry.predecessor!.title}</strong>
+                <small>{entry.predecessor!.id} · preserved predecessor</small>
+              </div>
+            </li>,
+            <li
+              data-record-id={entry.successor!.id}
+              data-record-link-id={entry.linkId}
+              key={`${entry.linkId}-successor`}
+            >
+              <span>v2</span>
+              <div>
+                <strong>{entry.successor!.title}</strong>
+                <small>
+                  {entry.successor!.id} · {entry.relation} via {entry.linkId}
+                </small>
+              </div>
+            </li>,
+          ])}
+        </ol>
+      ) : (
+        <p className="wave-empty-copy">
+          No explicit corrects or supersedes link resolves for these records; no
+          lineage is inferred.
+        </p>
+      )}
     </ComponentFrame>
   );
 }
@@ -490,9 +529,7 @@ export function OfflineQueueIndicator(props: ProductionComponentProps) {
 
 export function SyncConflictResolver(props: ProductionComponentProps) {
   const { model } = props;
-  const anchor = model.events.find(
-    (event) => event.id === model.fixture.anchor.event_id,
-  );
+  const anchor = model.activeEvent;
   return (
     <ComponentFrame {...props} componentId="CMP-016">
       <div className="wave-comparison">
@@ -529,7 +566,9 @@ export function StalenessBadge(props: ProductionComponentProps) {
               ? "Newer evidence available"
               : "Evidence current"}
           </strong>
-          <small>Base version · {model.fixture.anchor.event_id}</small>
+          <small>
+            Base event · {model.activeEvent?.id ?? "model-only branch"}
+          </small>
         </div>
       </div>
     </ComponentFrame>
@@ -563,19 +602,21 @@ export function NotificationCenter(props: ProductionComponentProps) {
 export function EscalationClock(props: ProductionComponentProps) {
   const { model } = props;
   const notice = model.screen.actions.flatMap(notificationFor)[0];
-  const minutes =
-    model.reviewState === "urgent"
-      ? 18
-      : (notice?.escalation_after_minutes ?? 240);
   return (
     <ComponentFrame {...props} componentId="CMP-019">
-      <div className="wave-clock">
-        <span aria-hidden="true">◷</span>
-        <div>
-          <strong>{minutes} min</strong>
-          <small>until accountable escalation</small>
+      {notice ? (
+        <div className="wave-clock">
+          <span aria-hidden="true">◷</span>
+          <div>
+            <strong>{notice.escalation_after_minutes} min</strong>
+            <small>{notice.id} policy window · not a live countdown</small>
+          </div>
         </div>
-      </div>
+      ) : (
+        <p className="wave-empty-copy">
+          No notification rule defines an escalation window for this state.
+        </p>
+      )}
     </ComponentFrame>
   );
 }
@@ -628,7 +669,9 @@ export function BlockRowSelector(props: ProductionComponentProps) {
 
 export function EffectiveTimeControl(props: ProductionComponentProps) {
   const { model } = props;
-  const value = model.fixture.anchor.occurred_at.slice(0, 16);
+  const value = (
+    model.activeEvent?.occurred_at ?? model.fixture.anchor.occurred_at
+  ).slice(0, 16);
   return (
     <ComponentFrame {...props} componentId="CMP-022">
       <label
@@ -708,27 +751,54 @@ export function ApprovalChain(props: ProductionComponentProps) {
 
 export function ReconciliationComparison(props: ProductionComponentProps) {
   const { model } = props;
-  const total = model.identity.block?.area.value ?? 0;
-  const reported = model.reviewState === "error" ? total - 1.4 : total;
+  const measure = deriveReconciliationMeasure(model);
+  const difference =
+    measure?.result === undefined ? undefined : measure.result - measure.source;
+  const formatValue = (value: number) =>
+    measure?.unit === "USD"
+      ? new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+        }).format(value)
+      : `${value.toFixed(1)} ${measure?.unit}`;
   return (
     <ComponentFrame {...props} componentId="CMP-034">
-      <div className="wave-reconcile-grid">
-        <span>Accepted source</span>
-        <strong>{total.toFixed(1)} ac</strong>
-        <span>Allocated result</span>
-        <strong>{reported.toFixed(1)} ac</strong>
-        <span>Difference</span>
-        <strong>{(reported - total).toFixed(1)} ac</strong>
-      </div>
-      <p
-        className={
-          reported === total ? "wave-balance-positive" : "wave-balance-error"
-        }
-      >
-        {reported === total
-          ? "✓ Totals balance"
-          : "! Resolve difference before closeout"}
-      </p>
+      {measure ? (
+        <>
+          <div className="wave-reconcile-grid">
+            <span>{measure.label} · source</span>
+            <strong>{formatValue(measure.source)}</strong>
+            <span>Attributable result</span>
+            <strong>
+              {measure.result === undefined
+                ? "Not recorded"
+                : formatValue(measure.result)}
+            </strong>
+            <span>Difference</span>
+            <strong>
+              {difference === undefined ? "Pending" : formatValue(difference)}
+            </strong>
+          </div>
+          <p
+            className={
+              difference === 0 ? "wave-balance-positive" : "wave-balance-error"
+            }
+          >
+            {difference === 0
+              ? "✓ Typed totals balance"
+              : difference === undefined
+                ? "Allocation remains pending; no variance is inferred"
+                : "! Resolve the attributable difference before closeout"}
+          </p>
+          <small>Sources · {measure.sourceRecordIds.join(", ")}</small>
+        </>
+      ) : (
+        <p className="wave-empty-copy">
+          {model.modelOnly
+            ? "Model-only validation branch; no operational variance is asserted."
+            : "No comparable typed source and result resolve for this state."}
+        </p>
+      )}
     </ComponentFrame>
   );
 }

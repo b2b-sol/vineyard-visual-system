@@ -96,7 +96,8 @@ const RECORD_FAMILY_BY_ID = new Map(
     restriction_verification: "007 010 013 055 061 066 075 095",
     report_evidence_package: "015 016 082 089 090 093 099 101",
     identity_lineage_contract: "035 045 076 077 078 079 080 096",
-    commercial_reconciliation: "026 047 052 053 062 063 087 088",
+    commercial_reconciliation: "026 047 052 053 063 087 088",
+    labor_payroll_exception: "062",
     labor_roster: "054",
     inventory_receipt: "065 070",
     corrective_finding: "086 102",
@@ -134,6 +135,19 @@ const BESPOKE_FACT_PATHS = {
   ],
   "REC-058": ["definition_evidence.recorded_break_hours"],
   "REC-061": ["definition_evidence.verified_entry_count"],
+  "REC-062": [
+    "domain_details.worker",
+    "domain_details.assignment",
+    "domain_details.submitted_hours",
+    "domain_details.corrected_hours",
+    "domain_details.rate_basis",
+    "domain_details.variance_hours",
+    "domain_details.exception_reason",
+    "domain_details.amount_owed",
+    "domain_details.authority",
+    "domain_details.lineage",
+    "domain_details.resolution",
+  ],
   "REC-063": ["domain_details.allocated_cost", "domain_details.cost_status"],
   "REC-066": ["definition_evidence.readiness_check_count"],
   "REC-070": [
@@ -171,6 +185,11 @@ const BESPOKE_QUANTITY_DIMENSIONS = {
   "REC-029": { "definition_evidence.estimated_crop_tonnage": "mass" },
   "REC-058": { "definition_evidence.recorded_break_hours": "time" },
   "REC-061": { "definition_evidence.verified_entry_count": "count" },
+  "REC-062": {
+    "domain_details.submitted_hours": "time",
+    "domain_details.corrected_hours": "time",
+    "domain_details.variance_hours": "time",
+  },
   "REC-066": { "definition_evidence.readiness_check_count": "count" },
   "REC-075": { "definition_evidence.return_to_service_checks": "count" },
   "REC-077": { "definition_evidence.verified_contact_count": "count" },
@@ -1067,6 +1086,13 @@ export function validateSeasonData({
           JSON.stringify(record.facts.domain_details),
         ),
         `${record.id} uses an active-canopy field signal during dormancy`,
+      );
+    if (record.record_definition_id === "REC-062")
+      invariant(
+        !/load_id|gross_weight|tare_weight|net_weight|fruit_temperature|settlement_(?:gross|adjustments|net)/i.test(
+          JSON.stringify(record.facts),
+        ),
+        `${record.id} payroll exception contains harvest, load, weight, fruit, or settlement facts`,
       );
     const factProfile = inspectFacts(
       record.facts,

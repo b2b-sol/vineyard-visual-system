@@ -93,8 +93,11 @@ export function ProductionScreenPage() {
   const metrics = [
     {
       label: model.recipe.highlights[0],
-      value: model.fixture.anchor.to_state.replaceAll("_", " "),
-      note: model.fixture.anchor.event_id,
+      value: (model.stateContract.canonical_state ?? "entry").replaceAll(
+        "_",
+        " ",
+      ),
+      note: model.activeEvent?.id ?? "model-only state",
     },
     {
       label: model.recipe.highlights[1],
@@ -146,17 +149,19 @@ export function ProductionScreenPage() {
             <span data-workflow-id={model.screen.workflow_ids[0]}>
               {model.screen.workflow_ids[0]}
             </span>
-            <span data-scenario-id={model.scenario.id}>
-              {model.scenario.id}
+            <span data-scenario-id={model.scenario?.id}>
+              {model.scenario?.id ?? "No operational scenario"}
             </span>
-            <span data-fixture-id={model.fixture.id}>{model.fixture.id}</span>
-            <span data-event-id={model.fixture.anchor.event_id}>
-              {model.fixture.anchor.event_id}
+            <span data-fixture-id={model.fixture.id}>
+              {model.fixture.id} {model.modelOnly ? "· context only" : ""}
             </span>
-            <span data-transition-id={model.fixture.anchor.transition_id}>
-              {model.fixture.anchor.transition_id}
+            <span data-event-id={model.activeEvent?.id}>
+              {model.activeEvent?.id ?? "No operational event"}
             </span>
-            {model.fixture.anchor.decision_ids.map((decisionId) => (
+            <span data-transition-id={model.activeEvent?.transition_id}>
+              {model.activeEvent?.transition_id ?? "Model-only branch"}
+            </span>
+            {(model.activeEvent?.decision_ids ?? []).map((decisionId) => (
               <span data-decision-id={decisionId} key={decisionId}>
                 {decisionId}
               </span>
@@ -173,8 +178,17 @@ export function ProductionScreenPage() {
             {presentation.symbol}
           </span>
           <div>
-            <p>{model.reviewState} state</p>
-            <h2 id={`${model.screen.id}-state-title`}>{presentation.title}</h2>
+            <p>
+              {model.modelOnly ? "model-only " : ""}
+              {model.reviewState} presentation · {model.stateContract.id}
+            </p>
+            <h2 id={`${model.screen.id}-state-title`}>
+              {(model.stateContract.canonical_state ?? "entry").replaceAll(
+                "_",
+                " ",
+              )}{" "}
+              · {presentation.title}
+            </h2>
             <span>{presentation.detail}</span>
           </div>
           <dl>
@@ -184,19 +198,33 @@ export function ProductionScreenPage() {
             </div>
             <div>
               <dt>Effective</dt>
-              <dd>{formatMoment(model.fixture.anchor.occurred_at)}</dd>
+              <dd>
+                {model.activeEvent
+                  ? formatMoment(model.activeEvent.occurred_at)
+                  : "Not operationally asserted"}
+              </dd>
             </div>
             <div>
               <dt>Mode</dt>
-              <dd>{model.fixture.anchor.connectivity.mode}</dd>
+              <dd>
+                {model.activeEvent?.connectivity.mode ?? "presentation model"}
+              </dd>
             </div>
           </dl>
           {model.modelOnly && (
             <strong className="wave-model-badge">
-              Model-only canonical branch
+              Model-only {model.stateContract.source_ref.type} branch · no event
+              asserted
             </strong>
           )}
         </section>
+
+        {model.fixtureOverrideRejected && (
+          <p className="wave-boundary-warning" role="status">
+            The requested fixture is incompatible with {model.stateContract.id}
+            and was not used as state evidence.
+          </p>
+        )}
 
         <div
           className="wave-component-grid"
@@ -219,7 +247,7 @@ export function ProductionScreenPage() {
             Review state or canonical contract
             <select
               onChange={(event) => setParam("state", event.target.value)}
-              value={model.stateContract?.id ?? model.reviewState}
+              value={model.stateContract.id}
             >
               <optgroup label="Required review states">
                 {model.screen.states.map((state) => (
@@ -291,7 +319,9 @@ export function ProductionScreenPage() {
               {model.screen.id} · {model.screen.name}
             </strong>
             <span>
-              {model.scenario.id} · {model.scenario.title}
+              {model.scenario
+                ? `${model.scenario.id} · ${model.scenario.title}`
+                : `${model.stateContract.id} · model-only branch`}
             </span>
           </div>
           <div>

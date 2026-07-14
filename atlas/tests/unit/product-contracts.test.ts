@@ -293,6 +293,24 @@ describe("PROD-001 product contracts", () => {
       "EVT-00105",
       "EVT-00106",
     ]);
+    const wf001Flow = flowDocument.flows.find((flow) => flow.id === "FLW-001")!;
+    expect(
+      [
+        ...wf001Flow.normal_path,
+        ...wf001Flow.exception_path,
+        ...wf001Flow.recovery_path,
+        ...wf001Flow.completion_path,
+      ].map((step) => step.screen_id),
+    ).toEqual([
+      "SCR-001",
+      "SCR-002",
+      "SCR-003",
+      "SCR-004",
+      "SCR-005",
+      "SCR-005",
+      "SCR-005",
+      "SCR-006",
+    ]);
     expect(
       flowDocument.flows.find((flow) => flow.id === "FLW-015")?.flow_kind,
     ).toBe("linked_evidence_comparison");
@@ -306,6 +324,57 @@ describe("PROD-001 product contracts", () => {
       "SCR-044": ["006", "016", "023"],
       "SCR-045": ["007"],
     } as const;
+    const expectedWf001ByScreen = {
+      "SCR-001": ["001"],
+      "SCR-002": ["002", "009"],
+      "SCR-003": ["003", "010"],
+      "SCR-004": ["004", "011", "012", "016", "018"],
+      "SCR-005": ["005", "006", "007", "013", "014", "019", "020"],
+      "SCR-006": ["008", "015", "017"],
+    } as const;
+    for (const [screenId, suffixes] of Object.entries(expectedWf001ByScreen)) {
+      const screen = screenCatalog.screens.find(
+        (candidate) => candidate.id === screenId,
+      )!;
+      expect(
+        screen.actions
+          .filter((action) => action.kind !== "inspect")
+          .map((action) => action.transition!.transition_id)
+          .sort(),
+      ).toEqual(suffixes.map((suffix) => `TRN-WF-001-${suffix}`).sort());
+    }
+    expect(
+      Object.fromEntries(
+        screenCatalog.screens
+          .filter((screen) => screen.workflow_ids.includes("WF-001"))
+          .flatMap((screen) =>
+            screen.actions
+              .filter((action) => action.kind !== "inspect")
+              .map((action) => [action.transition!.transition_id, action.id]),
+          ),
+      ),
+    ).toEqual({
+      "TRN-WF-001-001": "ACT-001",
+      "TRN-WF-001-002": "ACT-002",
+      "TRN-WF-001-003": "ACT-003",
+      "TRN-WF-001-004": "ACT-005",
+      "TRN-WF-001-005": "ACT-006",
+      "TRN-WF-001-006": "ACT-008",
+      "TRN-WF-001-007": "ACT-009",
+      "TRN-WF-001-008": "ACT-010",
+      "TRN-WF-001-009": "ACT-011",
+      "TRN-WF-001-010": "ACT-012",
+      "TRN-WF-001-011": "ACT-014",
+      "TRN-WF-001-012": "ACT-015",
+      "TRN-WF-001-013": "ACT-016",
+      "TRN-WF-001-014": "ACT-018",
+      "TRN-WF-001-015": "ACT-019",
+      "TRN-WF-001-016": "ACT-020",
+      "TRN-WF-001-017": "ACT-021",
+      "TRN-WF-001-018": "ACT-023",
+      "TRN-WF-001-019": "ACT-024",
+      "TRN-WF-001-020": "ACT-025",
+    });
     const expectedReviewStates = {
       "SCR-039": ["normal", "blocked", "urgent", "historical", "completion"],
       "SCR-040": ["normal", "urgent", "partial", "offline", "completion"],
@@ -391,6 +460,18 @@ describe("PROD-001 product contracts", () => {
         waveScreenIds.has(state.screen_id),
       ),
     ).toHaveLength(93);
+    expect(
+      screenCatalog.screens.find((screen) => screen.id === "SCR-043")
+        ?.primary_decision,
+    ).toMatch(/submitted time, units, breaks/i);
+    expect(
+      screenCatalog.screens.find((screen) => screen.id === "SCR-044")
+        ?.primary_decision,
+    ).toMatch(/payroll acceptance.*correction/i);
+    expect(
+      screenCatalog.screens.find((screen) => screen.id === "SCR-045")
+        ?.primary_decision,
+    ).toMatch(/allocated to the correct block, task, organization/i);
   });
 
   it("accepts requirement trace nodes and motivates/implemented-by edges", () => {

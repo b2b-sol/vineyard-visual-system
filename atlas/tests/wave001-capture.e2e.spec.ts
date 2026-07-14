@@ -86,18 +86,17 @@ test.describe("WAVE-001 primary capture evidence", () => {
       );
       await expect(screen).toBeVisible();
 
-      const axe = await new AxeBuilder({ page }).analyze();
-      const serious = axe.violations.filter((violation) =>
-        ["serious", "critical"].includes(violation.impact ?? ""),
-      );
+      const axe = await new AxeBuilder({ page })
+        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+        .analyze();
       expect(
-        serious,
-        serious.map(({ id, help }) => `${id}: ${help}`).join("\n"),
+        axe.violations,
+        axe.violations.map(({ id, help }) => `${id}: ${help}`).join("\n"),
       ).toEqual([]);
 
       const geometry = await page.evaluate(() => {
         const primaryAction = document.querySelector(
-          ".wave-primary-control, .wave-action-list button:not([disabled])",
+          ".wave-primary-control, .wave-action:not(:disabled)",
         );
         const box =
           primaryAction instanceof HTMLElement
@@ -117,6 +116,16 @@ test.describe("WAVE-001 primary capture evidence", () => {
         };
       });
       expect(geometry.horizontal_overflow).toBeLessThanOrEqual(1);
+      if (capture.viewport.name === "mobile") {
+        expect(
+          geometry.primary_action,
+          `${capture.screen_id} must expose an enabled field action`,
+        ).not.toBeNull();
+        expect(
+          geometry.primary_action!.bottom,
+          `${capture.screen_id} enabled field action must enter the initial viewport`,
+        ).toBeLessThanOrEqual(geometry.viewport_height);
+      }
 
       const basename = capture.id.toLowerCase();
       const artifactPath = path.join(renderRoot, `${basename}.png`);

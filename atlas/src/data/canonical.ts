@@ -96,6 +96,13 @@ export interface StateContract {
   trigger: string;
   information_priority: string[];
   required_actions: string[];
+  available_actions: string[];
+  blocked_actions: string[];
+  permission_rule_ids: string[];
+  sync_behavior: string;
+  audit_behavior: string;
+  recovery: string;
+  accessibility_announcement: string;
 }
 
 export interface Fixture {
@@ -183,13 +190,16 @@ export interface RecordInstance {
   facts: Record<string, unknown>;
 }
 
-interface RoleAssignment {
+export interface RoleAssignment {
   id: string;
   person_id: string;
   role_id: string;
   organization_id: string;
   scope_ids: string[];
   authority: string[];
+  starts_on: string;
+  ends_on?: string;
+  status: string;
 }
 
 interface Person {
@@ -198,13 +208,28 @@ interface Person {
   home_organization_id: string;
 }
 
-interface PermissionRule {
+export interface PermissionGrant {
+  transition_id: string;
+  role_ids: string[];
+  delegation: "explicit_assignment" | "forbidden" | string;
+}
+
+export interface PermissionRule {
   id: string;
   effect: "allow" | "deny";
+  action_kind: string;
+  transition_ids: string[];
+  grants: PermissionGrant[];
   role_ids: string[];
   record_state_rule: string;
   scope_rule: string;
-  denied_behavior: string;
+  delegation_rule: string;
+  sensitivity: string;
+  evidence_required: string[];
+  workflow_ids: string[];
+  organization_relationships: string[];
+  effective_time_rule: string;
+  denial_copy: string;
 }
 
 interface NotificationRule {
@@ -223,11 +248,30 @@ interface ComponentRequirement {
   screen_ids: string[];
 }
 
-interface Scenario {
+export interface Scenario {
   id: string;
   title: string;
   workflow_ids: string[];
   path_segments: Array<{ fixture_id: string; event_ids: string[] }>;
+}
+
+export interface Scope {
+  id: string;
+  type: "operation" | "block_set" | string;
+  entity_ids: string[];
+  workflow_ids: string[];
+  status: string;
+}
+
+export interface OrganizationRelationship {
+  id: string;
+  type: string;
+  from_organization_id: string;
+  to_organization_id: string;
+  starts_on: string;
+  ends_on?: string;
+  status: string;
+  contract_ids: string[];
 }
 
 interface FlowStep {
@@ -269,12 +313,15 @@ const states = (stateMatrixSource.states as unknown as StateContract[]).filter(
 const fixtures = fixturesSource.fixtures as unknown as Fixture[];
 const events = eventsSource.events as unknown as CanonicalEvent[];
 const operation = operationSource as unknown as {
+  operation_id: string;
   blocks: Block[];
   record_instances: RecordInstance[];
   role_assignments: RoleAssignment[];
   people: Person[];
   organizations: Array<{ id: string; name: string }>;
   properties: Array<{ id: string; name: string }>;
+  scopes: Scope[];
+  relationships: OrganizationRelationship[];
   links: Array<{
     id: string;
     source_record_instance_id: string;
@@ -293,6 +340,9 @@ export const assignmentIndex = indexById(operation.role_assignments);
 export const personIndex = indexById(operation.people);
 export const organizationIndex = indexById(operation.organizations);
 export const propertyIndex = indexById(operation.properties);
+export const scopeIndex = indexById(operation.scopes);
+export const organizationRelationships = operation.relationships;
+export const operationId = operation.operation_id;
 export const permissionIndex = indexById(
   permissionsSource.rules as unknown as PermissionRule[],
 );
@@ -380,15 +430,29 @@ export function getScenarioForFixture(
   screen: ScreenContract,
   fixtureId: string,
 ) {
-  return (
-    screen.scenario_ids
-      .map((scenarioId) => scenarioIndex.get(scenarioId))
-      .find((scenario) =>
-        scenario?.path_segments.some(
-          (segment) => segment.fixture_id === fixtureId,
-        ),
-      ) ?? scenarioIndex.get(screen.scenario_ids[0])!
-  );
+  return screen.scenario_ids
+    .map((scenarioId) => scenarioIndex.get(scenarioId))
+    .find((scenario) =>
+      scenario?.path_segments.some(
+        (segment) => segment.fixture_id === fixtureId,
+      ),
+    );
+}
+
+export function getActiveAssignmentForRole(roleId: string, at: string) {
+  const instant = Date.parse(at);
+  return operation.role_assignments.find((assignment) => {
+    const started = Date.parse(`${assignment.starts_on}T00:00:00Z`);
+    const ended = assignment.ends_on
+      ? Date.parse(`${assignment.ends_on}T23:59:59Z`)
+      : Number.POSITIVE_INFINITY;
+    return (
+      assignment.role_id === roleId &&
+      assignment.status === "active" &&
+      instant >= started &&
+      instant <= ended
+    );
+  });
 }
 
 export function getActionForTransition(transitionId: string) {

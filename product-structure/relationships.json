@@ -4757,9 +4757,9 @@
     {
       "id": "PRL-0680",
       "from": "REQ-001",
-      "to": "SCR-001",
+      "to": "SCR-002",
       "relationship": "realized_by",
-      "rationale": "SCR-001 exposes the decision, evidence, state, and action contract required by REQ-001."
+      "rationale": "SCR-002 exposes the decision, evidence, state, and action contract required by REQ-001."
     },
     {
       "id": "PRL-0681",
@@ -4771,30 +4771,30 @@
     {
       "id": "PRL-0682",
       "from": "REQ-002",
-      "to": "SCR-002",
+      "to": "SCR-004",
       "relationship": "realized_by",
-      "rationale": "SCR-002 exposes the decision, evidence, state, and action contract required by REQ-002."
+      "rationale": "SCR-004 exposes the decision, evidence, state, and action contract required by REQ-002."
     },
     {
       "id": "PRL-0683",
+      "from": "REQ-002",
+      "to": "SCR-005",
+      "relationship": "realized_by",
+      "rationale": "SCR-005 exposes the decision, evidence, state, and action contract required by REQ-002."
+    },
+    {
+      "id": "PRL-0684",
       "from": "REQ-003",
       "to": "SCR-001",
       "relationship": "realized_by",
       "rationale": "SCR-001 exposes the decision, evidence, state, and action contract required by REQ-003."
     },
     {
-      "id": "PRL-0684",
+      "id": "PRL-0685",
       "from": "REQ-004",
       "to": "SCR-004",
       "relationship": "realized_by",
       "rationale": "SCR-004 exposes the decision, evidence, state, and action contract required by REQ-004."
-    },
-    {
-      "id": "PRL-0685",
-      "from": "REQ-004",
-      "to": "SCR-005",
-      "relationship": "realized_by",
-      "rationale": "SCR-005 exposes the decision, evidence, state, and action contract required by REQ-004."
     },
     {
       "id": "PRL-0686",
@@ -4805,66 +4805,66 @@
     },
     {
       "id": "PRL-0687",
-      "from": "REQ-005",
-      "to": "SCR-003",
+      "from": "REQ-004",
+      "to": "SCR-005",
       "relationship": "realized_by",
-      "rationale": "SCR-003 exposes the decision, evidence, state, and action contract required by REQ-005."
+      "rationale": "SCR-005 exposes the decision, evidence, state, and action contract required by REQ-004."
     },
     {
       "id": "PRL-0688",
+      "from": "REQ-005",
+      "to": "SCR-006",
+      "relationship": "realized_by",
+      "rationale": "SCR-006 exposes the decision, evidence, state, and action contract required by REQ-005."
+    },
+    {
+      "id": "PRL-0689",
       "from": "REQ-006",
       "to": "SCR-001",
       "relationship": "realized_by",
       "rationale": "SCR-001 exposes the decision, evidence, state, and action contract required by REQ-006."
     },
     {
-      "id": "PRL-0689",
+      "id": "PRL-0690",
       "from": "REQ-006",
-      "to": "SCR-003",
+      "to": "SCR-005",
       "relationship": "realized_by",
-      "rationale": "SCR-003 exposes the decision, evidence, state, and action contract required by REQ-006."
+      "rationale": "SCR-005 exposes the decision, evidence, state, and action contract required by REQ-006."
     },
     {
-      "id": "PRL-0690",
+      "id": "PRL-0691",
       "from": "REQ-007",
       "to": "SCR-001",
       "relationship": "realized_by",
       "rationale": "SCR-001 exposes the decision, evidence, state, and action contract required by REQ-007."
     },
     {
-      "id": "PRL-0691",
+      "id": "PRL-0692",
       "from": "REQ-008",
-      "to": "SCR-001",
+      "to": "SCR-003",
       "relationship": "realized_by",
-      "rationale": "SCR-001 exposes the decision, evidence, state, and action contract required by REQ-008."
+      "rationale": "SCR-003 exposes the decision, evidence, state, and action contract required by REQ-008."
     },
     {
-      "id": "PRL-0692",
+      "id": "PRL-0693",
       "from": "REQ-009",
       "to": "SCR-005",
       "relationship": "realized_by",
       "rationale": "SCR-005 exposes the decision, evidence, state, and action contract required by REQ-009."
     },
     {
-      "id": "PRL-0693",
-      "from": "REQ-010",
-      "to": "SCR-003",
-      "relationship": "realized_by",
-      "rationale": "SCR-003 exposes the decision, evidence, state, and action contract required by REQ-010."
-    },
-    {
       "id": "PRL-0694",
-      "from": "REQ-010",
-      "to": "SCR-004",
-      "relationship": "realized_by",
-      "rationale": "SCR-004 exposes the decision, evidence, state, and action contract required by REQ-010."
-    },
-    {
-      "id": "PRL-0695",
       "from": "REQ-010",
       "to": "SCR-005",
       "relationship": "realized_by",
       "rationale": "SCR-005 exposes the decision, evidence, state, and action contract required by REQ-010."
+    },
+    {
+      "id": "PRL-0695",
+      "from": "REQ-010",
+      "to": "SCR-006",
+      "relationship": "realized_by",
+      "rationale": "SCR-006 exposes the decision, evidence, state, and action contract required by REQ-010."
     },
     {
       "id": "PRL-0696",
@@ -5898,1185 +5898,1185 @@
     {
       "id": "PRL-0843",
       "from": "SCR-001",
-      "to": "CMP-008",
-      "relationship": "composed_with",
-      "rationale": "CMP-008 provides a reusable semantic interaction needed by SCR-001."
-    },
-    {
-      "id": "PRL-0844",
-      "from": "SCR-001",
       "to": "CMP-012",
       "relationship": "composed_with",
       "rationale": "CMP-012 provides a reusable semantic interaction needed by SCR-001."
     },
     {
-      "id": "PRL-0845",
+      "id": "PRL-0844",
       "from": "SCR-001",
       "to": "CMP-014",
       "relationship": "composed_with",
       "rationale": "CMP-014 provides a reusable semantic interaction needed by SCR-001."
     },
     {
-      "id": "PRL-0846",
+      "id": "PRL-0845",
       "from": "SCR-001",
       "to": "CMP-015",
       "relationship": "composed_with",
       "rationale": "CMP-015 provides a reusable semantic interaction needed by SCR-001."
     },
     {
-      "id": "PRL-0847",
+      "id": "PRL-0846",
       "from": "SCR-001",
       "to": "CMP-016",
       "relationship": "composed_with",
       "rationale": "CMP-016 provides a reusable semantic interaction needed by SCR-001."
     },
     {
-      "id": "PRL-0848",
+      "id": "PRL-0847",
       "from": "SCR-001",
       "to": "CMP-017",
       "relationship": "composed_with",
       "rationale": "CMP-017 provides a reusable semantic interaction needed by SCR-001."
     },
     {
-      "id": "PRL-0849",
+      "id": "PRL-0848",
       "from": "SCR-001",
       "to": "CMP-018",
       "relationship": "composed_with",
       "rationale": "CMP-018 provides a reusable semantic interaction needed by SCR-001."
     },
     {
-      "id": "PRL-0850",
+      "id": "PRL-0849",
       "from": "SCR-001",
       "to": "CMP-019",
       "relationship": "composed_with",
       "rationale": "CMP-019 provides a reusable semantic interaction needed by SCR-001."
     },
     {
-      "id": "PRL-0851",
+      "id": "PRL-0850",
       "from": "SCR-001",
       "to": "CMP-021",
       "relationship": "composed_with",
       "rationale": "CMP-021 provides a reusable semantic interaction needed by SCR-001."
     },
     {
-      "id": "PRL-0852",
+      "id": "PRL-0851",
       "from": "SCR-001",
       "to": "CMP-026",
       "relationship": "composed_with",
       "rationale": "CMP-026 provides a reusable semantic interaction needed by SCR-001."
     },
     {
-      "id": "PRL-0853",
-      "from": "SCR-001",
-      "to": "CMP-033",
-      "relationship": "composed_with",
-      "rationale": "CMP-033 provides a reusable semantic interaction needed by SCR-001."
-    },
-    {
-      "id": "PRL-0854",
+      "id": "PRL-0852",
       "from": "SCR-001",
       "to": "CMP-036",
       "relationship": "composed_with",
       "rationale": "CMP-036 provides a reusable semantic interaction needed by SCR-001."
     },
     {
-      "id": "PRL-0855",
+      "id": "PRL-0853",
       "from": "SCR-001",
       "to": "ACT-001",
       "relationship": "offers",
       "rationale": "SCR-001 exposes ACT-001 within current-state, evidence, and authority constraints."
     },
     {
-      "id": "PRL-0856",
+      "id": "PRL-0854",
       "from": "ACT-001",
       "to": "PERM-002",
       "relationship": "authorized_by",
       "rationale": "ACT-001 resolves the exact transition grant in PERM-002."
     },
     {
-      "id": "PRL-0857",
+      "id": "PRL-0855",
       "from": "ACT-001",
       "to": "NOT-001",
       "relationship": "notifies_by",
       "rationale": "ACT-001 emits its canonical notification consequence through NOT-001."
     },
     {
-      "id": "PRL-0858",
+      "id": "PRL-0856",
       "from": "ACT-001",
       "to": "SYNC-001",
       "relationship": "synchronizes_by",
       "rationale": "ACT-001 uses the canonical acceptance and replay contract in SYNC-001."
     },
     {
-      "id": "PRL-0859",
-      "from": "SCR-001",
-      "to": "ACT-002",
-      "relationship": "offers",
-      "rationale": "SCR-001 exposes ACT-002 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0860",
-      "from": "ACT-002",
-      "to": "PERM-002",
-      "relationship": "authorized_by",
-      "rationale": "ACT-002 resolves the exact transition grant in PERM-002."
-    },
-    {
-      "id": "PRL-0861",
-      "from": "ACT-002",
-      "to": "NOT-002",
-      "relationship": "notifies_by",
-      "rationale": "ACT-002 emits its canonical notification consequence through NOT-002."
-    },
-    {
-      "id": "PRL-0862",
-      "from": "ACT-002",
-      "to": "SYNC-002",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-002 uses the canonical acceptance and replay contract in SYNC-002."
-    },
-    {
-      "id": "PRL-0863",
-      "from": "SCR-001",
-      "to": "ACT-003",
-      "relationship": "offers",
-      "rationale": "SCR-001 exposes ACT-003 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0864",
-      "from": "ACT-003",
-      "to": "PERM-002",
-      "relationship": "authorized_by",
-      "rationale": "ACT-003 resolves the exact transition grant in PERM-002."
-    },
-    {
-      "id": "PRL-0865",
-      "from": "ACT-003",
-      "to": "NOT-003",
-      "relationship": "notifies_by",
-      "rationale": "ACT-003 emits its canonical notification consequence through NOT-003."
-    },
-    {
-      "id": "PRL-0866",
-      "from": "ACT-003",
-      "to": "SYNC-003",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-003 uses the canonical acceptance and replay contract in SYNC-003."
-    },
-    {
-      "id": "PRL-0867",
+      "id": "PRL-0857",
       "from": "SCR-001",
       "to": "ACT-004",
       "relationship": "offers",
       "rationale": "SCR-001 exposes ACT-004 within current-state, evidence, and authority constraints."
     },
     {
-      "id": "PRL-0868",
+      "id": "PRL-0858",
       "from": "ACT-004",
       "to": "PERM-001",
       "relationship": "authorized_by",
       "rationale": "ACT-004 resolves the exact transition grant in PERM-001."
     },
     {
-      "id": "PRL-0869",
+      "id": "PRL-0859",
       "from": "ACT-004",
       "to": "SYNC-001",
       "relationship": "synchronizes_by",
       "rationale": "ACT-004 uses the canonical acceptance and replay contract in SYNC-001."
     },
     {
-      "id": "PRL-0870",
+      "id": "PRL-0860",
       "from": "SCR-002",
       "to": "CMP-002",
       "relationship": "composed_with",
       "rationale": "CMP-002 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0871",
+      "id": "PRL-0861",
       "from": "SCR-002",
       "to": "CMP-003",
       "relationship": "composed_with",
       "rationale": "CMP-003 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0872",
+      "id": "PRL-0862",
       "from": "SCR-002",
       "to": "CMP-004",
       "relationship": "composed_with",
       "rationale": "CMP-004 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0873",
+      "id": "PRL-0863",
       "from": "SCR-002",
       "to": "CMP-005",
       "relationship": "composed_with",
       "rationale": "CMP-005 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0874",
+      "id": "PRL-0864",
       "from": "SCR-002",
       "to": "CMP-006",
       "relationship": "composed_with",
       "rationale": "CMP-006 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0875",
+      "id": "PRL-0865",
       "from": "SCR-002",
       "to": "CMP-007",
       "relationship": "composed_with",
       "rationale": "CMP-007 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0876",
+      "id": "PRL-0866",
       "from": "SCR-002",
-      "to": "CMP-010",
+      "to": "CMP-008",
       "relationship": "composed_with",
-      "rationale": "CMP-010 provides a reusable semantic interaction needed by SCR-002."
+      "rationale": "CMP-008 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0877",
+      "id": "PRL-0867",
       "from": "SCR-002",
       "to": "CMP-012",
       "relationship": "composed_with",
       "rationale": "CMP-012 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0878",
+      "id": "PRL-0868",
       "from": "SCR-002",
       "to": "CMP-014",
       "relationship": "composed_with",
       "rationale": "CMP-014 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0879",
+      "id": "PRL-0869",
       "from": "SCR-002",
       "to": "CMP-015",
       "relationship": "composed_with",
       "rationale": "CMP-015 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0880",
+      "id": "PRL-0870",
+      "from": "SCR-002",
+      "to": "CMP-016",
+      "relationship": "composed_with",
+      "rationale": "CMP-016 provides a reusable semantic interaction needed by SCR-002."
+    },
+    {
+      "id": "PRL-0871",
+      "from": "SCR-002",
+      "to": "CMP-017",
+      "relationship": "composed_with",
+      "rationale": "CMP-017 provides a reusable semantic interaction needed by SCR-002."
+    },
+    {
+      "id": "PRL-0872",
       "from": "SCR-002",
       "to": "CMP-021",
       "relationship": "composed_with",
       "rationale": "CMP-021 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0881",
+      "id": "PRL-0873",
       "from": "SCR-002",
       "to": "CMP-022",
       "relationship": "composed_with",
       "rationale": "CMP-022 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0882",
+      "id": "PRL-0874",
       "from": "SCR-002",
       "to": "CMP-026",
       "relationship": "composed_with",
       "rationale": "CMP-026 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0883",
+      "id": "PRL-0875",
       "from": "SCR-002",
       "to": "CMP-036",
       "relationship": "composed_with",
       "rationale": "CMP-036 provides a reusable semantic interaction needed by SCR-002."
     },
     {
-      "id": "PRL-0884",
+      "id": "PRL-0876",
       "from": "SCR-002",
-      "to": "ACT-005",
+      "to": "ACT-002",
       "relationship": "offers",
-      "rationale": "SCR-002 exposes ACT-005 within current-state, evidence, and authority constraints."
+      "rationale": "SCR-002 exposes ACT-002 within current-state, evidence, and authority constraints."
     },
     {
-      "id": "PRL-0885",
-      "from": "ACT-005",
+      "id": "PRL-0877",
+      "from": "ACT-002",
       "to": "PERM-002",
       "relationship": "authorized_by",
-      "rationale": "ACT-005 resolves the exact transition grant in PERM-002."
+      "rationale": "ACT-002 resolves the exact transition grant in PERM-002."
     },
     {
-      "id": "PRL-0886",
-      "from": "ACT-005",
-      "to": "NOT-004",
+      "id": "PRL-0878",
+      "from": "ACT-002",
+      "to": "NOT-002",
       "relationship": "notifies_by",
-      "rationale": "ACT-005 emits its canonical notification consequence through NOT-004."
+      "rationale": "ACT-002 emits its canonical notification consequence through NOT-002."
     },
     {
-      "id": "PRL-0887",
-      "from": "ACT-005",
+      "id": "PRL-0879",
+      "from": "ACT-002",
       "to": "SYNC-002",
       "relationship": "synchronizes_by",
-      "rationale": "ACT-005 uses the canonical acceptance and replay contract in SYNC-002."
+      "rationale": "ACT-002 uses the canonical acceptance and replay contract in SYNC-002."
     },
     {
-      "id": "PRL-0888",
+      "id": "PRL-0880",
       "from": "SCR-002",
-      "to": "ACT-006",
-      "relationship": "offers",
-      "rationale": "SCR-002 exposes ACT-006 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0889",
-      "from": "ACT-006",
-      "to": "PERM-002",
-      "relationship": "authorized_by",
-      "rationale": "ACT-006 resolves the exact transition grant in PERM-002."
-    },
-    {
-      "id": "PRL-0890",
-      "from": "ACT-006",
-      "to": "NOT-005",
-      "relationship": "notifies_by",
-      "rationale": "ACT-006 emits its canonical notification consequence through NOT-005."
-    },
-    {
-      "id": "PRL-0891",
-      "from": "ACT-006",
-      "to": "SYNC-002",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-006 uses the canonical acceptance and replay contract in SYNC-002."
-    },
-    {
-      "id": "PRL-0892",
-      "from": "SCR-002",
-      "to": "ACT-007",
-      "relationship": "offers",
-      "rationale": "SCR-002 exposes ACT-007 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0893",
-      "from": "ACT-007",
-      "to": "PERM-001",
-      "relationship": "authorized_by",
-      "rationale": "ACT-007 resolves the exact transition grant in PERM-001."
-    },
-    {
-      "id": "PRL-0894",
-      "from": "ACT-007",
-      "to": "SYNC-001",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-007 uses the canonical acceptance and replay contract in SYNC-001."
-    },
-    {
-      "id": "PRL-0895",
-      "from": "SCR-003",
-      "to": "CMP-002",
-      "relationship": "composed_with",
-      "rationale": "CMP-002 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0896",
-      "from": "SCR-003",
-      "to": "CMP-003",
-      "relationship": "composed_with",
-      "rationale": "CMP-003 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0897",
-      "from": "SCR-003",
-      "to": "CMP-004",
-      "relationship": "composed_with",
-      "rationale": "CMP-004 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0898",
-      "from": "SCR-003",
-      "to": "CMP-005",
-      "relationship": "composed_with",
-      "rationale": "CMP-005 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0899",
-      "from": "SCR-003",
-      "to": "CMP-006",
-      "relationship": "composed_with",
-      "rationale": "CMP-006 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0900",
-      "from": "SCR-003",
-      "to": "CMP-007",
-      "relationship": "composed_with",
-      "rationale": "CMP-007 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0901",
-      "from": "SCR-003",
-      "to": "CMP-008",
-      "relationship": "composed_with",
-      "rationale": "CMP-008 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0902",
-      "from": "SCR-003",
-      "to": "CMP-009",
-      "relationship": "composed_with",
-      "rationale": "CMP-009 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0903",
-      "from": "SCR-003",
-      "to": "CMP-010",
-      "relationship": "composed_with",
-      "rationale": "CMP-010 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0904",
-      "from": "SCR-003",
-      "to": "CMP-012",
-      "relationship": "composed_with",
-      "rationale": "CMP-012 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0905",
-      "from": "SCR-003",
-      "to": "CMP-013",
-      "relationship": "composed_with",
-      "rationale": "CMP-013 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0906",
-      "from": "SCR-003",
-      "to": "CMP-014",
-      "relationship": "composed_with",
-      "rationale": "CMP-014 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0907",
-      "from": "SCR-003",
-      "to": "CMP-015",
-      "relationship": "composed_with",
-      "rationale": "CMP-015 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0908",
-      "from": "SCR-003",
-      "to": "CMP-021",
-      "relationship": "composed_with",
-      "rationale": "CMP-021 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0909",
-      "from": "SCR-003",
-      "to": "CMP-022",
-      "relationship": "composed_with",
-      "rationale": "CMP-022 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0910",
-      "from": "SCR-003",
-      "to": "CMP-026",
-      "relationship": "composed_with",
-      "rationale": "CMP-026 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0911",
-      "from": "SCR-003",
-      "to": "CMP-033",
-      "relationship": "composed_with",
-      "rationale": "CMP-033 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0912",
-      "from": "SCR-003",
-      "to": "CMP-036",
-      "relationship": "composed_with",
-      "rationale": "CMP-036 provides a reusable semantic interaction needed by SCR-003."
-    },
-    {
-      "id": "PRL-0913",
-      "from": "SCR-003",
-      "to": "ACT-008",
-      "relationship": "offers",
-      "rationale": "SCR-003 exposes ACT-008 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0914",
-      "from": "ACT-008",
-      "to": "PERM-002",
-      "relationship": "authorized_by",
-      "rationale": "ACT-008 resolves the exact transition grant in PERM-002."
-    },
-    {
-      "id": "PRL-0915",
-      "from": "ACT-008",
-      "to": "NOT-006",
-      "relationship": "notifies_by",
-      "rationale": "ACT-008 emits its canonical notification consequence through NOT-006."
-    },
-    {
-      "id": "PRL-0916",
-      "from": "ACT-008",
-      "to": "SYNC-001",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-008 uses the canonical acceptance and replay contract in SYNC-001."
-    },
-    {
-      "id": "PRL-0917",
-      "from": "SCR-003",
-      "to": "ACT-009",
-      "relationship": "offers",
-      "rationale": "SCR-003 exposes ACT-009 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0918",
-      "from": "ACT-009",
-      "to": "PERM-002",
-      "relationship": "authorized_by",
-      "rationale": "ACT-009 resolves the exact transition grant in PERM-002."
-    },
-    {
-      "id": "PRL-0919",
-      "from": "ACT-009",
-      "to": "NOT-007",
-      "relationship": "notifies_by",
-      "rationale": "ACT-009 emits its canonical notification consequence through NOT-007."
-    },
-    {
-      "id": "PRL-0920",
-      "from": "ACT-009",
-      "to": "SYNC-002",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-009 uses the canonical acceptance and replay contract in SYNC-002."
-    },
-    {
-      "id": "PRL-0921",
-      "from": "SCR-003",
-      "to": "ACT-010",
-      "relationship": "offers",
-      "rationale": "SCR-003 exposes ACT-010 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0922",
-      "from": "ACT-010",
-      "to": "PERM-002",
-      "relationship": "authorized_by",
-      "rationale": "ACT-010 resolves the exact transition grant in PERM-002."
-    },
-    {
-      "id": "PRL-0923",
-      "from": "ACT-010",
-      "to": "NOT-008",
-      "relationship": "notifies_by",
-      "rationale": "ACT-010 emits its canonical notification consequence through NOT-008."
-    },
-    {
-      "id": "PRL-0924",
-      "from": "ACT-010",
-      "to": "SYNC-003",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-010 uses the canonical acceptance and replay contract in SYNC-003."
-    },
-    {
-      "id": "PRL-0925",
-      "from": "SCR-003",
       "to": "ACT-011",
       "relationship": "offers",
-      "rationale": "SCR-003 exposes ACT-011 within current-state, evidence, and authority constraints."
+      "rationale": "SCR-002 exposes ACT-011 within current-state, evidence, and authority constraints."
     },
     {
-      "id": "PRL-0926",
+      "id": "PRL-0881",
       "from": "ACT-011",
       "to": "PERM-002",
       "relationship": "authorized_by",
       "rationale": "ACT-011 resolves the exact transition grant in PERM-002."
     },
     {
-      "id": "PRL-0927",
+      "id": "PRL-0882",
       "from": "ACT-011",
       "to": "NOT-009",
       "relationship": "notifies_by",
       "rationale": "ACT-011 emits its canonical notification consequence through NOT-009."
     },
     {
-      "id": "PRL-0928",
+      "id": "PRL-0883",
       "from": "ACT-011",
       "to": "SYNC-001",
       "relationship": "synchronizes_by",
       "rationale": "ACT-011 uses the canonical acceptance and replay contract in SYNC-001."
     },
     {
-      "id": "PRL-0929",
+      "id": "PRL-0884",
+      "from": "SCR-002",
+      "to": "ACT-007",
+      "relationship": "offers",
+      "rationale": "SCR-002 exposes ACT-007 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0885",
+      "from": "ACT-007",
+      "to": "PERM-001",
+      "relationship": "authorized_by",
+      "rationale": "ACT-007 resolves the exact transition grant in PERM-001."
+    },
+    {
+      "id": "PRL-0886",
+      "from": "ACT-007",
+      "to": "SYNC-001",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-007 uses the canonical acceptance and replay contract in SYNC-001."
+    },
+    {
+      "id": "PRL-0887",
+      "from": "SCR-003",
+      "to": "CMP-002",
+      "relationship": "composed_with",
+      "rationale": "CMP-002 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0888",
+      "from": "SCR-003",
+      "to": "CMP-003",
+      "relationship": "composed_with",
+      "rationale": "CMP-003 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0889",
+      "from": "SCR-003",
+      "to": "CMP-004",
+      "relationship": "composed_with",
+      "rationale": "CMP-004 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0890",
+      "from": "SCR-003",
+      "to": "CMP-005",
+      "relationship": "composed_with",
+      "rationale": "CMP-005 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0891",
+      "from": "SCR-003",
+      "to": "CMP-006",
+      "relationship": "composed_with",
+      "rationale": "CMP-006 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0892",
+      "from": "SCR-003",
+      "to": "CMP-007",
+      "relationship": "composed_with",
+      "rationale": "CMP-007 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0893",
+      "from": "SCR-003",
+      "to": "CMP-008",
+      "relationship": "composed_with",
+      "rationale": "CMP-008 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0894",
+      "from": "SCR-003",
+      "to": "CMP-012",
+      "relationship": "composed_with",
+      "rationale": "CMP-012 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0895",
+      "from": "SCR-003",
+      "to": "CMP-013",
+      "relationship": "composed_with",
+      "rationale": "CMP-013 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0896",
+      "from": "SCR-003",
+      "to": "CMP-014",
+      "relationship": "composed_with",
+      "rationale": "CMP-014 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0897",
+      "from": "SCR-003",
+      "to": "CMP-016",
+      "relationship": "composed_with",
+      "rationale": "CMP-016 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0898",
+      "from": "SCR-003",
+      "to": "CMP-017",
+      "relationship": "composed_with",
+      "rationale": "CMP-017 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0899",
+      "from": "SCR-003",
+      "to": "CMP-021",
+      "relationship": "composed_with",
+      "rationale": "CMP-021 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0900",
+      "from": "SCR-003",
+      "to": "CMP-022",
+      "relationship": "composed_with",
+      "rationale": "CMP-022 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0901",
+      "from": "SCR-003",
+      "to": "CMP-026",
+      "relationship": "composed_with",
+      "rationale": "CMP-026 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0902",
+      "from": "SCR-003",
+      "to": "CMP-033",
+      "relationship": "composed_with",
+      "rationale": "CMP-033 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0903",
+      "from": "SCR-003",
+      "to": "CMP-036",
+      "relationship": "composed_with",
+      "rationale": "CMP-036 provides a reusable semantic interaction needed by SCR-003."
+    },
+    {
+      "id": "PRL-0904",
+      "from": "SCR-003",
+      "to": "ACT-003",
+      "relationship": "offers",
+      "rationale": "SCR-003 exposes ACT-003 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0905",
+      "from": "ACT-003",
+      "to": "PERM-002",
+      "relationship": "authorized_by",
+      "rationale": "ACT-003 resolves the exact transition grant in PERM-002."
+    },
+    {
+      "id": "PRL-0906",
+      "from": "ACT-003",
+      "to": "NOT-003",
+      "relationship": "notifies_by",
+      "rationale": "ACT-003 emits its canonical notification consequence through NOT-003."
+    },
+    {
+      "id": "PRL-0907",
+      "from": "ACT-003",
+      "to": "SYNC-003",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-003 uses the canonical acceptance and replay contract in SYNC-003."
+    },
+    {
+      "id": "PRL-0908",
       "from": "SCR-003",
       "to": "ACT-012",
       "relationship": "offers",
       "rationale": "SCR-003 exposes ACT-012 within current-state, evidence, and authority constraints."
     },
     {
-      "id": "PRL-0930",
+      "id": "PRL-0909",
       "from": "ACT-012",
       "to": "PERM-005",
       "relationship": "authorized_by",
       "rationale": "ACT-012 resolves the exact transition grant in PERM-005."
     },
     {
-      "id": "PRL-0931",
+      "id": "PRL-0910",
       "from": "ACT-012",
       "to": "NOT-010",
       "relationship": "notifies_by",
       "rationale": "ACT-012 emits its canonical notification consequence through NOT-010."
     },
     {
-      "id": "PRL-0932",
+      "id": "PRL-0911",
       "from": "ACT-012",
       "to": "SYNC-003",
       "relationship": "synchronizes_by",
       "rationale": "ACT-012 uses the canonical acceptance and replay contract in SYNC-003."
     },
     {
-      "id": "PRL-0933",
+      "id": "PRL-0912",
       "from": "SCR-003",
       "to": "ACT-013",
       "relationship": "offers",
       "rationale": "SCR-003 exposes ACT-013 within current-state, evidence, and authority constraints."
     },
     {
-      "id": "PRL-0934",
+      "id": "PRL-0913",
       "from": "ACT-013",
       "to": "PERM-001",
       "relationship": "authorized_by",
       "rationale": "ACT-013 resolves the exact transition grant in PERM-001."
     },
     {
-      "id": "PRL-0935",
+      "id": "PRL-0914",
       "from": "ACT-013",
       "to": "SYNC-001",
       "relationship": "synchronizes_by",
       "rationale": "ACT-013 uses the canonical acceptance and replay contract in SYNC-001."
     },
     {
-      "id": "PRL-0936",
+      "id": "PRL-0915",
       "from": "SCR-004",
       "to": "CMP-001",
       "relationship": "composed_with",
       "rationale": "CMP-001 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0937",
+      "id": "PRL-0916",
       "from": "SCR-004",
       "to": "CMP-002",
       "relationship": "composed_with",
       "rationale": "CMP-002 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0938",
+      "id": "PRL-0917",
       "from": "SCR-004",
       "to": "CMP-003",
       "relationship": "composed_with",
       "rationale": "CMP-003 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0939",
+      "id": "PRL-0918",
       "from": "SCR-004",
       "to": "CMP-004",
       "relationship": "composed_with",
       "rationale": "CMP-004 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0940",
+      "id": "PRL-0919",
       "from": "SCR-004",
       "to": "CMP-005",
       "relationship": "composed_with",
       "rationale": "CMP-005 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0941",
+      "id": "PRL-0920",
       "from": "SCR-004",
       "to": "CMP-006",
       "relationship": "composed_with",
       "rationale": "CMP-006 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0942",
+      "id": "PRL-0921",
       "from": "SCR-004",
       "to": "CMP-007",
       "relationship": "composed_with",
       "rationale": "CMP-007 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0943",
+      "id": "PRL-0922",
       "from": "SCR-004",
       "to": "CMP-008",
       "relationship": "composed_with",
       "rationale": "CMP-008 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0944",
-      "from": "SCR-004",
-      "to": "CMP-009",
-      "relationship": "composed_with",
-      "rationale": "CMP-009 provides a reusable semantic interaction needed by SCR-004."
-    },
-    {
-      "id": "PRL-0945",
+      "id": "PRL-0923",
       "from": "SCR-004",
       "to": "CMP-010",
       "relationship": "composed_with",
       "rationale": "CMP-010 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0946",
+      "id": "PRL-0924",
       "from": "SCR-004",
       "to": "CMP-011",
       "relationship": "composed_with",
       "rationale": "CMP-011 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0947",
+      "id": "PRL-0925",
       "from": "SCR-004",
       "to": "CMP-012",
       "relationship": "composed_with",
       "rationale": "CMP-012 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0948",
+      "id": "PRL-0926",
       "from": "SCR-004",
       "to": "CMP-014",
       "relationship": "composed_with",
       "rationale": "CMP-014 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0949",
+      "id": "PRL-0927",
       "from": "SCR-004",
       "to": "CMP-015",
       "relationship": "composed_with",
       "rationale": "CMP-015 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0950",
+      "id": "PRL-0928",
       "from": "SCR-004",
       "to": "CMP-020",
       "relationship": "composed_with",
       "rationale": "CMP-020 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0951",
+      "id": "PRL-0929",
       "from": "SCR-004",
       "to": "CMP-021",
       "relationship": "composed_with",
       "rationale": "CMP-021 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0952",
+      "id": "PRL-0930",
       "from": "SCR-004",
       "to": "CMP-026",
       "relationship": "composed_with",
       "rationale": "CMP-026 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0953",
+      "id": "PRL-0931",
       "from": "SCR-004",
       "to": "CMP-036",
       "relationship": "composed_with",
       "rationale": "CMP-036 provides a reusable semantic interaction needed by SCR-004."
     },
     {
-      "id": "PRL-0954",
+      "id": "PRL-0932",
+      "from": "SCR-004",
+      "to": "ACT-005",
+      "relationship": "offers",
+      "rationale": "SCR-004 exposes ACT-005 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0933",
+      "from": "ACT-005",
+      "to": "PERM-002",
+      "relationship": "authorized_by",
+      "rationale": "ACT-005 resolves the exact transition grant in PERM-002."
+    },
+    {
+      "id": "PRL-0934",
+      "from": "ACT-005",
+      "to": "NOT-004",
+      "relationship": "notifies_by",
+      "rationale": "ACT-005 emits its canonical notification consequence through NOT-004."
+    },
+    {
+      "id": "PRL-0935",
+      "from": "ACT-005",
+      "to": "SYNC-002",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-005 uses the canonical acceptance and replay contract in SYNC-002."
+    },
+    {
+      "id": "PRL-0936",
       "from": "SCR-004",
       "to": "ACT-014",
       "relationship": "offers",
       "rationale": "SCR-004 exposes ACT-014 within current-state, evidence, and authority constraints."
     },
     {
-      "id": "PRL-0955",
+      "id": "PRL-0937",
       "from": "ACT-014",
       "to": "PERM-003",
       "relationship": "authorized_by",
       "rationale": "ACT-014 resolves the exact transition grant in PERM-003."
     },
     {
-      "id": "PRL-0956",
+      "id": "PRL-0938",
       "from": "ACT-014",
       "to": "NOT-011",
       "relationship": "notifies_by",
       "rationale": "ACT-014 emits its canonical notification consequence through NOT-011."
     },
     {
-      "id": "PRL-0957",
+      "id": "PRL-0939",
       "from": "ACT-014",
       "to": "SYNC-002",
       "relationship": "synchronizes_by",
       "rationale": "ACT-014 uses the canonical acceptance and replay contract in SYNC-002."
     },
     {
-      "id": "PRL-0958",
+      "id": "PRL-0940",
       "from": "SCR-004",
       "to": "ACT-015",
       "relationship": "offers",
       "rationale": "SCR-004 exposes ACT-015 within current-state, evidence, and authority constraints."
     },
     {
-      "id": "PRL-0959",
+      "id": "PRL-0941",
       "from": "ACT-015",
       "to": "PERM-003",
       "relationship": "authorized_by",
       "rationale": "ACT-015 resolves the exact transition grant in PERM-003."
     },
     {
-      "id": "PRL-0960",
+      "id": "PRL-0942",
       "from": "ACT-015",
       "to": "NOT-012",
       "relationship": "notifies_by",
       "rationale": "ACT-015 emits its canonical notification consequence through NOT-012."
     },
     {
-      "id": "PRL-0961",
+      "id": "PRL-0943",
       "from": "ACT-015",
       "to": "SYNC-002",
       "relationship": "synchronizes_by",
       "rationale": "ACT-015 uses the canonical acceptance and replay contract in SYNC-002."
     },
     {
-      "id": "PRL-0962",
+      "id": "PRL-0944",
       "from": "SCR-004",
-      "to": "ACT-016",
-      "relationship": "offers",
-      "rationale": "SCR-004 exposes ACT-016 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0963",
-      "from": "ACT-016",
-      "to": "PERM-002",
-      "relationship": "authorized_by",
-      "rationale": "ACT-016 resolves the exact transition grant in PERM-002."
-    },
-    {
-      "id": "PRL-0964",
-      "from": "ACT-016",
-      "to": "NOT-013",
-      "relationship": "notifies_by",
-      "rationale": "ACT-016 emits its canonical notification consequence through NOT-013."
-    },
-    {
-      "id": "PRL-0965",
-      "from": "ACT-016",
-      "to": "SYNC-002",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-016 uses the canonical acceptance and replay contract in SYNC-002."
-    },
-    {
-      "id": "PRL-0966",
-      "from": "SCR-004",
-      "to": "ACT-017",
-      "relationship": "offers",
-      "rationale": "SCR-004 exposes ACT-017 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0967",
-      "from": "ACT-017",
-      "to": "PERM-001",
-      "relationship": "authorized_by",
-      "rationale": "ACT-017 resolves the exact transition grant in PERM-001."
-    },
-    {
-      "id": "PRL-0968",
-      "from": "ACT-017",
-      "to": "SYNC-001",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-017 uses the canonical acceptance and replay contract in SYNC-001."
-    },
-    {
-      "id": "PRL-0969",
-      "from": "SCR-005",
-      "to": "CMP-002",
-      "relationship": "composed_with",
-      "rationale": "CMP-002 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0970",
-      "from": "SCR-005",
-      "to": "CMP-003",
-      "relationship": "composed_with",
-      "rationale": "CMP-003 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0971",
-      "from": "SCR-005",
-      "to": "CMP-004",
-      "relationship": "composed_with",
-      "rationale": "CMP-004 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0972",
-      "from": "SCR-005",
-      "to": "CMP-005",
-      "relationship": "composed_with",
-      "rationale": "CMP-005 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0973",
-      "from": "SCR-005",
-      "to": "CMP-006",
-      "relationship": "composed_with",
-      "rationale": "CMP-006 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0974",
-      "from": "SCR-005",
-      "to": "CMP-007",
-      "relationship": "composed_with",
-      "rationale": "CMP-007 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0975",
-      "from": "SCR-005",
-      "to": "CMP-008",
-      "relationship": "composed_with",
-      "rationale": "CMP-008 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0976",
-      "from": "SCR-005",
-      "to": "CMP-010",
-      "relationship": "composed_with",
-      "rationale": "CMP-010 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0977",
-      "from": "SCR-005",
-      "to": "CMP-013",
-      "relationship": "composed_with",
-      "rationale": "CMP-013 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0978",
-      "from": "SCR-005",
-      "to": "CMP-014",
-      "relationship": "composed_with",
-      "rationale": "CMP-014 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0979",
-      "from": "SCR-005",
-      "to": "CMP-015",
-      "relationship": "composed_with",
-      "rationale": "CMP-015 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0980",
-      "from": "SCR-005",
-      "to": "CMP-020",
-      "relationship": "composed_with",
-      "rationale": "CMP-020 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0981",
-      "from": "SCR-005",
-      "to": "CMP-021",
-      "relationship": "composed_with",
-      "rationale": "CMP-021 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0982",
-      "from": "SCR-005",
-      "to": "CMP-026",
-      "relationship": "composed_with",
-      "rationale": "CMP-026 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0983",
-      "from": "SCR-005",
-      "to": "CMP-033",
-      "relationship": "composed_with",
-      "rationale": "CMP-033 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0984",
-      "from": "SCR-005",
-      "to": "CMP-036",
-      "relationship": "composed_with",
-      "rationale": "CMP-036 provides a reusable semantic interaction needed by SCR-005."
-    },
-    {
-      "id": "PRL-0985",
-      "from": "SCR-005",
-      "to": "ACT-018",
-      "relationship": "offers",
-      "rationale": "SCR-005 exposes ACT-018 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0986",
-      "from": "ACT-018",
-      "to": "PERM-004",
-      "relationship": "authorized_by",
-      "rationale": "ACT-018 resolves the exact transition grant in PERM-004."
-    },
-    {
-      "id": "PRL-0987",
-      "from": "ACT-018",
-      "to": "NOT-014",
-      "relationship": "notifies_by",
-      "rationale": "ACT-018 emits its canonical notification consequence through NOT-014."
-    },
-    {
-      "id": "PRL-0988",
-      "from": "ACT-018",
-      "to": "SYNC-003",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-018 uses the canonical acceptance and replay contract in SYNC-003."
-    },
-    {
-      "id": "PRL-0989",
-      "from": "SCR-005",
-      "to": "ACT-019",
-      "relationship": "offers",
-      "rationale": "SCR-005 exposes ACT-019 within current-state, evidence, and authority constraints."
-    },
-    {
-      "id": "PRL-0990",
-      "from": "ACT-019",
-      "to": "PERM-002",
-      "relationship": "authorized_by",
-      "rationale": "ACT-019 resolves the exact transition grant in PERM-002."
-    },
-    {
-      "id": "PRL-0991",
-      "from": "ACT-019",
-      "to": "NOT-015",
-      "relationship": "notifies_by",
-      "rationale": "ACT-019 emits its canonical notification consequence through NOT-015."
-    },
-    {
-      "id": "PRL-0992",
-      "from": "ACT-019",
-      "to": "SYNC-003",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-019 uses the canonical acceptance and replay contract in SYNC-003."
-    },
-    {
-      "id": "PRL-0993",
-      "from": "SCR-005",
       "to": "ACT-020",
       "relationship": "offers",
-      "rationale": "SCR-005 exposes ACT-020 within current-state, evidence, and authority constraints."
+      "rationale": "SCR-004 exposes ACT-020 within current-state, evidence, and authority constraints."
     },
     {
-      "id": "PRL-0994",
+      "id": "PRL-0945",
       "from": "ACT-020",
       "to": "PERM-002",
       "relationship": "authorized_by",
       "rationale": "ACT-020 resolves the exact transition grant in PERM-002."
     },
     {
-      "id": "PRL-0995",
+      "id": "PRL-0946",
       "from": "ACT-020",
       "to": "NOT-016",
       "relationship": "notifies_by",
       "rationale": "ACT-020 emits its canonical notification consequence through NOT-016."
     },
     {
-      "id": "PRL-0996",
+      "id": "PRL-0947",
       "from": "ACT-020",
       "to": "SYNC-001",
       "relationship": "synchronizes_by",
       "rationale": "ACT-020 uses the canonical acceptance and replay contract in SYNC-001."
     },
     {
-      "id": "PRL-0997",
-      "from": "SCR-005",
-      "to": "ACT-021",
+      "id": "PRL-0948",
+      "from": "SCR-004",
+      "to": "ACT-023",
       "relationship": "offers",
-      "rationale": "SCR-005 exposes ACT-021 within current-state, evidence, and authority constraints."
+      "rationale": "SCR-004 exposes ACT-023 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0949",
+      "from": "ACT-023",
+      "to": "PERM-002",
+      "relationship": "authorized_by",
+      "rationale": "ACT-023 resolves the exact transition grant in PERM-002."
+    },
+    {
+      "id": "PRL-0950",
+      "from": "ACT-023",
+      "to": "NOT-018",
+      "relationship": "notifies_by",
+      "rationale": "ACT-023 emits its canonical notification consequence through NOT-018."
+    },
+    {
+      "id": "PRL-0951",
+      "from": "ACT-023",
+      "to": "SYNC-001",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-023 uses the canonical acceptance and replay contract in SYNC-001."
+    },
+    {
+      "id": "PRL-0952",
+      "from": "SCR-004",
+      "to": "ACT-017",
+      "relationship": "offers",
+      "rationale": "SCR-004 exposes ACT-017 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0953",
+      "from": "ACT-017",
+      "to": "PERM-001",
+      "relationship": "authorized_by",
+      "rationale": "ACT-017 resolves the exact transition grant in PERM-001."
+    },
+    {
+      "id": "PRL-0954",
+      "from": "ACT-017",
+      "to": "SYNC-001",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-017 uses the canonical acceptance and replay contract in SYNC-001."
+    },
+    {
+      "id": "PRL-0955",
+      "from": "SCR-005",
+      "to": "CMP-002",
+      "relationship": "composed_with",
+      "rationale": "CMP-002 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0956",
+      "from": "SCR-005",
+      "to": "CMP-003",
+      "relationship": "composed_with",
+      "rationale": "CMP-003 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0957",
+      "from": "SCR-005",
+      "to": "CMP-004",
+      "relationship": "composed_with",
+      "rationale": "CMP-004 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0958",
+      "from": "SCR-005",
+      "to": "CMP-005",
+      "relationship": "composed_with",
+      "rationale": "CMP-005 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0959",
+      "from": "SCR-005",
+      "to": "CMP-006",
+      "relationship": "composed_with",
+      "rationale": "CMP-006 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0960",
+      "from": "SCR-005",
+      "to": "CMP-007",
+      "relationship": "composed_with",
+      "rationale": "CMP-007 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0961",
+      "from": "SCR-005",
+      "to": "CMP-008",
+      "relationship": "composed_with",
+      "rationale": "CMP-008 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0962",
+      "from": "SCR-005",
+      "to": "CMP-009",
+      "relationship": "composed_with",
+      "rationale": "CMP-009 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0963",
+      "from": "SCR-005",
+      "to": "CMP-010",
+      "relationship": "composed_with",
+      "rationale": "CMP-010 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0964",
+      "from": "SCR-005",
+      "to": "CMP-012",
+      "relationship": "composed_with",
+      "rationale": "CMP-012 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0965",
+      "from": "SCR-005",
+      "to": "CMP-013",
+      "relationship": "composed_with",
+      "rationale": "CMP-013 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0966",
+      "from": "SCR-005",
+      "to": "CMP-014",
+      "relationship": "composed_with",
+      "rationale": "CMP-014 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0967",
+      "from": "SCR-005",
+      "to": "CMP-015",
+      "relationship": "composed_with",
+      "rationale": "CMP-015 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0968",
+      "from": "SCR-005",
+      "to": "CMP-020",
+      "relationship": "composed_with",
+      "rationale": "CMP-020 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0969",
+      "from": "SCR-005",
+      "to": "CMP-021",
+      "relationship": "composed_with",
+      "rationale": "CMP-021 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0970",
+      "from": "SCR-005",
+      "to": "CMP-026",
+      "relationship": "composed_with",
+      "rationale": "CMP-026 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0971",
+      "from": "SCR-005",
+      "to": "CMP-036",
+      "relationship": "composed_with",
+      "rationale": "CMP-036 provides a reusable semantic interaction needed by SCR-005."
+    },
+    {
+      "id": "PRL-0972",
+      "from": "SCR-005",
+      "to": "ACT-006",
+      "relationship": "offers",
+      "rationale": "SCR-005 exposes ACT-006 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0973",
+      "from": "ACT-006",
+      "to": "PERM-002",
+      "relationship": "authorized_by",
+      "rationale": "ACT-006 resolves the exact transition grant in PERM-002."
+    },
+    {
+      "id": "PRL-0974",
+      "from": "ACT-006",
+      "to": "NOT-005",
+      "relationship": "notifies_by",
+      "rationale": "ACT-006 emits its canonical notification consequence through NOT-005."
+    },
+    {
+      "id": "PRL-0975",
+      "from": "ACT-006",
+      "to": "SYNC-002",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-006 uses the canonical acceptance and replay contract in SYNC-002."
+    },
+    {
+      "id": "PRL-0976",
+      "from": "SCR-005",
+      "to": "ACT-008",
+      "relationship": "offers",
+      "rationale": "SCR-005 exposes ACT-008 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0977",
+      "from": "ACT-008",
+      "to": "PERM-002",
+      "relationship": "authorized_by",
+      "rationale": "ACT-008 resolves the exact transition grant in PERM-002."
+    },
+    {
+      "id": "PRL-0978",
+      "from": "ACT-008",
+      "to": "NOT-006",
+      "relationship": "notifies_by",
+      "rationale": "ACT-008 emits its canonical notification consequence through NOT-006."
+    },
+    {
+      "id": "PRL-0979",
+      "from": "ACT-008",
+      "to": "SYNC-001",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-008 uses the canonical acceptance and replay contract in SYNC-001."
+    },
+    {
+      "id": "PRL-0980",
+      "from": "SCR-005",
+      "to": "ACT-009",
+      "relationship": "offers",
+      "rationale": "SCR-005 exposes ACT-009 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0981",
+      "from": "ACT-009",
+      "to": "PERM-002",
+      "relationship": "authorized_by",
+      "rationale": "ACT-009 resolves the exact transition grant in PERM-002."
+    },
+    {
+      "id": "PRL-0982",
+      "from": "ACT-009",
+      "to": "NOT-007",
+      "relationship": "notifies_by",
+      "rationale": "ACT-009 emits its canonical notification consequence through NOT-007."
+    },
+    {
+      "id": "PRL-0983",
+      "from": "ACT-009",
+      "to": "SYNC-002",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-009 uses the canonical acceptance and replay contract in SYNC-002."
+    },
+    {
+      "id": "PRL-0984",
+      "from": "SCR-005",
+      "to": "ACT-016",
+      "relationship": "offers",
+      "rationale": "SCR-005 exposes ACT-016 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0985",
+      "from": "ACT-016",
+      "to": "PERM-002",
+      "relationship": "authorized_by",
+      "rationale": "ACT-016 resolves the exact transition grant in PERM-002."
+    },
+    {
+      "id": "PRL-0986",
+      "from": "ACT-016",
+      "to": "NOT-013",
+      "relationship": "notifies_by",
+      "rationale": "ACT-016 emits its canonical notification consequence through NOT-013."
+    },
+    {
+      "id": "PRL-0987",
+      "from": "ACT-016",
+      "to": "SYNC-002",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-016 uses the canonical acceptance and replay contract in SYNC-002."
+    },
+    {
+      "id": "PRL-0988",
+      "from": "SCR-005",
+      "to": "ACT-018",
+      "relationship": "offers",
+      "rationale": "SCR-005 exposes ACT-018 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0989",
+      "from": "ACT-018",
+      "to": "PERM-004",
+      "relationship": "authorized_by",
+      "rationale": "ACT-018 resolves the exact transition grant in PERM-004."
+    },
+    {
+      "id": "PRL-0990",
+      "from": "ACT-018",
+      "to": "NOT-014",
+      "relationship": "notifies_by",
+      "rationale": "ACT-018 emits its canonical notification consequence through NOT-014."
+    },
+    {
+      "id": "PRL-0991",
+      "from": "ACT-018",
+      "to": "SYNC-003",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-018 uses the canonical acceptance and replay contract in SYNC-003."
+    },
+    {
+      "id": "PRL-0992",
+      "from": "SCR-005",
+      "to": "ACT-024",
+      "relationship": "offers",
+      "rationale": "SCR-005 exposes ACT-024 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0993",
+      "from": "ACT-024",
+      "to": "PERM-002",
+      "relationship": "authorized_by",
+      "rationale": "ACT-024 resolves the exact transition grant in PERM-002."
+    },
+    {
+      "id": "PRL-0994",
+      "from": "ACT-024",
+      "to": "NOT-019",
+      "relationship": "notifies_by",
+      "rationale": "ACT-024 emits its canonical notification consequence through NOT-019."
+    },
+    {
+      "id": "PRL-0995",
+      "from": "ACT-024",
+      "to": "SYNC-002",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-024 uses the canonical acceptance and replay contract in SYNC-002."
+    },
+    {
+      "id": "PRL-0996",
+      "from": "SCR-005",
+      "to": "ACT-025",
+      "relationship": "offers",
+      "rationale": "SCR-005 exposes ACT-025 within current-state, evidence, and authority constraints."
+    },
+    {
+      "id": "PRL-0997",
+      "from": "ACT-025",
+      "to": "PERM-002",
+      "relationship": "authorized_by",
+      "rationale": "ACT-025 resolves the exact transition grant in PERM-002."
     },
     {
       "id": "PRL-0998",
-      "from": "ACT-021",
-      "to": "PERM-002",
-      "relationship": "authorized_by",
-      "rationale": "ACT-021 resolves the exact transition grant in PERM-002."
+      "from": "ACT-025",
+      "to": "NOT-020",
+      "relationship": "notifies_by",
+      "rationale": "ACT-025 emits its canonical notification consequence through NOT-020."
     },
     {
       "id": "PRL-0999",
-      "from": "ACT-021",
-      "to": "NOT-017",
-      "relationship": "notifies_by",
-      "rationale": "ACT-021 emits its canonical notification consequence through NOT-017."
+      "from": "ACT-025",
+      "to": "SYNC-003",
+      "relationship": "synchronizes_by",
+      "rationale": "ACT-025 uses the canonical acceptance and replay contract in SYNC-003."
     },
     {
       "id": "PRL-1000",
-      "from": "ACT-021",
-      "to": "SYNC-001",
-      "relationship": "synchronizes_by",
-      "rationale": "ACT-021 uses the canonical acceptance and replay contract in SYNC-001."
-    },
-    {
-      "id": "PRL-1001",
       "from": "SCR-005",
       "to": "ACT-022",
       "relationship": "offers",
       "rationale": "SCR-005 exposes ACT-022 within current-state, evidence, and authority constraints."
     },
     {
-      "id": "PRL-1002",
+      "id": "PRL-1001",
       "from": "ACT-022",
       "to": "PERM-001",
       "relationship": "authorized_by",
       "rationale": "ACT-022 resolves the exact transition grant in PERM-001."
     },
     {
-      "id": "PRL-1003",
+      "id": "PRL-1002",
       "from": "ACT-022",
       "to": "SYNC-001",
       "relationship": "synchronizes_by",
       "rationale": "ACT-022 uses the canonical acceptance and replay contract in SYNC-001."
     },
     {
-      "id": "PRL-1004",
+      "id": "PRL-1003",
       "from": "SCR-006",
       "to": "CMP-002",
       "relationship": "composed_with",
       "rationale": "CMP-002 provides a reusable semantic interaction needed by SCR-006."
     },
     {
-      "id": "PRL-1005",
+      "id": "PRL-1004",
       "from": "SCR-006",
       "to": "CMP-003",
       "relationship": "composed_with",
       "rationale": "CMP-003 provides a reusable semantic interaction needed by SCR-006."
     },
     {
-      "id": "PRL-1006",
+      "id": "PRL-1005",
       "from": "SCR-006",
       "to": "CMP-004",
       "relationship": "composed_with",
       "rationale": "CMP-004 provides a reusable semantic interaction needed by SCR-006."
     },
     {
-      "id": "PRL-1007",
+      "id": "PRL-1006",
       "from": "SCR-006",
       "to": "CMP-005",
       "relationship": "composed_with",
       "rationale": "CMP-005 provides a reusable semantic interaction needed by SCR-006."
     },
     {
-      "id": "PRL-1008",
+      "id": "PRL-1007",
       "from": "SCR-006",
       "to": "CMP-006",
       "relationship": "composed_with",
       "rationale": "CMP-006 provides a reusable semantic interaction needed by SCR-006."
     },
     {
-      "id": "PRL-1009",
+      "id": "PRL-1008",
       "from": "SCR-006",
       "to": "CMP-007",
       "relationship": "composed_with",
       "rationale": "CMP-007 provides a reusable semantic interaction needed by SCR-006."
     },
     {
-      "id": "PRL-1010",
+      "id": "PRL-1009",
       "from": "SCR-006",
       "to": "CMP-008",
       "relationship": "composed_with",
       "rationale": "CMP-008 provides a reusable semantic interaction needed by SCR-006."
     },
     {
-      "id": "PRL-1011",
+      "id": "PRL-1010",
       "from": "SCR-006",
       "to": "CMP-009",
       "relationship": "composed_with",
       "rationale": "CMP-009 provides a reusable semantic interaction needed by SCR-006."
+    },
+    {
+      "id": "PRL-1011",
+      "from": "SCR-006",
+      "to": "CMP-010",
+      "relationship": "composed_with",
+      "rationale": "CMP-010 provides a reusable semantic interaction needed by SCR-006."
     },
     {
       "id": "PRL-1012",
@@ -7088,37 +7088,37 @@
     {
       "id": "PRL-1013",
       "from": "SCR-006",
-      "to": "CMP-013",
-      "relationship": "composed_with",
-      "rationale": "CMP-013 provides a reusable semantic interaction needed by SCR-006."
-    },
-    {
-      "id": "PRL-1014",
-      "from": "SCR-006",
       "to": "CMP-014",
       "relationship": "composed_with",
       "rationale": "CMP-014 provides a reusable semantic interaction needed by SCR-006."
     },
     {
-      "id": "PRL-1015",
+      "id": "PRL-1014",
       "from": "SCR-006",
       "to": "CMP-015",
       "relationship": "composed_with",
       "rationale": "CMP-015 provides a reusable semantic interaction needed by SCR-006."
     },
     {
-      "id": "PRL-1016",
+      "id": "PRL-1015",
       "from": "SCR-006",
       "to": "CMP-021",
       "relationship": "composed_with",
       "rationale": "CMP-021 provides a reusable semantic interaction needed by SCR-006."
     },
     {
-      "id": "PRL-1017",
+      "id": "PRL-1016",
       "from": "SCR-006",
       "to": "CMP-026",
       "relationship": "composed_with",
       "rationale": "CMP-026 provides a reusable semantic interaction needed by SCR-006."
+    },
+    {
+      "id": "PRL-1017",
+      "from": "SCR-006",
+      "to": "CMP-033",
+      "relationship": "composed_with",
+      "rationale": "CMP-033 provides a reusable semantic interaction needed by SCR-006."
     },
     {
       "id": "PRL-1018",
@@ -7137,86 +7137,86 @@
     {
       "id": "PRL-1020",
       "from": "SCR-006",
-      "to": "ACT-023",
+      "to": "ACT-010",
       "relationship": "offers",
-      "rationale": "SCR-006 exposes ACT-023 within current-state, evidence, and authority constraints."
+      "rationale": "SCR-006 exposes ACT-010 within current-state, evidence, and authority constraints."
     },
     {
       "id": "PRL-1021",
-      "from": "ACT-023",
+      "from": "ACT-010",
       "to": "PERM-002",
       "relationship": "authorized_by",
-      "rationale": "ACT-023 resolves the exact transition grant in PERM-002."
+      "rationale": "ACT-010 resolves the exact transition grant in PERM-002."
     },
     {
       "id": "PRL-1022",
-      "from": "ACT-023",
-      "to": "NOT-018",
+      "from": "ACT-010",
+      "to": "NOT-008",
       "relationship": "notifies_by",
-      "rationale": "ACT-023 emits its canonical notification consequence through NOT-018."
+      "rationale": "ACT-010 emits its canonical notification consequence through NOT-008."
     },
     {
       "id": "PRL-1023",
-      "from": "ACT-023",
-      "to": "SYNC-001",
+      "from": "ACT-010",
+      "to": "SYNC-003",
       "relationship": "synchronizes_by",
-      "rationale": "ACT-023 uses the canonical acceptance and replay contract in SYNC-001."
+      "rationale": "ACT-010 uses the canonical acceptance and replay contract in SYNC-003."
     },
     {
       "id": "PRL-1024",
       "from": "SCR-006",
-      "to": "ACT-024",
+      "to": "ACT-019",
       "relationship": "offers",
-      "rationale": "SCR-006 exposes ACT-024 within current-state, evidence, and authority constraints."
+      "rationale": "SCR-006 exposes ACT-019 within current-state, evidence, and authority constraints."
     },
     {
       "id": "PRL-1025",
-      "from": "ACT-024",
+      "from": "ACT-019",
       "to": "PERM-002",
       "relationship": "authorized_by",
-      "rationale": "ACT-024 resolves the exact transition grant in PERM-002."
+      "rationale": "ACT-019 resolves the exact transition grant in PERM-002."
     },
     {
       "id": "PRL-1026",
-      "from": "ACT-024",
-      "to": "NOT-019",
+      "from": "ACT-019",
+      "to": "NOT-015",
       "relationship": "notifies_by",
-      "rationale": "ACT-024 emits its canonical notification consequence through NOT-019."
+      "rationale": "ACT-019 emits its canonical notification consequence through NOT-015."
     },
     {
       "id": "PRL-1027",
-      "from": "ACT-024",
-      "to": "SYNC-002",
+      "from": "ACT-019",
+      "to": "SYNC-003",
       "relationship": "synchronizes_by",
-      "rationale": "ACT-024 uses the canonical acceptance and replay contract in SYNC-002."
+      "rationale": "ACT-019 uses the canonical acceptance and replay contract in SYNC-003."
     },
     {
       "id": "PRL-1028",
       "from": "SCR-006",
-      "to": "ACT-025",
+      "to": "ACT-021",
       "relationship": "offers",
-      "rationale": "SCR-006 exposes ACT-025 within current-state, evidence, and authority constraints."
+      "rationale": "SCR-006 exposes ACT-021 within current-state, evidence, and authority constraints."
     },
     {
       "id": "PRL-1029",
-      "from": "ACT-025",
+      "from": "ACT-021",
       "to": "PERM-002",
       "relationship": "authorized_by",
-      "rationale": "ACT-025 resolves the exact transition grant in PERM-002."
+      "rationale": "ACT-021 resolves the exact transition grant in PERM-002."
     },
     {
       "id": "PRL-1030",
-      "from": "ACT-025",
-      "to": "NOT-020",
+      "from": "ACT-021",
+      "to": "NOT-017",
       "relationship": "notifies_by",
-      "rationale": "ACT-025 emits its canonical notification consequence through NOT-020."
+      "rationale": "ACT-021 emits its canonical notification consequence through NOT-017."
     },
     {
       "id": "PRL-1031",
-      "from": "ACT-025",
-      "to": "SYNC-003",
+      "from": "ACT-021",
+      "to": "SYNC-001",
       "relationship": "synchronizes_by",
-      "rationale": "ACT-025 uses the canonical acceptance and replay contract in SYNC-003."
+      "rationale": "ACT-021 uses the canonical acceptance and replay contract in SYNC-001."
     },
     {
       "id": "PRL-1032",

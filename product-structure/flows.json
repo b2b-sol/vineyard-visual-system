@@ -10,7 +10,7 @@
       "fixture_ids": ["FIX-006"],
       "operational_chain_ids": [],
       "record_link_ids": [],
-      "platforms": ["responsive"],
+      "platforms": ["responsive", "mobile"],
       "entry_points": [
         {
           "screen_id": "SCR-001",
@@ -39,7 +39,7 @@
           "outcome": "EVT-00384 records entry → observed"
         },
         {
-          "screen_id": "SCR-001",
+          "screen_id": "SCR-002",
           "action_id": "ACT-002",
           "actor_role_id": "ROLE-VITICULTURIST",
           "scenario_id": "SCN-001-07",
@@ -56,7 +56,7 @@
           "outcome": "EVT-00386 records observed → planned"
         },
         {
-          "screen_id": "SCR-001",
+          "screen_id": "SCR-003",
           "action_id": "ACT-003",
           "actor_role_id": "ROLE-VINEYARD-MANAGER",
           "scenario_id": "SCN-001-07",
@@ -68,7 +68,7 @@
           "outcome": "EVT-00388 records planned → approved"
         },
         {
-          "screen_id": "SCR-002",
+          "screen_id": "SCR-004",
           "action_id": "ACT-005",
           "actor_role_id": "ROLE-OPERATIONS-COORDINATOR",
           "scenario_id": "SCN-001-07",
@@ -80,7 +80,7 @@
           "outcome": "EVT-00391 records approved → assigned"
         },
         {
-          "screen_id": "SCR-002",
+          "screen_id": "SCR-005",
           "action_id": "ACT-006",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-001-07",
@@ -92,7 +92,7 @@
           "outcome": "EVT-00393 records assigned → acknowledged"
         },
         {
-          "screen_id": "SCR-003",
+          "screen_id": "SCR-005",
           "action_id": "ACT-008",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-001-07",
@@ -104,7 +104,7 @@
           "outcome": "EVT-00395 records acknowledged → in_progress"
         },
         {
-          "screen_id": "SCR-003",
+          "screen_id": "SCR-005",
           "action_id": "ACT-009",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-001-07",
@@ -126,7 +126,7 @@
       "recovery_path": [],
       "completion_path": [
         {
-          "screen_id": "SCR-003",
+          "screen_id": "SCR-006",
           "action_id": "ACT-010",
           "actor_role_id": "ROLE-VINEYARD-MANAGER",
           "scenario_id": "SCN-001-07",
@@ -138,7 +138,14 @@
           "outcome": "EVT-00400 records completed → verified"
         }
       ],
-      "screen_ids": ["SCR-001", "SCR-002", "SCR-003"],
+      "screen_ids": [
+        "SCR-001",
+        "SCR-002",
+        "SCR-003",
+        "SCR-004",
+        "SCR-005",
+        "SCR-006"
+      ],
       "handoff_role_ids": [
         "ROLE-VITICULTURIST",
         "ROLE-VINEYARD-MANAGER",
@@ -2963,7 +2970,7 @@
       "fixture_ids": ["FIX-003", "FIX-033"],
       "operational_chain_ids": [],
       "record_link_ids": ["LNK-00049", "LNK-00053", "LNK-00057", "LNK-00061"],
-      "platforms": ["responsive"],
+      "platforms": ["responsive", "mobile"],
       "entry_points": [
         {
           "screen_id": "SCR-001",
@@ -3006,7 +3013,7 @@
       ],
       "exception_path": [
         {
-          "screen_id": "SCR-006",
+          "screen_id": "SCR-005",
           "action_id": "ACT-024",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-900-05",
@@ -3026,7 +3033,7 @@
       ],
       "recovery_path": [
         {
-          "screen_id": "SCR-004",
+          "screen_id": "SCR-005",
           "action_id": "ACT-016",
           "actor_role_id": "ROLE-FOREMAN",
           "scenario_id": "SCN-900-05",
@@ -3046,7 +3053,7 @@
       ],
       "completion_path": [
         {
-          "screen_id": "SCR-003",
+          "screen_id": "SCR-006",
           "action_id": "ACT-010",
           "actor_role_id": "ROLE-VINEYARD-MANAGER",
           "scenario_id": "SCN-900-05",
@@ -3070,14 +3077,7 @@
           "outcome": "EVT-00106 satisfies WFI-0032 without flattening chronology"
         }
       ],
-      "screen_ids": [
-        "SCR-001",
-        "SCR-040",
-        "SCR-006",
-        "SCR-004",
-        "SCR-003",
-        "SCR-045"
-      ],
+      "screen_ids": ["SCR-001", "SCR-040", "SCR-005", "SCR-006", "SCR-045"],
       "handoff_role_ids": [
         "ROLE-VITICULTURIST",
         "ROLE-OPERATIONS-COORDINATOR",

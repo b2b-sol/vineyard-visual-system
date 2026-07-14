@@ -16,9 +16,16 @@ test.describe("atlas factory and compatibility surfaces", () => {
     ).toBeVisible();
 
     await page
-      .getByRole("link", { name: /enter planning \+ dispatch/i })
+      .getByRole("link", { name: /enter daily operations brief/i })
       .click();
-    await expect(page).toHaveURL(/#\/workflows\/WF-001$/);
+    await expect(page).toHaveURL(/#\/screens\/SCR-001$/);
+    await expect(
+      page.getByRole("heading", {
+        name: /route today.s vineyard work/i,
+      }),
+    ).toBeVisible();
+
+    await page.goto("#/workflows/WF-001", { waitUntil: "networkidle" });
     await expect(
       page.getByRole("heading", {
         name: /seasonal planning, dispatch, execution \+ verification/i,

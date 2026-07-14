@@ -269,7 +269,6 @@
         "CMP-005",
         "CMP-006",
         "CMP-007",
-        "CMP-008",
         "CMP-012",
         "CMP-014",
         "CMP-015",
@@ -279,14 +278,15 @@
         "CMP-019",
         "CMP-021",
         "CMP-026",
-        "CMP-033",
         "CMP-036",
-        "CMP-010",
+        "CMP-008",
         "CMP-022",
-        "CMP-009",
         "CMP-013",
+        "CMP-033",
+        "CMP-010",
         "CMP-011",
         "CMP-020",
+        "CMP-009",
         "CMP-035"
       ],
       "roles": [
@@ -325,11 +325,11 @@
         {
           "role_id": "ROLE-VINEYARD-MANAGER",
           "may": [
-            "Record approved",
-            "Record verified",
             "Record cancelled",
+            "Record approved",
             "Record superseded",
-            "Record blocked"
+            "Record blocked",
+            "Record verified"
           ],
           "may_not": [
             "Exercise an action without an explicit permission rule and matching scope",
@@ -446,34 +446,22 @@
           "audit_event": "Append workflow.observation with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
         },
         {
-          "action_id": "ACT-002",
-          "precondition": "The actor satisfies PERM-002 and the current state is observed.",
-          "result": "The workflow advances through TRN-WF-001-002 to planned.",
-          "audit_event": "Append workflow.recommendation with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
-        },
-        {
-          "action_id": "ACT-003",
-          "precondition": "The actor satisfies PERM-002 and the current state is planned.",
-          "result": "The workflow advances through TRN-WF-001-003 to approved.",
-          "audit_event": "Append workflow.approval with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
-        },
-        {
           "action_id": "ACT-004",
           "precondition": "The actor can view the exact record and organization scope.",
           "result": "The attributable current record and immutable history are visible.",
           "audit_event": "No workflow state mutation; preserve the inspected record identity."
         },
         {
-          "action_id": "ACT-005",
-          "precondition": "The actor satisfies PERM-002 and the current state is approved.",
-          "result": "The workflow advances through TRN-WF-001-004 to assigned.",
-          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+          "action_id": "ACT-002",
+          "precondition": "The actor satisfies PERM-002 and the current state is observed.",
+          "result": "The workflow advances through TRN-WF-001-002 to planned.",
+          "audit_event": "Append workflow.recommendation with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
         },
         {
-          "action_id": "ACT-006",
-          "precondition": "The actor satisfies PERM-002 and the current state is assigned.",
-          "result": "The workflow advances through TRN-WF-001-005 to acknowledged.",
-          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+          "action_id": "ACT-011",
+          "precondition": "The actor satisfies PERM-002 and the current state is planned.",
+          "result": "The workflow advances through TRN-WF-001-009 to cancelled.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
         },
         {
           "action_id": "ACT-007",
@@ -482,28 +470,10 @@
           "audit_event": "No workflow state mutation; preserve the inspected record identity."
         },
         {
-          "action_id": "ACT-008",
-          "precondition": "The actor satisfies PERM-002 and the current state is acknowledged.",
-          "result": "The workflow advances through TRN-WF-001-006 to in_progress.",
-          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
-        },
-        {
-          "action_id": "ACT-009",
-          "precondition": "The actor satisfies PERM-002 and the current state is in_progress.",
-          "result": "The workflow advances through TRN-WF-001-007 to completed.",
-          "audit_event": "Append workflow.completion with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
-        },
-        {
-          "action_id": "ACT-010",
-          "precondition": "The actor satisfies PERM-002 and the current state is completed.",
-          "result": "The workflow advances through TRN-WF-001-008 to verified.",
-          "audit_event": "Append workflow.verification with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
-        },
-        {
-          "action_id": "ACT-011",
+          "action_id": "ACT-003",
           "precondition": "The actor satisfies PERM-002 and the current state is planned.",
-          "result": "The workflow advances through TRN-WF-001-009 to cancelled.",
-          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+          "result": "The workflow advances through TRN-WF-001-003 to approved.",
+          "audit_event": "Append workflow.approval with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
         },
         {
           "action_id": "ACT-012",
@@ -518,6 +488,12 @@
           "audit_event": "No workflow state mutation; preserve the inspected record identity."
         },
         {
+          "action_id": "ACT-005",
+          "precondition": "The actor satisfies PERM-002 and the current state is approved.",
+          "result": "The workflow advances through TRN-WF-001-004 to assigned.",
+          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
           "action_id": "ACT-014",
           "precondition": "The actor satisfies PERM-003 and the current state is blocked.",
           "result": "The workflow advances through TRN-WF-001-011 to assigned.",
@@ -530,10 +506,16 @@
           "audit_event": "Append workflow.recovery with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
         },
         {
-          "action_id": "ACT-016",
-          "precondition": "The actor satisfies PERM-002 and the current state is partially_completed.",
-          "result": "The workflow advances through TRN-WF-001-013 to completed.",
-          "audit_event": "Append workflow.completion with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+          "action_id": "ACT-020",
+          "precondition": "The actor satisfies PERM-002 and the current state is assigned.",
+          "result": "The workflow advances through TRN-WF-001-016 to blocked.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-023",
+          "precondition": "The actor satisfies PERM-002 and the current state is assigned.",
+          "result": "The workflow advances through TRN-WF-001-018 to blocked.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
         },
         {
           "action_id": "ACT-017",
@@ -542,40 +524,34 @@
           "audit_event": "No workflow state mutation; preserve the inspected record identity."
         },
         {
+          "action_id": "ACT-006",
+          "precondition": "The actor satisfies PERM-002 and the current state is assigned.",
+          "result": "The workflow advances through TRN-WF-001-005 to acknowledged.",
+          "audit_event": "Append workflow.assignment with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-008",
+          "precondition": "The actor satisfies PERM-002 and the current state is acknowledged.",
+          "result": "The workflow advances through TRN-WF-001-006 to in_progress.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-009",
+          "precondition": "The actor satisfies PERM-002 and the current state is in_progress.",
+          "result": "The workflow advances through TRN-WF-001-007 to completed.",
+          "audit_event": "Append workflow.completion with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-016",
+          "precondition": "The actor satisfies PERM-002 and the current state is partially_completed.",
+          "result": "The workflow advances through TRN-WF-001-013 to completed.",
+          "audit_event": "Append workflow.completion with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
           "action_id": "ACT-018",
           "precondition": "The actor satisfies PERM-004 and the current state is correction_required.",
           "result": "The workflow advances through TRN-WF-001-014 to corrected.",
           "audit_event": "Append workflow.correction with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
-        },
-        {
-          "action_id": "ACT-019",
-          "precondition": "The actor satisfies PERM-002 and the current state is corrected.",
-          "result": "The workflow advances through TRN-WF-001-015 to verified.",
-          "audit_event": "Append workflow.verification with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
-        },
-        {
-          "action_id": "ACT-020",
-          "precondition": "The actor satisfies PERM-002 and the current state is assigned.",
-          "result": "The workflow advances through TRN-WF-001-016 to blocked.",
-          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
-        },
-        {
-          "action_id": "ACT-021",
-          "precondition": "The actor satisfies PERM-002 and the current state is in_progress.",
-          "result": "The workflow advances through TRN-WF-001-017 to blocked.",
-          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
-        },
-        {
-          "action_id": "ACT-022",
-          "precondition": "The actor can view the exact record and organization scope.",
-          "result": "The attributable current record and immutable history are visible.",
-          "audit_event": "No workflow state mutation; preserve the inspected record identity."
-        },
-        {
-          "action_id": "ACT-023",
-          "precondition": "The actor satisfies PERM-002 and the current state is assigned.",
-          "result": "The workflow advances through TRN-WF-001-018 to blocked.",
-          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
         },
         {
           "action_id": "ACT-024",
@@ -588,6 +564,30 @@
           "precondition": "The actor satisfies PERM-002 and the current state is completed.",
           "result": "The workflow advances through TRN-WF-001-020 to correction_required.",
           "audit_event": "Append workflow.correction with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-022",
+          "precondition": "The actor can view the exact record and organization scope.",
+          "result": "The attributable current record and immutable history are visible.",
+          "audit_event": "No workflow state mutation; preserve the inspected record identity."
+        },
+        {
+          "action_id": "ACT-010",
+          "precondition": "The actor satisfies PERM-002 and the current state is completed.",
+          "result": "The workflow advances through TRN-WF-001-008 to verified.",
+          "audit_event": "Append workflow.verification with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-019",
+          "precondition": "The actor satisfies PERM-002 and the current state is corrected.",
+          "result": "The workflow advances through TRN-WF-001-015 to verified.",
+          "audit_event": "Append workflow.verification with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
+        },
+        {
+          "action_id": "ACT-021",
+          "precondition": "The actor satisfies PERM-002 and the current state is in_progress.",
+          "result": "The workflow advances through TRN-WF-001-017 to blocked.",
+          "audit_event": "Append workflow.execution with actor, assignment, timestamp, reason policy, record snapshot, and idempotency key."
         },
         {
           "action_id": "ACT-026",
@@ -677,7 +677,6 @@
           "vineyard/record/record-provenance-panel",
           "vineyard/status/workflow-state-rail",
           "vineyard/workflow/transition-action-bar",
-          "vineyard/decision/decision-evidence-panel",
           "vineyard/status/partial-scope-meter",
           "vineyard/record/audit-timeline",
           "vineyard/sync/offline-queue-indicator",
@@ -687,14 +686,15 @@
           "vineyard/feedback/escalation-clock",
           "vineyard/input/block-and-row-selector",
           "vineyard/data-visualization/map-scope-viewer",
-          "vineyard/workflow/approval-chain",
           "vineyard/status/accessible-status-legend",
-          "vineyard/exception/exception-card",
+          "vineyard/decision/decision-evidence-panel",
           "vineyard/input/date-and-effective-time-control",
-          "vineyard/decision/missing-information-callout",
           "vineyard/record/correction-lineage",
+          "vineyard/workflow/approval-chain",
+          "vineyard/exception/exception-card",
           "vineyard/exception/recovery-checklist",
           "vineyard/workflow/assignment-roster",
+          "vineyard/decision/missing-information-callout",
           "vineyard/feedback/export-evidence-packet"
         ],
         "stable_node_key": "figma-ready:PKT-002:SCR-001+SCR-002+SCR-003+SCR-004+SCR-005+SCR-006"

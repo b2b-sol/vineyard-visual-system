@@ -79,19 +79,19 @@ const REVIEW_STATES = new Map([
   ["SCR-045", ["normal", "urgent", "partial", "error", "completion"]],
 ]);
 const PRIMARY_FIXTURES = new Map([
-  ["SCR-001", "FIX-006"],
-  ["SCR-002", "FIX-006"],
-  ["SCR-003", "FIX-006"],
-  ["SCR-004", "FIX-053"],
+  ["SCR-001", "FIX-002"],
+  ["SCR-002", "FIX-005"],
+  ["SCR-003", "FIX-002"],
+  ["SCR-004", "FIX-002"],
   ["SCR-005", "FIX-002"],
-  ["SCR-006", "FIX-053"],
+  ["SCR-006", "FIX-004"],
   ["SCR-039", "FIX-032"],
-  ["SCR-040", "FIX-033"],
+  ["SCR-040", "FIX-034"],
   ["SCR-041", "FIX-033"],
   ["SCR-042", "FIX-033"],
-  ["SCR-043", "FIX-033"],
-  ["SCR-044", "FIX-032"],
-  ["SCR-045", "FIX-033"],
+  ["SCR-043", "FIX-034"],
+  ["SCR-044", "FIX-034"],
+  ["SCR-045", "FIX-034"],
 ]);
 
 const [
@@ -462,6 +462,58 @@ async function implementationStatus(
 }
 
 const componentEntries = [];
+const componentTokenDependencies = (component) => {
+  const common = [
+    "sys.color.surface.base",
+    "sys.color.text.primary",
+    "sys.color.border.subtle",
+    "sys.color.focus.ring",
+    "sys.density.compact.control",
+    "sys.density.comfortable.control",
+    "sys.density.field.control",
+  ];
+  const categoryTokens = {
+    workflow: [
+      "sys.color.action.primaryBackground",
+      "sys.color.action.primaryText",
+    ],
+    navigation: ["sys.color.surface.inverse", "sys.color.text.inverse"],
+    identity: [
+      "sys.color.feedback.neutral.surface",
+      "sys.color.feedback.neutral.text",
+    ],
+    record: [
+      "sys.color.feedback.revision.surface",
+      "sys.color.feedback.revision.text",
+    ],
+    status: [
+      "sys.color.feedback.positive.surface",
+      "sys.color.feedback.positive.text",
+    ],
+    decision: [
+      "sys.color.feedback.informative.surface",
+      "sys.color.feedback.informative.text",
+    ],
+    exception: [
+      "sys.color.feedback.critical.surface",
+      "sys.color.feedback.critical.text",
+    ],
+    sync: [
+      "sys.color.feedback.notice.surface",
+      "sys.color.feedback.notice.text",
+    ],
+    feedback: [
+      "sys.color.feedback.informative.surface",
+      "sys.color.feedback.informative.text",
+    ],
+    input: [
+      "sys.color.action.primaryBackground",
+      "sys.color.action.primaryText",
+    ],
+    data_visualization: ["sys.color.text.secondary", "sys.color.border.strong"],
+  };
+  return unique([...common, ...(categoryTokens[component.category] ?? [])]);
+};
 const componentExportNames = new Map([
   ["CMP-001", "WorkOrderQueue"],
   ["CMP-002", "OperationalAppShell"],
@@ -510,6 +562,25 @@ for (const componentId of WAVE_COMPONENT_IDS) {
       component.status,
     )),
     figma_key: component.figma_key,
+    category: component.category,
+    purpose: component.purpose,
+    variants: component.required_variants,
+    states: component.required_states,
+    density_modes: ["compact", "comfortable", "field"],
+    token_dependencies: componentTokenDependencies(component),
+    content_limits: `${component.name} keeps stable IDs, scope, owner, effective time, and state consequences visible; labels use direct operational language and long evidence wraps without truncating identifiers.`,
+    auto_layout: {
+      direction:
+        component.category === "navigation" || component.category === "status"
+          ? "horizontal"
+          : "vertical",
+      gap_token: "ref.space.4",
+      padding_token: "ref.space.4",
+      resizing: "fill_container",
+    },
+    accessibility_notes: component.accessibility_contract,
+    responsive_behavior:
+      "Reflow with CSS layout at narrow widths; preserve semantic reading order, field-size controls, visible status text, and horizontally scroll only bounded evidence regions.",
     screen_ids: component.screen_ids.filter((screenId) =>
       WAVE_SCREEN_IDS.includes(screenId),
     ),
@@ -538,6 +609,14 @@ const screenMap = {
     ...screenImplementation,
     route: `/screens/${screen.id}`,
     states: REVIEW_STATES.get(screen.id),
+    platform: screen.platform,
+    workflow_ids: screen.workflow_ids,
+    fixture_ids: screen.fixture_ids,
+    component_ids: screen.component_ids,
+    figma_frame_name: screen.figma_frame_name,
+    layout_regions: lowFidelityStrips
+      .find((strip) => strip.screen_id === screen.id)
+      .ordered_regions.map((region) => region.kind),
   })),
 };
 const prototypeImplementation = await implementationStatus(
@@ -560,6 +639,19 @@ const prototypeMap = {
       route: `/prototypes/${flow.id}`,
       screen_ids: flow.screen_ids,
       sequence_source: "product-structure/flows.json",
+      flow_kind: flow.flow_kind,
+      workflow_ids: flow.workflow_ids,
+      fixture_ids: flow.fixture_ids,
+      event_ids: unique(
+        [
+          ...flow.entry_points,
+          ...flow.normal_path,
+          ...flow.exception_path,
+          ...flow.recovery_path,
+          ...flow.completion_path,
+        ].map((step) => step.event_id),
+      ),
+      record_link_ids: flow.record_link_ids,
     };
   }),
 };
@@ -580,11 +672,19 @@ const captureSourcePaths = [
   "workflow-model/decisions.json",
   "workflow-model/records.json",
   "design-system/tokens/vineyard.tokens.json",
+  "design-system/tokens/vineyard.css",
   "atlas/src/App.tsx",
+  "atlas/src/main.tsx",
   "atlas/src/styles.css",
+  "atlas/src/components/AtlasShell.tsx",
+  "atlas/src/components/Icon.tsx",
+  "atlas/src/components/production/componentRegistry.ts",
+  "atlas/src/components/production/PublicComponent.tsx",
   "atlas/src/components/production/PublicComponents.tsx",
   "atlas/src/components/production/types.ts",
   "atlas/src/data/canonical.ts",
+  "atlas/src/data/catalog.ts",
+  "atlas/src/data/prototypes.ts",
   "atlas/src/data/screenViewModel.ts",
   "atlas/src/data/wave001.ts",
   "atlas/src/pages/ProductionScreenPage.tsx",

@@ -626,6 +626,30 @@ async function main() {
       entry.figma_key === canonical.figma_key,
       `${componentId}: Figma key differs from canonical component`,
     );
+    assert(
+      entry.category === canonical.category &&
+        entry.purpose === canonical.purpose,
+      `${componentId}: Figma semantic contract differs from canonical component`,
+    );
+    sameValues(
+      entry.variants,
+      canonical.required_variants,
+      `${componentId} Figma variant axes`,
+    );
+    sameValues(
+      entry.states,
+      canonical.required_states,
+      `${componentId} Figma state axes`,
+    );
+    assert(
+      entry.accessibility_notes === canonical.accessibility_contract,
+      `${componentId}: Figma accessibility notes differ from canonical component`,
+    );
+    for (const tokenPath of entry.token_dependencies)
+      assert(
+        canonicalTokenIndex.has(tokenPath),
+        `${componentId}: unresolved Figma token dependency ${tokenPath}`,
+      );
     sameValues(
       entry.screen_ids,
       canonical.screen_ids.filter((screenId) =>

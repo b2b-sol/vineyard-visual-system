@@ -6,7 +6,7 @@
   "source_snapshot": [
     {
       "path": "data/operation.json",
-      "sha256": "c9967efa569a843bc6dccfe9eefd8659469fc40f9730c1dc920415c0336dfb75"
+      "sha256": "7f05872e3fd8f1c93a102009b4f9eda9e497f307ff77ebaeedfedf421791a135"
     },
     {
       "path": "data/events.json",

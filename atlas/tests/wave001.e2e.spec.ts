@@ -21,6 +21,7 @@ test.describe("WAVE-001 production atlas", () => {
   test("renders all 64 required review states as distinct, traced surfaces", async ({
     page,
   }, testInfo) => {
+    test.setTimeout(240_000);
     test.skip(
       testInfo.project.name !== "desktop-chromium",
       "One deterministic inventory pass",
@@ -39,7 +40,24 @@ test.describe("WAVE-001 production atlas", () => {
             .locator(".wave-component-grid [data-component-id]")
             .count(),
         ).toBeGreaterThanOrEqual(3);
-        await expect(page.locator("[data-scenario-id]").first()).toBeVisible();
+        await expect(screen).toHaveAttribute(
+          "data-state-contract-id",
+          /^STM-/,
+        );
+        if ((await screen.locator(".wave-model-badge").count()) === 0) {
+          await expect(screen).toHaveAttribute("data-scenario-id", /^SCN-/);
+        }
+        const axe = await new AxeBuilder({ page })
+          .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+          .analyze();
+        expect(
+          axe.violations,
+          `${screenId}/${state} has WCAG A/AA accessibility findings`,
+        ).toEqual([]);
+        await page.screenshot({
+          animations: "disabled",
+          path: testInfo.outputPath(`${screenId}-${state}-viewport.png`),
+        });
         rendered += 1;
       }
     }
@@ -59,7 +77,7 @@ test.describe("WAVE-001 production atlas", () => {
     ] as const) {
       await page.goto(`#/prototypes/${flowId}`, { waitUntil: "networkidle" });
       const next = page.getByRole("button", {
-        name: "Accept next fixture event",
+        name: "Validate & append next event",
       });
       for (let index = 0; index < count; index += 1) await next.click();
       await expect(page.locator(".prototype-lane li.is-accepted")).toHaveCount(
@@ -80,7 +98,9 @@ test.describe("WAVE-001 production atlas", () => {
     );
     await page.goto("#/prototypes/FLW-015", { waitUntil: "networkidle" });
     await page
-      .getByRole("button", { name: "Reveal next WF-001 event" })
+      .getByRole("button", {
+        name: "Validate & append next WF-001 event",
+      })
       .click();
     await expect(
       page.locator(
@@ -114,11 +134,210 @@ test.describe("WAVE-001 production atlas", () => {
         document.documentElement.clientWidth,
     );
     expect(overflow).toBeLessThanOrEqual(1);
-    const results = await new AxeBuilder({ page }).analyze();
-    expect(
-      results.violations.filter((violation) =>
-        ["serious", "critical"].includes(violation.impact ?? ""),
-      ),
-    ).toEqual([]);
+    const results = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+      .analyze();
+    expect(results.violations).toEqual([]);
+  });
+
+  test("keeps the next exact field action inside the initial mobile viewport", async ({
+    page,
+  }, testInfo) => {
+    test.skip(
+      testInfo.project.name !== "field-mobile",
+      "Initial field viewport acceptance",
+    );
+    for (const screenId of ["SCR-005", "SCR-041", "SCR-042"]) {
+      const fieldPage = await page.context().newPage();
+      await fieldPage.goto(`#/screens/${screenId}?state=normal`, {
+        waitUntil: "networkidle",
+      });
+      await expect(
+        fieldPage.locator(`[data-screen-id="${screenId}"]`),
+      ).toBeVisible();
+      await fieldPage.evaluate(
+        () =>
+          new Promise<void>((resolve) => {
+            window.scrollTo(0, 0);
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => {
+                window.scrollTo(0, 0);
+                resolve();
+              }),
+            );
+          }),
+      );
+      const viewportState = await fieldPage.evaluate(() => ({
+        scrollX: window.scrollX,
+        scrollY: window.scrollY,
+        overflow:
+          document.documentElement.scrollWidth -
+          document.documentElement.clientWidth,
+      }));
+      expect(viewportState.scrollX).toBe(0);
+      expect(viewportState.scrollY).toBe(0);
+      expect(viewportState.overflow).toBeLessThanOrEqual(1);
+      const action = fieldPage.locator(".wave-action:not(:disabled)").first();
+      await expect(action).toBeVisible();
+      const box = await action.boundingBox();
+      expect(box, `${screenId} requires an enabled field action`).not.toBeNull();
+      expect(
+        box!.y + box!.height,
+        `${screenId} action must be visible within 844 px`,
+      ).toBeLessThanOrEqual(844);
+      await fieldPage.screenshot({
+        animations: "disabled",
+        path: testInfo.outputPath(`${screenId}-initial-field-viewport.png`),
+      });
+      await fieldPage.close();
+    }
+  });
+
+  test("reflows every responsive and desktop responsibility at a 200% equivalent viewport", async ({
+    page,
+  }, testInfo) => {
+    test.skip(
+      testInfo.project.name !== "desktop-chromium",
+      "One deterministic reflow inventory pass",
+    );
+    await page.setViewportSize({ width: 720, height: 512 });
+    for (const screenId of [
+      "SCR-001",
+      "SCR-002",
+      "SCR-003",
+      "SCR-004",
+      "SCR-006",
+      "SCR-039",
+      "SCR-040",
+      "SCR-043",
+      "SCR-044",
+      "SCR-045",
+    ]) {
+      await page.goto(`#/screens/${screenId}?state=normal`, {
+        waitUntil: "networkidle",
+      });
+      await expect(
+        page.locator(`[data-screen-id="${screenId}"]`),
+      ).toBeVisible();
+      const overflow = await page.evaluate(
+        () =>
+          document.documentElement.scrollWidth -
+          document.documentElement.clientWidth,
+      );
+      expect(
+        overflow,
+        `${screenId} has horizontal page overflow`,
+      ).toBeLessThanOrEqual(1);
+      await page.screenshot({
+        animations: "disabled",
+        path: testInfo.outputPath(`${screenId}-reflow-720x512.png`),
+      });
+    }
+  });
+
+  test("prints verification, time review, and cost allocation without mutation chrome", async ({
+    page,
+  }, testInfo) => {
+    test.skip(
+      testInfo.project.name !== "desktop-chromium",
+      "Print responsibilities are reviewed once",
+    );
+    await page.emulateMedia({ media: "print", reducedMotion: "reduce" });
+    for (const screenId of ["SCR-006", "SCR-043", "SCR-045"]) {
+      await page.goto(`#/screens/${screenId}?state=completion`, {
+        waitUntil: "networkidle",
+      });
+      await expect(
+        page.locator(`[data-screen-id="${screenId}"]`),
+      ).toBeVisible();
+      await expect(page.locator(".wave-review-controls")).toBeHidden();
+      await expect(
+        page.locator('[data-component-id="CMP-004"] [data-block-id]'),
+      ).toBeVisible();
+      await expect(
+        page.locator('[data-component-id="CMP-007"] button').first(),
+      ).toBeHidden();
+      await expect(page.locator(".wave-screen-footer")).toBeVisible();
+      await page.pdf({
+        format: "Letter",
+        path: testInfo.outputPath(`${screenId}-print.pdf`),
+        printBackground: true,
+      });
+    }
+  });
+
+  test("supports visible keyboard operation, authority denial, and replay announcements", async ({
+    page,
+  }, testInfo) => {
+    test.skip(
+      testInfo.project.name !== "field-mobile",
+      "Field keyboard walkthrough",
+    );
+    await page.goto("#/screens/SCR-005?state=normal", {
+      waitUntil: "networkidle",
+    });
+
+    const browse = page.locator(".mobile-menu summary");
+    await browse.focus();
+    await expect(browse).toBeFocused();
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".mobile-menu")).toHaveAttribute("open", "");
+
+    const context = page.locator(".wave-shell-context");
+    await context.focus();
+    await expect(context).toBeFocused();
+
+    const role = page.locator('[data-component-id="CMP-003"] select');
+    await role.focus();
+    await expect(role).toBeFocused();
+
+    const enabled = page.locator(".wave-action:not(:disabled)").first();
+    await enabled.focus();
+    await expect(enabled).toBeFocused();
+    const focusStyle = await enabled.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        outlineColor: style.outlineColor,
+        outlineWidth: style.outlineWidth,
+        boxShadow: style.boxShadow,
+      };
+    });
+    expect(focusStyle.outlineColor).toBe("rgb(40, 99, 106)");
+    expect(Number.parseFloat(focusStyle.outlineWidth)).toBeGreaterThanOrEqual(
+      3,
+    );
+    expect(focusStyle.boxShadow).not.toBe("none");
+    await testInfo.attach("field-keyboard-focus", {
+      body: await page.screenshot({ animations: "disabled" }),
+      contentType: "image/png",
+    });
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".wave-live-message")).toContainText("previewed");
+    await expect(page.locator(".wave-action:disabled").first()).toBeDisabled();
+
+    await page.goto("#/prototypes/FLW-001", { waitUntil: "networkidle" });
+    const replay = page.getByRole("button", {
+      name: "Validate & append next event",
+    });
+    await replay.focus();
+    await page.keyboard.press("Enter");
+    await expect(page.locator('[data-replay-status="appended"]')).toBeVisible();
+  });
+
+  test("honors reduced motion for loading evidence", async ({
+    page,
+  }, testInfo) => {
+    test.skip(
+      testInfo.project.name !== "desktop-chromium",
+      "One computed reduced-motion check",
+    );
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("#/screens/SCR-043?state=loading", {
+      waitUntil: "networkidle",
+    });
+    await expect(page.locator(".wave-loading-note span")).toHaveCSS(
+      "animation-name",
+      "none",
+    );
   });
 });

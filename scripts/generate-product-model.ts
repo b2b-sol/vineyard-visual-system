@@ -57,6 +57,8 @@ type Scenario = {
     record_reads: string[];
     record_writes: string[];
     exception_history_ids: string[];
+    connectivity_mode: string;
+    sync_status: string;
     fixture_ref: {
       fixture_id: string;
       workflow_instance_id: string;
@@ -480,6 +482,26 @@ const screenSeedsByWorkflow = new Map(
 );
 
 const explicitScreenIdByTransition = new Map<string, string>([
+  ["TRN-WF-001-001", "SCR-001"],
+  ["TRN-WF-001-002", "SCR-002"],
+  ["TRN-WF-001-009", "SCR-002"],
+  ["TRN-WF-001-003", "SCR-003"],
+  ["TRN-WF-001-010", "SCR-003"],
+  ["TRN-WF-001-004", "SCR-004"],
+  ["TRN-WF-001-011", "SCR-004"],
+  ["TRN-WF-001-012", "SCR-004"],
+  ["TRN-WF-001-016", "SCR-004"],
+  ["TRN-WF-001-018", "SCR-004"],
+  ["TRN-WF-001-005", "SCR-005"],
+  ["TRN-WF-001-006", "SCR-005"],
+  ["TRN-WF-001-007", "SCR-005"],
+  ["TRN-WF-001-013", "SCR-005"],
+  ["TRN-WF-001-014", "SCR-005"],
+  ["TRN-WF-001-019", "SCR-005"],
+  ["TRN-WF-001-020", "SCR-005"],
+  ["TRN-WF-001-008", "SCR-006"],
+  ["TRN-WF-001-015", "SCR-006"],
+  ["TRN-WF-001-017", "SCR-006"],
   ["TRN-WF-007-008", "SCR-039"],
   ["TRN-WF-007-018", "SCR-039"],
   ["TRN-WF-007-019", "SCR-039"],
@@ -507,6 +529,26 @@ const explicitScreenIdByTransition = new Map<string, string>([
 ]);
 
 const stableActionIdByTransition = new Map<string, string>([
+  ["TRN-WF-001-001", "ACT-001"],
+  ["TRN-WF-001-002", "ACT-002"],
+  ["TRN-WF-001-003", "ACT-003"],
+  ["TRN-WF-001-004", "ACT-005"],
+  ["TRN-WF-001-005", "ACT-006"],
+  ["TRN-WF-001-006", "ACT-008"],
+  ["TRN-WF-001-007", "ACT-009"],
+  ["TRN-WF-001-008", "ACT-010"],
+  ["TRN-WF-001-009", "ACT-011"],
+  ["TRN-WF-001-010", "ACT-012"],
+  ["TRN-WF-001-011", "ACT-014"],
+  ["TRN-WF-001-012", "ACT-015"],
+  ["TRN-WF-001-013", "ACT-016"],
+  ["TRN-WF-001-014", "ACT-018"],
+  ["TRN-WF-001-015", "ACT-019"],
+  ["TRN-WF-001-016", "ACT-020"],
+  ["TRN-WF-001-017", "ACT-021"],
+  ["TRN-WF-001-018", "ACT-023"],
+  ["TRN-WF-001-019", "ACT-024"],
+  ["TRN-WF-001-020", "ACT-025"],
   ["TRN-WF-007-001", "ACT-173"],
   ["TRN-WF-007-002", "ACT-174"],
   ["TRN-WF-007-003", "ACT-176"],
@@ -534,6 +576,12 @@ const stableActionIdByTransition = new Map<string, string>([
 ]);
 
 const stableInspectActionIdByScreen = new Map<string, string>([
+  ["SCR-001", "ACT-004"],
+  ["SCR-002", "ACT-007"],
+  ["SCR-003", "ACT-013"],
+  ["SCR-004", "ACT-017"],
+  ["SCR-005", "ACT-022"],
+  ["SCR-006", "ACT-026"],
   ["SCR-039", "ACT-175"],
   ["SCR-040", "ACT-178"],
   ["SCR-041", "ACT-185"],
@@ -573,7 +621,7 @@ for (const workflow of workflows) {
     (transition) => !realizedIds.has(transition.id),
   );
   localScreens.forEach((screen) => transitionsByScreenId.set(screen.id, []));
-  if (workflow.id === "WF-007") {
+  if (new Set(["WF-001", "WF-007"]).has(workflow.id)) {
     for (const transition of workflow.transitions) {
       const screenId = explicitScreenIdByTransition.get(transition.id);
       if (!screenId)
@@ -1035,8 +1083,63 @@ const explicitReviewStateKindsByScreen = new Map<string, string[]>([
 ]);
 
 const splitNormalStateByAction = new Map<string, Set<string>>([
+  ["SCR-005", new Set(["in_progress"])],
   ["SCR-042", new Set(["working"])],
   ["SCR-043", new Set(["time_submitted"])],
+]);
+
+const explicitPrimaryDecisionByScreen = new Map<string, string>([
+  [
+    "SCR-001",
+    "Does this block-level signal require action now, later, or no accountable work response?",
+  ],
+  [
+    "SCR-002",
+    "Is the proposed seasonal work scoped, timed, constrained, and evidenced well enough to enter accountable approval review?",
+  ],
+  [
+    "SCR-003",
+    "Can the manager approve this plan as executable, or must it be revised, declined, or superseded?",
+  ],
+  [
+    "SCR-004",
+    "Is approved work ready for assignment or redispatch with current scope, crew, resources, timing, and closure evidence?",
+  ],
+  [
+    "SCR-005",
+    "Can the foreman acknowledge, execute, partially complete, correct, or close the assigned field scope with attributable actuals?",
+  ],
+  [
+    "SCR-006",
+    "Do completion, correction, identity, and predecessor records support accountable verification without rewriting history?",
+  ],
+  [
+    "SCR-043",
+    "Do submitted time, units, breaks, task progress, and assignment history form a credible, non-conflicting labor record?",
+  ],
+  [
+    "SCR-044",
+    "Does the verified or disputed labor record require payroll acceptance, an attributable correction, or escalation for missing evidence?",
+  ],
+  [
+    "SCR-045",
+    "Are accepted labor hours, activity quantities, rate bases, and correction lineage allocated to the correct block, task, organization, and cost record?",
+  ],
+]);
+
+const preferredScenarioIdByScreenState = new Map<string, string>([
+  ["SCR-001:partial", "SCN-001-03"],
+  ["SCR-002:partial", "SCN-001-03"],
+  ["SCR-003:partial", "SCN-001-03"],
+  ["SCR-004:corrected", "SCN-001-04"],
+  ["SCR-005:corrected", "SCN-001-04"],
+  ["SCR-006:corrected", "SCN-001-04"],
+  ["SCR-040:partial", "SCN-007-05"],
+  ["SCR-042:partial", "SCN-007-05"],
+  ["SCR-042:conflict", "SCN-007-03"],
+  ["SCR-043:partial", "SCN-007-05"],
+  ["SCR-044:corrected", "SCN-007-04"],
+  ["SCR-045:partial", "SCN-007-05"],
 ]);
 
 const syncClassIdFor = (workflow: Workflow, transition: Transition) => {
@@ -1241,6 +1344,7 @@ const screens = screenSeeds.map((seed) => {
     },
     purpose: `${seed.name} supports ${workflow.name.toLowerCase()} by making current scope, evidence, authority, state, and accountable next actions explicit.`,
     primary_decision:
+      explicitPrimaryDecisionByScreen.get(seed.id) ??
       workflow.decisions[seed.local_index % workflow.decisions.length].question,
     data_shown:
       recordIds.length > 0
@@ -1411,6 +1515,28 @@ const notifications = workflows.flatMap((workflow) =>
     notificationContractFor(workflow, transition),
   ),
 );
+
+const stepRealizesStateKind = (
+  step: Scenario["operational_steps"][number],
+  kind: string,
+) => {
+  if (kind === "corrected")
+    return (
+      step.semantic_kind === "correction" ||
+      step.from_state === "corrected" ||
+      step.to_state === "corrected"
+    );
+  if (kind === "partial")
+    return /partial/.test(`${step.from_state ?? ""} ${step.to_state}`);
+  if (kind === "blocked")
+    return /blocked|exception_flagged/.test(step.to_state);
+  if (kind === "urgent") return /paused|rejected/.test(step.to_state);
+  if (kind === "offline") return step.connectivity_mode === "offline";
+  if (kind === "conflict")
+    return ["conflict", "resolved"].includes(step.sync_status);
+  return false;
+};
+
 let stateCounter = 0;
 const stateMatrix = screens.flatMap((screen) => {
   const workflow = workflowIndex.get(screen.workflow_ids[0])!;
@@ -1532,21 +1658,28 @@ const stateMatrix = screens.flatMap((screen) => {
     .map((state) => state.kind)
     .filter((kind) => !["normal", "completion"].includes(kind))
     .map((kind) => {
-      const sourceScenario = screen.scenario_ids
-        .map((scenarioId) =>
-          scenarios.find((scenario) => scenario.id === scenarioId),
-        )
-        .find(
-          (scenario) =>
-            scenario &&
-            (categoryToStateKind[scenario.category] ?? "normal") === kind,
-        );
-      const sourceStep = sourceScenario?.operational_steps.find((step) =>
-        consequential.some(
-          (action) =>
-            "transition" in action &&
-            action.transition.transition_id === step.transition_id,
-        ),
+      const preferredScenarioId = preferredScenarioIdByScreenState.get(
+        `${screen.id}:${kind}`,
+      );
+      const sourceScenario = preferredScenarioId
+        ? scenarios.find((scenario) => scenario.id === preferredScenarioId)
+        : screen.scenario_ids
+            .map((scenarioId) =>
+              scenarios.find((scenario) => scenario.id === scenarioId),
+            )
+            .find(
+              (scenario) =>
+                scenario &&
+                (categoryToStateKind[scenario.category] ?? "normal") === kind,
+            );
+      const sourceStep = sourceScenario?.operational_steps.find(
+        (step) =>
+          stepRealizesStateKind(step, kind) &&
+          consequential.some(
+            (action) =>
+              "transition" in action &&
+              action.transition.transition_id === step.transition_id,
+          ),
       );
       const canonicalState = sourceStep?.to_state ?? null;
       const available = sourceStep
@@ -1565,14 +1698,16 @@ const stateMatrix = screens.flatMap((screen) => {
               scenario_id: sourceScenario.id,
               fixture_id: sourceStep.fixture_ref.fixture_id,
               event_id: sourceStep.event_id,
-              rationale: `${sourceScenario.id} realizes the ${kind.replaceAll("_", " ")} condition on this screen.`,
+              rationale: `${sourceScenario.id} with focused fixture context ${sourceScenario.synthetic_fixture_refs.join(", ")} realizes the ${kind.replaceAll("_", " ")} condition through exact event ${sourceStep.event_id}.`,
             }
           : {
               type: "ui",
               scenario_id: null,
               fixture_id: null,
               event_id: null,
-              rationale: `${kind.replaceAll("_", " ")} is a product-system presentation state rather than a claimed operational event for this screen.`,
+              rationale: preferredScenarioId
+                ? `${preferredScenarioId} with fixture context ${sourceScenario?.synthetic_fixture_refs.join(", ") ?? "unresolved"} is focused here, but no event on this screen realizes the ${kind.replaceAll("_", " ")} projection; it remains model-only.`
+                : `${kind.replaceAll("_", " ")} is a product-system presentation state rather than a claimed operational event for this screen.`,
             },
         available,
       );

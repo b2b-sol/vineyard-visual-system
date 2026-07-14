@@ -1,7 +1,14 @@
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { flowIndex } from "../data/canonical";
-import { buildPrototypeSteps, type PrototypeStep } from "../data/prototypes";
+import {
+  buildPrototypeSteps,
+  replayAcceptedPrefix,
+  validatePrototypeAppend,
+  type PrototypeAppendResult,
+  type PrototypeStep,
+  type ReplayBoundary,
+} from "../data/prototypes";
 import { formatMoment } from "../data/screenViewModel";
 import { NotFoundPage } from "./NotFoundPage";
 
@@ -50,7 +57,7 @@ function PrototypeLane({
               </div>
               {step.screenId && (
                 <Link
-                  to={`/screens/${step.screenId}?fixture=${step.fixture.id}&state=normal`}
+                  to={`/screens/${step.screenId}?fixture=${step.fixture.id}&state=${step.stateContractId ?? "normal"}`}
                 >
                   {step.screenId} ↗
                 </Link>
@@ -71,6 +78,8 @@ export function PrototypePage() {
   const [comparisonProgress, setComparisonProgress] = useState<
     Record<string, number>
   >({ "WF-001": 0, "WF-007": 0 });
+  const [boundary, setBoundary] = useState<ReplayBoundary>("canonical");
+  const [lastResult, setLastResult] = useState<PrototypeAppendResult>();
 
   if (!flow || !["FLW-001", "FLW-007", "FLW-015"].includes(flowId)) {
     return <NotFoundPage />;
@@ -156,6 +165,21 @@ export function PrototypePage() {
               : "Replay is at the immutable fixture boundary"}
           </small>
         </div>
+        <label className="prototype-boundary-control">
+          Replay boundary
+          <select
+            onChange={(event) =>
+              setBoundary(event.target.value as ReplayBoundary)
+            }
+            value={boundary}
+          >
+            <option value="canonical">Canonical actor and current base</option>
+            <option value="wrong_actor">Wrong actor · default deny</option>
+            <option value="stale_base">Stale base · refresh required</option>
+            <option value="offline">Offline · sync policy applies</option>
+            <option value="conflict">Conflict · preserve both events</option>
+          </select>
+        </label>
         <div>
           <button
             className="wave-secondary-control"
@@ -165,6 +189,7 @@ export function PrototypePage() {
             onClick={() => {
               setAcceptedCount(0);
               setComparisonProgress({ "WF-001": 0, "WF-007": 0 });
+              setLastResult(undefined);
             }}
             type="button"
           >
@@ -182,18 +207,26 @@ export function PrototypePage() {
                   data-transition-id={next?.event.transition_id}
                   disabled={(comparisonProgress[lane] ?? 0) >= laneSteps.length}
                   key={lane}
-                  onClick={() =>
-                    setComparisonProgress((progress) => ({
-                      ...progress,
-                      [lane]: Math.min(
-                        (progress[lane] ?? 0) + 1,
-                        laneSteps.length,
-                      ),
-                    }))
-                  }
+                  onClick={() => {
+                    if (!next) return;
+                    const accepted = comparisonProgress[lane] ?? 0;
+                    const replay = replayAcceptedPrefix(laneSteps, accepted);
+                    const result = validatePrototypeAppend(
+                      next,
+                      replay.state,
+                      boundary,
+                    );
+                    setLastResult(result);
+                    if (result.allowed) {
+                      setComparisonProgress((progress) => ({
+                        ...progress,
+                        [lane]: Math.min(accepted + 1, laneSteps.length),
+                      }));
+                    }
+                  }}
                   type="button"
                 >
-                  Reveal next {lane} event
+                  Validate &amp; append next {lane} event
                 </button>
               );
             })
@@ -204,14 +237,27 @@ export function PrototypePage() {
               data-event-id={steps[acceptedCount]?.event.id}
               data-transition-id={steps[acceptedCount]?.event.transition_id}
               disabled={acceptedCount >= steps.length}
-              onClick={() =>
-                setAcceptedCount((count) => Math.min(count + 1, steps.length))
-              }
+              onClick={() => {
+                const next = steps[acceptedCount];
+                if (!next) return;
+                const replay = replayAcceptedPrefix(steps, acceptedCount);
+                const result = validatePrototypeAppend(
+                  next,
+                  replay.state,
+                  boundary,
+                );
+                setLastResult(result);
+                if (result.allowed) {
+                  setAcceptedCount((count) =>
+                    Math.min(count + 1, steps.length),
+                  );
+                }
+              }}
               type="button"
             >
               {acceptedCount >= steps.length
                 ? "Replay complete"
-                : "Accept next fixture event"}
+                : "Validate & append next event"}
             </button>
           )}
         </div>
@@ -221,6 +267,42 @@ export function PrototypePage() {
             : "Replay reset."}
         </p>
       </section>
+
+      {lastResult && (
+        <section
+          aria-live="polite"
+          className={`prototype-validation is-${lastResult.status}`}
+          data-replay-status={lastResult.status}
+        >
+          <div>
+            <span>{lastResult.status}</span>
+            <strong>{lastResult.precondition}</strong>
+            <p>{lastResult.reason}</p>
+          </div>
+          <dl>
+            <div>
+              <dt>Actor</dt>
+              <dd>
+                {lastResult.actorAssignmentId} · {lastResult.actorRoleId}
+              </dd>
+            </div>
+            <div>
+              <dt>Evidence</dt>
+              <dd>
+                {lastResult.evidenceRecordIds.join(", ") || "no record inputs"}
+              </dd>
+            </div>
+            <div>
+              <dt>Notification</dt>
+              <dd>{lastResult.notificationIds.join(", ") || "none"}</dd>
+            </div>
+            <div>
+              <dt>Write policy</dt>
+              <dd>append only · source fixture unchanged</dd>
+            </div>
+          </dl>
+        </section>
+      )}
 
       {isComparison && (
         <aside className="prototype-boundary-note">

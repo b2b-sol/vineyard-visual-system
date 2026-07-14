@@ -84,6 +84,52 @@ describe("connected full-season data", () => {
     ).toEqual([["EVT-00100", "TRN-WF-007-020"]]);
   });
 
+  it("keeps payroll exceptions labor-specific and correction-lineage complete", () => {
+    const payrollExceptions = operation.record_instances.filter(
+      (record) => record.record_definition_id === "REC-062",
+    );
+    expect(payrollExceptions).toHaveLength(5);
+    for (const record of payrollExceptions) {
+      const facts = record.facts as unknown as {
+        domain_kind: string;
+        domain_details: Record<string, unknown>;
+      };
+      expect(facts.domain_kind).toBe("labor_payroll_exception");
+      expect(Object.keys(facts.domain_details)).toEqual(
+        expect.arrayContaining([
+          "worker",
+          "assignment",
+          "submitted_hours",
+          "corrected_hours",
+          "rate_basis",
+          "variance_hours",
+          "exception_reason",
+          "amount_owed",
+          "authority",
+          "lineage",
+          "resolution",
+        ]),
+      );
+      expect(JSON.stringify(facts)).not.toMatch(
+        /load_id|gross_weight|tare_weight|net_weight|fruit_temperature|settlement_(?:gross|adjustments|net)/i,
+      );
+    }
+    const corrected = payrollExceptions.find(
+      (record) => record.workflow_instance_ids[0] === "WFI-0031",
+    )!;
+    expect(corrected.facts.domain_details).toMatchObject({
+      submitted_hours: { value: 9.5, unit_id: "UNT-007" },
+      corrected_hours: { value: 8.25, unit_id: "UNT-007" },
+      variance_hours: { value: 1.25, unit_id: "UNT-007" },
+      exception_id: "EXC-037",
+      authority: { decision_id: "DEC-064" },
+      resolution: {
+        resolution_status: "corrected",
+        original_submission_retained: true,
+      },
+    });
+  });
+
   it("rejects a dangling role assignment reference", () => {
     const invalidEvents = structuredClone(eventDocument);
     invalidEvents.events[0].actor_assignment_id = "ASG-999";

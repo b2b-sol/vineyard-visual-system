@@ -41,7 +41,8 @@ svg {
 }
 
 :focus-visible {
-  outline: 3px solid #4d8b8d80;
+  box-shadow: 0 0 0 6px var(--sys-color-canvas);
+  outline: 3px solid var(--sys-color-focus-ring);
   outline-offset: 3px;
 }
 
@@ -2842,7 +2843,7 @@ td .status-signal + .cell-secondary {
     font-size: 0.72rem;
     gap: 0.5rem;
     list-style: none;
-    min-height: 2.5rem;
+    min-height: var(--sys-density-field-control);
     padding: 0.4rem 0.7rem;
   }
   .mobile-menu summary::-webkit-details-marker {
@@ -3230,6 +3231,9 @@ td .status-signal + .cell-secondary {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+  .wave-loading-note span {
+    animation: none !important;
   }
 }
 
@@ -4488,6 +4492,64 @@ td .status-signal + .cell-secondary {
   flex-direction: row;
   gap: var(--ref-space-2);
 }
+.prototype-boundary-control {
+  color: var(--ref-color-vine-300);
+  display: flex;
+  flex-direction: column;
+  font-size: var(--ref-font-size-100);
+  gap: var(--ref-space-1);
+}
+.prototype-boundary-control select {
+  background: var(--sys-color-surface-base);
+  border: 1px solid var(--sys-color-border-strong);
+  border-radius: var(--ref-radius-md);
+  color: var(--sys-color-text-primary);
+  min-height: var(--control-size);
+  padding: 0 var(--ref-space-3);
+}
+.prototype-validation {
+  background: var(--sys-color-feedback-neutral-surface);
+  border: 1px solid var(--sys-color-border-strong);
+  border-radius: var(--ref-radius-lg);
+  display: grid;
+  gap: var(--ref-space-5);
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 1fr);
+  margin-top: var(--ref-space-4);
+  padding: var(--ref-space-4);
+}
+.prototype-validation.is-appended {
+  background: var(--sys-color-feedback-positive-surface);
+  color: var(--sys-color-feedback-positive-text);
+}
+.prototype-validation.is-denied {
+  background: var(--sys-color-feedback-critical-surface);
+  color: var(--sys-color-feedback-critical-text);
+}
+.prototype-validation span {
+  font-size: var(--ref-font-size-100);
+  font-weight: var(--ref-font-weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.prototype-validation p {
+  margin: var(--ref-space-2) 0 0;
+}
+.prototype-validation dl {
+  display: grid;
+  gap: var(--ref-space-2);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+.prototype-validation dt {
+  font-size: var(--ref-font-size-100);
+  font-weight: var(--ref-font-weight-bold);
+  text-transform: uppercase;
+}
+.prototype-validation dd {
+  font-family: var(--ref-font-family-mono);
+  font-size: var(--ref-font-size-100);
+  margin: 0;
+}
 .prototype-controls span,
 .prototype-controls small {
   color: var(--ref-color-vine-300);
@@ -4628,10 +4690,14 @@ td .status-signal + .cell-secondary {
     align-items: center;
     flex-direction: row;
     gap: var(--ref-space-3);
+    justify-content: flex-start;
     min-height: var(--sys-density-compact-control);
     overflow-x: auto;
     padding: var(--ref-space-2) var(--ref-space-3);
     white-space: nowrap;
+  }
+  .wave-operational-shell[data-platform="mobile"] .wave-shell-context span {
+    flex: 0 0 auto;
   }
   .wave-operational-shell[data-platform="mobile"]
     .wave-shell-context
@@ -4680,7 +4746,18 @@ td .status-signal + .cell-secondary {
   }
   .wave-screen[data-platform="mobile"] .wave-trace-bar,
   .wave-screen[data-platform="mobile"] .wave-state-banner {
+    gap: var(--ref-space-3);
     margin-top: var(--ref-space-4);
+    padding: var(--ref-space-4);
+  }
+  .wave-screen[data-platform="mobile"] .wave-state-banner dl {
+    display: none;
+  }
+  .wave-screen[data-platform="mobile"] .wave-state-banner > div > span {
+    display: none;
+  }
+  .wave-screen[data-platform="mobile"] .wave-component-grid {
+    margin-top: var(--ref-space-3);
   }
   .wave-hero h1,
   .prototype-hero h1 {
@@ -4713,7 +4790,11 @@ td .status-signal + .cell-secondary {
     padding: var(--ref-space-2) 0 0;
   }
   .wave-model-badge {
+    grid-column: 1 / -1;
     position: static;
+  }
+  .wave-screen[data-platform="mobile"] .wave-model-badge {
+    display: none;
   }
   .wave-review-controls {
     grid-template-columns: 1fr;
@@ -4775,6 +4856,9 @@ td .status-signal + .cell-secondary {
     align-items: stretch;
     flex-direction: column;
     position: static;
+  }
+  .prototype-validation {
+    grid-template-columns: 1fr;
   }
   .prototype-controls > div:nth-child(2) {
     flex-direction: column;

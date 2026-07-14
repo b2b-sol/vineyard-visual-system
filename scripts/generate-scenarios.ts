@@ -1024,6 +1024,8 @@ const scenarios = profiles.map((profile) => {
         outcome: result.outcome,
       })),
       exception_history_ids: event.exception_history_ids,
+      connectivity_mode: event.connectivity.mode,
+      sync_status: event.connectivity.sync_status,
       handoff: {
         from_actor_assignment_id: event.actor_assignment_id,
         to_actor_assignment_ids: nextEventIsSamePath

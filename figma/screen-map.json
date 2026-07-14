@@ -10,9 +10,39 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-001",
-      "states": ["normal", "offline", "partial", "urgent", "completion"]
+      "states": ["normal", "offline", "partial", "urgent", "completion"],
+      "platform": "responsive",
+      "workflow_ids": ["WF-001"],
+      "fixture_ids": ["FIX-002", "FIX-005", "FIX-006", "FIX-003", "FIX-033"],
+      "component_ids": [
+        "CMP-001",
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-016",
+        "CMP-017",
+        "CMP-018",
+        "CMP-019",
+        "CMP-021",
+        "CMP-026",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-001 · Daily operations brief · responsive",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -22,9 +52,38 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-002",
-      "states": ["normal", "blocked", "partial", "completion"]
+      "states": ["normal", "blocked", "partial", "completion"],
+      "platform": "responsive",
+      "workflow_ids": ["WF-001"],
+      "fixture_ids": ["FIX-002", "FIX-005", "FIX-006", "FIX-003", "FIX-033"],
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-016",
+        "CMP-017",
+        "CMP-021",
+        "CMP-022",
+        "CMP-026",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-002 · Seasonal plan · responsive",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -34,9 +93,39 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-003",
-      "states": ["normal", "blocked", "stale", "partial", "completion"]
+      "states": ["normal", "blocked", "stale", "partial", "completion"],
+      "platform": "responsive",
+      "workflow_ids": ["WF-001"],
+      "fixture_ids": ["FIX-002", "FIX-005", "FIX-006", "FIX-003", "FIX-033"],
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-012",
+        "CMP-013",
+        "CMP-014",
+        "CMP-016",
+        "CMP-017",
+        "CMP-021",
+        "CMP-022",
+        "CMP-026",
+        "CMP-033",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-003 · Work plan detail · responsive",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -46,9 +135,46 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-004",
-      "states": ["normal", "blocked", "stale", "corrected", "completion"]
+      "states": ["normal", "blocked", "stale", "corrected", "completion"],
+      "platform": "responsive",
+      "workflow_ids": ["WF-001"],
+      "fixture_ids": [
+        "FIX-002",
+        "FIX-052",
+        "FIX-005",
+        "FIX-006",
+        "FIX-003",
+        "FIX-033"
+      ],
+      "component_ids": [
+        "CMP-001",
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-011",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-020",
+        "CMP-021",
+        "CMP-026",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-004 · Dispatch board · responsive",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -58,9 +184,49 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-005",
-      "states": ["normal", "blocked", "corrected", "historical", "completion"]
+      "states": ["normal", "blocked", "corrected", "historical", "completion"],
+      "platform": "mobile",
+      "workflow_ids": ["WF-001"],
+      "fixture_ids": [
+        "FIX-002",
+        "FIX-052",
+        "FIX-003",
+        "FIX-053",
+        "FIX-004",
+        "FIX-054",
+        "FIX-005",
+        "FIX-006",
+        "FIX-033"
+      ],
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-009",
+        "CMP-010",
+        "CMP-012",
+        "CMP-013",
+        "CMP-014",
+        "CMP-015",
+        "CMP-020",
+        "CMP-021",
+        "CMP-026",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-005 · Field assignment · mobile",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -70,9 +236,49 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-006",
-      "states": ["normal", "stale", "corrected", "offline", "completion"]
+      "states": ["normal", "stale", "corrected", "offline", "completion"],
+      "platform": "responsive",
+      "workflow_ids": ["WF-001"],
+      "fixture_ids": [
+        "FIX-002",
+        "FIX-052",
+        "FIX-003",
+        "FIX-053",
+        "FIX-004",
+        "FIX-054",
+        "FIX-005",
+        "FIX-006",
+        "FIX-033"
+      ],
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-009",
+        "CMP-010",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-021",
+        "CMP-026",
+        "CMP-033",
+        "CMP-035",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-006 · Verification and history · responsive",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -82,9 +288,36 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-039",
-      "states": ["normal", "blocked", "urgent", "historical", "completion"]
+      "states": ["normal", "blocked", "urgent", "historical", "completion"],
+      "platform": "responsive",
+      "workflow_ids": ["WF-007"],
+      "fixture_ids": ["FIX-032", "FIX-047"],
+      "component_ids": [
+        "CMP-001",
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-020",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-039 · Labor demand · responsive",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -94,9 +327,46 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-040",
-      "states": ["normal", "urgent", "partial", "offline", "completion"]
+      "states": ["normal", "urgent", "partial", "offline", "completion"],
+      "platform": "responsive",
+      "workflow_ids": ["WF-007"],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ],
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-020",
+        "CMP-022",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-040 · Crew schedule · responsive",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -106,9 +376,38 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-041",
-      "states": ["normal", "blocked", "urgent", "stale", "completion"]
+      "states": ["normal", "blocked", "urgent", "stale", "completion"],
+      "platform": "mobile",
+      "workflow_ids": ["WF-007"],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ],
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-010",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-020",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-041 · Check-in kiosk · mobile",
+      "layout_regions": ["context", "identity", "workflow", "continuity"]
     },
     {
       "artifact_type": "screen",
@@ -118,9 +417,45 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-042",
-      "states": ["normal", "blocked", "urgent", "conflict", "completion"]
+      "states": ["normal", "blocked", "urgent", "conflict", "completion"],
+      "platform": "mobile",
+      "workflow_ids": ["WF-007"],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-031"
+      ],
+      "component_ids": [
+        "CMP-001",
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-011",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-020",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-042 · Crew workboard · mobile",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -130,9 +465,47 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-043",
-      "states": ["normal", "blocked", "urgent", "loading", "completion"]
+      "states": ["normal", "blocked", "urgent", "loading", "completion"],
+      "platform": "desktop",
+      "workflow_ids": ["WF-007"],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ],
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-012",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-020",
+        "CMP-033",
+        "CMP-035",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-043 · Time review · desktop",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -142,9 +515,49 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-044",
-      "states": ["normal", "blocked", "corrected", "empty", "completion"]
+      "states": ["normal", "blocked", "corrected", "empty", "completion"],
+      "platform": "responsive",
+      "workflow_ids": ["WF-007"],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ],
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-008",
+        "CMP-010",
+        "CMP-012",
+        "CMP-013",
+        "CMP-014",
+        "CMP-015",
+        "CMP-017",
+        "CMP-018",
+        "CMP-019",
+        "CMP-020",
+        "CMP-034",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-044 · Payroll exception · responsive",
+      "layout_regions": [
+        "context",
+        "identity",
+        "decision",
+        "workflow",
+        "continuity"
+      ]
     },
     {
       "artifact_type": "screen",
@@ -154,9 +567,38 @@
       "code_path": "atlas/src/pages/ProductionScreenPage.tsx",
       "export_name": "ProductionScreenPage",
       "status": "implemented",
-      "source_sha256": "939a89e244cfa401e82628adf7d9c39c6b69c017de307454525fb0daf804ba29",
+      "source_sha256": "e6765422faea612f37908c17e9dc96cbfed37070cfa7f2f557ab4f80b2c1a204",
       "route": "/screens/SCR-045",
-      "states": ["normal", "urgent", "partial", "error", "completion"]
+      "states": ["normal", "urgent", "partial", "error", "completion"],
+      "platform": "responsive",
+      "workflow_ids": ["WF-007"],
+      "fixture_ids": [
+        "FIX-034",
+        "FIX-032",
+        "FIX-033",
+        "FIX-036",
+        "FIX-035",
+        "FIX-003",
+        "FIX-047",
+        "FIX-031"
+      ],
+      "component_ids": [
+        "CMP-002",
+        "CMP-003",
+        "CMP-004",
+        "CMP-005",
+        "CMP-006",
+        "CMP-007",
+        "CMP-010",
+        "CMP-012",
+        "CMP-014",
+        "CMP-017",
+        "CMP-020",
+        "CMP-034",
+        "CMP-036"
+      ],
+      "figma_frame_name": "SCR-045 · Cost allocation · responsive",
+      "layout_regions": ["context", "identity", "workflow", "continuity"]
     }
   ]
 }
