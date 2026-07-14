@@ -126,6 +126,7 @@ export function OperationalAppShell({
       data-density={
         model.screen.platform === "mobile" ? "field" : "comfortable"
       }
+      data-platform={model.screen.platform}
       data-fixture-id={model.fixture.id}
       data-review-state={model.reviewState}
       data-scenario-id={model.scenario.id}

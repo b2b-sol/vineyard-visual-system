@@ -3320,6 +3320,10 @@ td .status-signal + .cell-secondary {
   min-height: 100vh;
 }
 
+.atlas-shell:has(.wave-operational-shell) .route-key {
+  display: none;
+}
+
 .wave-shell-context {
   align-items: center;
   background: var(--sys-color-surface-inverse);
@@ -4620,8 +4624,63 @@ td .status-signal + .cell-secondary {
     border-left: 0;
     padding-left: 0;
   }
+  .wave-operational-shell[data-platform="mobile"] .wave-shell-context {
+    align-items: center;
+    flex-direction: row;
+    gap: var(--ref-space-3);
+    min-height: var(--sys-density-compact-control);
+    overflow-x: auto;
+    padding: var(--ref-space-2) var(--ref-space-3);
+    white-space: nowrap;
+  }
+  .wave-operational-shell[data-platform="mobile"]
+    .wave-shell-context
+    span
+    + span {
+    border-left: 1px solid var(--sys-color-border-strong);
+    padding-left: var(--ref-space-3);
+  }
   .wave-screen {
     padding: var(--ref-space-6) var(--ref-space-3) var(--ref-space-10);
+  }
+  .wave-screen[data-platform="mobile"] {
+    padding-top: var(--ref-space-4);
+  }
+  .wave-screen[data-platform="mobile"] .wave-breadcrumbs {
+    margin-bottom: var(--ref-space-4);
+  }
+  .wave-screen[data-platform="mobile"] .wave-hero {
+    padding-bottom: var(--ref-space-4);
+  }
+  .wave-screen[data-platform="mobile"] .wave-hero-grid {
+    gap: var(--ref-space-4);
+  }
+  .wave-screen[data-platform="mobile"] .wave-hero h1 {
+    font-size: clamp(2.35rem, 11vw, var(--ref-font-size-800));
+    line-height: 0.98;
+  }
+  .wave-screen[data-platform="mobile"] .wave-lede {
+    display: none;
+  }
+  .wave-screen[data-platform="mobile"] .wave-question-card {
+    min-height: 7.5rem;
+    padding: var(--ref-space-4);
+  }
+  .wave-screen[data-platform="mobile"] .wave-question-card strong {
+    font-size: var(--ref-font-size-500);
+    margin-top: var(--ref-space-2);
+    max-width: 15rem;
+  }
+  .wave-screen[data-platform="mobile"] .wave-question-card small {
+    display: none;
+  }
+  .wave-screen[data-platform="mobile"] .wave-question-card::after {
+    bottom: var(--ref-space-3);
+    right: var(--ref-space-3);
+  }
+  .wave-screen[data-platform="mobile"] .wave-trace-bar,
+  .wave-screen[data-platform="mobile"] .wave-state-banner {
+    margin-top: var(--ref-space-4);
   }
   .wave-hero h1,
   .prototype-hero h1 {
