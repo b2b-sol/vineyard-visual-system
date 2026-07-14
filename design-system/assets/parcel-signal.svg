@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="parcel-title parcel-desc">
+  <title id="parcel-title">Parcel signal motif</title>
+  <desc id="parcel-desc">Four measured vineyard rows cross a stable parcel boundary with one accountable signal point.</desc>
+  <g fill="none" stroke="#36513d" stroke-linecap="round">
+    <path id="parcel-boundary" d="M24 18 133 31l9 92-109 19-15-75Z" stroke-width="5"/>
+    <path id="row-01" d="m40 30 9 101" stroke-width="3"/>
+    <path id="row-02" d="m65 27 7 100" stroke-width="3"/>
+    <path id="row-03" d="m90 27 4 96" stroke-width="3"/>
+    <path id="row-04" d="m115 30 1 89" stroke-width="3"/>
+  </g>
+  <circle id="signal-node" cx="117" cy="73" r="13" fill="#fbfaf5" stroke="#28636a" stroke-width="5"/>
+  <path id="signal-mark" d="m111 73 4 4 8-10" fill="none" stroke="#28636a" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+</svg>

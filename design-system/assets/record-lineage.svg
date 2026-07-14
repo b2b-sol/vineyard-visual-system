@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-labelledby="lineage-title lineage-desc">
+  <title id="lineage-title">Append-only record lineage</title>
+  <desc id="lineage-desc">A predecessor remains visible while an attributable correction advances to a verified successor.</desc>
+  <path d="M48 48h224" fill="none" stroke="#526258" stroke-dasharray="6 6" stroke-width="3"/>
+  <g font-family="Aptos, Segoe UI, sans-serif" font-size="12" text-anchor="middle">
+    <g id="predecessor" transform="translate(48 48)">
+      <circle r="17" fill="#f5dfd4" stroke="#7b3c34" stroke-width="3"/>
+      <path d="m-6-6 12 12m0-12L-6 6" stroke="#7b3c34" stroke-linecap="round" stroke-width="3"/>
+      <text y="38" fill="#142019">predecessor</text>
+    </g>
+    <g id="correction" transform="translate(160 48)">
+      <circle r="17" fill="#eee8ef" stroke="#624a6d" stroke-width="3"/>
+      <path d="M-7 2h14M0-7v14" stroke="#624a6d" stroke-linecap="round" stroke-width="3"/>
+      <text y="38" fill="#142019">correction</text>
+    </g>
+    <g id="successor" transform="translate(272 48)">
+      <circle r="17" fill="#e1e9dc" stroke="#36513d" stroke-width="3"/>
+      <path d="m-7 0 5 5L8-7" fill="none" stroke="#36513d" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <text y="38" fill="#142019">successor</text>
+    </g>
+  </g>
+</svg>

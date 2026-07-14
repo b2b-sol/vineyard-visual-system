@@ -1,0 +1,29 @@
+{
+  "capture_version": "1.0",
+  "source_digest": "88c6044ebe1ce616b958d930393a8ffbdc5b81d11c91f3c27f7723debcd40ab6",
+  "direction": "canopy-signal",
+  "lighthouse": "field-interruption",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "scroll": {
+    "page_y": 0,
+    "field_main_y": 0
+  },
+  "top_content": {
+    "top": 0,
+    "bottom": 68,
+    "height": 68
+  },
+  "urgent_alert": {
+    "top": 80.796875,
+    "bottom": 198.1875,
+    "height": 117.390625
+  },
+  "accountable_action": {
+    "top": 720.015625,
+    "bottom": 772.015625,
+    "height": 52
+  }
+}

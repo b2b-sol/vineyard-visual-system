@@ -121,3 +121,13 @@ Use `DEC-###` identifiers. Record date, context, decision, alternatives, rationa
 - Rationale: Exact contracts make false joins and unavailable-state actions mechanically rejectable, preserve ontology branches without fabricating evidence, and give later visual and construction work stable identifiers for authority, notification, synchronization, and recovery behavior.
 - Affected artifacts: scenario generator and schema; product generator, registries, schemas, validator, tests, trace graph, and product review evidence.
 - Reversibility: Low for exact trace and state semantics; screen composition, requirement grouping, policy copy, and fixture coverage can evolve while identifiers and evidence relationships remain versioned.
+
+## DEC-013 — Canopy Signal as a sunlit fieldbook
+
+- Date: 2026-07-13
+- Context: Three materially different visual territories were tested against identical field interruption, harvest command, and intake reconciliation content. Canopy Signal alone cleared the weighted total and every criterion floor, but its vineyard distinctiveness depends on retaining parcel identity and append-only lineage rather than generic daylight instrumentation.
+- Decision: Use Canopy Signal as the global visual foundation, refined into a sunlit fieldbook. Bind the selected interface through DTCG `ref.*`, `sys.*`, and `component.*` layers; preserve Field Ledger's cadastral geometry, stable block aliases, survey rules, and record-lineage grammar; reserve Vintage Control Room for evidence-backed intake or future low-light contexts rather than a global dark theme.
+- Alternatives: Field Ledger as the global system; Vintage Control Room as the global system; separate unrelated mobile and desktop themes; retain hard-coded route palettes outside the canonical token graph.
+- Rationale: The synthesis gives field work bright, glove-scale clarity and gives office work dense accountable hierarchy while remaining unmistakably tied to vineyard parcels, measurements, records, corrections, and cross-organization identity. Semantic token binding and source-digested render evidence make the choice reproducible rather than aesthetic prose.
+- Affected artifacts: `design-system/visual-directions/directions.json`, `design-system/tokens/vineyard.tokens.json`, `design-system/tokens/vineyard.css`, `atlas/src/pages/VisualDirectionsPage.tsx`, `atlas/src/visual-directions.css`, SVG motifs, Playwright capture evidence, and `validation/visual-direction-review.md`.
+- Reversibility: Medium; contextual modes and individual semantic values can evolve, but replacing the foundation requires a new comparable lighthouse review and an explicit superseding decision.

@@ -1,0 +1,194 @@
+{
+  "contract_version": "1.0",
+  "selected_direction_id": "canopy-signal",
+  "selected_thesis": "Sunlit fieldbook",
+  "decision_id": "DEC-013",
+  "rubric": [
+    {
+      "id": "operational_fidelity",
+      "label": "Operational fidelity",
+      "weight": 20
+    },
+    {
+      "id": "outdoor_readability",
+      "label": "Outdoor readability",
+      "weight": 15
+    },
+    {
+      "id": "information_density",
+      "label": "Information density and hierarchy",
+      "weight": 15
+    },
+    { "id": "accessibility", "label": "Accessibility", "weight": 15 },
+    {
+      "id": "field_office_continuity",
+      "label": "Field-to-office continuity",
+      "weight": 12
+    },
+    {
+      "id": "vineyard_distinctiveness",
+      "label": "Vineyard distinctiveness",
+      "weight": 15
+    },
+    {
+      "id": "editable_system_readiness",
+      "label": "Figma and editable-system readiness",
+      "weight": 8
+    }
+  ],
+  "acceptance": {
+    "minimum_total": 85,
+    "minimum_criterion_fraction": 0.8,
+    "hard_rejections": [
+      "Consequential scope, identity, authority, version, or accountable next action disappears.",
+      "Operational state depends on color alone.",
+      "Text, meaningful graphics, or focus indicators miss the recorded contrast floor.",
+      "Critical mobile targets are smaller than 44 CSS pixels.",
+      "Mobile and desktop appear to be unrelated products.",
+      "Vineyard distinctiveness requires a logo or photography.",
+      "Canonical decisions exist only in flattened review images."
+    ]
+  },
+  "directions": [
+    {
+      "id": "field-ledger",
+      "name": "Field Ledger",
+      "disposition": "reserve",
+      "thesis": "Parcel survey discipline and accountable record layers, made tactile.",
+      "scores": {
+        "operational_fidelity": 18,
+        "outdoor_readability": 9,
+        "information_density": 12,
+        "accessibility": 12,
+        "field_office_continuity": 11,
+        "vineyard_distinctiveness": 14,
+        "editable_system_readiness": 7
+      },
+      "total": 83,
+      "criterion_failures": ["outdoor_readability"],
+      "hard_rejections_triggered": [],
+      "visual": {
+        "strengths": [
+          "Record lineage",
+          "Parcel identity",
+          "Institutional trust"
+        ],
+        "risks": ["Muted status contrast", "Outdoor fine-line fragility"],
+        "swatches": ["bone", "ink", "olive", "clay", "brass"]
+      },
+      "decision": "Retain parcel geometry, mineral warmth, provenance rules, and correction-layer grammar; do not use the muted fine-line treatment as the universal field foundation."
+    },
+    {
+      "id": "canopy-signal",
+      "name": "Canopy Signal",
+      "disposition": "selected",
+      "thesis": "A sunlit fieldbook: daylight instrumentation joined to cadastral lineage.",
+      "scores": {
+        "operational_fidelity": 19,
+        "outdoor_readability": 14,
+        "information_density": 14,
+        "accessibility": 14,
+        "field_office_continuity": 11,
+        "vineyard_distinctiveness": 12,
+        "editable_system_readiness": 8
+      },
+      "total": 92,
+      "criterion_failures": [],
+      "hard_rejections_triggered": [],
+      "visual": {
+        "strengths": [
+          "Outdoor clarity",
+          "Dense hierarchy",
+          "Cross-device continuity"
+        ],
+        "risks": ["Generic agritech without parcel and provenance grammar"],
+        "swatches": ["mineral", "near-black", "chlorophyll", "water", "amber"]
+      },
+      "decision": "Use as the global foundation. Require parcel geometry, stable block identity, append-only lineage, exact record IDs, and bounded status semantics so the daylight clarity cannot drift into generic agritech."
+    },
+    {
+      "id": "vintage-control",
+      "name": "Vintage Control Room",
+      "disposition": "contextual",
+      "thesis": "Night-harvest gravity, forensic intake evidence, and archival control.",
+      "scores": {
+        "operational_fidelity": 16,
+        "outdoor_readability": 6,
+        "information_density": 12,
+        "accessibility": 12,
+        "field_office_continuity": 8,
+        "vineyard_distinctiveness": 14,
+        "editable_system_readiness": 6
+      },
+      "total": 74,
+      "criterion_failures": [
+        "outdoor_readability",
+        "field_office_continuity",
+        "editable_system_readiness"
+      ],
+      "hard_rejections_triggered": [],
+      "visual": {
+        "strengths": ["Intake urgency", "Audit gravity", "Low-light context"],
+        "risks": [
+          "Full-sun reflection",
+          "Overweights harvest",
+          "Two-system burden"
+        ],
+        "swatches": ["charcoal", "bone", "plum", "brass", "steel"]
+      },
+      "decision": "Use its gravitas as contextual inspiration for intake, quality, audit, and future low-light validation; do not introduce a global dark mode without workflow evidence."
+    }
+  ],
+  "lighthouses": [
+    {
+      "id": "field-interruption",
+      "label": "Field interruption",
+      "route_summary": "Mobile containment and recovery",
+      "screen_id": "SCR-016",
+      "scenario_id": "SCN-003-04",
+      "fixture_id": "FIX-012",
+      "workflow_id": "WF-003",
+      "event_id": "EVT-00049",
+      "transition_id": "TRN-WF-003-013",
+      "viewport": { "width": 390, "height": 844 },
+      "purpose": "Outdoor containment, glove-scale recovery, evidence density, and non-color urgent state."
+    },
+    {
+      "id": "harvest-command",
+      "label": "Harvest command",
+      "route_summary": "Desktop delay and accountable next action",
+      "screen_id": "SCR-031",
+      "scenario_id": "SCN-006-02",
+      "fixture_id": "FIX-027",
+      "workflow_id": "WF-006",
+      "event_id": "EVT-00221",
+      "transition_id": "TRN-WF-006-024",
+      "viewport": { "width": 1440, "height": 1024 },
+      "purpose": "Dense command hierarchy, clocks, lanes, urgency, identity, and accountable recovery."
+    },
+    {
+      "id": "reconciliation",
+      "label": "Intake reconciliation",
+      "route_summary": "Identity conflict and append-only correction",
+      "screen_id": "SCR-037",
+      "scenario_id": "SCN-006-06",
+      "fixture_id": "FIX-028",
+      "workflow_id": "WF-006",
+      "event_id": "EVT-00280",
+      "transition_id": "TRN-WF-006-027",
+      "viewport": { "width": 1440, "height": 1024 },
+      "purpose": "Cross-organization identity conflict, predecessor/successor evidence, authority, and immutable correction."
+    }
+  ],
+  "validation": {
+    "browser_command": "npm run test:visual-directions",
+    "browser_passed": 12,
+    "browser_skipped_by_project": 10,
+    "serious_or_critical_axe_findings": 0,
+    "contrast_pairs": 10,
+    "token_assertions": 714,
+    "visual_direction_assertions": 175,
+    "capture_evidence_files": 9,
+    "render_directory": "validation/visual-direction-renders"
+  }
+}

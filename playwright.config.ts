@@ -41,12 +41,16 @@ export default defineConfig({
     },
     {
       name: "field-mobile",
-      use: { ...devices["Pixel 7"] },
+      use: {
+        ...devices["Pixel 7"],
+        deviceScaleFactor: 1,
+        viewport: { width: 390, height: 844 },
+      },
     },
   ],
   webServer: {
     command: "npm run preview",
-    reuseExistingServer: !isCi,
+    reuseExistingServer: false,
     stderr: "pipe",
     stdout: "pipe",
     timeout: 120_000,

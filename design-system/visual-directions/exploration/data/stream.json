@@ -1,0 +1,794 @@
+{
+  "meta": {
+    "title": "Vineyard Visual System — lighthouse territories",
+    "subtitle": "Twelve image-only references across Field Ledger, Canopy Signal, and Vintage Control Room.",
+    "updated": "2026-07-13T21:06:00-07:00",
+    "stage": "explore",
+    "audience": "Commercial-vineyard field crews, supervisors, office specialists, growers, winery intake, finance, auditors, and certifiers",
+    "next_outputs": [
+      "Three editable lighthouse UI direction sheets",
+      "Selected visual thesis and DTCG foundations",
+      "Mobile field and desktop supervisory screen families"
+    ]
+  },
+  "signals": [
+    {
+      "id": "SIG-FIELD",
+      "label": "Outdoor legibility",
+      "description": "High contrast, fast state recognition, glove-sized interaction cues, and calm interruption recovery."
+    },
+    {
+      "id": "SIG-IDENTITY",
+      "label": "Stable vineyard identity",
+      "description": "Parcel geometry, lineage, attributable records, and effective-time history are visible system motifs."
+    },
+    {
+      "id": "SIG-DENSITY",
+      "label": "Operational density",
+      "description": "Compact evidence, schedules, quantities, exceptions, and responsibility without generic dashboard decoration."
+    },
+    {
+      "id": "SIG-BOUNDARY",
+      "label": "Field-to-office continuity",
+      "description": "One coherent language from sunlit mobile capture to dense desktop review, settlement, and audit."
+    }
+  ],
+  "items": [
+    {
+      "id": "field-ledger-notebook",
+      "family": "Field Ledger",
+      "title": "Sunlit field notebook",
+      "caption": "Warm record-keeping tactility without nostalgia or rustic cliché.",
+      "source": "Generated from the vineyard operating model and append-only record contract.",
+      "tone": "measured, tactile, accountable",
+      "motif": "field notebook, parcel rule, durable tools",
+      "palette": [
+        "#F2E9D8",
+        "#1F2A21",
+        "#66714F",
+        "#B65F3A",
+        "#D5B775"
+      ],
+      "prompt": "Single editorial photograph in clear morning vineyard light: a durable cream field notebook opened beside clean pruning shears, a soil pencil, a small unmarked brass ruler, and disciplined vine rows receding behind it; tactile paper fibers, olive canvas, terracotta detail, sharp functional composition, premium agricultural documentation, no readable text, no logos, no UI, no collage, no grid.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Survey precision",
+            "description": "Less lifestyle, more exact field instrument study.",
+            "promptHint": "emphasize survey precision and measured agricultural documentation"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Bone and vine",
+            "description": "Reduce terracotta and deepen olive contrast.",
+            "promptHint": "bone paper, deep vine green, restrained clay accent"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Tailgate record",
+            "description": "Move the record ritual to a clean work-truck tailgate.",
+            "promptHint": "field notebook on a clean work-truck tailgate at sunrise"
+          }
+        ],
+        "props": [
+          {
+            "label": "Block marker",
+            "description": "Add one unlettered geometric block tag.",
+            "promptHint": "include an unlettered enamel block marker"
+          }
+        ],
+        "character": [
+          {
+            "label": "Working hands",
+            "description": "Show weathered hands recording evidence, face out of frame.",
+            "promptHint": "weathered vineyard worker hands, face outside frame"
+          }
+        ],
+        "format": [
+          {
+            "label": "Tall crop",
+            "description": "Mobile-friendly vertical composition.",
+            "promptHint": "vertical 4:5 editorial crop"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/field-ledger-notebook.jpg",
+      "sourceImageUrl": "/generated/ccfcd6c23d53949c4d17eaf960a37d9a.png"
+    },
+    {
+      "id": "field-ledger-survey-map",
+      "family": "Field Ledger",
+      "title": "Parcel and lineage map",
+      "caption": "Stable block identity expressed through elegant survey geometry.",
+      "source": "Generated from cross-organization block and alias traceability requirements.",
+      "tone": "archival, precise, calm",
+      "motif": "parcel boundaries, contour lines, pins, lineage",
+      "palette": [
+        "#EEE3CF",
+        "#293229",
+        "#7B7655",
+        "#A74F35",
+        "#C9B98F"
+      ],
+      "prompt": "Single overhead editorial photograph of an abstract vineyard survey sheet on a large worktable, fine parcel boundaries and contour lines without readable labels, a few understated brass pins and translucent tracing layers showing lineage, warm mineral paper, olive ink, clay-red correction mark, exact and modern rather than antique, no logos, no readable text, no UI, no collage, no grid.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Modern cadastral",
+            "description": "Crisper geometry and less archival wear.",
+            "promptHint": "modern cadastral precision on pristine mineral paper"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Ink and clay",
+            "description": "Increase near-black ink with one correction accent.",
+            "promptHint": "near-black ink and one clay-red correction layer"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Wall review",
+            "description": "Place the parcel sheet upright in a planning room.",
+            "promptHint": "large parcel sheet pinned in a bright operations room"
+          }
+        ],
+        "props": [
+          {
+            "label": "Tracing overlay",
+            "description": "Add a translucent successor layer.",
+            "promptHint": "one translucent tracing overlay offset above the base map"
+          }
+        ],
+        "character": [
+          {
+            "label": "Reviewer gesture",
+            "description": "One hand follows a boundary without hiding it.",
+            "promptHint": "single reviewer hand tracing a parcel boundary"
+          }
+        ],
+        "format": [
+          {
+            "label": "Wide system",
+            "description": "Landscape composition for desktop direction boards.",
+            "promptHint": "wide 16:9 composition with generous negative space"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/field-ledger-survey-map.jpg",
+      "sourceImageUrl": "/generated/06b7462680a71cfa61d6031ad2fe91dd.png"
+    },
+    {
+      "id": "field-ledger-harvest-evidence",
+      "family": "Field Ledger",
+      "title": "Harvest evidence materials",
+      "caption": "Weight, source, and correction history as tangible evidence.",
+      "source": "Generated from harvest-to-settlement operational chains.",
+      "tone": "material, commercial, exact",
+      "motif": "grape sample, scale, paper edge, correction layer",
+      "palette": [
+        "#E9DFC9",
+        "#29261F",
+        "#6A704D",
+        "#7D3345",
+        "#C98A3E"
+      ],
+      "prompt": "Single close editorial still life at winery intake: a small dark-grape sample tray, stainless scale edge, layered blank weigh-slip papers with one visible colored correction layer but no writing, olive canvas tag, warm afternoon light, rigorous source-to-settlement evidence mood, refined and functional, no readable text, no logos, no UI, no collage, no grid.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Forensic still life",
+            "description": "Sharper evidence separation and cooler light.",
+            "promptHint": "forensic evidence still life with crisp layer separation"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Grape accent",
+            "description": "Use burgundy only in the fruit and correction layer.",
+            "promptHint": "neutral paper and steel with restrained grape-burgundy accents"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Intake counter",
+            "description": "Widen to include the clean intake work surface.",
+            "promptHint": "wider winery intake counter context"
+          }
+        ],
+        "props": [
+          {
+            "label": "Seal and tag",
+            "description": "Add an unmarked custody seal and durable tag.",
+            "promptHint": "unmarked custody seal and durable olive tag"
+          }
+        ],
+        "character": [
+          {
+            "label": "Two-party handoff",
+            "description": "Show two hands exchanging evidence.",
+            "promptHint": "two accountable hands exchanging the sample tray"
+          }
+        ],
+        "format": [
+          {
+            "label": "Square detail",
+            "description": "Compact square crop for material-system comparison.",
+            "promptHint": "square editorial still life"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/field-ledger-harvest-evidence.jpg",
+      "sourceImageUrl": "/generated/b8ac1b1ebeaeb43dea89e36e5ccb767a.png"
+    },
+    {
+      "id": "field-ledger-planning-room",
+      "family": "Field Ledger",
+      "title": "Warm operations planning room",
+      "caption": "A calm bridge from physical field records to dense office decisions.",
+      "source": "Generated from planning, crew, verification, and audit responsibilities.",
+      "tone": "quiet, industrious, trusted",
+      "motif": "long worktable, parcel sheets, daylight, durable storage",
+      "palette": [
+        "#F4EBDD",
+        "#243029",
+        "#788064",
+        "#B66542",
+        "#C9A86A"
+      ],
+      "prompt": "Single wide editorial interior photograph of a professional vineyard operations room in warm daylight, long oak worktable with neatly organized blank parcel sheets, radio, rugged tablet with abstract non-readable blocks, olive storage drawers and one clay accent, dense work without clutter, no people required, no readable text, no logos, no recognizable UI, no collage, no grid.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Editorial utility",
+            "description": "More architectural order, fewer lifestyle cues.",
+            "promptHint": "architectural editorial utility and disciplined storage"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Cool mineral",
+            "description": "Cool the cream while retaining olive and clay.",
+            "promptHint": "cool mineral walls, dark olive storage, restrained clay accent"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Morning briefing",
+            "description": "Add a compact standing crew briefing.",
+            "promptHint": "small accountable morning briefing around the worktable"
+          }
+        ],
+        "props": [
+          {
+            "label": "Status rail",
+            "description": "Add unlabeled physical status markers.",
+            "promptHint": "row of unlabeled geometric status markers"
+          }
+        ],
+        "character": [
+          {
+            "label": "Manager and foreman",
+            "description": "Two people review the same parcel evidence.",
+            "promptHint": "vineyard manager and foreman reviewing parcel evidence, no visible faces required"
+          }
+        ],
+        "format": [
+          {
+            "label": "Desktop wide",
+            "description": "Extra-wide visual-system hero crop.",
+            "promptHint": "extra-wide 21:9 composition"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/field-ledger-planning-room.jpg",
+      "sourceImageUrl": "/generated/40a875aa559bef49624fff1c4466d25c.png"
+    },
+    {
+      "id": "canopy-signal-measurement",
+      "family": "Canopy Signal",
+      "title": "Daylight canopy measurement",
+      "caption": "Fresh evidence captured with unmistakable precision outdoors.",
+      "source": "Generated from observation-to-action and maturity workflows.",
+      "tone": "bright, exact, active",
+      "motif": "canopy, measurement flag, sensor, hard daylight",
+      "palette": [
+        "#F7F8F2",
+        "#10231D",
+        "#1F7A4C",
+        "#176B87",
+        "#E3A62F"
+      ],
+      "prompt": "Single high-clarity editorial photograph inside a healthy vineyard canopy at bright midday, gloved hand measuring a vine with a clean unbranded instrument and one vivid amber field marker, crisp leaf texture, mineral-white reference card with no writing, deep green and cobalt shadow, purposeful agricultural evidence capture, no readable text, no logos, no UI, no collage, no grid.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Instrument sharp",
+            "description": "Increase technical precision and reduce softness.",
+            "promptHint": "instrument-grade sharpness and clear evidence focus"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Chlorophyll cobalt",
+            "description": "Push green and cool shadow contrast.",
+            "promptHint": "chlorophyll green, mineral white, cobalt shadows, amber marker"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Open row",
+            "description": "Pull back to show the exact block row context.",
+            "promptHint": "wider vineyard row with measured vine clearly located"
+          }
+        ],
+        "props": [
+          {
+            "label": "Sample capsule",
+            "description": "Add one translucent sample capsule.",
+            "promptHint": "small translucent sample capsule clipped to the instrument"
+          }
+        ],
+        "character": [
+          {
+            "label": "Field specialist",
+            "description": "Show the specialist from shoulder down.",
+            "promptHint": "field specialist in high-visibility workwear, face out of frame"
+          }
+        ],
+        "format": [
+          {
+            "label": "Mobile portrait",
+            "description": "Vertical composition optimized for field-screen inspiration.",
+            "promptHint": "vertical 9:16 composition"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/canopy-signal-measurement.jpg",
+      "sourceImageUrl": "/generated/35c3a7766b25445f1af6891319ca5c6c.png"
+    },
+    {
+      "id": "canopy-signal-field-kit",
+      "family": "Canopy Signal",
+      "title": "High-visibility field kit",
+      "caption": "Outdoor readability translated into material and color behavior.",
+      "source": "Generated from field-use accessibility and offline capture constraints.",
+      "tone": "robust, legible, prepared",
+      "motif": "safety yellow, dark tool, matte mineral surface",
+      "palette": [
+        "#FAFBF6",
+        "#12231E",
+        "#277B54",
+        "#155D75",
+        "#F0B632"
+      ],
+      "prompt": "Single overhead product-style editorial photograph of a vineyard field kit arranged on a clean matte mineral surface: dark green gloves, rugged unbranded handheld device with abstract color blocks and no text, cobalt marker, amber safety tab, small soil sample tube, precise spacing and strong sun-readable contrast, no readable text, no logos, no real UI, no collage, no grid.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Operational flat lay",
+            "description": "Tighter grid and more tool hierarchy.",
+            "promptHint": "disciplined operational flat lay with strong hierarchy"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Amber restraint",
+            "description": "Keep safety color to one small decisive element.",
+            "promptHint": "mostly mineral white and deep green with one amber safety cue"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Truck console",
+            "description": "Move the kit into a clean field-vehicle console.",
+            "promptHint": "rugged field kit on a clean vineyard truck console"
+          }
+        ],
+        "props": [
+          {
+            "label": "Offline card",
+            "description": "Add an unmarked durable sync-status card.",
+            "promptHint": "small unmarked cobalt status card"
+          }
+        ],
+        "character": [
+          {
+            "label": "Ready hand",
+            "description": "One gloved hand reaches for the device.",
+            "promptHint": "single gloved hand reaching into the organized kit"
+          }
+        ],
+        "format": [
+          {
+            "label": "Wide flat lay",
+            "description": "Landscape crop for palette and spacing study.",
+            "promptHint": "wide 3:2 overhead crop"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/canopy-signal-field-kit.jpg",
+      "sourceImageUrl": "/generated/56b37e21adfd5d107fde91066a204048.png"
+    },
+    {
+      "id": "canopy-signal-aerial-blocks",
+      "family": "Canopy Signal",
+      "title": "Aerial block geometry",
+      "caption": "The vineyard itself becomes the navigation and data-density grammar.",
+      "source": "Generated from block identity, mapping, scheduling, and cross-workflow scope.",
+      "tone": "systemic, clear, expansive",
+      "motif": "vine rows, parcel edge, access road, water line",
+      "palette": [
+        "#EDF2E8",
+        "#173128",
+        "#2D7A4D",
+        "#2D7189",
+        "#DDA43A"
+      ],
+      "prompt": "Single straight-down aerial editorial photograph of vineyard blocks forming strong geometric bands, one pale access road, a narrow blue-green water line, a single amber equipment point, clean parcel separations and no labels, visual rhythm suitable for a precise operational map language, no readable text, no logos, no UI, no collage, no grid layout.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Survey aerial",
+            "description": "More orthographic precision and less cinematic shadow.",
+            "promptHint": "orthographic survey-like aerial precision"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Mineral map",
+            "description": "Mute vegetation while preserving functional accents.",
+            "promptHint": "muted mineral green fields, blue water line, one amber point"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Slope blocks",
+            "description": "Introduce contour while retaining legibility.",
+            "promptHint": "sloped vineyard blocks with readable contour rhythm"
+          }
+        ],
+        "props": [
+          {
+            "label": "Vehicle trace",
+            "description": "Add one subtle vehicle movement trace without labels.",
+            "promptHint": "single small vineyard vehicle and subtle dust-free route trace"
+          }
+        ],
+        "character": [
+          {
+            "label": "No people",
+            "description": "Preserve pure system-scale geography.",
+            "promptHint": "no people, pure vineyard geometry"
+          }
+        ],
+        "format": [
+          {
+            "label": "Dashboard panorama",
+            "description": "Wide crop with room for dense UI composition studies.",
+            "promptHint": "wide panoramic crop with clear negative margin"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/canopy-signal-aerial-blocks.jpg",
+      "sourceImageUrl": "/generated/398a80751e43ad4db2890ed1ee315677.png"
+    },
+    {
+      "id": "canopy-signal-rugged-device",
+      "family": "Canopy Signal",
+      "title": "Rugged device in full sun",
+      "caption": "A material proof for mobile contrast, touch scale, and interruption state.",
+      "source": "Generated from mobile field capture, offline, stale, and conflict behavior.",
+      "tone": "immediate, dependable, bright",
+      "motif": "rugged handheld, sunlight, glove, status blocks",
+      "palette": [
+        "#FCFCF7",
+        "#10221C",
+        "#208050",
+        "#1C6882",
+        "#F1B334"
+      ],
+      "prompt": "Single close editorial photograph of a rugged unbranded handheld device held by a gloved vineyard worker in full sun, screen contains only large abstract high-contrast geometric blocks in deep green, cobalt, amber and mineral white with no readable text or recognizable UI, vine row background, glare controlled, decisive touch-scale feel, no logos, no collage, no grid.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Hard daylight",
+            "description": "Make glare resistance and edge contrast the hero.",
+            "promptHint": "hard daylight with excellent glare control and edge contrast"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Status trio",
+            "description": "Use green, cobalt, and amber only as functional blocks.",
+            "promptHint": "functional green, cobalt and amber status blocks on mineral white"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Paused work",
+            "description": "Set the device against a safely paused field task.",
+            "promptHint": "safely paused vineyard work visible in the background"
+          }
+        ],
+        "props": [
+          {
+            "label": "Radio clip",
+            "description": "Add a compact unbranded radio clip.",
+            "promptHint": "small unbranded radio clipped to workwear"
+          }
+        ],
+        "character": [
+          {
+            "label": "Crew leader",
+            "description": "Convey accountable field leadership without portrait focus.",
+            "promptHint": "crew leader posture, face out of frame"
+          }
+        ],
+        "format": [
+          {
+            "label": "Phone crop",
+            "description": "Tight vertical device-and-context composition.",
+            "promptHint": "vertical 4:5 crop centered on the device"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/canopy-signal-rugged-device.jpg",
+      "sourceImageUrl": "/generated/e00aa1811d308896e0ff480c5ddd550c.png"
+    },
+    {
+      "id": "vintage-control-intake-bay",
+      "family": "Vintage Control Room",
+      "title": "Night intake control bay",
+      "caption": "High-consequence harvest coordination in a rich, controlled environment.",
+      "source": "Generated from harvest command, intake, delay, rejection, and settlement workflows.",
+      "tone": "decisive, nocturnal, premium",
+      "motif": "stainless intake, work lights, deep plum, brass signal",
+      "palette": [
+        "#151719",
+        "#F2EEE6",
+        "#66293C",
+        "#9A7134",
+        "#4E6A56"
+      ],
+      "prompt": "Single cinematic editorial photograph of a professional winery intake bay during night harvest, stainless steel equipment, orderly work lights, deep charcoal and grape-plum shadows, one restrained brass signal lamp, clean traceable material flow and no brand marks, serious operational atmosphere rather than hospitality glamour, no readable text, no logos, no UI, no collage, no grid.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Control realism",
+            "description": "Reduce cinema and increase operational detail.",
+            "promptHint": "documentary control-room realism with exact material flow"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Plum restraint",
+            "description": "Use plum only in shadow and one state cue.",
+            "promptHint": "charcoal and stainless with restrained plum shadow and brass cue"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Arrival lane",
+            "description": "Shift toward load arrival and identity verification.",
+            "promptHint": "night harvest load arrival lane at winery intake"
+          }
+        ],
+        "props": [
+          {
+            "label": "Sample tray",
+            "description": "Add one clean grape sample tray at the foreground station.",
+            "promptHint": "clean grape sample tray at the intake station"
+          }
+        ],
+        "character": [
+          {
+            "label": "Intake team",
+            "description": "Two accountable workers coordinate without staged posing.",
+            "promptHint": "two winery intake workers coordinating naturally"
+          }
+        ],
+        "format": [
+          {
+            "label": "Cinematic wide",
+            "description": "Broad desktop direction-sheet crop.",
+            "promptHint": "wide cinematic 16:9 crop"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/vintage-control-intake-bay.jpg",
+      "sourceImageUrl": "/generated/695fdba4f743d21fba3a8a3f008ec20a.png"
+    },
+    {
+      "id": "vintage-control-grape-gauge",
+      "family": "Vintage Control Room",
+      "title": "Grape and gauge detail",
+      "caption": "Premium material character anchored to accountable measurement.",
+      "source": "Generated from maturity, quality disposition, and corrected intake evidence.",
+      "tone": "rich, forensic, tactile",
+      "motif": "grape skin, brass gauge, steel, measured light",
+      "palette": [
+        "#171719",
+        "#E9E3D8",
+        "#743047",
+        "#B18746",
+        "#52645A"
+      ],
+      "prompt": "Single macro editorial photograph of dark grape skins beside a precise unbranded brass-and-steel measuring gauge on a charcoal laboratory surface, raking controlled light, deep plum, warm brass and cool steel, forensic quality-disposition atmosphere, premium but not decorative, no readable text, no logos, no UI, no collage, no grid.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Laboratory exact",
+            "description": "Sharper neutral measurement and less sensuality.",
+            "promptHint": "neutral laboratory precision and forensic sharpness"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Steel dominant",
+            "description": "Cool the scene while preserving one plum sample cue.",
+            "promptHint": "cool steel and charcoal with one plum grape accent"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Quality station",
+            "description": "Pull back to a compact intake quality station.",
+            "promptHint": "compact professional intake quality station"
+          }
+        ],
+        "props": [
+          {
+            "label": "Correction layer",
+            "description": "Add one translucent evidence sleeve.",
+            "promptHint": "translucent evidence sleeve under the gauge"
+          }
+        ],
+        "character": [
+          {
+            "label": "Technician hand",
+            "description": "One careful hand adjusts the gauge.",
+            "promptHint": "technician hand carefully adjusting the gauge"
+          }
+        ],
+        "format": [
+          {
+            "label": "Detail square",
+            "description": "Square material study.",
+            "promptHint": "square macro composition"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/vintage-control-grape-gauge.jpg",
+      "sourceImageUrl": "/generated/5a44afced815d9634606da49d650bb22.png"
+    },
+    {
+      "id": "vintage-control-night-harvest",
+      "family": "Vintage Control Room",
+      "title": "Night harvest grid",
+      "caption": "Urgent work, moving crews, and load identity held in a controlled visual rhythm.",
+      "source": "Generated from urgent harvest replanning and transport handoffs.",
+      "tone": "urgent, controlled, atmospheric",
+      "motif": "headlights, vine rows, reflective markers, disciplined motion",
+      "palette": [
+        "#111416",
+        "#F1EBDD",
+        "#6B2C42",
+        "#C18A37",
+        "#466455"
+      ],
+      "prompt": "Single elevated editorial photograph of an active night harvest with parallel vine rows, disciplined pools of work light, a few small vehicles and workers, reflective amber markers and deep plum-black sky, clear operational lanes and controlled urgency, no tourism romance, no readable text, no logos, no UI, no collage, no grid layout.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Operational documentary",
+            "description": "More real work detail and less atmosphere.",
+            "promptHint": "operational documentary realism, clear crews and equipment lanes"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Amber state cues",
+            "description": "Reserve amber for movement and hazard markers.",
+            "promptHint": "charcoal scene with amber movement and hazard markers only"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Truck delay",
+            "description": "Show a safe delayed load and dispatch response.",
+            "promptHint": "safely delayed harvest truck with coordinated dispatch response"
+          }
+        ],
+        "props": [
+          {
+            "label": "Reflective tags",
+            "description": "Add small unlabeled load-identity tags.",
+            "promptHint": "small unlabeled reflective load-identity tags"
+          }
+        ],
+        "character": [
+          {
+            "label": "Crew pattern",
+            "description": "Show accountable crew clusters rather than anonymous silhouettes.",
+            "promptHint": "small accountable crew groups in clear work zones"
+          }
+        ],
+        "format": [
+          {
+            "label": "Panoramic rows",
+            "description": "Extra-wide row rhythm for dense desktop inspiration.",
+            "promptHint": "extra-wide panoramic vineyard row composition"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/vintage-control-night-harvest.jpg",
+      "sourceImageUrl": "/generated/b29d3820df0d99dc46276da5d77c8f9a.png"
+    },
+    {
+      "id": "vintage-control-archive",
+      "family": "Vintage Control Room",
+      "title": "Controlled evidence archive",
+      "caption": "Certification and settlement history with gravitas and precise lineage.",
+      "source": "Generated from audit, certification, correction, and historical review scenarios.",
+      "tone": "authoritative, quiet, enduring",
+      "motif": "dark archive, brass index, translucent version layers",
+      "palette": [
+        "#17181A",
+        "#EEE9DF",
+        "#6A2E42",
+        "#A77B3F",
+        "#53635A"
+      ],
+      "prompt": "Single editorial interior detail of a modern controlled evidence archive: matte charcoal drawers, refined brass index pulls without labels, translucent record sleeves showing layered versions with no writing, one deep-plum divider and soft focused light, institutional trust and append-only history, no readable text, no logos, no UI, no collage, no grid.",
+      "remixSuggestions": {
+        "style": [
+          {
+            "label": "Modern registry",
+            "description": "Crisper institutional order and less luxury styling.",
+            "promptHint": "modern institutional registry with exact orderly storage"
+          }
+        ],
+        "palette": [
+          {
+            "label": "Graphite and bone",
+            "description": "Reduce brass and plum to small structural accents.",
+            "promptHint": "graphite, bone, minimal brass and plum accents"
+          }
+        ],
+        "scene": [
+          {
+            "label": "Audit table",
+            "description": "Move layered records to a review table.",
+            "promptHint": "layered evidence sleeves on a controlled audit table"
+          }
+        ],
+        "props": [
+          {
+            "label": "Version tabs",
+            "description": "Add blank geometric predecessor/successor tabs.",
+            "promptHint": "blank geometric predecessor and successor tabs"
+          }
+        ],
+        "character": [
+          {
+            "label": "Auditor review",
+            "description": "One auditor examines lineage without portrait focus.",
+            "promptHint": "auditor hands examining layered record lineage"
+          }
+        ],
+        "format": [
+          {
+            "label": "Vertical archive",
+            "description": "Tall composition for history and version motifs.",
+            "promptHint": "tall vertical composition"
+          }
+        ]
+      },
+      "imageUrl": "/generated/mcp-thumbs/vintage-control-archive.jpg",
+      "sourceImageUrl": "/generated/2a703e888426e2325ba97ce2113201fd.png"
+    }
+  ]
+}

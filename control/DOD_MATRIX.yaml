@@ -73,7 +73,16 @@ criteria:
     title: Visual system
     status: pending
     verification: three directions scored; selected thesis, tokens, components, and vineyard distinctiveness pass
-    evidence: []
+    evidence:
+      - design-system/visual-directions/directions.json
+      - design-system/tokens/vineyard.tokens.json
+      - design-system/tokens/vineyard.css
+      - design-system/tokens/contrast-pairs.json
+      - atlas/src/pages/VisualDirectionsPage.tsx
+      - atlas/src/visual-directions.css
+      - atlas/tests/visual-directions.e2e.spec.ts
+      - validation/visual-direction-renders
+      - validation/visual-direction-review.md
   - id: G8
     title: Production waves
     status: pending

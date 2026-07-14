@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "evaluated_at": "2026-07-13T20:58:33.8865412-07:00",
+  "evaluated_at": "2026-07-13T22:20:00.3287136-07:00",
   "gates": [
     {
       "id": "G0",
@@ -104,6 +104,33 @@
         "validation/PRODUCT_REVIEW.md"
       ],
       "commit_sha": "46467bd120cbfd8e3bcf253532645da49f4a4ea8"
+    },
+    {
+      "id": "G7",
+      "status": "in_progress",
+      "checks": [
+        "Three materially distinct lighthouse directions scored against invariant content",
+        "Selected thesis clears total and every criterion floor with no hard rejection",
+        "DTCG token shapes, semantic dependency direction, contrast, and generated CSS currentness",
+        "Selected screen implementation consumes reference, semantic, and component token layers",
+        "Nine exact source-digested captures preserve canonical top position and required content geometry",
+        "Full browser, responsive, focus, target-size, non-color status, and accessibility acceptance",
+        "Independent visual and foundation review with no unresolved P0, P1, or P2 findings"
+      ],
+      "evidence": [
+        "design-system/visual-directions/directions.json",
+        "design-system/tokens/vineyard.tokens.json",
+        "design-system/tokens/vineyard.css",
+        "design-system/tokens/contrast-pairs.json",
+        "design-system/assets/parcel-signal.svg",
+        "design-system/assets/record-lineage.svg",
+        "atlas/src/pages/VisualDirectionsPage.tsx",
+        "atlas/src/visual-directions.css",
+        "atlas/tests/visual-directions.e2e.spec.ts",
+        "validation/visual-direction-renders",
+        "validation/visual-direction-review.md"
+      ],
+      "commit_sha": null
     }
   ]
 }
