@@ -1,4 +1,10 @@
 import type { ReactNode } from "react";
+import parcelSignalUrl from "../../../../design-system/assets/parcel-signal.svg?url";
+import {
+  fixtureIndex,
+  getFixtureIdentity,
+  getFixtureRecords,
+} from "../../data/canonical";
 import {
   actionExplanation,
   canRolePerform,
@@ -10,6 +16,7 @@ import {
   getActionTrace,
   getCorrectionLineage,
   notificationFor,
+  presentationFor,
   recordName,
   statePresentation,
 } from "../../data/screenViewModel";
@@ -346,8 +353,7 @@ export function MissingInformationCallout(props: ProductionComponentProps) {
 
 export function ExceptionCard(props: ProductionComponentProps) {
   const { model } = props;
-  const presentation =
-    statePresentation[model.reviewState] ?? statePresentation.normal;
+  const presentation = presentationFor(model.screen.id, model.reviewState);
   return (
     <ComponentFrame {...props} componentId="CMP-010">
       <div className={`wave-exception wave-tone-${presentation.tone}`}>
@@ -694,6 +700,137 @@ export function EffectiveTimeControl(props: ProductionComponentProps) {
   );
 }
 
+function nestedValue(value: unknown, path: string[]): unknown {
+  let current = value;
+  for (const key of path) {
+    if (!current || typeof current !== "object" || Array.isArray(current)) {
+      return undefined;
+    }
+    current = (current as Record<string, unknown>)[key];
+  }
+  return current;
+}
+
+function exactNumber(value: unknown, path: string[]) {
+  const result = nestedValue(value, path);
+  return typeof result === "number" ? result : undefined;
+}
+
+export function TrendChart(props: ProductionComponentProps) {
+  const { model } = props;
+  const points = model.screen.fixture_ids
+    .map((fixtureId) => fixtureIndex.get(fixtureId))
+    .filter((fixture) => fixture?.workflow_id === "WF-003")
+    .map((fixture) => {
+      const soilRecord = getFixtureRecords(fixture!).find(
+        (record) => recordName(record) === "Soil-moisture or ET record",
+      );
+      if (!soilRecord) return undefined;
+      const depletion = exactNumber(soilRecord.facts, [
+        "domain_details",
+        "soil_moisture_depletion",
+        "value",
+      ]);
+      const referenceEt = exactNumber(soilRecord.facts, [
+        "domain_details",
+        "reference_et",
+        "value",
+      ]);
+      if (depletion === undefined) return undefined;
+      return {
+        fixture: fixture!,
+        block: getFixtureIdentity(fixture!).block,
+        depletion,
+        referenceEt,
+        effectiveAt: soilRecord.effective_at,
+      };
+    })
+    .filter((point): point is NonNullable<typeof point> => Boolean(point));
+
+  return (
+    <ComponentFrame {...props} componentId="CMP-024" className="wave-span-2">
+      {points.length ? (
+        <>
+          <div className="wave-trend-summary">
+            <div>
+              <span>Evidence series</span>
+              <strong>Soil-moisture depletion</strong>
+              <small>Percent · exact connected fixture measurements</small>
+            </div>
+            <p>
+              Values are presented as recorded. No agronomic threshold is
+              inferred when the source fixture does not declare one.
+            </p>
+          </div>
+          <ol
+            aria-label="Soil-moisture depletion evidence"
+            className="wave-trend-bars"
+          >
+            {points.map((point) => (
+              <li
+                className={
+                  point.fixture.id === model.fixture.id ? "is-current" : ""
+                }
+                data-fixture-id={point.fixture.id}
+                key={point.fixture.id}
+              >
+                <div>
+                  <strong>
+                    {point.block?.current_name ?? point.fixture.id}
+                  </strong>
+                  <small>
+                    {formatMoment(point.effectiveAt)} · {point.fixture.id}
+                  </small>
+                </div>
+                <progress max={100} value={point.depletion}>
+                  {point.depletion}%
+                </progress>
+                <span>{point.depletion.toFixed(0)}%</span>
+              </li>
+            ))}
+          </ol>
+          <div className="wave-table-wrap" tabIndex={0}>
+            <table>
+              <caption>
+                Structured condition evidence for the visual series
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Block</th>
+                  <th scope="col">Effective</th>
+                  <th scope="col">Depletion</th>
+                  <th scope="col">Reference ET</th>
+                </tr>
+              </thead>
+              <tbody>
+                {points.map((point) => (
+                  <tr key={point.fixture.id}>
+                    <th scope="row">
+                      {point.block?.current_name ?? point.fixture.id}
+                    </th>
+                    <td>{formatMoment(point.effectiveAt)}</td>
+                    <td>{point.depletion.toFixed(0)}%</td>
+                    <td>
+                      {point.referenceEt === undefined
+                        ? "Not recorded"
+                        : `${point.referenceEt.toFixed(3)} in`}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : (
+        <p className="wave-empty-copy">
+          No typed soil-moisture series resolves for this fixture; no trend is
+          inferred.
+        </p>
+      )}
+    </ComponentFrame>
+  );
+}
+
 export function MapScopeViewer(props: ProductionComponentProps) {
   const { model } = props;
   const block = model.identity.block;
@@ -704,7 +841,7 @@ export function MapScopeViewer(props: ProductionComponentProps) {
         role="img"
         aria-label={`Row map for ${block?.current_name}`}
       >
-        <div className="wave-map-rows" />
+        <img alt="" aria-hidden="true" src={parcelSignalUrl} />
         <span className="wave-map-north">N ↑</span>
         <span className="wave-map-block">
           <strong>{block?.id}</strong>

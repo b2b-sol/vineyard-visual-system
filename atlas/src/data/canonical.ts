@@ -28,6 +28,26 @@ export const WAVE_001_SCREEN_IDS = [
   "SCR-045",
 ] as const;
 
+export const WAVE_002_SCREEN_IDS = [
+  "SCR-007",
+  "SCR-008",
+  "SCR-009",
+  "SCR-010",
+  "SCR-011",
+  "SCR-012",
+  "SCR-013",
+  "SCR-014",
+  "SCR-015",
+  "SCR-016",
+  "SCR-017",
+  "SCR-018",
+] as const;
+
+export const PRODUCTION_SCREEN_IDS = [
+  ...WAVE_001_SCREEN_IDS,
+  ...WAVE_002_SCREEN_IDS,
+] as const;
+
 export const WAVE_001_COMPONENT_IDS = [
   ...Array.from(
     { length: 22 },
@@ -40,8 +60,16 @@ export const WAVE_001_COMPONENT_IDS = [
   "CMP-036",
 ] as const;
 
-export type WaveScreenId = (typeof WAVE_001_SCREEN_IDS)[number];
-export type PublicComponentId = (typeof WAVE_001_COMPONENT_IDS)[number];
+export const PRODUCTION_COMPONENT_IDS = [
+  ...WAVE_001_COMPONENT_IDS.slice(0, 22),
+  "CMP-024",
+  ...WAVE_001_COMPONENT_IDS.slice(22),
+] as const;
+
+export type Wave001ScreenId = (typeof WAVE_001_SCREEN_IDS)[number];
+export type Wave002ScreenId = (typeof WAVE_002_SCREEN_IDS)[number];
+export type WaveScreenId = (typeof PRODUCTION_SCREEN_IDS)[number];
+export type PublicComponentId = (typeof PRODUCTION_COMPONENT_IDS)[number];
 
 export interface CanonicalAction {
   id: string;
@@ -305,10 +333,16 @@ const indexById = <T extends { id: string }>(items: T[]) =>
   new Map(items.map((item) => [item.id, item] as const));
 
 const screens = (screensSource.screens as unknown as ScreenContract[]).filter(
-  (screen) => WAVE_001_SCREEN_IDS.includes(screen.id),
+  (screen) => PRODUCTION_SCREEN_IDS.includes(screen.id),
+);
+const wave001Screens = screens.filter((screen) =>
+  WAVE_001_SCREEN_IDS.includes(screen.id as Wave001ScreenId),
 );
 const states = (stateMatrixSource.states as unknown as StateContract[]).filter(
-  (state) => WAVE_001_SCREEN_IDS.includes(state.screen_id),
+  (state) => PRODUCTION_SCREEN_IDS.includes(state.screen_id),
+);
+const wave001States = states.filter((state) =>
+  WAVE_001_SCREEN_IDS.includes(state.screen_id as Wave001ScreenId),
 );
 const fixtures = fixturesSource.fixtures as unknown as Fixture[];
 const events = eventsSource.events as unknown as CanonicalEvent[];
@@ -352,7 +386,7 @@ export const notificationIndex = indexById(
 export const componentRequirementIndex = indexById(
   (
     componentRequirementsSource.components as unknown as ComponentRequirement[]
-  ).filter((component) => WAVE_001_COMPONENT_IDS.includes(component.id)),
+  ).filter((component) => PRODUCTION_COMPONENT_IDS.includes(component.id)),
 );
 export const scenarioIndex = indexById(
   scenariosSource.scenarios as unknown as Scenario[],
@@ -379,14 +413,19 @@ export const syncClasses = syncSource.classes as Array<{
   constraints: string;
 }>;
 
-export const waveScreens = screens;
-export const waveStateContracts = states;
+export const waveScreens = wave001Screens;
+export const productionScreens = screens;
+export const waveStateContracts = wave001States;
+export const productionStateContracts = states;
 export const waveComponents = WAVE_001_COMPONENT_IDS.map((id) =>
+  componentRequirementIndex.get(id)!,
+);
+export const productionComponents = PRODUCTION_COMPONENT_IDS.map((id) =>
   componentRequirementIndex.get(id)!,
 );
 
 export function isWaveScreenId(value: string): value is WaveScreenId {
-  return WAVE_001_SCREEN_IDS.includes(value as WaveScreenId);
+  return PRODUCTION_SCREEN_IDS.includes(value as WaveScreenId);
 }
 
 export function getStateContracts(screenId: WaveScreenId) {

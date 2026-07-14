@@ -25,7 +25,7 @@ import {
   type RecordInstance,
   type RoleAssignment,
 } from "./canonical";
-import type { ResolvedScreenState } from "./wave001";
+import type { ResolvedScreenState } from "./screenRecipes";
 
 export interface ScreenViewModel extends ResolvedScreenState {
   scenario: ReturnType<typeof getScenarioForFixture>;
@@ -48,6 +48,13 @@ const layoutComponentPriorities: Record<
   field: ["CMP-004", "CMP-007", "CMP-020", "CMP-021"],
   evidence: ["CMP-005", "CMP-013", "CMP-014", "CMP-034"],
   labor: ["CMP-001", "CMP-008", "CMP-012", "CMP-020"],
+  monitor: ["CMP-001", "CMP-008", "CMP-018", "CMP-026"],
+  capture: ["CMP-007", "CMP-004", "CMP-010", "CMP-015"],
+  assessment: ["CMP-008", "CMP-005", "CMP-014", "CMP-026"],
+  protection: ["CMP-008", "CMP-010", "CMP-011", "CMP-033"],
+  water: ["CMP-024", "CMP-008", "CMP-005", "CMP-026"],
+  delivery: ["CMP-007", "CMP-022", "CMP-012", "CMP-014"],
+  recovery: ["CMP-010", "CMP-011", "CMP-014", "CMP-013"],
 };
 
 const stateComponentPriorities: Record<string, PublicComponentId[]> = {
@@ -64,6 +71,12 @@ const stateComponentPriorities: Record<string, PublicComponentId[]> = {
   loading: ["CMP-005", "CMP-006", "CMP-017"],
   empty: ["CMP-001", "CMP-006", "CMP-036"],
   error: ["CMP-009", "CMP-010", "CMP-034"],
+  read_only: ["CMP-005", "CMP-014", "CMP-035"],
+  approval_pending: ["CMP-008", "CMP-033", "CMP-018"],
+  rejected: ["CMP-010", "CMP-011", "CMP-014"],
+  delayed: ["CMP-015", "CMP-017", "CMP-018"],
+  superseded: ["CMP-013", "CMP-014", "CMP-034"],
+  incomplete_information: ["CMP-009", "CMP-010", "CMP-011"],
 };
 
 export function visibleComponentIds(model: ScreenViewModel) {
@@ -79,7 +92,7 @@ export function visibleComponentIds(model: ScreenViewModel) {
     (_, componentIndex) => componentIndex % stateCount === stateIndex,
   );
   const responsibilityOrder =
-    model.recipe.layout === "field"
+    model.screen.platform === "mobile" || model.recipe.layout === "field"
       ? (["CMP-007", "CMP-004", "CMP-003", "CMP-006"] as PublicComponentId[])
       : (["CMP-003", "CMP-004", "CMP-006", "CMP-007"] as PublicComponentId[]);
   const ordered = [
@@ -742,7 +755,71 @@ export const statePresentation: Record<
       "This validation branch demonstrates containment for non-balancing totals; no operational variance is asserted for the context fixture.",
     tone: "critical",
   },
+  read_only: {
+    symbol: "◷",
+    title: "Accepted record is read only",
+    detail:
+      "Current evidence remains inspectable; change requires an explicit correction or supersession.",
+    tone: "neutral",
+  },
+  approval_pending: {
+    symbol: "◇",
+    title: "Recommendation awaits accountable approval",
+    detail:
+      "Evidence is assembled, but assignment and delivery remain unavailable until online authority resolves.",
+    tone: "notice",
+  },
+  rejected: {
+    symbol: "×",
+    title: "Adjustment rejected with reason",
+    detail:
+      "The prior recommendation remains visible while the owner prepares a safer or better-supported successor.",
+    tone: "critical",
+  },
+  delayed: {
+    symbol: "◷",
+    title: "Delivery evidence is delayed",
+    detail:
+      "Field evidence is retained with its effective time; verification waits for synchronized actuals.",
+    tone: "notice",
+  },
+  superseded: {
+    symbol: "↳",
+    title: "Later evidence supersedes this plan",
+    detail:
+      "The original decision stays immutable and linked to the accountable successor.",
+    tone: "revision",
+  },
+  incomplete_information: {
+    symbol: "?",
+    title: "Restart evidence is incomplete",
+    detail:
+      "The affected scope stays contained until repair, remaining set, owner, and safe restart conditions resolve.",
+    tone: "critical",
+  },
 };
+
+export function presentationFor(screenId: string, state: string) {
+  if (state === "error" && screenId !== "SCR-045") {
+    return {
+      symbol: "!",
+      title: "Release evidence is incomplete",
+      detail:
+        "The application stays held until the missing condition, restriction, or authority evidence resolves.",
+      tone: "critical",
+    };
+  }
+  if (state === "empty" && screenId !== "SCR-044") {
+    return {
+      symbol: "○",
+      title: "No follow-up action is due",
+      detail:
+        "The inspected scope remains paired with its accepted report and effective-time filters.",
+      tone: "positive",
+    };
+  }
+  return statePresentation[state] ?? statePresentation.normal;
+}
 
 export function formatMoment(value: string) {
   return new Intl.DateTimeFormat("en-US", {

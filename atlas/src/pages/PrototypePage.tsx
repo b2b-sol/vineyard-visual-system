@@ -26,7 +26,12 @@ function PrototypeLane({
       <header>
         <span>{lane}</span>
         <h2 id={`${lane}-lane-title`}>
-          {lane === "WF-001" ? "Plan → verify" : "Crew → cost"}
+          {{
+            "WF-001": "Plan → verify",
+            "WF-002": "Observe → protect",
+            "WF-003": "Demand → verify",
+            "WF-007": "Crew → cost",
+          }[lane] ?? "Accountable workflow"}
         </h2>
         <small>{steps[0]?.fixture.id} · exact fixture chronology</small>
       </header>
@@ -81,7 +86,10 @@ export function PrototypePage() {
   const [boundary, setBoundary] = useState<ReplayBoundary>("canonical");
   const [lastResult, setLastResult] = useState<PrototypeAppendResult>();
 
-  if (!flow || !["FLW-001", "FLW-007", "FLW-015"].includes(flowId)) {
+  if (
+    !flow ||
+    !["FLW-001", "FLW-002", "FLW-003", "FLW-007", "FLW-015"].includes(flowId)
+  ) {
     return <NotFoundPage />;
   }
 

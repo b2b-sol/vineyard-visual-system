@@ -1,27 +1,12 @@
 import {
-  fixtureIndex,
   getStateContracts,
   screenIndex,
-  stateIndex,
-  type Fixture,
-  type ScreenContract,
-  type StateContract,
-  type WaveScreenId,
+  type Wave001ScreenId,
   WAVE_001_SCREEN_IDS,
 } from "./canonical";
+import type { ScreenRecipe } from "./screenRecipes";
 
-export interface ScreenRecipe {
-  id: WaveScreenId;
-  eyebrow: string;
-  headline: string;
-  operatingQuestion: string;
-  layout: "brief" | "plan" | "dispatch" | "field" | "evidence" | "labor";
-  primaryFixtureId: string;
-  stateFixtureIds: Record<string, string>;
-  highlights: [string, string, string];
-}
-
-export const wave001Recipes: Record<WaveScreenId, ScreenRecipe> = {
+export const wave001Recipes: Record<Wave001ScreenId, ScreenRecipe> = {
   "SCR-001": {
     id: "SCR-001",
     eyebrow: "Today · evidence before motion",
@@ -222,103 +207,6 @@ export const wave001Recipes: Record<WaveScreenId, ScreenRecipe> = {
     highlights: ["Accepted labor", "Allocation basis", "Balanced total"],
   },
 };
-
-export interface ResolvedScreenState {
-  screen: ScreenContract;
-  recipe: ScreenRecipe;
-  fixture: Fixture;
-  reviewState: string;
-  stateContract: StateContract;
-  requestedState: string;
-  modelOnly: boolean;
-  activeEventId?: string;
-  scenarioId?: string;
-  fixtureOverrideRejected: boolean;
-}
-
-export function resolveScreenState(
-  screenId: WaveScreenId,
-  stateValue?: string | null,
-  fixtureValue?: string | null,
-): ResolvedScreenState {
-  const screen = screenIndex.get(screenId)!;
-  const recipe = wave001Recipes[screenId];
-  const requestedState = stateValue || "normal";
-  const explicitContract = stateValue?.startsWith("STM-")
-    ? stateIndex.get(stateValue)
-    : undefined;
-  const validExplicitContract =
-    explicitContract?.screen_id === screenId ? explicitContract : undefined;
-  const reviewState = validExplicitContract?.kind ?? requestedState;
-  const allowedState =
-    screen.states.some((state) => state.id === reviewState) ||
-    validExplicitContract;
-  const normalizedState = allowedState ? reviewState : "normal";
-  const candidates = getStateContracts(screenId).filter(
-    (contract) => contract.kind === normalizedState,
-  );
-  const requestedFixture = fixtureValue
-    ? fixtureIndex.get(fixtureValue)
-    : undefined;
-  const requestedFixtureAllowed = Boolean(
-    requestedFixture && screen.fixture_ids.includes(requestedFixture.id),
-  );
-  const preferredFixtureId = requestedFixtureAllowed
-    ? requestedFixture!.id
-    : (recipe.stateFixtureIds[normalizedState] ?? recipe.primaryFixtureId);
-  const operationalCandidates = candidates.filter(
-    (contract) => contract.source_ref.type === "operational",
-  );
-  const stateContract =
-    validExplicitContract ??
-    operationalCandidates.find(
-      (contract) => contract.source_ref.fixture_id === preferredFixtureId,
-    ) ??
-    operationalCandidates[0] ??
-    candidates[0];
-
-  if (!stateContract) {
-    throw new Error(
-      `${screenId} has no canonical state contract for ${normalizedState}`,
-    );
-  }
-
-  const modelOnly = ["canonical", "ui"].includes(stateContract.source_ref.type);
-  const contractFixture = stateContract.source_ref.fixture_id;
-  const stateFixture = recipe.stateFixtureIds[normalizedState];
-  const contextFixtureId =
-    stateFixture && screen.fixture_ids.includes(stateFixture)
-      ? stateFixture
-      : recipe.primaryFixtureId;
-  const fixtureOverrideCompatible = Boolean(
-    requestedFixtureAllowed &&
-    ((contractFixture && requestedFixture!.id === contractFixture) ||
-      (modelOnly && requestedFixture!.id === contextFixtureId)),
-  );
-  const fixtureId =
-    contractFixture && screen.fixture_ids.includes(contractFixture)
-      ? contractFixture
-      : modelOnly && fixtureOverrideCompatible && requestedFixtureAllowed
-        ? requestedFixture!.id
-        : contextFixtureId;
-  const fixture =
-    fixtureIndex.get(fixtureId) ?? fixtureIndex.get(screen.fixture_ids[0])!;
-
-  return {
-    screen,
-    recipe,
-    fixture,
-    reviewState: normalizedState,
-    stateContract,
-    requestedState,
-    modelOnly,
-    activeEventId: modelOnly ? undefined : stateContract.source_ref.event_id,
-    scenarioId: modelOnly ? undefined : stateContract.source_ref.scenario_id,
-    fixtureOverrideRejected: Boolean(
-      fixtureValue && (!requestedFixtureAllowed || !fixtureOverrideCompatible),
-    ),
-  };
-}
 
 export const reviewStateCount = WAVE_001_SCREEN_IDS.reduce(
   (total, screenId) => total + screenIndex.get(screenId)!.states.length,

@@ -2,20 +2,24 @@ import { useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { OperationalAppShell } from "../components/production/PublicComponents";
 import { PublicComponent } from "../components/production/PublicComponent";
+import { Wave002TaskSurface } from "../components/production/Wave002TaskSurface";
 import type { CanonicalAction } from "../data/canonical";
 import {
   fixtureIndex,
   getStateContracts,
   isWaveScreenId,
   WAVE_001_SCREEN_IDS,
+  WAVE_002_SCREEN_IDS,
 } from "../data/canonical";
 import {
+  actionExplanation,
+  canRolePerform,
   createScreenViewModel,
   formatMoment,
-  statePresentation,
+  presentationFor,
   visibleComponentIds,
 } from "../data/screenViewModel";
-import { resolveScreenState } from "../data/wave001";
+import { resolveScreenState } from "../data/screenRecipes";
 import { NotFoundPage } from "./NotFoundPage";
 
 function WorkflowStrip({
@@ -25,10 +29,13 @@ function WorkflowStrip({
   workflowId: string;
   currentScreenId: string;
 }) {
-  const screenIds =
-    workflowId === "WF-001"
-      ? WAVE_001_SCREEN_IDS.slice(0, 6)
-      : WAVE_001_SCREEN_IDS.slice(6);
+  const screenIds = {
+    "WF-001": WAVE_001_SCREEN_IDS.slice(0, 6),
+    "WF-002": WAVE_002_SCREEN_IDS.slice(0, 6),
+    "WF-003": WAVE_002_SCREEN_IDS.slice(6),
+    "WF-007": WAVE_001_SCREEN_IDS.slice(6),
+  }[workflowId];
+  if (!screenIds) return null;
   return (
     <nav
       aria-label={`${workflowId} workflow screen strip`}
@@ -62,11 +69,19 @@ export function ProductionScreenPage() {
     searchParams.get("fixture"),
   );
   const model = createScreenViewModel(resolved);
-  const currentRoleId = activeRoleId || model.screen.primary_role_ids[0];
-  const presentation =
-    statePresentation[model.reviewState] ?? statePresentation.normal;
+  const defaultRoleId =
+    model.screen.primary_role_ids.find((roleId) =>
+      model.screen.actions.some((action) =>
+        canRolePerform(action, roleId, model),
+      ),
+    ) ?? model.screen.primary_role_ids[0];
+  const currentRoleId = activeRoleId || defaultRoleId;
+  const presentation = presentationFor(model.screen.id, model.reviewState);
   const stateContracts = getStateContracts(model.screen.id);
   const visibleComponents = visibleComponentIds(model);
+  const enabledAction = model.screen.actions.find((action) =>
+    canRolePerform(action, currentRoleId, model),
+  );
 
   const componentProps = {
     model,
@@ -169,6 +184,39 @@ export function ProductionScreenPage() {
           </div>
         </header>
 
+        {model.screen.platform === "mobile" && (
+          <section
+            aria-label="Field action now"
+            className="wave-mobile-action-dock"
+          >
+            <div>
+              <span>
+                {model.identity.block?.current_name ?? model.fixture.id} ·{" "}
+                {model.activeEvent?.connectivity.mode ?? "modeled state"}
+              </span>
+              <strong>
+                {enabledAction?.label ?? "No permitted field action"}
+              </strong>
+              <small>
+                {enabledAction
+                  ? actionExplanation(enabledAction, currentRoleId, model)
+                  : model.stateContract.recovery}
+              </small>
+            </div>
+            <button
+              data-action-id={enabledAction?.id}
+              data-transition-id={enabledAction?.transition?.transition_id}
+              disabled={!enabledAction}
+              onClick={() =>
+                enabledAction && componentProps.onAction(enabledAction)
+              }
+              type="button"
+            >
+              {enabledAction?.kind === "inspect" ? "Inspect now" : "Act now"}
+            </button>
+          </section>
+        )}
+
         <section
           aria-labelledby={`${model.screen.id}-state-title`}
           className={`wave-state-banner wave-tone-${presentation.tone}`}
@@ -226,6 +274,8 @@ export function ProductionScreenPage() {
           </p>
         )}
 
+        <Wave002TaskSurface model={model} />
+
         <div
           className="wave-component-grid"
           data-visible-component-count={visibleComponents.length}
@@ -281,7 +331,14 @@ export function ProductionScreenPage() {
           </label>
           <Link
             className="wave-prototype-link"
-            to={`/prototypes/${model.screen.workflow_ids[0] === "WF-001" ? "FLW-001" : "FLW-007"}`}
+            to={`/prototypes/${
+              {
+                "WF-001": "FLW-001",
+                "WF-002": "FLW-002",
+                "WF-003": "FLW-003",
+                "WF-007": "FLW-007",
+              }[model.screen.workflow_ids[0]] ?? "FLW-001"
+            }`}
           >
             Open full replay →
           </Link>
@@ -308,8 +365,8 @@ export function ProductionScreenPage() {
         {model.reviewState === "loading" && (
           <div aria-live="polite" className="wave-loading-note" role="status">
             <span aria-hidden="true" />
-            Linked attendance, break, and task records are loading. Stable scope
-            remains available below.
+            Linked decision and evidence records are loading. Stable scope,
+            responsibility, and current workflow state remain available.
           </div>
         )}
 

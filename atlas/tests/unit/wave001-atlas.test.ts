@@ -3,16 +3,14 @@ import {
   getComponentsForScreen,
   getStateContracts,
   permissionIndex,
+  PRODUCTION_COMPONENT_IDS,
   waveComponents,
   waveScreens,
   WAVE_001_COMPONENT_IDS,
   WAVE_001_SCREEN_IDS,
 } from "../../src/data/canonical";
-import {
-  canonicalStateCount,
-  resolveScreenState,
-  reviewStateCount,
-} from "../../src/data/wave001";
+import { resolveScreenState } from "../../src/data/screenRecipes";
+import { canonicalStateCount, reviewStateCount } from "../../src/data/wave001";
 import {
   createScreenViewModel,
   derivePartialMeasure,
@@ -37,7 +35,9 @@ describe("WAVE-001 registry-backed atlas", () => {
     expect(waveComponents.map((component) => component.id)).toEqual(
       WAVE_001_COMPONENT_IDS,
     );
-    expect(Object.keys(publicComponentExports)).toEqual(WAVE_001_COMPONENT_IDS);
+    expect(Object.keys(publicComponentExports)).toEqual(
+      PRODUCTION_COMPONENT_IDS,
+    );
   });
 
   it("resolves every required review state to a connected, allowed fixture", () => {

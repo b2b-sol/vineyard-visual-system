@@ -68,18 +68,14 @@ function flowStepMap(flowId: string) {
 }
 
 export function buildPrototypeSteps(flowId: string): PrototypeStep[] {
-  const fixtureIds =
-    flowId === "FLW-001"
-      ? ["FIX-006"]
-      : flowId === "FLW-007"
-        ? ["FIX-033"]
-        : flowId === "FLW-015"
-          ? ["FIX-003", "FIX-033"]
-          : [];
+  const fixtureIds = flowIndex.get(flowId)?.fixture_ids ?? [];
   const mappedSteps = flowStepMap(flowId);
+  const seenEventIds = new Set<string>();
   return fixtureIds.flatMap((fixtureId) => {
     const fixture = fixtureIndex.get(fixtureId)!;
-    return getFixtureEvents(fixture).map((event) => {
+    return getFixtureEvents(fixture).flatMap((event) => {
+      if (seenEventIds.has(event.id)) return [];
+      seenEventIds.add(event.id);
       const flowStep = mappedSteps.get(event.id);
       const fallback = getActionForTransition(event.transition_id);
       const screen = flowStep
@@ -95,21 +91,23 @@ export function buildPrototypeSteps(flowId: string): PrototypeStep[] {
           `${flowId} cannot allocate ${event.id}/${event.transition_id} to an exact screen action`,
         );
       }
-      return {
-        event,
-        fixture,
-        lane: fixture.workflow_id,
-        screen,
-        action,
-        screenId: screen.id,
-        actionId: action.id,
-        actorRoleId: getAssignmentLabel(event.actor_assignment_id).roleId,
-        stateContractId: waveStateContracts.find(
-          (contract) =>
-            contract.screen_id === screen.id &&
-            contract.source_ref.event_id === event.id,
-        )?.id,
-      };
+      return [
+        {
+          event,
+          fixture,
+          lane: fixture.workflow_id,
+          screen,
+          action,
+          screenId: screen.id,
+          actionId: action.id,
+          actorRoleId: getAssignmentLabel(event.actor_assignment_id).roleId,
+          stateContractId: waveStateContracts.find(
+            (contract) =>
+              contract.screen_id === screen.id &&
+              contract.source_ref.event_id === event.id,
+          )?.id,
+        },
+      ];
     });
   });
 }

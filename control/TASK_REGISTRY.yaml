@@ -427,11 +427,12 @@ tasks:
   - id: WAVE-002
     title: Deliver scouting, protection, irrigation, and fertility wave
     phase: production_wave
-    status: ready
+    status: in_progress
     depends_on: [WAVE-001]
     artifacts:
       [
         control/WAVE-002_EXECUTION_ADJUSTMENT.md,
+        control/WAVE-002_PLAN.md,
         atlas,
         prototypes,
         construction-packets,
@@ -449,6 +450,9 @@ tasks:
       [rendered task walkthrough, browser accessibility review, npm run verify]
     gate_ids: [G8]
     owner: parent_agent
+    branch: codex/wave-002
+    started_at: "2026-07-14T01:15:00.8037546-07:00"
+    notes: Deliverable-first execution is active. The accepted WAVE-001 validation and orchestration foundation is frozen; this wave extends human-visible workflow output through the existing screen, component, prototype, packet, Figma, browser, and review machinery.
   - id: WAVE-003
     title: Deliver estimate, maturity, and pick-planning wave
     phase: production_wave
