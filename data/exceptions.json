@@ -1,0 +1,3228 @@
+{
+  "schema_version": "1.0",
+  "operation_id": "OPR-001",
+  "generated_at": "2026-12-31T23:40:00-08:00",
+  "histories": [
+    {
+      "id": "EXH-0001",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-002",
+      "workflow_id": "WF-001",
+      "workflow_instance_id": "WFI-0001",
+      "scope_id": "SCP-004",
+      "block_ids": ["BLK-001"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-01-07T06:00:00-08:00",
+      "acknowledged_at": "2026-01-07T06:00:00-08:00",
+      "resolved_at": "2026-01-09T18:00:00-08:00",
+      "closed_at": "2026-01-09T18:05:00-08:00",
+      "detected_by_assignment_id": "ASG-001",
+      "accountable_assignment_id": "ASG-001",
+      "escalated_to_assignment_ids": ["ASG-002", "ASG-004"],
+      "trigger": "Canonical EXC-002 occurred: Wrong or ambiguous block identity.",
+      "impact": "The affected BLK-001 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "in_progress",
+      "recovery_state": "blocked",
+      "event_ids": [
+        "EVT-00019",
+        "EVT-00021",
+        "EVT-00023",
+        "EVT-00025",
+        "EVT-00027",
+        "EVT-00029"
+      ],
+      "record_instance_ids": [
+        "RCI-00001",
+        "RCI-00002",
+        "RCI-00003",
+        "RCI-00004",
+        "RCI-00005",
+        "RCI-00006",
+        "RCI-00007"
+      ],
+      "decision_ids": ["DEC-001", "DEC-002"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain wrong or ambiguous block identity and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-01-07T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00019",
+          "evidence_record_instance_ids": [
+            "RCI-00004",
+            "RCI-00003",
+            "RCI-00001",
+            "RCI-00002"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical recovery transition: Release or redispatch blocked work after scope and resources are reconciled.",
+          "owner_assignment_id": "ASG-004",
+          "completed_at": "2026-01-07T18:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00021",
+          "evidence_record_instance_ids": ["RCI-00004", "RCI-00003"]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical assignment transition: The foreman acknowledges the current assignment and confirms that field instructions and constraints are understood.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-01-08T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00023",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical execution transition: The crew executes the work while preserving progress, actual resource use, and exception context at block or row scope.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-01-08T18:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00025",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical completion transition: The foreman reports actual scope, labor, equipment, materials, completion status, and any unresolved exception without flattening partial work.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-01-09T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00027",
+          "evidence_record_instance_ids": [
+            "RCI-00003",
+            "RCI-00006",
+            "RCI-00007",
+            "RCI-00004"
+          ]
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical verification transition: The manager verifies field scope and actuals before closure data flows to progress, payroll, compliance, and cost records.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-01-09T18:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00029",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Wrong or ambiguous block identity closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-001",
+        "closure_record_instance_ids": [
+          "RCI-00001",
+          "RCI-00002",
+          "RCI-00003",
+          "RCI-00004"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0001",
+        "captured_at": "2026-01-09T18:05:00-08:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-001"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-01-09T18:05:00-08:00",
+        "recorded_by_person_id": "PER-001"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0002",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-004",
+      "workflow_id": "WF-001",
+      "workflow_instance_id": "WFI-0002",
+      "scope_id": "SCP-005",
+      "block_ids": ["BLK-002"],
+      "severity": "minor",
+      "status": "closed",
+      "opened_at": "2026-03-10T06:00:00-07:00",
+      "acknowledged_at": "2026-03-10T06:00:00-07:00",
+      "resolved_at": "2026-03-11T06:00:00-07:00",
+      "closed_at": "2026-03-11T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-003",
+      "accountable_assignment_id": "ASG-003",
+      "escalated_to_assignment_ids": ["ASG-001"],
+      "trigger": "Canonical EXC-004 occurred: Work partially completed.",
+      "impact": "The affected BLK-002 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "in_progress",
+      "recovery_state": "partially_completed",
+      "event_ids": ["EVT-00062", "EVT-00063", "EVT-00064"],
+      "record_instance_ids": [
+        "RCI-00011",
+        "RCI-00012",
+        "RCI-00013",
+        "RCI-00010",
+        "RCI-00014"
+      ],
+      "decision_ids": ["DEC-003"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain work partially completed and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-03-10T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00062",
+          "evidence_record_instance_ids": [
+            "RCI-00010",
+            "RCI-00013",
+            "RCI-00014",
+            "RCI-00011"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical completion transition: Close the explicitly accepted partial scope with attributed actuals.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-03-10T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00063",
+          "evidence_record_instance_ids": [
+            "RCI-00010",
+            "RCI-00013",
+            "RCI-00014",
+            "RCI-00012"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical verification transition: The manager verifies field scope and actuals before closure data flows to progress, payroll, compliance, and cost records.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-03-11T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00064",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Work partially completed closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-003",
+        "closure_record_instance_ids": [
+          "RCI-00011",
+          "RCI-00012",
+          "RCI-00013",
+          "RCI-00010"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0002",
+        "captured_at": "2026-03-11T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-003"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-03-11T06:05:00-07:00",
+        "recorded_by_person_id": "PER-003"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0003",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-005",
+      "workflow_id": "WF-001",
+      "workflow_instance_id": "WFI-0003",
+      "scope_id": "SCP-012",
+      "block_ids": ["BLK-009"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-05-13T18:00:00-07:00",
+      "acknowledged_at": "2026-05-13T18:00:00-07:00",
+      "resolved_at": "2026-05-14T18:00:00-07:00",
+      "closed_at": "2026-05-14T18:05:00-07:00",
+      "detected_by_assignment_id": "ASG-003",
+      "accountable_assignment_id": "ASG-003",
+      "escalated_to_assignment_ids": ["ASG-001"],
+      "trigger": "Canonical EXC-005 occurred: Completion quantities missing or disputed.",
+      "impact": "The affected BLK-009 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "completed",
+      "recovery_state": "correction_required",
+      "event_ids": ["EVT-00121", "EVT-00123", "EVT-00125"],
+      "record_instance_ids": [
+        "RCI-00018",
+        "RCI-00019",
+        "RCI-00020",
+        "RCI-00017",
+        "RCI-00021"
+      ],
+      "decision_ids": ["DEC-003"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain completion quantities missing or disputed and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-05-13T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00121",
+          "evidence_record_instance_ids": [
+            "RCI-00017",
+            "RCI-00020",
+            "RCI-00021",
+            "RCI-00018"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical correction transition: Append corrected closure quantities and the reason for change.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-05-14T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00123",
+          "evidence_record_instance_ids": [
+            "RCI-00017",
+            "RCI-00020",
+            "RCI-00021",
+            "RCI-00019"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical verification transition: Verify the corrected successor while retaining the original closure record.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-05-14T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00125",
+          "evidence_record_instance_ids": [
+            "RCI-00021",
+            "RCI-00017",
+            "RCI-00020",
+            "RCI-00018"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "corrected",
+        "summary": "Completion quantities missing or disputed closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-003",
+        "closure_record_instance_ids": [
+          "RCI-00018",
+          "RCI-00019",
+          "RCI-00020",
+          "RCI-00017"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0003",
+        "captured_at": "2026-05-14T18:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-003"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-05-14T18:05:00-07:00",
+        "recorded_by_person_id": "PER-003"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0004",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-006",
+      "workflow_id": "WF-002",
+      "workflow_instance_id": "WFI-0006",
+      "scope_id": "SCP-004",
+      "block_ids": ["BLK-001"],
+      "severity": "advisory",
+      "status": "closed",
+      "opened_at": "2026-02-06T06:00:00-08:00",
+      "acknowledged_at": "2026-02-06T06:00:00-08:00",
+      "resolved_at": "2026-02-06T06:00:00-08:00",
+      "closed_at": "2026-02-06T06:05:00-08:00",
+      "detected_by_assignment_id": "ASG-009",
+      "accountable_assignment_id": "ASG-009",
+      "escalated_to_assignment_ids": ["ASG-010"],
+      "trigger": "Canonical EXC-006 occurred: Wind or rain outside allowable conditions.",
+      "impact": "The affected BLK-001 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "preflight_check",
+      "recovery_state": "cancelled",
+      "event_ids": ["EVT-00035"],
+      "record_instance_ids": [
+        "RCI-00039",
+        "RCI-00041",
+        "RCI-00043",
+        "RCI-00040",
+        "RCI-00042"
+      ],
+      "decision_ids": ["DEC-013"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain wind or rain outside allowable conditions and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-009",
+          "completed_at": "2026-02-06T06:00:00-08:00",
+          "status": "cancelled",
+          "resulting_event_id": "EVT-00035",
+          "evidence_record_instance_ids": [
+            "RCI-00043",
+            "RCI-00042",
+            "RCI-00039",
+            "RCI-00041"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "cancelled",
+        "summary": "Wind or rain outside allowable conditions closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-009",
+        "closure_record_instance_ids": [
+          "RCI-00039",
+          "RCI-00041",
+          "RCI-00043",
+          "RCI-00040"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0004",
+        "captured_at": "2026-02-06T06:05:00-08:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-009"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-02-06T06:05:00-08:00",
+        "recorded_by_person_id": "PER-009"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0005",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-009",
+      "workflow_id": "WF-002",
+      "workflow_instance_id": "WFI-0007",
+      "scope_id": "SCP-005",
+      "block_ids": ["BLK-002"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-04-09T06:00:00-07:00",
+      "acknowledged_at": "2026-04-09T06:00:00-07:00",
+      "resolved_at": "2026-04-09T06:00:00-07:00",
+      "closed_at": "2026-04-09T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-009",
+      "accountable_assignment_id": "ASG-009",
+      "escalated_to_assignment_ids": ["ASG-007", "ASG-010"],
+      "trigger": "Canonical EXC-009 occurred: REI or PHI conflict.",
+      "impact": "The affected BLK-002 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "preflight_check",
+      "recovery_state": "cancelled",
+      "event_ids": ["EVT-00086"],
+      "record_instance_ids": [
+        "RCI-00046",
+        "RCI-00047",
+        "RCI-00048",
+        "RCI-00051",
+        "RCI-00049",
+        "RCI-00050"
+      ],
+      "decision_ids": ["DEC-012", "DEC-013"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain rei or phi conflict and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-009",
+          "completed_at": "2026-04-09T06:00:00-07:00",
+          "status": "cancelled",
+          "resulting_event_id": "EVT-00086",
+          "evidence_record_instance_ids": [
+            "RCI-00047",
+            "RCI-00051",
+            "RCI-00050",
+            "RCI-00046"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "cancelled",
+        "summary": "REI or PHI conflict closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-009",
+        "closure_record_instance_ids": [
+          "RCI-00046",
+          "RCI-00047",
+          "RCI-00048",
+          "RCI-00051"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0005",
+        "captured_at": "2026-04-09T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-009"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-04-09T06:05:00-07:00",
+        "recorded_by_person_id": "PER-009"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0006",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-010",
+      "workflow_id": "WF-002",
+      "workflow_instance_id": "WFI-0008",
+      "scope_id": "SCP-012",
+      "block_ids": ["BLK-009"],
+      "severity": "minor",
+      "status": "closed",
+      "opened_at": "2026-05-14T06:00:00-07:00",
+      "acknowledged_at": "2026-05-14T06:00:00-07:00",
+      "resolved_at": "2026-05-15T06:00:00-07:00",
+      "closed_at": "2026-05-15T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-007",
+      "accountable_assignment_id": "ASG-007",
+      "escalated_to_assignment_ids": ["ASG-009"],
+      "trigger": "Canonical EXC-010 occurred: Incorrect or late diary entry.",
+      "impact": "The affected BLK-009 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "reported",
+      "recovery_state": "corrected",
+      "event_ids": ["EVT-00124", "EVT-00126", "EVT-00127"],
+      "record_instance_ids": [
+        "RCI-00059",
+        "RCI-00056",
+        "RCI-00058",
+        "RCI-00060",
+        "RCI-00061",
+        "RCI-00053",
+        "RCI-00054"
+      ],
+      "decision_ids": ["DEC-015"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain incorrect or late diary entry and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-05-14T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00124",
+          "evidence_record_instance_ids": [
+            "RCI-00060",
+            "RCI-00061",
+            "RCI-00059",
+            "RCI-00056"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical recovery transition: Resubmit the corrected diary or restriction record without overwriting history.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-05-14T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00126",
+          "evidence_record_instance_ids": [
+            "RCI-00060",
+            "RCI-00061",
+            "RCI-00059",
+            "RCI-00056"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical verification transition: The viticulturist performs and records follow-up monitoring to assess efficacy and determine further action.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-05-15T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00127",
+          "evidence_record_instance_ids": [
+            "RCI-00053",
+            "RCI-00054",
+            "RCI-00059"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Incorrect or late diary entry closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-007",
+        "closure_record_instance_ids": [
+          "RCI-00059",
+          "RCI-00056",
+          "RCI-00058",
+          "RCI-00060"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0006",
+        "captured_at": "2026-05-15T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-007"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-05-15T06:05:00-07:00",
+        "recorded_by_person_id": "PER-007"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0007",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-012",
+      "workflow_id": "WF-003",
+      "workflow_instance_id": "WFI-0011",
+      "scope_id": "SCP-006",
+      "block_ids": ["BLK-003"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-03-06T18:00:00-08:00",
+      "acknowledged_at": "2026-03-06T18:00:00-08:00",
+      "resolved_at": "2026-03-08T18:00:00-07:00",
+      "closed_at": "2026-03-08T18:05:00-07:00",
+      "detected_by_assignment_id": "ASG-002",
+      "accountable_assignment_id": "ASG-002",
+      "escalated_to_assignment_ids": ["ASG-012", "ASG-013"],
+      "trigger": "Canonical EXC-012 occurred: System malfunction.",
+      "impact": "The affected BLK-003 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "delivering",
+      "recovery_state": "delivery_interrupted",
+      "event_ids": [
+        "EVT-00049",
+        "EVT-00051",
+        "EVT-00054",
+        "EVT-00056",
+        "EVT-00058"
+      ],
+      "record_instance_ids": [
+        "RCI-00082",
+        "RCI-00083",
+        "RCI-00084",
+        "RCI-00085",
+        "RCI-00086",
+        "RCI-00089",
+        "RCI-00090"
+      ],
+      "decision_ids": ["DEC-021", "DEC-023"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain system malfunction and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-03-06T18:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00049",
+          "evidence_record_instance_ids": [
+            "RCI-00085",
+            "RCI-00086",
+            "RCI-00089",
+            "RCI-00090"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical recovery transition: Redispatch the safely remaining set after interruption review.",
+          "owner_assignment_id": "ASG-012",
+          "completed_at": "2026-03-07T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00051",
+          "evidence_record_instance_ids": [
+            "RCI-00085",
+            "RCI-00086",
+            "RCI-00089"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical execution transition: The irrigator begins delivery and records observed system behavior, changes, interruptions, and actual timing.",
+          "owner_assignment_id": "ASG-013",
+          "completed_at": "2026-03-07T18:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00054",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical completion transition: The irrigator records actual delivery, affected area, and any partial or uneven result rather than only planned duration.",
+          "owner_assignment_id": "ASG-013",
+          "completed_at": "2026-03-08T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00056",
+          "evidence_record_instance_ids": [
+            "RCI-00086",
+            "RCI-00089",
+            "RCI-00090",
+            "RCI-00085"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical verification transition: The irrigation lead verifies delivery evidence and routes water, nutrient, malfunction, and sustainability totals to their consumers.",
+          "owner_assignment_id": "ASG-012",
+          "completed_at": "2026-03-08T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00058",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "System malfunction closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-002",
+        "closure_record_instance_ids": [
+          "RCI-00082",
+          "RCI-00083",
+          "RCI-00084",
+          "RCI-00085"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0007",
+        "captured_at": "2026-03-08T18:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-002"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-03-08T18:05:00-07:00",
+        "recorded_by_person_id": "PER-002"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0008",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-016",
+      "workflow_id": "WF-003",
+      "workflow_instance_id": "WFI-0012",
+      "scope_id": "SCP-007",
+      "block_ids": ["BLK-004"],
+      "severity": "advisory",
+      "status": "closed",
+      "opened_at": "2026-04-08T06:00:00-07:00",
+      "acknowledged_at": "2026-04-08T06:00:00-07:00",
+      "resolved_at": "2026-04-08T06:00:00-07:00",
+      "closed_at": "2026-04-08T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-002",
+      "accountable_assignment_id": "ASG-002",
+      "escalated_to_assignment_ids": ["ASG-001"],
+      "trigger": "Canonical EXC-016 occurred: Lab result arrives after action window.",
+      "impact": "The affected BLK-004 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "adjustment_recommended",
+      "recovery_state": "superseded",
+      "event_ids": ["EVT-00082"],
+      "record_instance_ids": [
+        "RCI-00091",
+        "RCI-00096",
+        "RCI-00097",
+        "RCI-00094",
+        "RCI-00092"
+      ],
+      "decision_ids": ["DEC-022", "DEC-024"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain lab result arrives after action window and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-04-08T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00082",
+          "evidence_record_instance_ids": [
+            "RCI-00097",
+            "RCI-00094",
+            "RCI-00091",
+            "RCI-00096"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "superseded",
+        "summary": "Lab result arrives after action window closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-002",
+        "closure_record_instance_ids": [
+          "RCI-00091",
+          "RCI-00096",
+          "RCI-00097",
+          "RCI-00094"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0008",
+        "captured_at": "2026-04-08T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-002"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-04-08T06:05:00-07:00",
+        "recorded_by_person_id": "PER-002"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0009",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-021",
+      "workflow_id": "WF-004",
+      "workflow_instance_id": "WFI-0016",
+      "scope_id": "SCP-004",
+      "block_ids": ["BLK-001"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-07-02T06:00:00-07:00",
+      "acknowledged_at": "2026-07-02T06:00:00-07:00",
+      "resolved_at": "2026-09-15T06:00:00-07:00",
+      "closed_at": "2026-09-15T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-002",
+      "accountable_assignment_id": "ASG-002",
+      "escalated_to_assignment_ids": ["ASG-015"],
+      "trigger": "Canonical EXC-021 occurred: Rapid weather or crop-condition change.",
+      "impact": "The affected BLK-001 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "published",
+      "recovery_state": "revision_due",
+      "event_ids": [
+        "EVT-00148",
+        "EVT-00153",
+        "EVT-00185",
+        "EVT-00205",
+        "EVT-00211",
+        "EVT-00285",
+        "EVT-00310"
+      ],
+      "record_instance_ids": [
+        "RCI-00126",
+        "RCI-00127",
+        "RCI-00128",
+        "RCI-00131",
+        "RCI-00130",
+        "RCI-00132",
+        "RCI-00125",
+        "RCI-00129"
+      ],
+      "decision_ids": ["DEC-033"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain rapid weather or crop-condition change and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-07-02T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00148",
+          "evidence_record_instance_ids": [
+            "RCI-00128",
+            "RCI-00130",
+            "RCI-00132",
+            "RCI-00126"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical observation transition: Resample the affected block for a defensible revision.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-07-09T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00153",
+          "evidence_record_instance_ids": [
+            "RCI-00126",
+            "RCI-00128",
+            "RCI-00130",
+            "RCI-00132"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical recommendation transition: The viticulturist calculates a block forecast and interprets variation against historical and current-season evidence.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-07-16T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00185",
+          "evidence_record_instance_ids": [
+            "RCI-00127",
+            "RCI-00125",
+            "RCI-00126"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical approval transition: The manager reviews the estimate, sampling confidence, crop-load implications, and downstream planning consequences.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-07-23T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00205",
+          "evidence_record_instance_ids": [
+            "RCI-00129",
+            "RCI-00130",
+            "RCI-00127",
+            "RCI-00128"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical completion transition: The approved forecast is published to winery, grower, labor, transport, container, budget, and contract planning consumers.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-07-30T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00211",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical observation transition: The final harvest actual is linked to the published forecast without replacing the estimate or its assumptions.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-09-08T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00285",
+          "evidence_record_instance_ids": ["RCI-00131", "RCI-00127"]
+        },
+        {
+          "sequence": 7,
+          "action": "Executed canonical reconciliation transition: The manager reconciles forecast versions with the harvest actual and records error, learning, and downstream planning consequences.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-09-15T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00310",
+          "evidence_record_instance_ids": [
+            "RCI-00132",
+            "RCI-00127",
+            "RCI-00131"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Rapid weather or crop-condition change closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-002",
+        "closure_record_instance_ids": [
+          "RCI-00126",
+          "RCI-00127",
+          "RCI-00128",
+          "RCI-00131"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0009",
+        "captured_at": "2026-09-15T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-002"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-09-15T06:05:00-07:00",
+        "recorded_by_person_id": "PER-002"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0010",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-023",
+      "workflow_id": "WF-004",
+      "workflow_instance_id": "WFI-0017",
+      "scope_id": "SCP-005",
+      "block_ids": ["BLK-002"],
+      "severity": "minor",
+      "status": "closed",
+      "opened_at": "2026-09-14T06:00:00-07:00",
+      "acknowledged_at": "2026-09-14T06:00:00-07:00",
+      "resolved_at": "2026-10-26T06:00:00-07:00",
+      "closed_at": "2026-10-26T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-002",
+      "accountable_assignment_id": "ASG-002",
+      "escalated_to_assignment_ids": ["ASG-015"],
+      "trigger": "Canonical EXC-023 occurred: Actual harvest diverges materially.",
+      "impact": "The affected BLK-002 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "actualized",
+      "recovery_state": "revision_due",
+      "event_ids": [
+        "EVT-00308",
+        "EVT-00321",
+        "EVT-00330",
+        "EVT-00332",
+        "EVT-00337",
+        "EVT-00367",
+        "EVT-00373"
+      ],
+      "record_instance_ids": [
+        "RCI-00134",
+        "RCI-00135",
+        "RCI-00136",
+        "RCI-00139",
+        "RCI-00138",
+        "RCI-00140",
+        "RCI-00133",
+        "RCI-00137"
+      ],
+      "decision_ids": ["DEC-033"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain actual harvest diverges materially and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-09-14T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00308",
+          "evidence_record_instance_ids": [
+            "RCI-00136",
+            "RCI-00138",
+            "RCI-00140",
+            "RCI-00134"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical observation transition: Resample the affected block for a defensible revision.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-09-21T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00321",
+          "evidence_record_instance_ids": [
+            "RCI-00134",
+            "RCI-00136",
+            "RCI-00138",
+            "RCI-00140"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical recommendation transition: The viticulturist calculates a block forecast and interprets variation against historical and current-season evidence.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-09-28T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00330",
+          "evidence_record_instance_ids": [
+            "RCI-00135",
+            "RCI-00133",
+            "RCI-00134"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical approval transition: The manager reviews the estimate, sampling confidence, crop-load implications, and downstream planning consequences.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-10-05T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00332",
+          "evidence_record_instance_ids": [
+            "RCI-00137",
+            "RCI-00138",
+            "RCI-00135",
+            "RCI-00136"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical completion transition: The approved forecast is published to winery, grower, labor, transport, container, budget, and contract planning consumers.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-10-12T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00337",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical observation transition: The final harvest actual is linked to the published forecast without replacing the estimate or its assumptions.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-10-19T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00367",
+          "evidence_record_instance_ids": ["RCI-00139", "RCI-00135"]
+        },
+        {
+          "sequence": 7,
+          "action": "Executed canonical reconciliation transition: The manager reconciles forecast versions with the harvest actual and records error, learning, and downstream planning consequences.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-10-26T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00373",
+          "evidence_record_instance_ids": [
+            "RCI-00140",
+            "RCI-00135",
+            "RCI-00139"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Actual harvest diverges materially closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-002",
+        "closure_record_instance_ids": [
+          "RCI-00134",
+          "RCI-00135",
+          "RCI-00136",
+          "RCI-00139"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0010",
+        "captured_at": "2026-10-26T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-002"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-10-26T06:05:00-07:00",
+        "recorded_by_person_id": "PER-002"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0011",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-024",
+      "workflow_id": "WF-005",
+      "workflow_instance_id": "WFI-0021",
+      "scope_id": "SCP-004",
+      "block_ids": ["BLK-001"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-07-08T06:00:00-07:00",
+      "acknowledged_at": "2026-07-08T06:00:00-07:00",
+      "resolved_at": "2026-07-22T06:00:00-07:00",
+      "closed_at": "2026-07-22T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-002",
+      "accountable_assignment_id": "ASG-002",
+      "escalated_to_assignment_ids": ["ASG-014"],
+      "trigger": "Canonical EXC-024 occurred: Late or stale sample.",
+      "impact": "The affected BLK-001 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "lab_pending",
+      "recovery_state": "more_sampling_required",
+      "event_ids": [
+        "EVT-00152",
+        "EVT-00155",
+        "EVT-00161",
+        "EVT-00174",
+        "EVT-00186",
+        "EVT-00194",
+        "EVT-00200",
+        "EVT-00203"
+      ],
+      "record_instance_ids": [
+        "RCI-00125",
+        "RCI-00165",
+        "RCI-00166",
+        "RCI-00167",
+        "RCI-00168",
+        "RCI-00169",
+        "RCI-00170",
+        "RCI-00171",
+        "RCI-00172",
+        "RCI-00173"
+      ],
+      "decision_ids": ["DEC-041"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain late or stale sample and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-07-08T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00152",
+          "evidence_record_instance_ids": [
+            "RCI-00168",
+            "RCI-00125",
+            "RCI-00165",
+            "RCI-00166"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical assignment transition: Schedule the next sample at the evidence-appropriate cadence.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-07-10T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00155",
+          "evidence_record_instance_ids": ["RCI-00125", "RCI-00168"]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical observation transition: Collect a traceable sample against the block and subarea.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-07-12T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00161",
+          "evidence_record_instance_ids": [
+            "RCI-00165",
+            "RCI-00166",
+            "RCI-00125"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical assignment transition: The traceable sample enters laboratory custody with expected timing and chain-of-identity intact.",
+          "owner_assignment_id": "ASG-014",
+          "completed_at": "2026-07-14T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00174",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical completion transition: The laboratory processes the linked sample and returns Brix, pH, TA, and other agreed results.",
+          "owner_assignment_id": "ASG-014",
+          "completed_at": "2026-07-16T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00186",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical exception transition: Contain field and winery measurements disagree and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-002",
+          "completed_at": "2026-07-18T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00194",
+          "evidence_record_instance_ids": [
+            "RCI-00168",
+            "RCI-00170",
+            "RCI-00172",
+            "RCI-00125"
+          ]
+        },
+        {
+          "sequence": 7,
+          "action": "Executed canonical approval transition: Authorize the pick under the applicable contract authority.",
+          "owner_assignment_id": "ASG-017",
+          "completed_at": "2026-07-20T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00200",
+          "evidence_record_instance_ids": [
+            "RCI-00172",
+            "RCI-00170",
+            "RCI-00173",
+            "RCI-00169"
+          ]
+        },
+        {
+          "sequence": 8,
+          "action": "Executed canonical assignment transition: The authorized pick becomes a dated labor, container, truck, and winery-slot commitment.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-07-22T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00203",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Late or stale sample closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-002",
+        "closure_record_instance_ids": [
+          "RCI-00125",
+          "RCI-00165",
+          "RCI-00166",
+          "RCI-00167"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0011",
+        "captured_at": "2026-07-22T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-002"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-07-22T06:05:00-07:00",
+        "recorded_by_person_id": "PER-002"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0012",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-029",
+      "workflow_id": "WF-005",
+      "workflow_instance_id": "WFI-0022",
+      "scope_id": "SCP-005",
+      "block_ids": ["BLK-002"],
+      "severity": "advisory",
+      "status": "closed",
+      "opened_at": "2026-08-19T06:00:00-07:00",
+      "acknowledged_at": "2026-08-19T06:00:00-07:00",
+      "resolved_at": "2026-08-19T06:00:00-07:00",
+      "closed_at": "2026-08-19T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-015",
+      "accountable_assignment_id": "ASG-015",
+      "escalated_to_assignment_ids": ["ASG-001", "ASG-017"],
+      "trigger": "Canonical EXC-029 occurred: Winery changes timing or target.",
+      "impact": "The affected BLK-002 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "authorized",
+      "recovery_state": "superseded",
+      "event_ids": ["EVT-00264"],
+      "record_instance_ids": [
+        "RCI-00178",
+        "RCI-00179",
+        "RCI-00180",
+        "RCI-00181",
+        "RCI-00182"
+      ],
+      "decision_ids": ["DEC-043", "DEC-044"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain winery changes timing or target and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-08-19T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00264",
+          "evidence_record_instance_ids": [
+            "RCI-00179",
+            "RCI-00181",
+            "RCI-00182",
+            "RCI-00178"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "superseded",
+        "summary": "Winery changes timing or target closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-015",
+        "closure_record_instance_ids": [
+          "RCI-00178",
+          "RCI-00179",
+          "RCI-00180",
+          "RCI-00181"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0012",
+        "captured_at": "2026-08-19T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-015"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-08-19T06:05:00-07:00",
+        "recorded_by_person_id": "PER-015"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0013",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-030",
+      "workflow_id": "WF-006",
+      "workflow_instance_id": "WFI-0026",
+      "scope_id": "SCP-004",
+      "block_ids": ["BLK-001"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-08-04T15:00:00-07:00",
+      "acknowledged_at": "2026-08-04T15:00:00-07:00",
+      "resolved_at": "2026-08-05T01:30:00-07:00",
+      "closed_at": "2026-08-05T01:35:00-07:00",
+      "detected_by_assignment_id": "ASG-001",
+      "accountable_assignment_id": "ASG-001",
+      "escalated_to_assignment_ids": ["ASG-019"],
+      "trigger": "Canonical EXC-030 occurred: Winery delay or changed tank capacity.",
+      "impact": "The affected BLK-001 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "harvesting",
+      "recovery_state": "delayed",
+      "event_ids": [
+        "EVT-00221",
+        "EVT-00222",
+        "EVT-00223",
+        "EVT-00224",
+        "EVT-00225",
+        "EVT-00226",
+        "EVT-00227",
+        "EVT-00228"
+      ],
+      "record_instance_ids": [
+        "RCI-00172",
+        "RCI-00210",
+        "RCI-00211",
+        "RCI-00171",
+        "RCI-00212",
+        "RCI-00213",
+        "RCI-00214",
+        "RCI-00215",
+        "RCI-00216",
+        "RCI-00217",
+        "RCI-00218",
+        "RCI-00219"
+      ],
+      "decision_ids": ["DEC-051"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain winery delay or changed tank capacity and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-08-04T15:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00221",
+          "evidence_record_instance_ids": [
+            "RCI-00210",
+            "RCI-00211",
+            "RCI-00172",
+            "RCI-00171"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical recovery transition: Resume transport after a slot or route delay is released.",
+          "owner_assignment_id": "ASG-020",
+          "completed_at": "2026-08-04T16:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00222",
+          "evidence_record_instance_ids": ["RCI-00213", "RCI-00212"]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical completion transition: Acknowledge arrival without breaking load identity.",
+          "owner_assignment_id": "ASG-021",
+          "completed_at": "2026-08-04T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00223",
+          "evidence_record_instance_ids": [
+            "RCI-00214",
+            "RCI-00212",
+            "RCI-00213"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical observation transition: Winery intake verifies load and block identity, records weight, and preserves the intake sample and condition evidence.",
+          "owner_assignment_id": "ASG-021",
+          "completed_at": "2026-08-04T19:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00224",
+          "evidence_record_instance_ids": [
+            "RCI-00212",
+            "RCI-00214",
+            "RCI-00172",
+            "RCI-00213"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical approval transition: The authorized winery role records acceptance, downgrade, or rejection against agreed tolerances without changing the observed intake evidence.",
+          "owner_assignment_id": "ASG-017",
+          "completed_at": "2026-08-04T21:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00225",
+          "evidence_record_instance_ids": [
+            "RCI-00217",
+            "RCI-00212",
+            "RCI-00215",
+            "RCI-00216"
+          ]
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical completion transition: Winery intake enters the accepted delivery with load, weight, quality, grower, vineyard, block, and timing identifiers.",
+          "owner_assignment_id": "ASG-021",
+          "completed_at": "2026-08-04T22:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00226",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 7,
+          "action": "Executed canonical reconciliation transition: Grower-relations compares the vineyard, transport, intake, buyer-system, quality, and contract records and opens a dispute or correction when they differ.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-08-05T00:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00227",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 8,
+          "action": "Executed canonical reconciliation transition: Finance uses the accepted and reconciled record set to produce settlement inputs while preserving later adjustment authority and history.",
+          "owner_assignment_id": "ASG-018",
+          "completed_at": "2026-08-05T01:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00228",
+          "evidence_record_instance_ids": [
+            "RCI-00218",
+            "RCI-00219",
+            "RCI-00217",
+            "RCI-00214"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Winery delay or changed tank capacity closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-001",
+        "closure_record_instance_ids": [
+          "RCI-00172",
+          "RCI-00210",
+          "RCI-00211",
+          "RCI-00171"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0013",
+        "captured_at": "2026-08-05T01:35:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-001"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-08-05T01:35:00-07:00",
+        "recorded_by_person_id": "PER-001"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0014",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-033",
+      "workflow_id": "WF-006",
+      "workflow_instance_id": "WFI-0027",
+      "scope_id": "SCP-005",
+      "block_ids": ["BLK-002"],
+      "severity": "minor",
+      "status": "closed",
+      "opened_at": "2026-09-07T12:00:00-07:00",
+      "acknowledged_at": "2026-09-07T12:00:00-07:00",
+      "resolved_at": "2026-09-07T18:00:00-07:00",
+      "closed_at": "2026-09-07T18:05:00-07:00",
+      "detected_by_assignment_id": "ASG-021",
+      "accountable_assignment_id": "ASG-021",
+      "escalated_to_assignment_ids": ["ASG-020", "ASG-015"],
+      "trigger": "Canonical EXC-033 occurred: Wrong block or load identity.",
+      "impact": "The affected BLK-002 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "arrived",
+      "recovery_state": "disputed",
+      "event_ids": [
+        "EVT-00280",
+        "EVT-00281",
+        "EVT-00282",
+        "EVT-00283",
+        "EVT-00284"
+      ],
+      "record_instance_ids": [
+        "RCI-00181",
+        "RCI-00222",
+        "RCI-00223",
+        "RCI-00224",
+        "RCI-00226",
+        "RCI-00225",
+        "RCI-00227",
+        "RCI-00180",
+        "RCI-00228",
+        "RCI-00229"
+      ],
+      "decision_ids": ["DEC-052", "DEC-054"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain wrong block or load identity and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-021",
+          "completed_at": "2026-09-07T12:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00280",
+          "evidence_record_instance_ids": [
+            "RCI-00222",
+            "RCI-00226",
+            "RCI-00227",
+            "RCI-00181"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical correction transition: Open an attributable correction for disputed identity, weight, grade, or payment evidence.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-09-07T13:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00281",
+          "evidence_record_instance_ids": [
+            "RCI-00227",
+            "RCI-00226",
+            "RCI-00222",
+            "RCI-00224"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical correction transition: Append the authorized successor delivery record.",
+          "owner_assignment_id": "ASG-021",
+          "completed_at": "2026-09-07T15:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00282",
+          "evidence_record_instance_ids": [
+            "RCI-00226",
+            "RCI-00227",
+            "RCI-00222",
+            "RCI-00224"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical reconciliation transition: Reconcile the corrected delivery without erasing the disputed predecessor.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-09-07T16:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00283",
+          "evidence_record_instance_ids": [
+            "RCI-00228",
+            "RCI-00229",
+            "RCI-00227",
+            "RCI-00226"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical reconciliation transition: Finance uses the accepted and reconciled record set to produce settlement inputs while preserving later adjustment authority and history.",
+          "owner_assignment_id": "ASG-018",
+          "completed_at": "2026-09-07T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00284",
+          "evidence_record_instance_ids": [
+            "RCI-00228",
+            "RCI-00229",
+            "RCI-00225",
+            "RCI-00226"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "corrected",
+        "summary": "Wrong block or load identity closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-021",
+        "closure_record_instance_ids": [
+          "RCI-00181",
+          "RCI-00222",
+          "RCI-00223",
+          "RCI-00224"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0014",
+        "captured_at": "2026-09-07T18:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-021"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-09-07T18:05:00-07:00",
+        "recorded_by_person_id": "PER-021"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0015",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-034",
+      "workflow_id": "WF-006",
+      "workflow_instance_id": "WFI-0028",
+      "scope_id": "SCP-012",
+      "block_ids": ["BLK-009"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-09-10T15:00:00-07:00",
+      "acknowledged_at": "2026-09-10T15:00:00-07:00",
+      "resolved_at": "2026-09-10T19:30:00-07:00",
+      "closed_at": "2026-09-10T19:35:00-07:00",
+      "detected_by_assignment_id": "ASG-017",
+      "accountable_assignment_id": "ASG-017",
+      "escalated_to_assignment_ids": ["ASG-021"],
+      "trigger": "Canonical EXC-034 occurred: Rejected or downgraded load.",
+      "impact": "The affected BLK-009 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "quality_pending",
+      "recovery_state": "rejected",
+      "event_ids": ["EVT-00295", "EVT-00296", "EVT-00297", "EVT-00298"],
+      "record_instance_ids": [
+        "RCI-00232",
+        "RCI-00234",
+        "RCI-00236",
+        "RCI-00189",
+        "RCI-00237",
+        "RCI-00235",
+        "RCI-00238",
+        "RCI-00239"
+      ],
+      "decision_ids": ["DEC-053"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain rejected or downgraded load and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-017",
+          "completed_at": "2026-09-10T15:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00295",
+          "evidence_record_instance_ids": [
+            "RCI-00237",
+            "RCI-00232",
+            "RCI-00234",
+            "RCI-00236"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical reconciliation transition: Enter the rejected disposition for contract and settlement handling.",
+          "owner_assignment_id": "ASG-021",
+          "completed_at": "2026-09-10T16:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00296",
+          "evidence_record_instance_ids": ["RCI-00235", "RCI-00237"]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical reconciliation transition: Grower-relations compares the vineyard, transport, intake, buyer-system, quality, and contract records and opens a dispute or correction when they differ.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-09-10T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00297",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical reconciliation transition: Finance uses the accepted and reconciled record set to produce settlement inputs while preserving later adjustment authority and history.",
+          "owner_assignment_id": "ASG-018",
+          "completed_at": "2026-09-10T19:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00298",
+          "evidence_record_instance_ids": [
+            "RCI-00238",
+            "RCI-00239",
+            "RCI-00237",
+            "RCI-00235"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Rejected or downgraded load closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-017",
+        "closure_record_instance_ids": [
+          "RCI-00232",
+          "RCI-00234",
+          "RCI-00236",
+          "RCI-00189"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0015",
+        "captured_at": "2026-09-10T19:35:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-017"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-09-10T19:35:00-07:00",
+        "recorded_by_person_id": "PER-017"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0016",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-035",
+      "workflow_id": "WF-006",
+      "workflow_instance_id": "WFI-0029",
+      "scope_id": "SCP-014",
+      "block_ids": ["BLK-011"],
+      "severity": "advisory",
+      "status": "closed",
+      "opened_at": "2026-10-13T16:30:00-07:00",
+      "acknowledged_at": "2026-10-13T16:30:00-07:00",
+      "resolved_at": "2026-10-13T21:00:00-07:00",
+      "closed_at": "2026-10-13T21:05:00-07:00",
+      "detected_by_assignment_id": "ASG-015",
+      "accountable_assignment_id": "ASG-015",
+      "escalated_to_assignment_ids": ["ASG-021"],
+      "trigger": "Canonical EXC-035 occurred: Late processor entry.",
+      "impact": "The affected BLK-011 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "entered",
+      "recovery_state": "correction_required",
+      "event_ids": ["EVT-00348", "EVT-00349", "EVT-00350", "EVT-00351"],
+      "record_instance_ids": [
+        "RCI-00242",
+        "RCI-00244",
+        "RCI-00247",
+        "RCI-00245",
+        "RCI-00248",
+        "RCI-00198",
+        "RCI-00249",
+        "RCI-00250"
+      ],
+      "decision_ids": ["DEC-054"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain late processor entry and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-10-13T16:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00348",
+          "evidence_record_instance_ids": [
+            "RCI-00248",
+            "RCI-00245",
+            "RCI-00242",
+            "RCI-00244"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical correction transition: Append the authorized successor delivery record.",
+          "owner_assignment_id": "ASG-021",
+          "completed_at": "2026-10-13T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00349",
+          "evidence_record_instance_ids": [
+            "RCI-00245",
+            "RCI-00248",
+            "RCI-00242",
+            "RCI-00244"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical reconciliation transition: Reconcile the corrected delivery without erasing the disputed predecessor.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-10-13T19:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00350",
+          "evidence_record_instance_ids": [
+            "RCI-00249",
+            "RCI-00250",
+            "RCI-00248",
+            "RCI-00245"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical reconciliation transition: Finance uses the accepted and reconciled record set to produce settlement inputs while preserving later adjustment authority and history.",
+          "owner_assignment_id": "ASG-018",
+          "completed_at": "2026-10-13T21:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00351",
+          "evidence_record_instance_ids": [
+            "RCI-00249",
+            "RCI-00250",
+            "RCI-00247",
+            "RCI-00245"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "corrected",
+        "summary": "Late processor entry closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-015",
+        "closure_record_instance_ids": [
+          "RCI-00242",
+          "RCI-00244",
+          "RCI-00247",
+          "RCI-00245"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0016",
+        "captured_at": "2026-10-13T21:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-015"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-10-13T21:05:00-07:00",
+        "recorded_by_person_id": "PER-015"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0017",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-037",
+      "workflow_id": "WF-007",
+      "workflow_instance_id": "WFI-0031",
+      "scope_id": "SCP-004",
+      "block_ids": ["BLK-001"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-01-04T07:30:00-08:00",
+      "acknowledged_at": "2026-01-04T07:30:00-08:00",
+      "resolved_at": "2026-01-04T13:30:00-08:00",
+      "closed_at": "2026-01-04T13:35:00-08:00",
+      "detected_by_assignment_id": "ASG-004",
+      "accountable_assignment_id": "ASG-004",
+      "escalated_to_assignment_ids": ["ASG-003"],
+      "trigger": "Canonical EXC-037 occurred: Worker absent or crew short.",
+      "impact": "The affected BLK-001 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "crew_scheduled",
+      "recovery_state": "exception_flagged",
+      "event_ids": [
+        "EVT-00002",
+        "EVT-00003",
+        "EVT-00004",
+        "EVT-00005",
+        "EVT-00006"
+      ],
+      "record_instance_ids": [
+        "RCI-00004",
+        "RCI-00261",
+        "RCI-00262",
+        "RCI-00263",
+        "RCI-00264",
+        "RCI-00265",
+        "RCI-00266",
+        "RCI-00267",
+        "RCI-00268",
+        "RCI-00269",
+        "RCI-00270"
+      ],
+      "decision_ids": ["DEC-061"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain worker absent or crew short and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-004",
+          "completed_at": "2026-01-04T07:30:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00002",
+          "evidence_record_instance_ids": [
+            "RCI-00261",
+            "RCI-00004",
+            "RCI-00262"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical correction transition: Append an authorized labor correction with supporting evidence.",
+          "owner_assignment_id": "ASG-023",
+          "completed_at": "2026-01-04T09:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00003",
+          "evidence_record_instance_ids": [
+            "RCI-00263",
+            "RCI-00264",
+            "RCI-00265",
+            "RCI-00266"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical verification transition: Verify the corrected labor record before payroll acceptance.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-01-04T10:30:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00004",
+          "evidence_record_instance_ids": [
+            "RCI-00270",
+            "RCI-00265",
+            "RCI-00263",
+            "RCI-00264"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical reconciliation transition: Payroll accepts the verified labor record or opens an attributable correction instead of overwriting the submitted values.",
+          "owner_assignment_id": "ASG-023",
+          "completed_at": "2026-01-04T12:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00005",
+          "evidence_record_instance_ids": [
+            "RCI-00263",
+            "RCI-00264",
+            "RCI-00265",
+            "RCI-00266"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical reconciliation transition: Finance allocates accepted labor and activity quantities to block, task, payroll, and management cost records.",
+          "owner_assignment_id": "ASG-018",
+          "completed_at": "2026-01-04T13:30:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00006",
+          "evidence_record_instance_ids": [
+            "RCI-00266",
+            "RCI-00264",
+            "RCI-00269"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "corrected",
+        "summary": "Worker absent or crew short closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-004",
+        "closure_record_instance_ids": [
+          "RCI-00004",
+          "RCI-00261",
+          "RCI-00262",
+          "RCI-00263"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0017",
+        "captured_at": "2026-01-04T13:35:00-08:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-004"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-01-04T13:35:00-08:00",
+        "recorded_by_person_id": "PER-004"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0018",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-039",
+      "workflow_id": "WF-007",
+      "workflow_instance_id": "WFI-0032",
+      "scope_id": "SCP-005",
+      "block_ids": ["BLK-002"],
+      "severity": "minor",
+      "status": "closed",
+      "opened_at": "2026-05-07T10:30:00-07:00",
+      "acknowledged_at": "2026-05-07T10:30:00-07:00",
+      "resolved_at": "2026-05-07T19:30:00-07:00",
+      "closed_at": "2026-05-07T19:35:00-07:00",
+      "detected_by_assignment_id": "ASG-003",
+      "accountable_assignment_id": "ASG-003",
+      "escalated_to_assignment_ids": ["ASG-004"],
+      "trigger": "Canonical EXC-039 occurred: Heat or safety pause.",
+      "impact": "The affected BLK-002 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "working",
+      "recovery_state": "paused",
+      "event_ids": [
+        "EVT-00100",
+        "EVT-00101",
+        "EVT-00102",
+        "EVT-00103",
+        "EVT-00104",
+        "EVT-00105",
+        "EVT-00106"
+      ],
+      "record_instance_ids": [
+        "RCI-00011",
+        "RCI-00273",
+        "RCI-00274",
+        "RCI-00275",
+        "RCI-00276",
+        "RCI-00277",
+        "RCI-00278",
+        "RCI-00279",
+        "RCI-00280",
+        "RCI-00281"
+      ],
+      "decision_ids": ["DEC-062"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain heat or safety pause and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-05-07T10:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00100",
+          "evidence_record_instance_ids": [
+            "RCI-00011",
+            "RCI-00274",
+            "RCI-00275",
+            "RCI-00273"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical recovery transition: Rebrief the crew before resuming paused work.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-05-07T12:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00101",
+          "evidence_record_instance_ids": [
+            "RCI-00273",
+            "RCI-00011",
+            "RCI-00274",
+            "RCI-00275"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical execution transition: The foreman records attendance, task changes, breaks, quantities, and attributable work as the crew executes.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-05-07T13:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00102",
+          "evidence_record_instance_ids": [
+            "RCI-00011",
+            "RCI-00274",
+            "RCI-00275",
+            "RCI-00273"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical completion transition: The foreman submits time, piece-rate units, task quantities, block allocation, and unresolved exceptions.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-05-07T15:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00103",
+          "evidence_record_instance_ids": [
+            "RCI-00276",
+            "RCI-00277",
+            "RCI-00274",
+            "RCI-00275"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical verification transition: The manager verifies that time, units, task progress, and assignment history form a credible submission.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-05-07T16:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00104",
+          "evidence_record_instance_ids": [
+            "RCI-00278",
+            "RCI-00279",
+            "RCI-00274",
+            "RCI-00275"
+          ]
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical reconciliation transition: Payroll accepts the verified labor record or opens an attributable correction instead of overwriting the submitted values.",
+          "owner_assignment_id": "ASG-023",
+          "completed_at": "2026-05-07T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00105",
+          "evidence_record_instance_ids": [
+            "RCI-00280",
+            "RCI-00276",
+            "RCI-00279",
+            "RCI-00281"
+          ]
+        },
+        {
+          "sequence": 7,
+          "action": "Executed canonical reconciliation transition: Finance allocates accepted labor and activity quantities to block, task, payroll, and management cost records.",
+          "owner_assignment_id": "ASG-018",
+          "completed_at": "2026-05-07T19:30:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00106",
+          "evidence_record_instance_ids": [
+            "RCI-00281",
+            "RCI-00276",
+            "RCI-00277"
+          ]
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Heat or safety pause closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-003",
+        "closure_record_instance_ids": [
+          "RCI-00011",
+          "RCI-00273",
+          "RCI-00274",
+          "RCI-00275"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0018",
+        "captured_at": "2026-05-07T19:35:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-003"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-05-07T19:35:00-07:00",
+        "recorded_by_person_id": "PER-003"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0019",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-044",
+      "workflow_id": "WF-008",
+      "workflow_instance_id": "WFI-0036",
+      "scope_id": "SCP-014",
+      "block_ids": ["BLK-011"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-01-05T06:00:00-08:00",
+      "acknowledged_at": "2026-01-05T06:00:00-08:00",
+      "resolved_at": "2026-01-09T06:00:00-08:00",
+      "closed_at": "2026-01-09T06:05:00-08:00",
+      "detected_by_assignment_id": "ASG-004",
+      "accountable_assignment_id": "ASG-004",
+      "escalated_to_assignment_ids": ["ASG-024"],
+      "trigger": "Canonical EXC-044 occurred: Material or PPE out of stock.",
+      "impact": "The affected BLK-011 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "availability_checked",
+      "recovery_state": "unavailable",
+      "event_ids": [
+        "EVT-00012",
+        "EVT-00014",
+        "EVT-00016",
+        "EVT-00018",
+        "EVT-00020",
+        "EVT-00022",
+        "EVT-00024",
+        "EVT-00026",
+        "EVT-00028"
+      ],
+      "record_instance_ids": [
+        "RCI-00315",
+        "RCI-00316",
+        "RCI-00317",
+        "RCI-00318",
+        "RCI-00320",
+        "RCI-00319",
+        "RCI-00321",
+        "RCI-00322"
+      ],
+      "decision_ids": ["DEC-071"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain material or ppe out of stock and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-004",
+          "completed_at": "2026-01-05T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00012",
+          "evidence_record_instance_ids": [
+            "RCI-00318",
+            "RCI-00320",
+            "RCI-00315",
+            "RCI-00316"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical recovery transition: Evaluate an allowed substitute or alternate resource.",
+          "owner_assignment_id": "ASG-024",
+          "completed_at": "2026-01-05T18:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00014",
+          "evidence_record_instance_ids": ["RCI-00318", "RCI-00316"]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical recommendation transition: Submit the validated substitute for approval.",
+          "owner_assignment_id": "ASG-024",
+          "completed_at": "2026-01-06T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00016",
+          "evidence_record_instance_ids": [
+            "RCI-00318",
+            "RCI-00321",
+            "RCI-00322",
+            "RCI-00316"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical approval transition: Approve the resource commitment within authority and budget.",
+          "owner_assignment_id": "ASG-001",
+          "completed_at": "2026-01-06T18:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00018",
+          "evidence_record_instance_ids": [
+            "RCI-00321",
+            "RCI-00322",
+            "RCI-00318",
+            "RCI-00316"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical assignment transition: Purchasing places the approved order or service commitment with required product, lot, delivery, and constraint details.",
+          "owner_assignment_id": "ASG-024",
+          "completed_at": "2026-01-07T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00020",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical completion transition: Purchasing records receipt, lot or asset identity, quantity, condition, cost reference, and any discrepancy.",
+          "owner_assignment_id": "ASG-024",
+          "completed_at": "2026-01-07T18:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00022",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 7,
+          "action": "Executed canonical assignment transition: The coordinator stages the received resource for the specific work while preserving custody, calibration, and readiness context.",
+          "owner_assignment_id": "ASG-004",
+          "completed_at": "2026-01-08T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00024",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 8,
+          "action": "Executed canonical verification transition: The foreman verifies that the staged resource is safe, compliant, calibrated where applicable, and ready for release.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-01-08T18:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00026",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 9,
+          "action": "Executed canonical reconciliation transition: Finance reconciles the receipt, parts, service, labor, and resource use with purchasing and work-cost records.",
+          "owner_assignment_id": "ASG-018",
+          "completed_at": "2026-01-09T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00028",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Material or PPE out of stock closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-004",
+        "closure_record_instance_ids": [
+          "RCI-00315",
+          "RCI-00316",
+          "RCI-00317",
+          "RCI-00318"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0019",
+        "captured_at": "2026-01-09T06:05:00-08:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-004"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-01-09T06:05:00-08:00",
+        "recorded_by_person_id": "PER-004"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0020",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-047",
+      "workflow_id": "WF-008",
+      "workflow_instance_id": "WFI-0037",
+      "scope_id": "SCP-015",
+      "block_ids": ["BLK-012"],
+      "severity": "advisory",
+      "status": "closed",
+      "opened_at": "2026-04-11T06:00:00-07:00",
+      "acknowledged_at": "2026-04-11T06:00:00-07:00",
+      "resolved_at": "2026-04-13T18:00:00-07:00",
+      "closed_at": "2026-04-13T18:05:00-07:00",
+      "detected_by_assignment_id": "ASG-003",
+      "accountable_assignment_id": "ASG-003",
+      "escalated_to_assignment_ids": ["ASG-025", "ASG-001"],
+      "trigger": "Canonical EXC-047 occurred: Equipment failure during a narrow work window.",
+      "impact": "The affected BLK-012 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "in_use",
+      "recovery_state": "failure_reported",
+      "event_ids": [
+        "EVT-00091",
+        "EVT-00092",
+        "EVT-00093",
+        "EVT-00094",
+        "EVT-00095",
+        "EVT-00096"
+      ],
+      "record_instance_ids": [
+        "RCI-00325",
+        "RCI-00331",
+        "RCI-00332",
+        "RCI-00333",
+        "RCI-00334"
+      ],
+      "decision_ids": ["DEC-074"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain equipment failure during a narrow work window and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-003",
+          "completed_at": "2026-04-11T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00091",
+          "evidence_record_instance_ids": [
+            "RCI-00331",
+            "RCI-00332",
+            "RCI-00334",
+            "RCI-00325"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical assignment transition: Open a repair order with isolation and urgency context.",
+          "owner_assignment_id": "ASG-025",
+          "completed_at": "2026-04-11T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00092",
+          "evidence_record_instance_ids": ["RCI-00332", "RCI-00331"]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical completion transition: Record parts, labor, and completed repair work.",
+          "owner_assignment_id": "ASG-025",
+          "completed_at": "2026-04-12T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00093",
+          "evidence_record_instance_ids": ["RCI-00333", "RCI-00332"]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical verification transition: Verify safe return to service after repair.",
+          "owner_assignment_id": "ASG-025",
+          "completed_at": "2026-04-12T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00094",
+          "evidence_record_instance_ids": [
+            "RCI-00334",
+            "RCI-00331",
+            "RCI-00332",
+            "RCI-00333"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical recovery transition: Release the verified resource back to the affected plan.",
+          "owner_assignment_id": "ASG-004",
+          "completed_at": "2026-04-13T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00095",
+          "evidence_record_instance_ids": ["RCI-00325", "RCI-00334"]
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical reconciliation transition: Finance reconciles the receipt, parts, service, labor, and resource use with purchasing and work-cost records.",
+          "owner_assignment_id": "ASG-018",
+          "completed_at": "2026-04-13T18:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00096",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Equipment failure during a narrow work window closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-003",
+        "closure_record_instance_ids": [
+          "RCI-00325",
+          "RCI-00331",
+          "RCI-00332",
+          "RCI-00333"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0020",
+        "captured_at": "2026-04-13T18:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-003"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-04-13T18:05:00-07:00",
+        "recorded_by_person_id": "PER-003"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0021",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-056",
+      "workflow_id": "WF-009",
+      "workflow_instance_id": "WFI-0041",
+      "scope_id": "SCP-004",
+      "block_ids": ["BLK-001"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-09-14T06:00:00-07:00",
+      "acknowledged_at": "2026-09-14T06:00:00-07:00",
+      "resolved_at": "2026-09-24T06:00:00-07:00",
+      "closed_at": "2026-09-24T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-015",
+      "accountable_assignment_id": "ASG-015",
+      "escalated_to_assignment_ids": ["ASG-001"],
+      "trigger": "Canonical EXC-056 occurred: Delivery, downgrade, rejection, or payment dispute.",
+      "impact": "The affected BLK-001 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "fulfilled",
+      "recovery_state": "disputed",
+      "event_ids": [
+        "EVT-00309",
+        "EVT-00313",
+        "EVT-00317",
+        "EVT-00320",
+        "EVT-00324",
+        "EVT-00327"
+      ],
+      "record_instance_ids": [
+        "RCI-00366",
+        "RCI-00367",
+        "RCI-00365",
+        "RCI-00368",
+        "RCI-00369",
+        "RCI-00370"
+      ],
+      "decision_ids": ["DEC-084"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain delivery, downgrade, rejection, or payment dispute and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-09-14T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00309",
+          "evidence_record_instance_ids": [
+            "RCI-00365",
+            "RCI-00368",
+            "RCI-00369",
+            "RCI-00370"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical recovery transition: Route the disputed issue to corrective or commercial resolution.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-09-16T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00313",
+          "evidence_record_instance_ids": [
+            "RCI-00368",
+            "RCI-00369",
+            "RCI-00365",
+            "RCI-00370"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical verification transition: Verify the corrective result and restore an aligned operating state.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-09-18T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00317",
+          "evidence_record_instance_ids": [
+            "RCI-00365",
+            "RCI-00370",
+            "RCI-00368",
+            "RCI-00369"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical completion transition: The relationship owner confirms that seasonal reporting, delivery, quality, and agreed obligations are fulfilled or explicitly excepted.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-09-20T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00320",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical reconciliation transition: Finance and grower-relations reconcile delivery, commercial adjustment, dispute, and settlement history across both organizations.",
+          "owner_assignment_id": "ASG-018",
+          "completed_at": "2026-09-22T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00324",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical supersession transition: The completed relationship version becomes historical while renewal, amendment, suspension, or ending creates a separately attributable successor state.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-09-24T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00327",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Delivery, downgrade, rejection, or payment dispute closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-015",
+        "closure_record_instance_ids": [
+          "RCI-00366",
+          "RCI-00367",
+          "RCI-00365",
+          "RCI-00368"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0021",
+        "captured_at": "2026-09-24T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-015"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-09-24T06:05:00-07:00",
+        "recorded_by_person_id": "PER-015"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0022",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-051",
+      "workflow_id": "WF-009",
+      "workflow_instance_id": "WFI-0043",
+      "scope_id": "SCP-012",
+      "block_ids": ["BLK-009"],
+      "severity": "minor",
+      "status": "closed",
+      "opened_at": "2026-10-12T06:00:00-07:00",
+      "acknowledged_at": "2026-10-12T06:00:00-07:00",
+      "resolved_at": "2026-10-22T06:00:00-07:00",
+      "closed_at": "2026-10-22T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-015",
+      "accountable_assignment_id": "ASG-015",
+      "escalated_to_assignment_ids": ["ASG-016"],
+      "trigger": "Canonical EXC-051 occurred: Conflicting block aliases.",
+      "impact": "The affected BLK-009 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "identity_matching",
+      "recovery_state": "disputed",
+      "event_ids": [
+        "EVT-00338",
+        "EVT-00352",
+        "EVT-00356",
+        "EVT-00366",
+        "EVT-00370",
+        "EVT-00371"
+      ],
+      "record_instance_ids": [
+        "RCI-00383",
+        "RCI-00384",
+        "RCI-00385",
+        "RCI-00386",
+        "RCI-00387",
+        "RCI-00388",
+        "RCI-00389",
+        "RCI-00390",
+        "RCI-00391",
+        "RCI-00392"
+      ],
+      "decision_ids": ["DEC-081"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain conflicting block aliases and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-10-12T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00338",
+          "evidence_record_instance_ids": [
+            "RCI-00386",
+            "RCI-00383",
+            "RCI-00384",
+            "RCI-00385"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical recovery transition: Route the disputed issue to corrective or commercial resolution.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-10-14T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00352",
+          "evidence_record_instance_ids": [
+            "RCI-00392",
+            "RCI-00388",
+            "RCI-00387",
+            "RCI-00389"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical verification transition: Verify the corrective result and restore an aligned operating state.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-10-16T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00356",
+          "evidence_record_instance_ids": [
+            "RCI-00387",
+            "RCI-00389",
+            "RCI-00392",
+            "RCI-00388"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical completion transition: The relationship owner confirms that seasonal reporting, delivery, quality, and agreed obligations are fulfilled or explicitly excepted.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-10-18T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00366",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical reconciliation transition: Finance and grower-relations reconcile delivery, commercial adjustment, dispute, and settlement history across both organizations.",
+          "owner_assignment_id": "ASG-018",
+          "completed_at": "2026-10-20T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00370",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical supersession transition: The completed relationship version becomes historical while renewal, amendment, suspension, or ending creates a separately attributable successor state.",
+          "owner_assignment_id": "ASG-015",
+          "completed_at": "2026-10-22T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00371",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "recovered",
+        "summary": "Conflicting block aliases closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-015",
+        "closure_record_instance_ids": [
+          "RCI-00383",
+          "RCI-00384",
+          "RCI-00385",
+          "RCI-00386"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0022",
+        "captured_at": "2026-10-22T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-015"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-10-22T06:05:00-07:00",
+        "recorded_by_person_id": "PER-015"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0023",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-057",
+      "workflow_id": "WF-010",
+      "workflow_instance_id": "WFI-0046",
+      "scope_id": "SCP-004",
+      "block_ids": ["BLK-001"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-02-08T06:00:00-08:00",
+      "acknowledged_at": "2026-02-08T06:00:00-08:00",
+      "resolved_at": "2026-02-20T06:00:00-08:00",
+      "closed_at": "2026-02-20T06:05:00-08:00",
+      "detected_by_assignment_id": "ASG-007",
+      "accountable_assignment_id": "ASG-007",
+      "escalated_to_assignment_ids": ["ASG-027", "ASG-001"],
+      "trigger": "Canonical EXC-057 occurred: Missing, late, contradictory, or buyer-specific record.",
+      "impact": "The affected BLK-001 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "evidence_collecting",
+      "recovery_state": "gap_identified",
+      "event_ids": [
+        "EVT-00037",
+        "EVT-00038",
+        "EVT-00039",
+        "EVT-00040",
+        "EVT-00041",
+        "EVT-00042",
+        "EVT-00043"
+      ],
+      "record_instance_ids": [
+        "RCI-00171",
+        "RCI-00417",
+        "RCI-00418",
+        "RCI-00419",
+        "RCI-00420",
+        "RCI-00421",
+        "RCI-00422",
+        "RCI-00423",
+        "RCI-00424",
+        "RCI-00425",
+        "RCI-00426",
+        "RCI-00427",
+        "RCI-00428",
+        "RCI-00429",
+        "RCI-00430",
+        "RCI-00431",
+        "RCI-00432",
+        "RCI-00433"
+      ],
+      "decision_ids": ["DEC-091", "DEC-092"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain missing, late, contradictory, or buyer-specific record and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-02-08T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00037",
+          "evidence_record_instance_ids": [
+            "RCI-00419",
+            "RCI-00430",
+            "RCI-00171",
+            "RCI-00417"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical correction transition: Assign an evidence-gap corrective action with scope and owner.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-02-10T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00038",
+          "evidence_record_instance_ids": [
+            "RCI-00432",
+            "RCI-00430",
+            "RCI-00431",
+            "RCI-00419"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical execution transition: Execute the approved remediation while preserving the original finding.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-02-12T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00039",
+          "evidence_record_instance_ids": [
+            "RCI-00432",
+            "RCI-00430",
+            "RCI-00433",
+            "RCI-00431"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical completion transition: Submit attributed corrective evidence for independent review.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-02-14T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00040",
+          "evidence_record_instance_ids": [
+            "RCI-00430",
+            "RCI-00432",
+            "RCI-00433",
+            "RCI-00431"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical verification transition: Verify that corrective evidence resolves the recorded finding.",
+          "owner_assignment_id": "ASG-027",
+          "completed_at": "2026-02-16T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00041",
+          "evidence_record_instance_ids": [
+            "RCI-00433",
+            "RCI-00432",
+            "RCI-00430",
+            "RCI-00431"
+          ]
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical approval transition: The certifier issues the certification decision for the compliant review without implying corrective action occurred.",
+          "owner_assignment_id": "ASG-027",
+          "completed_at": "2026-02-18T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00042",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 7,
+          "action": "Executed canonical supersession transition: The completed certification cycle remains immutable and is archived when a new standard vintage or annual cycle becomes current.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-02-20T06:00:00-08:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00043",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "corrected",
+        "summary": "Missing, late, contradictory, or buyer-specific record closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-007",
+        "closure_record_instance_ids": [
+          "RCI-00171",
+          "RCI-00417",
+          "RCI-00418",
+          "RCI-00419"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0023",
+        "captured_at": "2026-02-20T06:05:00-08:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-007"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-02-20T06:05:00-08:00",
+        "recorded_by_person_id": "PER-007"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0024",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-061",
+      "workflow_id": "WF-010",
+      "workflow_instance_id": "WFI-0047",
+      "scope_id": "SCP-005",
+      "block_ids": ["BLK-002"],
+      "severity": "advisory",
+      "status": "closed",
+      "opened_at": "2026-03-17T06:00:00-07:00",
+      "acknowledged_at": "2026-03-17T06:00:00-07:00",
+      "resolved_at": "2026-03-29T06:00:00-07:00",
+      "closed_at": "2026-03-29T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-028",
+      "accountable_assignment_id": "ASG-028",
+      "escalated_to_assignment_ids": ["ASG-027", "ASG-007"],
+      "trigger": "Canonical EXC-061 occurred: Noncompliance discovered during audit.",
+      "impact": "The affected BLK-002 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "under_review",
+      "recovery_state": "noncompliant",
+      "event_ids": [
+        "EVT-00068",
+        "EVT-00069",
+        "EVT-00070",
+        "EVT-00071",
+        "EVT-00072",
+        "EVT-00073",
+        "EVT-00074"
+      ],
+      "record_instance_ids": [
+        "RCI-00447",
+        "RCI-00448",
+        "RCI-00449",
+        "RCI-00450"
+      ],
+      "decision_ids": ["DEC-093", "DEC-094"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain noncompliance discovered during audit and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-028",
+          "completed_at": "2026-03-17T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00068",
+          "evidence_record_instance_ids": [
+            "RCI-00448",
+            "RCI-00449",
+            "RCI-00450",
+            "RCI-00447"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical correction transition: Open corrective action only for a recorded finding.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-03-19T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00069",
+          "evidence_record_instance_ids": [
+            "RCI-00450",
+            "RCI-00448",
+            "RCI-00449",
+            "RCI-00447"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical execution transition: Execute the approved remediation while preserving the original finding.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-03-21T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00070",
+          "evidence_record_instance_ids": [
+            "RCI-00450",
+            "RCI-00447",
+            "RCI-00449",
+            "RCI-00448"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical completion transition: Submit attributed corrective evidence for independent review.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-03-23T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00071",
+          "evidence_record_instance_ids": [
+            "RCI-00447",
+            "RCI-00450",
+            "RCI-00449",
+            "RCI-00448"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical verification transition: Verify that corrective evidence resolves the recorded finding.",
+          "owner_assignment_id": "ASG-027",
+          "completed_at": "2026-03-25T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00072",
+          "evidence_record_instance_ids": [
+            "RCI-00449",
+            "RCI-00450",
+            "RCI-00447",
+            "RCI-00448"
+          ]
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical approval transition: The certifier issues the certification decision for the compliant review without implying corrective action occurred.",
+          "owner_assignment_id": "ASG-027",
+          "completed_at": "2026-03-27T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00073",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 7,
+          "action": "Executed canonical supersession transition: The completed certification cycle remains immutable and is archived when a new standard vintage or annual cycle becomes current.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-03-29T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00074",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "corrected",
+        "summary": "Noncompliance discovered during audit closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-028",
+        "closure_record_instance_ids": [
+          "RCI-00447",
+          "RCI-00448",
+          "RCI-00449",
+          "RCI-00450"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0024",
+        "captured_at": "2026-03-29T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-028"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-03-29T06:05:00-07:00",
+        "recorded_by_person_id": "PER-028"
+      },
+      "corrections": []
+    },
+    {
+      "id": "EXH-0025",
+      "operation_id": "OPR-001",
+      "exception_definition_id": "EXC-062",
+      "workflow_id": "WF-010",
+      "workflow_instance_id": "WFI-0048",
+      "scope_id": "SCP-012",
+      "block_ids": ["BLK-009"],
+      "severity": "major",
+      "status": "closed",
+      "opened_at": "2026-07-20T06:00:00-07:00",
+      "acknowledged_at": "2026-07-20T06:00:00-07:00",
+      "resolved_at": "2026-08-01T06:00:00-07:00",
+      "closed_at": "2026-08-01T06:05:00-07:00",
+      "detected_by_assignment_id": "ASG-028",
+      "accountable_assignment_id": "ASG-028",
+      "escalated_to_assignment_ids": ["ASG-027", "ASG-007"],
+      "trigger": "Canonical EXC-062 occurred: Certification withheld until corrective action.",
+      "impact": "The affected BLK-009 scope was contained without erasing completed, safe, or predecessor evidence.",
+      "interrupted_state": "under_review",
+      "recovery_state": "certification_withheld",
+      "event_ids": [
+        "EVT-00201",
+        "EVT-00204",
+        "EVT-00207",
+        "EVT-00208",
+        "EVT-00210",
+        "EVT-00212",
+        "EVT-00214"
+      ],
+      "record_instance_ids": [
+        "RCI-00464",
+        "RCI-00465",
+        "RCI-00466",
+        "RCI-00467"
+      ],
+      "decision_ids": ["DEC-093", "DEC-094"],
+      "recovery_actions": [
+        {
+          "sequence": 1,
+          "action": "Realized the canonical exception transition: Contain certification withheld until corrective action and preserve the affected scope before recovery.",
+          "owner_assignment_id": "ASG-028",
+          "completed_at": "2026-07-20T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00201",
+          "evidence_record_instance_ids": [
+            "RCI-00465",
+            "RCI-00466",
+            "RCI-00467",
+            "RCI-00464"
+          ]
+        },
+        {
+          "sequence": 2,
+          "action": "Executed canonical correction transition: Open corrective action for the finding that withheld certification.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-07-22T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00204",
+          "evidence_record_instance_ids": [
+            "RCI-00467",
+            "RCI-00464",
+            "RCI-00466",
+            "RCI-00465"
+          ]
+        },
+        {
+          "sequence": 3,
+          "action": "Executed canonical execution transition: Execute the approved remediation while preserving the original finding.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-07-24T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00207",
+          "evidence_record_instance_ids": [
+            "RCI-00467",
+            "RCI-00464",
+            "RCI-00466",
+            "RCI-00465"
+          ]
+        },
+        {
+          "sequence": 4,
+          "action": "Executed canonical completion transition: Submit attributed corrective evidence for independent review.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-07-26T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00208",
+          "evidence_record_instance_ids": [
+            "RCI-00464",
+            "RCI-00467",
+            "RCI-00466",
+            "RCI-00465"
+          ]
+        },
+        {
+          "sequence": 5,
+          "action": "Executed canonical verification transition: Verify that corrective evidence resolves the recorded finding.",
+          "owner_assignment_id": "ASG-027",
+          "completed_at": "2026-07-28T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00210",
+          "evidence_record_instance_ids": [
+            "RCI-00466",
+            "RCI-00467",
+            "RCI-00464",
+            "RCI-00465"
+          ]
+        },
+        {
+          "sequence": 6,
+          "action": "Executed canonical approval transition: The certifier issues the certification decision for the compliant review without implying corrective action occurred.",
+          "owner_assignment_id": "ASG-027",
+          "completed_at": "2026-07-30T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00212",
+          "evidence_record_instance_ids": []
+        },
+        {
+          "sequence": 7,
+          "action": "Executed canonical supersession transition: The completed certification cycle remains immutable and is archived when a new standard vintage or annual cycle becomes current.",
+          "owner_assignment_id": "ASG-007",
+          "completed_at": "2026-08-01T06:00:00-07:00",
+          "status": "completed",
+          "resulting_event_id": "EVT-00214",
+          "evidence_record_instance_ids": []
+        }
+      ],
+      "closure": {
+        "outcome": "corrected",
+        "summary": "Certification withheld until corrective action closed with attributable interruption, recovery, and retained successor evidence.",
+        "closed_by_assignment_id": "ASG-028",
+        "closure_record_instance_ids": [
+          "RCI-00464",
+          "RCI-00465",
+          "RCI-00466",
+          "RCI-00467"
+        ]
+      },
+      "provenance": {
+        "source_type": "synthetic_generator",
+        "source_ref": "exception-history:EXH-0025",
+        "captured_at": "2026-08-01T06:05:00-07:00",
+        "method": "deterministic Node 24 erasable TypeScript generator",
+        "generator_seed": 20260713,
+        "confidence": "high",
+        "captured_by_person_id": "PER-028"
+      },
+      "version": {
+        "number": 1,
+        "recorded_at": "2026-08-01T06:05:00-07:00",
+        "recorded_by_person_id": "PER-028"
+      },
+      "corrections": []
+    }
+  ]
+}

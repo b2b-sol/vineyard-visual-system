@@ -252,14 +252,24 @@ tasks:
   - id: DATA-001
     title: Create seeded operation contracts and full-season data
     phase: synthetic_data
-    status: planned
+    status: review
     depends_on: [WF-002]
     artifacts:
       [
         data/operation.json,
         data/events.json,
         data/exceptions.json,
+        data/README.md,
+        schemas/data-common.schema.json,
+        schemas/operation.schema.json,
+        schemas/events.schema.json,
+        schemas/record-instance.schema.json,
+        schemas/exception-history.schema.json,
         scripts/generate-data.ts,
+        scripts/validation/season-data.mjs,
+        validation/data-coverage.json,
+        validation/DATA_REVIEW.md,
+        atlas/tests/unit/full-season-data.test.ts,
       ]
     acceptance_criteria:
       [
@@ -268,9 +278,20 @@ tasks:
         unit,
         and status invariants,
       ]
-    checks: [npm run generate:data, npm run validate:data]
+    checks:
+      [
+        npm run validate:data,
+        npm run validate:data-current,
+        npm run typecheck,
+        npm run lint,
+        npm run test:unit,
+      ]
     gate_ids: [G4]
     owner: data_synthesizer
+    branch: codex/synthetic-season
+    started_at: "2026-07-13T17:03:00-07:00"
+    reviewers: [data_generator, independent_data_critic, parent_agent]
+    notes: Approved with no unresolved P0/P1 findings; protected merge and target-branch provenance reconciliation remain.
   - id: PROD-001
     title: Build scenario coverage and product architecture
     phase: product_structure

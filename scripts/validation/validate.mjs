@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -6,6 +7,8 @@ import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 import { parse as parseYaml } from "yaml";
+
+import { validateSeasonData } from "./season-data.mjs";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const ALLOWED_SCOPES = new Set(["schema", "evidence", "trace", "data", "all"]);
@@ -1112,6 +1115,43 @@ async function validateSchemas() {
     );
   }
 
+  const operation = await readJson("data/operation.json");
+  const eventDocument = await readJson("data/events.json");
+  const exceptionDocument = await readJson("data/exceptions.json");
+  validateRecord(
+    ajv,
+    "operation.schema.json",
+    operation,
+    "data/operation.json",
+  );
+  validateRecord(ajv, "events.schema.json", eventDocument, "data/events.json");
+  assert(
+    exceptionDocument.schema_version === "1.0",
+    "data/exceptions.json: unsupported schema_version",
+  );
+  assert(
+    typeof exceptionDocument.operation_id === "string" &&
+      exceptionDocument.operation_id.length > 0,
+    "data/exceptions.json: operation_id is required",
+  );
+  assert(
+    Number.isFinite(Date.parse(exceptionDocument.generated_at)),
+    "data/exceptions.json: generated_at must be an ISO timestamp",
+  );
+  assert(
+    Array.isArray(exceptionDocument.histories) &&
+      exceptionDocument.histories.length > 0,
+    "data/exceptions.json: histories must be a non-empty array",
+  );
+  exceptionDocument.histories.forEach((history, index) =>
+    validateRecord(
+      ajv,
+      "exception-history.schema.json",
+      history,
+      `data/exceptions.json#/histories/${index}`,
+    ),
+  );
+
   validateRecord(
     ajv,
     "task-registry.schema.json",
@@ -1151,7 +1191,7 @@ async function validateSchemas() {
 
   const ontologySummary = await validateCanonicalOntology();
 
-  return `compiled ${state.schemas.size} schemas and validated ${registries.length + 6} registries; ${ontologySummary}`;
+  return `compiled ${state.schemas.size} schemas and validated ${registries.length + 9} registries; ${ontologySummary}`;
 }
 
 async function validateEvidence() {
@@ -1910,7 +1950,197 @@ async function validateData() {
     }
   }
 
-  return `validated ${fixtures.length} connected fixture and ${checkedEvents} chronological state events`;
+  const operation = await readJson("data/operation.json");
+  const eventDocument = await readJson("data/events.json");
+  const exceptionDocument = await readJson("data/exceptions.json");
+  const sourceHashes = new Map();
+  for (const source of operation.canonical_sources ?? []) {
+    assert(
+      !path.isAbsolute(source.path) &&
+        !source.path.split(/[\\/]/).includes(".."),
+      `${source.id}: canonical source path must stay inside the repository`,
+    );
+    sourceHashes.set(
+      source.path,
+      createHash("sha256")
+        .update(await readText(source.path))
+        .digest("hex"),
+    );
+  }
+  const metrics = validateSeasonData({
+    operation,
+    eventDocument,
+    exceptionDocument,
+    canonical: {
+      workflows: await readJson("workflow-model/workflows.json"),
+      roles: await readJson("workflow-model/roles.json"),
+      records: await readJson("workflow-model/records.json"),
+      decisions: await readJson("workflow-model/decisions.json"),
+      exceptions: await readJson("workflow-model/exceptions.json"),
+      overlays: await readJson("workflow-model/overlays.json"),
+    },
+    sourceHashes,
+  });
+  const coverage = await readJson("validation/data-coverage.json");
+  assert(
+    coverage.operation_id === metrics.operation_id &&
+      coverage.generated_at === operation.generated_at,
+    "validation/data-coverage.json does not describe the generated operation",
+  );
+  for (const [sourcePath, sourceHash] of sourceHashes)
+    assert(
+      coverage.canonical_source_hashes[sourcePath] === sourceHash,
+      `validation/data-coverage.json has a stale hash for ${sourcePath}`,
+    );
+  const coverageMetrics = {
+    organizations: metrics.organizations,
+    properties: metrics.properties,
+    blocks: metrics.blocks,
+    active_blocks: metrics.active_blocks,
+    people: metrics.people,
+    role_assignments: metrics.role_assignments,
+    contracts: metrics.contracts,
+    active_contracts: metrics.active_contracts,
+    workflows: metrics.workflow_families,
+    workflow_instances: metrics.workflow_instances,
+    multi_day_instances: metrics.multi_day_instances,
+    long_running_instances: metrics.long_running_instances,
+    longest_instance_days: metrics.longest_instance_days,
+    state_events: metrics.events,
+    event_measurement_units: metrics.event_measurement_units,
+    record_fact_units: metrics.record_fact_units,
+    supersessions: metrics.supersessions,
+    offline_events: metrics.offline_events,
+    offline_workflows: metrics.offline_workflows,
+    conflict_events: metrics.conflict_events,
+    conflict_workflows: metrics.conflict_workflows,
+    record_definitions: metrics.record_definitions,
+    record_instances: metrics.record_instances,
+    decisions_covered: metrics.decisions_exercised,
+    exception_histories: metrics.exception_histories,
+    overlays: metrics.overlays,
+    cross_workflow_record_links: metrics.cross_workflow_links,
+    months_represented: metrics.event_months,
+    harvest_to_settlement_chains: metrics.operational_chains,
+  };
+  for (const [metric, expected] of Object.entries(coverageMetrics))
+    assert(
+      coverage.counts[metric] === expected,
+      `validation/data-coverage.json ${metric}=${coverage.counts[metric]} differs from derived value ${expected}`,
+    );
+  assertUnique(
+    coverage.named_cases.map((namedCase) => namedCase.case_key),
+    "validation/data-coverage.json named case keys",
+  );
+  const generatedEvents = byId(eventDocument.events, "generated event");
+  const generatedRecords = byId(
+    operation.record_instances,
+    "generated record instance",
+  );
+  const generatedHistories = byId(
+    exceptionDocument.histories,
+    "generated exception history",
+  );
+  for (const namedCase of coverage.named_cases) {
+    assert(
+      Array.isArray(namedCase.event_ids) && namedCase.event_ids.length > 0,
+      `${namedCase.case_key}: named case requires event_ids`,
+    );
+    assertReferenceList(
+      namedCase.event_ids,
+      generatedEvents,
+      `${namedCase.case_key}.event_ids`,
+    );
+    assertReferenceList(
+      namedCase.record_instance_ids,
+      generatedRecords,
+      `${namedCase.case_key}.record_instance_ids`,
+    );
+    if (namedCase.exception_history_id) {
+      const history = generatedHistories.get(namedCase.exception_history_id);
+      assert(
+        Boolean(history),
+        `${namedCase.case_key}: unknown exception history ${namedCase.exception_history_id}`,
+      );
+      assert(
+        history.exception_definition_id === namedCase.exception_definition_id,
+        `${namedCase.case_key}: exception definition differs from its history`,
+      );
+      assert(
+        namedCase.event_ids.every((eventId) =>
+          history.event_ids.includes(eventId),
+        ),
+        `${namedCase.case_key}: cited events are outside its exception history`,
+      );
+      if (namedCase.case_key === "changed_block_identifier") {
+        const openedAt = Date.parse(history.opened_at);
+        const closedAt = Date.parse(history.closed_at);
+        const matchingLineage = operation.block_lineage.filter(
+          (lineage) =>
+            [...lineage.source_block_ids, ...lineage.result_block_ids].some(
+              (blockId) => history.block_ids.includes(blockId),
+            ) &&
+            Date.parse(lineage.effective_on) >= openedAt &&
+            Date.parse(lineage.effective_on) <= closedAt,
+        );
+        assert(
+          matchingLineage.length > 0,
+          `${namedCase.case_key}: cited exception has no same-block lineage change during its recovery window`,
+        );
+        assert(
+          history.block_ids.every((blockId) => {
+            const aliases = operation.block_aliases.filter(
+              (alias) => alias.block_id === blockId,
+            );
+            return (
+              aliases.some(
+                (alias) => alias.status === "historical" && alias.effective_to,
+              ) &&
+              aliases.some(
+                (alias) =>
+                  alias.status === "corrected" &&
+                  Date.parse(alias.effective_from) >= openedAt &&
+                  Date.parse(alias.effective_from) <= closedAt,
+              )
+            );
+          }),
+          `${namedCase.case_key}: affected block lacks connected historical and corrected aliases`,
+        );
+      }
+    }
+    if (namedCase.case_key === "offline_observation_synced_later")
+      assert(
+        namedCase.event_ids.every(
+          (eventId) =>
+            generatedEvents.get(eventId).connectivity.captured_offline,
+        ),
+        `${namedCase.case_key}: cited events were not captured offline`,
+      );
+    if (namedCase.case_key === "corrected_weigh_ticket") {
+      const weighBills = namedCase.record_instance_ids
+        .map((recordId) => generatedRecords.get(recordId))
+        .filter((record) => record.record_definition_id === "REC-047");
+      assert(
+        weighBills.length >= 2 &&
+          weighBills.some((record) =>
+            weighBills.some(
+              (candidate) =>
+                record.supersedes_record_instance_id === candidate.id &&
+                candidate.superseded_by_record_instance_id === record.id,
+            ),
+          ),
+        `${namedCase.case_key}: requires a reciprocal REC-047 predecessor/successor pair`,
+      );
+      assert(
+        weighBills.every((record) =>
+          record.workflow_instance_ids.includes(namedCase.workflow_instance_id),
+        ),
+        `${namedCase.case_key}: weigh-bill lineage is outside its workflow instance`,
+      );
+    }
+  }
+
+  return `validated ${fixtures.length} connected walking-slice fixture with ${checkedEvents} events plus deterministic ${metrics.operation_id}: ${metrics.workflow_instances} workflow instances, ${metrics.events} events, ${metrics.record_instances} records, ${metrics.exception_histories} exception histories, ${metrics.cross_workflow_links} cross-workflow links, and ${metrics.operational_chains} operational chains`;
 }
 
 function successfulDependency(status) {

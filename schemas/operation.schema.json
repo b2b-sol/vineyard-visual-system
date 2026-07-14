@@ -1,0 +1,1091 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/operation.schema.json",
+  "title": "Connected full-season vineyard operation",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "operation_id",
+    "title",
+    "seed",
+    "season",
+    "generated_at",
+    "organizations",
+    "properties",
+    "blocks",
+    "block_aliases",
+    "block_lineage",
+    "people",
+    "role_assignments",
+    "relationships",
+    "contracts",
+    "scopes",
+    "equipment",
+    "materials",
+    "units",
+    "workflow_instances",
+    "record_instances",
+    "links"
+  ],
+  "properties": {
+    "schema_version": { "$ref": "#/$defs/schemaVersion" },
+    "operation_id": { "$ref": "#/$defs/operationId" },
+    "title": { "type": "string", "minLength": 10 },
+    "seed": { "type": "integer", "minimum": 1 },
+    "season": { "$ref": "#/$defs/season" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "canonical_sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/canonicalSource" }
+    },
+    "overlay_applications": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/overlayApplication" }
+    },
+    "organizations": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "#/$defs/organization" }
+    },
+    "properties": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/property" }
+    },
+    "blocks": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "#/$defs/block" }
+    },
+    "block_aliases": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "#/$defs/blockAlias" }
+    },
+    "block_lineage": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/blockLineage" }
+    },
+    "people": {
+      "type": "array",
+      "minItems": 8,
+      "items": { "$ref": "#/$defs/person" }
+    },
+    "role_assignments": {
+      "type": "array",
+      "minItems": 8,
+      "items": { "$ref": "#/$defs/roleAssignment" }
+    },
+    "relationships": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "$ref": "#/$defs/relationship" }
+    },
+    "contracts": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/contract" }
+    },
+    "scopes": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "#/$defs/scope" }
+    },
+    "equipment": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "$ref": "#/$defs/equipment" }
+    },
+    "materials": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "$ref": "#/$defs/material" }
+    },
+    "units": {
+      "type": "array",
+      "minItems": 6,
+      "items": { "$ref": "#/$defs/unit" }
+    },
+    "workflow_instances": {
+      "type": "array",
+      "minItems": 10,
+      "items": { "$ref": "#/$defs/workflowInstance" }
+    },
+    "record_instances": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/record-instance.schema.json"
+      }
+    },
+    "links": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/recordLink" }
+    },
+    "operational_chains": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/operationalChain" }
+    }
+  },
+  "$defs": {
+    "schemaVersion": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/schemaVersion"
+    },
+    "operationId": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/operationId"
+    },
+    "provenance": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/provenance"
+    },
+    "canonicalSource": {
+      "type": "object",
+      "required": ["id", "path", "purpose", "sha256", "captured_at"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^SRC-[0-9]{3}$" },
+        "path": { "type": "string", "minLength": 3 },
+        "purpose": {
+          "enum": [
+            "workflow_ontology",
+            "evidence",
+            "data_generation",
+            "validation"
+          ]
+        },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "captured_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "overlayApplication": {
+      "type": "object",
+      "required": [
+        "overlay_id",
+        "scope_ids",
+        "status",
+        "applied_from",
+        "record_instance_ids"
+      ],
+      "properties": {
+        "overlay_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/overlayId"
+        },
+        "scope_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/scopeId"
+          }
+        },
+        "status": {
+          "enum": ["planned", "active", "suspended", "expired", "historical"]
+        },
+        "applied_from": { "type": "string", "format": "date" },
+        "applied_to": { "type": "string", "format": "date" },
+        "record_instance_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordInstanceId"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "season": {
+      "type": "object",
+      "required": ["id", "label", "year", "starts_on", "ends_on", "timezone"],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/seasonId"
+        },
+        "label": { "type": "string", "minLength": 6 },
+        "year": { "type": "integer", "minimum": 2000, "maximum": 2100 },
+        "starts_on": { "type": "string", "format": "date" },
+        "ends_on": { "type": "string", "format": "date" },
+        "timezone": {
+          "type": "string",
+          "pattern": "^[A-Za-z_]+(?:/[A-Za-z0-9_+.-]+)+$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "organization": {
+      "type": "object",
+      "required": [
+        "id",
+        "stable_identity",
+        "name",
+        "type",
+        "status",
+        "address",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "stable_identity": {
+          "type": "string",
+          "pattern": "^urn:vineyard:organization:[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": { "type": "string", "minLength": 3 },
+        "legal_name": { "type": "string", "minLength": 3 },
+        "type": {
+          "enum": [
+            "estate",
+            "grower",
+            "winery",
+            "contractor",
+            "labor_provider",
+            "laboratory",
+            "certifier",
+            "regulator",
+            "vendor",
+            "carrier"
+          ]
+        },
+        "parent_organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "status": { "enum": ["active", "inactive", "historical"] },
+        "address": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/address"
+        },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "property": {
+      "type": "object",
+      "required": [
+        "id",
+        "stable_identity",
+        "organization_id",
+        "name",
+        "location",
+        "timezone",
+        "status",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/propertyId"
+        },
+        "stable_identity": {
+          "type": "string",
+          "pattern": "^urn:vineyard:property:[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "name": { "type": "string", "minLength": 3 },
+        "location": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/geoPoint"
+        },
+        "timezone": {
+          "type": "string",
+          "pattern": "^[A-Za-z_]+(?:/[A-Za-z0-9_+.-]+)+$"
+        },
+        "status": { "enum": ["active", "inactive", "historical"] },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "block": {
+      "type": "object",
+      "required": [
+        "id",
+        "stable_identity",
+        "property_id",
+        "operating_organization_id",
+        "current_name",
+        "status",
+        "area",
+        "variety",
+        "planted_year",
+        "row_count",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/blockId"
+        },
+        "stable_identity": {
+          "type": "string",
+          "pattern": "^urn:vineyard:block:[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "property_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/propertyId"
+        },
+        "operating_organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "current_name": { "type": "string", "minLength": 2 },
+        "status": {
+          "enum": ["active", "inactive", "historical", "superseded"]
+        },
+        "area": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/quantity"
+        },
+        "variety": { "type": "string", "minLength": 3 },
+        "clone": { "type": "string", "minLength": 1 },
+        "rootstock": { "type": "string", "minLength": 1 },
+        "planted_year": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+        "row_count": { "type": "integer", "minimum": 1 },
+        "row_orientation_degrees": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 360
+        },
+        "certification_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3 }
+        },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "blockAlias": {
+      "type": "object",
+      "required": [
+        "id",
+        "block_id",
+        "system",
+        "value",
+        "effective_from",
+        "status",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/blockAliasId"
+        },
+        "block_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/blockId"
+        },
+        "system": { "type": "string", "minLength": 2 },
+        "value": { "type": "string", "minLength": 1 },
+        "organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "effective_from": { "type": "string", "format": "date" },
+        "effective_to": { "type": "string", "format": "date" },
+        "status": {
+          "enum": ["current", "historical", "disputed", "corrected"]
+        },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "blockLineage": {
+      "type": "object",
+      "required": [
+        "id",
+        "change_type",
+        "source_block_ids",
+        "result_block_ids",
+        "effective_on",
+        "reason",
+        "authorized_by_assignment_id",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/lineageId"
+        },
+        "change_type": {
+          "enum": [
+            "split",
+            "merge",
+            "rename",
+            "reboundary",
+            "replant",
+            "identity_correction"
+          ]
+        },
+        "source_block_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/blockId"
+          }
+        },
+        "result_block_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/blockId"
+          }
+        },
+        "effective_on": { "type": "string", "format": "date" },
+        "reason": { "type": "string", "minLength": 10 },
+        "authorized_by_assignment_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/assignmentId"
+        },
+        "supporting_record_instance_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordInstanceId"
+        },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "person": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "home_organization_id",
+        "status",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/personId"
+        },
+        "name": { "type": "string", "minLength": 3 },
+        "home_organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "status": { "enum": ["active", "seasonal", "inactive", "historical"] },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "email": { "type": "string", "format": "email" },
+            "phone": { "type": "string", "minLength": 7 },
+            "preferred_channel": {
+              "enum": ["in_app", "sms", "phone", "email", "radio"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "roleAssignment": {
+      "type": "object",
+      "required": [
+        "id",
+        "person_id",
+        "role_id",
+        "organization_id",
+        "scope_ids",
+        "starts_on",
+        "status",
+        "authority",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/assignmentId"
+        },
+        "person_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/personId"
+        },
+        "role_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/roleId"
+        },
+        "organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "scope_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/scopeId"
+          }
+        },
+        "starts_on": { "type": "string", "format": "date" },
+        "ends_on": { "type": "string", "format": "date" },
+        "status": { "enum": ["active", "delegated", "inactive", "historical"] },
+        "authority": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "observe",
+              "recommend",
+              "approve",
+              "assign",
+              "execute",
+              "verify",
+              "correct",
+              "administer"
+            ]
+          }
+        },
+        "delegated_from_assignment_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/assignmentId"
+        },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "relationship": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "from_organization_id",
+        "to_organization_id",
+        "starts_on",
+        "status",
+        "owner_assignment_id",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/relationshipId"
+        },
+        "type": {
+          "enum": [
+            "owner_operator",
+            "grower_buyer",
+            "client_contractor",
+            "customer_vendor",
+            "regulated_by",
+            "certified_by",
+            "served_by"
+          ]
+        },
+        "from_organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "to_organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "starts_on": { "type": "string", "format": "date" },
+        "ends_on": { "type": "string", "format": "date" },
+        "status": {
+          "enum": ["active", "paused", "disputed", "ended", "historical"]
+        },
+        "owner_assignment_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/assignmentId"
+        },
+        "contract_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/contractId"
+          }
+        },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "contract": {
+      "type": "object",
+      "required": [
+        "id",
+        "contract_number",
+        "type",
+        "buyer_organization_id",
+        "provider_organization_id",
+        "season_id",
+        "scope_ids",
+        "effective_from",
+        "effective_to",
+        "status",
+        "commercial_terms",
+        "quality_terms",
+        "delivery_terms",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/contractId"
+        },
+        "contract_number": { "type": "string", "minLength": 3 },
+        "type": {
+          "enum": [
+            "fruit_purchase",
+            "custom_farming",
+            "labor",
+            "harvest_service",
+            "transport",
+            "laboratory",
+            "certification"
+          ]
+        },
+        "buyer_organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "provider_organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "season_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/seasonId"
+        },
+        "scope_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/scopeId"
+          }
+        },
+        "effective_from": { "type": "string", "format": "date" },
+        "effective_to": { "type": "string", "format": "date" },
+        "status": {
+          "enum": [
+            "draft",
+            "active",
+            "amended",
+            "fulfilled",
+            "disputed",
+            "terminated",
+            "expired"
+          ]
+        },
+        "commercial_terms": {
+          "type": "object",
+          "required": ["contracted_quantity", "price", "settlement_basis"],
+          "properties": {
+            "contracted_quantity": {
+              "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/quantity"
+            },
+            "price": {
+              "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/money"
+            },
+            "settlement_basis": {
+              "enum": [
+                "delivered",
+                "accepted",
+                "graded",
+                "acre",
+                "hour",
+                "fixed"
+              ]
+            },
+            "payment_days": { "type": "integer", "minimum": 0, "maximum": 365 }
+          },
+          "additionalProperties": false
+        },
+        "quality_terms": {
+          "type": "object",
+          "required": [
+            "specification",
+            "rejection_process",
+            "required_record_definition_ids"
+          ],
+          "properties": {
+            "specification": { "type": "string", "minLength": 10 },
+            "rejection_process": { "type": "string", "minLength": 10 },
+            "required_record_definition_ids": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/recordId"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "delivery_terms": {
+          "type": "object",
+          "required": [
+            "destination",
+            "notice_hours",
+            "container_responsibility",
+            "freight_responsibility"
+          ],
+          "properties": {
+            "destination": { "type": "string", "minLength": 3 },
+            "notice_hours": { "type": "integer", "minimum": 0 },
+            "container_responsibility": {
+              "enum": ["buyer", "provider", "carrier", "shared"]
+            },
+            "freight_responsibility": {
+              "enum": ["buyer", "provider", "carrier", "shared"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "type",
+        "entity_ids",
+        "workflow_ids",
+        "status",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/scopeId"
+        },
+        "name": { "type": "string", "minLength": 3 },
+        "type": {
+          "enum": [
+            "operation",
+            "organization",
+            "property",
+            "block_set",
+            "contract"
+          ]
+        },
+        "entity_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/entityId"
+          }
+        },
+        "workflow_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/workflowId"
+          }
+        },
+        "status": { "enum": ["active", "inactive", "historical"] },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "equipment": {
+      "type": "object",
+      "required": [
+        "id",
+        "stable_identity",
+        "organization_id",
+        "name",
+        "type",
+        "status",
+        "capabilities",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/equipmentId"
+        },
+        "stable_identity": {
+          "type": "string",
+          "pattern": "^urn:vineyard:equipment:[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "name": { "type": "string", "minLength": 3 },
+        "type": {
+          "enum": [
+            "tractor",
+            "sprayer",
+            "harvester",
+            "irrigation",
+            "weather_station",
+            "vehicle",
+            "implement",
+            "safety"
+          ]
+        },
+        "status": {
+          "enum": [
+            "available",
+            "assigned",
+            "operating",
+            "maintenance",
+            "blocked",
+            "retired"
+          ]
+        },
+        "capabilities": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3 }
+        },
+        "last_service_at": { "type": "string", "format": "date-time" },
+        "next_service_due_at": { "type": "string", "format": "date-time" },
+        "last_calibrated_at": { "type": "string", "format": "date-time" },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "id",
+        "stable_identity",
+        "organization_id",
+        "name",
+        "type",
+        "status",
+        "inventory_quantity",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/materialId"
+        },
+        "stable_identity": {
+          "type": "string",
+          "pattern": "^urn:vineyard:material:[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "organization_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+        },
+        "name": { "type": "string", "minLength": 3 },
+        "type": {
+          "enum": [
+            "crop_protection",
+            "fertilizer",
+            "amendment",
+            "fuel",
+            "irrigation_part",
+            "harvest_supply",
+            "safety_supply"
+          ]
+        },
+        "status": {
+          "enum": [
+            "available",
+            "low",
+            "reserved",
+            "quarantined",
+            "expired",
+            "depleted"
+          ]
+        },
+        "inventory_quantity": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/quantity"
+        },
+        "active_ingredients": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 2 }
+        },
+        "registration_number": { "type": "string", "minLength": 3 },
+        "lot_number": { "type": "string", "minLength": 2 },
+        "expires_on": { "type": "string", "format": "date" },
+        "restricted_entry_hours": { "type": "integer", "minimum": 0 },
+        "preharvest_interval_days": { "type": "integer", "minimum": 0 },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "unit": {
+      "type": "object",
+      "required": [
+        "id",
+        "code",
+        "name",
+        "symbol",
+        "dimension",
+        "system",
+        "scale_to_base",
+        "offset_to_base"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/unitId"
+        },
+        "code": { "type": "string", "pattern": "^[A-Za-z0-9%./_-]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "symbol": { "type": "string", "minLength": 1 },
+        "dimension": {
+          "enum": [
+            "area",
+            "mass",
+            "volume",
+            "length",
+            "temperature",
+            "time",
+            "rate",
+            "concentration",
+            "count",
+            "acidity",
+            "currency"
+          ]
+        },
+        "system": { "enum": ["si", "us_customary", "domain", "dimensionless"] },
+        "base_unit_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/unitId"
+        },
+        "scale_to_base": { "type": "number", "exclusiveMinimum": 0 },
+        "offset_to_base": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "workflowInstance": {
+      "type": "object",
+      "required": [
+        "id",
+        "operation_id",
+        "workflow_id",
+        "season_id",
+        "scope_id",
+        "title",
+        "trigger",
+        "current_state",
+        "status",
+        "owner_assignment_id",
+        "participant_assignment_ids",
+        "started_at",
+        "last_event_id",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/workflowInstanceId"
+        },
+        "operation_id": { "$ref": "#/$defs/operationId" },
+        "workflow_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/workflowId"
+        },
+        "season_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/seasonId"
+        },
+        "scope_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/scopeId"
+        },
+        "contract_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/contractId"
+          }
+        },
+        "title": { "type": "string", "minLength": 6 },
+        "trigger": { "type": "string", "minLength": 8 },
+        "current_state": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/canonicalState"
+        },
+        "status": {
+          "enum": ["active", "blocked", "completed", "cancelled", "superseded"]
+        },
+        "owner_assignment_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/assignmentId"
+        },
+        "participant_assignment_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/assignmentId"
+          }
+        },
+        "started_at": { "type": "string", "format": "date-time" },
+        "completed_at": { "type": "string", "format": "date-time" },
+        "last_event_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/stateEventId"
+        },
+        "related_workflow_instance_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/workflowInstanceId"
+          }
+        },
+        "version": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/version"
+        }
+      },
+      "additionalProperties": false
+    },
+    "recordLink": {
+      "type": "object",
+      "required": [
+        "id",
+        "source_record_instance_id",
+        "target",
+        "relation",
+        "created_at",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordLinkId"
+        },
+        "source_record_instance_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordInstanceId"
+        },
+        "target": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/entityReference"
+        },
+        "relation": {
+          "enum": [
+            "derived_from",
+            "supports",
+            "fulfills",
+            "documents",
+            "references",
+            "reconciles_with",
+            "conflicts_with",
+            "corrects",
+            "supersedes"
+          ]
+        },
+        "chain_id": { "type": "string", "pattern": "^CHN-[0-9]{3}$" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "operationalChain": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "workflow_instance_ids",
+        "record_instance_ids",
+        "link_ids"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^CHN-[0-9]{3}$" },
+        "type": {
+          "enum": [
+            "harvest_to_settlement",
+            "scouting_to_application",
+            "estimate_to_forecast",
+            "audit_to_correction"
+          ]
+        },
+        "workflow_instance_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/workflowInstanceId"
+          }
+        },
+        "record_instance_ids": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordInstanceId"
+          }
+        },
+        "link_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordLinkId"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

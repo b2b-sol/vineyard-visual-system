@@ -1,6 +1,6 @@
 packet_version: 1.0.0
-updated_at: "2026-07-13T16:56:45-07:00"
-state: synthetic_data_ready
+updated_at: "2026-07-13T19:07:00-07:00"
+state: synthetic_data_delivery
 repository: b2b-sol/vineyard-visual-system
 visibility: public
 execution_identity: tiklebot
@@ -9,7 +9,7 @@ repository_permission: admin
 bot_auth_verified_at: "2026-07-13T14:13:23.8525025-07:00"
 preferred_parent_model: gpt-5.6-sol
 current_phase: synthetic_data
-next_task: DATA-001 create seeded operation contracts and full-season data
+next_task: DATA-001 deliver the approved synthetic season through protected merge
 last_completed_task: WF-002
 owner_bootstrap_complete: true
 bot_auth_verified: true
@@ -17,7 +17,7 @@ packet_review_complete: true
 execution_strategy: vertical_workflow_waves
 repository_initialized: true
 initial_commit: 6518668b2e898d488134bc77881fd75263d44490
-active_branch: codex/workflow-provenance
+active_branch: codex/synthetic-season
 factory_operational: true
 definition_of_done_passed: false
 pages_url: https://b2b-sol.github.io/vineyard-visual-system/

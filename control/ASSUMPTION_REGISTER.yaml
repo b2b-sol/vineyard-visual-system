@@ -20,3 +20,8 @@ assumptions:
     classification: product_decision
     status: accepted
     impact: The repository stays reviewable without uncontrolled binary growth.
+  - id: ASM-005
+    statement: All organizations, people, properties, contracts, operational histories, and measurements in the generated season are connected synthetic composites and do not represent real parties or professional advice.
+    classification: product_decision
+    status: accepted
+    impact: Public artifacts must label the data fictional, preserve plausible operational relationships, and avoid presenting generated compliance or commercial details as authoritative guidance.

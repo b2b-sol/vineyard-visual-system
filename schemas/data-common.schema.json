@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/data-common.schema.json",
+  "title": "Shared full-season synthetic operation definitions",
+  "$defs": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"
+    },
+    "operationId": { "type": "string", "pattern": "^OPR-[0-9]{3}$" },
+    "seasonId": { "type": "string", "pattern": "^SSN-[0-9]{4}$" },
+    "organizationId": { "type": "string", "pattern": "^ORG-[0-9]{3}$" },
+    "propertyId": { "type": "string", "pattern": "^PRP-[0-9]{3}$" },
+    "blockId": { "type": "string", "pattern": "^BLK-[0-9]{3}$" },
+    "blockAliasId": { "type": "string", "pattern": "^BLA-[0-9]{3}$" },
+    "lineageId": { "type": "string", "pattern": "^LIN-[0-9]{3}$" },
+    "personId": { "type": "string", "pattern": "^PER-[0-9]{3}$" },
+    "assignmentId": { "type": "string", "pattern": "^ASG-[0-9]{3}$" },
+    "relationshipId": { "type": "string", "pattern": "^REL-[0-9]{3}$" },
+    "contractId": { "type": "string", "pattern": "^CON-[0-9]{3}$" },
+    "scopeId": { "type": "string", "pattern": "^SCP-[0-9]{3}$" },
+    "equipmentId": { "type": "string", "pattern": "^EQP-[0-9]{3}$" },
+    "materialId": { "type": "string", "pattern": "^MAT-[0-9]{3}$" },
+    "unitId": { "type": "string", "pattern": "^UNT-[0-9]{3}$" },
+    "workflowInstanceId": {
+      "type": "string",
+      "pattern": "^WFI-[0-9]{4}$"
+    },
+    "stateEventId": { "type": "string", "pattern": "^EVT-[0-9]{5}$" },
+    "recordInstanceId": {
+      "type": "string",
+      "pattern": "^RCI-[0-9]{5}$"
+    },
+    "recordLinkId": { "type": "string", "pattern": "^LNK-[0-9]{5}$" },
+    "exceptionHistoryId": {
+      "type": "string",
+      "pattern": "^EXH-[0-9]{4}$"
+    },
+    "correctionId": { "type": "string", "pattern": "^COR-[0-9]{5}$" },
+    "entityId": {
+      "type": "string",
+      "pattern": "^(?:OPR|ORG|PRP|BLK|BLA|LIN|PER|ASG|REL|CON|SCP|EQP|MAT|UNT|WFI|EVT|RCI|LNK|EXH|COR)-[0-9]{3,5}$"
+    },
+    "canonicalState": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "nonEmptyIdArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/entityId" }
+    },
+    "quantity": {
+      "type": "object",
+      "required": ["value", "unit_id"],
+      "properties": {
+        "value": { "type": "number" },
+        "unit_id": { "$ref": "#/$defs/unitId" },
+        "qualifier": {
+          "enum": ["exact", "estimated", "minimum", "maximum", "about"]
+        },
+        "uncertainty": { "type": "number", "minimum": 0 },
+        "display_precision": { "type": "integer", "minimum": 0, "maximum": 8 }
+      },
+      "additionalProperties": false
+    },
+    "quantityRange": {
+      "type": "object",
+      "required": ["minimum", "maximum", "unit_id"],
+      "properties": {
+        "minimum": { "type": "number" },
+        "maximum": { "type": "number" },
+        "unit_id": { "$ref": "#/$defs/unitId" }
+      },
+      "additionalProperties": false
+    },
+    "money": {
+      "type": "object",
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "basis_unit_id": { "$ref": "#/$defs/unitId" }
+      },
+      "additionalProperties": false
+    },
+    "geoPoint": {
+      "type": "object",
+      "required": ["latitude", "longitude"],
+      "properties": {
+        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 },
+        "elevation": { "$ref": "#/$defs/quantity" },
+        "accuracy": { "$ref": "#/$defs/quantity" }
+      },
+      "additionalProperties": false
+    },
+    "address": {
+      "type": "object",
+      "required": ["locality", "region", "country_code"],
+      "properties": {
+        "line_1": { "type": "string", "minLength": 3 },
+        "line_2": { "type": "string", "minLength": 1 },
+        "locality": { "type": "string", "minLength": 2 },
+        "region": { "type": "string", "minLength": 2 },
+        "postal_code": { "type": "string", "minLength": 3 },
+        "country_code": { "type": "string", "pattern": "^[A-Z]{2}$" }
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_type", "source_ref", "captured_at", "method"],
+      "properties": {
+        "source_type": {
+          "enum": [
+            "synthetic_generator",
+            "human_entry",
+            "system_import",
+            "sensor",
+            "laboratory",
+            "external_document",
+            "derived"
+          ]
+        },
+        "source_ref": { "type": "string", "minLength": 3 },
+        "source_system": { "type": "string", "minLength": 2 },
+        "captured_at": { "type": "string", "format": "date-time" },
+        "captured_by_person_id": { "$ref": "#/$defs/personId" },
+        "method": { "type": "string", "minLength": 3 },
+        "generator_seed": { "type": "integer", "minimum": 1 },
+        "confidence": {
+          "enum": ["high", "medium-high", "medium", "medium-low", "low"]
+        },
+        "source_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "version": {
+      "type": "object",
+      "required": ["number", "recorded_at", "recorded_by_person_id"],
+      "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "recorded_at": { "type": "string", "format": "date-time" },
+        "recorded_by_person_id": { "$ref": "#/$defs/personId" },
+        "previous_version": { "type": "integer", "minimum": 1 },
+        "change_reason": { "type": "string", "minLength": 8 }
+      },
+      "additionalProperties": false
+    },
+    "correction": {
+      "type": "object",
+      "required": [
+        "id",
+        "corrected_at",
+        "corrected_by_person_id",
+        "reason",
+        "field_paths",
+        "from_version",
+        "to_version"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/correctionId" },
+        "corrected_at": { "type": "string", "format": "date-time" },
+        "corrected_by_person_id": { "$ref": "#/$defs/personId" },
+        "reason": { "type": "string", "minLength": 10 },
+        "field_paths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^/(?:[^/~]|~[01])+(?:/(?:[^/~]|~[01])+)*$"
+          }
+        },
+        "from_version": { "type": "integer", "minimum": 1 },
+        "to_version": { "type": "integer", "minimum": 2 },
+        "source_record_instance_id": { "$ref": "#/$defs/recordInstanceId" },
+        "supporting_record_instance_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/recordInstanceId" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "entityReference": {
+      "type": "object",
+      "required": ["entity_type", "entity_id"],
+      "properties": {
+        "entity_type": {
+          "enum": [
+            "operation",
+            "organization",
+            "property",
+            "block",
+            "person",
+            "assignment",
+            "relationship",
+            "contract",
+            "scope",
+            "equipment",
+            "material",
+            "workflow_instance",
+            "state_event",
+            "record_instance",
+            "exception_history"
+          ]
+        },
+        "entity_id": { "$ref": "#/$defs/entityId" }
+      },
+      "additionalProperties": false
+    },
+    "factValue": {
+      "anyOf": [
+        { "type": "string" },
+        { "type": "number" },
+        { "type": "boolean" },
+        { "type": "null" },
+        { "$ref": "#/$defs/quantity" },
+        { "$ref": "#/$defs/quantityRange" },
+        { "$ref": "#/$defs/money" },
+        { "$ref": "#/$defs/geoPoint" },
+        { "$ref": "#/$defs/entityReference" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/factValue" }
+        },
+        {
+          "type": "object",
+          "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" },
+          "additionalProperties": { "$ref": "#/$defs/factValue" }
+        }
+      ]
+    },
+    "facts": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" },
+      "additionalProperties": { "$ref": "#/$defs/factValue" }
+    }
+  }
+}

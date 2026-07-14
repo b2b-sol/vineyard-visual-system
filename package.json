@@ -21,6 +21,8 @@
     "validate:evidence": "node scripts/validation/validate.mjs --scope evidence",
     "validate:trace": "node scripts/validation/validate.mjs --scope trace",
     "validate:data": "node scripts/validation/validate.mjs --scope data",
+    "generate:data": "node scripts/generate-data.ts",
+    "validate:data-current": "node scripts/generate-data.ts --check",
     "validate:all": "node scripts/validation/validate.mjs --scope all",
     "generate:workflow-model": "node scripts/refine-workflow-ontology.mjs && npm run generate:workflow-visuals && npm run generate:trace",
     "validate:workflow-model-current": "node scripts/refine-workflow-ontology.mjs --check",
@@ -36,7 +38,7 @@
     "test:browser": "playwright test",
     "test:browser:update": "playwright test --update-snapshots",
     "audit:repository": "node scripts/repository-audit.mjs",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:all && npm run validate:workflow-model-current && npm run validate:workflow-visuals && npm run render:workflow-visuals && npm run validate:trace-current && npm run test:unit && npm run build && npm run audit:repository"
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run validate:all && npm run validate:workflow-model-current && npm run validate:workflow-visuals && npm run render:workflow-visuals && npm run validate:trace-current && npm run validate:data-current && npm run test:unit && npm run build && npm run audit:repository"
   },
   "dependencies": {
     "ajv": "8.20.0",

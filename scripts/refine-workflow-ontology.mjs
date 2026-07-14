@@ -423,6 +423,16 @@ const workflowRecords = new Map(
 );
 
 const primaryTransitionRecords = {
+  "WF-004": {
+    "published->actualized": {
+      reads: ["REC-029"],
+      writes: ["REC-033"],
+    },
+    "actualized->reconciled": {
+      reads: ["REC-029", "REC-033"],
+      writes: ["REC-034"],
+    },
+  },
   "WF-007": {
     "crew_scheduled->briefed": {
       reads: ["REC-003", "REC-054", "REC-055"],

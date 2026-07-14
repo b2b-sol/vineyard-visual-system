@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/events.schema.json",
+  "title": "Append-only full-season workflow state event ledger",
+  "type": "object",
+  "required": ["schema_version", "operation_id", "generated_at", "events"],
+  "properties": {
+    "schema_version": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/schemaVersion"
+    },
+    "operation_id": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/operationId"
+    },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/stateEvent" }
+    }
+  },
+  "$defs": {
+    "stateEvent": {
+      "type": "object",
+      "required": [
+        "id",
+        "sequence",
+        "operation_id",
+        "workflow_instance_id",
+        "workflow_id",
+        "transition_id",
+        "from_state",
+        "to_state",
+        "kind",
+        "occurred_at",
+        "recorded_at",
+        "actor_assignment_id",
+        "scope_id",
+        "reason",
+        "record_reads",
+        "record_writes",
+        "decision_ids",
+        "decision_results",
+        "exception_history_ids",
+        "connectivity",
+        "provenance",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/stateEventId"
+        },
+        "sequence": { "type": "integer", "minimum": 1 },
+        "operation_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/operationId"
+        },
+        "workflow_instance_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/workflowInstanceId"
+        },
+        "workflow_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/workflowId"
+        },
+        "transition_id": {
+          "type": "string",
+          "pattern": "^TRN-WF-[0-9]{3}-[0-9]{3}$"
+        },
+        "from_state": {
+          "anyOf": [
+            {
+              "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/canonicalState"
+            },
+            { "type": "null" }
+          ]
+        },
+        "to_state": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/canonicalState"
+        },
+        "kind": {
+          "enum": [
+            "observation",
+            "recommendation",
+            "approval",
+            "assignment",
+            "execution",
+            "completion",
+            "verification",
+            "reconciliation",
+            "correction",
+            "supersession",
+            "exception",
+            "recovery",
+            "cancellation",
+            "communication"
+          ]
+        },
+        "occurred_at": { "type": "string", "format": "date-time" },
+        "recorded_at": { "type": "string", "format": "date-time" },
+        "actor_assignment_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/assignmentId"
+        },
+        "scope_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/scopeId"
+        },
+        "reason": { "type": "string", "minLength": 8 },
+        "cause_event_id": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/stateEventId"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^CRL-[0-9]{4}$"
+        },
+        "record_reads": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordInstanceId"
+          }
+        },
+        "record_writes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordInstanceId"
+          }
+        },
+        "decision_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/decisionId"
+          }
+        },
+        "decision_results": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "required": ["decision_id", "outcome", "rationale"],
+            "properties": {
+              "decision_id": {
+                "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/decisionId"
+              },
+              "outcome": { "type": "string", "minLength": 2 },
+              "rationale": { "type": "string", "minLength": 10 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "exception_history_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/exceptionHistoryId"
+          }
+        },
+        "measurements": {
+          "type": "object",
+          "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" },
+          "additionalProperties": {
+            "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/quantity"
+          }
+        },
+        "notes": { "type": "string", "minLength": 3 },
+        "connectivity": {
+          "type": "object",
+          "required": ["mode", "captured_offline", "sync_status"],
+          "properties": {
+            "mode": { "enum": ["online", "intermittent", "offline"] },
+            "captured_offline": { "type": "boolean" },
+            "device_recorded_at": { "type": "string", "format": "date-time" },
+            "synced_at": { "type": "string", "format": "date-time" },
+            "sync_status": {
+              "enum": ["local", "queued", "synced", "conflict", "resolved"]
+            },
+            "conflict_record_instance_ids": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordInstanceId"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "provenance": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/provenance"
+        },
+        "version": {
+          "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/version"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

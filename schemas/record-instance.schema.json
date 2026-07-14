@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vineyard-visual-system.dev/schemas/record-instance.schema.json",
+  "title": "Versioned full-season operating record instance",
+  "type": "object",
+  "required": [
+    "id",
+    "operation_id",
+    "record_definition_id",
+    "workflow_instance_ids",
+    "scope_ids",
+    "organization_ids",
+    "title",
+    "lifecycle_state",
+    "effective_at",
+    "recorded_at",
+    "owner_assignment_id",
+    "facts",
+    "provenance",
+    "version",
+    "corrections",
+    "link_ids"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordInstanceId"
+    },
+    "operation_id": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/operationId"
+    },
+    "record_definition_id": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/recordId"
+    },
+    "workflow_instance_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/workflowInstanceId"
+      }
+    },
+    "scope_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/scopeId"
+      }
+    },
+    "block_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/blockId"
+      }
+    },
+    "organization_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/organizationId"
+      }
+    },
+    "contract_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/contractId"
+      }
+    },
+    "title": { "type": "string", "minLength": 6 },
+    "lifecycle_state": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/ontology-common.schema.json#/$defs/lifecycleState"
+    },
+    "effective_at": { "type": "string", "format": "date-time" },
+    "valid_until": { "type": "string", "format": "date-time" },
+    "recorded_at": { "type": "string", "format": "date-time" },
+    "owner_assignment_id": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/assignmentId"
+    },
+    "source_event_id": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/stateEventId"
+    },
+    "facts": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/facts"
+    },
+    "provenance": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/provenance"
+    },
+    "version": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/version"
+    },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/correction"
+      }
+    },
+    "supersedes_record_instance_id": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordInstanceId"
+    },
+    "superseded_by_record_instance_id": {
+      "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordInstanceId"
+    },
+    "link_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://vineyard-visual-system.dev/schemas/data-common.schema.json#/$defs/recordLinkId"
+      }
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "media_type", "path", "sha256"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^ATT-[0-9]{5}$" },
+          "name": { "type": "string", "minLength": 3 },
+          "media_type": {
+            "type": "string",
+            "pattern": "^[a-z0-9.+-]+/[a-z0-9.+-]+$"
+          },
+          "path": { "type": "string", "minLength": 3 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "superseded_by_record_instance_id": {}
+        },
+        "required": ["superseded_by_record_instance_id"]
+      },
+      "then": {
+        "properties": { "lifecycle_state": { "const": "superseded" } }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "version": {
+            "type": "object",
+            "properties": { "number": { "type": "integer", "minimum": 2 } }
+          }
+        },
+        "required": ["version"]
+      },
+      "then": {
+        "properties": {
+          "version": {
+            "type": "object",
+            "properties": {
+              "previous_version": {},
+              "change_reason": {}
+            },
+            "required": ["previous_version", "change_reason"]
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

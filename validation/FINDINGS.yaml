@@ -1,5 +1,5 @@
 schema_version: "1.0"
-updated_at: "2026-07-13T16:53:00-07:00"
+updated_at: "2026-07-13T19:07:00-07:00"
 findings:
   - id: FIND-001
     severity: P1
@@ -254,3 +254,160 @@ findings:
         .github/workflows/visual-validation.yml,
       ]
     resolution: Added an explicit CI-only Puppeteer configuration that disables the unavailable Chromium sandbox inside the ephemeral GitHub runner while retaining the default local launch configuration.
+  - id: FIND-026
+    severity: P1
+    status: resolved
+    title: Generated record references crossed unrelated workflow scopes
+    description: The first full-season graph reused one record instance per canonical definition across unrelated workflow instances, scopes, and blocks; many references preceded record effectiveness or followed the recorded current version.
+    artifact_refs:
+      [scripts/generate-data.ts, data/operation.json, data/events.json]
+    resolution: Rebuilt record instances around workflow-instance plans and shared operational cases; validators now enforce workflow, scope, block, effective-time, source-event, and current-version coherence for every event reference.
+  - id: FIND-027
+    severity: P1
+    status: resolved
+    title: Exception and operational-chain histories were not reciprocal
+    description: Exception histories named recovery events that did not link back to the history, recovery_state frequently held the terminal state rather than the canonical recovery state, and all four harvest-to-settlement chains cited unrelated record links.
+    artifact_refs: [data/events.json, data/exceptions.json, data/operation.json]
+    resolution: Exception events and histories are reciprocal, recovery actions resolve the immediate canonical recovery state, and all four operational chains use connected attributed record links.
+  - id: FIND-028
+    severity: P1
+    status: resolved
+    title: Record coverage was generic rather than operationally substantive
+    description: Every generated record used the same five generic facts, corrections targeted an unchanged display name, seven blocks and two contracts were inert, and measurements did not express workflow-specific vineyard quantities.
+    artifact_refs:
+      [
+        scripts/generate-data.ts,
+        data/operation.json,
+        validation/data-coverage.json,
+      ]
+    resolution: Added explicit record-family and definition-specific fact profiles, activated all blocks and contracts, diversified vineyard quantities, and required substantive leaves, typed entities, state fields, and unit coverage.
+  - id: FIND-029
+    severity: P2
+    status: resolved
+    title: Generated chronology and decision outcomes were implausible
+    description: Global append sequence regressed in recorded time, every workflow instance collapsed into a few hours, and modulo-selected decision outcomes contradicted several positive transitions.
+    artifact_refs: [scripts/generate-data.ts, data/events.json]
+    resolution: Global and per-instance chronology are monotonic, 40 workflows span multiple days, 18 span at least a week, seasonal windows are enforced, and every decision result uses a transition-consistent canonical outcome.
+  - id: FIND-030
+    severity: P1
+    status: resolved
+    title: Cross-workflow links asserted false operational semantics
+    description: Non-chain links were selected by array position with rotating relation labels, connecting unrelated records such as intake quality to timekeeping and calibration to an annual questionnaire.
+    artifact_refs: [scripts/generate-data.ts, data/operation.json]
+    resolution: Replaced positional links with an explicit semantic tuple contract and relation-specific chronology; final output has 116 causal cross-workflow links and zero backward supports, documents, or fulfills edges.
+  - id: FIND-031
+    severity: P1
+    status: resolved
+    title: Multi-decision and exception recovery results lost meaning
+    description: Events with several decision IDs stored only one outcome, and recovery actions pointed at later transitions that did not realize the action text or canonical immediate recovery state.
+    artifact_refs:
+      [schemas/events.schema.json, data/events.json, data/exceptions.json]
+    resolution: Events now store one validated result per decision ID, and every exception recovery action cites the event and evidence that realize its described canonical transition.
+  - id: FIND-032
+    severity: P1
+    status: resolved
+    title: Contract and historical data did not realize their claims
+    description: Both contract-fruit chains used one grower contract while the other had no crop-to-settlement path, record supersession was absent, and a corrected winery alias had no predecessor value.
+    artifact_refs:
+      [data/operation.json, data/README.md, control/DECISION_LOG.md]
+    resolution: The two fruit contracts have distinct connected chains, BLK-009 retains historical and corrected winery aliases, and the season contains four reciprocal substantive supersessions.
+  - id: FIND-033
+    severity: P2
+    status: resolved
+    title: Time offsets precision and named evidence were inaccurate
+    description: March events used daylight time before the 2026 transition, quantities exposed binary floating artifacts, and the named offline case cited an exception history without an offline event.
+    artifact_refs:
+      [
+        scripts/generate-data.ts,
+        data/events.json,
+        validation/data-coverage.json,
+      ]
+    resolution: Pacific offsets follow the 2026 DST boundaries, quantities and money have bounded precision, and named evidence cites actual offline events and current generated identifiers.
+  - id: FIND-034
+    severity: P1
+    status: resolved
+    title: Definition-specific records carried misleading domain facts
+    description: Structurally valid records reused facts from the wrong operational family, including Brix in soil and tissue records, pesticide restrictions in equipment verification, and assignment acknowledgement in a transport affidavit.
+    artifact_refs:
+      [
+        scripts/generate-data.ts,
+        data/operation.json,
+        scripts/validation/season-data.mjs,
+      ]
+    resolution: Added explicit semantic profiles and required key/unit contracts for the affected definitions; final records contain domain-correct soil, tissue, equipment, labor, identity, transport, and audit facts.
+  - id: FIND-035
+    severity: P1
+    status: resolved
+    title: Supersession and corrected-weigh histories changed metadata rather than truth
+    description: Predecessor and successor records preserved identical authoritative values while placing the claimed prior value only in supersession metadata; the corrected-weigh case also lacked a real weigh-bill predecessor and dated corrections before their targets.
+    artifact_refs:
+      [
+        scripts/generate-data.ts,
+        data/operation.json,
+        validation/data-coverage.json,
+      ]
+    resolution: Predecessors now carry prior authoritative values, successors carry revised values, supersession requires a nonmetadata fact delta, corrected-weigh evidence has reciprocal REC-047 lineage, and 12 attributable corrections retain contiguous versions.
+  - id: FIND-036
+    severity: P1
+    status: resolved
+    title: Vineyard phenology contradicted event timing
+    description: Crop-estimate and maturity workflows were scheduled during dormant or implausibly early months, and a January field signal described active canopy and shoot growth.
+    artifact_refs:
+      [scripts/generate-data.ts, data/events.json, data/operation.json]
+    resolution: WF-004, WF-005, and WF-006 use enforced seasonal windows; dormant signals avoid active-canopy claims; each harvest actual is effective at its own workflow's actualization event.
+  - id: FIND-037
+    severity: P1
+    status: resolved
+    title: Cross-workflow links reversed causal and temporal direction
+    description: Thirty-eight supports, documents, or fulfills links pointed backward in effective time, including delivery evidence supporting earlier labor records and loads supporting contracts that authorized them.
+    artifact_refs:
+      [
+        scripts/generate-data.ts,
+        data/operation.json,
+        scripts/validation/season-data.mjs,
+      ]
+    resolution: Rebuilt chain and systemic links with explicit direction, relation-specific temporal guards, and creation times no earlier than either record; contract evidence now authorizes loads rather than the reverse.
+  - id: FIND-038
+    severity: P1
+    status: resolved
+    title: Harvest chain quantities and settlement evidence did not reconcile
+    description: Singular weigh bills expressed eight to ten tons while delivery and settlement records used block-scale quantities up to ninety-six tons; load identity and settlement arithmetic therefore described different operational facts.
+    artifact_refs:
+      [
+        scripts/generate-data.ts,
+        data/operation.json,
+        scripts/validation/season-data.mjs,
+      ]
+    resolution: Each chain now reconciles a single load ID, net pounds to entered short tons, and gross plus signed adjustments to net settlement; estate and contract-fruit chains pass the same arithmetic contract.
+  - id: FIND-039
+    severity: P1
+    status: resolved
+    title: Events exposed future measurements before the workflow produced them
+    description: Each workflow instance reused one completed measurement snapshot on every event, exposing future weigh results, receipt quantities, variances, and forecast errors in authorization or sampling states.
+    artifact_refs:
+      [
+        scripts/generate-data.ts,
+        data/events.json,
+        scripts/validation/season-data.mjs,
+      ]
+    resolution: Event measurements are derived from the current transition's record access and state; exact weights, receipts, variances, and forecast errors cannot appear before the workflow produces them.
+  - id: FIND-040
+    severity: P1
+    status: resolved
+    title: Changed-block case cited unrelated identity history
+    description: The EXC-051 named case affected BLK-001 in September while its claimed alias and lineage evidence belonged to BLK-009 in June, so the flagship stable-identity scenario had no connected correction.
+    artifact_refs:
+      [data/exceptions.json, data/operation.json, validation/data-coverage.json]
+    resolution: EXC-051 now affects BLK-009 and cites its own historical and corrected aliases, LIN-001 change, and local corrective evidence inside the exception recovery window.
+  - id: FIND-041
+    severity: P1
+    status: resolved
+    title: Crop actualization transitions omitted their stated record contracts
+    description: TRN-WF-004-005 and TRN-WF-004-006 described linking and reconciling harvest actuals but declared no REC-033 or REC-034 reads and writes, allowing actualized states without actual evidence.
+    artifact_refs:
+      [
+        workflow-model/workflows.json,
+        scripts/refine-workflow-ontology.mjs,
+        scripts/validation/season-data.mjs,
+      ]
+    resolution: The generated canonical contract now reads the published estimate, writes REC-033 at actualization, reads REC-033 at reconciliation, and writes REC-034; all five WF-004 instances and negative tests enforce the contract.

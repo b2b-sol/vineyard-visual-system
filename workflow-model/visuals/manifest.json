@@ -6,7 +6,7 @@
   "source_files": [
     {
       "path": "workflow-model/workflows.json",
-      "sha256": "c39914f4fd0afa76bfc58c2b3c9905a00cc0747e5ae90040635ef4bf66e9c12e"
+      "sha256": "38dae246709b13f8eec6810c39101fe3cb35bd5e2ca2ba8c47455f90f5aebc3e"
     },
     {
       "path": "workflow-model/roles.json",
