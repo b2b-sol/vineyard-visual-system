@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "evaluated_at": "2026-07-13T15:48:00-07:00",
+  "evaluated_at": "2026-07-13T20:58:33.8865412-07:00",
   "gates": [
     {
       "id": "G0",
@@ -81,6 +81,29 @@
         "validation/WORKFLOW_REVIEW.md"
       ],
       "commit_sha": "1bb54af303aab53542f5ccf0796ddd63fa54b843"
+    },
+    {
+      "id": "G4",
+      "status": "passed",
+      "checks": [
+        "Deterministic full-season chronology and referential integrity",
+        "All canonical records, decisions, roles, overlays, and exception histories realized",
+        "Eighty exact scenarios across all nine required categories",
+        "Multi-path record-link and operational-chain connectivity",
+        "Independent data and product reviews with no unresolved P0/P1 findings"
+      ],
+      "evidence": [
+        "data/operation.json",
+        "data/events.json",
+        "data/exceptions.json",
+        "data/scenario-fixtures.json",
+        "scenarios/scenarios.json",
+        "validation/data-coverage.json",
+        "validation/scenario-coverage.json",
+        "validation/DATA_REVIEW.md",
+        "validation/PRODUCT_REVIEW.md"
+      ],
+      "commit_sha": "46467bd120cbfd8e3bcf253532645da49f4a4ea8"
     }
   ]
 }

@@ -61,6 +61,7 @@ Every consequential action resolves its canonical transition, owner, exact motiv
 
 ## Validation evidence
 
+- Protected target-branch squash commit: `46467bd120cbfd8e3bcf253532645da49f4a4ea8` from PR #7 after all merge-queue checks passed.
 - `npm run verify`: passed, including formatting, lint, typecheck, 46 compiled schemas, 55,896 aggregate semantic assertions, 57,478 product assertions, generator and trace currentness, 41 Mermaid renders, 26 unit tests, production build, and repository audit.
 - `npm run test:browser`: 9 passed and 1 intentional viewport-specific skip; desktop and Pixel 7 paths retain fixture identity, canonical recovery, offline capture, conflict handling, responsive behavior, and accessibility checks.
 - `git diff --check`: passed.
